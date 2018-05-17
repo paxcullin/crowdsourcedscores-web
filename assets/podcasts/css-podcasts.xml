@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+  <channel>
+    <title>The Crowd Wisdom Sports Podcast</title>
+    <link>http://crowdsourcedscores.com</link>
+    <language>en</language>
+    <copyright>2018 PCSM LLC</copyright>
+    <itunes:subtitle></itunes:subtitle>
+    <itunes:author>Crowdsourced Scores</itunes:author>
+    <itunes:summary>The Crowd Wisdom Sports Podcast brings you fun and unique discussions about sports predictions generated through crowd wisdom. Rather than relying on one or two experts, we believe that the crowd is wiser in the long run. Each week of the 2018 NFL Postseason Paul and Chris review how the crowd performed over the weekend, identify some things that the crowd got really right (and really wrong), and talk to our best predictors to see how they make their predictions.</itunes:summary>  
+    <itunes:owner>
+      <itunes:name>Crowdsourced Scores</itunes:name>
+      <itunes:email>feedback@crowdsourcedscores.com</itunes:email>
+    </itunes:owner>
+    <itunes:image href="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/img/CSS-Logo-Square-1400.jpg" />
+    <itunes:category text="Sports &amp; Recreation"/>
+    <itunes:explicit>No</itunes:explicit>
+    
+      <item>
+        <title>Episode 1 - What is Crowdsourced Scores?</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>Paul and Chris discuss the idea behind crowdsourcedscores.com, how crowd wisdom works and why it can be a new, fun way to watch football, as well as how you can compete in our first postseason contest.</description>
+        <itunes:subtitle>Paul and Chris discuss the idea behind crowdsourcedscores.com, how crowd wisdom works and why it can be a new, fun way to watch football, as well as how you can compete in our first postseason contest.</itunes:subtitle>
+        <itunes:episode>1</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the idea behind crowdsourcedscores.com.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode1.mp3" length="33:46" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 03 Jan 2018 12:00:00 GMT</pubDate>
+        <itunes:duration>33:46</itunes:duration>
+      </item>
+    
+      <item>
+        <title>Episode 2 - A Wild Card Weekend CPR</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>This week we provide our crowd performance review (CPR) during Wild Card Weekend, what went right, and what went wrong, and how the members of the crowd may have had an effect.</description>
+        <itunes:subtitle>This week we provide our crowd performance review (CPR) during Wild Card Weekend, what went right, and what went wrong, and how the members of the crowd may have had an effect.</itunes:subtitle>
+        <itunes:episode>2</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the crowd wisdom review (CPR) for Wild Card Weekend.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode2.mp3" length="33:46" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 10 Jan 2018 12:00:00 GMT</pubDate>
+        <itunes:duration>29:07</itunes:duration>
+      </item>
+    
+      <item>
+        <title>Episode 3 - Divisional Round CPR</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>The crowd came in just under .500 in the Divisional Round. Paul and Chris discuss the crowd performance review (CPR) for each game of the second week of the NFL postseason and highlight where the crowd did well and who the best predictors were.</description>
+        <itunes:subtitle>The crowd came in just under .500 in the Divisional Round. Paul and Chris discuss the crowd performance review (CPR) for each game of the second week of the NFL postseason and highlight where the crowd did well and who the best predictors were.</itunes:subtitle>
+        <itunes:episode>3</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the crowd performance review (CPR) in the 2018 NFL Divisional Round.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode3.mp3" length="19:47" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 24 Jan 2018 12:00:00 GMT</pubDate>
+        <itunes:duration>19:47</itunes:duration>
+      </item>
+      <item>
+        <title>Episode 4 - Conference Championship CPR</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>The crowd had an excellent conference championship weekend, hitting on 5 of 6 predictions. Paul and Chris discuss the crowd performance review (CPR) for each conference championship game and highlight where the crowd did well and who the best predictors were.</description>
+        <itunes:subtitle>The crowd had an excellent conference championship weekend, hitting on 5 of 6 predictions. Paul and Chris discuss the crowd performance review (CPR) for each conference championship game and highlight where the crowd did well and who the best predictors were.</itunes:subtitle>
+        <itunes:episode>4</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the crowd performance review (CPR) in the 2018 NFL Conference Championships.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode4.mp3" length="26:45" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 24 Jan 2018 13:00:00 GMT</pubDate>
+        <itunes:duration>26:45</itunes:duration>
+      </item>
+      <item>
+        <title>Episode 5 - Regular Season CPR</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>Paul and Chris go through all of the highs and lows of the 2017 NFL Regular Season, and we highlight the select few who hit their predictions right on the money.</description>
+        <itunes:subtitle>Paul and Chris go through all of the highs and lows of the 2017 NFL Regular Season, and we highlight the select few who hit their predictions right on the money.</itunes:subtitle>
+        <itunes:episode>5</itunes:episode>
+        <itunes:summary>Paul and Chris go through all of the highs and lows of the 2017 NFL Regular Season.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode5.mp3" length="34:39" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 31 Jan 2018 13:00:00 GMT</pubDate>
+        <itunes:duration>34:39</itunes:duration>
+      </item>
+      <item>
+        <title>Episode 6 - Game 267 CPR</title>
+        <itunes:author>Crowdsourced Scores</itunes:author>
+        <description>Paul and Chris talk about a riveting final game and announce the big winner of the 2018 NFL  Postseason Prediction Challenge.</description>
+        <itunes:subtitle>Paul and Chris talk about a riveting final game and announce the big winner of the 2018 NFL  Postseason Prediction Challenge.</itunes:subtitle>
+        <itunes:episode>6</itunes:episode>
+        <itunes:summary>Paul and Chris talk about a riveting final game and announce the big winner of the 2018 NFL  Postseason Prediction Challenge.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/css-episode6.mp3" length="42:15" type="audio/mpeg"/>
+        <guid></guid>
+        <pubDate>Wed, 7 Feb 2018 13:00:00 GMT</pubDate>
+        <itunes:duration>42:15</itunes:duration>
+      </item>
+    
+  </channel>
+  </rss>
