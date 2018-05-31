@@ -515,65 +515,45 @@
         </div>
     </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript">
-        var lockOptions = {
-            closable: false,
-            auth: {
-                params: {scope: 'openid email'}
-            },
-            theme: {
-                logo: 'https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/img/crowdsourcedscores-icon.png',
-                primaryColor: '#3B3D6B'
-            }
+
+    <script type='text/javascript' src="amazon-cognito-identity.js"></script>
+    <script>
+        var data = {
+            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
         };
-
-        var lock = null;
-
-        lock = new Auth0Lock('DGGRh6nxG2FfQlDorkqHLRQVqMAaC3uI', 'pcsm.auth0.com', lockOptions);
-
-        btn_login = $('.auth0-lock-social-button.auth0-lock-social-big-button');
-        // $('.auth0-lock-social-button.auth0-lock-social-big-button').click(function() {
-        //         ga('send','event','login','clicked');
-        // });
-
-        var userProfile;
-        //function authenticateUser() {
-            lock.on("authenticated", function (authResult) {
-                ga('send','event','login','successful');
-                localStorage.setItem('id_token', authResult.idToken);
-
-                var id_token = localStorage.getItem('id_token');
-
-                if (id_token) {
-                    getUserProfile(authResult.idToken, function (error, profile) {
-                        if (error) {
-                            // Handle error
-                            return;
-                        } else {
-
-                        localStorage.setItem('id_token', authResult.idToken);
-
-                        localStorage.setItem('profile', JSON.stringify(profile));
-
-                        userProfile = profile;
-                        setUserProfile(profile);
-                        }
-                    });
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    </script>
+    <fieldset>
+        <legend>Cognito Sign Up User Demo</legend>
+        User name: <input type="text" id="username" placeholder="Enter user name...">
+        <br>
+        <br>
+        Password: <input type="text" id="password" placeholder="Enter password...">
+        <br>
+        <br>
+        <div style="width:500px;">
+            <button id="signupUser">Sign Up User</button>
+        </div>
+        <ul id="signupUserResults"></ul>
+    </fieldset>
+    <script>
+        var attributeList = [];
+        document.getElementById('signupUser').addEventListener('click', function () {
+          userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
+            attributeList, null,
+            function (err, result) {
+                if (err) {
+                    alert(err);
+                    return;
                 }
+                document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
+                  result.user, null, 2);
+                cognitoUser = result.user;
+                console.log(cognitoUser);
             });
-            if (!userProfile) {
-                id_token = localStorage.getItem('id_token');
-                
-                lock.getProfile(id_token, function (error, profile) {
-                    if (error) {
-                        return;
-                    } else {
-                        userProfile = profile;
-                        setUserProfile(profile);
-                    }
-                });
-
-            }
+        });
+        
         //}
         // if (localStorage.getItem('profile')) {
         //     setUserProfile(localStorage.getItem('profile'));
