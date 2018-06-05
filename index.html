@@ -516,7 +516,7 @@
     </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
-    <script type='text/javascript' src="amazon-cognito-identity.js"></script>
+    <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
     <script>
         // Pool ID and Client ID sourced from AWS
         var data = {
@@ -525,77 +525,52 @@
         };
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
     </script>
-    <!-- fieldset for Cognito -->
-    <fieldset>
-        <legend>Sign Up for PCSM</legend>
-        User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-        <br>
-        <br>
-        E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-        <br>
-        <br>
-        Password: <input type="password" id="password" placeholder="Enter password">
-        <br>
-        <br>
-        <div style="width:500px;">
-            <button id="signupUser">Log In</button>
-        </div>
-        <ul id="signupUserResults"></ul>
-    </fieldset>
     <script>
-        var attributeList = [];
-
-        var dataEmail = {
-            Name : 'email',
-            Value : 'email@mydomain.com'
-        };
-
-        var dataUsername = {
-            Name : 'preferred_username',
-            Value : 'email@mydomain.com'
-        };
-        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-        var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-        document.getElementById('signupUser').addEventListener('click', function () {
-          userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
-            attributeList, null,
-            function (err, result) {
-                if (err) {
-                    alert(err);
-                    return;
-                }
-                document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
-                  result.user, null, 2);
-                cognitoUser = result.user;
-                console.log(cognitoUser);
-            });
-        });
         
         //}
         // if (localStorage.getItem('profile')) {
         //     setUserProfile(localStorage.getItem('profile'));
         // }
+        fetch(url, { 
+            method: 'post', 
+            headers: new Headers({
+                'Authorization': 'Basic '+btoa('username:password'), 
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })
+        });
+
+        function get(url) {
+            return fetch(url);
+        }
 
         var getGameWeek = function (callback) {
             var id_token = localStorage.getItem('id_token') || "";
+            get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week")
+            .then(function(data) {
+                return data
+            })
+            .catch(function(err) {
+                console.log("Error: ", err);
 
-            $.ajax({
-                url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
-                type: "GET",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', id_token);
-                },
-                success: function (data) {
-                    console.log(JSON.stringify(data));
-                    return callback(null, data);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("Error getting game week")
-                    if (jqXHR.status == 0) {
-                        lock.show();
-                    }
-                }
             });
+
+            // $.ajax({
+            //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
+            //     type: "GET",
+            //     beforeSend: function (xhr) {
+            //         xhr.setRequestHeader('Authorization', id_token);
+            //     },
+            //     success: function (data) {
+            //         console.log(JSON.stringify(data));
+            //         return callback(null, data);
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown) {
+            //         console.log("Error getting game week")
+            //         if (jqXHR.status == 0) {
+            //             //lock.show();
+            //         }
+            //     }
+            // });
         };
         // var getGameWeek2 = function() {
         //     $.ajax({
@@ -1156,7 +1131,23 @@
     </head>
 
     <body>
-
+    <!-- fieldset for Cognito -->
+    <!--<fieldset>
+        <legend>Sign Up for PCSM</legend>
+        User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+        <br>
+        <br>
+        E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+        <br>
+        <br>
+        Password: <input type="password" id="password" placeholder="Enter password">
+        <br>
+        <br>
+        <div style="width:500px;">
+            <button id="signupUser">Log In</button>
+        </div>
+        <ul id="signupUserResults"></ul>
+    </fieldset>-->
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
@@ -1207,7 +1198,8 @@
                 </div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
-
+                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com/">Login</a>
+    
 
                         <select class="dropdown" id="seasonSelector">
                             <option value="2017" selected>2017</option>
@@ -1362,6 +1354,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    var attributeList = [];
+
+    var dataEmail = {
+        Name : 'email',
+        Value : 'email@mydomain.com'
+    };
+
+    var dataUsername = {
+        Name : 'preferred_username',
+        Value : 'email@mydomain.com'
+    };
+    var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+    var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+    document.getElementById('signupUser').addEventListener('click', function () {
+      userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
+        attributeList, null,
+        function (err, result) {
+            if (err) {
+                alert(JSON.stringify(err));
+                return;
+            }
+            document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
+              result.user, null, 2);
+            cognitoUser = result.user;
+            console.log(cognitoUser);
+        });
+    });
+</script>
 </body>
 
 </html>
