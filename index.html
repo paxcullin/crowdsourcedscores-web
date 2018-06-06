@@ -524,6 +524,45 @@
             ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
         };
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+        
+        //GET CURRENT USER FROM LOCAL STORAGE
+        var cognitoUser = userPool.getCurrentUser();
+
+        if (cognitoUser != null) {
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    alert(err);
+                    return;
+                }
+                console.log('session validity: ' + session.isValid());
+            });
+        }
+
+    var authenticationData = {
+        Username : 'username',
+        Password : 'password',
+    };
+
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+
+    var userData = {
+        Username : 'username',
+        Pool : userPool
+    };
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            console.log('access token + ' + result.getAccessToken().getJwtToken());
+            /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
+            console.log('idToken + ' + result.idToken.jwtToken);
+        },
+
+        onFailure: function(err) {
+            alert(err);
+        },
+
+    });
+
     </script>
     <script>
         
@@ -534,8 +573,7 @@
         fetch(url, { 
             method: 'post', 
             headers: new Headers({
-                'Authorization': 'Basic '+btoa('username:password'), 
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Authorization': id_token
             })
         });
 
@@ -1131,23 +1169,6 @@
     </head>
 
     <body>
-    <!-- fieldset for Cognito -->
-    <!--<fieldset>
-        <legend>Sign Up for PCSM</legend>
-        User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-        <br>
-        <br>
-        E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-        <br>
-        <br>
-        Password: <input type="password" id="password" placeholder="Enter password">
-        <br>
-        <br>
-        <div style="width:500px;">
-            <button id="signupUser">Log In</button>
-        </div>
-        <ul id="signupUserResults"></ul>
-    </fieldset>-->
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
@@ -1200,6 +1221,24 @@
                     <div class="col-xs-7 col-sm-10">
                         <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com/">Login</a>
     
+                        
+                        <!-- fieldset for Cognito -->
+                        <fieldset>
+                            <legend>Sign Up for PCSM</legend>
+                            User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                            <br>
+                            <br>
+                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                            <br>
+                            <br>
+                            Password: <input type="password" id="password" placeholder="Enter password">
+                            <br>
+                            <br>
+                            <div style="width:500px;">
+                                <button id="signupUser">Log In</button>
+                            </div>
+                            <ul id="signupUserResults"></ul>
+                        </fieldset>
 
                         <select class="dropdown" id="seasonSelector">
                             <option value="2017" selected>2017</option>
@@ -1369,20 +1408,20 @@
     };
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
     var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-    document.getElementById('signupUser').addEventListener('click', function () {
-      userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
-        attributeList, null,
-        function (err, result) {
-            if (err) {
-                alert(JSON.stringify(err));
-                return;
-            }
-            document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
-              result.user, null, 2);
-            cognitoUser = result.user;
-            console.log(cognitoUser);
-        });
-    });
+    // document.getElementById('signupUser').addEventListener('click', function () {
+    //   userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
+    //     attributeList, null,
+    //     function (err, result) {
+    //         if (err) {
+    //             alert(JSON.stringify(err));
+    //             return;
+    //         }
+    //         document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
+    //           result.user, null, 2);
+    //         cognitoUser = result.user;
+    //         console.log(cognitoUser);
+    //     });
+    // });
 </script>
 </body>
 
