@@ -527,11 +527,11 @@
         
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
-
+        
         if (cognitoUser != null) {
             cognitoUser.getSession(function(err, session) {
                 if (err) {
-                    alert(err);
+                    console.log("getSession: " + JSON.stringify(err));
                     return;
                 }
                 console.log('session validity: ' + session.isValid());
@@ -546,10 +546,12 @@
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
 
     var userData = {
-        Username : 'username',
+        Username : 'cmaronchick',
         Pool : userPool
     };
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    console.log("cognitoUser: ", cognitoUser)
+    
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
             console.log('access token + ' + result.getAccessToken().getJwtToken());
@@ -558,7 +560,7 @@
         },
 
         onFailure: function(err) {
-            alert(err);
+            console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
         },
 
     });
@@ -570,20 +572,16 @@
         // if (localStorage.getItem('profile')) {
         //     setUserProfile(localStorage.getItem('profile'));
         // }
-        fetch(url, { 
-            method: 'post', 
-            headers: new Headers({
-                'Authorization': id_token
-            })
-        });
 
-        function get(url) {
-            return fetch(url);
+        function get(url, options) {
+            return fetch(url, options);
         }
 
         var getGameWeek = function (callback) {
             var id_token = localStorage.getItem('id_token') || "";
-            get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week")
+            get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
+                'Authorization': id_token
+            })
             .then(function(data) {
                 return data
             })
@@ -957,7 +955,7 @@
             });
             
 
-            if (userProfile) {document.getElementById('profileName').innerText = userProfile.name;}
+            if (cognitoUser) {document.getElementById('profileName').innerText = userProfile.name;}
             
             $("#chartExpand").click(function () {
 
@@ -1219,7 +1217,7 @@
                 </div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
-                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com/">Login</a>
+                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
     
                         
                         <!-- fieldset for Cognito -->
