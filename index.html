@@ -518,55 +518,6 @@
 
     <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
     <script>
-        // Pool ID and Client ID sourced from AWS
-        var data = {
-            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
-            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
-        };
-        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
-        
-        //GET CURRENT USER FROM LOCAL STORAGE
-        var cognitoUser = userPool.getCurrentUser();
-        
-        if (cognitoUser != null) {
-            cognitoUser.getSession(function(err, session) {
-                if (err) {
-                    console.log("getSession: " + JSON.stringify(err));
-                    return;
-                }
-                console.log('session validity: ' + session.isValid());
-            });
-        }
-
-    var authenticationData = {
-        Username : 'username',
-        Password : 'password',
-    };
-
-    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-
-    var userData = {
-        Username : 'cmaronchick',
-        Pool : userPool
-    };
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    console.log("cognitoUser: ", cognitoUser)
-    
-    cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-            console.log('access token + ' + result.getAccessToken().getJwtToken());
-            /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
-            console.log('idToken + ' + result.idToken.jwtToken);
-        },
-
-        onFailure: function(err) {
-            console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
-        },
-
-    });
-
-    </script>
-    <script>
         
         //}
         // if (localStorage.getItem('profile')) {
@@ -1226,16 +1177,16 @@
                             User name: <input type="text" id="username" placeholder="Enter your preferred user name">
                             <br>
                             <br>
-                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                            <!--E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
                             <br>
-                            <br>
+                            <br>-->
                             Password: <input type="password" id="password" placeholder="Enter password">
                             <br>
                             <br>
                             <div style="width:500px;">
-                                <button id="signupUser">Log In</button>
+                                <button id="loginUser">Log In</button>
                             </div>
-                            <ul id="signupUserResults"></ul>
+                            <ul id="loginUserResults"></ul>
                         </fieldset>
 
                         <select class="dropdown" id="seasonSelector">
@@ -1406,7 +1357,7 @@
     };
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
     var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-    // document.getElementById('signupUser').addEventListener('click', function () {
+    // document.getElementById('loginUser').addEventListener('click', function () {
     //   userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
     //     attributeList, null,
     //     function (err, result) {
@@ -1420,6 +1371,60 @@
     //         console.log(cognitoUser);
     //     });
     // });
+        // Pool ID and Client ID sourced from AWS
+        var data = {
+            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
+        };
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+        
+        //GET CURRENT USER FROM LOCAL STORAGE
+        var cognitoUser = userPool.getCurrentUser();
+        
+        if (cognitoUser != null) {
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    console.log("getSession: " + JSON.stringify(err));
+                    return;
+                }
+                console.log('session validity: ' + session.isValid());
+            });
+        }
+
+    console.log("cognitoUser: ", cognitoUser)
+    console.log("localStorage: ",localStorage.getItem('username'));
+    
+    document.getElementById('loginUser').addEventListener('click', function() {
+        console.log('clicked');
+        var authenticationData = {
+            Username : document.getElementById('username').value,
+            Password : document.getElementById('password').value
+        };
+
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+
+        var userData = {
+            Username : document.getElementById('username').value,
+            Pool : userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    
+        console.log("authenticationData: ", JSON.stringify(authenticationData));
+        console.log("authenticationDetails: ", JSON.stringify(authenticationDetails));
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: function (result) {
+                console.log('access token + ' + result.getAccessToken().getJwtToken());
+                /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
+                console.log('idToken + ' + result.idToken.jwtToken);
+                cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            },
+
+            onFailure: function(err) {
+                console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
+            },
+
+        });
+    });
 </script>
 </body>
 
