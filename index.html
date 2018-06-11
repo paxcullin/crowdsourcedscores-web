@@ -529,36 +529,35 @@
         }
 
         var getGameWeek = function (callback) {
-            var id_token = localStorage.getItem('id_token') || "";
-            get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
-                'Authorization': id_token
-            })
-            .then(function(data) {
-                return data
-            })
-            .catch(function(err) {
-                console.log("Error: ", err);
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
+                    'Authorization': id_token
+                })
+                .then(function(data) {
+                    return data;
+                })
+                .catch(function(err) {
+                    console.log("Error: ", err);
+                });
 
-            });
-
-            // $.ajax({
-            //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
-            //     type: "GET",
-            //     beforeSend: function (xhr) {
-            //         xhr.setRequestHeader('Authorization', id_token);
-            //     },
-            //     success: function (data) {
-            //         console.log(JSON.stringify(data));
-            //         return callback(null, data);
-            //     },
-            //     error: function (jqXHR, textStatus, errorThrown) {
-            //         console.log("Error getting game week")
-            //         if (jqXHR.status == 0) {
-            //             //lock.show();
-            //         }
-            //     }
-            // });
+                // $.ajax({
+                //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
+                //     type: "GET",
+                //     beforeSend: function (xhr) {
+                //         xhr.setRequestHeader('Authorization', id_token);
+                //     },
+                //     success: function (data) {
+                //         console.log(JSON.stringify(data));
+                //         return callback(null, data);
+                //     },
+                //     error: function (jqXHR, textStatus, errorThrown) {
+                //         console.log("Error getting game week")
+                //         if (jqXHR.status == 0) {
+                //             //lock.show();
+                //         }
+                //     }
+                // });
         };
+            
         // var getGameWeek2 = function() {
         //     $.ajax({
         //         url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
@@ -651,79 +650,91 @@
             }            
         }
 
-        var setGameWeek = function (year, week) {
-            var id_token = localStorage.getItem('id_token') || "";
+        var setGameWeek = function (year, week, id_token) {
 
-            $.ajax({
-                url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
-                type: "GET",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', id_token);
-                },
-                success: function (data) {
-                    $("#games-loading-icon").css("display","none")
-                    formatGameTimes(data);
-                    var games = {games: data};
-                    var template = $('#games-template').html();
-                    var templateScript = Handlebars.compile(template);
-                    var html = templateScript(games);
-                    $('#games').html(html);
-                    //drawChart2(year, week);
-                    $('.prediction-btn').on('click', function (e) {
-                        e.preventDefault();
-                        $(this).text('Saving...');
-                        var $prediction = $(this).parents('.prediction');
-                        var prediction = {
-                            gameId: $prediction.attr('data-game-id'),
-                            gameWeek: $prediction.attr('data-game-week'),
-                            year: $prediction.attr('data-game-year'),
-                            awayTeam: {
-                                code: $prediction.attr('data-away-code'),
-                                fullName: $prediction.attr('data-away-name'),
-                                shortName: $prediction.attr('data-away-short')
-                            },
-                            homeTeam: {
-                                code: $prediction.attr('data-home-code'),
-                                fullName: $prediction.attr('data-home-name'),
-                                shortName: $prediction.attr('data-home-short')
-                            }
-                        };
+            if (cognitoUser || id_token) {
 
-                        var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
-                        var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
+                console.log("id_token: ", id_token);
 
-                        var away = $prediction.attr('data-away-team');
-                        var home = $prediction.attr('data-home-team');
+                // $.ajax({
+                //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
+                //     type: "GET",
+                //     beforeSend: function (xhr) {
+                //         xhr.setRequestHeader('Authorization', id_token);
+                //     },
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",{
+                    'Authorization': id_token
+                })
+                .then(function (data) {
+                        $("#games-loading-icon").css("display","none")
+                        formatGameTimes(data);
+                        var games = {games: data};
+                        var template = $('#games-template').html();
+                        var templateScript = Handlebars.compile(template);
+                        var html = templateScript(games);
+                        $('#games').html(html);
+                        //drawChart2(year, week);
+                        $('.prediction-btn').on('click', function (e) {
+                            e.preventDefault();
+                            $(this).text('Saving...');
+                            var $prediction = $(this).parents('.prediction');
+                            var prediction = {
+                                gameId: $prediction.attr('data-game-id'),
+                                gameWeek: $prediction.attr('data-game-week'),
+                                year: $prediction.attr('data-game-year'),
+                                awayTeam: {
+                                    code: $prediction.attr('data-away-code'),
+                                    fullName: $prediction.attr('data-away-name'),
+                                    shortName: $prediction.attr('data-away-short')
+                                },
+                                homeTeam: {
+                                    code: $prediction.attr('data-home-code'),
+                                    fullName: $prediction.attr('data-home-name'),
+                                    shortName: $prediction.attr('data-home-short')
+                                }
+                            };
 
-                        var awayCode = $prediction.attr('data-away-code');
-                        var homeCode = $prediction.attr('data-home-code');
+                            var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
+                            var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
 
-                        prediction.awayTeam.score = parseInt(awayTeamPrediction);
-                        prediction.homeTeam.score = parseInt(homeTeamPrediction);
+                            var away = $prediction.attr('data-away-team');
+                            var home = $prediction.attr('data-home-team');
 
-                        submitPrediction(prediction, $(this));
-                        // Update prediction table cell
-                        //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
-                        //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
-                        $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
-                        $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
-                        //show odds and crowd info
-                        $prediction.find('.crowdHidden').removeClass('crowdHidden');
-                        $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
-                    });
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("Error getting games");
-                    if (jqXHR.status == 0) {
-                        lock.show();
-                    }
-                }
-            }).done(function (data) {
-                getWeeklyResults(data);
-                return data;
-            }).done(function (data) {
-                getWeeklyCrowdResults(data)
-            }).done(drawChart2(year, week, "weekly"));
+                            var awayCode = $prediction.attr('data-away-code');
+                            var homeCode = $prediction.attr('data-home-code');
+
+                            prediction.awayTeam.score = parseInt(awayTeamPrediction);
+                            prediction.homeTeam.score = parseInt(homeTeamPrediction);
+
+                            submitPrediction(prediction, $(this));
+                            // Update prediction table cell
+                            //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
+                            //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
+                            $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
+                            $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
+                            //show odds and crowd info
+                            $prediction.find('.crowdHidden').removeClass('crowdHidden');
+                            $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
+                        });
+                        return data;
+                    })
+                    .catch(function (jqXHR, textStatus, errorThrown) {
+                        console.log("Error getting games");
+                        if (jqXHR.status == 0) {
+                            lock.show();
+                        }
+                    })
+                    .then(function (data) {
+                        getWeeklyResults(data);
+                        return data;
+                    })
+                    .then(function (data) {
+                        getWeeklyCrowdResults(data)
+                    })
+                    .then(drawChart2(year, week, "weekly"));
+            } else {
+                return;
+            }
         };
 
         //jQuery for animating boxes after they're predicted
@@ -1416,7 +1427,9 @@
                 console.log('access token + ' + result.getAccessToken().getJwtToken());
                 /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
                 console.log('idToken + ' + result.idToken.jwtToken);
+                console.log("setting game week")
                 cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+                setGameWeek(gameWeekData.year, gameWeekData.week);
             },
 
             onFailure: function(err) {
