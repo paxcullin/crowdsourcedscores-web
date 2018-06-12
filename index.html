@@ -1429,7 +1429,7 @@
                 console.log('idToken + ' + result.idToken.jwtToken);
                 console.log("setting game week")
                 cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-                setGameWeek(gameWeekData.year, gameWeekData.week);
+                setGameWeek(gameWeekData.year, gameWeekData.week, result.idToken.jwtToken);
             },
 
             onFailure: function(err) {
