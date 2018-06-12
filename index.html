@@ -941,12 +941,13 @@
         //console.log("year:", year, "week: ", week);
         google.setOnLoadCallback(drawChart2);
         var id_token = localStorage.getItem('id_token') || "";
+        console.log("id_token: ", id_token);
         if (!gameWeekData.year) {
-            console.log("setting game year")
+            // console.log("setting game year")
             gameWeekData.year = 2017;
         }
         if (!gameWeekData.week) {
-            console.log("Setting game week")
+            // console.log("Setting game week")
             gameWeekData.week = 18;
         }
         var deferredLeaderboardRequest2 = function(year, week) {
