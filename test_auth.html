@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Auth Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="jwt-decode.min.js"></script>
+    <script>
+        function GetURLParameter(sParam) {
+            var sPageURL = window.location.hash.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+
+        function processToken() {
+            var idToken = GetURLParameter('id_token');
+            if (!idToken) {
+                console.log('No id_token present');
+                return;
+            }
+            var decoded = jwt_decode(idToken);
+            console.log(decoded);
+        }
+    </script>
+</head>
+
+<body onload="processToken()">
+    <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&amp;client_id=2n15lhk845sucm0k4fejjqcbev&amp;redirect_uri=https://crowdsourcedscores.com/test_auth.html">Sign In/Up</a>
+
+
+</body>
+
+</html>
