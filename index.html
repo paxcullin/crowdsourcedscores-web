@@ -272,7 +272,36 @@
     <!-- Handlebars.js -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+        <!--Cognito Code-->
+        <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
+    
             <script type="text/javascript">
+
+
+        // GET cognitoUser Information at the top
+
+        // Pool ID and Client ID sourced from AWS
+        var data = {
+            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
+        };
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+        
+        //GET CURRENT USER FROM LOCAL STORAGE
+        var cognitoUser = userPool.getCurrentUser();
+        var id_token = "";
+        
+        if (cognitoUser != null) {
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    console.log("getSession: " + JSON.stringify(err));
+                    return;
+                }
+                console.log('session validity: ' + session.isValid());
+            });
+            console.log(cognitoUser);
+            id_token = cognitoUser.signInUserSession.idToken.jwtToken;
+        }
 
 
         Handlebars.registerHelper('grouped_each', function(every, context, options) {
@@ -516,7 +545,6 @@
     </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
-    <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
     <script>
         
         //}
@@ -532,11 +560,17 @@
 
         var getGameWeek = function (callback) {
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
+                    method: "GET",
                     headers: { 
                         'Authorization': id_token
                     }
                 })
-                .then(function(data) {
+                .then(function(response) {
+                    console.log ("getGameWeek success! ", response)
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log("gameWeek Data: ", data);
                     return data;
                 })
                 .catch(function(err) {
@@ -658,7 +692,9 @@
 
             if (cognitoUser || id_token) {
 
-
+                if (!id_token) {
+                    id_token = cognitoUser.signInUserSession.idToken.jwtToken;
+                }
                 // $.ajax({
                 //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
                 //     type: "GET",
@@ -666,11 +702,16 @@
                 //         xhr.setRequestHeader('Authorization', id_token);
                 //     },
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",{
-                    headers: {
-                        'Authorization': id_token
-                    }
+                        method: "GET",
+                        headers: { 
+                            'Authorization': id_token
+                        }
+                })
+                .then(function (response) {
+                    return response.json();
                 })
                 .then(function (data) {
+                    console.log("getGames Success: ", data)
                         $("#games-loading-icon").css("display","none")
                         formatGameTimes(data);
                         var games = {games: data};
@@ -753,7 +794,6 @@
             }
 
         var submitPrediction = function (prediction, btn) {
-            var id_token = localStorage.getItem('id_token');
             var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
             var messageElm = predictionElm.find(".prediction-message");
 
@@ -849,8 +889,8 @@
                 $('#weekSelector li').removeClass('active');
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
-                setGameWeek(gameWeekData.year, gameWeekData.week);
-                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week).then(function(data) {
+                setGameWeek(gameWeekData.year, gameWeekData.week, id_token);
+                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token).then(function(data) {
                             console.log("deferredLeaderboardRequest2: ", data)
                         });
             });
@@ -859,6 +899,7 @@
 
             setTimeout(function () {
                 getGameWeek(function (err, data) {
+                    console.log("data: ", data);
                     if (data) {
                         week = data.week;
                         year = parseInt(document.getElementById('seasonSelector').value);
@@ -922,7 +963,7 @@
             });
             
 
-            if (cognitoUser) {document.getElementById('profileName').innerText = userProfile.name;}
+            if (cognitoUser) {document.getElementById('profileName').innerText = cognitoUser.username;}
             
             $("#chartExpand").click(function () {
 
@@ -956,7 +997,6 @@
         google.load("visualization", "1", {packages:["corechart"]});
         //console.log("year:", year, "week: ", week);
         google.setOnLoadCallback(drawChart2);
-        var id_token = localStorage.getItem('id_token') || "";
         console.log("id_token: ", id_token);
         if (!gameWeekData.year) {
             // console.log("setting game year")
@@ -966,35 +1006,27 @@
             // console.log("Setting game week")
             gameWeekData.week = 18;
         }
-        var deferredLeaderboardRequest2 = function(year, week) {
-            var id_token = localStorage.getItem('id_token') || "";
+        var deferredLeaderboardRequest2 = function(year, week, id_token) {
+            //var id_token = localStorage.getItem('id_token') || "";
             console.log("deferredLeaderboardRequest2: ", year, " ", week);
                 return new Promise(function(fulfill, reject) {
-                        $.ajax({
-                            url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",
+                        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
                             type: "GET",
-                            beforeSend: function (xhr) {
-                                    xhr.setRequestHeader('Authorization', id_token);
-                            },
-                            success: function (data) {
-                                resultsJSON = data;
-                                //completeChart(resultsJSON);
-                                return resultsJSON;
-                                
-                            },
-                            error: function (textStatus, errorThrown) {
+                            'Authorization': id_token
+                        })
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .catch(function (textStatus, errorThrown) {
                                 console.log("Error: ", errorThrown);
-                            }
-                        }).done(function (res) {
-                            try {
-                                console.log("res:", res);
-                                fulfill(res);
-                            } catch (ex) {
-                                reject(ex);
-                            }
-                        }, reject);
-                });
-        };
+                        })
+                        .then(function (data) {
+                            resultsJSON = data;
+                            //completeChart(resultsJSON);
+                            return resultsJSON;                                
+                        });
+                })
+            };
         var deferredLeaderboardRequest = 
         $.ajax({
             url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/leaderboards",
@@ -1025,7 +1057,7 @@
         }
             var view;
             function drawChart2(year, week, view) {
-                deferredLeaderboardRequest2(year, week).then(function (leaderboardData) {
+                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week).then(function (leaderboardData) {
                         if (!view) { view = "weekly";}
                          
                         var chartData = {
@@ -1189,14 +1221,14 @@
     
                         
                         <!-- fieldset for Cognito -->
-                        <fieldset>
+                        <!--<fieldset>
                             <legend>Sign Up for PCSM</legend>
                             User name: <input type="text" id="username" placeholder="Enter your preferred user name">
                             <br>
                             <br>
-                            <!--E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
                             <br>
-                            <br>-->
+                            <br>
                             Password: <input type="password" id="password" placeholder="Enter password">
                             <br>
                             <br>
@@ -1204,7 +1236,7 @@
                                 <button id="loginUser">Log In</button>
                             </div>
                             <ul id="loginUserResults"></ul>
-                        </fieldset>
+                        </fieldset>-->
 
                         <select class="dropdown" id="seasonSelector">
                             <option value="2017" selected>2017</option>
@@ -1388,62 +1420,45 @@
     //         console.log(cognitoUser);
     //     });
     // });
-        // Pool ID and Client ID sourced from AWS
-        var data = {
-            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
-            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
-        };
-        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
-        
-        //GET CURRENT USER FROM LOCAL STORAGE
-        var cognitoUser = userPool.getCurrentUser();
-        
-        if (cognitoUser != null) {
-            cognitoUser.getSession(function(err, session) {
-                if (err) {
-                    console.log("getSession: " + JSON.stringify(err));
-                    return;
-                }
-                console.log('session validity: ' + session.isValid());
-            });
-        }
 
-    console.log("cognitoUser: ", cognitoUser)
-    console.log("localStorage: ",localStorage.getItem('username'));
     
-    document.getElementById('loginUser').addEventListener('click', function() {
-        console.log('clicked');
-        var authenticationData = {
-            Username : document.getElementById('username').value,
-            Password : document.getElementById('password').value
-        };
 
-        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+    // Commenting out and will remove once login flow is confirmed
 
-        var userData = {
-            Username : document.getElementById('username').value,
-            Pool : userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+    // document.getElementById('loginUser').addEventListener('click', function() {
+    //     console.log('clicked');
+    //     var authenticationData = {
+    //         Username : document.getElementById('username').value,
+    //         Password : document.getElementById('password').value
+    //     };
+
+    //     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+
+    //     var userData = {
+    //         Username : document.getElementById('username').value,
+    //         Pool : userPool
+    //     };
+    //     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
     
-        console.log("authenticationData: ", JSON.stringify(authenticationData));
-        console.log("authenticationDetails: ", JSON.stringify(authenticationDetails));
-        cognitoUser.authenticateUser(authenticationDetails, {
-            onSuccess: function (result) {
-                console.log('access token + ' + result.getAccessToken().getJwtToken());
-                /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
-                console.log('idToken + ' + result.idToken.jwtToken);
-                console.log("setting game week")
-                cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-                setGameWeek(gameWeekData.year, gameWeekData.week, result.idToken.jwtToken);
-            },
+    //     console.log("authenticationData: ", JSON.stringify(authenticationData));
+    //     console.log("authenticationDetails: ", JSON.stringify(authenticationDetails));
+    //     cognitoUser.authenticateUser(authenticationDetails, {
+    //         onSuccess: function (result) {
+    //             //console.log('access token + ' + result.getAccessToken().getJwtToken());
+    //             /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
+    //             //console.log('idToken + ' + result.idToken.jwtToken);
+    //             //console.log("setting game week")
+    //             cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    //             setGameWeek(gameWeekData.year, gameWeekData.week, result.idToken.jwtToken);
+    //         },
 
-            onFailure: function(err) {
-                console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
-            },
+    //         onFailure: function(err) {
+    //             console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
+    //         },
 
-        });
-    });
+    //     });
+    // });
 </script>
 </body>
 
