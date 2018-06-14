@@ -274,6 +274,32 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
         <!--Cognito Code-->
         <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
+        <!--End Cognito Code-->
+        <!--JWT Decode Script-->
+        <script src="assets/js/jwt-decode.min.js"></script>
+        <script>
+            function GetURLParameter(sParam) {
+                var sPageURL = window.location.hash.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) {
+                        return sParameterName[1];
+                    }
+                }
+            }
+
+            function processToken() {
+                var idToken = GetURLParameter('id_token');
+                if (!idToken) {
+                    console.log('No id_token present');
+                    return;
+                }
+                var decoded = jwt_decode(idToken);
+                console.log(decoded);
+            }
+        </script>
+        <!--End JWT Decode Script-->
     
             <script type="text/javascript">
 
@@ -881,7 +907,7 @@
 
         var gameWeekData = {};
         $(document).ready(function () {
-
+            processToken();
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
                 gameWeekData.week = parseInt($(this).attr('data-week'));
@@ -1217,7 +1243,7 @@
                 </div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
-                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
+                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
     
                         
                         <!-- fieldset for Cognito -->
