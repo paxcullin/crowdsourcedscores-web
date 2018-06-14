@@ -315,7 +315,8 @@
         
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
-        var id_token = "";
+        console.log("cognitoUser: ", cognitoUser)
+        //var id_token = "";
         
         if (cognitoUser != null) {
             cognitoUser.getSession(function(err, session) {
@@ -907,7 +908,7 @@
 
         var gameWeekData = {};
         $(document).ready(function () {
-            processToken();
+            
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
                 gameWeekData.week = parseInt($(this).attr('data-week'));
@@ -1192,7 +1193,7 @@
 
     </head>
 
-    <body>
+    <body onload="processToken()">
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
