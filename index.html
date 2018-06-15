@@ -288,14 +288,16 @@
                     }
                 }
             }
-
+            var decoded = {};
+            var idToken = "";
             function processToken() {
-                var idToken = GetURLParameter('id_token');
+                idToken = GetURLParameter('id_token');
                 if (!idToken) {
                     console.log('No id_token present');
                     return;
                 }
-                var decoded = jwt_decode(idToken);
+                decoded = jwt_decode(idToken);
+                return decoded;
                 console.log(decoded);
             }
         </script>
@@ -305,29 +307,63 @@
 
 
         // GET cognitoUser Information at the top
-
+        var tokenFromURL = processToken();
         // Pool ID and Client ID sourced from AWS
-        var data = {
+        var cognitoData = {
             UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
             ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
         };
-        var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
-        
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
+
+
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
-        console.log("cognitoUser: ", cognitoUser)
-        //var id_token = "";
+
+        if (!cognitoUser && decoded) {
+            userData = {
+                Username : decoded["cognito:username"],
+                Pool : userPool                
+            }
+            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            console.log("cognitoUser from decoded: ", cognitoUser);
+            //check for expiration of token
+            if (cognitoUser && decoded.exp < Date.now()) {
+                userPool.client.makeUnauthenticatedRequest('initiateAuth', {
+                    ClientId: cognitoData.ClientId,
+                    AuthFlow: 'REFRESH_TOKEN_AUTH',
+                    AuthParameters: {
+                        'REFRESH_TOKEN': '' // client refresh JWT
+                    }
+                }, (err, authResult) => {
+                    if (err) {
+                        throw err
+                    }
+                    console.log(authResult) // contains new session
+                    })
+            }
+        }
+
+        var userData = {
+            Username : '',
+            Pool : userPool
+        };
+        if (decoded) {
+            console.log("decoded: ", decoded);
+        }
+        var id_token = "";
         
-        if (cognitoUser != null) {
+        if (cognitoUser) {
             cognitoUser.getSession(function(err, session) {
                 if (err) {
                     console.log("getSession: " + JSON.stringify(err));
                     return;
                 }
                 console.log('session validity: ' + session.isValid());
+                console.log(cognitoUser);
+                console.log('DateTime: ', Date.now());
+                id_token = cognitoUser.signInUserSession.idToken.jwtToken;
             });
-            console.log(cognitoUser);
-            id_token = cognitoUser.signInUserSession.idToken.jwtToken;
+            
         }
 
 
@@ -598,10 +634,11 @@
                 })
                 .then(function (data) {
                     console.log("gameWeek Data: ", data);
-                    return data;
+                    return callback(null, data);
                 })
                 .catch(function(err) {
                     console.log("Error: ", err);
+                    return callback(err, null);
                 });
 
                 // $.ajax({
@@ -806,6 +843,7 @@
                     })
                     .then(drawChart2(year, week, "weekly"));
             } else {
+                console.log("no cognitoUser, no id_token")
                 return;
             }
         };
@@ -937,8 +975,8 @@
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":year,"week": week});
                         $("#overallChartButton").attr({"year":year,"week": week});                            
-                        setGameWeek(year, week);
-                        deferredLeaderboardRequest2(year, week).then(function(data) {
+                        setGameWeek(year, week, id_token);
+                        deferredLeaderboardRequest2(year, week, id_token).then(function(data) {
                                     console.log("deferredLeaderboardRequest2: ", data)
                                 });
                     }
@@ -1036,57 +1074,49 @@
         var deferredLeaderboardRequest2 = function(year, week, id_token) {
             //var id_token = localStorage.getItem('id_token') || "";
             console.log("deferredLeaderboardRequest2: ", year, " ", week);
-                return new Promise(function(fulfill, reject) {
-                        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
-                            type: "GET",
-                            'Authorization': id_token
-                        })
-                        .then(function (response) {
-                            return response.json();
-                        })
-                        .catch(function (textStatus, errorThrown) {
-                                console.log("Error: ", errorThrown);
-                        })
-                        .then(function (data) {
-                            resultsJSON = data;
-                            //completeChart(resultsJSON);
-                            return resultsJSON;                                
-                        });
+            return new Promise(function(resolve) {
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
+                    type: "GET",
+                    'Authorization': id_token
                 })
-            };
-        var deferredLeaderboardRequest = 
-        $.ajax({
-            url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/leaderboards",
-            type: "GET",
-            beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', id_token);
-            },
-            success: function (data) {
-                resultsJSON = data;
-                //completeChart(resultsJSON);
-                return resultsJSON;
-                
-            },
-            error: function (textStatus, errorThrown) {
-                console.log("Error: ", errorThrown);
-            }
-        });
-        deferredLeaderboardRequest.done(function(data) {
-            console.log("Leaderboard data received: ", deferredLeaderboardRequest);
-        });
-        deferredLeaderboardRequest.fail(function() {
-            console.log("Failure getting leaderboard data");
-        });
-        function getLeaderboardData (year, week) {
-            return new Promise(function (fulfill, reject) {
-
-            })
-        }
-            var view;
+                .then(function (response) {
+                    console.log("DLR 2 Data received: ", response)
+                    return response.json();
+                })
+                .catch(function (textStatus, errorThrown) {
+                    console.log("Error: ", errorThrown);
+                    return(errorThrown);
+                })
+                .then(function (data) {
+                    resultsJSON = data;
+                    //completeChart(resultsJSON);
+                    return resultsJSON;                                
+                });
+                resolve();
+            });
+        };
+        // var deferredLeaderboardRequest = 
+        // get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/leaderboards", {
+        //     method: "GET",
+        //     'Authorization': id_token
+        //     })
+        //     .then(function (data) {
+        //         return data.json();
+        //         //completeChart(resultsJSON);
+        //     })
+        //     .catch(function (textStatus, errorThrown) {
+        //         console.log("Error: ", errorThrown);
+        //     })
+        //     .then(function (resultsJSON) {
+        //         console.log("DLR Leaderboard data received: ", resultsJSON);
+        //         return resultsJSON;
+        //     });
+        //     var view;
             function drawChart2(year, week, view) {
-                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week).then(function (leaderboardData) {
+                
+                    deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token).then(function (leaderboardData) {
                         if (!view) { view = "weekly";}
-                         
+                        
                         var chartData = {
                                 weekly: [
                                     ["Week","S/U","ATS","O/U","Total Games"],
@@ -1164,7 +1194,7 @@
 
                         var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
                         chart.draw(data, options[view]);
-                    });
+                        });
             }
         //var data = google.visualization.arrayToDataTable(weeklyResults.results);
         // [
@@ -1184,9 +1214,11 @@
                 
 
             $(window).resize(function(){
-                console.log("deferredLeaderboardRequest: ", deferredLeaderboardRequest.responseJSON);
+                //console.log("deferredLeaderboardRequest: ", deferredLeaderboardRequest.responseJSON);
                 if(!view) { view = "weekly";}
-            drawChart2(gameWeekData.year, gameWeekData.week, view);
+                if (cognitoUser) {
+                    drawChart2(gameWeekData.year, gameWeekData.week, view);
+                }
             });
 
         </script>
