@@ -1113,7 +1113,7 @@
         //     });
         //     var view;
             function drawChart2(year, week, view) {
-                
+                useToken(function (token) {
                     deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token).then(function (leaderboardData) {
                         if (!view) { view = "weekly";}
                         
@@ -1195,6 +1195,7 @@
                         var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
                         chart.draw(data, options[view]);
                         });
+                })
             }
         //var data = google.visualization.arrayToDataTable(weeklyResults.results);
         // [
@@ -1518,6 +1519,22 @@
 
     //     });
     // });
+    var useToken = function (callback) {
+        if (token === null) {
+            var cognitoUser = userPool.getCurrentUser();
+            if (cognitoUser !== null) {
+                cognitoUser.getSession(function (err, session) {
+                    if (err) {
+                        window.location = '/';
+                    }
+                    token = session.getIdToken().getJwtToken();
+                    callback(token);
+                });
+            }
+        } else {
+            callback(token);
+        }
+    };
 </script>
 </body>
 
