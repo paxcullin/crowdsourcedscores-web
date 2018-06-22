@@ -227,9 +227,11 @@
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    
+    
+
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="assets/js/material.min.js"></script>
-
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
 
@@ -238,7 +240,9 @@
 
     <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
     <script src="assets/js/material-kit.js" type="text/javascript"></script>
-
+    
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>-->
     
     
     <script>
@@ -622,10 +626,11 @@
         }
 
         var getGameWeek = function (callback) {
+            useToken(function(token) {
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
                     method: "GET",
                     headers: { 
-                        'Authorization': id_token
+                        'Authorization': token
                     }
                 })
                 .then(function(response) {
@@ -634,6 +639,7 @@
                 })
                 .then(function (data) {
                     console.log("gameWeek Data: ", data);
+                    data.year = 2017;
                     return callback(null, data);
                 })
                 .catch(function(err) {
@@ -658,6 +664,7 @@
                 //         }
                 //     }
                 // });
+            });
         };
             
         // var getGameWeek2 = function() {
@@ -752,13 +759,9 @@
             }            
         }
 
-        var setGameWeek = function (year, week, id_token) {
+        var setGameWeek = function (year, week) {
 
-            if (cognitoUser || id_token) {
-
-                if (!id_token) {
-                    id_token = cognitoUser.signInUserSession.idToken.jwtToken;
-                }
+            useToken(function(token) {
                 // $.ajax({
                 //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
                 //     type: "GET",
@@ -768,7 +771,7 @@
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",{
                         method: "GET",
                         headers: { 
-                            'Authorization': id_token
+                            'Authorization': token
                         }
                 })
                 .then(function (response) {
@@ -842,10 +845,7 @@
                         getWeeklyCrowdResults(data)
                     })
                     .then(drawChart2(year, week, "weekly"));
-            } else {
-                console.log("no cognitoUser, no id_token")
-                return;
-            }
+            });
         };
 
         //jQuery for animating boxes after they're predicted
@@ -936,13 +936,7 @@
             // ...
             //document.getElementById('avatar').src = profile.picture;
 
-        };
-
-        var logout = function() {
-            localStorage.removeItem('id_token');
-            localStorage.removeItem('profile');
-            window.location.href = "/";
-        };
+        };        
 
         var gameWeekData = {};
         $(document).ready(function () {
@@ -1114,7 +1108,8 @@
         //     var view;
             function drawChart2(year, week, view) {
                 useToken(function (token) {
-                    deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token).then(function (leaderboardData) {
+                    deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, token).then(function (leaderboardData) {
+                        console.log("leaderboardData: ", leaderboardData)
                         if (!view) { view = "weekly";}
                         
                         var chartData = {
@@ -1150,6 +1145,9 @@
                                     [12,65,48,50],
                                     [13,60,44,47]
                             ]
+                        }
+                        if (!leaderboardData) {
+                            return;
                         }
                         var weeklyResults = {results: leaderboardData.weekly};
                         var overallResults = {results: leaderboardData.overall};
@@ -1230,6 +1228,42 @@
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
+    <!--login modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <legend>Sign Up for PCSM</legend>
+                    <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                    <br>
+                    <br>-->
+                    E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                    <br>
+                    <br>
+                    Password: <input type="password" id="password" placeholder="Enter password">
+                    <br>
+                    <br>
+                    <!--<div style="width: 90%;">
+                        <button id="loginUser">Log In</button>
+                    </div>-->
+                    <ul id="loginUserResults"></ul>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="loginUser">Login</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--close login modal-->
 
     <div class="wrapper">
         <!--<div class="header">-->
@@ -1277,7 +1311,14 @@
                 </div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
-                        <a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
+                        <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
+                        <a href="#loginModal" id="loginButton" rel="modal:open" >Login</a>
+                        -->
+                        
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                                Login
+                              </button>
+                        <button id="logoutButton" style="display:none">Log Out</button>
     
                         
                         <!-- fieldset for Cognito -->
@@ -1480,6 +1521,36 @@
     //         console.log(cognitoUser);
     //     });
     // });
+    
+    $("#loginUser").click(function() {
+        console.log("clicked");
+        login();
+    });
+    var login = function () {
+        var email = $('#email').val();
+        var authenticationData = {
+            Username: email,
+            Password: $('#password').val()
+        };
+
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+        var userData = {
+            Username: email,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: function () {
+                $("#loginModal").modal("hide");
+                $("#loginButton").hide();
+                $("#logoutButton").show();
+                getGameWeek(setGameWeek)
+            },
+            onFailure: function (err) {
+                alert(JSON.stringify(err));
+            }
+        });
+    }
 
     
 
@@ -1520,22 +1591,43 @@
     //     });
     // });
     var useToken = function (callback) {
-        if (token === null) {
+        if (id_token === null) {
             var cognitoUser = userPool.getCurrentUser();
             if (cognitoUser !== null) {
                 cognitoUser.getSession(function (err, session) {
                     if (err) {
                         window.location = '/';
                     }
+                    console.log('here')
                     token = session.getIdToken().getJwtToken();
                     callback(token);
                 });
             }
         } else {
-            callback(token);
+            callback(id_token);
         }
     };
+    
+
+    $("#loginButton").click(function() {
+        console.log('login clicked');
+        $("#loginModal").modal('show',{
+            fadeDuration: 100
+        });
+    });
+
+    $("#logoutButton").click(function() {
+        logout()
+    });
+    var logout = function () {
+        var cognitoUser = userPool.getCurrentUser();
+        cognitoUser.signOut();
+        $("#loginButton").show();
+        $("#logoutButton").hide();
+        window.location = '/';
+    };
 </script>
+<!-- jQuery Modal -->
 </body>
 
 </html>
