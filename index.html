@@ -625,6 +625,92 @@
 
     <script>
         
+        var view;
+            function buildChart(leaderboardData) {
+                console.log("leaderboardData: ", leaderboardData)
+                if (!view) { view = "weekly";}
+                if (!leaderboardData) { return }
+                var chartData = {
+                        weekly: [
+                            ["Week","S/U","ATS","O/U","Total Games"],
+                            [1,8,5,9,15],
+                            [2,12,5,10,16],
+                            [3,8,6,7,16],
+                            [4,10,12,10,16],
+                            [5,7,8,7,14],
+                            [6,6,5,6,14],
+                            [7,11,8,4,15],
+                            [8,11,5,8,13],
+                            [9,8,8,7,13],
+                            [10,11,7,5,14],
+                            [11,10,6,6,14],
+                            [12,14,8,10,16],
+                            [13,0,0,0,16]
+                        ],
+                        overall: [
+                            ["Week","S/U","ATS","O/U"],
+                            [1,53,33,60],
+                            [2,64,32,61],
+                            [3,59,34,55],
+                            [4,60,45,57],
+                            [5,58,47,55],
+                            [6,56,45,53],
+                            [7,58,47,50],
+                            [8,61,46,51],
+                            [9,61,48,51],
+                            [10,63,48,50],
+                            [11,63,48,49],
+                            [12,65,48,50],
+                            [13,60,44,47]
+                    ]
+                }
+                // if (!leaderboardData) {
+                //     return;
+                // }
+                var weeklyResults = {results: leaderboardData.weekly};
+                var overallResults = {results: leaderboardData.overall};
+                console.log("data: ",chartData);
+                console.log("leaderboardData: ",leaderboardData);
+                var data = google.visualization.arrayToDataTable(weeklyResults.results);
+                if (view === "overall") {
+                    data = google.visualization.arrayToDataTable(overallResults.results);
+                    console.log("overallResults: ", overallResults);
+                }
+                var options = {
+                    weekly: {
+                        title: 'Crowd Week-by-Week Performance',
+                        hAxis: {title: 'Week',  titleTextStyle: {color: '#333'}},
+                        vAxis: {minValue: 0,
+                                maxValue:12},
+                        seriesType: 'bars',
+                        series: {3: {type: 'scatter'}},
+                        colors: ['#B42135', '#3A3B6C', '#A3A3A4','#000'],
+                        legend: {position: 'bottom'},
+                        explorer: {
+                                axis: 'horizontal',
+                                keepInBounds: true,
+                                maxZoomIn: 4.0
+                        }
+                    },
+                    overall: {
+                        title: 'Crowd Week-by-Week Percent Correct',
+                        hAxis: {title: 'Week',  titleTextStyle: {color: '#333'}},
+                        vAxis: {minValue: 0,
+                                maxValue:100},
+                        seriesType: 'line',
+                        colors: ['#B42135', '#3A3B6C', '#A3A3A4'],
+                        legend: {position: 'bottom'},
+                        explorer: {
+                                axis: 'horizontal',
+                                keepInBounds: true,
+                                maxZoomIn: 4.0
+                        }
+                    }
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
+                chart.draw(data, options[view]);
+            }
         //}
         // if (localStorage.getItem('profile')) {
         //     setUserProfile(localStorage.getItem('profile'));
@@ -950,9 +1036,7 @@
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
-                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token).then(function(data) {
-                            console.log("deferredLeaderboardRequest2: ", data)
-                        });
+                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
             console.log("gameWeekData.week: ", gameWeekData.week);
@@ -971,9 +1055,7 @@
                         $("#weeklyChartButton").attr({"year":year,"week": week});
                         $("#overallChartButton").attr({"year":year,"week": week});                            
                         setGameWeek(data);
-                        deferredLeaderboardRequest2(year, week, id_token).then(function(data) {
-                                    console.log("deferredLeaderboardRequest2: ", data)
-                                });
+                        deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
                 });
             }, 1000);
@@ -1066,8 +1148,9 @@
             // console.log("Setting game week")
             gameWeekData.week = 18;
         }
-        function deferredLeaderboardRequest2(year, week, leaderboardToken) {
-            
+        function deferredLeaderboardRequest2(year, week, leaderboardToken, callback) {
+            console.log("callback: ", callback)
+            if (!year || !week) { return }
                 //var id_token = localStorage.getItem('id_token') || "";
                 //console.log("deferredLeaderboardRequest2: ", year, " ", week);
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
@@ -1077,7 +1160,11 @@
                     }
                 })
                 .then(function (response) {
+                    //console.log("DLR 2 response.json: ", response.json());
                     return response.json();
+                })
+                .then(function(leaderboardJSON) {
+                    callback(leaderboardJSON);
                 })
                 // .then(function (data) {
                 //     resultsJSON = data;
@@ -1101,95 +1188,10 @@
         //         console.log("DLR Leaderboard data received: ", resultsJSON);
         //         return resultsJSON;
         //     });
-        //     var view;
             function drawChart2(year, week, view) {
                 useToken(function (token) {
-                    deferredLeaderboardRequest2(year, week, token).then(function (leaderboardData) {
-                        console.log("leaderboardData: ", leaderboardData)
-                        if (!view) { view = "weekly";}
-                        
-                        var chartData = {
-                                weekly: [
-                                    ["Week","S/U","ATS","O/U","Total Games"],
-                                    [1,8,5,9,15],
-                                    [2,12,5,10,16],
-                                    [3,8,6,7,16],
-                                    [4,10,12,10,16],
-                                    [5,7,8,7,14],
-                                    [6,6,5,6,14],
-                                    [7,11,8,4,15],
-                                    [8,11,5,8,13],
-                                    [9,8,8,7,13],
-                                    [10,11,7,5,14],
-                                    [11,10,6,6,14],
-                                    [12,14,8,10,16],
-                                    [13,0,0,0,16]
-                                ],
-                                overall: [
-                                    ["Week","S/U","ATS","O/U"],
-                                    [1,53,33,60],
-                                    [2,64,32,61],
-                                    [3,59,34,55],
-                                    [4,60,45,57],
-                                    [5,58,47,55],
-                                    [6,56,45,53],
-                                    [7,58,47,50],
-                                    [8,61,46,51],
-                                    [9,61,48,51],
-                                    [10,63,48,50],
-                                    [11,63,48,49],
-                                    [12,65,48,50],
-                                    [13,60,44,47]
-                            ]
-                        }
-                        // if (!leaderboardData) {
-                        //     return;
-                        // }
-                        var weeklyResults = {results: leaderboardData.weekly};
-                        var overallResults = {results: leaderboardData.overall};
-                        console.log("data: ",chartData);
-                        console.log("leaderboardData: ",leaderboardData);
-                        var data = google.visualization.arrayToDataTable(weeklyResults.results);
-                        if (view === "overall") {
-                            data = google.visualization.arrayToDataTable(overallResults.results);
-                            console.log("overallResults: ", overallResults);
-                        }
-                        var options = {
-                            weekly: {
-                                title: 'Crowd Week-by-Week Performance',
-                                hAxis: {title: 'Week',  titleTextStyle: {color: '#333'}},
-                                vAxis: {minValue: 0,
-                                        maxValue:12},
-                                seriesType: 'bars',
-                                series: {3: {type: 'scatter'}},
-                                colors: ['#B42135', '#3A3B6C', '#A3A3A4','#000'],
-                                legend: {position: 'bottom'},
-                                explorer: {
-                                        axis: 'horizontal',
-                                        keepInBounds: true,
-                                        maxZoomIn: 4.0
-                                }
-                            },
-                            overall: {
-                                title: 'Crowd Week-by-Week Percent Correct',
-                                hAxis: {title: 'Week',  titleTextStyle: {color: '#333'}},
-                                vAxis: {minValue: 0,
-                                        maxValue:100},
-                                seriesType: 'line',
-                                colors: ['#B42135', '#3A3B6C', '#A3A3A4'],
-                                legend: {position: 'bottom'},
-                                explorer: {
-                                        axis: 'horizontal',
-                                        keepInBounds: true,
-                                        maxZoomIn: 4.0
-                                }
-                            }
-                        };
-
-                        var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
-                        chart.draw(data, options[view]);
-                        });
-                })
+                    deferredLeaderboardRequest2(year, week, token, buildChart);
+                });
             }
         //var data = google.visualization.arrayToDataTable(weeklyResults.results);
         // [
