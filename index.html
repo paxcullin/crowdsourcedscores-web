@@ -311,7 +311,7 @@
 
 
         // GET cognitoUser Information at the top
-        var tokenFromURL = processToken();
+        //var tokenFromURL = processToken();
         // Pool ID and Client ID sourced from AWS
         var cognitoData = {
             UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
@@ -323,7 +323,7 @@
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
 
-        if (!cognitoUser && decoded != {}) {
+        if (!cognitoUser && decoded["cognito:username"]) {
             userData = {
                 Username : decoded["cognito:username"],
                 Pool : userPool                
@@ -356,7 +356,7 @@
         }
         var id_token = "";
 
-        function showloginButton() {
+        function showLoginButton() {
             // $("#loginButton").show();
             // $("#logoutButton").hide();
             $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
@@ -366,7 +366,7 @@
             // $("#loginButton").hide();
             // $("#logoutButton").show();
 
-            $("#loginButtons").html("<button id=\"logoutButton\" class=\"btn btn-primary\">Log Out</button>");
+            $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
         }
         
         if (cognitoUser) {
@@ -910,7 +910,7 @@
                         return data;
                     })
                     .catch(function (jqXHR, textStatus, errorThrown) {
-                        console.log("Error getting games");
+                        console.log("Error getting games: ", jqXHR, textStatus, errorThrown);
                         if (jqXHR.status == 0) {
                             lock.show();
                         }
@@ -1025,7 +1025,7 @@
             if (cognitoUser) {
                 showLogoutButton();
             } else {
-                showloginButton();
+                showLoginButton();
             }
             
             $('#weekSelector li').on('click', 'a', function () {
@@ -1131,9 +1131,6 @@
             // lock.show();
             // });
 
-            btn_logout.addEventListener('click', function() {
-            logout();
-            });
         });
         //console.log("dataWeek: ", dataWeek);
         google.load("visualization", "1", {packages:["corechart"]});
@@ -1215,7 +1212,41 @@
                 if(!view) { var view = "weekly";}
                 drawChart2(gameWeekData.year, gameWeekData.week, view);
             });
+            var useToken = function (callback) {
+                if (!id_token) {
+                    var cognitoUser = userPool.getCurrentUser();
+                    if (cognitoUser !== null) {
+                        cognitoUser.getSession(function (err, session) {
+                            if (err) {
+                                window.location = '/';
+                            }
+                            token = session.getIdToken().getJwtToken();
+                            id_token = token;
+                            callback(token);
+                        });
+                    }
+                } else {
+                    callback(id_token);
+                }
+            };
+            
 
+            $("#loginButton").click(function() {
+                $("#loginModal").modal('show',{
+                    fadeDuration: 100
+                });
+            });
+
+            var logout = function () {
+                var cognitoUser = userPool.getCurrentUser();
+                cognitoUser.signOut();
+                showLoginButton();
+                window.location = '/';
+            };
+            $("#logoutButton").click(function() {
+                console.log("logout clicked")
+                logout();
+            });
         </script>
 
     </head>
@@ -1580,40 +1611,7 @@
 
     //     });
     // });
-    var useToken = function (callback) {
-        if (!id_token) {
-            var cognitoUser = userPool.getCurrentUser();
-            if (cognitoUser !== null) {
-                cognitoUser.getSession(function (err, session) {
-                    if (err) {
-                        window.location = '/';
-                    }
-                    token = session.getIdToken().getJwtToken();
-                    id_token = token;
-                    callback(token);
-                });
-            }
-        } else {
-            callback(id_token);
-        }
-    };
-    
 
-    $("#loginButton").click(function() {
-        $("#loginModal").modal('show',{
-            fadeDuration: 100
-        });
-    });
-
-    $("#logoutButton").click(function() {
-        logout();
-    });
-    var logout = function () {
-        var cognitoUser = userPool.getCurrentUser();
-        cognitoUser.signOut();
-        showLoginButton();
-        window.location = '/';
-    };
 </script>
 </body>
 
