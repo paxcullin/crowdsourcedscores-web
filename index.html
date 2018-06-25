@@ -795,7 +795,7 @@
             var myStraightUpResults = 0;
             var mySpreadResults = 0;
             var myTotalResults = 0;
-            if (data && data.length > 0) {
+            if (data && data.length > 0 && data[0].prediction) {
                 for (i = 0; i < data.length; i++) {
                     if (data[i].prediction && data[i].prediction.results) {
                         $("#resultsContainer").css("display","block");
@@ -807,6 +807,8 @@
                 $("#myStraightUpResults").text(myStraightUpResults);
                 $("#mySpreadResults").text(mySpreadResults);
                 $("#myTotalResults").text(myTotalResults);
+            } else {
+                $("#myResultsRow").hide();
             }
         }
         var getLeaderboards = function(data) {
@@ -1056,7 +1058,7 @@
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
-                deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
+                //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
             console.log("gameWeekData.week: ", gameWeekData.week);
@@ -1075,7 +1077,7 @@
                         $("#weeklyChartButton").attr({"year":year,"week": week});
                         $("#overallChartButton").attr({"year":year,"week": week});
                         setGameWeek(data);
-                        deferredLeaderboardRequest2(year, week, id_token, buildChart);
+                        //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
                 });
             }, 1000);
