@@ -166,7 +166,7 @@
             padding-top: 8px;
         }
         #weeklyChart {
-            
+
             padding: 5px;
         }
         #switchChartButtons {
@@ -257,7 +257,7 @@
                 id: 'UA-69748662-2'
             }
         }
-        
+
     </script>
         <!-- Auth0 lock script -->
         <script src="//cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
@@ -269,7 +269,7 @@
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-                
+
                 ga('create', 'UA-69748662-2', 'auto');
                 ga('send', 'pageview');
             </script>
@@ -725,9 +725,14 @@
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
+<<<<<<< HEAD
+                console.log("getGameWeek token: ", token)
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
+=======
                 console.log("getGameWeek token: ", token);
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week";
                 var getGameWeekURLOptions = {
+>>>>>>> 1a67b0547462a1809bb2d962013c30ec8a93247d
                     method: "GET",
                     headers: {
                         'Authorization': token
@@ -1247,7 +1252,11 @@
                             callback(token);
                         });
                     } else {
+<<<<<<< HEAD
+                        return false;
+=======
                         return callback(false);
+>>>>>>> 1a67b0547462a1809bb2d962013c30ec8a93247d
                     }
                 } else {
                     callback(id_token);
