@@ -426,6 +426,7 @@
         });
             </script>
 
+    
     <script id="games-template" type="text/x-handlebars-template">
         <div class="container">
             <div class="row">
@@ -724,6 +725,7 @@
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
+                console.log("getGameWeek token: ", token)
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week", {
                     method: "GET",
                     headers: { 
@@ -840,6 +842,7 @@
         var setGameWeek = function (gameWeekData) {
 
             useToken(function(token) {
+                console.log("setGameWeek token: ", token)
                 // $.ajax({
                 //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
                 //     type: "GET",
@@ -1224,6 +1227,8 @@
                             id_token = token;
                             callback(token);
                         });
+                    } else {
+                        return false;
                     }
                 } else {
                     callback(id_token);
