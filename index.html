@@ -301,8 +301,8 @@
                     return;
                 }
                 decoded = jwt_decode(idToken);
-                return decoded;
                 console.log(decoded);
+                return decoded;
             }
         </script>
         <!--End JWT Decode Script-->
@@ -320,51 +320,61 @@
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
 
 
+        var userData = {
+            Username : '',
+            Pool : userPool
+        };
+        var id_token = "";
+
+
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
 
-        if (!cognitoUser && decoded["cognito:username"]) {
+        if (cognitoUser) {
+            userData = {
+                Username : cognitoUser.username,
+                Pool : userPool
+            };
+        }
+        
+        if (!cognitoUser && GetURLParameter('id_token')) {
+            var decodedToken = processToken();
+            
+            
             userData = {
                 Username : decoded["cognito:username"],
                 Pool : userPool
             }
             cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            console.log("cognitoUser from decoded: ", cognitoUser);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
+            
+            var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+            cognitoUser = userPool.getCurrentUser();
             //check for expiration of token
-            if (cognitoUser && decoded.exp < Date.now()) {
-                userPool.client.makeUnauthenticatedRequest('initiateAuth', {
-                    ClientId: cognitoData.ClientId,
-                    AuthFlow: 'REFRESH_TOKEN_AUTH',
-                    AuthParameters: {
-                        'REFRESH_TOKEN': '' // client refresh JWT
-                    }
-                }, (err, authResult) => {
-                    if (err) {
-                        throw err
-                    }
-                    console.log(authResult) // contains new session
-                    })
-            }
+            // if (cognitoUser && decoded.exp < Date.now()) {
+            //     userPool.makeUnauthenticatedRequest('initiateAuth', {
+            //         ClientId: cognitoData.ClientId,
+            //         AuthFlow: 'REFRESH_TOKEN_AUTH',
+            //         AuthParameters: {
+            //             'REFRESH_TOKEN': '' // client refresh JWT
+            //         }
+            //     }, (err, authResult) => {
+            //         if (err) {
+            //             throw err
+            //         }
+            //         console.log(authResult) // contains new session
+            //         })
+            // }
         }
 
-        var userData = {
-            Username : '',
-            Pool : userPool
-        };
-        if (decoded) {
-            console.log("decoded: ", decoded);
-        }
-        var id_token = "";
 
         function showLoginButton() {
-            // $("#loginButton").show();
-            // $("#logoutButton").hide();
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login</button>");
         }
 
         function showLogoutButton() {
-            // $("#loginButton").hide();
-            // $("#logoutButton").show();
 
             $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
         }
@@ -375,7 +385,7 @@
                     console.log("getSession: " + JSON.stringify(err));
                     return;
                 }
-                console.log('session validity: ' + session.isValid());
+                //console.log('session validity: ' + session.isValid());
                 id_token = cognitoUser.signInUserSession.idToken.jwtToken;
             });
 
@@ -753,31 +763,6 @@
                 });
             });
         };
-
-        // var getGameWeek2 = function() {
-        //     $.ajax({
-        //         url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week",
-        //         type: "GET",
-        //         beforeSend: function (xhr) {
-        //             xhr.setRequestHeader('Authorization', id_token);
-        //         },
-        //         success: function (data) {
-        //             console.log(JSON.stringify(data));
-        //             return data;
-        //         },
-        //         error: function (jqXHR, textStatus, errorThrown) {
-        //             console.log("Error getting game week")
-        //             if (jqXHR.status == 0) {
-        //                 lock.show();
-        //             }
-        //         }
-        //     });
-        // }
-
-        // var dataWeek = getGameWeek2.done(function(data) {
-        // console.log("getGameWeek2: ", data.week);
-        // return data.week;
-        // });
 
         var formatGameTimes = function (games) {
             for (var i = 0; i < games.length; i++) {
@@ -1237,10 +1222,13 @@
                 if (!id_token) {
                     var cognitoUser = userPool.getCurrentUser();
                     if (cognitoUser !== null) {
+                        console.log("useToken cognitoUser = ", cognitoUser);
                         cognitoUser.getSession(function (err, session) {
                             if (err) {
-                                window.location = '/';
+                                //window.location = '/';
+                                console.log("getSession err = ", JSON.stringify(err))
                             }
+                            console.log("session = ", session)
                             token = session.getIdToken().getJwtToken();
                             id_token = token;
                             callback(token);
@@ -1370,9 +1358,8 @@
                 </div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
-                        <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>
-                        <a href="#loginModal" id="loginButton" rel="modal:open" >Login</a>
-                        -->
+                        <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>-->
+                        
                         <div id="loginButtons"></div>
 
 
@@ -1600,7 +1587,21 @@
                 getGameWeek(setGameWeek)
             },
             onFailure: function (err) {
+                console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
+                if (err.code === "NotAuthorizedException") {
+                    console.log(CognitoUser.resendConfirmationCode(email))
+                    // CognitoUser.resendConfirmationCode(userData)
+                    // .then(function(result) {
+                    //     console.log(`Resend result ${result}`)
+                    // })
+                    // .catch(function(err) {
+                    //     console.log(`Resend error: ${err}`)
+                    // })
+                    
+                    //var tempUser = getUser();
+                    //console.log(`tempUser = ${tempUser}`)
+                }
             }
         });
     }
