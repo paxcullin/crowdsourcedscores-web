@@ -20,6 +20,7 @@
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
     <style type="text/css">
         .card .content {
@@ -220,6 +221,23 @@
         }
         #newsletter-form-div {
             display:none;
+        }
+
+        div#OR {
+            height: 30px;
+            width: 30px;
+            border: 1px solid #C2C2C2;
+            border-radius: 50%;
+            font-weight: bold;
+            line-height: 28px;
+            text-align: center;
+            font-size: 12px;
+            float: right;
+            position: absolute;
+            right: -16px;
+            top: 40%;
+            z-index: 1;
+            background: #DFDFDF;
         }
 
     </style>
@@ -1298,31 +1316,111 @@
                 </button>
             </div>
             <div class="modal-body">
-                <fieldset>
-                    <!--<legend>Sign Up for PCSM</legend>-->
-                    <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                    <br>
-                    <br>-->
-                    E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-                    <br>
-                    <br>
-                    Password: <input type="password" id="password" placeholder="Enter password">
-                    <br>
-                    <br>
-                    <!--<div style="width: 90%;">
-                        <button id="loginUser">Log In</button>
-                    </div>-->
-                    <ul id="loginUserResults"></ul>
-                    <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-                </fieldset>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="loginUser">Login</button>
-            </div>
+                    <div class="row">
+                      <div class="col-md-4" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                    <div class="form-group">
+                                        <fieldset>
+                                            <!--<legend>Sign Up for PCSM</legend>-->
+                                            <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                                            <br>
+                                            <br>-->
+                                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                                            <br>
+                                            <br>
+                                            Password: <input type="password" id="password" placeholder="Enter password">
+                                            <br>
+                                            <br>
+                                            <!--<div style="width: 90%;">
+                                                <button id="loginUser">Log In</button>
+                                            </div>-->
+                                            <ul id="loginUserResults"></ul>
+                                            <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                                        </fieldset>
+                                    </div>
+                                </form>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                                    <form role="form" class="form-horizontal">
+                                      <div class="form-group">
+                                        <label for="firstName" class="col-sm-2 control-label">
+                                                            First</label>
+                                        <div class="col-sm-6">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                              <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+    
+                                      <div class="form-group">
+                                            <label for="lastName" class="col-sm-2 control-label">
+                                                                Last</label>
+                                            <div class="col-sm-6">
+                                              <div class="row">
+                                                <div class="col-md-6">
+                                                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group">
+                                            <label for="newUsername" class="col-sm-2 control-label">
+                                                                Username (max: 25 characters)</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="newUsername" placeholder="Username" />
+                                            </div>
+                                        </div>
+                                      <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">
+                                                            Email</label>
+                                        <div class="col-sm-10">
+                                          <input type="email" class="form-control" id="newEmail" placeholder="Email" />
+                                        </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="newPassword" class="col-sm-2 control-label">
+                                                            Password</label>
+                                        <div class="col-sm-10">
+                                          <input type="password" class="form-control" id="newPassword" placeholder="Password" />
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-2">
+                                        </div>
+                                        <div class="col-sm-10">
+                                          <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
+                                                                Submit</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    
     <!--close login modal-->
 
     <div class="wrapper">
@@ -1550,6 +1648,8 @@
 </div>
 
 <script>
+    var cognitoUser = userPool.getCurrentUser();
+    console.log("cognitoUser: ", cognitoUser)
     var attributeList = [];
 
     var dataEmail = {
@@ -1601,7 +1701,13 @@
                 getGameWeek(setGameWeek)
             },
             onFailure: function (err) {
+                console.log(err.code);
                 alert(JSON.stringify(err));
+                if (err.code === "NotAuthorizedException") {
+                    console.log("authorized error: ", cognitoUser)
+                    showConfirmUI(cognitoUser);
+                }
+
             }
         });
     }
@@ -1610,40 +1716,123 @@
 
     // Commenting out and will remove once login flow is confirmed
 
+    document.getElementById('signUpUser').addEventListener('click', function() {
+        console.log('clicked');
+        var attributeList = [];
+        
+        var dataEmail = {
+                Name : 'email',
+                Value : $('#newEmail').val()
+            };
 
-    // document.getElementById('loginUser').addEventListener('click', function() {
-    //     console.log('clicked');
-    //     var authenticationData = {
-    //         Username : document.getElementById('username').value,
-    //         Password : document.getElementById('password').value
-    //     };
+        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+        attributeList.push(attributeEmail);
+        
+        var dataFirst = {
+                Name : 'given_name',
+                Value : $('#firstName').val()
+            };
 
-    //     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
+        attributeList.push(dataFirst);
 
-    //     var userData = {
-    //         Username : document.getElementById('username').value,
-    //         Pool : userPool
-    //     };
-    //     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        var dataLast = {
+                Name : 'family_name',
+                Value : $('#lastName').val()
+            };
 
-    //     console.log("authenticationData: ", JSON.stringify(authenticationData));
-    //     console.log("authenticationDetails: ", JSON.stringify(authenticationDetails));
-    //     cognitoUser.authenticateUser(authenticationDetails, {
-    //         onSuccess: function (result) {
-    //             //console.log('access token + ' + result.getAccessToken().getJwtToken());
-    //             /*Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
-    //             //console.log('idToken + ' + result.idToken.jwtToken);
-    //             //console.log("setting game week")
-    //             cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    //             setGameWeek(gameWeekData.year, gameWeekData.week, result.idToken.jwtToken);
-    //         },
+        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
+        attributeList.push(dataLast);
 
-    //         onFailure: function(err) {
-    //             console.log("AuthenticateUser: " + JSON.stringify(err) + JSON.stringify(authenticationDetails));
-    //         },
+        // var dataUsername = {
+        //         Name : 'username',
+        //         Value : document.getElementById('newUsername').value()
+        //     };
 
-    //     });
-    // });
+        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+        // attributeList.push(dataUsername);
+
+        // var dataPassword = {
+        //         Name : 'password',
+        //         Value : document.getElementById('newPassword').value()
+        //     };
+
+        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataPassword);
+        // attributeList.push(dataPassword);
+
+        var cognitoUser;
+
+        userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
+            if (err) {
+                alert(err);
+                return;
+            }
+            cognitoUser = result.user;
+
+            console.log('user name is ' + cognitoUser.getUsername());
+            showConfirmUI(cognitoUser);
+            confirmUser(cognitoUser);
+        });
+    });
+
+    function showConfirmUI(cognitoUser) {
+        $("#Registration").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button></div>")
+    }
+
+    function confirmUser(username) {
+
+        var userData = {
+            Username: username,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        
+        cognitoUser.getUserAttributeVerificationCode();
+
+        // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
+        //         if (err) {
+        //             alert(JSON.stringify(err));
+        //             return;
+        //         }
+        //         alert("result: ", JSON.stringify(result));
+        //     });
+    }
+
+
+    function getAdvancedSecurityData(formReference) {
+        if (typeof AmazonCognitoAdvancedSecurityData === "undefined") {
+            return true;
+        }
+
+        // UserpoolId is not available on frontend for springboard. We do not use userPoolId
+        // anyway other than put in context data. 
+        var userPoolId = "";
+        var clientId = getUrlParameter("client_id");
+
+        var username = "";
+        var usernameInput = document.getElementById("username");
+        if (usernameInput && usernameInput.value) {
+            username = usernameInput.value;
+        }
+
+        var asfData = AmazonCognitoAdvancedSecurityData.getData(username, userPoolId, clientId);
+        if (typeof asfData === "undefined") {
+            return true;
+        }
+
+        if (formReference && formReference.cognitoAsfData) {
+            formReference.cognitoAsfData.value = asfData
+        }
+
+        return true;
+    }
+
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
 
 </script>
 </body>
