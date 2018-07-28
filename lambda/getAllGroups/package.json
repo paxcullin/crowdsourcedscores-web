@@ -1,0 +1,16 @@
+{
+  "name": "groups-GetAllGroups-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^2.1.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r getAllGroups.zip ."
+  },
+  "author": "",
+  "license": "ISC"
+}
