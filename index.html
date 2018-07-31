@@ -950,7 +950,9 @@
                         return data;
                     })
                     .then(function(data) {
-                       drawChart2(data[0].year, data[0].gameWeek, "weekly");
+                        if (data.length > 0) {
+                            drawChart2(data[0].year, data[0].gameWeek, "weekly");
+                        }
                     });
             });
         };
@@ -1481,7 +1483,8 @@
                         </fieldset>-->
 
                         <select class="dropdown" id="seasonSelector">
-                            <option value="2017" selected>2017</option>
+                            <option value="2018" selected>2018</option>
+                            <option value="2017">2017</option>
                             <option value="2016">2016</option>
                         </select>
                         <h4>Select Week</h4>
@@ -1688,15 +1691,6 @@
                 getGameWeek(setGameWeek)
             },
             onFailure: function (err) {
-<<<<<<< HEAD
-                console.log(err.code);
-                alert(JSON.stringify(err));
-                if (err.code === "NotAuthorizedException") {
-                    console.log("authorized error: ", cognitoUser)
-                    showConfirmUI(cognitoUser);
-                }
-
-=======
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
@@ -1712,7 +1706,6 @@
                     //var tempUser = getUser();
                     //console.log(`tempUser = ${tempUser}`)
                 }
->>>>>>> 267e48f934fb86a9ee863c2758b5adf6eec4e1da
             }
         });
     }
