@@ -1,0 +1,51 @@
+{
+    "_id": "1111111111111111",
+    "groupId": 0,
+    "groupName": "All Users",
+    "groupImage": "img/flags/us.png",
+    "usernames": [
+        {"username": "cmaronchick-yahoo",
+        "firstName": "Chris",
+        "lastName":"Aronchick",
+        "totalPredictionScore": 137,
+        "totalWinners": 54,
+        "totalATS": 37,
+        "totalOU": 39,
+        "weeklyResults": [
+            {"week": 1,
+                "predictionScore": 62,
+                "winners": 12,
+                "ATS": 8,
+                "OU": 7
+            },
+            {"week": 2,
+                "predictionScore": 58,
+                "winners": 10,
+                "ATS": 7,
+                "OU": 6}
+            ]
+        },
+
+        {"username": "cmaronchick-yahoo",
+            "firstName": "Chris",
+            "lastName":"Aronchick",
+            "totalPredictionScore": 137,
+            "totalWinners": 54,
+            "totalATS": 37,
+            "totalOU": 39,
+            "weeklyResults": [
+                {"week": 1,
+                    "predictionScore": 62,
+                    "winners": 12,
+                    "ATS": 8,
+                    "OU": 7
+                },
+                {"week": 2,
+                    "predictionScore": 58,
+                    "winners": 10,
+                    "ATS": 7,
+                    "OU": 6}
+                ]
+            }
+        ]
+}
