@@ -967,6 +967,7 @@
 
         var submitPrediction = function (prediction, btn) {
             useToken(function(token) {
+                console.log("prediction: ", JSON.stringify(prediction))
                 var setSubmitPredictionsOptions = 
                         {     
                             method: "POST",
