@@ -17,13 +17,13 @@ exports.handler = (event, context) => {
         }
 
         var collection = db.collection('groups');
-        collection.find({"sport": event.params.sport, "year": event.params.year, "public": true}, {_id: false}).toArray(function(err, groups) {
+        var requestedGroup = collection.findOne({"sport": event.params.sport, "year": event.params.year, "groupId": event.params.path.id}, {_id: false});
+        console.log("requestedGroup:", requestedGroup)
             assert.equal(err, null);
             if(err) {
                 context.done(err, null);
             }
             //console.log("groups returned:", groups);
-            context.done(null, groups);
-        });
+            context.done(null, requestedGroup);
     });
 };
