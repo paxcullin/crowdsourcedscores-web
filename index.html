@@ -481,7 +481,6 @@
 
                                         {{#if results}}<div class="finalRow">FINAL</div>{{/if}}
 
-                                    {{#if crowd}}
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -631,8 +630,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    {{/if}}
-
+                                    
                                     {{#unless results}}
                                     <div>
                                         <button class="prediction-btn btn btn-info">Predict</button>
@@ -772,7 +770,7 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    data.year = 2017;
+                    //data.year = 2017;
                     console.log("gameWeek data: ", data);
                     return callback(data);
                 })
@@ -968,46 +966,82 @@
             }
 
         var submitPrediction = function (prediction, btn) {
-            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
-            var messageElm = predictionElm.find(".prediction-message");
+            useToken(function(token) {
+                var setSubmitPredictionsOptions = 
+                        {     
+                            method: "POST",
+                            headers: {
+                                    'Authorization': token
+                            },
+                            data: JSON.stringify(prediction),
+                            statusCode: {
+                                200: function (response) {
+                                    console.log("200: ", response);
+                                    btn.text('Predict');
+                                    var messageHtml = statusMessage('success', response.message);
+                                    messageElm.html(messageHtml)
+                                    moveBoxes(prediction.gameId);
 
-            ga('send','event','prediction','submitted',prediction.gameId);
-            $.ajax({
-                url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",
-                type: "POST",
-                data: JSON.stringify(prediction),
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', id_token);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                },
-                statusCode: {
-                    200: function (response) {
-                        console.log("200: ", response);
-                        btn.text('Predict');
-                        var messageHtml = statusMessage('success', response.message);
-//                        predictionElm.append(messageHtml);
-                        messageElm.html(messageHtml)
-                        moveBoxes(prediction.gameId);
+                                },
+                                400: function (response) {
+                                    var errorObj = JSON.parse(response.responseText);
+                                    console.log("400: ", errorObj);
+                                    btn.text('Predict');
+                                    var messageHtml = statusMessage('danger', errorObj.message);
+                                    messageElm.html(messageHtml)
+                                },
+                                500: function (response) {
+                                    var errorObj = JSON.parse(response.responseText);
+                                    console.log("500: ", errorObj);
+                                    btn.text('Predict');
+                                    var messageHtml = statusMessage('danger', errorObj.message);
+                                    messageElm.html(messageHtml)
 
-                    },
-                    400: function (response) {
-                        var errorObj = JSON.parse(response.responseText);
-                        console.log("400: ", errorObj);
-                        btn.text('Predict');
-                        var messageHtml = statusMessage('danger', errorObj.message);
-                        //predictionElm.append(messageHtml);
-                        messageElm.html(messageHtml)
-                    },
-                    500: function (response) {
-                        var errorObj = JSON.parse(response.responseText);
-                        console.log("500: ", errorObj);
-                        btn.text('Predict');
-                        var messageHtml = statusMessage('danger', errorObj.message);
-//                        predictionElm.append(messageHtml);
-                        messageElm.html(messageHtml)
+                                }
+                            }
+                        }
+                    get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",setSubmitPredictionsOptions);
+                var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
+                var messageElm = predictionElm.find(".prediction-message");
 
-                    }
-                }
+                ga('send','event','prediction','submitted',prediction.gameId);
+    //             $.ajax({
+    //                 url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",
+    //                 type: "POST",
+    //                 data: JSON.stringify(prediction),
+    //                 beforeSend: function (xhr) {
+    //                     xhr.setRequestHeader('Authorization', id_token);
+    //                     xhr.setRequestHeader('Content-Type', 'application/json');
+    //                 },
+    //                 statusCode: {
+    //                     200: function (response) {
+    //                         console.log("200: ", response);
+    //                         btn.text('Predict');
+    //                         var messageHtml = statusMessage('success', response.message);
+    // //                        predictionElm.append(messageHtml);
+    //                         messageElm.html(messageHtml)
+    //                         moveBoxes(prediction.gameId);
+
+    //                     },
+    //                     400: function (response) {
+    //                         var errorObj = JSON.parse(response.responseText);
+    //                         console.log("400: ", errorObj);
+    //                         btn.text('Predict');
+    //                         var messageHtml = statusMessage('danger', errorObj.message);
+    //                         //predictionElm.append(messageHtml);
+    //                         messageElm.html(messageHtml)
+    //                     },
+    //                     500: function (response) {
+    //                         var errorObj = JSON.parse(response.responseText);
+    //                         console.log("500: ", errorObj);
+    //                         btn.text('Predict');
+    //                         var messageHtml = statusMessage('danger', errorObj.message);
+    // //                        predictionElm.append(messageHtml);
+    //                         messageElm.html(messageHtml)
+
+    //                     }
+    //                 }
+    //             });
             });
         };
 
@@ -1240,26 +1274,29 @@
                 drawChart2(gameWeekData.year, gameWeekData.week, view);
             });
             var useToken = function (callback) {
-                if (!id_token) {
+                // console.log("useToken id_token: ", id_token)
+                // if (!id_token) {
                     var cognitoUser = userPool.getCurrentUser();
                     if (cognitoUser !== null) {
-                        console.log("useToken cognitoUser = ", cognitoUser);
+                        //console.log("useToken cognitoUser = ", cognitoUser);
                         cognitoUser.getSession(function (err, session) {
                             if (err) {
                                 //window.location = '/';
                                 console.log("getSession err = ", JSON.stringify(err))
                             }
-                            console.log("session = ", session)
+                            //console.log("session = ", session)
                             token = session.getIdToken().getJwtToken();
+                            console.log("getSessionToken: ", jwt_decode(token));
+                            //console.log(decoded);
                             id_token = token;
                             callback(token);
                         });
                     } else {
                         return callback(false);
                     }
-                } else {
-                    callback(id_token);
-                }
+                // } else {
+                //     callback(id_token);
+                // }
             };
 
 
