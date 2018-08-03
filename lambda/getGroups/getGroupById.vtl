@@ -2,7 +2,8 @@
 ##  This template will pass through all parameters including path, querystring, header, stage variables, and context through to the integration endpoint via the body/payload
 #set($allParams = $input.params())
 {
-"userId" : "$context.authorizer.principalId",
+"userId": "$context.authorizer.claims['cognito:username']"
+##"userId" : "$context.authorizer.principalId",
 "body-json" : $input.json('$'),
 "params" : {
 #foreach($type in $allParams.keySet())
