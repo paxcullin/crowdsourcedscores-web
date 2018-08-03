@@ -974,37 +974,37 @@
                             headers: {
                                     'Authorization': token
                             },
-                            data: JSON.stringify(prediction),
-                            statusCode: {
-                                200: function (response) {
-                                    console.log("200: ", response);
-                                    btn.text('Predict');
-                                    var messageHtml = statusMessage('success', response.message);
-                                    messageElm.html(messageHtml)
-                                    moveBoxes(prediction.gameId);
-
-                                },
-                                400: function (response) {
-                                    var errorObj = JSON.parse(response.responseText);
-                                    console.log("400: ", errorObj);
-                                    btn.text('Predict');
-                                    var messageHtml = statusMessage('danger', errorObj.message);
-                                    messageElm.html(messageHtml)
-                                },
-                                500: function (response) {
-                                    var errorObj = JSON.parse(response.responseText);
-                                    console.log("500: ", errorObj);
-                                    btn.text('Predict');
-                                    var messageHtml = statusMessage('danger', errorObj.message);
-                                    messageElm.html(messageHtml)
-
-                                }
-                            }
+                            body: prediction
                         }
                     get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",setSubmitPredictionsOptions);
                 var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
                 var messageElm = predictionElm.find(".prediction-message");
+                // ,
+                //             statusCode: {
+                //                 200: function (response) {
+                //                     console.log("200: ", response);
+                //                     btn.text('Predict');
+                //                     var messageHtml = statusMessage('success', response.message);
+                //                     messageElm.html(messageHtml)
+                //                     moveBoxes(prediction.gameId);
 
+                //                 },
+                //                 400: function (response) {
+                //                     var errorObj = JSON.parse(response.responseText);
+                //                     console.log("400: ", errorObj);
+                //                     btn.text('Predict');
+                //                     var messageHtml = statusMessage('danger', errorObj.message);
+                //                     messageElm.html(messageHtml)
+                //                 },
+                //                 500: function (response) {
+                //                     var errorObj = JSON.parse(response.responseText);
+                //                     console.log("500: ", errorObj);
+                //                     btn.text('Predict');
+                //                     var messageHtml = statusMessage('danger', errorObj.message);
+                //                     messageElm.html(messageHtml)
+
+                //                 }
+                //             }
                 ga('send','event','prediction','submitted',prediction.gameId);
     //             $.ajax({
     //                 url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",
