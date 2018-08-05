@@ -656,7 +656,7 @@
             function buildChart(leaderboardData) {
                 console.log("leaderboardData: ", leaderboardData)
                 if (!view) { view = "weekly";}
-                if (!leaderboardData) { return }
+                if (!leaderboardData || leaderboardData.length < 2) { return }
                 var chartData = {
                         weekly: [
                             ["Week","S/U","ATS","O/U","Total Games"],
@@ -921,7 +921,18 @@
                             prediction.awayTeam.score = parseInt(awayTeamPrediction);
                             prediction.homeTeam.score = parseInt(homeTeamPrediction);
 
-                            submitPrediction(prediction, $(this));
+                            //submitPrediction(prediction, $(this));
+                            useToken(function(token){
+                                console.log("submitPrediction Token: ", token)
+                                apiClient.predictionsPost({},prediction,{headers: {Authorization: token}})
+                                .then(function(response) {
+                                    console.log("response message:", response)
+
+                                })
+                                .catch(function(reject) {
+                                    console.log("reject message: ", reject)
+                                })
+                            })
                             // Update prediction table cell
                             //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
                             //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
@@ -1090,6 +1101,8 @@
             } else {
                 showLoginButton();
             }
+
+
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -1871,6 +1884,22 @@
     };
 
 </script>
+    <script type="text/javascript" src="assets/js/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/apigClient.js"></script>
+    <script type="text/javascript">
+    
+    var apiClient = apigClientFactory.newClient();
+    
+    </script>
 </body>
 
 </html>
