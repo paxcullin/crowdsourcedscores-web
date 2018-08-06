@@ -364,9 +364,9 @@
                 Pool : userPool
             }
             cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
+            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
+            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
+            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
             
             var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
             cognitoUser = userPool.getCurrentUser();
@@ -389,7 +389,8 @@
 
 
         function showLoginButton() {
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
+            //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
         }
 
         function showLogoutButton() {
@@ -656,47 +657,9 @@
             function buildChart(leaderboardData) {
                 console.log("leaderboardData: ", leaderboardData)
                 if (!view) { view = "weekly";}
-                if (!leaderboardData || leaderboardData.length < 2) { return }
-                var chartData = {
-                        weekly: [
-                            ["Week","S/U","ATS","O/U","Total Games"],
-                            [1,8,5,9,15],
-                            [2,12,5,10,16],
-                            [3,8,6,7,16],
-                            [4,10,12,10,16],
-                            [5,7,8,7,14],
-                            [6,6,5,6,14],
-                            [7,11,8,4,15],
-                            [8,11,5,8,13],
-                            [9,8,8,7,13],
-                            [10,11,7,5,14],
-                            [11,10,6,6,14],
-                            [12,14,8,10,16],
-                            [13,0,0,0,16]
-                        ],
-                        overall: [
-                            ["Week","S/U","ATS","O/U"],
-                            [1,53,33,60],
-                            [2,64,32,61],
-                            [3,59,34,55],
-                            [4,60,45,57],
-                            [5,58,47,55],
-                            [6,56,45,53],
-                            [7,58,47,50],
-                            [8,61,46,51],
-                            [9,61,48,51],
-                            [10,63,48,50],
-                            [11,63,48,49],
-                            [12,65,48,50],
-                            [13,60,44,47]
-                    ]
-                }
-                // if (!leaderboardData) {
-                //     return;
-                // }
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
-                console.log("data: ",chartData);
+                if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
                 console.log("leaderboardData: ",leaderboardData);
                 var data = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
@@ -744,8 +707,6 @@
         // }
 
         function get(url, options) {
-            console.log("get called: ", url);
-            console.log("options: ", JSON.stringify(options));
             return fetch(url, options);
         }
 
@@ -924,7 +885,7 @@
                             //submitPrediction(prediction, $(this));
                             useToken(function(token){
                                 console.log("submitPrediction Token: ", token)
-                                apiClient.predictionsPost({},prediction,{headers: {Authorization: token}})
+                                apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
                                 .then(function(response) {
                                     console.log("response message:", response)
 
@@ -1212,7 +1173,6 @@
         google.load("visualization", "1", {packages:["corechart"]});
         //console.log("year:", year, "week: ", week);
         google.setOnLoadCallback(drawChart2);
-        console.log("id_token: ", id_token);
         if (!gameWeekData.year) {
             gameWeekData.year = 2017;
         }
@@ -1236,28 +1196,7 @@
                 .then(function(leaderboardJSON) {
                     callback(leaderboardJSON);
                 })
-                // .then(function (data) {
-                //     resultsJSON = data;
-                //     //completeChart(resultsJSON);
-                //     return resultsJSON;
-                // });
         };
-        // var deferredLeaderboardRequest =
-        // get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/leaderboards", {
-        //     method: "GET",
-        //     'Authorization': id_token
-        //     })
-        //     .then(function (data) {
-        //         return data.json();
-        //         //completeChart(resultsJSON);
-        //     })
-        //     .catch(function (textStatus, errorThrown) {
-        //         console.log("Error: ", errorThrown);
-        //     })
-        //     .then(function (resultsJSON) {
-        //         console.log("DLR Leaderboard data received: ", resultsJSON);
-        //         return resultsJSON;
-        //     });
             function drawChart2(year, week, view) {
                 useToken(function (token) {
                     if (token !== false) {
@@ -1265,22 +1204,6 @@
                     }
                 });
             }
-        //var data = google.visualization.arrayToDataTable(weeklyResults.results);
-        // [
-        //     ['Week', 'S/U', 'ATS', 'O/U', 'Total Games'],
-        //     ['1',8,5,9,15],
-        //     ['2',12,5,10,16],
-        //     ['3',8,6,7,16],
-        //     ['4',10,12,10,16],
-        //     ['5',7,8,7,14],
-        //     ['6',7,5,5,14],
-        //     ['7',11,8,4,15],
-        //     ['8',11,5,8,13],
-        //     ['9',6,7,7,13]
-        //     ]
-
-
-
 
             $(window).resize(function(){
                 //console.log("deferredLeaderboardRequest: ", deferredLeaderboardRequest.responseJSON);
@@ -1289,7 +1212,7 @@
             });
             var useToken = function (callback) {
                 // console.log("useToken id_token: ", id_token)
-                // if (!id_token) {
+                if (!id_token) {
                     var cognitoUser = userPool.getCurrentUser();
                     if (cognitoUser !== null) {
                         //console.log("useToken cognitoUser = ", cognitoUser);
@@ -1300,7 +1223,6 @@
                             }
                             //console.log("session = ", session)
                             token = session.getIdToken().getJwtToken();
-                            console.log("getSessionToken: ", jwt_decode(token));
                             //console.log(decoded);
                             id_token = token;
                             callback(token);
@@ -1308,9 +1230,9 @@
                     } else {
                         return callback(false);
                     }
-                // } else {
-                //     callback(id_token);
-                // }
+                } else {
+                    callback(id_token);
+                }
             };
 
 
@@ -1820,12 +1742,11 @@
 
             console.log('user name is ' + cognitoUser.getUsername());
             showConfirmUI(cognitoUser);
-            confirmUser(cognitoUser);
         });
     });
 
     function showConfirmUI(cognitoUser) {
-        $("#Registration").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button></div>")
+        $("#Registration").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
     }
 
     function confirmUser(username) {
@@ -1836,7 +1757,13 @@
         };
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
         
-        cognitoUser.getUserAttributeVerificationCode();
+        cognitoUser.confirmRegistration($('#confirmUserCode').val(), true, function (err, results) {
+            if (err) {
+                alert(err);
+            } else {
+                window.location = '/';
+            }
+        });
 
         // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
         //         if (err) {
@@ -1845,36 +1772,25 @@
         //         }
         //         alert("result: ", JSON.stringify(result));
         //     });
-    }
+    };
 
+    function resetVerificationPIN(username){
+        const p = new Promise((res, rej)=>{
+        
+        var userData = {
+            Username: username,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
-    function getAdvancedSecurityData(formReference) {
-        if (typeof AmazonCognitoAdvancedSecurityData === "undefined") {
-            return true;
-        }
-
-        // UserpoolId is not available on frontend for springboard. We do not use userPoolId
-        // anyway other than put in context data. 
-        var userPoolId = "";
-        var clientId = getUrlParameter("client_id");
-
-        var username = "";
-        var usernameInput = document.getElementById("username");
-        if (usernameInput && usernameInput.value) {
-            username = usernameInput.value;
-        }
-
-        var asfData = AmazonCognitoAdvancedSecurityData.getData(username, userPoolId, clientId);
-        if (typeof asfData === "undefined") {
-            return true;
-        }
-
-        if (formReference && formReference.cognitoAsfData) {
-            formReference.cognitoAsfData.value = asfData
-        }
-
-        return true;
-    }
+        cognitoUser.resendConfirmationCode(function(err, result) {
+            if (err) {
+                rej(err)
+                return
+            }
+                res()
+        })
+    })
 
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
