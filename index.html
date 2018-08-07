@@ -1280,7 +1280,7 @@
             </div>
             <div class="modal-body">
                     <div class="row">
-                      <div class="col-md-4" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                      <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
@@ -1301,6 +1301,8 @@
                                             <br>
                                             Password: <input type="password" id="password" placeholder="Enter password">
                                             <br>
+                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
+                                            <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
                                             <!--<div style="width: 90%;">
                                                 <button id="loginUser">Log In</button>
@@ -1313,7 +1315,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button>
+                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
                                 </div>
                             </div>
                             <div class="tab-pane" id="Registration">
@@ -1746,8 +1748,9 @@
     });
 
     function showConfirmUI(cognitoUser) {
-        $("#Registration").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
+        $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
     }
+
 
     function confirmUser(username) {
 
@@ -1764,16 +1767,9 @@
                 window.location = '/';
             }
         });
-
-        // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
-        //         if (err) {
-        //             alert(JSON.stringify(err));
-        //             return;
-        //         }
-        //         alert("result: ", JSON.stringify(result));
-        //     });
     };
 
+    
     function resetVerificationPIN(username){
         const p = new Promise((res, rej)=>{
         
@@ -1789,8 +1785,9 @@
                 return
             }
                 res()
-        })
-    })
+            })
+        });
+    };
 
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -1798,6 +1795,60 @@
         var results = regex.exec(location.search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
+
+    function showForgotPasswordUI() {
+        $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
+    }
+
+
+    function forgotPassword() { 
+
+        var forgotPasswordEmail = $('#forgotPasswordEmail').val()
+        var userData = {
+            Username: forgotPasswordEmail,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+        cognitoUser.forgotPassword({
+            onSuccess: function (result) {
+                console.log('call result: ' + result);
+                $("#loginRegistrationColumn").html("<div>Enter the confirmation code sent to the e-mail address you provided and your new password.<br><label for=\"forgotPasswordConfirmationCode\">Confirmation Code:</label><input type=\"number\" id=\"forgotPasswordConfirmationCode\"><br><label for=\"forgotPasswordNewPassword\">New Password</label><input type=\"password\" id=\"forgotPasswordNewPassword\"><button class=\"btn btn-primary btn-sm\" id=\"changePasswordButton\" onclick=\"inputVerificationCode('" + forgotPasswordEmail + "')\">Reset Password</button><br></div>")
+            },
+            onFailure: function(err) {
+                console.log(JSON.stringify(err));
+            }
+        });
+
+
+        // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
+        //         if (err) {
+        //             alert(JSON.stringify(err));
+        //             return;
+        //         }
+        //         alert("result: ", JSON.stringify(result));
+        //     });
+    };
+
+    function inputVerificationCode(userEmail) {
+        var userData = {
+            Username: userEmail,
+            Pool: userPool
+        }
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        var verificationCode = $('#forgotPasswordConfirmationCode').val();
+        var newPassword = $('#forgotPasswordNewPassword').val();
+        
+        cognitoUser.confirmPassword(verificationCode, newPassword, {
+            onFailure(err) {
+                console.log(err);
+            },
+            onSuccess() {
+                $("#loginRegistrationColumn").html("<form role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><fieldset>E-mail: <input type=\"text\" id=\"email\" placeholder=\"Enter your e-mail address\"><br><br>Password: <input type=\"password\" id=\"password\" placeholder=\"Enter password\"><br><a href=\"#\" onClick=\"showForgotPasswordUI()\">Forgot Password?</a><br><ul id=\"loginUserResults\"></ul><div class=\"fb-login-button\" data-show-faces=\"false\" data-width=\"200\" data-max-rows=\"1\"></div></fieldset></div></form><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\" id=\"loginUser\" onclick=\"login()\">Login</button><br></div>");
+            }
+        });
+    }
+
 
 </script>
     <script type="text/javascript" src="assets/js/lib/axios/dist/axios.standalone.js"></script>
