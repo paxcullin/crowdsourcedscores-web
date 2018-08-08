@@ -319,7 +319,7 @@
                     return;
                 }
                 decoded = jwt_decode(idToken);
-                console.log(decoded);
+                console.log("token from decoded: ", decoded);
                 return decoded;
             }
         </script>
@@ -357,7 +357,7 @@
         
         if (!cognitoUser && GetURLParameter('id_token')) {
             var decodedToken = processToken();
-            
+            console.log("decodedToken: ", decodedToken)
             
             userData = {
                 Username : decoded["cognito:username"],
@@ -368,7 +368,7 @@
             // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
             // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
             
-            var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+            //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
             cognitoUser = userPool.getCurrentUser();
             //check for expiration of token
             // if (cognitoUser && decoded.exp < Date.now()) {
@@ -1221,7 +1221,7 @@
                                 //window.location = '/';
                                 console.log("getSession err = ", JSON.stringify(err))
                             }
-                            //console.log("session = ", session)
+                            console.log("session = ", session)
                             token = session.getIdToken().getJwtToken();
                             //console.log(decoded);
                             id_token = token;
