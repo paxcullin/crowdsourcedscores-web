@@ -366,51 +366,43 @@
             // var decodedToken = processToken();
             var getTokensOptions = {
                 method: "POST",
-                body: {
-                    client_id: cognitoData.ClientId,
-                    redirect_uri:"https://crowdsourcedscores.com",
-                    code: GetURLParameter('code'),
-                    grant_type: "authorization_code"
-                },
+                body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fcrowdsourcedscores.com",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-type": "application/x-www-form-urlencoded"
                 }
             };
-            console.log("GetTokensOptions ", getTokensOptions)
-            var tokens = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
+
+            console.log("getTokensOptions: ", getTokensOptions)
+            var cognitoUser = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
             .then(function(response) {
                 console.log("token response: ", response);
-                return tokens;
+                return response.json();
             }).catch(function(reject) {
                 console.log("token reject: ", reject);
             })
+            .then(function(tokenResponse) {
+                console.log("tokenResponse: ", tokenResponse);
+                
+                var decodedToken = jwt_decode(tokenResponse.id_token);
+                userData = {
+                    Username : decodedToken["cognito:username"],
+                    Pool : userPool
+                }
+                cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
+                
+                
+                //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+                cognitoUser = userPool.getCurrentUser();
+                //check for expiration of token
+                // if (cognitoUser && decoded.exp < Date.now()) {
+                // }
+                return cognitoUser;
+            })
             
-            userData = {
-                Username : decoded["cognito:username"],
-                Pool : userPool
-            }
-            //cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
-            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
-            // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
-            
-            //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
-            cognitoUser = userPool.getCurrentUser();
-            //check for expiration of token
-            // if (cognitoUser && decoded.exp < Date.now()) {
-            //     userPool.makeUnauthenticatedRequest('initiateAuth', {
-            //         ClientId: cognitoData.ClientId,
-            //         AuthFlow: 'REFRESH_TOKEN_AUTH',
-            //         AuthParameters: {
-            //             'REFRESH_TOKEN': '' // client refresh JWT
-            //         }
-            //     }, (err, authResult) => {
-            //         if (err) {
-            //             throw err
-            //         }
-            //         console.log(authResult) // contains new session
-            //         })
-            // }
         }
 
 
@@ -424,17 +416,16 @@
             $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
         }
 
-        if (cognitoUser) {
-            cognitoUser.getSession(function(err, session) {
-                if (err) {
-                    console.log("getSession: " + JSON.stringify(err));
-                    return;
-                }
-                //console.log('session validity: ' + session.isValid());
-                id_token = cognitoUser.signInUserSession.idToken.jwtToken;
-            });
-
-        }
+        // if (cognitoUser) {
+        //     cognitoUser.getSession(function(err, session) {
+        //         if (err) {
+        //             console.log("getSession: " + JSON.stringify(err));
+        //             return;
+        //         }
+        //         //console.log('session validity: ' + session.isValid());
+        //         id_token = cognitoUser.signInUserSession.idToken.jwtToken;
+        //     });
+        // }
 
 
         Handlebars.registerHelper('grouped_each', function(every, context, options) {
@@ -891,6 +882,10 @@
                                     shortName: $prediction.attr('data-home-short')
                                 }
                             };
+                            var btn = $(this);
+                            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
+                            var messageElm = predictionElm.find(".prediction-message");
+                            
 
                             var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
                             var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
@@ -910,7 +905,30 @@
                                 apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
                                 .then(function(response) {
                                     console.log("response message:", response)
-
+                                    switch(response.status) {
+                                        case 200:
+                                            console.log("200: ", response);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('success', response.data.message);
+                                            messageElm.html(messageHtml)
+                                            moveBoxes(prediction.gameId);
+                                            return;
+                                        case 400:
+                                            var errorObj = JSON.parse(response.responseText);
+                                            console.log("400: ", errorObj);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('danger', errorObj.message);
+                                            messageElm.html(messageHtml);
+                                            return;
+                                        case 500:
+                                            var errorObj = JSON.parse(response.responseText);
+                                            console.log("500: ", errorObj);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('danger', errorObj.message);
+                                            messageElm.html(messageHtml);
+                                            return;
+                                    }
+                                    return true;
                                 })
                                 .catch(function(reject) {
                                     console.log("reject message: ", reject)
@@ -970,34 +988,34 @@
                             },
                             body: prediction
                         }
-                    get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",setSubmitPredictionsOptions);
+                    get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",setSubmitPredictionsOptions)
+                    .then(function(response) {
+                        switch(response.status) {
+                            case "200":
+                                console.log("200: ", response);
+                                btn.text('Predict');
+                                var messageHtml = statusMessage('success', response.message);
+                                messageElm.html(messageHtml)
+                                moveBoxes(prediction.gameId);
+                            case "400":
+                                var errorObj = JSON.parse(response.responseText);
+                                console.log("400: ", errorObj);
+                                btn.text('Predict');
+                                var messageHtml = statusMessage('danger', errorObj.message);
+                                messageElm.html(messageHtml);
+                            case "500":
+                                var errorObj = JSON.parse(response.responseText);
+                                console.log("500: ", errorObj);
+                                btn.text('Predict');
+                                var messageHtml = statusMessage('danger', errorObj.message);
+                                messageElm.html(messageHtml);
+
+                        }
+                    });
                 var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
                 var messageElm = predictionElm.find(".prediction-message");
                 // ,
                 //             statusCode: {
-                //                 200: function (response) {
-                //                     console.log("200: ", response);
-                //                     btn.text('Predict');
-                //                     var messageHtml = statusMessage('success', response.message);
-                //                     messageElm.html(messageHtml)
-                //                     moveBoxes(prediction.gameId);
-
-                //                 },
-                //                 400: function (response) {
-                //                     var errorObj = JSON.parse(response.responseText);
-                //                     console.log("400: ", errorObj);
-                //                     btn.text('Predict');
-                //                     var messageHtml = statusMessage('danger', errorObj.message);
-                //                     messageElm.html(messageHtml)
-                //                 },
-                //                 500: function (response) {
-                //                     var errorObj = JSON.parse(response.responseText);
-                //                     console.log("500: ", errorObj);
-                //                     btn.text('Predict');
-                //                     var messageHtml = statusMessage('danger', errorObj.message);
-                //                     messageElm.html(messageHtml)
-
-                //                 }
                 //             }
                 ga('send','event','prediction','submitted',prediction.gameId);
     //             $.ajax({
