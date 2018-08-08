@@ -301,8 +301,10 @@
         <script src="assets/js/jwt-decode.min.js"></script>
         <script>
             function GetURLParameter(sParam) {
-                var sPageURL = window.location.hash.substring(1);
-                var sURLVariables = sPageURL.split('&');
+                //var sPageURL = window.location.hash.substring(1);
+                var sPageURL = window.location.href;
+                var sURLVariables = sPageURL.split('?');
+                console.log("sURLVariables: ", sURLVariables)
                 for (var i = 0; i < sURLVariables.length; i++) {
                     var sParameterName = sURLVariables[i].split('=');
                     if (sParameterName[0] == sParam) {
@@ -321,6 +323,10 @@
                 decoded = jwt_decode(idToken);
                 console.log(decoded);
                 return decoded;
+            }
+
+            function get(url, options) {
+                return fetch(url, options);
             }
         </script>
         <!--End JWT Decode Script-->
@@ -355,15 +361,36 @@
             };
         }
         
-        if (!cognitoUser && GetURLParameter('id_token')) {
-            var decodedToken = processToken();
+        if (!cognitoUser && GetURLParameter('code')) {
+            // var decodedToken = processToken();
+            var getTokensOptions = {
+                method: "POST",
+                body: {
+                    client_id: cognitoData.ClientId,
+                    redirect_uri:"https://crowdsourcedscores.com",
+                    code: GetURLParameter('code'),
+                    grant_type: "authorization_code"
+                },
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            };
+            console.log("GetTokensOptions ", getTokensOptions)
+            var tokens = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
+            .then(function(response) {
+                console.log("token response: ", response);
+                return tokens;
+            }).catch(function(reject) {
+                console.log("token reject: ", reject);
+            })
+
             
             
             userData = {
                 Username : decoded["cognito:username"],
                 Pool : userPool
             }
-            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            //cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
             // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
             // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
             // localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
@@ -705,10 +732,6 @@
         // if (localStorage.getItem('profile')) {
         //     setUserProfile(localStorage.getItem('profile'));
         // }
-
-        function get(url, options) {
-            return fetch(url, options);
-        }
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
