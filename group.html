@@ -136,6 +136,11 @@
             visibility: hidden;
         }
 
+        .titleText {
+            color: #3A3B6C;
+            font-size: 1.2em;
+        }
+
         #resultsContainer {
             color:#fff;
             display:none;
@@ -166,8 +171,7 @@
         #chartExpand {
             padding-top: 8px;
         }
-        #weeklyChart {
-            
+        #weeklyChart {            
             padding: 5px;
         }
         #switchChartButtons {
@@ -293,6 +297,26 @@
             return decoded;
         }
 
+        // Setting location for the page
+
+        var windowRedirect = window.location.protocol + "//" + window.location.hostname;
+        if (window.location.pathname !== "/") {
+            windowRedirect += window.location.pathname;
+        }
+
+        function getQueryStringValue (key) {  
+            return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+        }  
+
+        function showLoginButton() {
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "')\">Login/Sign Up</button>");
+        }
+
+        function showLogoutButton() {
+
+            $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
+        }
+
 
            var id_token = "";
 
@@ -310,7 +334,7 @@
             var id_token = "";
 
 
-           var useToken = function (callback) {
+            var useToken = function (callback) {
                 if (!id_token) {
                     var cognitoUser = userPool.getCurrentUser();
                     if (cognitoUser !== null) {
@@ -353,10 +377,6 @@
         }
         
     </script>
-        <!-- Auth0 lock script -->
-        <script src="//cdn.auth0.com/js/lock/10.15/lock.min.js"></script>
-        <script src="//cdn.auth0.com/js/analytics/1.3.0/analytics.min.js"></script>
-        <!--End Auth0 Google Analytics script-->
 
         <script>
                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -390,47 +410,51 @@
             };
         }
         
-        if (!cognitoUser && GetURLParameter('id_token')) {
-            var decodedToken = processToken();
+        if (!cognitoUser && GetURLParameter('code')) {
+            // var decodedToken = processToken();
+            var getTokensOptions = {
+                method: "POST",
+                body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fcrowdsourcedscores.com",
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded"
+                }
+            };
+
+            console.log("getTokensOptions: ", getTokensOptions)
+            var cognitoUser = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
+            .then(function(response) {
+                console.log("token response: ", response);
+                return response.json();
+            }).catch(function(reject) {
+                console.log("token reject: ", reject);
+            })
+            .then(function(tokenResponse) {
+                console.log("tokenResponse: ", tokenResponse);
+                
+                var decodedToken = jwt_decode(tokenResponse.id_token);
+                userData = {
+                    Username : decodedToken["cognito:username"],
+                    Pool : userPool
+                }
+                cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
+                
+                
+                //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+                cognitoUser = userPool.getCurrentUser();
+                //check for expiration of token
+                // if (cognitoUser && decoded.exp < Date.now()) {
+                // }
+                showLogoutButton();
+                return cognitoUser;
+            })
             
-            
-            userData = {
-                Username : decoded["cognito:username"],
-                Pool : userPool
-            }
-            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
-            
-            var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
-            cognitoUser = userPool.getCurrentUser();
-            //check for expiration of token
-            // if (cognitoUser && decoded.exp < Date.now()) {
-            //     userPool.makeUnauthenticatedRequest('initiateAuth', {
-            //         ClientId: cognitoData.ClientId,
-            //         AuthFlow: 'REFRESH_TOKEN_AUTH',
-            //         AuthParameters: {
-            //             'REFRESH_TOKEN': '' // client refresh JWT
-            //         }
-            //     }, (err, authResult) => {
-            //         if (err) {
-            //             throw err
-            //         }
-            //         console.log(authResult) // contains new session
-            //         })
-            // }
         }
 
 
-        function showLoginButton() {
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
-        }
-
-        function showLogoutButton() {
-
-            $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
-        }
 
         if (cognitoUser) {
             cognitoUser.getSession(function(err, session) {
@@ -492,10 +516,29 @@
     
         <script id="group-template" type="text/x-handlebars-template">
             <div class="container">
+                <div class="row groupTableHeader">
+                    <div class="col-xs-3">
+                        User
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="container">
+                            <div class="row">
+                                <div style="width:100%; text-align: center;">
+                                    Week
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span id="gameWeek1">
+                                    1
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     {{#each groupMembers}}
                     <div class="col-xs-12" id="container-{{{this.username}}}">
-                        User: {{{this.username}}}
+                        {{{this.username}}}
                     </div>
                     {{/each}}
                 </div>
@@ -549,15 +592,7 @@
 
 
         var setGameWeek = function (gameWeekData) {
-
             useToken(function(token) {
-                console.log("setGameWeek token: ", token)
-                // $.ajax({
-                //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
-                //     type: "GET",
-                //     beforeSend: function (xhr) {
-                //         xhr.setRequestHeader('Authorization', id_token);
-                //     },
                 var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
                 var setGameWeekGetOptions = 
                     {     
@@ -578,55 +613,10 @@
                     return response.json();
                 })
                 .then(function (data) {
-                        //drawChart2(year, week);
-                        $('.prediction-btn').on('click', function (e) {
-                            e.preventDefault();
-                            $(this).text('Saving...');
-                            var $prediction = $(this).parents('.prediction');
-                            var prediction = {
-                                gameId: $prediction.attr('data-game-id'),
-                                gameWeek: $prediction.attr('data-game-week'),
-                                year: $prediction.attr('data-game-year'),
-                                awayTeam: {
-                                    code: $prediction.attr('data-away-code'),
-                                    fullName: $prediction.attr('data-away-name'),
-                                    shortName: $prediction.attr('data-away-short')
-                                },
-                                homeTeam: {
-                                    code: $prediction.attr('data-home-code'),
-                                    fullName: $prediction.attr('data-home-name'),
-                                    shortName: $prediction.attr('data-home-short')
-                                }
-                            };
-
-                            var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
-                            var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
-
-                            var away = $prediction.attr('data-away-team');
-                            var home = $prediction.attr('data-home-team');
-
-                            var awayCode = $prediction.attr('data-away-code');
-                            var homeCode = $prediction.attr('data-home-code');
-
-                            prediction.awayTeam.score = parseInt(awayTeamPrediction);
-                            prediction.homeTeam.score = parseInt(homeTeamPrediction);
-
-                            submitPrediction(prediction, $(this));
-                            // Update prediction table cell
-                            //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
-                            //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
-                            //show odds and crowd info
-                            $prediction.find('.crowdHidden').removeClass('crowdHidden');
-                            $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
-                        });
-                        return data;
+                    
                     })
             });
         };
-
-        //jQuery for animating boxes after they're predicted
 
  
         var setUserProfile = function (profile) {
@@ -648,7 +638,7 @@
                 showLoginButton();
             }
 
-            
+            getGroupInfo();
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -722,18 +712,14 @@
 
             var btn_logout = document.getElementById('btn-logout');
 
-            // btn_login.addEventListener('click', function() {
-            // lock.show();
-            // });
-
         });
 
 
-            $("#loginButton").click(function() {
-                $("#loginModal").modal('show',{
-                    fadeDuration: 100
-                });
-            });
+            // $("#loginButton").click(function() {
+            //     $("#loginModal").modal('show',{
+            //         fadeDuration: 100
+            //     });
+            // });
 
             var logout = function () {
                 var cognitoUser = userPool.getCurrentUser();
@@ -915,7 +901,7 @@
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
+                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout" onclick="logout()">Logout</button></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -995,10 +981,9 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
-
-
-                    <div id="group"></div>
                     <div id="joinGroupButtonDiv"></div>
+                    <div id="groupTitle" class="titleText"></div>
+                    <div id="group"></div>
                 </div>
             </div>
         </div>
@@ -1021,20 +1006,6 @@
     };
     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
     var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-    // document.getElementById('loginUser').addEventListener('click', function () {
-    //   userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
-    //     attributeList, null,
-    //     function (err, result) {
-    //         if (err) {
-    //             alert(JSON.stringify(err));
-    //             return;
-    //         }
-    //         document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
-    //           result.user, null, 2);
-    //         cognitoUser = result.user;
-    //         console.log(cognitoUser);
-    //     });
-    // });
 
     $("#loginUser").click(function() {
         login();
@@ -1063,22 +1034,10 @@
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
                     console.log(CognitoUser.resendConfirmationCode(email))
-                    // CognitoUser.resendConfirmationCode(userData)
-                    // .then(function(result) {
-                    //     console.log(`Resend result ${result}`)
-                    // })
-                    // .catch(function(err) {
-                    //     console.log(`Resend error: ${err}`)
-                    // })
-                    
-                    //var tempUser = getUser();
-                    //console.log(`tempUser = ${tempUser}`)
                 }
             }
         });
     }
-
-
 
     // Commenting out and will remove once login flow is confirmed
 
@@ -1109,22 +1068,6 @@
 
         var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
         attributeList.push(dataLast);
-
-        // var dataUsername = {
-        //         Name : 'username',
-        //         Value : document.getElementById('newUsername').value()
-        //     };
-
-        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-        // attributeList.push(dataUsername);
-
-        // var dataPassword = {
-        //         Name : 'password',
-        //         Value : document.getElementById('newPassword').value()
-        //     };
-
-        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataPassword);
-        // attributeList.push(dataPassword);
 
         var cognitoUser;
 

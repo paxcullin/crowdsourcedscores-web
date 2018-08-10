@@ -325,6 +325,13 @@
                 return decoded;
             }
 
+            // Setting location for the page
+
+            var windowRedirect = window.location.protocol + "//" + window.location.hostname;
+            if (window.location.pathname !== "/") {
+                windowRedirect += "/" + window.location.pathname;
+            }
+
             function get(url, options) {
                 return fetch(url, options);
             }
@@ -350,6 +357,14 @@
         };
         var id_token = "";
 
+
+        function showLoginButton() {
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "')\">Login/Sign Up</button>");
+        }
+
+        function showLogoutButton() {
+            $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
+        }
 
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
@@ -400,33 +415,11 @@
                 //check for expiration of token
                 // if (cognitoUser && decoded.exp < Date.now()) {
                 // }
+                showLogoutButton();
                 return cognitoUser;
             })
             
         }
-
-
-        function showLoginButton() {
-            //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
-        }
-
-        function showLogoutButton() {
-
-            $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
-        }
-
-        // if (cognitoUser) {
-        //     cognitoUser.getSession(function(err, session) {
-        //         if (err) {
-        //             console.log("getSession: " + JSON.stringify(err));
-        //             return;
-        //         }
-        //         //console.log('session validity: ' + session.isValid());
-        //         id_token = cognitoUser.signInUserSession.idToken.jwtToken;
-        //     });
-        // }
-
 
         Handlebars.registerHelper('grouped_each', function(every, context, options) {
             var out = "", subcontext = [], i;
@@ -718,10 +711,6 @@
                 var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
                 chart.draw(data, options[view]);
             }
-        //}
-        // if (localStorage.getItem('profile')) {
-        //     setUserProfile(localStorage.getItem('profile'));
-        // }
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
@@ -828,13 +817,6 @@
         var setGameWeek = function (gameWeekData) {
 
             useToken(function(token) {
-                console.log("setGameWeek token: ", token)
-                // $.ajax({
-                //     url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/games",
-                //     type: "GET",
-                //     beforeSend: function (xhr) {
-                //         xhr.setRequestHeader('Authorization', id_token);
-                //     },
                 var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
                 var setGameWeekGetOptions = 
                     {     
@@ -1018,43 +1000,6 @@
                 //             statusCode: {
                 //             }
                 ga('send','event','prediction','submitted',prediction.gameId);
-    //             $.ajax({
-    //                 url: "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/predictions",
-    //                 type: "POST",
-    //                 data: JSON.stringify(prediction),
-    //                 beforeSend: function (xhr) {
-    //                     xhr.setRequestHeader('Authorization', id_token);
-    //                     xhr.setRequestHeader('Content-Type', 'application/json');
-    //                 },
-    //                 statusCode: {
-    //                     200: function (response) {
-    //                         console.log("200: ", response);
-    //                         btn.text('Predict');
-    //                         var messageHtml = statusMessage('success', response.message);
-    // //                        predictionElm.append(messageHtml);
-    //                         messageElm.html(messageHtml)
-    //                         moveBoxes(prediction.gameId);
-
-    //                     },
-    //                     400: function (response) {
-    //                         var errorObj = JSON.parse(response.responseText);
-    //                         console.log("400: ", errorObj);
-    //                         btn.text('Predict');
-    //                         var messageHtml = statusMessage('danger', errorObj.message);
-    //                         //predictionElm.append(messageHtml);
-    //                         messageElm.html(messageHtml)
-    //                     },
-    //                     500: function (response) {
-    //                         var errorObj = JSON.parse(response.responseText);
-    //                         console.log("500: ", errorObj);
-    //                         btn.text('Predict');
-    //                         var messageHtml = statusMessage('danger', errorObj.message);
-    // //                        predictionElm.append(messageHtml);
-    //                         messageElm.html(messageHtml)
-
-    //                     }
-    //                 }
-    //             });
             });
         };
 
@@ -1276,11 +1221,11 @@
             };
 
 
-            $("#loginButton").click(function() {
-                $("#loginModal").modal('show',{
-                    fadeDuration: 100
-                });
-            });
+            // $("#loginButton").click(function() {
+            //     $("#loginModal").modal('show',{
+            //         fadeDuration: 100
+            //     });
+            // });
 
             var logout = function () {
                 var cognitoUser = userPool.getCurrentUser();
@@ -1572,7 +1517,7 @@
                             <div id="mc_embed_signup">
                             <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                                 <div id="mc_embed_signup_scroll">
-                                <h2>Subscribe to the Weekly Wisdom Newsletter</h2>
+                                <h2>Get Weekly Reminders + a Bonus!</h2>
                                 <p>Get the Weekly Crowd Performance Report throughout the postseason, including our weekly winners.</p>
                                 <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
                             <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
