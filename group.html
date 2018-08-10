@@ -9,7 +9,7 @@
     <meta name="keywords" content="football,crowdsourced,wisdom,wisdom of the crowd,sportsbook,spread,total,moneyline">
     <base href="https://crowdsourcedscores.com">
 
-    <title>Crowdsourced Scores - Group Page</title>
+    <title>Crowdsourced Scores - Beating the Sportsbooks through Crowd Wisdom</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -301,8 +301,10 @@
         <script src="assets/js/jwt-decode.min.js"></script>
         <script>
             function GetURLParameter(sParam) {
-                var sPageURL = window.location.hash.substring(1);
-                var sURLVariables = sPageURL.split('&');
+                //var sPageURL = window.location.hash.substring(1);
+                var sPageURL = window.location.href;
+                var sURLVariables = sPageURL.split('?');
+                console.log("sURLVariables: ", sURLVariables)
                 for (var i = 0; i < sURLVariables.length; i++) {
                     var sParameterName = sURLVariables[i].split('=');
                     if (sParameterName[0] == sParam) {
@@ -319,8 +321,12 @@
                     return;
                 }
                 decoded = jwt_decode(idToken);
-                console.log(decoded);
+                console.log("token from decoded: ", decoded);
                 return decoded;
+            }
+
+            function get(url, options) {
+                return fetch(url, options);
             }
         </script>
         <!--End JWT Decode Script-->
@@ -355,60 +361,60 @@
             };
         }
         
-        if (!cognitoUser && GetURLParameter('id_token')) {
-            var decodedToken = processToken();
+
+        if (!cognitoUser && GetURLParameter('code')) {
+            // var decodedToken = processToken();
+            var getTokensOptions = {
+                method: "POST",
+                body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fcrowdsourcedscores.com",
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded"
+                }
+            };
+
+            console.log("getTokensOptions: ", getTokensOptions)
+            var cognitoUser = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
+            .then(function(response) {
+                console.log("token response: ", response);
+                return response.json();
+            }).catch(function(reject) {
+                console.log("token reject: ", reject);
+            })
+            .then(function(tokenResponse) {
+                console.log("tokenResponse: ", tokenResponse);
+                
+                var decodedToken = jwt_decode(tokenResponse.id_token);
+                userData = {
+                    Username : decodedToken["cognito:username"],
+                    Pool : userPool
+                }
+                cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
+                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
+                
+                
+                //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+                cognitoUser = userPool.getCurrentUser();
+                //check for expiration of token
+                // if (cognitoUser && decoded.exp < Date.now()) {
+                // }
+                return cognitoUser;
+            })
             
-            
-            userData = {
-                Username : decoded["cognito:username"],
-                Pool : userPool
-            }
-            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decoded["cognito:username"]);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.idToken', GetURLParameter("id_token"));
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decoded["cognito:username"] + '.accessToken', GetURLParameter("access_token"));
-            
-            var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
-            cognitoUser = userPool.getCurrentUser();
-            //check for expiration of token
-            // if (cognitoUser && decoded.exp < Date.now()) {
-            //     userPool.makeUnauthenticatedRequest('initiateAuth', {
-            //         ClientId: cognitoData.ClientId,
-            //         AuthFlow: 'REFRESH_TOKEN_AUTH',
-            //         AuthParameters: {
-            //             'REFRESH_TOKEN': '' // client refresh JWT
-            //         }
-            //     }, (err, authResult) => {
-            //         if (err) {
-            //             throw err
-            //         }
-            //         console.log(authResult) // contains new session
-            //         })
-            // }
         }
 
 
         function showLoginButton() {
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
+            //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
         }
 
         function showLogoutButton() {
 
             $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
         }
-
-        if (cognitoUser) {
-            cognitoUser.getSession(function(err, session) {
-                if (err) {
-                    console.log("getSession: " + JSON.stringify(err));
-                    return;
-                }
-                //console.log('session validity: ' + session.isValid());
-                id_token = cognitoUser.signInUserSession.idToken.jwtToken;
-            });
-
-        }
-
 
         Handlebars.registerHelper('grouped_each', function(every, context, options) {
             var out = "", subcontext = [], i;
@@ -455,16 +461,202 @@
             </script>
 
     
-    
+    <script id="games-template" type="text/x-handlebars-template">
+        <div class="container">
+            <div class="row">
+            {{#grouped_each 3 games}}
+                {{#each this}}
+                <div class="col-md-4 col-sm-12 col-xs-12" id="container-{{{gameId}}}">
+                    <div class="card prediction" style="margin-bottom:10px;min-width: 293px;" data-game-id="{{{gameId}}}"
+                        data-game-week="{{{gameWeek}}}"
+                        data-game-year="{{{year}}}"
+                        data-home-code="{{{homeTeam.code}}}"
+                        data-home-name="{{{homeTeam.fullName}}}" data-home-short="{{{homeTeam.shortName}}}"
+                        data-away-code="{{{awayTeam.code}}}"
+                        data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
+                        style="display: inline-block;">
+                        <div class="content">
+                            <div class="tab-content text-center">
+                                <div class="tab-pane active">
+                                    <div class="prediction-message" data-game-id="{{{gameId}}}"></div>
+                                    <div>
+                                        <div class="form-group">
+                                            <p{{#if prediction}} class="gameHeaderPredicted"{{/if}}{{#unless prediction}} class="gameHeaderNotPredicted"{{/unless}}>Game {{gameId}}<br/>{{startDateTime}}<br/>{{tvStation}}</p>
+                                        </div>
+                                    </div>
+
+                                        {{#if results}}<div class="finalRow">FINAL</div>{{/if}}
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Me</th>
+                                            <th>The Crowd</th>
+                                            <th>Odds</th>
+                                            <th>{{#unless results}}Pick{{/unless}}{{#if results}}Actual{{/if}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><i class="fa fa-plane" aria-hidden="true"></i> {{awayTeam.code}}</td>
+                                            <td class="away-team-prediction {{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond prediction.awayTeam.score '>' prediction.homeTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{awayTeam.code}}}-prediction">
+                                                {{#unless results}}
+                                                    <input type="number" min="0" max="50" class="form-control" placeholder="##"
+                                                    value="{{prediction.awayTeam.score}}">
+                                                {{/unless}}
+                                                {{#if results}}
+                                                    {{prediction.awayTeam.score}}
+                                                {{/if}}
+                                            </td>
+                                            <td{{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond crowd.awayTeam.score '>' crowd.homeTeam.score}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
+                                                <span
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                            class="crowdHidden"
+                                                        {{/unless}}
+                                                    {{/unless}}>
+                                                    {{crowd.awayTeam.score}}
+                                                </span>
+                                                {{#unless prediction}}
+                                                    {{#unless results}}
+                                                        <span class="fa fa-lock crowdShown"></span>
+                                                    {{/unless}}
+                                                {{/unless}}</td>
+                                            <td></td>
+                                            <td>{{results.awayTeam.score}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-home" aria-hidden="true"></i> {{homeTeam.code}}</td>
+                                            <td class="home-team-prediction{{#if results}}{{#ifCond results.homeTeam.score '>' results.awayTeam.score}}{{#ifCond prediction.homeTeam.score '>' prediction.awayTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{homeTeam.code}}}-prediction">
+                                                {{#unless results}}
+                                                    <input type="number" min="0" max="50" class="form-control" placeholder="##"
+                                                    value="{{prediction.homeTeam.score}}">
+                                                {{/unless}}
+                                                {{#if results}}
+                                                    {{prediction.homeTeam.score}}
+                                                {{/if}}
+                                            </td>
+                                            <td
+                                                {{#if results}}
+                                                    {{#ifCond results.homeTeam.score '>' results.awayTeam.score}}
+                                                        {{#ifCond crowd.homeTeam.score '>' crowd.awayTeam.score}}
+                                                         class="crowdCorrect"
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/if}}>
+                                                <span
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                         class="crowdHidden"
+                                                        {{/unless}}
+                                                    {{/unless}}
+                                                >{{crowd.homeTeam.score}}</span>
+                                                {{#unless prediction}}
+                                                    {{#unless results}}
+                                                        <span class="fa fa-lock crowdShown"></span>
+                                                    {{/unless}}
+                                                {{/unless}}
+                                            </td>
+                                            <td>
+                                                    <span
+                                                        {{#unless prediction}}
+                                                            {{#unless results}}
+                                                             class="crowdHidden"
+                                                            {{/unless}}
+                                                        {{/unless}}
+                                                    >
+                                                    {{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}
+                                                    </span>
+                                            </td>
+                                            <td>{{results.homeTeam.score}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td{{#if results}}
+                                                {{#ifCond prediction.total '>' odds.total}}
+                                                    {{#ifCond results.total '>' odds.total}}
+                                                         class="alert alert-success"
+                                                    {{/ifCond}}
+                                                {{/ifCond}}
+                                                {{#ifCond odds.total '>' prediction.total}}
+                                                    {{#ifCond odds.total '>' results.total}}
+                                                     class="alert alert-success"
+                                                    {{/ifCond}}
+                                                {{/ifCond}}
+                                            {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">{{prediction.total}}</td>
+                                            <td{{#if results}}{{#ifCond crowd.total '>' odds.total}}{{#ifCond results.total '>' odds.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.total '>' crowd.total}}{{#ifCond odds.total '>' results.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}><span{{#unless prediction}}{{#unless results}} class="crowdHidden"{{/unless}}{{/unless}}>{{crowd.total}}</span>{{#unless prediction}} {{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}} {{/unless}}</td>
+                                            <td>
+                                                <span
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                         class="crowdHidden"
+                                                        {{/unless}}
+                                                    {{/unless}}>{{odds.total}}</span></td>
+                                            <td>
+                                                {{#unless results}}
+                                                <span
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                         class="crowdHidden"
+                                                        {{/unless}}
+                                                    {{/unless}}
+                                                 style="font-weight:bold">{{#ifCond odds.total '!=' ""}}{{#ifCond crowd.total '>' odds.total}}Over{{/ifCond}}{{#ifCond crowd.total '<' odds.total}}Under{{/ifCond}}{{/ifCond}}</span>{{/unless}}{{#if results}}{{results.total}}{{/if}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spread</td>
+                                            <td{{#if results}}{{#ifCond prediction.results.spread '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
+                                            <td{{#if results}}{{#ifCond crowd.spread '>' odds.spread}}{{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.spread '>' crowd.spread}}{{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
+                                                <span
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                         class="crowdHidden"
+                                                        {{/unless}}
+                                                    {{/unless}}>{{#ifCond crowd.spread '>' 0}}+{{/ifCond}}{{crowd.spread}}</span>{{#unless prediction}}{{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}}{{/unless}}</td>
+                                            <td>
+                                                    <span
+                                                        {{#unless prediction}}
+                                                            {{#unless results}}
+                                                             class="crowdHidden"
+                                                            {{/unless}}
+                                                        {{/unless}}
+                                                    >
+                                                    {{#ifCond odds.spread '!=' 0}}{{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}{{/ifCond}}{{#ifCond odds.spread '===' 0}}Even{{/ifCond}}</span></td>
+                                            <td>
+                                                {{#unless results}}
+                                                    <span
+                                                        {{#unless prediction}}
+                                                            {{#unless results}}
+                                                             class="crowdHidden"
+                                                            {{/unless}}
+                                                        {{/unless}}
+                                                        style="font-weight:bold">{{#ifCond odds.spread '!=' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
+                                                    </span>
+                                                {{/unless}}{{#if results}}{{results.spread}}{{/if}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    {{#unless results}}
+                                    <div>
+                                        <button class="prediction-btn btn btn-info">Predict</button>
+                                    </div>
+                                    {{/unless}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="clearfix"></div>
+            {{/grouped_each}}
+        </div>
+        <div id="lastRow" class="row"></div>
+        </div>
+    </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
     <script>
-
-        function get(url, options) {
-            console.log("get called: ", url);
-            console.log("options: ", JSON.stringify(options));
-            return fetch(url, options);
-        }
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
@@ -487,7 +679,7 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    data.year = 2017;
+                    //data.year = 2017;
                     console.log("gameWeek data: ", data);
                     return callback(data);
                 })
@@ -506,7 +698,6 @@
             }
             return games;
         }
-
 
         var setGameWeek = function (gameWeekData) {
 
@@ -565,6 +756,10 @@
                                     shortName: $prediction.attr('data-home-short')
                                 }
                             };
+                            var btn = $(this);
+                            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
+                            var messageElm = predictionElm.find(".prediction-message");
+                            
 
                             var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
                             var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
@@ -578,7 +773,41 @@
                             prediction.awayTeam.score = parseInt(awayTeamPrediction);
                             prediction.homeTeam.score = parseInt(homeTeamPrediction);
 
-                            submitPrediction(prediction, $(this));
+                            //submitPrediction(prediction, $(this));
+                            useToken(function(token){
+                                console.log("submitPrediction Token: ", token)
+                                apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
+                                .then(function(response) {
+                                    console.log("response message:", response)
+                                    switch(response.status) {
+                                        case 200:
+                                            console.log("200: ", response);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('success', response.data.message);
+                                            messageElm.html(messageHtml)
+                                            moveBoxes(prediction.gameId);
+                                            return;
+                                        case 400:
+                                            var errorObj = JSON.parse(response.responseText);
+                                            console.log("400: ", errorObj);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('danger', errorObj.message);
+                                            messageElm.html(messageHtml);
+                                            return;
+                                        case 500:
+                                            var errorObj = JSON.parse(response.responseText);
+                                            console.log("500: ", errorObj);
+                                            btn.text('Predict');
+                                            var messageHtml = statusMessage('danger', errorObj.message);
+                                            messageElm.html(messageHtml);
+                                            return;
+                                    }
+                                    return true;
+                                })
+                                .catch(function(reject) {
+                                    console.log("reject message: ", reject)
+                                })
+                            })
                             // Update prediction table cell
                             //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
                             //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
@@ -590,40 +819,35 @@
                         });
                         return data;
                     })
-                    .catch(function (jqXHR, textStatus, errorThrown) {
-                        console.log("Error getting games: ", jqXHR, textStatus, errorThrown);
-                        if (jqXHR.status == 0) {
-                            lock.show();
-                        }
-                    })
-                    .then(function (data) {
-                        getWeeklyResults(data);
-                        return data;
-                    })
-                    .then(function (data) {
-                        getWeeklyCrowdResults(data)
-                        return data;
-                    })
-                    .then(function(data) {
-                       drawChart2(data[0].year, data[0].gameWeek, "weekly");
-                    });
             });
         };
 
-        //jQuery for animating boxes after they're predicted
-
- 
-        var setUserProfile = function (profile) {
-            // Display user information in the UI somewhere
-
-            // Used for editing
-            var user_id = profile.user_id;
-            // ...
-            //document.getElementById('avatar').src = profile.picture;
-
-        };
-
         var gameWeekData = {};
+
+            var useToken = function (callback) {
+                // console.log("useToken id_token: ", id_token)
+                if (!id_token) {
+                    var cognitoUser = userPool.getCurrentUser();
+                    if (cognitoUser !== null) {
+                        //console.log("useToken cognitoUser = ", cognitoUser);
+                        cognitoUser.getSession(function (err, session) {
+                            if (err) {
+                                //window.location = '/';
+                                console.log("getSession err = ", JSON.stringify(err))
+                            }
+                            console.log("session = ", session)
+                            token = session.getIdToken().getJwtToken();
+                            //console.log(decoded);
+                            id_token = token;
+                            callback(token);
+                        });
+                    } else {
+                        return callback(false);
+                    }
+                } else {
+                    callback(id_token);
+                }
+            };
         $(document).ready(function () {
 
             if (cognitoUser) {
@@ -631,6 +855,8 @@
             } else {
                 showLoginButton();
             }
+
+
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -664,6 +890,21 @@
                 });
             }, 1000);
 
+            useToken(function(token) {
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/0", {
+                    headers: {
+                        Authorization: token
+                    }
+                })
+                .then(function (groupResponse) {
+                    return groupResponse.json();
+                })
+                .then(function (groupInfo) {
+                    console.log("groupInfo: ", groupInfo);
+                    $("#group").html(groupInfo);
+                })
+            })
+            
             $('#newsletter-signup-div').click(function () {
                 ga('send','event','newsletter','viewed');
 
@@ -701,6 +942,23 @@
 
             if (cognitoUser) {document.getElementById('profileName').innerText = cognitoUser.username;}
 
+            $("#chartExpand").click(function () {
+
+                $header = $(this);
+                //getting the next element
+                $content = $("#weeklyChart");
+                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                $content.slideToggle(500, function () {
+                    //execute this after slideToggle is done
+                    //change text of header based on visibility of content div
+                    $header.text(function () {
+                        //change text based on condition
+                        //return $content.is(":visible") ? "" : "";
+                    });
+                });
+
+            });
+
 
             var btn_logout = document.getElementById('btn-logout');
 
@@ -709,28 +967,7 @@
             // });
 
         });
-           var useToken = function (callback) {
-                if (!id_token) {
-                    var cognitoUser = userPool.getCurrentUser();
-                    if (cognitoUser !== null) {
-                        console.log("useToken cognitoUser = ", cognitoUser);
-                        cognitoUser.getSession(function (err, session) {
-                            if (err) {
-                                //window.location = '/';
-                                console.log("getSession err = ", JSON.stringify(err))
-                            }
-                            console.log("session = ", session)
-                            token = session.getIdToken().getJwtToken();
-                            id_token = token;
-                            callback(token);
-                        });
-                    } else {
-                        return callback(false);
-                    }
-                } else {
-                    callback(id_token);
-                }
-            };
+
 
 
             $("#loginButton").click(function() {
@@ -777,7 +1014,7 @@
             </div>
             <div class="modal-body">
                     <div class="row">
-                      <div class="col-md-4" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                      <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
@@ -798,6 +1035,8 @@
                                             <br>
                                             Password: <input type="password" id="password" placeholder="Enter password">
                                             <br>
+                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
+                                            <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
                                             <!--<div style="width: 90%;">
                                                 <button id="loginUser">Log In</button>
@@ -810,7 +1049,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button>
+                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
                                 </div>
                             </div>
                             <div class="tab-pane" id="Registration">
@@ -953,7 +1192,8 @@
                         </fieldset>-->
 
                         <select class="dropdown" id="seasonSelector">
-                            <option value="2017" selected>2017</option>
+                            <option value="2018" selected>2018</option>
+                            <option value="2017">2017</option>
                             <option value="2016">2016</option>
                         </select>
                         <h4>Select Week</h4>
@@ -993,17 +1233,68 @@
                         </ul>
                     </div>
                 </div>
+                <div id="chartContainer" class="container">
+                    <div class="row" id="feedbackDiv">
+                        <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
+                        <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div>
+                        <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Weekly Wisdom Newsletter</div>
+                        <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
+                    </div>
+                    <div class="row" id="newsletter-form-div">
+                        <div class="col-xs-12">
+                            <!-- Begin MailChimp Signup Form -->
+                            <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                            <style type="text/css">
+                                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
+                                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                                We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                            </style>
+                            <div id="mc_embed_signup">
+                            <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+                                <h2>Subscribe to the Weekly Wisdom Newsletter</h2>
+                                <p>Get the Weekly Crowd Performance Report throughout the postseason, including our weekly winners.</p>
+                                <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
+                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                            </label>
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name (optional) </label>
+                                <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name (optional) </label>
+                                <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                            </div>
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
+                                <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </div>
+                            </form>
+                            </div>
+                            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                            <!--End mc_embed_signup-->
+                        </div>
+                    </div>
+                </div>
 
 
 
 
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
-
-
-                    <div id="group">
-                        <button id="joinGroup">Join PCSM Group</button>
+                    <div id="games-loading-icon">
+                        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                        <span class="sr-only">Loading...</span>
                     </div>
+
+                    <div id="group"></div>
                 </div>
             </div>
         </div>
@@ -1064,15 +1355,6 @@
                 getGameWeek(setGameWeek)
             },
             onFailure: function (err) {
-<<<<<<< HEAD
-                console.log(err.code);
-                alert(JSON.stringify(err));
-                if (err.code === "NotAuthorizedException") {
-                    console.log("authorized error: ", cognitoUser)
-                    showConfirmUI(cognitoUser);
-                }
-
-=======
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
@@ -1088,7 +1370,6 @@
                     //var tempUser = getUser();
                     //console.log(`tempUser = ${tempUser}`)
                 }
->>>>>>> 267e48f934fb86a9ee863c2758b5adf6eec4e1da
             }
         });
     }
@@ -1152,13 +1433,13 @@
 
             console.log('user name is ' + cognitoUser.getUsername());
             showConfirmUI(cognitoUser);
-            confirmUser(cognitoUser);
         });
     });
 
     function showConfirmUI(cognitoUser) {
-        $("#Registration").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button></div>")
+        $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
     }
+
 
     function confirmUser(username) {
 
@@ -1168,45 +1449,34 @@
         };
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
         
-        cognitoUser.getUserAttributeVerificationCode();
+        cognitoUser.confirmRegistration($('#confirmUserCode').val(), true, function (err, results) {
+            if (err) {
+                alert(err);
+            } else {
+                window.location = '/';
+            }
+        });
+    };
 
-        // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
-        //         if (err) {
-        //             alert(JSON.stringify(err));
-        //             return;
-        //         }
-        //         alert("result: ", JSON.stringify(result));
-        //     });
-    }
+    
+    function resetVerificationPIN(username){
+        const p = new Promise((res, rej)=>{
+        
+        var userData = {
+            Username: username,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
-
-    function getAdvancedSecurityData(formReference) {
-        if (typeof AmazonCognitoAdvancedSecurityData === "undefined") {
-            return true;
-        }
-
-        // UserpoolId is not available on frontend for springboard. We do not use userPoolId
-        // anyway other than put in context data. 
-        var userPoolId = "";
-        var clientId = getUrlParameter("client_id");
-
-        var username = "";
-        var usernameInput = document.getElementById("username");
-        if (usernameInput && usernameInput.value) {
-            username = usernameInput.value;
-        }
-
-        var asfData = AmazonCognitoAdvancedSecurityData.getData(username, userPoolId, clientId);
-        if (typeof asfData === "undefined") {
-            return true;
-        }
-
-        if (formReference && formReference.cognitoAsfData) {
-            formReference.cognitoAsfData.value = asfData
-        }
-
-        return true;
-    }
+        cognitoUser.resendConfirmationCode(function(err, result) {
+            if (err) {
+                rej(err)
+                return
+            }
+                res()
+            })
+        });
+    };
 
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -1215,7 +1485,77 @@
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     };
 
+    function showForgotPasswordUI() {
+        $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
+    }
+
+
+    function forgotPassword() { 
+
+        var forgotPasswordEmail = $('#forgotPasswordEmail').val()
+        var userData = {
+            Username: forgotPasswordEmail,
+            Pool: userPool
+        };
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+        cognitoUser.forgotPassword({
+            onSuccess: function (result) {
+                console.log('call result: ' + result);
+                $("#loginRegistrationColumn").html("<div>Enter the confirmation code sent to the e-mail address you provided and your new password.<br><label for=\"forgotPasswordConfirmationCode\">Confirmation Code:</label><input type=\"number\" id=\"forgotPasswordConfirmationCode\"><br><label for=\"forgotPasswordNewPassword\">New Password</label><input type=\"password\" id=\"forgotPasswordNewPassword\"><button class=\"btn btn-primary btn-sm\" id=\"changePasswordButton\" onclick=\"inputVerificationCode('" + forgotPasswordEmail + "')\">Reset Password</button><br></div>")
+            },
+            onFailure: function(err) {
+                console.log(JSON.stringify(err));
+            }
+        });
+
+
+        // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
+        //         if (err) {
+        //             alert(JSON.stringify(err));
+        //             return;
+        //         }
+        //         alert("result: ", JSON.stringify(result));
+        //     });
+    };
+
+    function inputVerificationCode(userEmail) {
+        var userData = {
+            Username: userEmail,
+            Pool: userPool
+        }
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        var verificationCode = $('#forgotPasswordConfirmationCode').val();
+        var newPassword = $('#forgotPasswordNewPassword').val();
+        
+        cognitoUser.confirmPassword(verificationCode, newPassword, {
+            onFailure(err) {
+                console.log(err);
+            },
+            onSuccess() {
+                $("#loginRegistrationColumn").html("<form role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><fieldset>E-mail: <input type=\"text\" id=\"email\" placeholder=\"Enter your e-mail address\"><br><br>Password: <input type=\"password\" id=\"password\" placeholder=\"Enter password\"><br><a href=\"#\" onClick=\"showForgotPasswordUI()\">Forgot Password?</a><br><ul id=\"loginUserResults\"></ul><div class=\"fb-login-button\" data-show-faces=\"false\" data-width=\"200\" data-max-rows=\"1\"></div></fieldset></div></form><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\" id=\"loginUser\" onclick=\"login()\">Login</button><br></div>");
+            }
+        });
+    }
+
+
 </script>
+    <script type="text/javascript" src="assets/js/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/apigClient.js"></script>
+    <script type="text/javascript">
+    
+    var apiClient = apigClientFactory.newClient();
+    
+    </script>
 </body>
 
 </html>
