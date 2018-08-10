@@ -261,8 +261,84 @@
 
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>-->
+    <!--Cognito Code-->
+    <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
+    <!--End Cognito Code-->
+    <!--JWT Decode Script-->
+    <script src="assets/js/jwt-decode.min.js"></script>
+    <script>
+        function GetURLParameter(sParam) {
+            //var sPageURL = window.location.hash.substring(1);
+            var sPageURL = window.location.href;
+            var sURLQueryString = sPageURL.split('?')[1];
+            var sURLVariables = sURLQueryString.split('&');
+            console.log("sURLVariables: ", sURLVariables)
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+        var decoded = {};
+        var idToken = "";
+        function processToken() {
+            idToken = GetURLParameter('id_token');
+            if (!idToken) {
+                console.log('No id_token present');
+                return;
+            }
+            decoded = jwt_decode(idToken);
+            console.log(decoded);
+            return decoded;
+        }
 
 
+           var id_token = "";
+
+            var cognitoData = {
+                UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+                ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
+
+
+            var userData = {
+                Username : '',
+                Pool : userPool
+            };
+            var id_token = "";
+
+
+           var useToken = function (callback) {
+                if (!id_token) {
+                    var cognitoUser = userPool.getCurrentUser();
+                    if (cognitoUser !== null) {
+                        console.log("useToken cognitoUser = ", cognitoUser);
+                        cognitoUser.getSession(function (err, session) {
+                            if (err) {
+                                //window.location = '/';
+                                console.log("getSession err = ", JSON.stringify(err))
+                            }
+                            console.log("session = ", session)
+                            token = session.getIdToken().getJwtToken();
+                            id_token = token;
+                            callback(token);
+                        });
+                    } else {
+                        return callback(false);
+                    }
+                } else {
+                    callback(id_token);
+                }
+            };
+
+        function get(url, options) {
+            return fetch(url, options);
+        }
+    </script>
+    <!--End JWT Decode Script-->
+    
     <script>
             //Auth0 Google Analytics script
                     // 'google-analytics': {
@@ -294,36 +370,7 @@
     <!-- Handlebars.js -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-        <!--Cognito Code-->
-        <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
-        <!--End Cognito Code-->
-        <!--JWT Decode Script-->
-        <script src="assets/js/jwt-decode.min.js"></script>
-        <script>
-            function GetURLParameter(sParam) {
-                var sPageURL = window.location.hash.substring(1);
-                var sURLVariables = sPageURL.split('&');
-                for (var i = 0; i < sURLVariables.length; i++) {
-                    var sParameterName = sURLVariables[i].split('=');
-                    if (sParameterName[0] == sParam) {
-                        return sParameterName[1];
-                    }
-                }
-            }
-            var decoded = {};
-            var idToken = "";
-            function processToken() {
-                idToken = GetURLParameter('id_token');
-                if (!idToken) {
-                    console.log('No id_token present');
-                    return;
-                }
-                decoded = jwt_decode(idToken);
-                console.log(decoded);
-                return decoded;
-            }
-        </script>
-        <!--End JWT Decode Script-->
+        
 
             <script type="text/javascript">
 
@@ -331,19 +378,7 @@
         // GET cognitoUser Information at the top
         //var tokenFromURL = processToken();
         // Pool ID and Client ID sourced from AWS
-        var cognitoData = {
-            UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
-            ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
-        };
-        var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
-
-
-        var userData = {
-            Username : '',
-            Pool : userPool
-        };
-        var id_token = "";
-
+        
 
         //GET CURRENT USER FROM LOCAL STORAGE
         var cognitoUser = userPool.getCurrentUser();
@@ -455,16 +490,21 @@
             </script>
 
     
-    
+        <script id="group-template" type="text/x-handlebars-template">
+            <div class="container">
+                <div class="row">
+                    {{#each groupMembers}}
+                    <div class="col-xs-12" id="container-{{{this.username}}}">
+                        User: {{{this.username}}}
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
     <script>
 
-        function get(url, options) {
-            console.log("get called: ", url);
-            console.log("options: ", JSON.stringify(options));
-            return fetch(url, options);
-        }
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
@@ -538,13 +578,6 @@
                     return response.json();
                 })
                 .then(function (data) {
-                        $("#games-loading-icon").css("display","none")
-                        formatGameTimes(data);
-                        var games = {games: data};
-                        var template = $('#games-template').html();
-                        var templateScript = Handlebars.compile(template);
-                        var html = templateScript(games);
-                        $('#games').html(html);
                         //drawChart2(year, week);
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
@@ -590,23 +623,6 @@
                         });
                         return data;
                     })
-                    .catch(function (jqXHR, textStatus, errorThrown) {
-                        console.log("Error getting games: ", jqXHR, textStatus, errorThrown);
-                        if (jqXHR.status == 0) {
-                            lock.show();
-                        }
-                    })
-                    .then(function (data) {
-                        getWeeklyResults(data);
-                        return data;
-                    })
-                    .then(function (data) {
-                        getWeeklyCrowdResults(data)
-                        return data;
-                    })
-                    .then(function(data) {
-                       drawChart2(data[0].year, data[0].gameWeek, "weekly");
-                    });
             });
         };
 
@@ -631,6 +647,8 @@
             } else {
                 showLoginButton();
             }
+
+            
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -709,28 +727,6 @@
             // });
 
         });
-           var useToken = function (callback) {
-                if (!id_token) {
-                    var cognitoUser = userPool.getCurrentUser();
-                    if (cognitoUser !== null) {
-                        console.log("useToken cognitoUser = ", cognitoUser);
-                        cognitoUser.getSession(function (err, session) {
-                            if (err) {
-                                //window.location = '/';
-                                console.log("getSession err = ", JSON.stringify(err))
-                            }
-                            console.log("session = ", session)
-                            token = session.getIdToken().getJwtToken();
-                            id_token = token;
-                            callback(token);
-                        });
-                    } else {
-                        return callback(false);
-                    }
-                } else {
-                    callback(id_token);
-                }
-            };
 
 
             $("#loginButton").click(function() {
@@ -1001,9 +997,8 @@
                 <div class="col-xs-12 col-sm-9">
 
 
-                    <div id="group">
-                        <button id="joinGroup">Join PCSM Group</button>
-                    </div>
+                    <div id="group"></div>
+                    <div id="joinGroupButtonDiv"></div>
                 </div>
             </div>
         </div>
@@ -1064,15 +1059,6 @@
                 getGameWeek(setGameWeek)
             },
             onFailure: function (err) {
-<<<<<<< HEAD
-                console.log(err.code);
-                alert(JSON.stringify(err));
-                if (err.code === "NotAuthorizedException") {
-                    console.log("authorized error: ", cognitoUser)
-                    showConfirmUI(cognitoUser);
-                }
-
-=======
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
@@ -1088,7 +1074,6 @@
                     //var tempUser = getUser();
                     //console.log(`tempUser = ${tempUser}`)
                 }
->>>>>>> 267e48f934fb86a9ee863c2758b5adf6eec4e1da
             }
         });
     }
@@ -1179,35 +1164,6 @@
         //     });
     }
 
-
-    function getAdvancedSecurityData(formReference) {
-        if (typeof AmazonCognitoAdvancedSecurityData === "undefined") {
-            return true;
-        }
-
-        // UserpoolId is not available on frontend for springboard. We do not use userPoolId
-        // anyway other than put in context data. 
-        var userPoolId = "";
-        var clientId = getUrlParameter("client_id");
-
-        var username = "";
-        var usernameInput = document.getElementById("username");
-        if (usernameInput && usernameInput.value) {
-            username = usernameInput.value;
-        }
-
-        var asfData = AmazonCognitoAdvancedSecurityData.getData(username, userPoolId, clientId);
-        if (typeof asfData === "undefined") {
-            return true;
-        }
-
-        if (formReference && formReference.cognitoAsfData) {
-            formReference.cognitoAsfData.value = asfData
-        }
-
-        return true;
-    }
-
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
         var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -1216,6 +1172,9 @@
     };
 
 </script>
+<!-- CWS Group Files -->
+<script src="assets/js/groups.js" type="text/javascript"></script>
+
 </body>
 
 </html>
