@@ -979,7 +979,7 @@
 
         var submitPrediction = function (prediction, btn) {
             useToken(function(token) {
-                console.log("prediction: ", JSON.stringify(prediction))
+                //console.log("prediction: ", JSON.stringify(prediction))
                 var setSubmitPredictionsOptions = 
                         {     
                             method: "POST",
@@ -1646,6 +1646,11 @@
                     </div>
 
                     <div id="games"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="font-size: 0.8em">
+                    All odds are provided by <a href="https://www.oddsshark.com" target="_blank">Oddsshark.com</a> and are locked one hour prior to kickoff.
                 </div>
             </div>
         </div>
