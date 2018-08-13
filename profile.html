@@ -53,12 +53,14 @@
             //var sPageURL = window.location.hash.substring(1);
             var sPageURL = window.location.href;
             var sURLQueryString = sPageURL.split('?')[1];
-            var sURLVariables = sURLQueryString.split('&');
-            console.log("sURLVariables: ", sURLVariables)
-            for (var i = 0; i < sURLVariables.length; i++) {
-                var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] == sParam) {
-                    return sParameterName[1];
+            if (sURLQueryString) {
+                var sURLVariables = sURLQueryString.split('&');
+                console.log("sURLVariables: ", sURLVariables)
+                for (var i = 0; i < sURLVariables.length; i++) {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) {
+                        return sParameterName[1];
+                    }
                 }
             }
         }
@@ -207,7 +209,6 @@
                 console.log("token reject: ", reject);
             })
             .then(function(tokenResponse) {
-                console.log("tokenResponse: ", tokenResponse);
                 
                 var decodedToken = jwt_decode(tokenResponse.id_token);
                 userData = {
@@ -299,7 +300,6 @@
         });
 
         Handlebars.registerHelper("rowColor", function(indexValue) {
-            console.log("(indexValue % 2): ", (indexValue % 2))
             if ((indexValue % 2) === 0) {
                 return new Handlebars.SafeString("class=\"alt-tr\"");
             }
@@ -342,12 +342,13 @@
             </div>
         </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <!-- CWS Profile Files -->
+    <script src="assets/js/profile.js" type="text/javascript"></script>
 
     <script>
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
-                console.log("getGameWeek token: ", token);
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week";
                 var getGameWeekURLOptions = {
                     method: "GET",
@@ -367,7 +368,6 @@
                 })
                 .then(function (data) {
                     //data.year = 2017;
-                    console.log("gameWeek data: ", data);
                     return callback(data);
                 })
                 .catch(function(err) {
@@ -528,7 +528,7 @@
                 showLoginButton();
             }
 
-            getGroupInfo();
+            userProfileInfo();
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -943,7 +943,13 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 profileInformation">
                             <h3 id="prolifeName"></h3>
-                            <div id="profileDetails"></div>
+                            <div id="profileDetails">
+                                <span class="profileDetailsLabel">Username: </span><input type="text" id="preferred_username"></span><br>
+                                <span class="profileDetailsLabel">Name: </span><span id="name"></span><br>
+                                <label for="email">E-mail:</label> <input type="email" id="profileEmail"/><br>
+
+                            </div>
+                            <button id="updateProfile" onclick="updateProfile()" class="btn btn-primary">Update Profile</button>
                     </div>
                 </div>
         </div>
@@ -1117,8 +1123,6 @@
     };
 
 </script>
-<!-- CWS Group Files -->
-<script src="assets/js/groups.js" type="text/javascript"></script>
 
 </body>
 
