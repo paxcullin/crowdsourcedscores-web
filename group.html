@@ -22,229 +22,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
-    <style type="text/css">
-        .card .content {
-            padding-left:5px;
-            padding-right: 5px;
-        }
-        .table > thead > tr > th,
-        .table > thead > tr > td {
-            padding: 5px;
-            text-align: center;
-        }
-        .container {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-        .form-control {
-            /*padding-left:27px;
-            padding-top: 9px;*/
-            padding: 0;
-            margin: 0 7px;
-            text-align: center;
-            height: auto;
-            /*border: 1px solid #B22438;
-            background-color: #B22438;
-            color: #fff;*/
-            background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#B22438, #B22438);
-        }
-        #fbSection {
-            margin: 5px 10px;
-        }
-        #fbSection img {
-            float:left;
-            padding-right: 10px;
-        }
-        .fbName {
-            margin: 10px 0;
-        }
-        /* Dropdown Button */
-        .dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: #f1f1f1}
-
-        /* Show the dropdown menu on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-
-        .navbar, .navbar.navbar-default {
-            background-color: #3A3B6C;
-        }
-
-        .header-icon {
-            float:left;
-            margin-right:10px;
-        }
-        .header-icon img {
-            width: 60px;
-        }
-        .topRow {
-            padding-top: 90px;
-        }
-        .gameHeaderPredicted {
-            background-color:#3A3B6C;
-            color:#fff;
-        }
-        .gameHeaderNotPrediction {
-            border:1px solid #3A3B6C;
-        }
-
-        .crowdCorrect {
-            color: #55b559;
-            font-weight: bold;
-        }
-
-        .crowdHidden {
-            visibility: hidden;
-        }
-
-        .titleText {
-            color: #3A3B6C;
-            font-size: 1.2em;
-        }
-
-        #resultsContainer {
-            color:#fff;
-            display:none;
-            font-weight: bold;
-            font-size: 1.2em;
-            padding-bottom: 15px;
-        }
-        #myResultsRow {
-            background-color: #B42135;
-            border: 1px solid #B42135;
-            margin: 0 15px;
-        }
-
-        #crowdResultsRow {
-            background-color:#3A3B6C;
-            color:#fff;
-            margin: 0 15px;
-        }
-
-        .finalRow {
-            background-color: #000;
-            color:#fff;
-            font-weight: bold;
-            font-size: 1.1em;
-            padding: 5px 15px;
-            text-align: center;
-        }
-        #chartExpand {
-            padding-top: 8px;
-        }
-        #weeklyChart {            
-            padding: 5px;
-        }
-        #switchChartButtons {
-            margin: 10px 0;
-        }
-        #switchChartButtons button {
-            font-size: 1.1em;
-            font-weight: bold;
-        }
-        #weeklyChartButton {
-            color: #fff;
-            background-color: #B42135;
-            margin: 0 auto;
-            float: right;
-        }
-        #overallChartButton {
-            color: #fff;
-            background-color: #3A3B6C;
-            margin: 0 auto;
-        }
-        #feedbackDiv {
-            margin: 10px auto;
-            text-align: center;
-        }
-        #feedbackDiv a {
-            color:#3A3B6C
-        }
-
-        @media(max-width:768px) {
-            #resultRow {
-                text-align: center;
-            }
-        }
-
-        .loading-icon {
-            position: relative;
-            width: 20px;
-            height: 20px;
-            margin:50px auto;
-            -webkit-animation: fa-spin 2s infinite linear;
-            animation: fa-spin 2s infinite linear;
-            text-align: center;
-        }
-
-        .loading-icon:before {
-            content: "\f110";
-            font-family: FontAwesome;
-            font-size:20px;
-            position: absolute;
-            top: 0;
-        }
-        #newsletter-form-div {
-            display:none;
-        }
-
-        div#OR {
-            height: 30px;
-            width: 30px;
-            border: 1px solid #C2C2C2;
-            border-radius: 50%;
-            font-weight: bold;
-            line-height: 28px;
-            text-align: center;
-            font-size: 12px;
-            float: right;
-            position: absolute;
-            right: -16px;
-            top: 40%;
-            z-index: 1;
-            background: #DFDFDF;
-        }
-
-    </style>
+    <link href="assets/css/cws.css" rel="stylesheet"/>
 
 
     <!--   Core JS Files   -->
@@ -506,36 +284,60 @@
                     return options.inverse(this);
             }
         });
+
+        Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
+            lvalue = parseFloat(lvalue);
+            rvalue = parseFloat(rvalue);
+                
+            return {
+                "+": lvalue + rvalue,
+                "-": lvalue - rvalue,
+                "*": lvalue * rvalue,
+                "/": lvalue / rvalue,
+                "%": lvalue % rvalue
+            }[operator];
+        });
+
+        Handlebars.registerHelper("rowColor", function(indexValue) {
+            console.log("(indexValue % 2): ", (indexValue % 2))
+            if ((indexValue % 2) === 0) {
+                return new Handlebars.SafeString("class=\"alt-tr\"");
+            }
+        });
             </script>
 
     
         <script id="group-template" type="text/x-handlebars-template">
             <div class="container">
-                <div class="row groupTableHeader">
-                    <div class="col-xs-3">
-                        User
-                    </div>
-                    <div class="col-xs-9">
-                        <div class="container">
-                            <div class="row">
-                                <div style="width:100%; text-align: center;">
-                                    Week
-                                </div>
-                            </div>
-                            <div class="row">
-                                <span id="gameWeek1">
-                                    1
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    {{#each groupMembers}}
-                    <div class="col-xs-12" id="container-{{{this.username}}}">
-                        {{{this.username}}}
+                    <div class="col-xs-12 col-sm-9">
+                        <table class="rwd-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Rank
+                                    </th>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        1
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{#each groupMembers}}
+                                <tr {{rowColor @index}} id="container-{{{this.username}}}">
+                                    <td>{{{math @index '+' 1}}}</td>
+                                    <td>
+                                    {{{this.username}}}
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
                     </div>
-                    {{/each}}
                 </div>
             </div>
         </script>
@@ -759,21 +561,6 @@
                     }
                 });
             }, 1000);
-
-            useToken(function(token) {
-                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/0", {
-                    headers: {
-                        Authorization: token
-                    }
-                })
-                .then(function (groupResponse) {
-                    return groupResponse.json();
-                })
-                .then(function (groupInfo) {
-                    console.log("groupInfo: ", groupInfo);
-                    $("#group").html(groupInfo);
-                })
-            })
             
             $('#newsletter-signup-div').click(function () {
                 ga('send','event','newsletter','viewed');
@@ -1153,9 +940,10 @@
 
 
             <div class="row">
-                <div class="col-xs-12 col-sm-9">
-                    <div id="joinGroupButtonDiv"></div>
+                <div class="col-xs-12 col-sm-9 groupDiv">
                     <div id="groupTitle" class="titleText"></div>
+                    <div id="joinGroupButtonDiv" style="float: right"></div>
+                    <div class="clearfix"></div>
                     <div id="group"></div>
                 </div>
             </div>

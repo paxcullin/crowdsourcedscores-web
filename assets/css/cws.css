@@ -281,6 +281,12 @@ overflow: hidden;
 .rwd-table tr {
 border-color: #B22438;
 }
+
+.rwd-table .alt-tr {
+    background: #fff;
+    color: #3A3B6C;
+}
+
 .rwd-table th, .rwd-table td {
 margin: .5em 1em;
 }
@@ -297,3 +303,9 @@ color: #fff;
     color: #fff;
 }
 /* End Table CSS*/
+
+/* Group CSS */
+
+.groupDiv {
+    padding: 1em;
+}
