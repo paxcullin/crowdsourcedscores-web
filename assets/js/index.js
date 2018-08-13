@@ -3,7 +3,7 @@ function getAllGroups() {
         var getAllGroupsOptions = {
             method: "GET"
         }
-        var getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/anon";
+        var getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/anon";
         
         if (token !== null) {
             getAllGroupsOptions = {
@@ -12,7 +12,7 @@ function getAllGroups() {
                     Authorization: token
                 }
             }
-            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group";
+            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/";
         }
 
         get(getAllGroupsURL, getAllGroupsOptions)
@@ -24,18 +24,24 @@ function getAllGroups() {
             return;
         })
         .then(function(allGroupsInformation) {
-            var groupHTML = "";
-            $("#allGroups").append("<div class=\"row\"><div class=\"col-xs-1\">Rank</div><div class=\"col-xs-1\">Group Name</div><div class=\"col-xs-1\">Score</div>");
-            for (var i; i < allGroupsInformation.length; i++) {
+            console.log("allGroupsInformation: ", allGroupsInformation)
+            var groupDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Group</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
+            var rank = 1;
+            for (var i=0; i < allGroupsInformation.length; i++) {
                 groupHTML = "";
                 var groupObject = allGroupsInformation[i];
-                $("#allGroups").append("<div class=\"row\">");
-                groupHTML = "<div class=\"col-xs-1\">" + i + "</div>";
-                groupHTML += "<div class=\"col-xs-1\">" + groupObject.groupName + "</div>";
-                groupHTML += "<div class=\"col-xs-1\">" + groupObject.totalPredictionScore + "</div>";
-                $("#allGroups").append(groupHTML + "</div>");
+                console.log("groupObject: ", groupObject)
+                groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
+                groupHTML += "<td data-th=\"Group\"><a href=\"/group.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
+                groupHTML += "<td data-th=\"score\">" + groupObject.totalPredictionScore + "</td>";
+                groupDivHTML += "<tr>" + groupHTML + "</tr>";
+                if (i === allGroupsInformation.length - 1) {
+                    groupDivHTML += "</tbody></table>";
+                }
+                rank += 1;
             }
-            $("#allGroups").append("</div>");
+            $("#allGroups").html(groupDivHTML);
+            return allGroupsInformation;
         })
     })
 }

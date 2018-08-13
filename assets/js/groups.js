@@ -102,7 +102,7 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             var groupMembers = {groupMembers: joinGroupResult.updatedUserList};
             var html = templateScript(groupMembers);
             $('#group').html(html);
-            $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + groupInfo.groupName + "</button>");
+            $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + joinGroupResult.groupName + "</button>");
             
         })
     })
