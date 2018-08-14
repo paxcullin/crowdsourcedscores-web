@@ -56,9 +56,13 @@ function getGroupInfo() {
             }
 
             $("#groupTitle").text(groupInfoDetails.groupName);
-            var groupMembers = {groupMembers: groupInfoDetails.usernames};
-            var html = templateScript(groupMembers);
-            $('#group').html(html);
+            var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner + "</span><br>";
+            $("#groupDetails").html(groupDetailsHTML);
+            if (groupInfoDetails.usernames && groupInfoDetails.usernames.length > 0) {
+                var groupMembers = {groupMembers: groupInfoDetails.usernames};
+                var html = templateScript(groupMembers);
+                $('#group').html(html);
+            }
             return groupInfoDetails;
         })
     });

@@ -141,7 +141,7 @@
 
 
         function showLoginButton() {
-            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "')\">Login/Sign Up</button>");
+            $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "');ga('send','event','login','login');\">Login/Sign Up</button>");
         }
 
         function showLogoutButton() {
@@ -1008,8 +1008,9 @@
             //     });
             // });
 
-            var logout = function () {
+            function logout () {
                 var cognitoUser = userPool.getCurrentUser();
+                ga('send','event','login','logout');
                 cognitoUser.signOut();
                 showLoginButton();
                 window.location = '/';
