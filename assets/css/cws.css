@@ -309,3 +309,8 @@ color: #fff;
 .groupDiv {
     padding: 1em;
 }
+
+
+.errorText {
+    color: #B42135;
+    }
