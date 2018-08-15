@@ -531,37 +531,6 @@
 
             userProfileInfo();
 
-            $('#weekSelector li').on('click', 'a', function () {
-                gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
-                gameWeekData.week = parseInt($(this).attr('data-week'));
-                $("#games-loading-icon").css("display","block")
-                $('#weekSelector li').removeClass('active');
-                $('#resultsContainer').css('display','none');
-                $(this).parent('li').addClass('active');
-                setGameWeek(gameWeekData);
-                //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
-            });
-
-            console.log("gameWeekData.week: ", gameWeekData.week);
-
-            setTimeout(function () {
-                getGameWeek(function (data) {
-                    console.log("data: ", data);
-                    if (data) {
-                        week = data.week;
-                        year = parseInt(document.getElementById('seasonSelector').value);
-                        if (data.year) {
-                            year = data.year;
-                        }
-                        var $selectorElm = $('*[data-week="' + week + '"]');
-                        $selectorElm.parent('li').addClass('active');
-                        $("#weeklyChartButton").attr({"year":year,"week": week});
-                        $("#overallChartButton").attr({"year":year,"week": week});
-                        setGameWeek(data);
-                        //deferredLeaderboardRequest2(year, week, id_token, buildChart);
-                    }
-                });
-            }, 1000);
             
             $('#newsletter-signup-div').click(function () {
                 ga('send','event','newsletter','viewed');
@@ -838,11 +807,16 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 profileInformation">
                             <h3 id="prolifeName"></h3>
-                            <div id="profileDetails">
-                                <span class="profileDetailsLabel">Username: </span><input type="text" id="preferred_username"></span><br>
-                                <span class="profileDetailsLabel">Name: </span><span id="name"></span><br>
-                                <label for="email">E-mail:</label> <input type="email" id="profileEmail"/><br>
-
+                            <div id="profileDetailsDiv">
+                                <div class="profileDetails">
+                                    <h4 class="profileDetailsLabel">Username: </h4><div class="content"><input type="text" id="preferred_username"></div>
+                                </div>>
+                                <div class="profileDetails">
+                                    <h4 class="profileDetailsLabel">Name: </h4><div class="content" id="name"></div>
+                                </div>
+                                <div class="profileDetails">
+                                    <h4 class="profileDetailsLabel">E-mail:</h4><div class="content"><input type="email" id="profileEmail"/></div>
+                                </div>
                             </div>
                             <div class="errorText" id="updateErrorText"></div>
                             <button id="updateProfile" onclick="updateProfile()" class="btn btn-primary">Update Profile</button>

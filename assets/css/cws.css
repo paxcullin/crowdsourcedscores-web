@@ -314,3 +314,20 @@ color: #fff;
 .errorText {
     color: #B42135;
     }
+
+/* Profile CSS */
+
+.profileDetails h4 {
+    color: #3A3B6C;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+@media (min-width:768px) {
+    .profileDetails h4 {
+        width: 150 px;
+        left: 0;
+        position: absolute;
+        top: 8px;
+    }
+}
