@@ -675,6 +675,7 @@
                                             btn.text('Predict');
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
+                                            $('.gameHeaderPredicted').append("<i class=\"fas fa-check-circle\"></i>")
                                             moveBoxes(prediction.gameId);
                                             return;
                                         case 400:

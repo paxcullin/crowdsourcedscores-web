@@ -48,10 +48,10 @@ function getGroupInfo() {
                     groupPasswordHTML = "<h5>Group Password</h5><input class=\"form-control\" type=\"text\" id=\"groupPassword\">";
 
                 }
-                $("#joinGroupButtonDiv").html(groupPasswordHTML + "<button class=\"btn btn-info\" id=\"joinGroupButton\">Join " + groupInfoDetails.groupName + "</button>");
+                $("#joinGroupButtonDiv").html(groupPasswordHTML + "<button class=\"btn btn-info\" id=\"joinGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Joining Group\">Join " + groupInfoDetails.groupName + "</button>");
             } else {
                 if (groupInfoDetails.groupId !== 0) {
-                    $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + groupInfoDetails.groupName + "</button>");
+                    $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
                 }
             }
 
@@ -71,7 +71,10 @@ function getGroupInfo() {
 // user clicks the Join Group Button - Call the Join Group API
 
 $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
-    useToken(function(token) {
+    
+        var $this = $(this);
+        $this.button('loading');
+    
 
         // Acquire the password entered by the user in the group Password input (line 43)
         var groupPassword = $("#groupPassword").val();
@@ -106,15 +109,19 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             var groupMembers = {groupMembers: joinGroupResult.updatedUserList};
             var html = templateScript(groupMembers);
             $('#group').html(html);
+
+            $this.button('reset');
             $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + joinGroupResult.groupName + "</button>");
             
         })
-    })
 });
 
 // user clicks the Join Group Button - Call the Join Group API
 
 $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
+
+    var $this = $(this);
+    $this.button('loading');
     useToken(function(token) {
 
         var leaveGroupOptions = {
@@ -128,7 +135,7 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
         .then(function(leaveGroupResponse) {
             console.log(leaveGroupResponse)
             
-            $('#group').html("Updating ...");
+            $('#group').html("");
             
             return leaveGroupResponse.json();
         })
@@ -139,6 +146,7 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
             //Reload Group Members after successful addition
             getGroupInfo();
             
+            $this.button('reset');
         })
     })
 });
