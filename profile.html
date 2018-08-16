@@ -19,9 +19,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
 
     <!-- CSS Files -->
+    <!--<link href="assets/css/material-kit.css" rel="stylesheet"/>-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/css/material-kit.css" rel="stylesheet"/>
+    <link href="https:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet"/>
     <link href="assets/css/cws.css" rel="stylesheet"/>
 
 
@@ -386,114 +387,6 @@
             return games;
         }
 
-        var setGameWeek = function (gameWeekData) {
-            useToken(function(token) {
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
-                var setGameWeekGetOptions = 
-                    {     
-                        method: "GET",
-                        headers: {
-                                'Authorization': token
-                        }
-                    }
-                    // creating anonymous API call for games
-                if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
-                    setGameWeekGetOptions = {     
-                        method: "GET"
-                    }
-                }
-                get(setGameWeekURL, setGameWeekGetOptions)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                        //drawChart2(year, week);
-                        $('.prediction-btn').on('click', function (e) {
-                            e.preventDefault();
-                            $(this).text('Saving...');
-                            var $prediction = $(this).parents('.prediction');
-                            var prediction = {
-                                gameId: $prediction.attr('data-game-id'),
-                                gameWeek: $prediction.attr('data-game-week'),
-                                year: $prediction.attr('data-game-year'),
-                                awayTeam: {
-                                    code: $prediction.attr('data-away-code'),
-                                    fullName: $prediction.attr('data-away-name'),
-                                    shortName: $prediction.attr('data-away-short')
-                                },
-                                homeTeam: {
-                                    code: $prediction.attr('data-home-code'),
-                                    fullName: $prediction.attr('data-home-name'),
-                                    shortName: $prediction.attr('data-home-short')
-                                }
-                            };
-                            var btn = $(this);
-                            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
-                            var messageElm = predictionElm.find(".prediction-message");
-                            
-
-                            var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
-                            var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
-
-                            var away = $prediction.attr('data-away-team');
-                            var home = $prediction.attr('data-home-team');
-
-                            var awayCode = $prediction.attr('data-away-code');
-                            var homeCode = $prediction.attr('data-home-code');
-
-                            prediction.awayTeam.score = parseInt(awayTeamPrediction);
-                            prediction.homeTeam.score = parseInt(homeTeamPrediction);
-
-                            //submitPrediction(prediction, $(this));
-                            useToken(function(token){
-                                console.log("submitPrediction Token: ", token)
-                                apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
-                                .then(function(response) {
-                                    console.log("response message:", response)
-                                    switch(response.status) {
-                                        case 200:
-                                            console.log("200: ", response);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('success', response.data.message);
-                                            messageElm.html(messageHtml)
-                                            moveBoxes(prediction.gameId);
-                                            return;
-                                        case 400:
-                                            var errorObj = JSON.parse(response.responseText);
-                                            console.log("400: ", errorObj);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('danger', errorObj.message);
-                                            messageElm.html(messageHtml);
-                                            return;
-                                        case 500:
-                                            var errorObj = JSON.parse(response.responseText);
-                                            console.log("500: ", errorObj);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('danger', errorObj.message);
-                                            messageElm.html(messageHtml);
-                                            return;
-                                    }
-                                    return true;
-                                })
-                                .catch(function(reject) {
-                                    console.log("reject message: ", reject)
-                                })
-                            })
-                            // Update prediction table cell
-                            //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
-                            //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
-                            //show odds and crowd info
-                            $prediction.find('.crowdHidden').removeClass('crowdHidden');
-                            $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
-                        });
-                        return data;
-                    })
-            });
-        };
-
         var gameWeekData = {};
 
             var useToken = function (callback) {
@@ -624,126 +517,6 @@
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
-    <!--login modal-->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        <fieldset>
-                                            <!--<legend>Sign Up for PCSM</legend>-->
-                                            <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                                            <br>
-                                            <br>-->
-                                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-                                            <br>
-                                            <br>
-                                            Password: <input type="password" id="password" placeholder="Enter password">
-                                            <br>
-                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
-                                            <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
-                                            <br>
-                                            <!--<div style="width: 90%;">
-                                                <button id="loginUser">Log In</button>
-                                            </div>-->
-                                            <ul id="loginUserResults"></ul>
-                                            <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-                                        </fieldset>
-                                    </div>
-                                </form>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="Registration">
-                                    <form role="form" class="form-horizontal">
-                                      <div class="form-group">
-                                        <label for="firstName" class="col-sm-2 control-label">
-                                                            First</label>
-                                        <div class="col-sm-6">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="firstName" placeholder="First Name" />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-    
-                                      <div class="form-group">
-                                            <label for="lastName" class="col-sm-2 control-label">
-                                                                Last</label>
-                                            <div class="col-sm-6">
-                                              <div class="row">
-                                                <div class="col-md-6">
-                                                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="form-group">
-                                            <label for="newUsername" class="col-sm-2 control-label">
-                                                                Username (max: 25 characters)</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="newUsername" placeholder="Username" />
-                                            </div>
-                                        </div>
-                                      <div class="form-group">
-                                        <label for="email" class="col-sm-2 control-label">
-                                                            Email</label>
-                                        <div class="col-sm-10">
-                                          <input type="email" class="form-control" id="newEmail" placeholder="Email" />
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="newPassword" class="col-sm-2 control-label">
-                                                            Password</label>
-                                        <div class="col-sm-10">
-                                          <input type="password" class="form-control" id="newPassword" placeholder="Password" />
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-2">
-                                        </div>
-                                        <div class="col-sm-10">
-                                          <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
-                                                                Submit</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        </div>
-                                      </div>
-                                    </form>
-                                  </div>
-                                </div>
-                        </div>
-                        
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!--close login modal-->
-
     <div class="wrapper">
         <!--<div class="header">-->
 
@@ -804,195 +577,45 @@
 
 
             
-                <div class="row">
-                    <div class="col-xs-12 col-sm-9 profileInformation">
-                            <h3 id="prolifeName"></h3>
-                            <div id="profileDetailsDiv">
-                                <div class="profileDetails">
-                                    <h4 class="profileDetailsLabel">Username: </h4><div class="content"><input type="text" id="preferred_username"></div>
-                                </div>>
-                                <div class="profileDetails">
-                                    <h4 class="profileDetailsLabel">Name: </h4><div class="content" id="name"></div>
-                                </div>
-                                <div class="profileDetails">
-                                    <h4 class="profileDetailsLabel">E-mail:</h4><div class="content"><input type="email" id="profileEmail"/></div>
+                <div class="row form-horizontal profileDetails">
+                        <h3><span id="profileName"></span>Profile</h3>
+                        <!-- Name Field-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  name="name" id="name" class="form-control"  type="text" readonly>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Username input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Username</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  name="preferred_username" id="preferred_username" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Username input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-mail</label>  
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input  name="email" id="profileEmail" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                             <div class="errorText" id="updateErrorText"></div>
                             <button id="updateProfile" onclick="updateProfile()" class="btn btn-primary">Update Profile</button>
-                    </div>
-                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<script>
-    var cognitoUser = userPool.getCurrentUser();
-    var attributeList = [];
-
-    var dataEmail = {
-        Name : 'email',
-        Value : 'email@mydomain.com'
-    };
-
-    var dataUsername = {
-        Name : 'preferred_username',
-        Value : 'email@mydomain.com'
-    };
-    var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-    var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-
-    $("#loginUser").click(function() {
-        login();
-    });
-    function login () {
-        var email = $('#email').val();
-        var authenticationData = {
-            Username: email,
-            Password: $('#password').val()
-        };
-
-        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-        var userData = {
-            Username: email,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        cognitoUser.authenticateUser(authenticationDetails, {
-            onSuccess: function () {
-                $("#loginModal").modal("hide");
-                showLogoutButton();
-                getGameWeek(setGameWeek)
-            },
-            onFailure: function (err) {
-                console.log(JSON.stringify(err))
-                alert(JSON.stringify(err));
-                if (err.code === "NotAuthorizedException") {
-                    console.log(CognitoUser.resendConfirmationCode(email))
-                }
-            }
-        });
-    }
-
-    // Commenting out and will remove once login flow is confirmed
-
-    document.getElementById('signUpUser').addEventListener('click', function() {
-        console.log('clicked');
-        var attributeList = [];
-        
-        var dataEmail = {
-                Name : 'email',
-                Value : $('#newEmail').val()
-            };
-
-        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-        attributeList.push(attributeEmail);
-        
-        var dataFirst = {
-                Name : 'given_name',
-                Value : $('#firstName').val()
-            };
-
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
-        attributeList.push(dataFirst);
-
-        var dataLast = {
-                Name : 'family_name',
-                Value : $('#lastName').val()
-            };
-
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
-        attributeList.push(dataLast);
-
-        var cognitoUser;
-
-        userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
-            if (err) {
-                alert(err);
-                return;
-            }
-            cognitoUser = result.user;
-
-            console.log('user name is ' + cognitoUser.getUsername());
-            showConfirmUI(cognitoUser);
-        });
-    });
-
-    function showConfirmUI(cognitoUser) {
-        $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
-    }
-
-
-    function confirmUser(username) {
-
-        var userData = {
-            Username: username,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        
-        cognitoUser.confirmRegistration($('#confirmUserCode').val(), true, function (err, results) {
-            if (err) {
-                alert(err);
-            } else {
-                window.location = '/';
-            }
-        });
-    };
-
-    
-    function resetVerificationPIN(username){
-        const p = new Promise((res, rej)=>{
-        
-        var userData = {
-            Username: username,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-        cognitoUser.resendConfirmationCode(function(err, result) {
-            if (err) {
-                rej(err)
-                return
-            }
-                res()
-            })
-        });
-    };
-
-    function showForgotPasswordUI() {
-        $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
-    }
-
-
-    function forgotPassword() { 
-
-        var forgotPasswordEmail = $('#forgotPasswordEmail').val()
-        var userData = {
-            Username: forgotPasswordEmail,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-        cognitoUser.forgotPassword({
-            onSuccess: function (result) {
-                console.log('call result: ' + result);
-                $("#loginRegistrationColumn").html("<div>Enter the confirmation code sent to the e-mail address you provided and your new password.<br><label for=\"forgotPasswordConfirmationCode\">Confirmation Code:</label><input type=\"number\" id=\"forgotPasswordConfirmationCode\"><br><label for=\"forgotPasswordNewPassword\">New Password</label><input type=\"password\" id=\"forgotPasswordNewPassword\"><button class=\"btn btn-primary btn-sm\" id=\"changePasswordButton\" onclick=\"inputVerificationCode('" + forgotPasswordEmail + "')\">Reset Password</button><br></div>")
-            },
-            onFailure: function(err) {
-                console.log(JSON.stringify(err));
-            }
-        });
-    }
-
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
-
-</script>
 
 </body>
 

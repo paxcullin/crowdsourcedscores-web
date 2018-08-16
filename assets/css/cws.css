@@ -17,18 +17,7 @@ text-rendering: optimizeLegibility;
     padding-left: 5px;
     padding-right: 5px;
 }
-.form-control {
-    /*padding-left:27px;
-    padding-top: 9px;*/
-    padding: 0;
-    margin: 0 7px;
-    text-align: center;
-    height: auto;
-    /*border: 1px solid #B22438;
-    background-color: #B22438;
-    color: #fff;*/
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#B22438, #B22438);
-}
+
 #fbSection {
     margin: 5px 10px;
 }
@@ -330,4 +319,17 @@ color: #fff;
         position: absolute;
         top: 8px;
     }
+}    
+
+.profileDetails {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #3A3B6C;
+    border-radius: 4px;
+}
+
+.form-group:after {
+    clear: both;
 }

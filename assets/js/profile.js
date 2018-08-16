@@ -5,18 +5,16 @@
 
 
 function addUserProfileAttributes(userProfileDetails2) {
+    console.log("userProfileDetails2: ", userProfileDetails2)
     var attributeNames = [];
     for (var i=0;i < userProfileDetails2.length; i++) {
         attributeNames.push(userProfileDetails2[i].Name)
     }
 
     console.log("userProfileDetails2[attributeNames.indexOf(\"preferred_username\")]: ", userProfileDetails2[attributeNames.indexOf("preferred_username")])
-    if (attributeNames.indexOf("preferred_username")) {
-        $("#preferred_username").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
-    } else {
-        $("#preferred_username").text(userProfileDetails["cognito:username"]);
-    }
-    $("#name").text(userProfileDetails2[attributeNames.indexOf("name")].Value);
+    $("#preferred_username").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
+    $("#profileName").text(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value + ' ');
+    $("#name").val(userProfileDetails2[attributeNames.indexOf("given_name")].Value + ' ' + userProfileDetails2[attributeNames.indexOf("family_name")].Value);
     $("#profileEmail").val(userProfileDetails2[attributeNames.indexOf("email")].Value);
     return userProfileDetails;
 }
