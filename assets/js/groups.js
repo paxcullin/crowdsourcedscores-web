@@ -103,15 +103,22 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
         })
         .then(function(joinGroupResult) {
 
+            $this.button('reset');
+
             console.log("result: ", joinGroupResult);
             
             //Reload Group Members after successful addition
-            var groupMembers = {groupMembers: joinGroupResult.updatedUserList};
-            var html = templateScript(groupMembers);
-            $('#group').html(html);
+            if (joinGroupResult.updatedUserList) {
+                var groupMembers = {groupMembers: joinGroupResult.updatedUserList};
+                var html = templateScript(groupMembers);
+                $('#group').html(html);
 
-            $this.button('reset');
-            $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + joinGroupResult.groupName + "</button>");
+                $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + joinGroupResult.groupName + "</button>");
+            } else {
+                $('#group').html("");
+                $("#joinGroupButtonDiv").append("<br><span class=\"errorText\">" + joinGroupResult + "</span>");
+                
+            }
             
         })
 });
