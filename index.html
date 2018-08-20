@@ -135,8 +135,6 @@
             var now = new Date();
             var startDateTimeDate = Date.parse(startDateTime);
             var cutoff = startDateTimeDate - 3600000;
-            console.log("now < cutoff: ", now < cutoff)
-            console.log("options.fn(this): ", options.fn(this))
             if (now < cutoff) {
                 return options.fn(this);
             } else {
@@ -149,9 +147,9 @@
     <script id="games-template" type="text/x-handlebars-template">
         <div class="container">
             <div class="row">
-            {{#grouped_each 3 games}}
+            {{#grouped_each 2 games}}
                 {{#each this}}
-                <div class="col-sm-3 col-xs-12" id="container-{{{gameId}}}">
+                <div class="col-sm-4 col-xs-12" id="container-{{{gameId}}}">
                     <div class="card prediction" style="margin-bottom:10px;min-width: 293px;" data-game-id="{{{gameId}}}"
                         data-game-week="{{{gameWeek}}}"
                         data-game-year="{{{year}}}"
@@ -183,11 +181,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
+                                        <tr class="predictionRow">
                                             <td><i class="fa fa-plane" aria-hidden="true"></i> {{awayTeam.code}}</td>
                                             <td class="away-team-prediction {{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond prediction.awayTeam.score '>' prediction.homeTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{awayTeam.code}}}-prediction">
                                                 {{#unless results}}
-                                                    <input type="number" min="0" max="50" class="form-control" placeholder="##"
+                                                    <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
                                                     value="{{prediction.awayTeam.score}}">
                                                 {{/unless}}
                                                 {{#if results}}
@@ -211,11 +209,11 @@
                                             <td></td>
                                             <td>{{results.awayTeam.score}}</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="predictionRow">
                                             <td><i class="fa fa-home" aria-hidden="true"></i> {{homeTeam.code}}</td>
                                             <td class="home-team-prediction{{#if results}}{{#ifCond results.homeTeam.score '>' results.awayTeam.score}}{{#ifCond prediction.homeTeam.score '>' prediction.awayTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{homeTeam.code}}}-prediction">
                                                 {{#unless results}}
-                                                    <input type="number" min="0" max="50" class="form-control" placeholder="##"
+                                                    <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
                                                     value="{{prediction.homeTeam.score}}">
                                                 {{/unless}}
                                                 {{#if results}}
@@ -256,7 +254,7 @@
                                             </td>
                                             <td>{{results.homeTeam.score}}</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="predictionRow">
                                             <td>Total</td>
                                             <td{{#if results}}
                                                 {{#ifCond prediction.total '>' odds.total}}
@@ -288,7 +286,7 @@
                                                     {{/unless}}
                                                  style="font-weight:bold">{{#ifCond odds.total '!=' ""}}{{#ifCond crowd.total '>' odds.total}}Over{{/ifCond}}{{#ifCond crowd.total '<' odds.total}}Under{{/ifCond}}{{/ifCond}}</span>{{/unless}}{{#if results}}{{results.total}}{{/if}}</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="predictionRow">
                                             <td>Spread</td>
                                             <td{{#if results}}{{#ifCond prediction.results.spread '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
                                             <td{{#if results}}{{#ifCond crowd.spread '>' odds.spread}}{{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.spread '>' crowd.spread}}{{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
@@ -347,16 +345,13 @@
 
         var view;
             function buildChart(leaderboardData) {
-                console.log("leaderboardData: ", leaderboardData)
                 if (!view) { view = "weekly";}
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
-                console.log("leaderboardData: ",leaderboardData);
                 var data = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
                     data = google.visualization.arrayToDataTable(overallResults.results);
-                    console.log("overallResults: ", overallResults);
                 }
                 var options = {
                     weekly: {
@@ -416,7 +411,6 @@
                 })
                 .then(function (data) {
                     //data.year = 2017;
-                    console.log("gameWeek data: ", data);
                     return callback(data);
                 })
                 .catch(function(err) {
@@ -438,7 +432,6 @@
 
         // setting user weekly results
         var getWeeklyResults = function(data) {
-            console.log("weeklyResultsData: ", data);
             var myStraightUpResults = 0;
             var mySpreadResults = 0;
             var myTotalResults = 0;
@@ -727,8 +720,18 @@
 
             if (cognitoUser) {
                 showLogoutButton();
-                console.log("userAttributes: ", userAttributes)
-                $('#profileName').prepend("<span class=\"profileName\">" + userAttributes.preferred_username + "</span>");
+                if (id_token) {
+                    console.log("userAttributes: ", id_token.payload)
+                    $('#profileName').prepend("<span class=\"profileName\">" + id_token.payload.preferred_username + "</span>");
+                } else {
+                    cognitoUser.getSession(function(err, session) {
+                        cognitoUser.getUserAttributes(function(err, attributes) {
+                            if (err) {console.log("err: ", err);}
+                            //if (attributes) {console.log("attributes: ", attributes);}
+                            $('#profileName').prepend("<span class=\"profileName\">" + attributes[5].Value + "</span>");
+                        })
+                    })
+                }
             } else {
                 showLoginButton();
             }
@@ -750,7 +753,6 @@
 
             setTimeout(function () {
                 getGameWeek(function (data) {
-                    console.log("data: ", data);
                     if (data) {
                         week = data.week;
                         year = parseInt(document.getElementById('seasonSelector').value);
@@ -924,6 +926,47 @@
             $('#btn-logout').click(function() {
                 logout()
             });
+
+            function toggleCrowdPassword () {
+                console.log("checkbox checked: ", $(this).is(':checked'));
+                $("#crowdPasswordDiv").toggleClass("hidden");
+            }
+
+            function createCrowd() {
+                var public = true;
+                if ($("#crowdPublic").is(":checked")) {
+                    public = false;
+                }
+                var crowdParams = "{\"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"nfl\", \"year\": 2018 }";
+                console.log("crowdParams: ", crowdParams)
+                if ($("crowdPassword").val() !== null) {
+                    crowdParams.crowdPassword = $("crowdPassword").val()
+                }
+                var createCrowdOptions = {
+                    method: "POST",
+                    headers: {
+                        Authorization: token,
+                        'Content-type': 'application/json'
+                    },
+                    body: crowdParams
+                }
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/create", createCrowdOptions)
+                .then(function(response) {
+                    return response.json();
+                })
+                .catch(function(reject) {
+                    console.log("reject: ", reject);
+                })
+                .then(function(createCrowdJSON) {
+                    console.log(JSON.stringify(createCrowdJSON))
+                    setTimeout($("#createCrowdResults").text(createCrowdJSON.message + '!'), 2000);
+                    return createCrowdJSON;
+                })
+                // .then(function(createCrowdJSON) {
+
+                //     //window.location = '/group.html?groupId=' + createCrowdJSON.crowdName + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;
+                // })
+            }
         </script>
 
     </head>
@@ -941,7 +984,7 @@
 
     <!-- end navbar -->
     <!--login modal-->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -953,32 +996,28 @@
             <div class="modal-body">
                     <div class="row">
                       <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                        <!-- Nav tabs -->
+                        <!-- Nav tabs --
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
                             <li><a href="#Registration" data-toggle="tab">Registration</a></li>
                         </ul>
-                        <!-- Tab panes -->
+                        <!-- Tab panes --
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
                                 <form role="form" class="form-horizontal">
                                     <div class="form-group">
                                         <fieldset>
-                                            <!--<legend>Sign Up for PCSM</legend>-->
-                                            <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                                            <br>
-                                            <br>-->
                                             E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
                                             <br>
                                             <br>
                                             Password: <input type="password" id="password" placeholder="Enter password">
                                             <br>
-                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
+                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>--
                                             <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
                                             <!--<div style="width: 90%;">
                                                 <button id="loginUser">Log In</button>
-                                            </div>-->
+                                            </div>--
                                             <ul id="loginUserResults"></ul>
                                             <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
                                         </fieldset>
@@ -1056,188 +1095,233 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     
     <!--close login modal-->
+    <!--create crowd modal-->
+    <div class="modal fade" id="crowdModal" tabindex="-1" role="dialog" aria-labelledby="crowdModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="crowdModalLabel">Create a Crowd</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12" id="createCrowdColumn">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <fieldset>
+                                        <!--<legend>Sign Up for PCSM</legend>-->
+                                        <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                                        <br>
+                                        <br>-->
+                                        <label for="crowdName">Crowd Name:</label> <input class="form-control" type="text" id="crowdName" name="crowdName" placeholder="Your Crowd Name">
+                                        <br>
+                                        <br>
+                                        <label for="crowdPublic">Password Required?</label> <input class="form-control" type="checkbox" id="crowdPublic" name="crowdPublic" onchange="toggleCrowdPassword()">
+                                        <div id="crowdPasswordDiv" class="hidden">
+                                            <label for="crowdPassword">Crowd Password</label>
+                                            <input type="text" name="crowdPassword" id="crowdPassword" class="form-control"/>
+                                        </div>
+                                        <span id="createCrowdResults"></span>
+                                    </fieldset>
+                                </div>
+                            </form>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="createCrowdButton" onclick="createCrowd()">Create!</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--close login modal-->
 
     <div class="wrapper">
         <!--<div class="header">-->
 
         <!--</div>-->
         <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
-        <div class="main">
-            <div class="container">
-                <div class="row">
-                    <div class="navbar navbar-default navbar-fixed-top">
-                        <div class="container">
-                            <div class="header-icon"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowdsourced Scores"></div>
-                            <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-xs">Crowdsourced Scores</span><span class="visible-xs">CS Scores</span></a>
-                            <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                            </div>
-                            <div id="navbar-main" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
-                                <li><a href="http://blog.crowdsourcedscores.com/2017-leaderboards/" target="leaderboard">Leaderboards</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="podcasts"><i class="fa fa-headphones" aria-hidden="true"></i> Podcast<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li style="text-align: center">
-                                            <a target="_blank" href="https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/podcast-lrg.svg) no-repeat;width:133px;height:34px;background-size:contain;"><span style="height: 34px; width:133px; padding: 16px 0"></span></a>
-                                        </li>
-                                        <li style="text-align: center">
-                                            <a href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/stitcher-banner-88x31.jpg" width="88" height="31" alt="Listen to Stitcher"></a>
-                                        </li>
-                                        <li style="text-align: center">
-                                            <a target="_blank" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li style="text-align: center"><button type="button" class="btn btn-default"><a href="/profile.html">Profile</a></li>
-                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            </div>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="header-icon"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowdsourced Scores"></div>
+                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-xs">Crowdsourced Scores</span><span class="visible-xs">CS Scores</span></a>
+                        <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         </div>
-                    </div>
-                </div>
-                <div class="row topRow">
-                    <div class="col-xs-7 col-sm-10">
-                        <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>-->
-                        
-                        <div id="loginButtons"></div>
-
-
-                        <!-- fieldset for Cognito -->
-                        <!--<fieldset>
-                            <legend>Sign Up for PCSM</legend>
-                            User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                            <br>
-                            <br>
-                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-                            <br>
-                            <br>
-                            Password: <input type="password" id="password" placeholder="Enter password">
-                            <br>
-                            <br>
-                            <div style="width:500px;">
-                                <button id="loginUser">Log In</button>
-                            </div>
-                            <ul id="loginUserResults"></ul>
-                        </fieldset>-->
-
-                        <select class="dropdown" id="seasonSelector">
-                            <option value="2018" selected>2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                        </select>
-                        <h4>Select Week</h4>
-                    </div>
-                    <div class="col-xs-5 col-sm-2">
-                        <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @sourcedscores</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
-                        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcrowdsourcedscores&width=20px&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId=220211628373013" width="160px" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 weekSelector">
-
-                        <ul id="weekSelector" class="pagination pagination-info">
-                            <li><a href="javascript:void(0);" data-week="1">1</a></li>
-                            <li><a href="javascript:void(0);" data-week="2">2</a></li>
-                            <li><a href="javascript:void(0);" data-week="3">3</a></li>
-                            <li><a href="javascript:void(0);" data-week="4">4</a></li>
-                            <li><a href="javascript:void(0);" data-week="5">5</a></li>
-                            <li><a href="javascript:void(0);" data-week="6">6</a></li>
-                            <li><a href="javascript:void(0);" data-week="7">7</a></li>
-                            <li><a href="javascript:void(0);" data-week="8">8</a></li>
-                            <li><a href="javascript:void(0);" data-week="9">9</a></li>
-                            <li><a href="javascript:void(0);" data-week="10">10</a></li>
-                            <li><a href="javascript:void(0);" data-week="11">11</a></li>
-                            <li><a href="javascript:void(0);" data-week="12">12</a></li>
-                            <li><a href="javascript:void(0);" data-week="13">13</a></li>
-                            <li><a href="javascript:void(0);" data-week="14">14</a></li>
-                            <li><a href="javascript:void(0);" data-week="15">15</a></li>
-                            <li><a href="javascript:void(0);" data-week="16">16</a></li>
-                            <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                            <li><a href="javascript:void(0);" data-week="18">WC</a></li>
-                            <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
-                            <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                            <li><a href="javascript:void(0);" data-week="21">SB</a></li>
-                            <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
+                        <div id="navbar-main" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
+                            <li><a href="http://blog.crowdsourcedscores.com/2017-leaderboards/" target="leaderboard">Leaderboards</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="podcasts"><i class="fa fa-headphones" aria-hidden="true"></i> Podcast<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li style="text-align: center">
+                                        <a target="_blank" href="https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/podcast-lrg.svg) no-repeat;width:133px;height:34px;background-size:contain;"><span style="height: 34px; width:133px; padding: 16px 0"></span></a>
+                                    </li>
+                                    <li style="text-align: center">
+                                        <a href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/stitcher-banner-88x31.jpg" width="88" height="31" alt="Listen to Stitcher"></a>
+                                    </li>
+                                    <li style="text-align: center">
+                                        <a target="_blank" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> Profile</a></li>
+                                    <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </div>
-                </div>
-                <div id="chartContainer" class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div id="weeklyChart"></div>
-                        </div>
-                    </div>
-
-                    <div class="row" id="switchChartButtons">
-                        <div class="col-xs-6">
-                            <button id="weeklyChartButton">Weekly Results</button>
-                        </div>
-                        <div class="col-xs-6">
-                            <button id="overallChartButton">Overall Accuracy</button>
-                        </div>
-                    </div>
-                    <div class="row" id="feedbackDiv">
-                        <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
-                        <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div>
-                        <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Weekly Wisdom Newsletter</div>
-                        <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
-                    </div>
-                    <div class="row" id="newsletter-form-div">
-                        <div class="col-xs-12">
-                            <!-- Begin MailChimp Signup Form -->
-                            <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                            <style type="text/css">
-                                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
-                                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                                We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                            </style>
-                            <div id="mc_embed_signup">
-                            <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                <div id="mc_embed_signup_scroll">
-                                <h2>Get Weekly Reminders + a Bonus!</h2>
-                                <p>Get the Weekly Crowd Performance Report throughout the postseason, including our weekly winners.</p>
-                                <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
-                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                            <div class="mc-field-group">
-                                <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                            </label>
-                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                            </div>
-                            <div class="mc-field-group">
-                                <label for="mce-FNAME">First Name (optional) </label>
-                                <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                            </div>
-                            <div class="mc-field-group">
-                                <label for="mce-LNAME">Last Name (optional) </label>
-                                <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                            </div>
-                                <div id="mce-responses" class="clear">
-                                    <div class="response" id="mce-error-response" style="display:none"></div>
-                                    <div class="response" id="mce-success-response" style="display:none"></div>
-                                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
-                                <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                                </div>
-                            </form>
-                            </div>
-                            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-                            <!--End mc_embed_signup-->
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row topRow">
+                <div class="col-xs-7 col-sm-10">
+                    <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>-->
+                    
+                    <div id="loginButtons"></div>
 
-                <div id="resultsContainer">
+
+                    <!-- fieldset for Cognito -->
+                    <!--<fieldset>
+                        <legend>Sign Up for PCSM</legend>
+                        User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                        <br>
+                        <br>
+                        E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                        <br>
+                        <br>
+                        Password: <input type="password" id="password" placeholder="Enter password">
+                        <br>
+                        <br>
+                        <div style="width:500px;">
+                            <button id="loginUser">Log In</button>
+                        </div>
+                        <ul id="loginUserResults"></ul>
+                    </fieldset>-->
+
+                    <select class="dropdown" id="seasonSelector">
+                        <option value="2018" selected>2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                    </select>
+                    <h4>Select Week</h4>
+                </div>
+                <div class="col-xs-5 col-sm-2">
+                    <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @sourcedscores</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcrowdsourcedscores&width=20px&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId=220211628373013" width="160px" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 weekSelector">
+
+                    <ul id="weekSelector" class="pagination pagination-info">
+                        <li><a href="javascript:void(0);" data-week="1">1</a></li>
+                        <li><a href="javascript:void(0);" data-week="2">2</a></li>
+                        <li><a href="javascript:void(0);" data-week="3">3</a></li>
+                        <li><a href="javascript:void(0);" data-week="4">4</a></li>
+                        <li><a href="javascript:void(0);" data-week="5">5</a></li>
+                        <li><a href="javascript:void(0);" data-week="6">6</a></li>
+                        <li><a href="javascript:void(0);" data-week="7">7</a></li>
+                        <li><a href="javascript:void(0);" data-week="8">8</a></li>
+                        <li><a href="javascript:void(0);" data-week="9">9</a></li>
+                        <li><a href="javascript:void(0);" data-week="10">10</a></li>
+                        <li><a href="javascript:void(0);" data-week="11">11</a></li>
+                        <li><a href="javascript:void(0);" data-week="12">12</a></li>
+                        <li><a href="javascript:void(0);" data-week="13">13</a></li>
+                        <li><a href="javascript:void(0);" data-week="14">14</a></li>
+                        <li><a href="javascript:void(0);" data-week="15">15</a></li>
+                        <li><a href="javascript:void(0);" data-week="16">16</a></li>
+                        <li><a href="javascript:void(0);" data-week="17">17</a></li>
+                        <li><a href="javascript:void(0);" data-week="18">WC</a></li>
+                        <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
+                        <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
+                        <li><a href="javascript:void(0);" data-week="21">SB</a></li>
+                        <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="chartContainer" class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="weeklyChart"></div>
+                    </div>
+                </div>
+
+                <div class="row" id="switchChartButtons">
+                    <div class="col-xs-6">
+                        <button id="weeklyChartButton">Weekly Results</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="overallChartButton">Overall Accuracy</button>
+                    </div>
+                </div>
+                <div class="row" id="feedbackDiv">
+                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
+                    <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div>
+                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonu$!</div>
+                    <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
+                </div>
+                <div class="row" id="newsletter-form-div">
+                    <div class="col-xs-12">
+                        <!-- Begin MailChimp Signup Form -->
+                        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                        <style type="text/css">
+                            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
+                            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                        </style>
+                        <div id="mc_embed_signup">
+                        <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                            <h2>Get Weekly Reminders + a Bonus!</h2>
+                            <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
+                            <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
+                            <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
+                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                        </label>
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-FNAME">First Name (optional) </label>
+                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-LNAME">Last Name (optional) </label>
+                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                        </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
+                            <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                            </div>
+                        </form>
+                        </div>
+                        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                        <!--End mc_embed_signup-->
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultsContainer">
 
                 <div class="row" id="myResultsRow">
                     <div class="col-xs-3">
@@ -1268,11 +1352,8 @@
                     </div>
                 </div>
             </div>
-
-
-
             <div class="row">
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-sm-8">
                     <div id="games-loading-icon">
                         <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>
@@ -1280,9 +1361,10 @@
 
                     <div id="games"></div>
                 </div>
-                <div class="col-xs-12 col-sm-3" id="competitionDiv">
+                <div class="col-xs-12 col-sm-4" id="competitionDiv">
                         <div id="allGroupsHeader"><h5>Group vs. Group</h5></div>
                         <div id="allGroups"></div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crowdModal" id="createCrowd">Create a Crowd</button>
                 </div>
             </div>
             <div class="row">
@@ -1296,7 +1378,6 @@
 
 <script>
     var cognitoUser = userPool.getCurrentUser();
-    console.log("cognitoUser: ", cognitoUser)
     var attributeList = [];
 
     var dataEmail = {
@@ -1371,63 +1452,63 @@
 
     // Commenting out and will remove once login flow is confirmed
 
-    document.getElementById('signUpUser').addEventListener('click', function() {
-        console.log('clicked');
-        var attributeList = [];
+    // document.getElementById('signUpUser').addEventListener('click', function() {
+    //     console.log('clicked');
+    //     var attributeList = [];
         
-        var dataEmail = {
-                Name : 'email',
-                Value : $('#newEmail').val()
-            };
+    //     var dataEmail = {
+    //             Name : 'email',
+    //             Value : $('#newEmail').val()
+    //         };
 
-        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-        attributeList.push(attributeEmail);
+    //     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+    //     attributeList.push(attributeEmail);
         
-        var dataFirst = {
-                Name : 'given_name',
-                Value : $('#firstName').val()
-            };
+    //     var dataFirst = {
+    //             Name : 'given_name',
+    //             Value : $('#firstName').val()
+    //         };
 
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
-        attributeList.push(dataFirst);
+    //     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
+    //     attributeList.push(dataFirst);
 
-        var dataLast = {
-                Name : 'family_name',
-                Value : $('#lastName').val()
-            };
+    //     var dataLast = {
+    //             Name : 'family_name',
+    //             Value : $('#lastName').val()
+    //         };
 
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
-        attributeList.push(dataLast);
+    //     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
+    //     attributeList.push(dataLast);
 
-        // var dataUsername = {
-        //         Name : 'username',
-        //         Value : document.getElementById('newUsername').value()
-        //     };
+    //     // var dataUsername = {
+    //     //         Name : 'username',
+    //     //         Value : document.getElementById('newUsername').value()
+    //     //     };
 
-        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
-        // attributeList.push(dataUsername);
+    //     // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+    //     // attributeList.push(dataUsername);
 
-        // var dataPassword = {
-        //         Name : 'password',
-        //         Value : document.getElementById('newPassword').value()
-        //     };
+    //     // var dataPassword = {
+    //     //         Name : 'password',
+    //     //         Value : document.getElementById('newPassword').value()
+    //     //     };
 
-        // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataPassword);
-        // attributeList.push(dataPassword);
+    //     // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataPassword);
+    //     // attributeList.push(dataPassword);
 
-        var cognitoUser;
+    //     var cognitoUser;
 
-        userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
-            if (err) {
-                alert(err);
-                return;
-            }
-            cognitoUser = result.user;
+    //     userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
+    //         if (err) {
+    //             alert(err);
+    //             return;
+    //         }
+    //         cognitoUser = result.user;
 
-            console.log('user name is ' + cognitoUser.getUsername());
-            showConfirmUI(cognitoUser);
-        });
-    });
+    //         console.log('user name is ' + cognitoUser.getUsername());
+    //         showConfirmUI(cognitoUser);
+    //     });
+    // });
 
     function showConfirmUI(cognitoUser) {
         $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")

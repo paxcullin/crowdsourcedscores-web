@@ -293,6 +293,17 @@ color: #fff;
 }
 /* End Table CSS*/
 
+/* Index CSS */
+
+.table>tbody>.predictionRow>td {
+    vertical-align: middle;
+}
+
+.predictionInput {
+    text-align: center;
+    margin-bottom: 0;
+}
+
 /* Group CSS */
 
 .groupDiv {

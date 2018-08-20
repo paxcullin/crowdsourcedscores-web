@@ -58,8 +58,7 @@ var extendedProfile = function() {
         })
         .then(function(extProfileResponseJSON) {
             //check for previous results
-            if (extProfileResponseJSON) {
-                if (extProfileResponseJSON.resultsNFL) {
+                if (extProfileResponseJSON && extProfileResponseJSON.resultsNFL) {
                 
                     var userResults = extProfileResponseJSON.resultsNFL.weeklyResults;
                     var resultsHTML = "";
@@ -88,8 +87,11 @@ var extendedProfile = function() {
                 }
 
                 //build out groups table in the same way as the Index page
-                buildGroupsTable(extProfileResponseJSON.groups);
-            }
+                if (extProfileResponseJSON && extProfileResponseJSON.groups) {
+                    buildGroupsTable(extProfileResponseJSON.groups);
+                } else {
+                    $("#allGroups").html("<a href=\"group.html\">Create or join a crowd today to compete against other Crowd members!</a>");
+                }
 
         })
     })

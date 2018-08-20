@@ -1,12 +1,14 @@
 function GetURLParameter(sParam) {
     //var sPageURL = window.location.hash.substring(1);
     var sPageURL = window.location.href;
-    var sURLQueryString = sPageURL.split('?')[1];
-    var sURLVariables = sURLQueryString.split('&');
-    console.log("sURLVariables: ", sURLVariables)
+    var sURLVariables = sPageURL.split('?');
     for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
         if (sParameterName[0] == sParam) {
+            if (sParameterName[1].indexOf("#") > -1) {
+                var code = sParameterName[1].split('#');
+                return code[0];
+            }
             return sParameterName[1];
         }
     }
@@ -48,6 +50,14 @@ function showLogoutButton() {
 // GET cognitoUser Information at the top
 //var tokenFromURL = processToken();
 // Pool ID and Client ID sourced from AWS
+
+var id_token = "";
+var cognitoData = {
+   UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+   ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
+};
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
+
 
 
 //GET CURRENT USER FROM LOCAL STORAGE
@@ -104,15 +114,6 @@ if (!cognitoUser && GetURLParameter('code')) {
 }
 
 
-function showLoginButton() {
-    //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')\">Login/Sign Up</button>");
-    $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login</button>");
-}
-
-function showLogoutButton() {
-
-    $("#loginButtons").html("<button id=\"logoutButton\" onclick=\"console.log('logout clicked');logout()\" class=\"btn btn-primary\">Log Out</button>");
-}
 
    var id_token = "";
 
@@ -139,7 +140,6 @@ function showLogoutButton() {
                         //window.location = '/';
                         console.log("getSession err = ", JSON.stringify(err))
                     }
-                    console.log("session = ", session)
                     token = session.getIdToken().getJwtToken();
                     id_token = token;
                     callback(token);
@@ -148,6 +148,8 @@ function showLogoutButton() {
                 return callback(false);
             }
         } else {
+
+            console.log("id_token exists: ", id_token);
             callback(id_token);
         }
     };
