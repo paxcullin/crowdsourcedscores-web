@@ -272,6 +272,21 @@
                     return options.inverse(this);
             }
         });
+
+
+        Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
+
+            var now = new Date();
+            var startDateTimeDate = Date.parse(startDateTime);
+            var cutoff = startDateTimeDate - 3600000;
+            console.log("now < cutoff: ", now < cutoff)
+            console.log("options.fn(this): ", options.fn(this))
+            if (now < cutoff) {
+                return options.fn(this);
+            } else {
+                return options.inverse(this);
+            }
+        });
             </script>
 
     
@@ -453,7 +468,9 @@
                                     
                                     {{#unless results}}
                                     <div>
+                                        {{#dateCheck startDateTime}}
                                         <button class="prediction-btn btn btn-info">Predict</button>
+                                        {{/dateCheck}}
                                     </div>
                                     {{/unless}}
                                 </div>
@@ -659,9 +676,9 @@
                             $(this).text('Saving...');
                             var $prediction = $(this).parents('.prediction');
                             var prediction = {
-                                gameId: $prediction.attr('data-game-id'),
-                                gameWeek: $prediction.attr('data-game-week'),
-                                year: $prediction.attr('data-game-year'),
+                                gameId: parseInt($prediction.attr('data-game-id')),
+                                gameWeek: parseInt($prediction.attr('data-game-week')),
+                                year: parseInt($prediction.attr('data-game-year')),
                                 awayTeam: {
                                     code: $prediction.attr('data-away-code'),
                                     fullName: $prediction.attr('data-away-name'),
@@ -752,7 +769,7 @@
                         return data;
                     })
                     .then(function(data) {
-                        if (data.length > 0) {
+                        if (data && data.length > 0) {
                             drawChart2(data[0].year, data[0].gameWeek, "weekly");
                         }
                     });
@@ -854,6 +871,8 @@
 
             if (cognitoUser) {
                 showLogoutButton();
+                console.log("userAttributes: ", userAttributes)
+                $('#profileName').prepend("<span class=\"profileName\">" + userAttributes.preferred_username + "</span>");
             } else {
                 showLoginButton();
             }
@@ -937,7 +956,6 @@
             });
 
 
-            if (cognitoUser) {document.getElementById('profileName').innerHTML = "<a href=\"/profile.html\">" + userAttributes.preferred_username + "</a>"}
 
             $("#chartExpand").click(function () {
 
@@ -957,7 +975,6 @@
             });
 
 
-            var btn_logout = document.getElementById('btn-logout');
 
             var allGroups = getAllGroups();
 
@@ -1046,6 +1063,10 @@
             $("#logoutButton").click(function() {
                 console.log("logout clicked")
                 logout();
+            });
+
+            $('#btn-logout').click(function() {
+                logout()
             });
         </script>
 
@@ -1219,6 +1240,7 @@
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+                                        <li style="text-align: center"><button type="button" class="btn btn-default"><a href="/profile.html">Profile</a></li>
                                         <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
                                     </ul>
                                 </li>

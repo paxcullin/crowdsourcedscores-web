@@ -5,16 +5,16 @@
 
 
 function addUserProfileAttributes(userProfileDetails2) {
-    console.log("userProfileDetails2: ", userProfileDetails2)
     var attributeNames = [];
     for (var i=0;i < userProfileDetails2.length; i++) {
         attributeNames.push(userProfileDetails2[i].Name)
     }
 
-    console.log("userProfileDetails2[attributeNames.indexOf(\"preferred_username\")]: ", userProfileDetails2[attributeNames.indexOf("preferred_username")])
-    $("#preferred_username").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
+    if (userProfileDetails2[attributeNames.indexOf("preferred_username")] && userProfileDetails2[attributeNames.indexOf("preferred_username")] > -1) {
+        $("#profileUsername").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
+    }
     $("#profileName").text(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value + ' ');
-    $("#name").val(userProfileDetails2[attributeNames.indexOf("given_name")].Value + ' ' + userProfileDetails2[attributeNames.indexOf("family_name")].Value);
+    $("#name").val(userProfileDetails2[attributeNames.indexOf("name")].Value);
     $("#profileEmail").val(userProfileDetails2[attributeNames.indexOf("email")].Value);
     return userProfileDetails;
 }
@@ -37,9 +37,59 @@ var userProfileInfo = function () {
             if (result) { addUserProfileAttributes(result);}
         });
         // console.log("userProfileDetails: ", userProfileDetails)
-
-    });
+        return idToken;
+    })
 };
+
+
+var extendedProfile = function() {
+    useToken(function(token) {
+        var getOptions = {
+            method: "GET",
+            headers: {
+                "Authorization": token
+            }
+        }
+        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile", getOptions)
+        .then(function(extProfileResponse) {
+            return extProfileResponse.json()
+        })
+        .then(function(extProfileResponseJSON) {
+            //check for previous results
+            if (extProfileResponseJSON) {
+                if (extProfileResponseJSON.resultsNFL) {
+                
+                    var userResults = extProfileResponseJSON.resultsNFL.weeklyResults;
+                    var resultsHTML = "";
+                    console.log("userResults: ", userResults)
+                    //var resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"spread\"><span class=\"full\">Spread</span></th><th class=\"total\"><span class=\"full\">Total</span></th><th class=\"totalPredictionScore\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
+                    var rank = 1;
+                    for (var i=0; i < userResults.length; i++) {
+                        resultsHTML = "";
+                        var weeklyResults = userResults[i];
+                        console.log("weeklyResults: ", weeklyResults)
+                        resultsHTML = "<td data-th=\"gameWeek\">" + weeklyResults.gameWeek + "</td>";
+                        resultsHTML = "<td data-th=\"winners\">" + weeklyResults.winners + "</td>";
+                        resultsHTML += "<td data-th=\"spread\">" + weeklyResults.spread + "</td>";
+                        resultsHTML += "<td data-th=\"total\">" + weeklyResults.total + "</td>";
+                        resultsHTML += "<td data-th=\"predictionScore\">" + weeklyResults.predictionScore + "</td>";
+                        resultsDivHTML += "<tr>" + resultsHTML + "</tr>";
+                        if (i === userResults.length - 1) {
+                    var resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"gameWeek\"><span class=\"full abbrev\">Week</span></th><th class=\"winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"spread\"><span class=\"full\">Spread</span></th><th class=\"total\"><span class=\"full\">Total</span></th><th class=\"totalPredictionScore\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
+                    resultsDivHTML += "</tbody></table>";
+                        }
+                        rank += 1;
+                    }
+                    $("#predictionDetails").html(resultsDivHTML);
+                }
+
+                //build out groups table in the same way as the Index page
+                buildGroupsTable(extProfileResponseJSON.groups);
+            }
+
+        })
+    })
+}
 
 function updateProfile () {
     
@@ -52,12 +102,19 @@ function updateProfile () {
         console.log("session = ", session)
         console.log("update button clicked")
         var attributeList = [];
-        var attribute = {
+        var usernameAttribute = {
             Name : 'preferred_username',
             Value : $("#preferred_username").val()
         };
-        var attribute = new AmazonCognitoIdentity.CognitoUserAttribute(attribute);
-        attributeList.push(attribute);
+        var usernameAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(usernameAttribute);
+        attributeList.push(usernameAttribute);
+
+        var emailAttribute = {
+            Name : 'email',
+            Value : $("#profileEmail").val()
+        };
+        var emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailAttribute);
+        attributeList.push(emailAttribute);
     
         
         console.log("attributeList: ", attributeList);

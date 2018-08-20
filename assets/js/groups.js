@@ -58,8 +58,8 @@ function getGroupInfo() {
             $("#groupTitle").text(groupInfoDetails.groupName);
             var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner + "</span><br>";
             $("#groupDetails").html(groupDetailsHTML);
-            if (groupInfoDetails.usernames && groupInfoDetails.usernames.length > 0) {
-                var groupMembers = {groupMembers: groupInfoDetails.usernames};
+            if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
+                var groupMembers = {groupMembers: groupInfoDetails.users};
                 var html = templateScript(groupMembers);
                 $('#group').html(html);
             }

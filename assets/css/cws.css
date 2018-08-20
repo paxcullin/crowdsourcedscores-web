@@ -333,3 +333,16 @@ color: #fff;
 .form-group:after {
     clear: both;
 }
+
+.extendedDetail {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #3A3B6C;
+    border-radius: 4px;
+}
+
+.extendedDetail div {
+    margin: 10px;
+}
