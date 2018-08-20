@@ -10,8 +10,10 @@ function addUserProfileAttributes(userProfileDetails2) {
         attributeNames.push(userProfileDetails2[i].Name)
     }
 
-    if (userProfileDetails2[attributeNames.indexOf("preferred_username")] && userProfileDetails2[attributeNames.indexOf("preferred_username")] > -1) {
+    if (userProfileDetails2[attributeNames.indexOf("preferred_username")]) {
         $("#profileUsername").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
+    } else {
+        $("#profileUsername").val(userProfileDetails2[attributeNames.indexOf("cognito:username")].Value);
     }
     $("#profileName").text(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value + ' ');
     $("#name").val(userProfileDetails2[attributeNames.indexOf("name")].Value);
@@ -81,6 +83,8 @@ var extendedProfile = function() {
                         rank += 1;
                     }
                     $("#predictionDetails").html(resultsDivHTML);
+                } else {
+                    $("#predictionDetails").html("<a href=\"/\">Make your predictions</a> and come back here to see your results!");
                 }
 
                 //build out groups table in the same way as the Index page
