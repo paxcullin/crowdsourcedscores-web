@@ -769,7 +769,6 @@
 </div>
 
 <script>
-    var cognitoUser = userPool.getCurrentUser();
     console.log("cognitoUser: ", cognitoUser)
     var attributeList = [];
 
@@ -903,12 +902,12 @@
         });
     };
 
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+    // function getUrlParameter(name) {
+    //     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    //     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    //     var results = regex.exec(location.search);
+    //     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    // };
 
     function showForgotPasswordUI() {
         $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
@@ -944,12 +943,12 @@
         //     });
     }
 
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+    // function getUrlParameter(name) {
+    //     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    //     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    //     var results = regex.exec(location.search);
+    //     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    // };
 
 </script>
 <!-- CWS Group Files -->

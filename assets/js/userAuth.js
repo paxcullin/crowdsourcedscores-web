@@ -63,7 +63,7 @@ var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
 
 //GET CURRENT USER FROM LOCAL STORAGE
 var cognitoUser = userPool.getCurrentUser();
-
+console.log("firstCognitoUser: ", cognitoUser)
 if (cognitoUser) {
     userData = {
         Username : cognitoUser.username,
@@ -91,34 +91,33 @@ if (!cognitoUser && GetURLParameter('code')) {
     })
     .then(function(tokenResponse) {
         console.log("tokenResponse: ", tokenResponse);
-        
-        var decodedToken = jwt_decode(tokenResponse.id_token);
-        userData = {
-            Username : decodedToken["cognito:username"],
-            Pool : userPool
+        if (tokenResponse.status === 200) {
+            var decodedToken = jwt_decode(tokenResponse.id_token);
+            userData = {
+                Username : decodedToken["cognito:username"],
+                Pool : userPool
+            }
+            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
+            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
+            
+            
+            //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
+            cognitoUser = userPool.getCurrentUser();
+            //check for expiration of token
+            // if (cognitoUser && decoded.exp < Date.now()) {
+            // }
+            return cognitoUser;
         }
-        cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
-        
-        
-        //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
-        cognitoUser = userPool.getCurrentUser();
-        console.log("second cognitoUser: ", cognitoUser)
-        showLogoutButton();
-        //check for expiration of token
-        // if (cognitoUser && decoded.exp < Date.now()) {
-        // }
-        return cognitoUser;
     })
     
 }
 
 
 
-   var id_token = "";
+   //var id_token = "";
 
     var cognitoData = {
         UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
