@@ -1,10 +1,16 @@
+function GetAllURLParameters(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
 
 
 var groupParams = {};
-    groupParams.groupId = GetURLParameter('groupId');
-    groupParams.sport = GetURLParameter('sport');
-    groupParams.year = GetURLParameter('year');
-
+    groupParams.groupId = GetAllURLParameters('groupId');
+    groupParams.sport = GetAllURLParameters('sport');
+    groupParams.year = GetAllURLParameters('year');
 
 // Set Handlebars parameters
 
@@ -73,7 +79,7 @@ function getGroupInfo() {
 // user clicks the Join Group Button - Call the Join Group API
 
 $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
-    
+    useToken(function(token) {
         var $this = $(this);
         $this.button('loading');
     
@@ -123,6 +129,7 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             }
             
         })
+    })
 });
 
 // user clicks the Join Group Button - Call the Join Group API
