@@ -23,24 +23,24 @@ function addUserProfileAttributes(userProfileDetails2) {
 
 var userProfileInfo = function () {
     var cognitoUser = userPool.getCurrentUser();
-    cognitoUser.getSession(function (err, session) {
-        if (err) {
-            //window.location = '/';
-            console.log("getSession err = ", JSON.stringify(err))
-        }
-        console.log("session = ", session)
-        idToken = session.getIdToken();
-        //console.log("idToken: ", idToken)
-        var userProfileDetails = idToken.payload;
-        // for (var d in userProfileDetails) {
-        //     $("#profileDetails").append("<strong>" + d + "</strong>: " + userProfileDetails[d] + "<br>")
-        // }
-        var userProfileDetails2 = cognitoUser.getUserAttributes(function(err, result){
-            if (result) { addUserProfileAttributes(result);}
-        });
-        // console.log("userProfileDetails: ", userProfileDetails)
-        return idToken;
-    })
+        cognitoUser.getSession(function (err, session) {
+            if (err) {
+                //window.location = '/';
+                console.log("getSession err = ", JSON.stringify(err))
+            }
+            console.log("session = ", session)
+            idToken = session.getIdToken();
+            //console.log("idToken: ", idToken)
+            var userProfileDetails = idToken.payload;
+            // for (var d in userProfileDetails) {
+            //     $("#profileDetails").append("<strong>" + d + "</strong>: " + userProfileDetails[d] + "<br>")
+            // }
+            var userProfileDetails2 = cognitoUser.getUserAttributes(function(err, result){
+                if (result) { addUserProfileAttributes(result);}
+            });
+            // console.log("userProfileDetails: ", userProfileDetails)
+            return idToken;
+        })
 };
 
 
@@ -59,7 +59,7 @@ var extendedProfile = function() {
         .then(function(extProfileResponseJSON) {
             //check for previous results
                 if (extProfileResponseJSON && extProfileResponseJSON.resultsNFL) {
-                
+
                     var userResults = extProfileResponseJSON.resultsNFL.weeklyResults;
                     var resultsHTML = "";
                     console.log("userResults: ", userResults)
@@ -98,7 +98,7 @@ var extendedProfile = function() {
 }
 
 function updateProfile () {
-    
+
     //console.log("useToken cognitoUser = ", cognitoUser);
     cognitoUser.getSession(function (err, session) {
         if (err) {
@@ -121,8 +121,8 @@ function updateProfile () {
         };
         var emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailAttribute);
         attributeList.push(emailAttribute);
-    
-        
+
+
         console.log("attributeList: ", attributeList);
         cognitoUser.updateAttributes(attributeList, function(err, result) {
             if (err) {

@@ -1,3 +1,5 @@
+
+
 var groupParams = {};
     groupParams.groupId = GetURLParameter('groupId');
     groupParams.sport = GetURLParameter('sport');
@@ -19,7 +21,7 @@ var getGroupURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/gr
 
 function getGroupInfo() {
     useToken(function(token) {
-        if (token !== null) {
+        if (token) {
             getGroupURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/" + groupParams.sport + "/" + groupParams.year + "/" + groupParams.groupId;
             getGroupOptions = {
                 method: "GET",

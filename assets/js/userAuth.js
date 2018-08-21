@@ -47,6 +47,7 @@ function showLogoutButton() {
 }
 
 
+
 // GET cognitoUser Information at the top
 //var tokenFromURL = processToken();
 // Pool ID and Client ID sourced from AWS
@@ -157,3 +158,16 @@ if (!cognitoUser && GetURLParameter('code')) {
 function get(url, options) {
     return fetch(url, options);
 }
+
+function logout () {
+    ga('send','event','login','logout');
+    var cognitoUser = userPool.getCurrentUser();
+    if (cognitoUser) {
+        cognitoUser.signOut();
+        //window.location = '/';
+    }
+    showLoginButton();
+    
+};
+$("#logoutButton").click(logout());
+$("#btn_logout").click(logout());
