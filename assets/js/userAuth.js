@@ -106,6 +106,8 @@ if (!cognitoUser && GetURLParameter('code')) {
         
         //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
         cognitoUser = userPool.getCurrentUser();
+        console.log("second cognitoUser: ", cognitoUser)
+        showLogoutButton();
         //check for expiration of token
         // if (cognitoUser && decoded.exp < Date.now()) {
         // }
