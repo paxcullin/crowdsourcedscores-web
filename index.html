@@ -139,6 +139,7 @@
                         data-home-name="{{{homeTeam.fullName}}}" data-home-short="{{{homeTeam.shortName}}}"
                         data-away-code="{{{awayTeam.code}}}"
                         data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
+                        {{#if prediction.awayTeam.score}} data-predicted="true" {{/if}}
                         style="display: inline-block;">
                         <div class="content">
                             <div class="tab-content text-center">
@@ -324,7 +325,6 @@
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
     <script>
-
         var view;
             function buildChart(leaderboardData) {
                 if (!view) { view = "weekly";}
@@ -494,9 +494,13 @@
                     return response.json();
                 })
                 .then(function (data) {
+                    userInformation.predictionsSubmitted = data.predictionsSubmitted;
+                    var totalGames = data.games.length;
+                    updateProgressBar(userInformation.predictionsSubmitted, totalGames);
                         $("#games-loading-icon").css("display","none")
+
                         formatGameTimes(data);
-                        var games = {games: data};
+                        var games = {games: data.games};
                         var template = $('#games-template').html();
                         var templateScript = Handlebars.compile(template);
                         var html = templateScript(games);
@@ -505,6 +509,7 @@
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
                             $(this).text('Saving...');
+                            var newPrediction = true;
                             var $prediction = $(this).parents('.prediction');
                             var prediction = {
                                 gameId: parseInt($prediction.attr('data-game-id')),
@@ -521,6 +526,10 @@
                                     shortName: $prediction.attr('data-home-short')
                                 }
                             };
+
+                            if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
+                                prediction.update = true;
+                            }
                             var btn = $(this);
                             var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
                             var messageElm = predictionElm.find(".prediction-message");
@@ -551,6 +560,10 @@
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
                                             $('.gameHeaderPredicted').append("<i class=\"fas fa-check-circle\"></i>")
+                                            console.log("prediction.update: ", prediction.update)
+                                            if (prediction.update === false) {
+                                                updateProgressBar(userInformation.predictionsSubmitted, totalGames)
+                                            }
                                             moveBoxes(prediction.gameId);
                                             return;
                                         case 400:
@@ -636,6 +649,7 @@
                                 btn.text('Predict');
                                 var messageHtml = statusMessage('success', response.message);
                                 messageElm.html(messageHtml)
+                                updateProgressBar(userInformation.predictionsSubmitted, totalGames)
                                 moveBoxes(prediction.gameId);
                             case "400":
                                 var errorObj = JSON.parse(response.responseText);
@@ -903,7 +917,7 @@
                     if ($("#crowdPublic").is(":checked")) {
                         public = false;
                     }
-                    var crowdParams = "{\"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"nfl\", \"year\": 2018 }";
+                    var crowdParams = "{\"userInfo\": { \"name\": \"" + userInformation.attributes.given_name + " " + userInformation.atrributes.family_name + ", \"preferred_username\": \"" + userInformation.attributes.preferred_username + "\"}, \"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"nfl\", \"year\": 2018 }";
                     console.log("crowdParams: ", crowdParams)
                     if ($("crowdPassword").val() !== null) {
                         crowdParams.crowdPassword = $("crowdPassword").val()
@@ -926,7 +940,7 @@
                     .then(function(createCrowdJSON) {
                         console.log(JSON.stringify(createCrowdJSON))
                         if (createCrowdJSON.succeeded === true) {
-                            setTimeout(function() {$("#createCrowdResults").text(createCrowdJSON.message + '!');window.location = '/group.html?groupId=' + createCrowdJSON.groupId + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;}, 2000);
+                            setTimeout(function() {$("#createCrowdResults").text(createCrowdJSON.message + '!');window.location = '/crowd.html?groupId=' + createCrowdJSON.groupId + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;}, 2000);
                         } else {
                             $("#createCrowdResults").text(createCrowdJSON.message)
                         }
@@ -1320,6 +1334,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
+                        <div class="cont" style="display:none">
+                            <progress id="progress-bar" min="1" max="100" value="0"></progress>
+                            <p><strong>Prediction Progress:</strong> <span class="percent"></span></p>
+                        </div>
                     <div id="games-loading-icon">
                         <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>

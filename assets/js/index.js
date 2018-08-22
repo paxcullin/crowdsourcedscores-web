@@ -8,7 +8,7 @@ function buildGroupsTable(allGroupsInformation) {
         var groupObject = allGroupsInformation[i];
         console.log("groupObject: ", groupObject)
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
-        groupHTML += "<td data-th=\"Group\"><a href=\"/group.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
+        groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
         groupHTML += "<td data-th=\"score\">" + groupObject.totalPredictionScore + "</td>";
         groupDivHTML += "<tr>" + groupHTML + "</tr>";
         if (i === allGroupsInformation.length - 1) {
@@ -50,3 +50,12 @@ function getAllGroups() {
         })
     })
 }
+
+// Index Page Progress Bar jQuery
+
+// Prediction Submitted
+function updateProgressBar(predictionNumber, totalGames) {
+    var progressValue = Math.round((predictionNumber / totalGames) * 100);
+    $('#progress-bar').val(Math.round(progressValue));  
+    $('.percent').html(progressValue + "% Complete");
+};// complete click

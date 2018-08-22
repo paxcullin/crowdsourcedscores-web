@@ -80,6 +80,8 @@ function getGroupInfo() {
 // user clicks the Join Group Button - Call the Join Group API
 
 $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
+    var $this = $(this);
+    $this.button('loading');
     console.log("groupInfoDetails: ", groupInfoObject)
     useToken(function(token) {
         var $this = $(this);
@@ -128,9 +130,12 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             
             //Reload Group Members after successful addition
             if (joinGroupResult.updatedUserList) {
-                var groupMembers = {groupMembers: joinGroupResult.updatedUserList};
-                var html = templateScript(groupMembers);
-                $('#group').html(html);
+                
+                $("#group").html(`<div id="games-loading-icon">
+                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+                </div>`);
+                setTimeout(getGroupInfo(), 1500);
 
                 $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\">Leave " + joinGroupResult.groupName + "</button>");
             } else {

@@ -304,6 +304,39 @@ color: #fff;
     margin-bottom: 0;
 }
 
+/* Index Progress Bar */
+
+
+  .cont{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .cont p {
+      text-align: center;
+  }
+  #progress-bar{
+    appearance:none;
+    width: 100%;
+    color: #3A3B6C;
+    height: 2px;
+    margin: 0 auto;
+  }
+  #progress-bar::-webkit-progress-value{ /* Changes line color */
+    background: #fff;
+    transition: all 0.4s ease-in-out;
+  }
+  #progress-bar::-webkit-progress-bar{ /* Changes background color */
+    background: #3A3B6C;
+  }
+  .border-change{
+    border-color:#fff;
+    transition: all 0.4s ease-in-out;
+  }
+
+/* End Index Progress Bar */
+
 /* Group CSS */
 
 .groupDiv {

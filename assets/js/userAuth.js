@@ -104,7 +104,6 @@ if (cognitoUser) {
         return token;
     });
     showLogoutButton();
-    console.log("id_token: ", id_token);
 }
 
 if (!cognitoUser && GetURLParameter('code')) {
