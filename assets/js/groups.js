@@ -24,7 +24,7 @@ var getGroupOptions = {
 }
 var getGroupURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/" + groupParams.sport + "/" + groupParams.year + "/" + groupParams.groupId + "/anon"
 
-
+var groupInfoObject = {};
 function getGroupInfo() {
     useToken(function(token) {
         if (token) {
@@ -71,6 +71,7 @@ function getGroupInfo() {
                 var html = templateScript(groupMembers);
                 $('#group').html(html);
             }
+            groupInfoObject = groupInfoDetails;
             return groupInfoDetails;
         })
     });
@@ -79,6 +80,7 @@ function getGroupInfo() {
 // user clicks the Join Group Button - Call the Join Group API
 
 $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
+    console.log("groupInfoDetails: ", groupInfoObject)
     useToken(function(token) {
         var $this = $(this);
         $this.button('loading');
@@ -98,6 +100,15 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             },
             body: "{\"groupPassword\": " + groupPassword + "}"
         };
+        if (groupInfoObject.public === true) {
+            joinGroupOptions = {
+                method: "POST",
+                headers: {
+                    Authorization: token,
+                    'Content-type': 'application/json'
+                }
+            };
+        }
 
         console.log("joinGroupOptions: ", joinGroupOptions)
 

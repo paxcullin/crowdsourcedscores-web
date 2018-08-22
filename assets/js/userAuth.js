@@ -1,3 +1,5 @@
+var userInformation = cognitoUser || {};
+
 function GetURLParameter(sParam) {
     //var sPageURL = window.location.hash.substring(1);
     var sPageURL = window.location.href;
@@ -39,6 +41,8 @@ function getQueryStringValue (key) {
 
 function showLoginButton() {
     $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "')\">Login/Sign Up</button>");
+    //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login/Signup</button>");
+            
 }
 
 function showLogoutButton() {
@@ -62,13 +66,45 @@ var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
 
 
 //GET CURRENT USER FROM LOCAL STORAGE
+function getUserAttributes () {
+    cognitoUser.getSession(function (err, session) {
+        if (err) {
+            //window.location = '/';
+            console.log("getSession err = ", JSON.stringify(err))
+            return;
+        }
+        cognitoUser.getUserAttributes(function(err, attributes) {
+            var attributesObject = {};
+            if (err) { console.log("user attributes error: ", err); return; }
+            for (var i=0; i < attributes.length; i++) {
+                attributesObject[attributes[i].Name] = attributes[i].Value;
+            }
+            userInformation.attributes = attributesObject;
+            $('#profileName').prepend("<span class=\"profileName\">" + userInformation.attributes.preferred_username + "</span>");
+        })
+    });
+}
+
 var cognitoUser = userPool.getCurrentUser();
-console.log("firstCognitoUser: ", cognitoUser)
 if (cognitoUser) {
+    userInformation.cognitoUser = cognitoUser;
     userData = {
         Username : cognitoUser.username,
         Pool : userPool
     };
+    id_token = cognitoUser.getSession(function (err, session) {
+        if (err) {
+            //window.location = '/';
+            console.log("getSession err = ", JSON.stringify(err))
+            return;
+        }
+        getUserAttributes();
+        token = session.getIdToken().getJwtToken();
+        id_token = token;
+        return token;
+    });
+    showLogoutButton();
+    console.log("id_token: ", id_token);
 }
 
 if (!cognitoUser && GetURLParameter('code')) {
@@ -85,34 +121,33 @@ if (!cognitoUser && GetURLParameter('code')) {
     var cognitoUser = get("https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/token", getTokensOptions)
     .then(function(response) {
         console.log("token response: ", response);
-        return response.json();
+        if (response.status === 200) {
+            return response.json();
+        }
     }).catch(function(reject) {
         console.log("token reject: ", reject);
     })
     .then(function(tokenResponse) {
         console.log("tokenResponse: ", tokenResponse);
-        if (tokenResponse.status === 200) {
-            var decodedToken = jwt_decode(tokenResponse.id_token);
-            userData = {
-                Username : decodedToken["cognito:username"],
-                Pool : userPool
-            }
-            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
-            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
-            
-            
-            //var localToken = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser');
-            cognitoUser = userPool.getCurrentUser();
-            //check for expiration of token
-            // if (cognitoUser && decoded.exp < Date.now()) {
-            // }
-            return cognitoUser;
+        var decodedToken = jwt_decode(tokenResponse.id_token);
+        userData = {
+            Username : decodedToken["cognito:username"],
+            Pool : userPool
         }
+        cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
+        
+        showLogoutButton();
+
+        userInformation.cognitoUser = cognitoUser;
+        getUserAttributes();
+        token = session.getIdToken().getJwtToken();
+        id_token = token;
+        return id_token;
     })
-    
 }
 
 
@@ -170,5 +205,7 @@ function logout () {
     showLoginButton();
     
 };
-$("#logoutButton").click(logout());
-$("#btn_logout").click(logout());
+// $("#logoutButton").click(logout());
+// $("#btn_logout").click(logout());
+
+console.log("userInformation: ", userInformation)

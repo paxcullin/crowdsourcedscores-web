@@ -702,18 +702,6 @@
 
             if (cognitoUser) {
                 showLogoutButton();
-                if (id_token) {
-                    console.log("userAttributes: ", id_token.payload)
-                    $('#profileName').prepend("<span class=\"profileName\">" + id_token.payload.preferred_username + "</span>");
-                } else {
-                    cognitoUser.getSession(function(err, session) {
-                        cognitoUser.getUserAttributes(function(err, attributes) {
-                            if (err) {console.log("err: ", err);}
-                            //if (attributes) {console.log("attributes: ", attributes);}
-                            $('#profileName').prepend("<span class=\"profileName\">" + attributes[5].Value + "</span>");
-                        })
-                    })
-                }
             } else {
                 showLoginButton();
             }
@@ -813,12 +801,7 @@
                 });
 
             });
-
-
-
             var allGroups = getAllGroups();
-
-
         });
         //console.log("dataWeek: ", dataWeek);
         google.load("visualization", "1", {packages:["corechart"]});
@@ -900,14 +883,14 @@
                 showLoginButton();
                 window.location = '/';
             };
-            $("#logoutButton").click(function() {
-                console.log("logout clicked")
-                logout();
-            });
+            // $("#logoutButton").click(function() {
+            //     console.log("logout clicked")
+            //     logout();
+            // });
 
-            $('#btn-logout').click(function() {
-                logout()
-            });
+            // $('#btn-logout').click(function() {
+            //     logout()
+            // });
 
             function toggleCrowdPassword () {
                 console.log("checkbox checked: ", $(this).is(':checked'));
@@ -943,7 +926,7 @@
                     .then(function(createCrowdJSON) {
                         console.log(JSON.stringify(createCrowdJSON))
                         if (createCrowdJSON.succeeded === true) {
-                            setTimeout(function() {$("#createCrowdResults").text(createCrowdJSON.message + '!');window.location = '/group.html?groupId=' + createCrowdJSON.crowdName + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;}, 2000);
+                            setTimeout(function() {$("#createCrowdResults").text(createCrowdJSON.message + '!');window.location = '/group.html?groupId=' + createCrowdJSON.groupId + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;}, 2000);
                         } else {
                             $("#createCrowdResults").text(createCrowdJSON.message)
                         }

@@ -5,19 +5,24 @@
 
 
 function addUserProfileAttributes(userProfileDetails2) {
-    var attributeNames = [];
-    for (var i=0;i < userProfileDetails2.length; i++) {
-        attributeNames.push(userProfileDetails2[i].Name)
+    var attributesObject = {};
+    if (userInformation.attributes === null) {
+        console.log("addAttributes UserInformation: ", userInformation)
+        for (var i=0;i < userProfileDetails2.length; i++) {
+            attributesObject[userProfileDetails2[i].Name] = userProfileDetails2[i].Value;
+        }
+    } else {
+        attributesObject = userInformation.attributes;
     }
 
-    if (userProfileDetails2[attributeNames.indexOf("preferred_username")]) {
-        $("#profileUsername").val(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value);
+    if (attributesObject.preferred_username) {
+        $("#profileUsername").val(attributesObject.preferred_username);
     } else {
-        $("#profileUsername").val(userProfileDetails2[attributeNames.indexOf("cognito:username")].Value);
+        $("#profileUsername").val(attributesObject["cognito:username"]);
     }
-    $("#profileName").text(userProfileDetails2[attributeNames.indexOf("preferred_username")].Value + ' ');
-    $("#name").val(userProfileDetails2[attributeNames.indexOf("name")].Value);
-    $("#profileEmail").val(userProfileDetails2[attributeNames.indexOf("email")].Value);
+    $("#profileName").text(attributesObject.preferred_username + ' ');
+    $("#name").val(attributesObject.given_name + ' ' + attributesObject.family_name);
+    $("#profileEmail").val(attributesObject.email);
     return userProfileDetails;
 }
 
