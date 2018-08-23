@@ -572,9 +572,7 @@
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             //console.log("response.data.updated: ", response.data.updated)
-                                            if (response.data.updated === false) {
-                                                updateProgressBar(userInformation.predictionsSubmitted, totalGames)
-                                            }
+                                            updateProgressBar(response.predictionsSubmitted, totalGames)
                                             moveBoxes(prediction.gameId);
                                             return;
                                         case 400:
