@@ -570,7 +570,7 @@
                                             btn.text('Predict');
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
-                                            $('.gameHeaderPredicted').append("<i class=\"fas fa-check-circle\"></i>")
+                                            $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             //console.log("response.data.updated: ", response.data.updated)
                                             if (response.data.updated === false) {
                                                 updateProgressBar(userInformation.predictionsSubmitted, totalGames)
@@ -1093,7 +1093,7 @@
     </div>
         <!--close login modal-->
 
-    <div class="wrapper">
+<div class="wrapper">
         <!--<div class="header">-->
 
         <!--</div>-->
@@ -1223,7 +1223,7 @@
                 <div class="row" id="feedbackDiv">
                     <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
                     <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div>
-                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonu$!</div>
+                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                     <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
                 </div>
                 <div class="row" id="newsletter-form-div">

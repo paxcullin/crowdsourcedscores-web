@@ -88,14 +88,14 @@ var extendedProfile = function() {
                     }
                     $("#predictionDetails").html(resultsDivHTML);
                 } else {
-                    $("#predictionDetails").html("<a href=\"/\">Make your predictions</a> and come back here to see your results!");
+                    $("#predictionDetails").html("<a href=\"/\" style=\"color: #B22438;\">Make your predictions</a> and come back here to see your results!");
                 }
 
                 //build out groups table in the same way as the Index page
                 if (extProfileResponseJSON && extProfileResponseJSON.groups) {
                     buildGroupsTable(extProfileResponseJSON.groups);
                 } else {
-                    $("#allGroups").html("<a href=\"group.html\">Create or join a crowd today to compete against other Crowd members!</a>");
+                    $("#allGroups").html("<a href=\"crowd.html\" style=\"color: #B22438;\">Create or join a crowd today to compete against other Crowd members!</a>");
                 }
 
         })
