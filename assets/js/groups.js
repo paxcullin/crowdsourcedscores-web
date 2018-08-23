@@ -35,11 +35,9 @@ function getGroupInfo() {
                     Authorization: token
                 }
             }
-            console.log("getGroupOptions: ", getGroupOptions)
         }
         get(getGroupURL, getGroupOptions)
         .then(function(groupInfoResponse) {
-            console.log("groupInfoResponse: ", groupInfoResponse)
             return groupInfoResponse.json();
         })
         .catch(function(groupInfoReject) {
@@ -47,7 +45,6 @@ function getGroupInfo() {
             return groupInfoReject;
         })
         .then(function(groupInfoDetails) {
-            console.log("get group response: ", groupInfoDetails);
 
             $("#games-loading-icon").css("display","none")
             if (groupInfoDetails.memberOf === false) {
@@ -64,7 +61,7 @@ function getGroupInfo() {
             }
 
             $("#groupTitle").text(groupInfoDetails.groupName);
-            var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner + "</span><br>";
+            var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner.preferred_username + "</span><br>";
             $("#groupDetails").html(groupDetailsHTML);
             if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
                 var groupMembers = {groupMembers: groupInfoDetails.users};

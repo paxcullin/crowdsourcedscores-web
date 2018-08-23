@@ -111,7 +111,6 @@
             }
         });
 
-
         Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
 
             var now = new Date();
@@ -122,6 +121,10 @@
             } else {
                 return options.inverse(this);
             }
+        });
+
+        Handlebars.registerHelper('debug', function (the_string) {
+            console.log(the_string, ": ", the_string);
         });
             </script>
 
@@ -305,9 +308,16 @@
                                     
                                     {{#unless results}}
                                     <div>
-                                        {{#dateCheck startDateTime}}
-                                        <button class="prediction-btn btn btn-info">Predict</button>
-                                        {{/dateCheck}}
+                                        {{#if userAuthenticated}}
+                                            {{#dateCheck startDateTime}}
+                                                <button class="prediction-btn btn btn-info">Predict</button>
+                                            {{/dateCheck}}
+                                        {{/if}}
+                                        {{#unless userAuthenticated}}
+                                            {{#dateCheck startDateTime}}
+                                                <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')">Log in to Predict</button>
+                                            {{/dateCheck}}
+                                        {{/unless}}
                                     </div>
                                     {{/unless}}
                                 </div>
@@ -501,6 +511,7 @@
 
                         formatGameTimes(data);
                         var games = {games: data.games};
+                        console.log("games: ", games)
                         var template = $('#games-template').html();
                         var templateScript = Handlebars.compile(template);
                         var html = templateScript(games);
@@ -549,19 +560,19 @@
 
                             //submitPrediction(prediction, $(this));
                             useToken(function(token){
-                                console.log("submitPrediction Token: ", token)
+                                //console.log("submitPrediction Token: ", token)
                                 apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
                                 .then(function(response) {
-                                    console.log("response message:", response)
+                                    //console.log("response message:", response)
                                     switch(response.status) {
                                         case 200:
-                                            console.log("200: ", response);
+                                            //console.log("200: ", response);
                                             btn.text('Predict');
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
                                             $('.gameHeaderPredicted').append("<i class=\"fas fa-check-circle\"></i>")
-                                            console.log("prediction.update: ", prediction.update)
-                                            if (prediction.update === false) {
+                                            //console.log("response.data.updated: ", response.data.updated)
+                                            if (response.data.updated === false) {
                                                 updateProgressBar(userInformation.predictionsSubmitted, totalGames)
                                             }
                                             moveBoxes(prediction.gameId);
@@ -906,47 +917,6 @@
             //     logout()
             // });
 
-            function toggleCrowdPassword () {
-                console.log("checkbox checked: ", $(this).is(':checked'));
-                $("#crowdPasswordDiv").toggleClass("hidden");
-            }
-
-            function createCrowd() {
-                useToken(function(token) {
-                    var public = true;
-                    if ($("#crowdPublic").is(":checked")) {
-                        public = false;
-                    }
-                    var crowdParams = "{\"userInfo\": { \"name\": \"" + userInformation.attributes.given_name + " " + userInformation.atrributes.family_name + ", \"preferred_username\": \"" + userInformation.attributes.preferred_username + "\"}, \"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"nfl\", \"year\": 2018 }";
-                    console.log("crowdParams: ", crowdParams)
-                    if ($("crowdPassword").val() !== null) {
-                        crowdParams.crowdPassword = $("crowdPassword").val()
-                    }
-                    var createCrowdOptions = {
-                        method: "POST",
-                        headers: {
-                            Authorization: token,
-                            'Content-type': 'application/json'
-                        },
-                        body: crowdParams
-                    }
-                    get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/create", createCrowdOptions)
-                    .then(function(response) {
-                        return response.json();
-                    })
-                    .catch(function(reject) {
-                        console.log("reject: ", reject);
-                    })
-                    .then(function(createCrowdJSON) {
-                        console.log(JSON.stringify(createCrowdJSON))
-                        if (createCrowdJSON.succeeded === true) {
-                            setTimeout(function() {$("#createCrowdResults").text(createCrowdJSON.message + '!');window.location = '/crowd.html?groupId=' + createCrowdJSON.groupId + '&sport=' + createCrowdJSON.sport + '&year=' + createCrowdJSON.year;}, 2000);
-                        } else {
-                            $("#createCrowdResults").text(createCrowdJSON.message)
-                        }
-                    })
-                })
-            }
         </script>
 
     </head>
@@ -1134,7 +1104,7 @@
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
                         <div class="header-icon"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowdsourced Scores"></div>
-                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-xs">Crowdsourced Scores</span><span class="visible-xs">CS Scores</span></a>
+                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowdsourced Scores</span><span class="visible-md">CS Scores</span></a>
                         <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         </div>
                         <div id="navbar-main" class="navbar-collapse collapse">
@@ -1334,7 +1304,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
-                        <div class="cont" style="display:none">
+                        <div class="cont">
                             <progress id="progress-bar" min="1" max="100" value="0"></progress>
                             <p><strong>Prediction Progress:</strong> <span class="percent"></span></p>
                         </div>
