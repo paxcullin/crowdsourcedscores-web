@@ -48,6 +48,9 @@ function getAllGroups() {
             buildGroupsTable(allGroupsInformation);
             return allGroupsInformation;
         })
+        if (token) {
+            $("#createCrowdButtonDiv").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#crowdModal\" id=\"createCrowd\">Create a Crowd</button>");
+        }
     })
 }
 
@@ -69,6 +72,8 @@ function toggleCrowdPassword () {
 }
 
 function createCrowd() {
+    var $this = $(this);
+    $this.button('loading');
     useToken(function(token) {
         var public = true;
         if ($("#crowdPublic").is(":checked")) {

@@ -572,7 +572,7 @@
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             //console.log("response.data.updated: ", response.data.updated)
-                                            updateProgressBar(response.predictionsSubmitted, totalGames)
+                                            if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
                                             moveBoxes(prediction.gameId);
                                             return;
                                         case 400:
@@ -1101,7 +1101,7 @@
             <div class="row">
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
-                        <div class="header-icon"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowdsourced Scores"></div>
+                        <div class="header-icon"><a href="/"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowd Wisdom Sports"></a></div>
                         <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowdsourced Scores</span><span class="visible-md">CS Scores</span></a>
                         <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         </div>
@@ -1314,9 +1314,9 @@
                     <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
-                        <div id="allGroupsHeader"><h5>Group vs. Group</h5></div>
+                        <div id="allGroupsHeader"><h5>Crowd vs. Crowd</h5></div>
                         <div id="allGroups"></div>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crowdModal" id="createCrowd">Create a Crowd</button>
+                        <div id="createCrowdButton"></div>
                 </div>
             </div>
             <div class="row">
