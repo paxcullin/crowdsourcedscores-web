@@ -128,6 +128,10 @@
                 return new Handlebars.SafeString("class=\"alt-tr\"");
             }
         });
+
+        var gameWeeks = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+        ]
     </script>
 
         <script id="games-template" type="text/x-handlebars-template">
@@ -135,7 +139,7 @@
                 <div class="row">
                 {{#grouped_each 2 games}}
                     {{#each this}}
-                    <div class="col-sm-4 col-xs-12" id="container-{{{gameId}}}">
+                    <div class="col-md-4 col-sm-12" id="container-{{{gameId}}}">
                         <div class="card prediction" style="margin-bottom:10px;min-width: 293px;" data-game-id="{{{gameId}}}"
                             data-game-week="{{{gameWeek}}}"
                             data-game-year="{{{year}}}"
@@ -171,41 +175,20 @@
                                             <tr class="predictionRow">
                                                 <td><i class="fa fa-plane" aria-hidden="true"></i> {{awayTeam.code}}</td>
                                                 <td class="away-team-prediction {{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond prediction.awayTeam.score '>' prediction.homeTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{awayTeam.code}}}-prediction">
-                                                    {{#unless results}}
-                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
-                                                        value="{{prediction.awayTeam.score}}">
-                                                    {{/unless}}
-                                                    {{#if results}}
                                                         {{prediction.awayTeam.score}}
-                                                    {{/if}}
                                                 </td>
                                                 <td{{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond crowd.awayTeam.score '>' crowd.homeTeam.score}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
-                                                    <span
-                                                        {{#unless prediction}}
-                                                            {{#unless results}}
-                                                                class="crowdHidden"
-                                                            {{/unless}}
-                                                        {{/unless}}>
+                                                    <span>
                                                         {{crowd.awayTeam.score}}
                                                     </span>
-                                                    {{#unless prediction}}
-                                                        {{#unless results}}
-                                                            <span class="fa fa-lock crowdShown"></span>
-                                                        {{/unless}}
-                                                    {{/unless}}</td>
+                                                </td>
                                                 <td></td>
                                                 <td>{{results.awayTeam.score}}</td>
                                             </tr>
                                             <tr class="predictionRow">
                                                 <td><i class="fa fa-home" aria-hidden="true"></i> {{homeTeam.code}}</td>
                                                 <td class="home-team-prediction{{#if results}}{{#ifCond results.homeTeam.score '>' results.awayTeam.score}}{{#ifCond prediction.homeTeam.score '>' prediction.awayTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{homeTeam.code}}}-prediction">
-                                                    {{#unless results}}
-                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
-                                                        value="{{prediction.homeTeam.score}}">
-                                                    {{/unless}}
-                                                    {{#if results}}
-                                                        {{prediction.homeTeam.score}}
-                                                    {{/if}}
+                                                   {{prediction.homeTeam.score}}
                                                 </td>
                                                 <td
                                                     {{#if results}}
@@ -215,29 +198,12 @@
                                                             {{/ifCond}}
                                                         {{/ifCond}}
                                                     {{/if}}>
-                                                    <span
-                                                        {{#unless prediction}}
-                                                            {{#unless results}}
-                                                            class="crowdHidden"
-                                                            {{/unless}}
-                                                        {{/unless}}
-                                                    >{{crowd.homeTeam.score}}</span>
-                                                    {{#unless prediction}}
-                                                        {{#unless results}}
-                                                            <span class="fa fa-lock crowdShown"></span>
-                                                        {{/unless}}
-                                                    {{/unless}}
+                                                    <span>{{crowd.homeTeam.score}}</span>
                                                 </td>
                                                 <td>
-                                                        <span
-                                                            {{#unless prediction}}
-                                                                {{#unless results}}
-                                                                class="crowdHidden"
-                                                                {{/unless}}
-                                                            {{/unless}}
-                                                        >
-                                                        {{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}
-                                                        </span>
+                                                    <span>
+                                                    {{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}
+                                                    </span>
                                                 </td>
                                                 <td>{{results.homeTeam.score}}</td>
                                             </tr>
@@ -257,57 +223,44 @@
                                                 {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">{{prediction.total}}</td>
                                                 <td{{#if results}}{{#ifCond crowd.total '>' odds.total}}{{#ifCond results.total '>' odds.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.total '>' crowd.total}}{{#ifCond odds.total '>' results.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}><span{{#unless prediction}}{{#unless results}} class="crowdHidden"{{/unless}}{{/unless}}>{{crowd.total}}</span>{{#unless prediction}} {{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}} {{/unless}}</td>
                                                 <td>
-                                                    <span
-                                                        {{#unless prediction}}
-                                                            {{#unless results}}
-                                                            class="crowdHidden"
-                                                            {{/unless}}
-                                                        {{/unless}}>{{odds.total}}</span></td>
+                                                    <span>{{odds.total}}</span></td>
                                                 <td>
                                                     {{#unless results}}
-                                                    <span
-                                                        {{#unless prediction}}
-                                                            {{#unless results}}
-                                                            class="crowdHidden"
-                                                            {{/unless}}
-                                                        {{/unless}}
-                                                    style="font-weight:bold">{{#ifCond odds.total '!=' ""}}{{#ifCond crowd.total '>' odds.total}}Over{{/ifCond}}{{#ifCond crowd.total '<' odds.total}}Under{{/ifCond}}{{/ifCond}}</span>{{/unless}}{{#if results}}{{results.total}}{{/if}}</td>
+                                                        <span style="font-weight:bold">{{#ifCond odds.total '!=' ""}}{{#ifCond crowd.total '>' odds.total}}Over{{/ifCond}}{{#ifCond crowd.total '<' odds.total}}Under{{/ifCond}}{{/ifCond}}</span>
+                                                    {{/unless}}
+                                                    {{#if results}}
+                                                        {{results.total}}
+                                                    {{/if}}</td>
                                             </tr>
                                             <tr class="predictionRow">
                                                 <td>Spread</td>
                                                 <td{{#if results}}{{#ifCond prediction.results.spread '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
                                                 <td{{#if results}}{{#ifCond crowd.spread '>' odds.spread}}{{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.spread '>' crowd.spread}}{{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
-                                                    <span
-                                                        {{#unless prediction}}
-                                                            {{#unless results}}
-                                                            class="crowdHidden"
-                                                            {{/unless}}
-                                                        {{/unless}}>{{#ifCond crowd.spread '>' 0}}+{{/ifCond}}{{crowd.spread}}</span>{{#unless prediction}}{{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}}{{/unless}}</td>
+                                                    <span>
+                                                        {{#ifCond crowd.spread '>' 0}}
+                                                            +
+                                                        {{/ifCond}}{{crowd.spread}}
+                                                    </span>
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                            <span class="fa fa-lock crowdShown"></span>
+                                                        {{/unless}}
+                                                    {{/unless}}
+                                                </td>
                                                 <td>
-                                                        <span
-                                                            {{#unless prediction}}
-                                                                {{#unless results}}
-                                                                class="crowdHidden"
-                                                                {{/unless}}
-                                                            {{/unless}}
-                                                        >
-                                                        {{#ifCond odds.spread '!=' 0}}{{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}{{/ifCond}}{{#ifCond odds.spread '===' 0}}Even{{/ifCond}}</span></td>
+                                                        <span>
+                                                            {{#ifCond odds.spread '!=' 0}}{{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}}{{/ifCond}}{{#ifCond odds.spread '===' 0}}Even{{/ifCond}}
+                                                        </span></td>
                                                 <td>
                                                     {{#unless results}}
-                                                        <span
-                                                            {{#unless prediction}}
-                                                                {{#unless results}}
-                                                                class="crowdHidden"
-                                                                {{/unless}}
-                                                            {{/unless}}
-                                                            style="font-weight:bold">{{#ifCond odds.spread '!=' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
+                                                        <span style="font-weight:bold">
+                                                            {{#ifCond odds.spread '!=' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
                                                         </span>
-                                                    {{/unless}}{{#if results}}{{results.spread}}{{/if}}</td>
+                                                    {{/unless}}{{#if results}}{{results.spread}}{{/if}}
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
-                                        
-                                       
                                     </div>
                                 </div>
                             </div>
@@ -347,8 +300,54 @@
                                     <th>
                                         User
                                     </th>
+                                    <th>1</th>
                                     <th>
-                                        1
+                                        2
+                                    </th>
+                                    <th>
+                                        3
+                                    </th>
+                                    <th>
+                                        4
+                                    </th>
+                                    <th>
+                                        5
+                                    </th>
+                                    <th>
+                                        6
+                                    </th>
+                                    <th>
+                                        7
+                                    </th>
+                                    <th>
+                                        8
+                                    </th>
+                                    <th>
+                                        9
+                                    </th>
+                                    <th>
+                                        10
+                                    </th>
+                                    <th>
+                                        11
+                                    </th>
+                                    <th>
+                                        12
+                                    </th>
+                                    <th>
+                                        13
+                                    </th>
+                                    <th>
+                                        14
+                                    </th>
+                                    <th>
+                                        15
+                                    </th>
+                                    <th>
+                                        16
+                                    </th>
+                                    <th>
+                                        17
                                     </th>
                                 </tr>
                             </thead>
@@ -359,6 +358,22 @@
                                     <td>
                                     {{{this.preferred_username}}}
                                     </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                             {{/each}}
@@ -435,18 +450,18 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    // userInformation.predictionsSubmitted = data.predictionsSubmitted;
-                    // var totalGames = data.games.length;
-                    //updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                        // $("#games-loading-icon").css("display","none")
+                    userInformation.predictionsSubmitted = data.predictionsSubmitted;
+                    var totalGames = data.games.length;
+                    updateProgressBar(userInformation.predictionsSubmitted, totalGames);
+                        $("#games-loading-icon").css("display","none")
 
-                        // formatGameTimes(data);
-                        // var games = {games: data.games};
-                        // console.log("games: ", games)
-                        // var template = $('#games-template').html();
-                        // var templateScript = Handlebars.compile(template);
-                        // var html = templateScript(games);
-                        // $('#games').html(html);
+                        formatGameTimes(data.games);
+                        var games = {games: data.games};
+                        console.log("games: ", games)
+                        var template = $('#games-template').html();
+                        var templateScript = Handlebars.compile(template);
+                        var html = templateScript(games);
+                        $('#games').html(html);
                         //drawChart2(year, week);
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
@@ -891,15 +906,22 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6" id="joinGroupButtonDiv"></div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div id="group">
-                            <div id="games-loading-icon">
-                                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
-                                <span class="sr-only">Loading...</span>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8" id="group">
+                                <div id="group-loading-icon">
+                                    <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                                    <span class="sr-only">Loading...</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div id="games"></div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8" id="games">
+                                <div id="games-loading-icon">
+                                        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                                        <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1090,6 +1112,7 @@
 
 </script>
 <!-- CWS Group Files -->
+<script src="assets/js/index.js" type="text/javascript"></script>
 <script src="assets/js/groups.js" type="text/javascript"></script>
 
 </body>
