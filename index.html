@@ -16,7 +16,7 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -114,8 +114,11 @@
         Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
 
             var now = new Date();
+            var nowDateTimeDate = Date.parse(now);
             var startDateTimeDate = Date.parse(startDateTime);
             var cutoff = startDateTimeDate - 3600000;
+            console.log("nowDateTimeDate: ", nowDateTimeDate," cutoff: ", cutoff)
+            console.log("now < cutoff: ", now < cutoff)
             if (now < cutoff) {
                 return options.fn(this);
             } else {
@@ -134,7 +137,7 @@
             <div class="row">
             {{#grouped_each 2 games}}
                 {{#each this}}
-                <div class="col-sm-4 col-xs-12" id="container-{{{gameId}}}">
+                <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
                     <div class="card prediction" style="margin-bottom:10px;min-width: 293px;" data-game-id="{{{gameId}}}"
                         data-game-week="{{{gameWeek}}}"
                         data-game-year="{{{year}}}"
@@ -150,11 +153,11 @@
                                     <div class="prediction-message" data-game-id="{{{gameId}}}"></div>
                                     <div>
                                         <div class="form-group">
-                                            <p{{#if prediction}} class="gameHeaderPredicted"{{/if}}{{#unless prediction}} class="gameHeaderNotPredicted"{{/unless}}>Game {{gameId}}<br/>{{startDateTime}}<br/>{{tvStation}}</p>
+                                            <span style="float:left"{{#if prediction}} class="gameHeaderPredicted"{{/if}}{{#unless prediction}} class="gameHeaderNotPredicted"{{/unless}}>Game {{gameId}}<br/>{{startDateTime}}<br/>{{tvStation}}</span>
+                                            {{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}
                                         </div>
                                     </div>
 
-                                        {{#if results}}<div class="finalRow">FINAL</div>{{/if}}
 
                                     <table class="table">
                                         <thead>
@@ -306,8 +309,8 @@
                                         </tbody>
                                     </table>
                                     
-                                    {{#unless results}}
                                     <div>
+                                    {{#unless results}}
                                         {{#if userAuthenticated}}
                                             {{#dateCheck startDateTime}}
                                                 <button class="prediction-btn btn btn-info">Predict</button>
@@ -318,8 +321,11 @@
                                                 <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')">Log in to Predict</button>
                                             {{/dateCheck}}
                                         {{/unless}}
-                                    </div>
                                     {{/unless}}
+                                        {{#if prediction.predictionScore}}
+                                            <div class="predictionScore">Prediction Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
+                                        {{/if}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -415,7 +421,7 @@
         var formatGameTimes = function (games) {
             for (var i = 0; i < games.length; i++) {
                 var gameDate = new Date(games[i].startDateTime);
-                var options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+                var options = { weekday: 'narrow', month: 'short', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
                 games[i].startDateTime = gameDate.toLocaleString('en-US', options);
             }
             return games;
@@ -509,7 +515,7 @@
                     updateProgressBar(userInformation.predictionsSubmitted, totalGames);
                         $("#games-loading-icon").css("display","none")
 
-                        formatGameTimes(data);
+                        formatGameTimes(data.games);
                         var games = {games: data.games};
                         console.log("games: ", games)
                         var template = $('#games-template').html();
@@ -655,6 +661,7 @@
                         switch(response.status) {
                             case "200":
                                 console.log("200: ", response);
+                                ga('send','event','prediction','submitted',prediction.gameId);
                                 btn.text('Predict');
                                 var messageHtml = statusMessage('success', response.message);
                                 messageElm.html(messageHtml)
@@ -680,7 +687,6 @@
                 // ,
                 //             statusCode: {
                 //             }
-                ga('send','event','prediction','submitted',prediction.gameId);
             });
         };
 
@@ -1089,7 +1095,34 @@
             </div>
         </div>
     </div>
-        <!--close login modal-->
+    <!--close login modal-->
+    <!--prediction Score Modal-->
+    <div class="modal fade" id="predictionScoreModal" tabindex="-1" role="dialog" aria-labelledby="predictionScoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="predictionScoreModalLabel">Prediction Scoring</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12" id="predictionScoreDetails">
+                            How we calculate your prediction score:
+                            <ul>
+                                <li>Pick the Winner: 2 points</li>
+                                <li>Pick the Spread: 2 points</li>
+                                <li>Pick the Over/Under: 2 points</li>
+                                <li>Get any prediction exactly right: 1 point each</li>
+                                <li><strong>Maximum Score: 10 points</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="wrapper">
         <!--<div class="header">-->

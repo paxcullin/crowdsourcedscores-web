@@ -53,7 +53,11 @@ function getGroupInfo() {
                     groupPasswordHTML = "<h5>Group Password</h5><input class=\"form-control\" type=\"text\" id=\"groupPassword\">";
 
                 }
-                $("#joinGroupButtonDiv").html(groupPasswordHTML + "<button class=\"btn btn-info\" id=\"joinGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Joining Group\">Join " + groupInfoDetails.groupName + "</button>");
+                if (token) {
+                    $("#joinGroupButtonDiv").html(groupPasswordHTML + "<button class=\"btn btn-info\" id=\"joinGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Joining Group\">Join " + groupInfoDetails.groupName + "</button>");
+                } else {
+                    $("#joinGroupButtonDiv").html("<button type=\"button\" class=\"btn btn-info\" onclick=\"ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&amp;client_id=2n15lhk845sucm0k4fejjqcbev&amp;redirect_uri=https://crowdsourcedscores.com/')\">Log in to Join</button>");
+                }
             } else {
                 if (groupInfoDetails.groupId !== 0) {
                     $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
