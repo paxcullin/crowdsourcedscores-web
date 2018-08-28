@@ -22,6 +22,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
+    <link href="assets/css/hopscotch.min.css" rel="stylesheet"/>
     <link href="assets/css/cws.css" rel="stylesheet"/>
 
 
@@ -43,6 +44,7 @@
     <script src="assets/js/material.min.js"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
+    <script src="assets/js/hopscotch.min.js" type="text/javascript"></script>
 
     <!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
     <script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
@@ -117,8 +119,6 @@
             var nowDateTimeDate = Date.parse(now);
             var startDateTimeDate = Date.parse(startDateTime);
             var cutoff = startDateTimeDate - 3600000;
-            console.log("nowDateTimeDate: ", nowDateTimeDate," cutoff: ", cutoff)
-            console.log("now < cutoff: ", now < cutoff)
             if (now < cutoff) {
                 return options.fn(this);
             } else {
