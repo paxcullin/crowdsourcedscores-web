@@ -85,6 +85,26 @@ function getUserAttributes () {
     });
 }
 
+//update user attribute
+function updateUserAttributes (attributes) {
+    cognitoUser.getSession(function (err, session) {
+        if (err) {
+            //window.location = '/';
+            console.log("getSession err = ", JSON.stringify(err))
+            return;
+        }
+        cognitoUser.updateAttributes(attributes, function(err, attributesResponse) {
+            if (err) { console.log("user attributes error: ", err); return; }
+            // for (var i=0; i < attributesResponse.length; i++) {
+            //     attributesObject[attributes[i].Name] = attributes[i].Value;
+            // }
+            //userInformation.attributes = attributesObject;
+            //$('#profileName').prepend("<span class=\"profileName\">" + userInformation.attributes.preferred_username + "</span>");
+            console.log("attributesResponse: ", attributesResponse)
+        })
+    })
+}
+
 var cognitoUser = userPool.getCurrentUser();
 if (cognitoUser) {
     userInformation.cognitoUser = cognitoUser;
@@ -143,7 +163,18 @@ if (!cognitoUser && GetURLParameter('code')) {
 
         userInformation.cognitoUser = cognitoUser;
         getUserAttributes();
-        token = session.getIdToken().getJwtToken();
+        if (session) {
+            token = session.getIdToken().getJwtToken();
+        } else {
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    //window.location = '/';
+                    console.log("getSession err = ", JSON.stringify(err))
+                    return;
+                }
+                token = session.getIdToken().getJwtToken();
+            });
+        }
         id_token = token;
         return id_token;
     })

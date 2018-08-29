@@ -674,121 +674,166 @@
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        <fieldset>
-                                            <!--<legend>Sign Up for PCSM</legend>-->
-                                            <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                                            <br>
-                                            <br>-->
-                                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-                                            <br>
-                                            <br>
-                                            Password: <input type="password" id="password" placeholder="Enter password">
-                                            <br>
-                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
-                                            <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
-                                            <br>
-                                            <!--<div style="width: 90%;">
-                                                <button id="loginUser">Log In</button>
-                                            </div>-->
-                                            <ul id="loginUserResults"></ul>
-                                            <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-                                        </fieldset>
-                                    </div>
-                                </form>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="Registration">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                        <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="Login">
                                     <form role="form" class="form-horizontal">
-                                      <div class="form-group">
-                                        <label for="firstName" class="col-sm-2 control-label">
-                                                            First</label>
-                                        <div class="col-sm-6">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="firstName" placeholder="First Name" />
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-    
-                                      <div class="form-group">
-                                            <label for="lastName" class="col-sm-2 control-label">
-                                                                Last</label>
-                                            <div class="col-sm-6">
-                                              <div class="row">
-                                                <div class="col-md-6">
-                                                  <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-    
                                         <div class="form-group">
-                                            <label for="newUsername" class="col-sm-2 control-label">
-                                                                Username (max: 25 characters)</label>
-                                            <div class="col-sm-10">
-                                              <input type="text" class="form-control" id="newUsername" placeholder="Username" />
+                                            <fieldset>
+                                                <!--<legend>Sign Up for PCSM</legend>-->
+                                                <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                                                <br>
+                                                <br>-->
+                                                E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                                                <br>
+                                                <br>
+                                                Password: <input type="password" id="password" placeholder="Enter password">
+                                                <br>
+                                                <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
+                                                <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
+                                                <br>
+                                                <!--<div style="width: 90%;">
+                                                    <button id="loginUser">Log In</button>
+                                                </div>-->
+                                                <ul id="loginUserResults"></ul>
+                                                <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                                            </fieldset>
+                                        </div>
+                                    </form>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="Registration">
+                                        <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="firstName" class="col-sm-2 control-label">
+                                                                First</label>
+                                            <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                                                </div>
+                                            </div>
                                             </div>
                                         </div>
-                                      <div class="form-group">
-                                        <label for="email" class="col-sm-2 control-label">
-                                                            Email</label>
-                                        <div class="col-sm-10">
-                                          <input type="email" class="form-control" id="newEmail" placeholder="Email" />
+        
+                                        <div class="form-group">
+                                                <label for="lastName" class="col-sm-2 control-label">
+                                                                    Last</label>
+                                                <div class="col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+        
+                                            <div class="form-group">
+                                                <label for="newUsername" class="col-sm-2 control-label">
+                                                                    Username (max: 25 characters)</label>
+                                                <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="newUsername" placeholder="Username" />
+                                                </div>
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="email" class="col-sm-2 control-label">
+                                                                Email</label>
+                                            <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="newEmail" placeholder="Email" />
+                                            </div>
                                         </div>
-                                      </div>
-                                      <div class="form-group">
-                                        <label for="newPassword" class="col-sm-2 control-label">
-                                                            Password</label>
-                                        <div class="col-sm-10">
-                                          <input type="password" class="form-control" id="newPassword" placeholder="Password" />
+                                        <div class="form-group">
+                                            <label for="newPassword" class="col-sm-2 control-label">
+                                                                Password</label>
+                                            <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="newPassword" placeholder="Password" />
+                                            </div>
                                         </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-2">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-10">
+                                            <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
+                                                                    Submit</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            </div>
                                         </div>
-                                        <div class="col-sm-10">
-                                          <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
-                                                                Submit</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        </div>
-                                      </div>
-                                    </form>
-                                  </div>
-                                </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                            </div>
                         </div>
-                        
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <!--close login modal-->
+    <!--invite users modal-->
+    <div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Build Your Crowd</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12" style="border: 1px dotted #C2C2C2;padding-right: 30px;" id="inviteUsersColumn">
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="inviteUsers">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <fieldset>
+                                                <!--<legend>Sign Up for PCSM</legend>-->
+                                                <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
+                                                <br>
+                                                <br>-->
+                                                Add E-mail Addresses (separate with a semi-colon):<br>
+                                                <input type="textarea" id="inviteEmails" placeholder="email@email.com; email2@email.com; email3@email.com">
+                                                <br>
+                                                <!--<div style="width: 90%;">
+                                                    <button id="loginUser">Log In</button>
+                                                </div>-->
+                                                <ul id="inviteUserResults"></ul>
+                                            </fieldset>
+                                        </div>
+                                    </form>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="inviteUsers">Invite Users</button><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--close invite users modal-->
 
     <div class="wrapper">
         <!--<div class="header">-->
@@ -827,7 +872,7 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> Profile</a></li>
-                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
+                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout" onclick="logout()">Logout</button></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -917,6 +962,9 @@
                                     <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                                     <span class="sr-only">Loading...</span>
                                 </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4" id="inviteUsersDiv">
+                                <button id="inviteUsersButton" data-toggle="modal" data-target="inviteModal">Build Your Crowd</button>
                             </div>
                         </div>
                         <div class="row">

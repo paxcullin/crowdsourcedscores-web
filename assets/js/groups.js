@@ -183,3 +183,40 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
         })
     })
 });
+
+
+$("#inviteUsers").on("click",function() {
+
+    var $this = $(this);
+    $this.button('loading');
+    useToken(function(token) {
+
+        var emailAddresses = JSON.stringify($("#inviteEmails").val());
+
+        var leaveGroupOptions = {
+            method: "POST",
+            headers: {
+                Authorization: token,
+            },
+            body: emailAddresses
+        };
+
+        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/" + groupParams.sport + "/" + groupParams.year + "/" + groupParams.groupId + "/leavegroup", leaveGroupOptions)
+        .then(function(leaveGroupResponse) {
+            console.log(leaveGroupResponse)
+            
+            $('#group').html("");
+            
+            return leaveGroupResponse.json();
+        })
+        .then(function(leaveGroupResult) {
+
+            console.log("result: ", leaveGroupResult);
+            
+            //Reload Group Members after successful addition
+            getGroupInfo();
+            
+            $this.button('reset');
+        })
+    })
+});

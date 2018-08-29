@@ -6,7 +6,6 @@ function buildGroupsTable(allGroupsInformation) {
     for (var i=0; i < allGroupsInformation.length; i++) {
         groupHTML = "";
         var groupObject = allGroupsInformation[i];
-        console.log("groupObject: ", groupObject)
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
         groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
         groupHTML += "<td data-th=\"score\">" + groupObject.totalPredictionScore + "</td>";
@@ -48,8 +47,10 @@ function getAllGroups() {
             buildGroupsTable(allGroupsInformation);
             return allGroupsInformation;
         })
-        if (token) {
+        if (token !== null) {
             $("#createCrowdButtonDiv").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#crowdModal\" id=\"createCrowd\">Create a Crowd</button>");
+        } else {
+            console.log("token: ", token);
         }
     })
 }
@@ -126,48 +127,4 @@ $('.predictionScore').on('click', function() {
     $("#predictionScoreModal").dialog("open");
 })
 
-    // Define the tour!
-    var tour = {
-        id: "hello-hopscotch",
-        steps: [
-            {
-              title: "Thanks for joining the crowd!",
-              content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
-              target: document.querySelectorAll('.predictionInput')[0],
-              placement: "right"
-            },
-          {
-            title: "Away Team Score",
-            content: "How many points do you think the away team will score?",
-            target: document.querySelectorAll('.predictionInput')[0],
-            placement: "right"
-          },
-          {
-            title: "Home Team Score",
-            content: "How many points do you think the away team will score?",
-            target: document.querySelectorAll('.predictionInput')[1],
-            placement: "right"
-          },
-          {
-            title: "Predict!",
-            content: "That's it! Now click the predict button.",
-            target: document.querySelectorAll('.prediction-btn')[0],
-            placement: "right"
-          },
-          {
-            title: "Nice! Keep It Up!",
-            content: "You'll be able to see your progress in our progress bar.",
-            target: document.querySelector('#progress-bar'),
-            placement: "top"
-          },
-          {
-            title: "Show Your Stuff",
-            content: "Compete against others by join a group or creating your own and inviting your friends.",
-            target: document.querySelector('#allGroupsHeader'),
-            placement: "top"
-          }
-        ]
-      };
   
-      // Start the tour!
-      //hopscotch.startTour(tour);

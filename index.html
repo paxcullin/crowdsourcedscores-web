@@ -153,8 +153,8 @@
                                     <div class="prediction-message" data-game-id="{{{gameId}}}"></div>
                                     <div>
                                         <div class="form-group">
-                                            <span style="float:left"{{#if prediction}} class="gameHeaderPredicted"{{/if}}{{#unless prediction}} class="gameHeaderNotPredicted"{{/unless}}>Game {{gameId}}<br/>{{startDateTime}}<br/>{{tvStation}}</span>
-                                            {{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}
+                                            <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><span style="float:left">{{startDateTime}}<br/>{{tvStation}}</span>{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
+                                            
                                         </div>
                                     </div>
 
@@ -421,7 +421,7 @@
         var formatGameTimes = function (games) {
             for (var i = 0; i < games.length; i++) {
                 var gameDate = new Date(games[i].startDateTime);
-                var options = { weekday: 'narrow', month: 'short', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+                var options = { weekday: 'short', month: 'short', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
                 games[i].startDateTime = gameDate.toLocaleString('en-US', options);
             }
             return games;
@@ -522,6 +522,8 @@
                         var templateScript = Handlebars.compile(template);
                         var html = templateScript(games);
                         $('#games').html(html);
+
+      
                         //drawChart2(year, week);
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
@@ -620,6 +622,76 @@
                         }
                     })
                     .then(function (data) {
+                        // Start the tour!
+                        // Check for users who have finished/closed the tour
+                        var userState = hopscotch.getState();
+                        if (cognitoUser) {
+                            // Define the tour!
+                            var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                            var tour = {
+                                id: "hello-hopscotch",
+                                steps: [
+                                    {
+                                    title: "Thanks for joining the crowd!",
+                                    content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
+                                    target: document.querySelector('#games'),
+                                    placement: "right"
+                                    },
+                                    {
+                                    title: "Worried you're not an expert?",
+                                    content: "Don't fret! You know just as much as anyone about what's going to happen, and the experts are wrong all the time. So just have fun! It's easy. We'll show you.",
+                                    target: document.getElementsByClassName('card')[0],
+                                    placement: "right"
+                                    },
+                                {
+                                    title: "Away Team Score",
+                                    content: "How many points do you think the <b>away team</b> will score?",
+                                    target: document.getElementsByClassName('predictionInput')[0],
+                                    placement: "right"
+                                },
+                                {
+                                    title: "Home Team Score",
+                                    content: "How many points do you think the <b>home team</b> will score?",
+                                    target: document.getElementsByClassName('predictionInput')[1],
+                                    placement: "right"
+                                },
+                                {
+                                    title: "Predict!",
+                                    content: "That's it! Now click the predict button.",
+                                    target: document.getElementsByClassName('prediction-btn')[0],
+                                    placement: "right"
+                                },
+                                {
+                                    title: "Nice! Keep It Up!",
+                                    content: "You'll be able to see how many games are still waiting for your expertise in the progress bar.",
+                                    target: document.querySelector('#progress-bar'),
+                                    placement: "top"
+                                },
+                                {
+                                    title: "Lots of ways to Compete",
+                                    content: "<p>By making predictions, you are automatically competing against every other user in our Crowd.</p><p>But you can also create your own Mini-Crowd (coworkers, friends, enemies) and compete for bragging rights.</p><p>Each Mini-Crowd generates its own crowd wisdom, and you can watch how your Mini-Crowd's crowd wisdom performs against the others.</p><p>So you can always contribute to the crowd wisdom and help your Mini-Crowd compete!",
+                                    target: document.querySelector('#allGroupsHeader'),
+                                    placement: "top",
+                                    onNext: function() {
+                                        console.log("setTourState")
+                                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                                    }
+                                }
+                                ],
+                                onEnd: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                                    updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
+                                }
+                            };
+                            var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
+                            if (!localTourState || localTourState === false) {
+                                hopscotch.startTour(tour);
+                            } else {
+                                console.log("user has taken the tour");
+                                localStorage.removeItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
+                            }
+                        }
+
                         getWeeklyResults(data);
                         return data;
                     })
@@ -1239,7 +1311,7 @@
             <div id="chartContainer" class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div id="weeklyChart"></div>
+                        <div id="weeklyChart" style="display:none"></div>
                     </div>
                 </div>
 
@@ -1349,7 +1421,7 @@
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
                         <div id="allGroupsHeader"><h5>Crowd vs. Crowd</h5></div>
                         <div id="allGroups"></div>
-                        <div id="createCrowdButton"></div>
+                        <div id="createCrowdButtonDiv"></div>
                 </div>
             </div>
             <div class="row">
