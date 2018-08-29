@@ -1,0 +1,564 @@
+{
+	"_id": {
+		"$oid": "5b7110b5c5a8f623a7f144b3"
+	},
+	"year": 2018,
+	"gameId": -3,
+	"gameWeek": -3,
+	"awayTeam": {
+		"code": "PHI",
+		"fullName": "Philadelphia Eagles",
+		"shortName": "Philadelphia"
+	},
+	"homeTeam": {
+		"code": "NE",
+		"fullName": "New England Patriots",
+		"shortName": "New England"
+	},
+	"odds": {
+		"total": 40.5,
+		"spread": -2.5
+	},
+	"tvStation": "NFLN",
+	"startDateTime": "2018-08-17T02:30:00.000Z",
+	"results": {
+		"awayTeam": {
+			"score": 20
+		},
+		"homeTeam": {
+			"score": 37
+		},
+		"spread": -17,
+		"total": 57
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f4f52ed7f9120629fc"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -48,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "NE",
+		"shortName": "New England",
+		"fullName": "New England Patriots"
+	},
+	"awayTeam": {
+		"code": "PHI",
+		"shortName": "Philadelphia",
+		"fullName": "Philadelphia Eagles"
+	},
+	"odds": {
+		"total": 42,
+		"spread": -4
+	},
+	"startDateTime": "2018-08-16T19:30:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 20
+		},
+		"homeTeam": {
+			"score": 37
+		},
+		"spread": -17,
+		"total": 57
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f4f52ed7f9120629fe"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -47,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "WAS",
+		"shortName": "Washington",
+		"fullName": "Washington Redskins"
+	},
+	"awayTeam": {
+		"code": "NYJ",
+		"shortName": "N.Y. Jets",
+		"fullName": "New York Jets"
+	},
+	"odds": {
+		"total": 41,
+		"spread": 0
+	},
+	"startDateTime": "2018-08-16T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 13
+		},
+		"homeTeam": {
+			"score": 15
+		},
+		"spread": -2,
+		"total": 28
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f4f52ed7f912062a00"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -46,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "GB",
+		"shortName": "Green Bay",
+		"fullName": "Green Bay Packers"
+	},
+	"awayTeam": {
+		"code": "PIT",
+		"shortName": "Pittsburgh",
+		"fullName": "Pittsburgh Steelers"
+	},
+	"odds": {
+		"total": 43,
+		"spread": -5.5
+	},
+	"startDateTime": "2018-08-16T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 34
+		},
+		"homeTeam": {
+			"score": 51
+		},
+		"spread": -17,
+		"total": 85
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a02"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -45,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "DET",
+		"shortName": "Detroit",
+		"fullName": "Detroit Lions"
+	},
+	"awayTeam": {
+		"code": "NYG",
+		"shortName": "N.Y. Giants",
+		"fullName": "New York Giants"
+	},
+	"odds": {
+		"total": 40.5,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-17T19:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 30
+		},
+		"homeTeam": {
+			"score": 17
+		},
+		"spread": 13,
+		"total": 47
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a04"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -44,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "CLE",
+		"shortName": "Cleveland",
+		"fullName": "Cleveland Browns"
+	},
+	"awayTeam": {
+		"code": "BUF",
+		"shortName": "Buffalo",
+		"fullName": "Buffalo Bills"
+	},
+	"odds": {
+		"total": 42,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-17T19:30:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 19
+		},
+		"homeTeam": {
+			"score": 17
+		},
+		"spread": 2,
+		"total": 36
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a06"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -43,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "CAR",
+		"shortName": "Carolina",
+		"fullName": "Carolina Panthers"
+	},
+	"awayTeam": {
+		"code": "MIA",
+		"shortName": "Miami",
+		"fullName": "Miami Dolphins"
+	},
+	"odds": {
+		"total": 42.5,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-17T19:30:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 20
+		},
+		"homeTeam": {
+			"score": 27
+		},
+		"spread": -7,
+		"total": 47
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a09"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -42,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "ATL",
+		"shortName": "Atlanta",
+		"fullName": "Atlanta Falcons"
+	},
+	"awayTeam": {
+		"code": "KC",
+		"shortName": "Kansas City",
+		"fullName": "Kansas City Chiefs"
+	},
+	"odds": {
+		"total": 43,
+		"spread": 2
+	},
+	"startDateTime": "2018-08-17T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 28
+		},
+		"homeTeam": {
+			"score": 14
+		},
+		"spread": 14,
+		"total": 42
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a0b"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -41,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "NO",
+		"shortName": "New Orleans",
+		"fullName": "New Orleans Saints"
+	},
+	"awayTeam": {
+		"code": "ARI",
+		"shortName": "Arizona",
+		"fullName": "Arizona Cardinals"
+	},
+	"odds": {
+		"total": 41.5,
+		"spread": -5
+	},
+	"startDateTime": "2018-08-17T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 20
+		},
+		"homeTeam": {
+			"score": 15
+		},
+		"spread": 5,
+		"total": 35
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a0d"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -40,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "MIN",
+		"shortName": "Minnesota",
+		"fullName": "Minnesota Vikings"
+	},
+	"awayTeam": {
+		"code": "JAC",
+		"shortName": "Jacksonville",
+		"fullName": "Jacksonville Jaguars"
+	},
+	"odds": {
+		"total": 40.5,
+		"spread": -4
+	},
+	"startDateTime": "2018-08-18T13:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 14
+		},
+		"homeTeam": {
+			"score": 10
+		},
+		"spread": 4,
+		"total": 24
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a0f"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -39,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "LAR",
+		"shortName": "L.A. Rams",
+		"fullName": "Los Angeles Rams"
+	},
+	"awayTeam": {
+		"code": "OAK",
+		"shortName": "Oakland",
+		"fullName": "Oakland Raiders"
+	},
+	"odds": {
+		"total": 38,
+		"spread": 3
+	},
+	"startDateTime": "2018-08-18T16:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 15
+		},
+		"homeTeam": {
+			"score": 19
+		},
+		"spread": -4,
+		"total": 34
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a11"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -38,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "DAL",
+		"shortName": "Dallas",
+		"fullName": "Dallas Cowboys"
+	},
+	"awayTeam": {
+		"code": "CIN",
+		"shortName": "Cincinnati",
+		"fullName": "Cincinnati Bengals"
+	},
+	"odds": {
+		"total": 42,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-18T19:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 21
+		},
+		"homeTeam": {
+			"score": 13
+		},
+		"spread": 8,
+		"total": 34
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f5f52ed7f912062a13"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -37,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "TEN",
+		"shortName": "Tennessee",
+		"fullName": "Tennessee Titans"
+	},
+	"awayTeam": {
+		"code": "TB",
+		"shortName": "Tampa Bay",
+		"fullName": "Tampa Bay Buccaneers"
+	},
+	"odds": {
+		"total": 42,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-18T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 30
+		},
+		"homeTeam": {
+			"score": 14
+		},
+		"spread": 16,
+		"total": 44
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f6f52ed7f912062a15"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -36,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "HOU",
+		"shortName": "Houston",
+		"fullName": "Houston Texans"
+	},
+	"awayTeam": {
+		"code": "SF",
+		"shortName": "San Francisco",
+		"fullName": "San Francisco 49ers"
+	},
+	"odds": {
+		"total": 43,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-18T20:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 13
+		},
+		"homeTeam": {
+			"score": 16
+		},
+		"spread": -3,
+		"total": 29
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f6f52ed7f912062a17"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -35,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "DEN",
+		"shortName": "Denver",
+		"fullName": "Denver Broncos"
+	},
+	"awayTeam": {
+		"code": "CHI",
+		"shortName": "Chicago",
+		"fullName": "Chicago Bears"
+	},
+	"odds": {
+		"total": 43.5,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-18T21:05:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 24
+		},
+		"homeTeam": {
+			"score": 23
+		},
+		"spread": 1,
+		"total": 47
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f6f52ed7f912062a19"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -34,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "LAC",
+		"shortName": "L.A. Chargers",
+		"fullName": "Los Angeles Chargers"
+	},
+	"awayTeam": {
+		"code": "SEA",
+		"shortName": "Seattle",
+		"fullName": "Seattle Seahawks"
+	},
+	"odds": {
+		"total": 40,
+		"spread": -3
+	},
+	"startDateTime": "2018-08-18T22:00:00-04:00",
+	"results": {
+		"awayTeam": {
+			"score": 14
+		},
+		"homeTeam": {
+			"score": 24
+		},
+		"spread": -10,
+		"total": 38
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7754f6f52ed7f912062a1c"
+	},
+	"year": 2018,
+	"gameWeek": -3,
+	"gameId": -33,
+	"sport": "nfl",
+	"homeTeam": {
+		"code": "IND",
+		"shortName": "Indianapolis",
+		"fullName": "Indianapolis Colts"
+	},
+	"awayTeam": {
+		"code": "BAL",
+		"shortName": "Baltimore",
+		"fullName": "Baltimore Ravens"
+	},
+	"startDateTime": "2018-08-20T20:00:00-04:00"
+}
