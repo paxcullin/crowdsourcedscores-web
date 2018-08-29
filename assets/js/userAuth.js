@@ -163,8 +163,9 @@ if (!cognitoUser && GetURLParameter('code')) {
 
         userInformation.cognitoUser = cognitoUser;
         getUserAttributes();
-        if (session) {
-            token = session.getIdToken().getJwtToken();
+        var token;
+        if (tokenResponse && tokenResponse.id_token) {
+            token = tokenResponse.id_token;
         } else {
             cognitoUser.getSession(function(err, session) {
                 if (err) {
@@ -173,6 +174,7 @@ if (!cognitoUser && GetURLParameter('code')) {
                     return;
                 }
                 token = session.getIdToken().getJwtToken();
+                console.log("second token: ", token)
             });
         }
         id_token = token;
