@@ -392,8 +392,8 @@
                                     }
                                 },
                                 odds: {
-                                    spread: parseInt($game.find('.odds-spread input').val()),
-                                    total: parseInt($game.find('.odds-total input').val())
+                                    spread: parseFloat($game.find('.odds-spread input').val()),
+                                    total: parseFloat($game.find('.odds-total input').val())
                                 }
                             };
 
@@ -422,7 +422,7 @@
 
                             //submitPrediction(prediction, $(this));
                             useToken(function(token){
-                                //console.log("submitPrediction Token: ", token)
+                                console.log("game update: ", game)
                                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/gameupdate",{
                                     method: "POST",
                                     headers: {
