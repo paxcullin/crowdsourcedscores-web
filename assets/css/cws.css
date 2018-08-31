@@ -1,0 +1,522 @@
+
+body {
+-webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
+}
+
+.card .content {
+    padding-left:5px;
+    padding-right: 5px;
+}
+.table > thead > tr > th,
+.table > thead > tr > td {
+    padding: 5px;
+    text-align: center;
+}
+.container {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#fbSection {
+    margin: 5px 10px;
+}
+#fbSection img {
+    float:left;
+    padding-right: 10px;
+}
+.fbName {
+    margin: 10px 0;
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* season selector settings */
+#dropdown {
+    display: block;
+    padding: 13px 16px;
+    width: 266px;
+    margin: 0;
+    margin-right: auto;
+    position: relative;
+    cursor: pointer;
+    border-left: 4px solid #3A3B6C;
+    background: #fff;
+    font-size: 1.2em;
+    color: inherit;
+    font-weight: normal;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -ms-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+    z-index: 100;
+  }
+  #dropdown:hover { color: #898989; }
+  
+  #dropdown.open {
+    background: #3A3B6C;
+    color: #fff;
+    border-left-color: #6c6d70;
+  }
+  
+  #dropdown ul { 
+    position: absolute;
+    top: 100%;
+    left: -4px; /* move content -4px because of container left border */
+    width: 266px;
+    padding: 5px 0px;
+    display: none;
+    border-left: 4px solid #8e9196;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    list-style: none;
+  }
+  #dropdown ul li { font-size: 0.9em; }
+  
+  #dropdown ul li a { 
+    text-decoration: none;
+    display: block;
+    color: #3A3B6C;
+    padding: 7px 15px;
+  }
+  #dropdown ul li a:hover {
+    color: #3A3B6C;
+    background: #e7f0f7;
+  }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.navbar, .navbar.navbar-default {
+    background-color: #3A3B6C;
+}
+
+.header-icon {
+    float:left;
+    margin-right:10px;
+}
+.header-icon img {
+    width: 60px;
+}
+.topRow {
+    padding-top: 90px;
+}
+.gameHeader {
+    color:#000;
+    padding: 3px 15px;
+    text-align: center;
+    width: 100%;
+    overflow: auto;
+}
+.gameHeaderPredicted {
+    background-color:#3A3B6C;
+    color:#fff;
+    padding: 3px 15px;
+    text-align: center;
+}
+.gameHeaderNotPrediction {
+    border:1px solid #3A3B6C;
+    padding: 3px 15px;
+    text-align: center;
+}
+.gameHeader span {
+    display: block;
+}
+
+.crowdCorrect {
+    color: #55b559;
+    font-weight: bold;
+}
+
+.crowdHidden {
+    visibility: hidden;
+}
+
+#resultsContainer {
+    color:#fff;
+    display:none;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-bottom: 15px;
+}
+#myResultsRow {
+    background-color: #B42135;
+    border: 1px solid #B42135;
+    margin: 0 15px;
+}
+
+#crowdResultsRow {
+    background-color:#3A3B6C;
+    color:#fff;
+    margin: 0 15px;
+}
+
+.finalRow {
+    background-color: #000;
+    color:#fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.predictionScore {
+    background-color: #000;
+    color:#fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 15px;
+    text-align: center;
+}
+
+#chartExpand {
+    padding-top: 8px;
+}
+#weeklyChart {
+    
+    padding: 5px;
+}
+#switchChartButtons {
+    margin: 10px 0;
+}
+#switchChartButtons button {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+#weeklyChartButton {
+    color: #fff;
+    background-color: #B42135;
+    margin: 0 auto;
+    float: right;
+}
+#overallChartButton {
+    color: #fff;
+    background-color: #3A3B6C;
+    margin: 0 auto;
+}
+#feedbackDiv {
+    margin: 10px auto;
+    text-align: center;
+}
+#feedbackDiv a {
+    color:#3A3B6C
+}
+
+@media(max-width:768px) {
+    #resultRow {
+        text-align: center;
+    }
+}
+
+.loading-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin:50px auto;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    text-align: center;
+}
+
+.loading-icon:before {
+    content: "\f110";
+    font-family: FontAwesome;
+    font-size:20px;
+    position: absolute;
+    top: 0;
+}
+#newsletter-form-div {
+    display:none;
+}
+
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+
+/* Table CSS */
+@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+.rwd-table {
+margin: 1em 0;
+min-width: 300px;
+}
+.rwd-table tr {
+border-top: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
+}
+.rwd-table th {
+display: none;
+}
+.rwd-table td {
+display: block;
+}
+.rwd-table td:first-child {
+padding-top: .5em;
+}
+.rwd-table td:last-child {
+padding-bottom: .5em;
+}
+.rwd-table td:before {
+content: attr(data-th) ": ";
+font-weight: bold;
+width: 6.5em;
+display: inline-block;
+}
+@media (min-width: 480px) {
+.rwd-table td:before {
+    display: none;
+}
+}
+.rwd-table th, .rwd-table td {
+text-align: left;
+}
+@media (min-width: 480px) {
+.rwd-table th, .rwd-table td {
+    display: table-cell;
+    padding: .25em .5em;
+}
+.rwd-table th:first-child, .rwd-table td:first-child {
+    padding-left: 0;
+}
+.rwd-table th:last-child, .rwd-table td:last-child {
+    padding-right: 0;
+}
+}
+
+
+
+.rwd-table {
+background: #3A3B6C;
+color: #fff;
+border-radius: .4em;
+overflow: hidden;
+}
+.rwd-table tr {
+border-color: #B22438;
+}
+
+.rwd-table .alt-tr {
+    background: #fff;
+    color: #3A3B6C;
+}
+
+.rwd-table th, .rwd-table td {
+margin: .5em 1em;
+}
+@media (min-width: 480px) {
+.rwd-table th, .rwd-table td {
+    padding: 1em !important;
+}
+}
+.rwd-table th, .rwd-table td:before {
+color: #fff;
+}
+
+.rwd-table a, a:visited {
+    color: #fff;
+}
+/* End Table CSS*/
+
+/* Index CSS */
+
+.table>tbody>.predictionRow>td {
+    vertical-align: middle;
+}
+
+.predictionInput {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Index Progress Bar */
+
+
+  .cont{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .cont p {
+      text-align: center;
+  }
+  #progress-bar{
+    appearance:none;
+    width: 100%;
+    color: #3A3B6C;
+    height: 2px;
+    margin: 0 auto;
+  }
+  #progress-bar::-webkit-progress-value{ /* Changes line color */
+    background: #fff;
+    transition: all 0.4s ease-in-out;
+  }
+  #progress-bar::-webkit-progress-bar{ /* Changes background color */
+    background: #3A3B6C;
+  }
+  .border-change{
+    border-color:#fff;
+    transition: all 0.4s ease-in-out;
+  }
+
+/* End Index Progress Bar */
+
+/* Group CSS */
+
+.groupDiv {
+    padding: 1em;
+}
+
+
+.errorText {
+    color: #B42135;
+    }
+    
+#allGroups {
+    margin: 0 30px;
+}
+/* Profile CSS */
+
+.profileDetails h4 {
+    color: #3A3B6C;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+@media (min-width:768px) {
+    .profileDetails h4 {
+        width: 150 px;
+        left: 0;
+        position: absolute;
+        top: 8px;
+    }
+}    
+
+.profileDetails {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #3A3B6C;
+    border-radius: 4px;
+}
+
+.form-group:after {
+    clear: both;
+}
+
+.extendedDetail {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #3A3B6C;
+    border-radius: 4px;
+}
+
+.extendedDetail div {
+    margin: 10px;
+}
+
+/*#predictionDetails a {
+    color: #B22438;    
+}*/
+
+/* #allGroups a {
+    color: #B22438;    
+} */
+
+.input-group>.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group>.inputGroupContainer>.input-group>.form-control {
+    background-color: #ffffff;
+    color: #555;
+    padding: 10px 0 11px 7px;
+    margin-bottom: -1px;
+}
+.form-group.is-focused>.form-control {
+    background-color: #ffffff;
+}
+
+.form-group>label.control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333
+}
+
+@media (min-width: 768px) {
+    .form-group>label.control-label {
+        margin: 3px 0;
+    }
+}
