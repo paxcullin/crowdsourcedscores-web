@@ -1,0 +1,1 @@
+mongoimport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password=*dZ2HaWN --file=assets/testdata/2018-preseasonweek2-schedule.json --upsert

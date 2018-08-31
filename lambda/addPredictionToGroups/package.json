@@ -1,0 +1,16 @@
+{
+  "name": "add-prediction-to-groups-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r addPredictionToGroups.zip ."
+  },
+  "author": "Paul Cullin",
+  "license": "ISC",
+  "dependencies": {
+    "jsonschema": "^1.1.0",
+    "mongodb": "^2.2.4"
+  }
+}
