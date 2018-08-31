@@ -12,6 +12,7 @@ var groupParams = {};
     groupParams.sport = GetAllURLParameters('sport');
     groupParams.year = GetAllURLParameters('year');
 
+
 // Set Handlebars parameters
 
 var template = $('#group-template').html();
@@ -178,8 +179,8 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
             
             //Reload Group Members after successful addition
             getGroupInfo();
-            
-            $this.button('reset');
+            // $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"joinGroupButton\">Join " + joinGroupResult.groupName + "</button>");
+            // $this.button('reset');
         })
     })
 });

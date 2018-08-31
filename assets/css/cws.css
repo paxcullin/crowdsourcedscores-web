@@ -38,6 +38,65 @@ text-rendering: optimizeLegibility;
     cursor: pointer;
 }
 
+/* season selector settings */
+#dropdown {
+    display: block;
+    padding: 13px 16px;
+    width: 266px;
+    margin: 0;
+    margin-right: auto;
+    position: relative;
+    cursor: pointer;
+    border-left: 4px solid #3A3B6C;
+    background: #fff;
+    font-size: 1.2em;
+    color: inherit;
+    font-weight: normal;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    -ms-transition: all 0.15s linear;
+    -o-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+    z-index: 100;
+  }
+  #dropdown:hover { color: #898989; }
+  
+  #dropdown.open {
+    background: #3A3B6C;
+    color: #fff;
+    border-left-color: #6c6d70;
+  }
+  
+  #dropdown ul { 
+    position: absolute;
+    top: 100%;
+    left: -4px; /* move content -4px because of container left border */
+    width: 266px;
+    padding: 5px 0px;
+    display: none;
+    border-left: 4px solid #8e9196;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    list-style: none;
+  }
+  #dropdown ul li { font-size: 0.9em; }
+  
+  #dropdown ul li a { 
+    text-decoration: none;
+    display: block;
+    color: #3A3B6C;
+    padding: 7px 15px;
+  }
+  #dropdown ul li a:hover {
+    color: #3A3B6C;
+    background: #e7f0f7;
+  }
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
     position: relative;
@@ -371,7 +430,10 @@ color: #fff;
 .errorText {
     color: #B42135;
     }
-
+    
+#allGroups {
+    margin: 0 30px;
+}
 /* Profile CSS */
 
 .profileDetails h4 {

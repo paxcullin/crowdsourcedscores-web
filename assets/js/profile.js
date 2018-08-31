@@ -16,9 +16,9 @@ function addUserProfileAttributes(userProfileDetails2) {
     }
 
     if (attributesObject.preferred_username) {
-        $("#profileUsername").val(attributesObject.preferred_username);
+        $("#preferred_username").val(attributesObject.preferred_username);
     } else {
-        $("#profileUsername").val(attributesObject["cognito:username"]);
+        $("#preferred_username").val(attributesObject["cognito:username"]);
     }
     $("#profileName").text(attributesObject.preferred_username + ' ');
     $("#name").val(attributesObject.given_name + ' ' + attributesObject.family_name);

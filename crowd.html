@@ -434,123 +434,125 @@
         }
 
         var setGameWeek = function (gameWeekData) {
-            useToken(function(token) {
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/" + gameWeekData.year + "/" + groupParams.groupId + "/games?gameWeek=" + gameWeekData.week;
-                var setGameWeekGetOptions = 
-                    {     
-                        method: "GET",
-                        headers: {
-                                'Authorization': token
+            if (groupParams.groupId) {
+                useToken(function(token) {
+                    var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/" + gameWeekData.year + "/" + groupParams.groupId + "/games?gameWeek=" + gameWeekData.week;
+                    var setGameWeekGetOptions = 
+                        {     
+                            method: "GET",
+                            headers: {
+                                    'Authorization': token
+                            }
+                        }
+                        // creating anonymous API call for games
+                    if (token === false) {
+                        setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
+                        setGameWeekGetOptions = {     
+                            method: "GET"
                         }
                     }
-                    // creating anonymous API call for games
-                if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
-                    setGameWeekGetOptions = {     
-                        method: "GET"
-                    }
-                }
-                get(setGameWeekURL, setGameWeekGetOptions)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    userInformation.predictionsSubmitted = data.predictionsSubmitted;
-                    var totalGames = data.games.length;
-                    updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                        $("#games-loading-icon").css("display","none")
-
-                        formatGameTimes(data.games);
-                        var games = {games: data.games};
-                        console.log("games: ", games)
-                        var template = $('#games-template').html();
-                        var templateScript = Handlebars.compile(template);
-                        var html = templateScript(games);
-                        $('#games').html(html);
-                        //drawChart2(year, week);
-                        $('.prediction-btn').on('click', function (e) {
-                            e.preventDefault();
-                            $(this).text('Saving...');
-                            var $prediction = $(this).parents('.prediction');
-                            var prediction = {
-                                gameId: $prediction.attr('data-game-id'),
-                                gameWeek: $prediction.attr('data-game-week'),
-                                year: $prediction.attr('data-game-year'),
-                                awayTeam: {
-                                    code: $prediction.attr('data-away-code'),
-                                    fullName: $prediction.attr('data-away-name'),
-                                    shortName: $prediction.attr('data-away-short')
-                                },
-                                homeTeam: {
-                                    code: $prediction.attr('data-home-code'),
-                                    fullName: $prediction.attr('data-home-name'),
-                                    shortName: $prediction.attr('data-home-short')
-                                }
-                            };
-                            var btn = $(this);
-                            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
-                            var messageElm = predictionElm.find(".prediction-message");
-                            
-
-                            var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
-                            var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
-
-                            var away = $prediction.attr('data-away-team');
-                            var home = $prediction.attr('data-home-team');
-
-                            var awayCode = $prediction.attr('data-away-code');
-                            var homeCode = $prediction.attr('data-home-code');
-
-                            prediction.awayTeam.score = parseInt(awayTeamPrediction);
-                            prediction.homeTeam.score = parseInt(homeTeamPrediction);
-
-                            //submitPrediction(prediction, $(this));
-                            useToken(function(token){
-                                console.log("submitPrediction Token: ", token)
-                                apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
-                                .then(function(response) {
-                                    console.log("response message:", response)
-                                    switch(response.status) {
-                                        case 200:
-                                            console.log("200: ", response);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('success', response.data.message);
-                                            messageElm.html(messageHtml)
-                                            moveBoxes(prediction.gameId);
-                                            return;
-                                        case 400:
-                                            var errorObj = JSON.parse(response.responseText);
-                                            console.log("400: ", errorObj);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('danger', errorObj.message);
-                                            messageElm.html(messageHtml);
-                                            return;
-                                        case 500:
-                                            var errorObj = JSON.parse(response.responseText);
-                                            console.log("500: ", errorObj);
-                                            btn.text('Predict');
-                                            var messageHtml = statusMessage('danger', errorObj.message);
-                                            messageElm.html(messageHtml);
-                                            return;
-                                    }
-                                    return true;
-                                })
-                                .catch(function(reject) {
-                                    console.log("reject message: ", reject)
-                                })
-                            })
-                            // Update prediction table cell
-                            //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
-                            //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
-                            $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
-                            //show odds and crowd info
-                            $prediction.find('.crowdHidden').removeClass('crowdHidden');
-                            $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
-                        });
-                        return data;
+                    get(setGameWeekURL, setGameWeekGetOptions)
+                    .then(function (response) {
+                        return response.json();
                     })
-            });
+                    .then(function (data) {
+                        userInformation.predictionsSubmitted = data.predictionsSubmitted;
+                        var totalGames = data.games.length;
+                        updateProgressBar(userInformation.predictionsSubmitted, totalGames);
+                            $("#games-loading-icon").css("display","none")
+
+                            formatGameTimes(data.games);
+                            var games = {games: data.games};
+                            console.log("games: ", games)
+                            var template = $('#games-template').html();
+                            var templateScript = Handlebars.compile(template);
+                            var html = templateScript(games);
+                            $('#games').html(html);
+                            //drawChart2(year, week);
+                            $('.prediction-btn').on('click', function (e) {
+                                e.preventDefault();
+                                $(this).text('Saving...');
+                                var $prediction = $(this).parents('.prediction');
+                                var prediction = {
+                                    gameId: $prediction.attr('data-game-id'),
+                                    gameWeek: $prediction.attr('data-game-week'),
+                                    year: $prediction.attr('data-game-year'),
+                                    awayTeam: {
+                                        code: $prediction.attr('data-away-code'),
+                                        fullName: $prediction.attr('data-away-name'),
+                                        shortName: $prediction.attr('data-away-short')
+                                    },
+                                    homeTeam: {
+                                        code: $prediction.attr('data-home-code'),
+                                        fullName: $prediction.attr('data-home-name'),
+                                        shortName: $prediction.attr('data-home-short')
+                                    }
+                                };
+                                var btn = $(this);
+                                var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
+                                var messageElm = predictionElm.find(".prediction-message");
+                                
+
+                                var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
+                                var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
+
+                                var away = $prediction.attr('data-away-team');
+                                var home = $prediction.attr('data-home-team');
+
+                                var awayCode = $prediction.attr('data-away-code');
+                                var homeCode = $prediction.attr('data-home-code');
+
+                                prediction.awayTeam.score = parseInt(awayTeamPrediction);
+                                prediction.homeTeam.score = parseInt(homeTeamPrediction);
+
+                                //submitPrediction(prediction, $(this));
+                                useToken(function(token){
+                                    console.log("submitPrediction Token: ", token)
+                                    apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
+                                    .then(function(response) {
+                                        console.log("response message:", response)
+                                        switch(response.status) {
+                                            case 200:
+                                                console.log("200: ", response);
+                                                btn.text('Predict');
+                                                var messageHtml = statusMessage('success', response.data.message);
+                                                messageElm.html(messageHtml)
+                                                moveBoxes(prediction.gameId);
+                                                return;
+                                            case 400:
+                                                var errorObj = JSON.parse(response.responseText);
+                                                console.log("400: ", errorObj);
+                                                btn.text('Predict');
+                                                var messageHtml = statusMessage('danger', errorObj.message);
+                                                messageElm.html(messageHtml);
+                                                return;
+                                            case 500:
+                                                var errorObj = JSON.parse(response.responseText);
+                                                console.log("500: ", errorObj);
+                                                btn.text('Predict');
+                                                var messageHtml = statusMessage('danger', errorObj.message);
+                                                messageElm.html(messageHtml);
+                                                return;
+                                        }
+                                        return true;
+                                    })
+                                    .catch(function(reject) {
+                                        console.log("reject message: ", reject)
+                                    })
+                                })
+                                // Update prediction table cell
+                                //$('#' + awayCode + '-prediction').text(prediction.awayTeam.score);
+                                //$('#' + homeCode + '-prediction').text(prediction.homeTeam.score);
+                                $('#' + awayCode + homeCode + '-total-prediction').text(prediction.awayTeam.score + prediction.homeTeam.score);
+                                $('#' + awayCode + homeCode + '-spread-prediction').text(prediction.awayTeam.score - prediction.homeTeam.score);
+                                //show odds and crowd info
+                                $prediction.find('.crowdHidden').removeClass('crowdHidden');
+                                $prediction.find('.crowdShown').addClass('crowdHidden').removeClass('crowdShown');
+                            });
+                            return data;
+                        })
+                });
+            }
         };
 
         $(document).ready(function () {
@@ -561,7 +563,16 @@
                 showLoginButton();
             }
 
-            getGroupInfo();
+            
+            if (groupParams.groupId && groupParams.sport && groupParams.year) {
+                getGroupInfo();
+            } else {
+                console.log("no group selected");
+                getAllGroups();
+
+                $("#games-loading-icon").css("display","none")
+                $("#group-loading-icon").css("display","none")
+            }
 
             $('#weekSelector li').on('click', 'a', function () {
                 gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
@@ -963,9 +974,9 @@
                                     <span class="sr-only">Loading...</span>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-4" id="inviteUsersDiv">
+                            <!-- <div class="col-xs-12 col-sm-4" id="inviteUsersDiv">
                                 <button id="inviteUsersButton" data-toggle="modal" data-target="inviteModal">Build Your Crowd</button>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-8" id="games">
@@ -975,6 +986,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row" id="allGroups"></div>
                     </div>
                 </div>
             </div>

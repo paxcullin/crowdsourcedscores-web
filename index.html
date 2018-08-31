@@ -118,7 +118,7 @@
             var now = new Date();
             var nowDateTimeDate = Date.parse(now);
             var startDateTimeDate = Date.parse(startDateTime);
-            var cutoff = startDateTimeDate - 3600000;
+            var cutoff = startDateTimeDate - 300000;
             if (now < cutoff) {
                 return options.fn(this);
             } else {
@@ -1233,7 +1233,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> Profile</a></li>
-                                    <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
+                                    <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout" onclick="logout()">Logout</button></li>
                                 </ul>
                             </li>
                         </ul>
@@ -1266,12 +1266,19 @@
                         <ul id="loginUserResults"></ul>
                     </fieldset>-->
 
-                    <select class="dropdown" id="seasonSelector">
+                    <div id="dropdown" class="ddmenu">
+                    Select Week
+                        <ul id="seasonSelector">
+                          <li><a href="#">2018</a></li>
+                          <li><a href="#">2017</a></li>
+                          <li><a href="#">2016</a></li>
+                        </ul>
+                      </div>
+                      <!-- <select class="dropdown" id="seasonSelectorOld">
                         <option value="2018" selected>2018</option>
                         <option value="2017">2017</option>
                         <option value="2016">2016</option>
-                    </select>
-                    <h4>Select Week</h4>
+                    </select> -->
                 </div>
                 <div class="col-xs-5 col-sm-2">
                     <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @sourcedscores</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
@@ -1300,10 +1307,10 @@
                         <li><a href="javascript:void(0);" data-week="15">15</a></li>
                         <li><a href="javascript:void(0);" data-week="16">16</a></li>
                         <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                        <li><a href="javascript:void(0);" data-week="18">WC</a></li>
+                        <!-- <li><a href="javascript:void(0);" data-week="18">WC</a></li>
                         <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
                         <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                        <li><a href="javascript:void(0);" data-week="21">SB</a></li>
+                        <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
                         <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
                     </ul>
                 </div>
