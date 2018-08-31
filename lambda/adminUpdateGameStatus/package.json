@@ -1,0 +1,16 @@
+{
+  "name": "admin-update-game-status-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r adminUpdateGameStatus.zip ."
+  },
+  "author": "Chris Aronchick",
+  "license": "ISC",
+  "dependencies": {
+    "jsonschema": "^1.1.0",
+    "mongodb": "^2.2.4"
+  }
+}
