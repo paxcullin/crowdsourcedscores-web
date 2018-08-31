@@ -8,7 +8,7 @@ function buildGroupsTable(allGroupsInformation) {
         var groupObject = allGroupsInformation[i];
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
         groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
-        groupHTML += "<td data-th=\"score\">" + groupObject.totalPredictionScore + "</td>";
+        groupHTML += "<td data-th=\"score\">" + groupObject.results.overall.predictionScore + "</td>";
         groupDivHTML += "<tr>" + groupHTML + "</tr>";
         if (i === allGroupsInformation.length - 1) {
             groupDivHTML += "</tbody></table>";
