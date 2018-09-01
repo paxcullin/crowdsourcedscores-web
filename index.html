@@ -277,7 +277,7 @@
                                         </tr>
                                         <tr class="predictionRow">
                                             <td>Spread</td>
-                                            <td{{#if results}}{{#ifCond prediction.results.spread '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
+                                            <td{{#if results}}{{#ifCond prediction.results.spread.correct '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
                                             <td{{#if results}}{{#ifCond crowd.spread '>' odds.spread}}{{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.spread '>' crowd.spread}}{{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
                                                 <span
                                                     {{#unless prediction}}
@@ -302,7 +302,7 @@
                                                              class="crowdHidden"
                                                             {{/unless}}
                                                         {{/unless}}
-                                                        style="font-weight:bold">{{#ifCond odds.spread '!=' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
+                                                        style="font-weight:bold">{{#ifCond odds.spread '!==' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
                                                     </span>
                                                 {{/unless}}{{#if results}}{{results.spread}}{{/if}}</td>
                                         </tr>
