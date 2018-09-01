@@ -73,7 +73,7 @@ function toggleCrowdPassword () {
 }
 
 function createCrowd() {
-    var $this = $(this);
+    var $this = $("#createCrowdButton");
     $this.button('loading');
     useToken(function(token) {
         var public = true;

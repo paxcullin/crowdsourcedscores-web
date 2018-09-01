@@ -46,7 +46,7 @@ function getGroupInfo() {
             return groupInfoReject;
         })
         .then(function(groupInfoDetails) {
-
+            groupParams.groupName = groupInfoDetails.groupName;
             $("#games-loading-icon").css("display","none")
             if (groupInfoDetails.memberOf === false) {
                 var groupPasswordHTML = "";
@@ -61,7 +61,12 @@ function getGroupInfo() {
                 }
             } else {
                 if (groupInfoDetails.groupId !== 0) {
-                    $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
+                    if (groupInfoDetails.owner.username === userInformation.cognitoUser.username) {
+                        $("#createCrowdButtonDiv").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editCrowdModal\" id=\"editCrowd\">Edit Crowd Info</button>");
+                        $("crowdNameInput").val(groupInfoDetails.groupName);
+                    } else {
+                        $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
+                    }
                 }
             }
 
