@@ -681,123 +681,39 @@
     <!-- Navbar will come here -->
 
     <!-- end navbar -->
-    <!--login modal-->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <!--edit crowd modal-->
+    <div class="modal fade" id="editCrowdModal" tabindex="-1" role="dialog" aria-labelledby="crowdModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
+                    <h5 class="modal-title" id="crowdModalLabel">Edit Crowd Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                        <div class="row">
-                        <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                                <li><a href="#Registration" data-toggle="tab">Registration</a></li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="Login">
-                                    <form role="form" class="form-horizontal">
-                                        <div class="form-group">
-                                            <fieldset>
-                                                <!--<legend>Sign Up for PCSM</legend>-->
-                                                <!--User name: <input type="text" id="username" placeholder="Enter your preferred user name">
-                                                <br>
-                                                <br>-->
-                                                E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
-                                                <br>
-                                                <br>
-                                                Password: <input type="password" id="password" placeholder="Enter password">
-                                                <br>
-                                                <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
-                                                <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
-                                                <br>
-                                                <!--<div style="width: 90%;">
-                                                    <button id="loginUser">Log In</button>
-                                                </div>-->
-                                                <ul id="loginUserResults"></ul>
-                                                <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-                                            </fieldset>
-                                        </div>
-                                    </form>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
-                                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" id="createCrowdColumn">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <fieldset>
+                                        <label for="crowdNameInput">Crowd Name:</label> <input class="form-control" type="text" id="crowdNameInput" name="crowdNameInput">
+                                        <span id="updateCrowdResults"></span>
+                                    </fieldset>
                                 </div>
-                                <div class="tab-pane" id="Registration">
-                                        <form role="form" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="firstName" class="col-sm-2 control-label">
-                                                                First</label>
-                                            <div class="col-sm-6">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                <input type="text" class="form-control" id="firstName" placeholder="First Name" />
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="form-group">
-                                                <label for="lastName" class="col-sm-2 control-label">
-                                                                    Last</label>
-                                                <div class="col-sm-6">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-        
-                                            <div class="form-group">
-                                                <label for="newUsername" class="col-sm-2 control-label">
-                                                                    Username (max: 25 characters)</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="newUsername" placeholder="Username" />
-                                                </div>
-                                            </div>
-                                        <div class="form-group">
-                                            <label for="email" class="col-sm-2 control-label">
-                                                                Email</label>
-                                            <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="newEmail" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="newPassword" class="col-sm-2 control-label">
-                                                                Password</label>
-                                            <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="newPassword" placeholder="Password" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-2">
-                                            </div>
-                                            <div class="col-sm-10">
-                                            <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
-                                                                    Submit</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                            </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    </div>
+                            </form>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="editCrowdButton" onclick="editCrowd()">Update</button><br>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!--close login modal-->
+    <!--close edit crowd modal-->
     <!--invite users modal-->
     <div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="inviteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -857,7 +773,7 @@
                     <div class="navbar navbar-default navbar-fixed-top">
                         <div class="container">
                             <div class="header-icon"><a href="/"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowd Wisdom Sports"></a></div>
-                            <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowdsourced Scores</span><span class="visible-md">CS Scores</span></a>
+                            <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowd Wisdom Sports</span><span class="visible-md">CS Scores</span></a>
                             <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                             </div>
                             <div id="navbar-main" class="navbar-collapse collapse">
