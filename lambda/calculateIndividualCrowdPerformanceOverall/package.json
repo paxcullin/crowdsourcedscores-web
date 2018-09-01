@@ -1,13 +1,13 @@
 {
-  "name": "calculate-individual-crowd-performance-lambda",
+  "name": "calculate-individual-crowd-performance-overall-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r calculateIndividualCrowdPerformance.zip ."
+    "package": "zip -r calculateIndividualCrowdPerformanceOverall.zip ."
   },
-  "author": "Paul Cullin",
+  "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.4.6",
