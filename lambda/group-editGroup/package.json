@@ -1,5 +1,5 @@
 {
-  "name": "get-groups-lambda",
+  "name": "get-group-editGroup-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r getGroups.zip ."
+    "package": "zip -r group-editGroup.zip ."
   },
   "author": "",
   "license": "ISC"
