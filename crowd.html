@@ -305,54 +305,9 @@
                                     <th>
                                         User
                                     </th>
-                                    <th>1</th>
+                                    <th>Week 1</th>
                                     <th>
-                                        2
-                                    </th>
-                                    <th>
-                                        3
-                                    </th>
-                                    <th>
-                                        4
-                                    </th>
-                                    <th>
-                                        5
-                                    </th>
-                                    <th>
-                                        6
-                                    </th>
-                                    <th>
-                                        7
-                                    </th>
-                                    <th>
-                                        8
-                                    </th>
-                                    <th>
-                                        9
-                                    </th>
-                                    <th>
-                                        10
-                                    </th>
-                                    <th>
-                                        11
-                                    </th>
-                                    <th>
-                                        12
-                                    </th>
-                                    <th>
-                                        13
-                                    </th>
-                                    <th>
-                                        14
-                                    </th>
-                                    <th>
-                                        15
-                                    </th>
-                                    <th>
-                                        16
-                                    </th>
-                                    <th>
-                                        17
+                                        Total
                                     </th>
                                 </tr>
                             </thead>
@@ -363,23 +318,8 @@
                                     <td>
                                     {{{this.preferred_username}}}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td data-th="Week 1"></td>
+                                    <td data-th="Total"></td>
                                 </tr>
                             {{/each}}
                             </tbody>
@@ -456,18 +396,20 @@
                         return response.json();
                     })
                     .then(function (data) {
-                        userInformation.predictionsSubmitted = data.predictionsSubmitted;
-                        var totalGames = data.games.length;
-                        updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                            $("#games-loading-icon").css("display","none")
+                        if (data && data.games && data.games.length > 0) {
+                            userInformation.predictionsSubmitted = data.predictionsSubmitted;
+                            var totalGames = data.games.length;
+                            updateProgressBar(userInformation.predictionsSubmitted, totalGames);
+                                $("#games-loading-icon").css("display","none")
 
-                            formatGameTimes(data.games);
-                            var games = {games: data.games};
-                            console.log("games: ", games)
-                            var template = $('#games-template').html();
-                            var templateScript = Handlebars.compile(template);
-                            var html = templateScript(games);
-                            $('#games').html(html);
+                                formatGameTimes(data.games);
+                                var games = {games: data.games};
+                                console.log("games: ", games)
+                                var template = $('#games-template').html();
+                                var templateScript = Handlebars.compile(template);
+                                var html = templateScript(games);
+                                $('#games').html(html);
+                        }
                             //drawChart2(year, week);
                             $('.prediction-btn').on('click', function (e) {
                                 e.preventDefault();
@@ -959,47 +901,47 @@
 
     // Commenting out and will remove once login flow is confirmed
 
-    document.getElementById('signUpUser').addEventListener('click', function() {
-        console.log('clicked');
-        var attributeList = [];
+    // document.getElementById('signUpUser').addEventListener('click', function() {
+    //     console.log('clicked');
+    //     var attributeList = [];
         
-        var dataEmail = {
-                Name : 'email',
-                Value : $('#newEmail').val()
-            };
+    //     var dataEmail = {
+    //             Name : 'email',
+    //             Value : $('#newEmail').val()
+    //         };
 
-        var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-        attributeList.push(attributeEmail);
+    //     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+    //     attributeList.push(attributeEmail);
         
-        var dataFirst = {
-                Name : 'given_name',
-                Value : $('#firstName').val()
-            };
+    //     var dataFirst = {
+    //             Name : 'given_name',
+    //             Value : $('#firstName').val()
+    //         };
 
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
-        attributeList.push(dataFirst);
+    //     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
+    //     attributeList.push(dataFirst);
 
-        var dataLast = {
-                Name : 'family_name',
-                Value : $('#lastName').val()
-            };
+    //     var dataLast = {
+    //             Name : 'family_name',
+    //             Value : $('#lastName').val()
+    //         };
 
-        var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
-        attributeList.push(dataLast);
+    //     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
+    //     attributeList.push(dataLast);
 
-        var cognitoUser;
+    //     var cognitoUser;
 
-        userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
-            if (err) {
-                alert(err);
-                return;
-            }
-            cognitoUser = result.user;
+    //     userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
+    //         if (err) {
+    //             alert(err);
+    //             return;
+    //         }
+    //         cognitoUser = result.user;
 
-            console.log('user name is ' + cognitoUser.getUsername());
-            showConfirmUI(cognitoUser);
-        });
-    });
+    //         console.log('user name is ' + cognitoUser.getUsername());
+    //         showConfirmUI(cognitoUser);
+    //     });
+    // });
 
     function showConfirmUI(cognitoUser) {
         $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")

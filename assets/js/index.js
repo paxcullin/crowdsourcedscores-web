@@ -6,9 +6,11 @@ function buildGroupsTable(allGroupsInformation) {
     for (var i=0; i < allGroupsInformation.length; i++) {
         groupHTML = "";
         var groupObject = allGroupsInformation[i];
+        var predictionScore = 0;
+        if (groupObject.results && groupObject.results.overall) predictionScore = groupObject.results.overall.predictionScore;
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
         groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
-        groupHTML += "<td data-th=\"score\">" + groupObject.results.overall.predictionScore + "</td>";
+        groupHTML += "<td data-th=\"score\">" + predictionScore + "</td>";
         groupDivHTML += "<tr>" + groupHTML + "</tr>";
         if (i === allGroupsInformation.length - 1) {
             groupDivHTML += "</tbody></table>";
