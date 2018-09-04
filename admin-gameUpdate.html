@@ -153,8 +153,13 @@
                                     <div class="prediction-message" data-game-id="{{{gameId}}}"></div>
                                     <div>
                                         <div class="form-group">
-                                            <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><span style="float:left" class="startDateTime">{{startDateTime}}</span>{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
+                                            <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><input type="datetime" style="float:left; color:#3A3B6C" class="startDateTime" value="{{startDateTime}}">{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
                                             
+                                            <select class="dropdown" id="{{{gameId}}}-gameStatus">
+                                                    <option value="notStarted" selected>Not Started</option>
+                                                    <option value="inProgress">In Progress</option>
+                                                    <option value="final">Final</option>
+                                                </select>
                                         </div>
                                     </div>
 
@@ -380,9 +385,9 @@
                                 gameId: parseInt($game.attr('data-game-id')),
                                 gameWeek: parseInt($game.attr('data-game-week')),
                                 year: parseInt($game.attr('data-game-year')),
-                                status: "Not Started",
+                                status: $("#" + parseInt($game.attr('data-game-id')) + "-gameStatus").val(),
                                 sport: "nfl",
-                                startDateTime: Date.parse($game.find('.startDateTime').text()),
+                                startDateTime: $game.find('.startDateTime').val(),
                                 results: {
                                     awayTeam: {
                                         score: 50

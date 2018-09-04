@@ -176,7 +176,7 @@ text-rendering: optimizeLegibility;
 }
 
 .crowdHidden {
-    visibility: hidden;
+    display: none;
 }
 
 #resultsContainer {

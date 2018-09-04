@@ -46,6 +46,7 @@ function getGroupInfo() {
             return groupInfoReject;
         })
         .then(function(groupInfoDetails) {
+            console.log("groupInfoDetails: ", groupInfoDetails)
             groupParams.groupName = groupInfoDetails.groupName;
             $("#games-loading-icon").css("display","none")
             if (groupInfoDetails.memberOf === false) {
@@ -74,8 +75,25 @@ function getGroupInfo() {
             var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner.preferred_username + "</span><br>";
             $("#groupDetails").html(groupDetailsHTML);
             if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
+                groupInfoDetails.users.sort(function(a,b) {
+                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1;
+                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1;
+                    return 0;
+                })
                 var groupMembers = {groupMembers: groupInfoDetails.users};
-                var html = templateScript(groupMembers);
+                // setting up weeks array to build the week-by-week user table
+                var groupMembersWeeks = [];
+                if (groupInfoDetails.results && groupInfoDetails.results.weekly) {
+                    groupInfoDetails.results.weekly.forEach((element, index) => {
+                        groupMembersWeeks.push(index + 1);
+                    });
+                } else {
+                    groupMembersWeeks = [gameWeekDataObj.week];
+                }
+                //console.log('groupMembersWeeks: ', groupMembersWeeks)
+                var groupMembersObj = {weeks: groupMembersWeeks, groupMembers};
+                console.log('groupMembersObj: ', groupMembersObj)
+                var html = templateScript(groupMembersObj);
                 $('#group').html(html);
             }
             groupInfoObject = groupInfoDetails;
