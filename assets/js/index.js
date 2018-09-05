@@ -8,7 +8,11 @@ function buildGroupsTable(allGroupsInformation) {
         var groupObject = allGroupsInformation[i];
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
         groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
-        groupHTML += "<td data-th=\"score\">" + groupObject.results.overall.predictionScore + "</td>";
+        if (groupObject.results && groupObject.results.overall) {
+            groupHTML += "<td data-th=\"Score\">" + groupObject.results.overall.predictionScore + "</td>";
+        } else {
+            groupHTML += "<td data-th=\"Score\">0</td>";
+        }
         groupDivHTML += "<tr>" + groupHTML + "</tr>";
         if (i === allGroupsInformation.length - 1) {
             groupDivHTML += "</tbody></table>";
@@ -16,6 +20,30 @@ function buildGroupsTable(allGroupsInformation) {
         rank += 1;
     }
     $("#allGroups").html(groupDivHTML);
+}
+
+function buildUsersTable(allUsersInformation) {
+
+    console.log("allGroupsInformation: ", allUsersInformation)
+    var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Group</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
+    var rank = 1;
+    for (var i=0; i < allUsersInformation.length; i++) {
+        usersHTML = "";
+        var userObject = allUsersInformation[i];
+        usersHTML = "<td data-th=\"Rank\">" + rank + "</td>";
+        usersHTML += "<td data-th=\"User\">" + userObject.preferred_username + "</td>";
+        if (userObject.results && userObject.results.overall) {
+            usersHTML += "<td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
+        } else {
+            usersHTML += "<td data-th=\"Score\">0</td>";
+        }
+        usersDivHTML += "<tr>" + usersHTML + "</tr>";
+        if (i === allUsersInformation.length - 1) {
+            usersDivHTML += "</tbody></table>";
+        }
+        rank += 1;
+    }
+    $("#allUsers").html(usersDivHTML);
 }
 
 function getAllGroups() {
@@ -55,13 +83,46 @@ function getAllGroups() {
     })
 }
 
+function getAllUsers() {
+    useToken(function(token) {
+        var getAllusersOptions = {
+            method: "GET"
+        }
+        var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/all/anon";
+        
+        if (token !== null) {
+            getAllUsersOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: token
+                }
+            }
+            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/all";
+        }
+
+        get(getAllUsersURL, getAllUsersOptions)
+        .then(function(getAllUsersResponse) {
+            return getAllUsersResponse.json();
+        })
+        .catch(function(getAllUsersReject) {
+            console.log(getAllUsersReject);
+            return;
+        })
+        .then(function(allUsersInformation) {
+            buildUsersTable(allUsersInformation);
+            return allUsersInformation;
+        })
+    })
+}
 // Index Page Progress Bar jQuery
 
 // Prediction Submitted
 function updateProgressBar(predictionNumber, totalGames) {
     //console.log("predictionNumber: ", predictionNumber, ", totalGames: ", totalGames)
     var progressValue = Math.round((predictionNumber / totalGames) * 100);
-    $('#progress-bar').val(Math.round(progressValue));  
+    $('#progress-bar').attr('aria-valuenow', progressValue);
+    $('.progress-bar').width(progressValue + '%');
+    //$('#progress-bar').val(Math.round(progressValue)); 
     $('.percent').html(progressValue + "% Complete");
     userInformation.predictionsSubmitted++;
 };// complete click

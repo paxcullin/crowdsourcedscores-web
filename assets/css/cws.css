@@ -293,6 +293,17 @@ div#OR {
     background: #DFDFDF;
 }
 
+#legend {
+    margin: 10px auto;
+    text-align: center;
+}
+#legend span {
+    padding: 0;
+    display: inline-block;
+    height: 20px;
+    width: 40px;
+}
+
 /* Table CSS */
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 .rwd-table {
@@ -399,12 +410,19 @@ color: #fff;
   .cont p {
       text-align: center;
   }
+
+  .progress{
+    border-radius:0;
+    overflow:visible;
+  }
+
   #progress-bar{
     appearance:none;
     width: 100%;
     color: #3A3B6C;
     height: 2px;
     margin: 0 auto;
+    background: #3A3B6C;
   }
   #progress-bar::-webkit-progress-value{ /* Changes line color */
     background: #fff;
@@ -412,6 +430,8 @@ color: #fff;
   }
   #progress-bar::-webkit-progress-bar{ /* Changes background color */
     background: #3A3B6C;
+    -webkit-transition: width 1.5s ease-in-out;
+    transition: width 1.5s ease-in-out;
   }
   .border-change{
     border-color:#fff;

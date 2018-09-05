@@ -16,7 +16,7 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -179,6 +179,9 @@
                                                 {{/unless}}
                                                 {{#if results}}
                                                     {{prediction.awayTeam.score}}
+                                                    {{#ifCond prediction.awayTeam.score '===' results.awayTeam.score}}
+                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                    {{/ifCond}}
                                                 {{/if}}
                                             </td>
                                             <td{{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond crowd.awayTeam.score '>' crowd.homeTeam.score}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
@@ -189,6 +192,9 @@
                                                         {{/unless}}
                                                     {{/unless}}>
                                                     {{crowd.awayTeam.score}}
+                                                    {{#ifCond crowd.awayTeam.score '===' results.awayTeam.score}}
+                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                    {{/ifCond}}
                                                 </span>
                                                 {{#unless prediction}}
                                                     {{#unless results}}
@@ -207,6 +213,9 @@
                                                 {{/unless}}
                                                 {{#if results}}
                                                     {{prediction.homeTeam.score}}
+                                                    {{#ifCond prediction.homeTeam.score '===' results.homeTeam.score}}
+                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                    {{/ifCond}}
                                                 {{/if}}
                                             </td>
                                             <td
@@ -223,7 +232,11 @@
                                                          class="crowdHidden"
                                                         {{/unless}}
                                                     {{/unless}}
-                                                >{{crowd.homeTeam.score}}</span>
+                                                >{{crowd.homeTeam.score}}
+                                                {{#ifCond crowd.homeTeam.score '===' results.homeTeam.score}}
+                                                    <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                {{/ifCond}}
+                                                </span>
                                                 {{#unless prediction}}
                                                     {{#unless results}}
                                                         <span class="fa fa-lock crowdShown"></span>
@@ -256,8 +269,41 @@
                                                      class="alert alert-success"
                                                     {{/ifCond}}
                                                 {{/ifCond}}
-                                            {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">{{prediction.total}}</td>
-                                            <td{{#if results}}{{#ifCond crowd.total '>' odds.total}}{{#ifCond results.total '>' odds.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.total '>' crowd.total}}{{#ifCond odds.total '>' results.total}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}><span{{#unless prediction}}{{#unless results}} class="crowdHidden"{{/unless}}{{/unless}}>{{crowd.total}}</span>{{#unless prediction}} {{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}} {{/unless}}</td>
+                                            {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">
+                                            {{prediction.total}}
+                                            
+                                            {{#ifCond prediction.total '===' results.total}}
+                                                <sup><i class="fas fa-dollar-sign"></i></sup>
+                                            {{/ifCond}}
+                                            </td>
+                                            <td
+                                                {{#if results}}
+                                                    {{#ifCond crowd.total '>' odds.total}}
+                                                        {{#ifCond results.total '>' odds.total}} class="crowdCorrect"
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                    {{#ifCond odds.total '>' crowd.total}}
+                                                        {{#ifCond odds.total '>' results.total}} class="crowdCorrect"
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/if}}>
+                                                    <span
+                                                        {{#unless prediction}}
+                                                            {{#unless results}} class="crowdHidden"
+                                                            {{/unless}}
+                                                        {{/unless}}>
+                                                        {{crowd.total}}
+
+                                                        {{#ifCond crowd.total '===' results.total}}
+                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                        {{/ifCond}}
+                                                    </span>
+                                                    {{#unless prediction}}
+                                                        {{#unless results}}
+                                                            <span class="fa fa-lock crowdShown"></span>
+                                                        {{/unless}}
+                                                    {{/unless}}
+                                            </td>
                                             <td>
                                                 <span
                                                     {{#unless prediction}}
@@ -277,14 +323,40 @@
                                         </tr>
                                         <tr class="predictionRow">
                                             <td>Spread</td>
-                                            <td{{#if results}}{{#ifCond prediction.results.spread.correct '===' 1}} class="alert alert-success"{{/ifCond}}{{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">{{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}</td>
-                                            <td{{#if results}}{{#ifCond crowd.spread '>' odds.spread}}{{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{#ifCond odds.spread '>' crowd.spread}}{{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}{{/if}}>
+                                            <td
+                                                {{#if results}}
+                                                    {{#ifCond prediction.results.spread.correct '===' 1}} class="alert alert-success"
+                                                    {{/ifCond}}
+                                                {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">
+                                                    {{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}
+                                                    {{#ifCond prediction.total '===' results.total}}
+                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                    {{/ifCond}}
+                                            </td>
+                                            <td
+                                                {{#if results}}
+                                                    {{#ifCond crowd.spread '>' odds.spread}}
+                                                        {{#ifCond results.spread '>' odds.spread}} class="crowdCorrect"
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                    {{#ifCond odds.spread '>' crowd.spread}}
+                                                        {{#ifCond odds.spread '>' results.spread}} class="crowdCorrect"
+                                                        {{/ifCond}}
+                                                    {{/ifCond}}
+                                                {{/if}}>
                                                 <span
                                                     {{#unless prediction}}
                                                         {{#unless results}}
                                                          class="crowdHidden"
                                                         {{/unless}}
-                                                    {{/unless}}>{{#ifCond crowd.spread '>' 0}}+{{/ifCond}}{{crowd.spread}}</span>{{#unless prediction}}{{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}}{{/unless}}</td>
+                                                    {{/unless}}>
+                                                        {{#ifCond crowd.spread '>' 0}}+{{/ifCond}}
+                                                        {{crowd.spread}}
+
+                                                        {{#ifCond crowd.spread '===' results.spread}}
+                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                        {{/ifCond}}
+                                                </span>{{#unless prediction}}{{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}}{{/unless}}</td>
                                             <td>
                                                     <span
                                                         {{#unless prediction}}
@@ -304,7 +376,8 @@
                                                         {{/unless}}
                                                         style="font-weight:bold">{{#ifCond odds.spread '!==' ""}}{{#ifCond crowd.spread '>' odds.spread}}{{awayTeam.code}}{{/ifCond}}{{#ifCond crowd.spread '<' odds.spread}}{{homeTeam.code}}{{/ifCond}}{{/ifCond}}
                                                     </span>
-                                                {{/unless}}{{#if results}}{{results.spread}}{{/if}}</td>
+                                                {{/unless}}
+                                                {{#if results}}{{results.spread}}{{/if}}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -575,7 +648,8 @@
                                     switch(response.status) {
                                         case 200:
                                             //console.log("200: ", response);
-                                            btn.text('Predict');
+                                            btn.text('Update');
+                                            ga('send','event','prediction','submitted',prediction.gameId);
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
@@ -632,40 +706,58 @@
                                 id: "hello-hopscotch",
                                 steps: [
                                     {
-                                    title: "Thanks for joining the crowd!",
-                                    content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
-                                    target: document.querySelector('#games'),
-                                    placement: "top"
+                                        title: "Thanks for joining the crowd!",
+                                        content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
+                                        target: document.querySelector('#games'),
+                                        placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                     },
                                     {
-                                    title: "Worried you're not an expert?",
-                                    content: "Don't fret! You know just as much as anyone about what's going to happen, and the experts are wrong all the time. So just have fun! It's easy. We'll show you.",
-                                    target: document.getElementsByClassName('card')[0],
-                                    placement: "top"
+                                        title: "Worried you're not an expert?",
+                                        content: "Don't fret! You know just as much as anyone about what's going to happen, and the experts are wrong all the time. So just have fun! It's easy. We'll show you.",
+                                        target: document.getElementsByClassName('card')[0],
+                                        placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                     },
                                 {
-                                    title: "Away Team Score",
-                                    content: "How many points do you think the <b>away team</b> will score?",
-                                    target: document.getElementsByClassName('predictionInput')[0],
-                                    placement: "top"
+                                        title: "Away Team Score",
+                                        content: "How many points do you think the <b>away team</b> will score?",
+                                        target: document.getElementsByClassName('predictionInput')[0],
+                                        placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                 },
                                 {
                                     title: "Home Team Score",
                                     content: "How many points do you think the <b>home team</b> will score?",
                                     target: document.getElementsByClassName('predictionInput')[1],
-                                    placement: "top"
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                 },
                                 {
                                     title: "Predict!",
                                     content: "That's it! Now click the predict button.",
                                     target: document.getElementsByClassName('prediction-btn')[0],
-                                    placement: "top"
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                 },
                                 {
                                     title: "Nice! Keep It Up!",
                                     content: "You'll be able to see how many games are still waiting for your expertise in the progress bar.",
                                     target: document.querySelector('#progress-bar'),
-                                    placement: "top"
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                                        }
                                 },
                                 {
                                     title: "Lots of ways to Compete",
@@ -675,12 +767,14 @@
                                     onNext: function() {
                                         console.log("setTourState")
                                         localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                                        ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum())
                                     }
                                 }
                                 ],
                                 onEnd: function() {
                                     localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
                                     updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
+                                    ga('send','event','tour','step','ended');
                                 }
                             };
                             var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
@@ -688,6 +782,85 @@
                                 console.log("user has taken the tour");
                             } else {
                                 hopscotch.startTour(tour);
+                            }
+                        } else {
+
+                            var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                            var anonymousTour = {
+                                id: "intro-tour",
+                                steps: [
+                                    {
+                                        title: "Welcome!",
+                                        content: "New here? Want to know what this is about? Take the Tour!",
+                                        target: document.querySelector('#games'),
+                                        placement: "top",
+                                        showPrevButton: true,
+                                        i18n: {
+                                            nextBtn: "Start the Tour!",
+                                            prevBtn: "No thanks!"
+                                        },
+                                        onPrev: function() {
+                                            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true)
+                                        },
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                    },
+                                    {
+                                    title: "Beyond the Coin Flip",
+                                    content: "We wanted to create a game that gives you a chance to use your expertise.<br>Instead of a 50/50 chance at picking the winner or the side, you predict the score for each team in (probably) the same amount of time.",
+                                    target: document.getElementsByClassName('card')[0],
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                    },
+                                {
+                                    title: "Prediction Scoring",
+                                    content: "<p>Instead of an all-or-nothing result that can turn be decided on the last play, you earn points for each part of your score: winner (2 points), spread (2 points), and total (2 points). You also get a +1 bonus for an on-the-money (i.e. exact) prediction.</p><p>Each prediction can earn up to 10 points; a 4-point score is good, 6 is great, 7 is incredible, and 10 means you should take your act to Vegas.</p>",
+                                    target: document.getElementsByClassName('predictionInput')[0],
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                },
+                                {
+                                    title: "Compete against the entire Crowd. Compete against just your Crowd.",
+                                    content: "<p>By participating, you are already competing against everyone else to see who has the best prediction skills.</p><p>You can also create or join a crowd to earn bragging rights among your friends, enemies, or coworkers.</p>",
+                                    target: document.getElementsByClassName('predictionInput')[1],
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                },
+                                {
+                                    title: "Crowd vs. Crowd",
+                                    content: "Last thing: each crowd will have its own wisdom, so each crowd can compete against every other crowd to see who has the best crowd wisdom.",
+                                    target: document.getElementsByClassName('prediction-btn')[0],
+                                    placement: "top",
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                },
+                                {
+                                    title: "Ready to Play?",
+                                    content: "Thanks for taking the tour! If you're ready to play, sign up and get your weekly predictions in!",
+                                    target: document.querySelector('#loginButtons'),
+                                    placement: "right",
+                                        onNext: function() {
+                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                                        }
+                                }
+                                ],
+                                onEnd: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                                }
+                            };
+                            var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                            if (localTourState === true) {
+                                console.log("logged out user has taken the tour");
+                            } else {
+                                hopscotch.startTour(anonymousTour);
                             }
                         }
 
@@ -1383,11 +1556,11 @@
             <div id="resultsContainer">
 
                 <div class="row" id="myResultsRow">
-                    <div class="col-xs-3">
-                        <span>Your Results</span>
+                    <div class="col-xs-1">
+                        <span>You:</span>
                     </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Straight Up:</span><span class="visible-xs">S/U:</span> <span id="myStraightUpResults"></span>
+                    <div class="col-xs-2">
+                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
                     </div>
                     <div class="col-xs-3">
                         <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="mySpreadResults"></span>
@@ -1395,13 +1568,16 @@
                     <div class="col-xs-3">
                         <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="myTotalResults"></span>
                     </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <span class="hidden-xs">Prediction Score:</span><span class="visible-xs">Score:</span> <span id="myTotalResults"></span>
+                    </div>
                 </div>
                 <div class="row" id="crowdResultsRow">
-                    <div class="col-xs-3">
-                        <span>Crowd Results</span>
+                    <div class="col-xs-1">
+                        <span>Crowd:</span>
                     </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Straight Up:</span><span class="visible-xs">S/U:</span> <span id="crowdStraightUpResults"></span>
+                    <div class="col-xs-2">
+                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
                     </div>
                     <div class="col-xs-3">
                         <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="crowdSpreadResults"></span>
@@ -1409,14 +1585,23 @@
                     <div class="col-xs-3">
                         <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="crowdTotalResults"></span>
                     </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-xs">Prediction Score:</span><span class="visible-xs">Score:</span> <span id="crowdTotalResults"></span>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                         <div class="cont">
-                            <progress id="progress-bar" min="1" max="100" value="0"></progress>
+                            <div class="progress">
+                                <div class="progress-bar" id="progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="progressbar"></div>
+                            </div>
                             <p><strong>Prediction Progress:</strong> <span class="percent"></span></p>
+                            <div id="legend">
+                                <span class="alert alert-success">&nbsp;</span>: Correct Pick | <i class="fas fa-dollar-sign"></i>: On the Money Pick
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
                     <div id="games-loading-icon">
                         <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>
@@ -1425,9 +1610,15 @@
                     <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
-                        <div id="allGroupsHeader"><h5>Crowd vs. Crowd</h5></div>
+                    <div id="groupsDiv">
+                        <div id="allGroupsHeader"><h5>Crowd Leaderboard</h5></div>
                         <div id="allGroups"></div>
                         <div id="createCrowdButtonDiv"></div>
+                    </div>
+                    <div id="usersDiv">
+                        <div id="allUsersHeader"><h5>User Leaderboard</h5></div>
+                        <div id="allUsers"></div>
+                    </div>
                 </div>
             </div>
             <div class="row">
