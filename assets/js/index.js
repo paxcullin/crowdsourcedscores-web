@@ -25,13 +25,13 @@ function buildGroupsTable(allGroupsInformation) {
 function buildUsersTable(allUsersInformation) {
 
     console.log("allGroupsInformation: ", allUsersInformation)
-    var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Group</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
+    var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
     for (var i=0; i < allUsersInformation.length; i++) {
         usersHTML = "";
         var userObject = allUsersInformation[i];
         usersHTML = "<td data-th=\"Rank\">" + rank + "</td>";
-        usersHTML += "<td data-th=\"User\">" + userObject.preferred_username + "</td>";
+        usersHTML += "<td data-th=\"Username\">" + userObject.preferred_username + "</td>";
         if (userObject.results && userObject.results.overall) {
             usersHTML += "<td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
         } else {
@@ -88,7 +88,7 @@ function getAllUsers() {
         var getAllusersOptions = {
             method: "GET"
         }
-        var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/all/anon";
+        var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers/anon";
         
         if (token !== null) {
             getAllUsersOptions = {
@@ -97,7 +97,7 @@ function getAllUsers() {
                     Authorization: token
                 }
             }
-            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/all";
+            getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers";
         }
 
         get(getAllUsersURL, getAllUsersOptions)

@@ -272,9 +272,11 @@
                                             {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">
                                             {{prediction.total}}
                                             
-                                            {{#ifCond prediction.total '===' results.total}}
-                                                <sup><i class="fas fa-dollar-sign"></i></sup>
-                                            {{/ifCond}}
+                                            {{#if results}}
+                                                {{#ifCond prediction.total '===' results.total}}
+                                                    <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                {{/ifCond}}
+                                            {{/if}}
                                             </td>
                                             <td
                                                 {{#if results}}
@@ -329,9 +331,11 @@
                                                     {{/ifCond}}
                                                 {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">
                                                     {{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}
-                                                    {{#ifCond prediction.total '===' results.total}}
-                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
-                                                    {{/ifCond}}
+                                                    {{#if results}}
+                                                        {{#ifCond prediction.total '===' results.total}}
+                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                        {{/ifCond}}
+                                                    {{/if}}
                                             </td>
                                             <td
                                                 {{#if results}}
@@ -1075,6 +1079,7 @@
 
             });
             var allGroups = getAllGroups();
+            var allUsers = getAllUsers();
         });
         //console.log("dataWeek: ", dataWeek);
         google.load("visualization", "1", {packages:["corechart"]});
@@ -1610,14 +1615,28 @@
                     <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
-                    <div id="groupsDiv">
-                        <div id="allGroupsHeader"><h5>Crowd Leaderboard</h5></div>
-                        <div id="allGroups"></div>
-                        <div id="createCrowdButtonDiv"></div>
-                    </div>
-                    <div id="usersDiv">
-                        <div id="allUsersHeader"><h5>User Leaderboard</h5></div>
-                        <div id="allUsers"></div>
+                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+                                <li role="presentation" class="active">
+                                <a href="#usersDiv" id="users-tab" role="tab" data-toggle="tab" aria-controls="users" aria-expanded="true">
+                                    <span class="text">User Leaderboard</span>
+                                </a>
+                                </li>
+                                <li role="presentation" class="next">
+                                <a href="#crowdsDiv" role="tab" id="crowds-tab" data-toggle="tab" aria-controls="crowds">
+                                    <span class="text">Crowd Leaderboard</span>
+                                </a>
+                                </li>
+                            </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="usersDiv" aria-labelledby="home-tab">
+                                <div id="allUsers"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="crowdsDiv" aria-labelledby="groups-tab">
+                                <div id="allGroups"></div>
+                                <div id="createCrowdButtonDiv"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
