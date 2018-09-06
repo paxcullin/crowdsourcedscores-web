@@ -293,6 +293,110 @@ div#OR {
     background: #DFDFDF;
 }
 
+#legend {
+    margin: 10px auto;
+    text-align: center;
+}
+#legend span {
+    padding: 0;
+    display: inline-block;
+    height: 20px;
+    width: 40px;
+}
+
+/* Tabs CSS */
+
+@media screen and (max-width: 479px) {
+    .nav-tabs-responsive > li {
+      display: none;
+      width: 23%;
+    }
+    .nav-tabs-responsive > li > a {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+      width: 100%;
+      width: 100%;
+      text-align: center;
+      vertical-align: top;
+    }
+    .nav-tabs-responsive > li.active {
+      width: 54%;
+    }
+    .nav-tabs-responsive > li.active:first-child {
+      margin-left: 23%;
+    }
+    .nav-tabs-responsive > li.active, .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+      display: block;
+    }
+    .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    .nav-tabs-responsive > li.next > a, .nav-tabs-responsive > li.prev > a {
+      -webkit-transition: none;
+      transition: none;
+    }
+    .nav-tabs-responsive > li.next > a .text, .nav-tabs-responsive > li.prev > a .text {
+      display: none;
+    }
+    .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.prev > a:after, .nav-tabs-responsive > li.prev > a:after {
+      position: relative;
+      top: 1px;
+      display: inline-block;
+      font-family: 'Glyphicons Halflings';
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .nav-tabs-responsive > li.prev > a:after {
+      content: "\e079";
+    }
+    .nav-tabs-responsive > li.next > a:after {
+      content: "\e080";
+    }
+    .nav-tabs-responsive > li.dropdown > a > .caret {
+      display: none;
+    }
+    .nav-tabs-responsive > li.dropdown > a:after {
+      content: "\e114";
+    }
+    .nav-tabs-responsive > li.dropdown.active > a:after {
+      display: none;
+    }
+    .nav-tabs-responsive > li.dropdown.active > a > .caret {
+      display: inline-block;
+    }
+    .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-left {
+      left: 0;
+      right: auto;
+    }
+    .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-center {
+      right: auto;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+    .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-right {
+      left: auto;
+      right: 0;
+    }
+  }
+  /**
+   * Demo Styles
+   */
+  
+  .bs-example-tabs .nav-tabs {
+    margin-bottom: 15px;
+  }
+
 /* Table CSS */
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 .rwd-table {
@@ -399,12 +503,21 @@ color: #fff;
   .cont p {
       text-align: center;
   }
+
+  .progress{
+    border-radius:5px;
+    height: 20px;
+    overflow:visible;
+  }
+
   #progress-bar{
     appearance:none;
+    height: 20px;
     width: 100%;
     color: #3A3B6C;
-    height: 2px;
     margin: 0 auto;
+    background: #3A3B6C;
+    border-radius:5px;
   }
   #progress-bar::-webkit-progress-value{ /* Changes line color */
     background: #fff;
@@ -412,6 +525,8 @@ color: #fff;
   }
   #progress-bar::-webkit-progress-bar{ /* Changes background color */
     background: #3A3B6C;
+    -webkit-transition: width 1.5s ease-in-out;
+    transition: width 1.5s ease-in-out;
   }
   .border-change{
     border-color:#fff;
