@@ -267,7 +267,7 @@
                     <div class="navbar navbar-default navbar-fixed-top">
                         <div class="container">
                             <div class="header-icon"><a href="/"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowd Wisdom Sports"></a></div>
-                            <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowdsourced Scores</span><span class="visible-md">CS Scores</span></a>
+                            <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowd Wisdom Sports</span><span class="visible-md">CS Scores</span></a>
                             <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                             </div>
                             <div id="navbar-main" class="navbar-collapse collapse">
@@ -293,7 +293,7 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> Profile</a></li>
-                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout">Logout</button></li>
+                                        <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout" onclick="logout()">Logout</button></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -358,11 +358,21 @@
                 <div class="row extendedDetail">
                     <div class="col-md-6 predictionDetails">
                         <h3>Your Prediction Results</h3>
-                        <div id="predictionDetails"></div>
+                        <div id="predictionDetails">
+                            <div id="prediction-loading-icon">
+                                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6 groupDetails" id="allGroupsDiv">
                         <h3>Your Crowds</h3>
-                        <div id="allGroups"></div>
+                        <div id="allGroups">
+                            <div id="group-loading-icon">
+                                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
