@@ -65,28 +65,29 @@ var extendedProfile = function() {
             //check for previous results
                 if (extProfileResponseJSON && extProfileResponseJSON.resultsNFL) {
 
-                    var userResults = extProfileResponseJSON.resultsNFL.weeklyResults;
+                    var userResults = extProfileResponseJSON.results.weekly;
                     var resultsHTML = "";
+                    var resultsDivHTML = "";
                     console.log("userResults: ", userResults)
                     //var resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"spread\"><span class=\"full\">Spread</span></th><th class=\"total\"><span class=\"full\">Total</span></th><th class=\"totalPredictionScore\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
                     var rank = 1;
-                    for (var i=0; i < userResults.length; i++) {
-                        resultsHTML = "";
-                        var weeklyResults = userResults[i];
+                    userResults.forEach(function(item, index) {
+                        var weeklyResults = item;
                         console.log("weeklyResults: ", weeklyResults)
-                        resultsHTML = "<td data-th=\"gameWeek\">" + weeklyResults.gameWeek + "</td>";
-                        resultsHTML = "<td data-th=\"winners\">" + weeklyResults.winners + "</td>";
-                        resultsHTML += "<td data-th=\"spread\">" + weeklyResults.spread + "</td>";
-                        resultsHTML += "<td data-th=\"total\">" + weeklyResults.total + "</td>";
-                        resultsHTML += "<td data-th=\"predictionScore\">" + weeklyResults.predictionScore + "</td>";
-                        resultsDivHTML += "<tr>" + resultsHTML + "</tr>";
-                        if (i === userResults.length - 1) {
-                    var resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"gameWeek\"><span class=\"full abbrev\">Week</span></th><th class=\"winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"spread\"><span class=\"full\">Spread</span></th><th class=\"total\"><span class=\"full\">Total</span></th><th class=\"totalPredictionScore\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
-                    resultsDivHTML += "</tbody></table>";
+                        resultsHTML += "<tr>";
+                        resultsHTML += "<td data-th=\"Week\">" + weeklyResults.gameWeek + "</td>";
+                        resultsHTML += "<td data-th=\"Winners\">" + weeklyResults.winner.correct + "</td>";
+                        resultsHTML += "<td data-th=\"Spread\">" + weeklyResults.spread.correct + "</td>";
+                        resultsHTML += "<td data-th=\"Total\">" + weeklyResults.total.correct + "</td>";
+                        resultsHTML += "<td data-th=\"Score\">" + weeklyResults.predictionScore + "</td>";
+                        resultsHTML += "</tr>";
+                        console.log("index: ", index, " userResults.length: ", userResults.length)
+                        if (index === (userResults.length - 1)) {
+                            resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"gameWeek\"><span class=\"full abbrev\">Week</span></th><th class=\"Winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"Spread\"><span class=\"full\">Spread</span></th><th class=\"Total\"><span class=\"full\">Total</span></th><th class=\"Score\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
+                            resultsDivHTML += resultsHTML + "</tbody></table>";
+                            $("#predictionDetails").html(resultsDivHTML);
                         }
-                        rank += 1;
-                    }
-                    $("#predictionDetails").html(resultsDivHTML);
+                    });
                 } else {
                     $("#predictionDetails").html("<a href=\"/\" style=\"color: #B22438;\">Make your predictions</a> and come back here to see your results!");
                 }

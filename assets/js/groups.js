@@ -46,7 +46,8 @@ function getGroupInfo() {
             return groupInfoReject;
         })
         .then(function(groupInfoDetails) {
-
+            console.log("groupInfoDetails: ", groupInfoDetails)
+            groupParams.groupName = groupInfoDetails.groupName;
             $("#games-loading-icon").css("display","none")
             if (groupInfoDetails.memberOf === false) {
                 var groupPasswordHTML = "";
@@ -61,7 +62,12 @@ function getGroupInfo() {
                 }
             } else {
                 if (groupInfoDetails.groupId !== 0) {
-                    $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
+                    if (groupInfoDetails.owner.username === userInformation.cognitoUser.username) {
+                        $("#joinGroupButtonDiv").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#editCrowdModal\" id=\"editCrowd\">Edit Crowd Info</button>");
+                        $("crowdNameInput").val(groupInfoDetails.groupName);
+                    } else {
+                        $("#joinGroupButtonDiv").html("<button class=\"btn btn-info\" id=\"leaveGroupButton\" data-loading-text=\"<i class='fa fa-circle-o-notch fa-spin'></i> Leaving Group\">Leave " + groupInfoDetails.groupName + "</button>");
+                    }
                 }
             }
 
@@ -69,8 +75,25 @@ function getGroupInfo() {
             var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner.preferred_username + "</span><br>";
             $("#groupDetails").html(groupDetailsHTML);
             if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
+                groupInfoDetails.users.sort(function(a,b) {
+                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1;
+                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1;
+                    return 0;
+                })
                 var groupMembers = {groupMembers: groupInfoDetails.users};
-                var html = templateScript(groupMembers);
+                // setting up weeks array to build the week-by-week user table
+                var groupMembersWeeks = [];
+                if (groupInfoDetails.results && groupInfoDetails.results.weekly) {
+                    groupInfoDetails.results.weekly.forEach((element, index) => {
+                        groupMembersWeeks.push(index + 1);
+                    });
+                } else {
+                    groupMembersWeeks = [gameWeekDataObj.week];
+                }
+                //console.log('groupMembersWeeks: ', groupMembersWeeks)
+                var groupMembersObj = {weeks: groupMembersWeeks, groupMembers};
+                console.log('groupMembersObj: ', groupMembersObj)
+                var html = templateScript(groupMembersObj);
                 $('#group').html(html);
             }
             groupInfoObject = groupInfoDetails;
@@ -84,7 +107,6 @@ function getGroupInfo() {
 $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
     var $this = $(this);
     $this.button('loading');
-    console.log("groupInfoDetails: ", groupInfoObject)
     useToken(function(token) {
         var $this = $(this);
         $this.button('loading');
@@ -114,11 +136,9 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
             };
         }
 
-        console.log("joinGroupOptions: ", joinGroupOptions)
 
         get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/" + groupParams.sport + "/" + groupParams.year + "/" + groupParams.groupId, joinGroupOptions)
         .then(function(joinGroupResponse) {
-            console.log(joinGroupResponse)
             
             $('#group').html("Updating ...");
             
@@ -128,9 +148,9 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
 
             $this.button('reset');
 
-            console.log("result: ", joinGroupResult);
+            //console.log("result: ", joinGroupResult);
             ga('send','event','crowd','joined',joinGroupResult.groupName);
-                                            
+
             
             //Reload Group Members after successful addition
             if (joinGroupResult.updatedUserList) {
@@ -177,7 +197,6 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
         })
         .then(function(leaveGroupResult) {
 
-            console.log("result: ", leaveGroupResult);
             
             //Reload Group Members after successful addition
             getGroupInfo();
@@ -186,6 +205,44 @@ $("#joinGroupButtonDiv").on("click","#leaveGroupButton",function() {
         })
     })
 });
+
+
+function editCrowd() {
+    var $this = $("#editCrowdButton");
+    $this.button('loading');
+    useToken(function(token) {
+        var crowdParams = "{\"crowdName\": \"" + groupParams.groupName + "\", \"groupId\":" + groupParams.groupId + ", \"sport\": \"" + groupParams.sport + "\", \"year\": " + groupParams.year + ", \"newCrowdName\": \"" + $("#crowdNameInput").val() + "\" }";
+        var editCrowdOptions = {
+            method: "POST",
+            headers: {
+                Authorization: token,
+                'Content-type': 'application/json'
+            },
+            body: crowdParams
+        }
+        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group", editCrowdOptions)
+        .then(function(response) {
+            return response.json();
+        })
+        .catch(function(reject) {
+            console.log("reject: ", reject);
+        })
+        .then(function(createCrowdJSON) {
+            if (createCrowdJSON.succeeded === true) {
+                setTimeout(function() {
+                    $("#updateCrowdResults").text(createCrowdJSON.message + '!');
+                    $this.button('reset');
+                    $("#editCrowdModal").modal("hide");
+                    $("#groupTitle").text(createCrowdJSON.crowdName)
+                }, 1000)
+                
+                $("#updateCrowdResults").text('');
+            } else {
+                $("#updateCrowdResults").text('Sorry, something went wrong.');
+            }
+        })
+    })
+}
 
 
 $("#inviteUsers").on("click",function() {
@@ -206,7 +263,6 @@ $("#inviteUsers").on("click",function() {
 
         get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/" + groupParams.sport + "/" + groupParams.year + "/" + groupParams.groupId + "/leavegroup", leaveGroupOptions)
         .then(function(leaveGroupResponse) {
-            console.log(leaveGroupResponse)
             
             $('#group').html("");
             
@@ -214,7 +270,6 @@ $("#inviteUsers").on("click",function() {
         })
         .then(function(leaveGroupResult) {
 
-            console.log("result: ", leaveGroupResult);
             
             //Reload Group Members after successful addition
             getGroupInfo();

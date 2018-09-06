@@ -670,6 +670,7 @@
                                             //console.log("200: ", response);
                                             btn.text('Update');
                                             ga('send','event','prediction','submitted',prediction.gameId);
+
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
@@ -1363,7 +1364,7 @@
             </div>
         </div>
     </div>
-    <!--close login modal-->
+    <!--close create crowd modal-->
     <!--prediction Score Modal-->
     <div class="modal fade" id="predictionScoreModal" tabindex="-1" role="dialog" aria-labelledby="predictionScoreModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -1661,7 +1662,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12" style="font-size: 0.8em">
-                    All odds are provided by <a href="https://www.oddsshark.com" target="_blank">Oddsshark.com</a> and are locked one hour prior to kickoff.
+                    All odds are provided by <a href="https://www.oddsshark.com" style="color:#B42135" target="_blank">Oddsshark.com</a> and are locked one hour prior to kickoff.
                 </div>
             </div>
         </div>
@@ -1923,6 +1924,9 @@
     
     </script>
     <script type="text/javascript" src="assets/js/index.js"></script>
+    <footer>
+        Copyright &copy;2018 PCSM, LLC
+    </footer>
 </body>
 
 </html>

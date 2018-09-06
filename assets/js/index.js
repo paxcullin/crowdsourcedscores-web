@@ -6,8 +6,11 @@ function buildGroupsTable(allGroupsInformation) {
     for (var i=0; i < allGroupsInformation.length; i++) {
         groupHTML = "";
         var groupObject = allGroupsInformation[i];
+        var predictionScore = 0;
+        if (groupObject.results && groupObject.results.overall) predictionScore = groupObject.results.overall.predictionScore;
         groupHTML = "<td data-th=\"Rank\">" + rank + "</td>";
         groupHTML += "<td data-th=\"Group\"><a href=\"/crowd.html?sport=" + groupObject.sport + "&year=" + groupObject.year + "&groupId=" + groupObject.groupId + "\">" + groupObject.groupName + "</a></td>";
+
         if (groupObject.results && groupObject.results.overall) {
             groupHTML += "<td data-th=\"Score\">" + groupObject.results.overall.predictionScore + "</td>";
         } else {
@@ -134,7 +137,7 @@ function toggleCrowdPassword () {
 }
 
 function createCrowd() {
-    var $this = $(this);
+    var $this = $("#createCrowdButton");
     $this.button('loading');
     useToken(function(token) {
         var public = true;
