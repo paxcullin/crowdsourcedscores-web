@@ -9,7 +9,7 @@
     <meta name="keywords" content="football,crowdsourced,wisdom,wisdom of the crowd,sportsbook,spread,total,moneyline">
     <base href="https://crowdsourcedscores.com">
 
-    <title>Crowdsourced Scores - Beating the Sportsbooks through Crowd Wisdom</title>
+    <title>Crowd Wisdom Sports - Beating the Sportsbooks through Crowd Wisdom</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -850,7 +850,7 @@
                                 {
                                     title: "Compete against the entire Crowd. Compete against just your Crowd.",
                                     content: "<p>By participating, you are already competing against everyone else to see who has the best prediction skills.</p><p>You can also create or join a crowd to earn bragging rights among your friends, enemies, or coworkers.</p>",
-                                    target: document.getElementsByClassName('predictionInput')[1],
+                                    target: document.getElementById('competitionDiv'),
                                     placement: "top",
                                         onNext: function() {
                                             ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
@@ -859,7 +859,7 @@
                                 {
                                     title: "Crowd vs. Crowd",
                                     content: "Last thing: each crowd will have its own wisdom, so each crowd can compete against every other crowd to see who has the best crowd wisdom.",
-                                    target: document.getElementsByClassName('prediction-btn')[0],
+                                    target: document.getElementById('crowds-tab'),
                                     placement: "top",
                                         onNext: function() {
                                             ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
@@ -1403,7 +1403,7 @@
                 <div class="navbar navbar-default navbar-fixed-top">
                     <div class="container">
                         <div class="header-icon"><a href="/"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowd Wisdom Sports"></a></div>
-                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowdsourced Scores</span><span class="visible-md">CS Scores</span></a>
+                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowd Wisdom Sports</span><span class="visible-md">CW Sports</span></a>
                         <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         </div>
                         <div id="navbar-main" class="navbar-collapse collapse">
@@ -1477,7 +1477,7 @@
                     </select> -->
                 </div>
                 <div class="col-xs-5 col-sm-2">
-                    <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @sourcedscores</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+                    <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @crowdbrains</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
                     <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcrowdsourcedscores&width=20px&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId=220211628373013" width="160px" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
                 </div>
@@ -1528,7 +1528,7 @@
                 </div>
                 <div class="row" id="feedbackDiv">
                     <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
-                    <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div>
+                    <!-- <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div> -->
                     <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                     <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
                 </div>

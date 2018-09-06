@@ -85,12 +85,12 @@ function getAllGroups() {
 
 function getAllUsers() {
     useToken(function(token) {
-        var getAllusersOptions = {
+        var getAllUsersOptions = {
             method: "GET"
         }
         var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers/anon";
         
-        if (token !== null) {
+        if (token !== false) {
             getAllUsersOptions = {
                 method: "GET",
                 headers: {
