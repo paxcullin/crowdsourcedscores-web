@@ -34,13 +34,16 @@ var windowRedirect = window.location.protocol + "//" + window.location.hostname;
 if (window.location.pathname !== "/") {
     windowRedirect += window.location.pathname;
 }
+// if (window.location.search && window.location.search.length > 0) {
+//     windowRedirect += window.location.search;
+// }
 
 function getQueryStringValue (key) {  
     return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
 }  
 
 function showLoginButton() {
-    $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + windowRedirect + "')\">Login/Sign Up</button>");
+    $("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" onclick=\"ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=" + encodeURIComponent(windowRedirect) + "')\">Login/Sign Up</button>");
     //$("#loginButtons").html("<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#loginModal\">Login/Signup</button>");
             
 }
@@ -130,7 +133,7 @@ if (!cognitoUser && GetURLParameter('code')) {
     // var decodedToken = processToken();
     var getTokensOptions = {
         method: "POST",
-        body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=" + windowRedirect,
+        body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=" + encodeURI(windowRedirect),
         headers: {
             "Content-type": "application/x-www-form-urlencoded"
         }
