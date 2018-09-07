@@ -352,23 +352,17 @@
                         <table class="rwd-table">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Rank
-                                    </th>
-                                    <th>
-                                        User
-                                    </th>
+                                    <th>Rank</th>
+                                    <th>User</th>
                                     <th>Weekly Totals</th>
-                                    <th>
-                                        Total
-                                    </th>
+                                    <th>Prediction Score</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {{#each this.groupMembers.groupMembers}}
                                 <tr {{rowColor @index}} id="container-{{{this.username}}}">
-                                    <td>{{{math @index '+' 1}}}</td>
-                                    <td>
+                                    <td data-th="Rank">{{{math @index '+' 1}}}</td>
+                                    <td data-th="User">
                                     {{{this.preferred_username}}}
                                     </td>
                                         <td data-th="Weekly Totals">
@@ -376,7 +370,7 @@
                                                     Week {{{gameWeek}}}: Winners: {{{winner.correct}}} | Spread: {{{spread.correct}}} | Total: {{{total.correct}}} | Score: {{{predictionScore}}}<br>
                                                 {{/each}}
                                         </td>
-                                    <td data-th="Total">{{{this.results.overall.predictionScore}}}</td>
+                                    <td data-th="Prediction Score">{{{this.results.overall.predictionScore}}}</td>
                                 </tr>
                             {{/each}}
                             </tbody>
