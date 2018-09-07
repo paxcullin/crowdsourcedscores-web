@@ -130,7 +130,7 @@ if (!cognitoUser && GetURLParameter('code')) {
     // var decodedToken = processToken();
     var getTokensOptions = {
         method: "POST",
-        body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fcrowdsourcedscores.com",
+        body: "client_id=" + cognitoData.ClientId + "&code=" + GetURLParameter('code') + "&grant_type=authorization_code&redirect_uri=" + windowRedirect,
         headers: {
             "Content-type": "application/x-www-form-urlencoded"
         }
