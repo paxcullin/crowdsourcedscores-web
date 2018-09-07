@@ -203,24 +203,63 @@ $("#dropdown").on("click", function(e){
     }
   });
 
-  $(".toggle-accordion").on("click", function() {
-    var accordionId = $(this).attr("accordion-id"),
-      numPanelOpen = $(accordionId + ' .collapse.in').length;
-    
-    $(this).toggleClass("active");
+$("#dropdown li a").on("click", function() {
+    $("#dropdown").text($(this).text());
+});
 
-    if (numPanelOpen == 0) {
-      openAllPanels(accordionId);
-    } else {
-      closeAllPanels(accordionId);
+
+  // Collapse prediction functionality
+
+    $(".toggle-accordion").on("click", function() {
+        var accordionId = $(this).attr("accordion-id"),
+        numPanelOpen = $(accordionId + ' .collapse.in').length;
+        
+        $(this).toggleClass("active");
+
+        if (numPanelOpen == 0) {
+        openAllPanels(accordionId);
+        } else {
+        closeAllPanels(accordionId);
+        }
+    })
+
+    openAllPanels = function(aId) {
+        console.log("setAllPanelOpen");
+        $(aId + ' .panel-collapse:not(".in")').collapse('show');
     }
-  })
+    closeAllPanels = function(aId) {
+        console.log("setAllPanelclose");
+        $(aId + ' .panel-collapse.in').collapse('hide');
+    }
 
-  openAllPanels = function(aId) {
-    console.log("setAllPanelOpen");
-    $(aId + ' .panel-collapse:not(".in")').collapse('show');
-  }
-  closeAllPanels = function(aId) {
-    console.log("setAllPanelclose");
-    $(aId + ' .panel-collapse.in').collapse('hide');
-  }
+// Collapse prediction functionality
+
+// Retrieve other user's predictions
+
+function getOtherUserPredictions(otherUsername) {
+    useToken(function(token) {
+        
+        var getOtherUserPredictionsOptions = {
+            method: "GET",
+            headers: {
+                Authorization: token
+            }
+        }
+        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedProfile/predictions?username=" + otherUsername, getOtherUserPredictionsOptions)
+        .then(function(response) {
+            return response.json();
+        })
+        .catch(function(reject) {
+            console.log("reject: ", reject);
+        })
+        .then(function(otherUserPredictionOptionsJSON) {
+            console.log(JSON.stringify(otherUserPredictionOptionsJSON))
+            
+            $("#games").text(otherUserPredictionOptionsJSON + '!');
+            
+            
+        })
+    })
+}
+
+var otherUsername = GetURLParameter('username');

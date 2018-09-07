@@ -343,7 +343,7 @@
                                                                 {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-spread-prediction">
                                                                     {{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}
                                                                     {{#if results}}
-                                                                        {{#ifCond prediction.total '===' results.total}}
+                                                                        {{#ifCond prediction.spread '===' results.spread}}
                                                                             <sup><i class="fas fa-dollar-sign"></i></sup>
                                                                         {{/ifCond}}
                                                                     {{/if}}
@@ -1006,7 +1006,8 @@
 
 
             $('#weekSelector li').on('click', 'a', function () {
-                gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
+                gameWeekData.year = parseInt($('#dropdown').text());
+                if (!gameWeekData.year) gameWeekData.year = 2018;
                 gameWeekData.week = parseInt($(this).attr('data-week'));
                 $("#games-loading-icon").css("display","block")
                 $('#weekSelector li').removeClass('active');
