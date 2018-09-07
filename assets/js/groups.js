@@ -148,6 +148,9 @@ $("#joinGroupButtonDiv").on("click","#joinGroupButton",function() {
 
             $this.button('reset');
 
+            //console.log("result: ", joinGroupResult);
+            ga('send','event','crowd','joined',joinGroupResult.groupName);
+
             
             //Reload Group Members after successful addition
             if (joinGroupResult.updatedUserList) {
