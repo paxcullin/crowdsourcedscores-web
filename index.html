@@ -184,14 +184,16 @@
                                                         <tr class="predictionRow">
                                                             <td><i class="fa fa-plane" aria-hidden="true"></i> {{awayTeam.code}}</td>
                                                             <td class="away-team-prediction {{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond prediction.awayTeam.score '>' prediction.homeTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{awayTeam.code}}}-prediction">
-                                                                {{#unless results}}
+                                                                {{#ifCond status '===' 'Not Started'}}
                                                                     <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
                                                                     value="{{prediction.awayTeam.score}}">
-                                                                {{/unless}}
-                                                                {{#if results}}
+                                                                {{/ifCond}}
+                                                                {{#ifCond status '!==' 'Not Started'}}
                                                                     {{prediction.awayTeam.score}}
+                                                                {{/ifCond}}
+                                                                {{#if results}}
                                                                     {{#ifCond prediction.awayTeam.score '===' results.awayTeam.score}}
-                                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                        <sup><i class="fas fa-bullseye"></i></sup>
                                                                     {{/ifCond}}
                                                                 {{/if}}
                                                             </td>
@@ -204,7 +206,7 @@
                                                                     {{/unless}}>
                                                                     {{crowd.awayTeam.score}}
                                                                     {{#ifCond crowd.awayTeam.score '===' results.awayTeam.score}}
-                                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                        <sup><i class="fas fa-bullseye"></i></sup>
                                                                     {{/ifCond}}
                                                                 </span>
                                                                 {{#unless prediction}}
@@ -218,14 +220,16 @@
                                                         <tr class="predictionRow">
                                                             <td><i class="fa fa-home" aria-hidden="true"></i> {{homeTeam.code}}</td>
                                                             <td class="home-team-prediction{{#if results}}{{#ifCond results.homeTeam.score '>' results.awayTeam.score}}{{#ifCond prediction.homeTeam.score '>' prediction.awayTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{homeTeam.code}}}-prediction">
-                                                                {{#unless results}}
-                                                                    <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                                {{#ifCond status '===' 'Not Started'}}
+                                                                    <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##" {{#ifCond status '!==' 'Not Started'}}readonly {{/ifCond}}
                                                                     value="{{prediction.homeTeam.score}}">
-                                                                {{/unless}}
-                                                                {{#if results}}
+                                                                {{/ifCond}}
+                                                                {{#ifCond status '!==' 'Not Started'}}
                                                                     {{prediction.homeTeam.score}}
+                                                                {{/ifCond}}
+                                                                {{#if results}}
                                                                     {{#ifCond prediction.homeTeam.score '===' results.homeTeam.score}}
-                                                                        <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                        <sup><i class="fas fa-bullseye"></i></sup>
                                                                     {{/ifCond}}
                                                                 {{/if}}
                                                             </td>
@@ -245,7 +249,7 @@
                                                                     {{/unless}}
                                                                 >{{crowd.homeTeam.score}}
                                                                 {{#ifCond crowd.homeTeam.score '===' results.homeTeam.score}}
-                                                                    <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                    <sup><i class="fas fa-bullseye"></i></sup>
                                                                 {{/ifCond}}
                                                                 </span>
                                                                 {{#unless prediction}}
@@ -285,7 +289,7 @@
                                                             
                                                             {{#if results}}
                                                                 {{#ifCond prediction.total '===' results.total}}
-                                                                    <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                    <sup><i class="fas fa-bullseye"></i></sup>
                                                                 {{/ifCond}}
                                                             {{/if}}
                                                             </td>
@@ -308,7 +312,7 @@
                                                                         {{crowd.total}}
 
                                                                         {{#ifCond crowd.total '===' results.total}}
-                                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                            <sup><i class="fas fa-bullseye"></i></sup>
                                                                         {{/ifCond}}
                                                                     </span>
                                                                     {{#unless prediction}}
@@ -344,7 +348,7 @@
                                                                     {{#ifCond prediction.spread '>' 0}}+{{/ifCond}}{{prediction.spread}}
                                                                     {{#if results}}
                                                                         {{#ifCond prediction.spread '===' results.spread}}
-                                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                            <sup><i class="fas fa-bullseye"></i></sup>
                                                                         {{/ifCond}}
                                                                     {{/if}}
                                                             </td>
@@ -369,7 +373,7 @@
                                                                         {{crowd.spread}}
 
                                                                         {{#ifCond crowd.spread '===' results.spread}}
-                                                                            <sup><i class="fas fa-dollar-sign"></i></sup>
+                                                                            <sup><i class="fas fa-bullseye"></i></sup>
                                                                         {{/ifCond}}
                                                                 </span>{{#unless prediction}}{{#unless results}}<span class="fa fa-lock crowdShown"></span>{{/unless}}{{/unless}}</td>
                                                             <td>
@@ -1629,7 +1633,7 @@
                             </div>
                             <p><strong>Prediction Progress:</strong> <span class="percent"></span></p>
                             <div id="legend">
-                                <span class="alert alert-success">&nbsp;</span>: Correct Pick | <i class="fas fa-dollar-sign"></i>: On the Money Pick
+                                <span class="alert alert-success">&nbsp;</span>: Correct Pick | <i class="fas fa-bullseye"></i>: Bullseye Prediction
                             </div>
                         </div>
                         <div class="clearfix"></div>
