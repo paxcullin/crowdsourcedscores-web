@@ -387,7 +387,7 @@
                                 year: parseInt($game.attr('data-game-year')),
                                 status: $("#" + parseInt($game.attr('data-game-id')) + "-gameStatus").val(),
                                 sport: "nfl",
-                                startDateTime: $game.find('.startDateTime').val(),
+                                startDateTime: Date.parse($game.find('.startDateTime').val()),
                                 results: {
                                     awayTeam: {
                                         score: 50
@@ -420,8 +420,8 @@
                             var homeCode = $game.attr('data-home-code');
 
                             if (awayTeamScore && homeTeamScore) {
-                                game.awayTeam.score = parseInt(awayTeamScore);
-                                game.homeTeam.score = parseInt(homeTeamScore);
+                                game.results.awayTeam.score = parseInt(awayTeamScore);
+                                game.results.homeTeam.score = parseInt(homeTeamScore);
                             }
 
 
@@ -445,7 +445,7 @@
                                             var messageHtml = response;
                                             //messageHtml = statusMessage('success', response.data.message);
                                             //messageElm.html(messageHtml)
-                                            $game.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
+                                            $game.find('.gameHeaderPredicted').append("<i class=\"fa fa-check-circle\"></i>")
                                             //console.log("response.data.updated: ", response.data.updated)
                                             //if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
                                             //moveBoxes(prediction.gameId);

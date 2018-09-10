@@ -123,7 +123,6 @@
         });
 
         Handlebars.registerHelper("rowColor", function(indexValue) {
-            console.log("(indexValue % 2): ", (indexValue % 2))
             if ((indexValue % 2) === 0) {
                 return new Handlebars.SafeString("class=\"alt-tr\"");
             }
@@ -352,25 +351,17 @@
                         <table class="rwd-table">
                             <thead>
                                 <tr>
-                                    <th>
-                                        Rank
-                                    </th>
-                                    <th>
-                                        User
-                                    </th>
-                                    <th>Weekly Totals</th>
-                                    <th>
-                                        Total
-                                    </th>
+                                    <th class="Rank">Rank</th>
+                                    <th class="User">User</th>
+                                    <th class="Weekly Totals">Weekly Totals</th>
+                                    <th class="Total">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {{#each this.groupMembers.groupMembers}}
                                 <tr {{rowColor @index}} id="container-{{{this.username}}}">
-                                    <td>{{{math @index '+' 1}}}</td>
-                                    <td>
-                                    {{{this.preferred_username}}}
-                                    </td>
+                                    <td data-th="Rank">{{{math @index '+' 1}}}</td>
+                                    <td data-th="User">{{{this.preferred_username}}}</td>
                                         <td data-th="Weekly Totals">
                                                 {{#each this.results.weekly}}
                                                     Week {{{gameWeek}}}: Winners: {{{winner.correct}}} | Spread: {{{spread.correct}}} | Total: {{{total.correct}}} | Score: {{{predictionScore}}}<br>

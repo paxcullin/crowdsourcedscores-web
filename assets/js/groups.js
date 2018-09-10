@@ -71,15 +71,12 @@ function getGroupInfo() {
                 }
             }
 
+
             $("#groupTitle").text(groupInfoDetails.groupName);
             var groupDetailsHTML = "<span class=\"owner\"><strong>Owner:</strong> " + groupInfoDetails.owner.preferred_username + "</span><br>";
             $("#groupDetails").html(groupDetailsHTML);
+            console.log("groupInfoDetails: ", groupInfoDetails)
             if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
-                groupInfoDetails.users.sort(function(a,b) {
-                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1;
-                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1;
-                    return 0;
-                })
                 var groupMembers = {groupMembers: groupInfoDetails.users};
                 // setting up weeks array to build the week-by-week user table
                 var groupMembersWeeks = [];

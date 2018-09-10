@@ -458,10 +458,6 @@ overflow: hidden;
 border-color: #B22438;
 }
 
-.rwd-table .alt-tr {
-    background: #fff;
-    color: #3A3B6C;
-}
 
 .rwd-table th, .rwd-table td {
 margin: .5em 1em;
@@ -473,6 +469,15 @@ margin: .5em 1em;
 }
 .rwd-table th, .rwd-table td:before {
 color: #fff;
+}
+
+.rwd-table .alt-tr {
+    background: #fff;
+    color: #3A3B6C;
+}
+
+.alt-tr td, .alt-tr td:before {
+    color: #3A3B6C;
 }
 
 .rwd-table a, a:visited {
