@@ -128,6 +128,18 @@ function updateProfile () {
         var emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailAttribute);
         attributeList.push(emailAttribute);
 
+        var optInBoolean = $("#reminderOptin").is(":checked");
+        var optInInteger = 0
+        if (optInBoolean) {
+            optInInteger = 1;
+        }
+        var optInAttribute = {
+            Name : 'custom:reminderMailOptIn',
+            Value : optInInteger + ""
+        };
+        var optInAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(optInAttribute);
+        attributeList.push(optInAttribute);
+
 
         console.log("attributeList: ", attributeList);
         cognitoUser.updateAttributes(attributeList, function(err, result) {
