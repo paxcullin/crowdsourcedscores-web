@@ -1,6 +1,6 @@
 function buildGroupsTable(allGroupsInformation) {
 
-    console.log("allGroupsInformation: ", allGroupsInformation)
+   //console.log("allGroupsInformation: ", allGroupsInformation)
     var groupDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Group</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
     for (var i=0; i < allGroupsInformation.length; i++) {
@@ -27,14 +27,18 @@ function buildGroupsTable(allGroupsInformation) {
 
 function buildUsersTable(allUsersInformation) {
 
-    console.log("allGroupsInformation: ", allUsersInformation)
+    //console.log("allGroupsInformation: ", allUsersInformation)
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
     for (var i=0; i < allUsersInformation.length; i++) {
         usersHTML = "";
         var userObject = allUsersInformation[i];
         usersHTML = "<td data-th=\"Rank\">" + rank + "</td>";
-        usersHTML += "<td data-th=\"Username\">" + userObject.preferred_username + "</td>";
+        if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
+            usersHTML += "<td data-th=\"Username\"><a href=\"/?compareUsername=" + userObject.username + "\">" + userObject.preferred_username + "</a></td>";
+        } else {
+            usersHTML += "<td data-th=\"Username\"><strong>" + userObject.preferred_username + "</strong></td>";
+        }
         if (userObject.results && userObject.results.overall) {
             usersHTML += "<td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
         } else {
@@ -49,21 +53,25 @@ function buildUsersTable(allUsersInformation) {
     $("#allUsers").html(usersDivHTML);
 }
 
-function getAllGroups() {
+function getAllGroups(limit) {
     useToken(function(token) {
+        var allGroupsQuery = "";
+        if (limit) {
+            allGroupsQuery = "?limit=" + limit;
+        }
         var getAllGroupsOptions = {
             method: "GET"
         }
-        var getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/anon";
+        var getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/anon" + allGroupsQuery;
         
-        if (token !== null) {
+        if (token !== false) {
             getAllGroupsOptions = {
                 method: "GET",
                 headers: {
                     Authorization: token
                 }
             }
-            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/";
+            getAllGroupsURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/group/nfl/2018/" + allGroupsQuery;
         }
 
         get(getAllGroupsURL, getAllGroupsOptions)
@@ -86,12 +94,16 @@ function getAllGroups() {
     })
 }
 
-function getAllUsers() {
+function getAllUsers(limit) {
     useToken(function(token) {
+        var allUsersQuery = "";
+        if (limit) {
+            allUsersQuery = "?limit=" + limit;
+        }
         var getAllUsersOptions = {
             method: "GET"
         }
-        var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers/anon";
+        var getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers/anon" + allUsersQuery;
         
         if (token !== false) {
             getAllUsersOptions = {
@@ -100,7 +112,7 @@ function getAllUsers() {
                     Authorization: token
                 }
             }
-            getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers";
+            getAllUsersURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/getallusers" + allUsersQuery;
         }
 
         get(getAllUsersURL, getAllUsersOptions)
