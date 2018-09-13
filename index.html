@@ -553,6 +553,7 @@
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
+                console.log("weeklyResults.results: ", weeklyResults.results)
                 var data = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
                     data = google.visualization.arrayToDataTable(overallResults.results);
@@ -1091,7 +1092,7 @@
 
 
             $('#weekSelector li').on('click', 'a', function () {
-                gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
+                gameWeekData.year = parseInt(document.getElementById('dropdown').innerText);
                 if (!gameWeekData.year) {
                     gameWeekData.year = 2018;
                 }
@@ -1110,7 +1111,7 @@
                 getGameWeek(function (data) {
                     if (data) {
                         week = data.week;
-                        year = parseInt(document.getElementById('seasonSelector').value);
+                        year = parseInt(document.getElementById('dropdown').text);
                         if (data.year) {
                             year = data.year;
                         }
@@ -1210,10 +1211,10 @@
                     }
                 })
                 .then(function (response) {
-                    //console.log("DLR 2 response.json: ", response.json());
                     return response.json();
                 })
                 .then(function(leaderboardJSON) {
+                    //console.log("leaderboardJSON: ", leaderboardJSON)
                     callback(leaderboardJSON);
                 })
         };
@@ -1601,7 +1602,7 @@
                         <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
                         <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
                         <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
-                        <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
+                        <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
                     </ul>
                 </div>
             </div>
@@ -1674,10 +1675,10 @@
             <div id="resultsContainer">
 
                 <div class="row" id="myResultsRow">
-                    <div class="col-xs-1">
+                    <div class="col-xs-12 col-sm-1">
                         <span>You:</span>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3 col-sm-2">
                         <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
                     </div>
                     <div class="col-xs-3">
@@ -1691,10 +1692,10 @@
                     </div>
                 </div>
                 <div class="row" id="crowdResultsRow">
-                    <div class="col-xs-1">
+                    <div class="col-xs-12 col-sm-1">
                         <span>Crowd:</span>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3 col-sm-2">
                         <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
                     </div>
                     <div class="col-xs-3">

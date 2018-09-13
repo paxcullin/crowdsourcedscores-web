@@ -216,6 +216,12 @@ text-rendering: optimizeLegibility;
     text-align: center;
 }
 
+.compareHeader {
+    max-width: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #chartExpand {
     padding-top: 8px;
 }
