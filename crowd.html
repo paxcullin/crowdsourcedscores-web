@@ -123,7 +123,6 @@
         });
 
         Handlebars.registerHelper("rowColor", function(indexValue) {
-            console.log("(indexValue % 2): ", (indexValue % 2))
             if ((indexValue % 2) === 0) {
                 return new Handlebars.SafeString("class=\"alt-tr\"");
             }
@@ -352,19 +351,17 @@
                         <table class="rwd-table">
                             <thead>
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>User</th>
-                                    <th>Weekly Totals</th>
-                                    <th>Prediction Score</th>
+                                    <th class="Rank">Rank</th>
+                                    <th class="User">User</th>
+                                    <th class="Weekly Totals">Weekly Totals</th>
+                                    <th class="Total">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {{#each this.groupMembers.groupMembers}}
                                 <tr {{rowColor @index}} id="container-{{{this.username}}}">
                                     <td data-th="Rank">{{{math @index '+' 1}}}</td>
-                                    <td data-th="User">
-                                    {{{this.preferred_username}}}
-                                    </td>
+                                    <td data-th="User">{{{this.preferred_username}}}</td>
                                         <td data-th="Weekly Totals">
                                                 {{#each this.results.weekly}}
                                                     Week {{{gameWeek}}}: Winners: {{{winner.correct}}} | Spread: {{{spread.correct}}} | Total: {{{total.correct}}} | Score: {{{predictionScore}}}<br>
@@ -569,15 +566,23 @@
             }
 
             $('#weekSelector li').on('click', 'a', function () {
-                gameWeekDataObj.year = parseInt(document.getElementById('seasonSelector').value);
-                gameWeekDataObj.week = parseInt($(this).attr('data-week'));
+                gameWeekData.year = parseInt(document.getElementById('dropdown').innerText);
+                if (!gameWeekData.year) {
+                    gameWeekData.year = 2018;
+                }
+                gameWeekData.week = parseInt($(this).attr('data-week'));
+                //show loading icon
                 $("#games-loading-icon").css("display","block")
+                // remove previous week games
+                $("#games").html("");
+                
                 $('#weekSelector li').removeClass('active');
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
                 //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
+
 
             setTimeout(function () {
                 getGameWeek(function (data) {
@@ -833,10 +838,9 @@
                             <ul id="loginUserResults"></ul>
                         </fieldset>-->
     
-                        <select class="dropdown" id="seasonSelector">
-                            <option value="2018" selected>2018</option>
-                        </select>
-                        <h4>Select Week</h4>
+                        <div id="dropdown" class="ddmenu">
+                            2018
+                        </div>
                     </div>
                     <div class="col-xs-5 col-sm-2">
                         <a href="https://twitter.com/crowdbrains" class="twitter-follow-button" data-show-count="false">Follow @crowdbrains</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
