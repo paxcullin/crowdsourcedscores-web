@@ -122,6 +122,19 @@
         <pubDate>Thu, 6 Sep 2018 15:30:00 GMT</pubDate>
         <itunes:duration>20:40</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 2 - Week 1 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris recap the action in Week 1 of the new NFL season and review the crowd performance while trying to stay coherent as they imbibe some nice Rye Whiskey.</description>
+        <itunes:subtitle>Paul and Chris recap the action in Week 1 of the new NFL season and review the crowd performance while trying to stay coherent as they imbibe some nice Rye Whiskey.</itunes:subtitle>
+        <itunes:episode>8</itunes:episode>
+        <itunes:summary>Paul and Chris recap the action in Week 1 of the new NFL season and review the crowd performance while trying to stay coherent as they imbibe some nice Rye Whiskey.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode2.mp3" length="35:44" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode2.mp3</guid>
+        <pubDate>Thu, 12 Sep 2018 23:15:00 GMT</pubDate>
+        <itunes:duration>35:44</itunes:duration>
+      </item>
     
   </channel>
   </rss>
