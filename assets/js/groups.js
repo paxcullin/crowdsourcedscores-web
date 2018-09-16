@@ -85,7 +85,8 @@ function getGroupInfo() {
                         groupMembersWeeks.push(index + 1);
                     });
                 } else {
-                    groupMembersWeeks = [gameWeekDataObj.week];
+                    console.log("gameWeekDataObj: ", gameWeekDataObj)
+                    //if (gameWeekDataObj) groupMembersWeeks = [gameWeekData.week];
                 }
                 //console.log('groupMembersWeeks: ', groupMembersWeeks)
                 var groupMembersObj = {weeks: groupMembersWeeks, groupMembers};
