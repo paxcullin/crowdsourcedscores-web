@@ -545,8 +545,8 @@
             }
         };
 
+        var gameWeekDataObj = {};
         $(document).ready(function () {
-            var gameWeekDataObj = {};
 
             if (cognitoUser) {
                 showLogoutButton();
@@ -589,7 +589,7 @@
                     console.log("data: ", data);
                     if (data) {
                         week = data.week;
-                        year = parseInt(document.getElementById('seasonSelector').value);
+                        year = parseInt(document.getElementById('dropdown').innerText);
                         if (data.year) {
                             year = data.year;
                         }
