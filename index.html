@@ -538,9 +538,9 @@
                                                             {{/dateCheck}}
                                                         {{/unless}}
                                                     {{/unless}}
-                                                        {{#if prediction.predictionScore}}
+                                                        {{#ifCond prediction.predictionScore '>' -1}}
                                                             <div class="predictionScore">Prediction Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
-                                                        {{/if}}
+                                                        {{/ifCond}}
                                                     </div>
                                                 </div>
                                             </div>
