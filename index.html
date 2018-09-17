@@ -474,15 +474,15 @@
                                                                             <span style="font-size: 0.8em; font-weight: bold">
                                                                                 {{#ifCond crowd.spread '>' odds.spread}}
                                                                                     <br>({{awayTeam.code}} 
-                                                                                    {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}{{/ifCond}}
-                                                                                    {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}{{/ifCond}}
-                                                                                    {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}{{/ifCond}})
+                                                                                    {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                    {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                    {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}){{/ifCond}}
                                                                                 {{/ifCond}}
                                                                                 {{#ifCond crowd.spread '<' odds.spread}}
                                                                                     <br>({{homeTeam.code}}
-                                                                                    {{#ifCond odds.spread '<' 0}}{{odds.spread}}{{/ifCond}}
-                                                                                    {{#ifCond odds.spread '>' 0}}+{{odds.spread}}{{/ifCond}}
-                                                                                    {{#ifCond odds.spread '===' 0}}EV{{/ifCond}})
+                                                                                    {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
+                                                                                    {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
+                                                                                    {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
                                                                                 {{/ifCond}}
                                                                             </span>
 
