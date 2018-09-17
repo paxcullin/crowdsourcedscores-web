@@ -1012,12 +1012,12 @@
                         getWeeklyResults(data.games);
                         return data;
                     })
-                    .then(function (data) {
-                        getWeeklyCrowdResults(data.games)
-                        return data;
+                    .then(function (crowdResultsData) {
+                        getWeeklyCrowdResults(crowdResultsData.games)
+                        return crowdResultsData;
                     })
-                    .then(function(data) {
-                        if (data && data.games && data.games.length > 0) {
+                    .then(function(chartData) {
+                        if (chartData && chartData.games && chartData.games.length > 0) {
                             drawChart2(gameWeekData.year, gameWeekData.week, "weekly");
                         }
                     });
