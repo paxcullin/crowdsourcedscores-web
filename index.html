@@ -684,11 +684,11 @@
             var crowdTotalResults = 0;
             var crowdPredictionScore = 0;
             var compareUsers = false;
-            if (getUrlParameter('compareUsername')) {
-                compareUsers = true;
-                $("#crowdHeader").text(comparePrediction.preferred_username)
-            }
             if (crowdData && crowdData.length > 0) {
+                if (getUrlParameter('compareUsername')) {
+                    compareUsers = true;
+                    if (crowdData[0].comparePrediction) $("#crowdHeader").text(crowdData[0]. comparePrediction.preferred_username)
+                }
                 for (i = 0; i < crowdData.length; i++) {
                     if (compareUsers) {
                         if (crowdData[i].comparePrediction && crowdData[i].comparePrediction.results) {
@@ -696,7 +696,7 @@
                             if (crowdData[i].comparePrediction.results.winner && crowdData[i].comparePrediction.results.winner.correct) {crowdStraightUpResults += crowdData[i].comparePrediction.results.winner.correct;}
                             if (crowdData[i].comparePrediction.results.spread && crowdData[i].comparePrediction.results.spread.correct) {crowdSpreadResults += crowdData[i].comparePrediction.results.spread.correct;}
                             if (crowdData[i].comparePrediction.results.total && crowdData[i].comparePrediction.results.total.correct) {crowdTotalResults += crowdData[i].comparePrediction.results.total.correct;}
-                            if (crowdData[i].comparePrediction.results.predictionScore) {crowdPredictionScore += crowdData[i].comparePrediction.results.predictionScore;}
+                            if (crowdData[i].comparePrediction.predictionScore) {crowdPredictionScore += crowdData[i].comparePrediction.predictionScore;}
                         }
                     } else {
                         if (crowdData[i].crowd && crowdData[i].crowd.results) {
