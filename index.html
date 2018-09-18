@@ -566,6 +566,9 @@
                 if (!view) { view = "weekly";}
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
+                console.log("leaderboardData: ", leaderboardData);
+                console.log("weeklyResults: ", weeklyResults);
+                console.log("overallResults: ", overallResults);
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
                 
                 var data = google.visualization.arrayToDataTable(weeklyResults.results);
@@ -680,14 +683,29 @@
             var crowdSpreadResults = 0;
             var crowdTotalResults = 0;
             var crowdPredictionScore = 0;
+            var compareUsers = false;
             if (crowdData && crowdData.length > 0) {
+                if (getUrlParameter('compareUsername')) {
+                    compareUsers = true;
+                    if (crowdData[0].comparePrediction) $("#crowdHeader").text(crowdData[0]. comparePrediction.preferred_username)
+                }
                 for (i = 0; i < crowdData.length; i++) {
-                    if (crowdData[i].crowd && crowdData[i].crowd.results) {
-                        $("#resultsContainer").css("display","block");
-                        if (crowdData[i].crowd.results.winner && crowdData[i].crowd.results.winner.correct) {crowdStraightUpResults += crowdData[i].crowd.results.winner.correct;}
-                        if (crowdData[i].crowd.results.spread && crowdData[i].crowd.results.spread.correct) {crowdSpreadResults += crowdData[i].crowd.results.spread.correct;}
-                        if (crowdData[i].crowd.results.total && crowdData[i].crowd.results.total.correct) {crowdTotalResults += crowdData[i].crowd.results.total.correct;}
-                        if (crowdData[i].crowd.results.predictionScore) {crowdPredictionScore += crowdData[i].crowd.results.predictionScore;}
+                    if (compareUsers) {
+                        if (crowdData[i].comparePrediction && crowdData[i].comparePrediction.results) {
+                            $("#resultsContainer").css("display","block");
+                            if (crowdData[i].comparePrediction.results.winner && crowdData[i].comparePrediction.results.winner.correct) {crowdStraightUpResults += crowdData[i].comparePrediction.results.winner.correct;}
+                            if (crowdData[i].comparePrediction.results.spread && crowdData[i].comparePrediction.results.spread.correct) {crowdSpreadResults += crowdData[i].comparePrediction.results.spread.correct;}
+                            if (crowdData[i].comparePrediction.results.total && crowdData[i].comparePrediction.results.total.correct) {crowdTotalResults += crowdData[i].comparePrediction.results.total.correct;}
+                            if (crowdData[i].comparePrediction.predictionScore) {crowdPredictionScore += crowdData[i].comparePrediction.predictionScore;}
+                        }
+                    } else {
+                        if (crowdData[i].crowd && crowdData[i].crowd.results) {
+                            $("#resultsContainer").css("display","block");
+                            if (crowdData[i].crowd.results.winner && crowdData[i].crowd.results.winner.correct) {crowdStraightUpResults += crowdData[i].crowd.results.winner.correct;}
+                            if (crowdData[i].crowd.results.spread && crowdData[i].crowd.results.spread.correct) {crowdSpreadResults += crowdData[i].crowd.results.spread.correct;}
+                            if (crowdData[i].crowd.results.total && crowdData[i].crowd.results.total.correct) {crowdTotalResults += crowdData[i].crowd.results.total.correct;}
+                            if (crowdData[i].crowd.results.predictionScore) {crowdPredictionScore += crowdData[i].crowd.results.predictionScore;}
+                        }
                     }
                 }
                 $("#crowdStraightUpResults").text(crowdStraightUpResults);
@@ -1691,7 +1709,7 @@
 
                 <div class="row" id="myResultsRow">
                     <div class="col-xs-12 col-sm-1">
-                        <span>You:</span>
+                        <span id="youHeader">You:</span>
                     </div>
                     <div class="col-xs-3 col-sm-2">
                         <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
@@ -1703,12 +1721,12 @@
                         <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="myTotalResults"></span>
                     </div>
                     <div class="col-xs-3">
-                        <span class="hidden-xs">Prediction Score:</span><span class="visible-xs">Score:</span> <span id="myPredictionScore"></span>
+                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="myPredictionScore"></span>
                     </div>
                 </div>
                 <div class="row" id="crowdResultsRow">
                     <div class="col-xs-12 col-sm-1">
-                        <span>Crowd:</span>
+                        <span id="crowdHeader">Crowd:</span>
                     </div>
                     <div class="col-xs-3 col-sm-2">
                         <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
@@ -1720,7 +1738,7 @@
                         <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="crowdTotalResults"></span>
                     </div>
                     <div class="col-xs-3">
-                        <span class="hidden-xs">Prediction Score:</span><span class="visible-xs">Score:</span> <span id="crowdPredictionScore"></span>
+                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="crowdPredictionScore"></span>
                     </div>
                 </div>
             </div>
