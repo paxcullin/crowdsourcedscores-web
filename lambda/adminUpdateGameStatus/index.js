@@ -16,28 +16,29 @@ const requestSchema = {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
         "gameWeek": {"type":"integer"},
+        "status": {"type": "string"},
+        "startDateTime": {"type": "integer"},
+        "sport": {"type": "string"},
         "awayTeam": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
                 "score": {"type": "integer", "minimum": 0, "maximum": 50}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+            }
         },
         "homeTeam": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
                 "score": {"type": "integer", "minimum": 0, "maximum": 50}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+            }
+        },
+        "odds": {
+            "type": "object",
+            "properties": {
+                "spread": {"type": "number"},
+                "total": {"type": "number"}
+            }
         }
-    },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    }
 };
 
 // console.log('Loading function');
@@ -150,8 +151,8 @@ exports.handler = (event, context) => {
         succeeded: true
     };
 
-    var prediction = event;
-    var validateRequest = validate(prediction, requestSchema);
+    var game = event;
+    var validateRequest = validate(game, requestSchema);
     if (validateRequest.errors && validateRequest.errors.length > 0) {
         result.message = 'Invalid request error(s)';
         result.errors = [];
@@ -161,13 +162,12 @@ exports.handler = (event, context) => {
         }
         return context.fail(JSON.stringify(result));
     }
-
-    var diff = prediction.awayTeam.score - prediction.homeTeam.score;
-    // prediction.spread = diff < 0 ? -1 * (diff) : diff;
-    prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
-    prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
-    prediction.submitted = new Date().toISOString();
-    prediction.year = 2018;
+    console.log("game: ", game)
+    var diff = game.results.awayTeam.score - game.results.homeTeam.score;
+    // game.spread = diff < 0 ? -1 * (diff) : diff;
+    console.log("game.results: ", game.results)
+    game.results.spread = game.results.awayTeam.score - game.results.homeTeam.score;
+    game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
 
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
@@ -180,123 +180,81 @@ exports.handler = (event, context) => {
         // deadline is 1hr prior to kickoff
         const msHour = 3600000;
         
-
-        db.collection('games').findOne({"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year), "gameWeek": parseInt(prediction.gameWeek)}, {_id: false}, function (err, game) {
-            assert.equal(err, null);
-            if (err) {
-                context.fail(err, null);
+        var now = new Date();
+        var kickoff = game.startDateTime;
+        var cutoff = kickoff - msHour;
+        var startDateTime = new Date(game.startDateTime)
+        
+        var gameUpdate = {};
+        console.log("now: ", now, " kickoff: ", kickoff);
+        console.log((now < kickoff))
+        if (now < kickoff) {
+            gameUpdate = {
+                startDateTime: startDateTime,
+                status: game.status,
+                odds: game.odds
             }
-            
-            var now = new Date();
-            var kickoff = Date.parse(game.startDateTime);
-            var cutoff = kickoff - msHour;
-
-            // console.log("now: " + now);
-            // console.log("kickoff: " + new Date(game.startDateTime));
-            // console.log("cutoff: " + new Date(cutoff));
-
-            if (now > cutoff) {
-                result.message = "The cutoff for predicting this game has passed.";
-                result.succeeded = false;
-                return context.done(JSON.stringify(result));
+        } else {
+            gameUpdate = {
+                startDateTime: startDateTime,
+                status: game.status,
+                results: {
+                    awayTeam: {
+                        score: game.results.awayTeam.score
+                    },
+                    homeTeam: {
+                        score: game.results.homeTeam.score
+                    },
+                    total: game.results.total,
+                    spread: game.results.spread
+                }
             }
-
-            var existingObjQuery = {userId: prediction.userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
-            
-            //get user groups
-            
-            db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1}).toArray(function(err, groups) {
-                console.log("user groups: ", groups)
-                if (err) {
-                    return false;
-                }
-                if (groups[0]) {
-                    prediction.groups = groups[0].groups;
-                    console.log("prediction.groups: ", prediction.groups)
-                }
-            
-                // update existing if prediction exists for userId and gameId combo
-                // else treat as new prediction and add to collection
-                db.collection('predictions').update(existingObjQuery, prediction, {upsert: true}, function (err, dbRes) {
-                    var respObj = JSON.parse(dbRes);
-    
-                    assert.equal(err, null);
-                    assert.equal(respObj.ok, 1);
-    
-                    if (err) {
-                        result.message = err;
-                        result.succeeded = false;
-                        return context.fail(JSON.stringify(result));
-                    }
-    
-                    result.data = prediction;
-                    if (respObj.upserted) {
-                        result.updated = false;
-                    } else {
-                        result.updated = true;
-                    }
-                    result.message = 'Prediction saved';
-    
-                    // var lambdaParams = {
-                    //     FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
-                    //     InvocationType: 'RequestResponse',
-                    //     LogType: 'Tail',
-                    //     Payload: '{ "username": "' + event.userId + '", ' + prediction + '}'
-                    //   };
-                    
-                    //   lambda.invoke(lambdaParams, function(err, data) {
-                    //     if (err) {
-                    //       context.fail(err);
-                    //     } else {
-                    //       context.succeed('Lambda_B said '+ data.Payload);
-                    //     }
-                    //   })
-                    db.collection('predictions').find({userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek}, {_id:false}).toArray(function(err, predictions) {
-                        if (err) {
-                            return context.done(null, result);
+        }
+        console.log("gameUpdate: ", gameUpdate)
+        //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
+        db.collection('games').updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, {$set: gameUpdate})
+        .then(function (gameObj) {
+            if (game.status === "final") {
+                console.log("gameObj: ", gameObj)
+                var sns = new AWS.SNS();
+                var params = {
+                    Message: "Game " + game.gameId + " updated by " + event.userId,
+                    MessageAttributes: { 
+                        gameId: {
+                            DataType: "Number",
+                            StringValue: game.gameId.toString()
+                        },
+                        gameWeek: {
+                            DataType: "Number",
+                            StringValue: game.gameWeek.toString()
+                        },
+                        year: {
+                            DataType: "Number",
+                            StringValue: game.year.toString()
+                        },
+                        sport: {
+                            DataType: "String",
+                            StringValue: game.sport
                         }
                         
-                        result.predictionsSubmitted = predictions.length;
-                        
-                        
-                        // create/get topic
-                        
-                        var sns = new AWS.SNS();
-                        var params = {
-                            Message: "Prediction submitted by " + event.userId, 
-                            Subject: "Prediction Submitted",
-                            TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted"
-                        };
-                        console.log("SNS Publishing")
-                        sns.publish(params, function(err, response) {
-                            if (err) {
-                                context.done("SNS error: " + err, null);
-                            }
-                            console.log("SNS Publish complete: ", response);
-                            context.done (null, result)
-                            });
-                          
-                        console.log("calling joinGroup")
-                            var lambdaParams = {
-                                FunctionName: 'group-joinGroup', // the lambda function we are going to invoke
-                                InvocationType: 'Event',
-                                LogType: 'None',
-                                Payload: '{ "username": "' + event.userId + '", "preferred_username": "' + event.preferred_username + '", "userFullName": "' + event.firstName + ' ' + event.lastName + '", "sport": "nfl", "year": "' + prediction.year + '", "groupId": 0}'
-                              };
-                            
-                              lambda.invoke(lambdaParams, function(err, data) {
-                                if (err) {
-                                  console.log("group-joinGroup call err: ", err);
-                                } else {
-                                  console.log("group-joinGroup call data: ", data);
-                                }
-                              })
-                        //return context.done(null, result);
-                        
+                    },
+                    Subject: "Game Update",
+                    TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated"
+                };
+                console.log("SNS Publishing")
+                sns.publish(params, function(err, response) {
+                    if (err) {
+                        context.done("SNS error: " + err, null);
+                    }
+                    console.log("SNS Publish complete: ", response);
+                    context.done (null, result)
                     })
-                    
-                });
-            });
-        });
+            } else {
+                context.done(null, {"message": "Received update: " + game})
+            }
+        })
+        .catch(function (findReject) {
+            console.done(findReject, null);
+        })
     });
 };

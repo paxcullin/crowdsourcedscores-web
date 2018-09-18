@@ -1,0 +1,209 @@
+gameId,year,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,results.winner,results.spread,results.total,spread,total,submitted,userId,predictionScore
+1,2018,1,Atlanta Falcons,21,Philadelphia Eagles,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-6,48,2018-09-05T21:53:51.984Z,cmaronchick,5
+9,2018,1,Tampa Bay Buccaneers,17,New Orleans Saints,24,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,41,2018-09-01T18:49:13.746Z,cmaronchick,2
+8,2018,1,Jacksonville Jaguars,20,New York Giants,17,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,37,2018-09-01T18:44:57.704Z,cmaronchick,5
+7,2018,1,Houston Texans,14,New England Patriots,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,38,2018-09-01T23:10:59.482Z,cmaronchick,6
+6,2018,1,Buffalo Bills,13,Baltimore Ravens,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-14,40,2018-09-01T23:11:15.780Z,cmaronchick,6
+5,2018,1,San Francisco 49ers,24,Minnesota Vikings,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",4,44,2018-09-01T23:12:09.641Z,cmaronchick,2
+4,2018,1,Tennessee Titans,23,Miami Dolphins,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",6,40,2018-09-01T23:12:25.741Z,cmaronchick,0
+3,2018,1,Cincinnati Bengals,20,Indianapolis Colts,23,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,43,2018-09-01T23:12:38.922Z,cmaronchick,1
+2,2018,1,Pittsburgh Steelers,31,Cleveland Browns,17,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",14,48,2018-09-01T23:12:54.802Z,cmaronchick,2
+10,2018,1,Kansas City Chiefs,17,Los Angeles Chargers,27,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-10,44,2018-09-01T23:13:08.899Z,cmaronchick,0
+13,2018,1,Dallas Cowboys,20,Carolina Panthers,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,47,2018-09-01T23:13:21.281Z,cmaronchick,4
+12,2018,1,Seattle Seahawks,24,Denver Broncos,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",10,38,2018-09-01T23:13:32.645Z,cmaronchick,1
+11,2018,1,Washington Redskins,17,Arizona Cardinals,16,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",1,33,2018-09-01T23:14:30.561Z,cmaronchick,6
+14,2018,1,Chicago Bears,14,Green Bay Packers,34,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-20,48,2018-09-01T23:14:41.960Z,cmaronchick,4
+15,2018,1,New York Jets,19,Detroit Lions,20,,,,-1,39,2018-09-01T23:14:54.820Z,cmaronchick,
+16,2018,1,Los Angeles Rams,27,Oakland Raiders,20,,,,7,47,2018-09-01T23:15:04.686Z,cmaronchick,
+9,2018,1,Tampa Bay Buccaneers,14,New Orleans Saints,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-10,38,2018-09-07T04:27:23.032Z,Facebook_10154773754448953,0
+8,2018,1,Jacksonville Jaguars,24,New York Giants,21,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",3,45,2018-09-02T18:00:25.642Z,Facebook_10154773754448953,2
+7,2018,1,Houston Texans,14,New England Patriots,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,38,2018-09-02T18:00:40.865Z,Facebook_10154773754448953,6
+6,2018,1,Buffalo Bills,17,Baltimore Ravens,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",3,31,2018-09-02T18:02:22.121Z,Facebook_10154773754448953,0
+5,2018,1,San Francisco 49ers,21,Minnesota Vikings,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,45,2018-09-02T18:02:37.440Z,Facebook_10154773754448953,5
+4,2018,1,Tennessee Titans,24,Miami Dolphins,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,45,2018-09-02T18:02:54.220Z,Facebook_10154773754448953,2
+3,2018,1,Cincinnati Bengals,14,Indianapolis Colts,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,31,2018-09-02T18:03:03.640Z,Facebook_10154773754448953,0
+2,2018,1,Pittsburgh Steelers,21,Cleveland Browns,17,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",4,38,2018-09-02T18:03:21.902Z,Facebook_10154773754448953,1
+10,2018,1,Kansas City Chiefs,21,Los Angeles Chargers,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",4,38,2018-09-02T18:03:33.539Z,Facebook_10154773754448953,4
+13,2018,1,Dallas Cowboys,14,Carolina Panthers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,38,2018-09-02T18:03:44.019Z,Facebook_10154773754448953,6
+12,2018,1,Seattle Seahawks,21,Denver Broncos,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",4,38,2018-09-02T18:03:58.705Z,Facebook_10154773754448953,0
+11,2018,1,Washington Redskins,16,Arizona Cardinals,19,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,35,2018-09-02T18:04:12.402Z,Facebook_10154773754448953,2
+14,2018,1,Chicago Bears,14,Green Bay Packers,27,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-13,41,2018-09-02T18:04:24.882Z,Facebook_10154773754448953,2
+15,2018,1,New York Jets,17,Detroit Lions,20,,,,-3,37,2018-09-02T18:04:50.001Z,Facebook_10154773754448953,
+16,2018,1,Los Angeles Rams,24,Oakland Raiders,21,,,,3,45,2018-09-02T18:05:01.782Z,Facebook_10154773754448953,
+1,2018,1,Atlanta Falcons,20,Philadelphia Eagles,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-4,44,2018-09-03T04:50:02.616Z,cmaronchick-hotmail,6
+8,2018,1,Jacksonville Jaguars,17,New York Giants,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,37,2018-09-03T06:01:50.775Z,cmaronchick-hotmail,2
+7,2018,1,Houston Texans,17,New England Patriots,34,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-17,51,2018-09-03T06:03:10.934Z,cmaronchick-hotmail,4
+6,2018,1,Buffalo Bills,13,Baltimore Ravens,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-11,37,2018-09-03T06:03:20.573Z,cmaronchick-hotmail,4
+1,2018,1,Atlanta Falcons,21,Philadelphia Eagles,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-3,45,2018-09-05T02:49:08.236Z,Facebook_10210894378652618,4
+8,2018,1,Jacksonville Jaguars,18,New York Giants,22,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-4,40,2018-09-05T02:54:26.257Z,Facebook_10210894378652618,2
+7,2018,1,Houston Texans,17,New England Patriots,28,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-11,45,2018-09-05T02:49:39.735Z,Facebook_10210894378652618,6
+6,2018,1,Buffalo Bills,14,Baltimore Ravens,23,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-9,37,2018-09-05T02:49:54.577Z,Facebook_10210894378652618,4
+5,2018,1,San Francisco 49ers,17,Minnesota Vikings,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,41,2018-09-05T02:50:14.656Z,Facebook_10210894378652618,7
+4,2018,1,Tennessee Titans,14,Miami Dolphins,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-10,38,2018-09-05T02:50:39.035Z,Facebook_10210894378652618,4
+3,2018,1,Cincinnati Bengals,10,Indianapolis Colts,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-14,34,2018-09-05T02:50:55.415Z,Facebook_10210894378652618,0
+2,2018,1,Pittsburgh Steelers,21,Cleveland Browns,9,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",12,30,2018-09-05T02:51:06.997Z,Facebook_10210894378652618,1
+10,2018,1,Kansas City Chiefs,24,Los Angeles Chargers,31,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-7,55,2018-09-05T02:51:57.457Z,Facebook_10210894378652618,2
+13,2018,1,Dallas Cowboys,21,Carolina Panthers,28,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,49,2018-09-05T02:52:09.340Z,Facebook_10210894378652618,4
+12,2018,1,Seattle Seahawks,24,Denver Broncos,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":1,""push"":0}",3,45,2018-09-05T02:52:26.000Z,Facebook_10210894378652618,3
+11,2018,1,Washington Redskins,14,Arizona Cardinals,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-10,38,2018-09-05T02:52:38.109Z,Facebook_10210894378652618,2
+14,2018,1,Chicago Bears,21,Green Bay Packers,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-6,48,2018-09-05T02:53:07.615Z,Facebook_10210894378652618,6
+15,2018,1,New York Jets,21,Detroit Lions,20,,,,1,41,2018-09-05T02:53:19.676Z,Facebook_10210894378652618,
+16,2018,1,Los Angeles Rams,21,Oakland Raiders,24,,,,-3,45,2018-09-05T02:53:36.105Z,Facebook_10210894378652618,
+9,2018,1,Tampa Bay Buccaneers,14,New Orleans Saints,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-10,38,2018-09-05T02:54:01.836Z,Facebook_10210894378652618,0
+1,2018,1,Atlanta Falcons,20,Philadelphia Eagles,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-4,44,2018-09-05T05:24:25.181Z,cmaronchick-gmail,6
+8,2018,1,Jacksonville Jaguars,28,New York Giants,10,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",18,38,2018-09-05T18:18:45.437Z,Facebook_10101964290128875,6
+7,2018,1,Houston Texans,14,New England Patriots,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,38,2018-09-05T18:20:05.164Z,Facebook_10101964290128875,6
+6,2018,1,Buffalo Bills,3,Baltimore Ravens,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-14,20,2018-09-05T18:20:14.824Z,Facebook_10101964290128875,5
+5,2018,1,San Francisco 49ers,14,Minnesota Vikings,20,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-6,34,2018-09-05T18:20:49.566Z,Facebook_10101964290128875,4
+4,2018,1,Tennessee Titans,10,Miami Dolphins,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,27,2018-09-05T18:21:07.587Z,Facebook_10101964290128875,5
+3,2018,1,Cincinnati Bengals,17,Indianapolis Colts,7,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",10,24,2018-09-05T18:21:20.284Z,Facebook_10101964290128875,4
+2,2018,1,Pittsburgh Steelers,31,Cleveland Browns,24,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",7,55,2018-09-05T18:21:32.145Z,Facebook_10101964290128875,2
+10,2018,1,Kansas City Chiefs,24,Los Angeles Chargers,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",3,45,2018-09-05T18:21:43.864Z,Facebook_10101964290128875,4
+13,2018,1,Dallas Cowboys,10,Carolina Panthers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-14,34,2018-09-05T18:21:53.947Z,Facebook_10101964290128875,6
+12,2018,1,Seattle Seahawks,13,Denver Broncos,17,"{""correct"":1,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",-4,30,2018-09-05T18:22:11.505Z,Facebook_10101964290128875,2
+11,2018,1,Washington Redskins,21,Arizona Cardinals,27,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-6,48,2018-09-05T18:22:24.305Z,Facebook_10101964290128875,0
+14,2018,1,Chicago Bears,10,Green Bay Packers,21,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-11,31,2018-09-05T18:22:37.784Z,Facebook_10101964290128875,2
+15,2018,1,New York Jets,7,Detroit Lions,13,,,,-6,20,2018-09-05T18:22:45.760Z,Facebook_10101964290128875,
+16,2018,1,Los Angeles Rams,28,Oakland Raiders,31,,,,-3,59,2018-09-05T18:23:02.644Z,Facebook_10101964290128875,
+9,2018,1,Tampa Bay Buccaneers,13,New Orleans Saints,20,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,33,2018-09-05T18:23:13.585Z,Facebook_10101964290128875,2
+8,2018,1,Jacksonville Jaguars,20,New York Giants,3,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",17,23,2018-09-07T01:28:47.251Z,Facebook_10213631282628797,7
+1,2018,1,Atlanta Falcons,24,Philadelphia Eagles,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",7,41,2018-09-05T20:05:54.586Z,Facebook_10213631282628797,2
+7,2018,1,Houston Texans,27,New England Patriots,31,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-4,58,2018-09-07T01:28:44.487Z,Facebook_10213631282628797,2
+6,2018,1,Buffalo Bills,10,Baltimore Ravens,17,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-7,27,2018-09-07T01:28:51.748Z,Facebook_10213631282628797,2
+5,2018,1,San Francisco 49ers,13,Minnesota Vikings,20,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,33,2018-09-07T01:28:55.324Z,Facebook_10213631282628797,6
+13,2018,1,Dallas Cowboys,23,Carolina Panthers,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",3,43,2018-09-05T20:19:47.606Z,cmaronchick-gmail,0
+12,2018,1,Seattle Seahawks,24,Denver Broncos,16,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",8,40,2018-09-05T20:21:13.524Z,cmaronchick-gmail,1
+11,2018,1,Washington Redskins,30,Arizona Cardinals,20,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",10,50,2018-09-05T20:22:31.546Z,cmaronchick-gmail,4
+14,2018,1,Chicago Bears,17,Green Bay Packers,27,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-10,44,2018-09-05T20:23:08.374Z,cmaronchick-gmail,2
+15,2018,1,New York Jets,17,Detroit Lions,23,,,,-6,40,2018-09-05T20:30:04.184Z,cmaronchick-gmail,
+16,2018,1,Los Angeles Rams,27,Oakland Raiders,13,,,,14,40,2018-09-05T20:34:16.246Z,cmaronchick-gmail,
+7,2018,1,Houston Texans,24,New England Patriots,34,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-10,58,2018-09-05T20:47:52.684Z,cmaronchick-gmail,4
+1,2018,1,Atlanta Falcons,18,Philadelphia Eagles,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-3,39,2018-09-06T00:28:46.685Z,Facebook_10154993923975769,6
+8,2018,1,Jacksonville Jaguars,14,New York Giants,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,31,2018-09-06T00:29:03.068Z,Facebook_10154993923975769,2
+7,2018,1,Houston Texans,18,New England Patriots,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-6,42,2018-09-06T00:29:16.303Z,Facebook_10154993923975769,4
+6,2018,1,Buffalo Bills,18,Baltimore Ravens,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",4,32,2018-09-06T00:29:29.187Z,Facebook_10154993923975769,0
+5,2018,1,San Francisco 49ers,24,Minnesota Vikings,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,45,2018-09-06T00:29:47.164Z,Facebook_10154993923975769,2
+4,2018,1,Tennessee Titans,7,Miami Dolphins,14,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,21,2018-09-06T00:29:56.599Z,Facebook_10154993923975769,5
+3,2018,1,Cincinnati Bengals,24,Indianapolis Colts,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",3,45,2018-09-06T00:30:10.884Z,Facebook_10154993923975769,4
+2,2018,1,Pittsburgh Steelers,24,Cleveland Browns,28,"{""correct"":0,""push"":1}","{""correct"":1}","{""correct"":1,""push"":0}",-4,52,2018-09-06T00:30:22.446Z,Facebook_10154993923975769,4
+10,2018,1,Kansas City Chiefs,24,Los Angeles Chargers,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",3,45,2018-09-06T00:30:37.108Z,Facebook_10154993923975769,4
+13,2018,1,Dallas Cowboys,14,Carolina Panthers,18,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-4,32,2018-09-06T00:30:51.226Z,Facebook_10154993923975769,6
+12,2018,1,Seattle Seahawks,24,Denver Broncos,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":1,""push"":0}",3,45,2018-09-06T00:31:02.725Z,Facebook_10154993923975769,3
+11,2018,1,Washington Redskins,35,Arizona Cardinals,28,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",7,63,2018-09-06T00:31:13.448Z,Facebook_10154993923975769,4
+14,2018,1,Chicago Bears,18,Green Bay Packers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-6,42,2018-09-06T00:31:30.126Z,Facebook_10154993923975769,5
+15,2018,1,New York Jets,28,Detroit Lions,24,,,,4,52,2018-09-06T00:31:45.424Z,Facebook_10154993923975769,
+16,2018,1,Los Angeles Rams,18,Oakland Raiders,21,,,,-3,39,2018-09-06T00:31:58.466Z,Facebook_10154993923975769,
+9,2018,1,Tampa Bay Buccaneers,18,New Orleans Saints,21,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-3,39,2018-09-06T00:32:11.766Z,Facebook_10154993923975769,2
+1,2018,1,Atlanta Falcons,21,Philadelphia Eagles,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",1,41,2018-09-06T05:00:04.630Z,Facebook_10208710241577136,2
+1,2018,1,Atlanta Falcons,17,Philadelphia Eagles,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,44,2018-09-06T05:24:47.590Z,Facebook_10205896813734452,6
+8,2018,1,Jacksonville Jaguars,23,New York Giants,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",6,40,2018-09-06T05:16:15.709Z,Facebook_10205896813734452,6
+7,2018,1,Houston Texans,16,New England Patriots,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-11,43,2018-09-06T05:17:00.510Z,Facebook_10205896813734452,7
+6,2018,1,Buffalo Bills,17,Baltimore Ravens,23,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-6,40,2018-09-06T05:17:45.611Z,Facebook_10205896813734452,4
+5,2018,1,San Francisco 49ers,13,Minnesota Vikings,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-14,40,2018-09-06T05:18:29.530Z,Facebook_10205896813734452,7
+4,2018,1,Tennessee Titans,24,Miami Dolphins,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,45,2018-09-06T05:19:49.010Z,Facebook_10205896813734452,2
+3,2018,1,Cincinnati Bengals,23,Indianapolis Colts,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",2,44,2018-09-06T05:20:27.608Z,Facebook_10205896813734452,4
+2,2018,1,Pittsburgh Steelers,21,Cleveland Browns,17,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",4,38,2018-09-06T05:21:16.698Z,Facebook_10205896813734452,1
+10,2018,1,Kansas City Chiefs,17,Los Angeles Chargers,23,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-6,40,2018-09-06T05:21:42.292Z,Facebook_10205896813734452,0
+13,2018,1,Dallas Cowboys,17,Carolina Panthers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,41,2018-09-06T05:22:01.569Z,Facebook_10205896813734452,6
+12,2018,1,Seattle Seahawks,14,Denver Broncos,21,"{""correct"":1,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",-7,35,2018-09-06T05:22:26.348Z,Facebook_10205896813734452,2
+11,2018,1,Washington Redskins,27,Arizona Cardinals,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",10,44,2018-09-06T05:22:53.588Z,Facebook_10205896813734452,4
+15,2018,1,New York Jets,21,Detroit Lions,14,,,,7,35,2018-09-06T05:23:50.168Z,Facebook_10205896813734452,
+16,2018,1,Los Angeles Rams,27,Oakland Raiders,17,,,,10,44,2018-09-06T05:24:05.491Z,Facebook_10205896813734452,
+9,2018,1,Tampa Bay Buccaneers,17,New Orleans Saints,31,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-14,48,2018-09-06T05:24:38.549Z,Facebook_10205896813734452,0
+1,2018,1,Atlanta Falcons,21,Philadelphia Eagles,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-3,45,2018-09-06T05:40:33.032Z,Facebook_10154523075462819,4
+8,2018,1,Jacksonville Jaguars,17,New York Giants,10,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",7,27,2018-09-06T05:41:05.910Z,Facebook_10154523075462819,6
+7,2018,1,Houston Texans,17,New England Patriots,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-10,44,2018-09-06T05:41:37.950Z,Facebook_10154523075462819,7
+6,2018,1,Buffalo Bills,17,Baltimore Ravens,13,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",4,30,2018-09-06T05:42:09.250Z,Facebook_10154523075462819,0
+5,2018,1,San Francisco 49ers,17,Minnesota Vikings,31,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-14,48,2018-09-06T05:42:41.949Z,Facebook_10154523075462819,4
+4,2018,1,Tennessee Titans,27,Miami Dolphins,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,51,2018-09-06T05:43:16.831Z,Facebook_10154523075462819,2
+3,2018,1,Cincinnati Bengals,21,Indianapolis Colts,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,45,2018-09-06T05:43:36.268Z,Facebook_10154523075462819,0
+2,2018,1,Pittsburgh Steelers,27,Cleveland Browns,24,"{""correct"":0,""push"":1}","{""correct"":1}","{""correct"":1,""push"":0}",3,51,2018-09-06T05:44:07.471Z,Facebook_10154523075462819,4
+10,2018,1,Kansas City Chiefs,17,Los Angeles Chargers,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-4,38,2018-09-06T05:48:15.611Z,Facebook_10154523075462819,0
+13,2018,1,Dallas Cowboys,14,Carolina Panthers,17,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,31,2018-09-06T05:44:49.373Z,Facebook_10154523075462819,4
+12,2018,1,Seattle Seahawks,24,Denver Broncos,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":1,""push"":0}",4,44,2018-09-06T05:45:25.708Z,Facebook_10154523075462819,3
+11,2018,1,Washington Redskins,17,Arizona Cardinals,13,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",4,30,2018-09-06T05:45:53.390Z,Facebook_10154523075462819,7
+14,2018,1,Chicago Bears,17,Green Bay Packers,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-7,41,2018-09-06T05:46:14.949Z,Facebook_10154523075462819,3
+15,2018,1,New York Jets,17,Detroit Lions,27,,,,-10,44,2018-09-06T05:46:58.789Z,Facebook_10154523075462819,
+16,2018,1,Los Angeles Rams,31,Oakland Raiders,17,,,,14,48,2018-09-06T05:47:25.931Z,Facebook_10154523075462819,
+9,2018,1,Tampa Bay Buccaneers,17,New Orleans Saints,21,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-4,38,2018-09-06T05:47:53.710Z,Facebook_10154523075462819,2
+1,2018,1,Atlanta Falcons,17,Philadelphia Eagles,20,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-3,37,2018-09-06T13:34:47.886Z,thepem,6
+8,2018,1,Jacksonville Jaguars,20,New York Giants,6,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",14,26,2018-09-06T13:35:19.828Z,thepem,7
+5,2018,1,San Francisco 49ers,10,Minnesota Vikings,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,27,2018-09-06T13:36:20.706Z,thepem,6
+2,2018,1,Pittsburgh Steelers,24,Cleveland Browns,10,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",14,34,2018-09-06T13:36:58.434Z,thepem,0
+3,2018,1,Cincinnati Bengals,16,Indianapolis Colts,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-1,33,2018-09-06T13:37:17.290Z,thepem,0
+16,2018,1,Los Angeles Rams,24,Oakland Raiders,17,,,,7,41,2018-09-06T13:37:34.069Z,thepem,
+9,2018,1,Tampa Bay Buccaneers,7,New Orleans Saints,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-17,31,2018-09-06T13:37:46.866Z,thepem,0
+15,2018,1,New York Jets,13,Detroit Lions,17,,,,-4,30,2018-09-06T13:38:19.406Z,thepem,
+11,2018,1,Washington Redskins,17,Arizona Cardinals,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-7,41,2018-09-06T13:38:47.325Z,thepem,2
+10,2018,1,Kansas City Chiefs,13,Los Angeles Chargers,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-4,30,2018-09-06T13:39:19.911Z,thepem,0
+1,2018,1,Atlanta Falcons,24,Philadelphia Eagles,32,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-8,56,2018-09-06T18:05:04.805Z,Facebook_10156296525208127,4
+14,2018,1,Chicago Bears,18,Green Bay Packers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-6,42,2018-09-02T17:16:44.681Z,Facebook_10208710241577136,5
+8,2018,1,Jacksonville Jaguars,10,New York Giants,7,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",3,17,2018-09-07T00:10:47.127Z,chrisl777,4
+5,2018,1,San Francisco 49ers,13,Minnesota Vikings,17,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-4,30,2018-09-07T00:16:10.906Z,chrisl777,4
+3,2018,1,Cincinnati Bengals,10,Indianapolis Colts,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-11,31,2018-09-07T00:16:36.426Z,chrisl777,0
+10,2018,1,Kansas City Chiefs,14,Los Angeles Chargers,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,31,2018-09-07T00:18:40.686Z,chrisl777,0
+15,2018,1,New York Jets,21,Detroit Lions,14,,,,7,35,2018-09-07T00:19:55.095Z,chrisl777,
+16,2018,1,Los Angeles Rams,28,Oakland Raiders,10,,,,18,38,2018-09-07T00:20:31.906Z,chrisl777,
+9,2018,1,Tampa Bay Buccaneers,3,New Orleans Saints,31,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-28,34,2018-09-07T00:20:42.765Z,chrisl777,0
+8,2018,1,Jacksonville Jaguars,31,New York Giants,14,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",17,45,2018-09-07T00:31:12.026Z,ineverwin,4
+2,2018,1,Pittsburgh Steelers,31,Cleveland Browns,17,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",14,48,2018-09-07T00:51:47.404Z,Facebook_10213631282628797,2
+10,2018,1,Kansas City Chiefs,13,Los Angeles Chargers,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-4,30,2018-09-07T00:52:41.687Z,Facebook_10213631282628797,0
+13,2018,1,Dallas Cowboys,24,Carolina Panthers,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",3,45,2018-09-07T00:53:05.847Z,Facebook_10213631282628797,0
+12,2018,1,Seattle Seahawks,16,Denver Broncos,20,"{""correct"":1,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",-4,36,2018-09-07T00:53:51.984Z,Facebook_10213631282628797,2
+11,2018,1,Washington Redskins,24,Arizona Cardinals,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",7,41,2018-09-07T00:54:25.387Z,Facebook_10213631282628797,7
+14,2018,1,Chicago Bears,21,Green Bay Packers,28,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-7,49,2018-09-07T00:55:15.268Z,Facebook_10213631282628797,4
+15,2018,1,New York Jets,10,Detroit Lions,24,,,,-14,34,2018-09-07T00:56:26.764Z,Facebook_10213631282628797,
+9,2018,1,Tampa Bay Buccaneers,6,New Orleans Saints,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-15,27,2018-09-07T01:07:12.044Z,Facebook_10213631282628797,0
+16,2018,1,Los Angeles Rams,31,Oakland Raiders,17,,,,14,48,2018-09-07T01:07:59.584Z,Facebook_10213631282628797,
+4,2018,1,Tennessee Titans,17,Miami Dolphins,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",3,31,2018-09-07T01:09:06.407Z,Facebook_10213631282628797,0
+3,2018,1,Cincinnati Bengals,13,Indianapolis Colts,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-1,27,2018-09-07T01:11:35.026Z,Facebook_10213631282628797,0
+1,2018,1,Atlanta Falcons,24,Philadelphia Eagles,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-3,51,2018-09-02T17:57:19.379Z,Facebook_10154773754448953,4
+1,2018,1,Atlanta Falcons,31,Philadelphia Eagles,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",14,48,2018-09-05T18:18:33.466Z,Facebook_10101964290128875,0
+1,2018,1,Atlanta Falcons,10,Philadelphia Eagles,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-11,31,2018-09-07T00:06:05.226Z,chrisl777,6
+14,2018,1,Chicago Bears,13,Green Bay Packers,21,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-8,34,2018-09-07T05:54:34.073Z,Facebook_10205896813734452,2
+7,2018,1,Houston Texans,20,New England Patriots,27,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,47,2018-09-08T18:54:06.150Z,Facebook_10208710241577136,10
+12,2018,1,Seattle Seahawks,17,Denver Broncos,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",-7,41,2018-09-08T18:54:54.671Z,Facebook_10208710241577136,2
+11,2018,1,Washington Redskins,23,Arizona Cardinals,13,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",10,36,2018-09-08T18:56:05.250Z,Facebook_10208710241577136,6
+15,2018,1,New York Jets,21,Detroit Lions,25,,,,-4,46,2018-09-08T18:56:26.050Z,Facebook_10208710241577136,
+16,2018,1,Los Angeles Rams,27,Oakland Raiders,10,,,,17,37,2018-09-08T18:56:42.390Z,Facebook_10208710241577136,
+3,2018,1,Cincinnati Bengals,17,Indianapolis Colts,23,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-6,40,2018-09-09T15:45:22.390Z,davidcurtc22,1
+5,2018,1,San Francisco 49ers,21,Minnesota Vikings,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,45,2018-09-09T15:44:27.051Z,davidcurtc22,5
+2,2018,1,Pittsburgh Steelers,31,Cleveland Browns,14,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",17,45,2018-09-09T15:46:50.392Z,davidcurtc22,2
+7,2018,1,Houston Texans,28,New England Patriots,31,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,59,2018-09-09T15:47:47.913Z,davidcurtc22,2
+9,2018,1,Tampa Bay Buccaneers,28,New Orleans Saints,34,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-6,62,2018-09-09T15:48:43.470Z,davidcurtc22,4
+8,2018,1,Jacksonville Jaguars,24,New York Giants,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",7,41,2018-09-09T15:49:05.577Z,davidcurtc22,6
+10,2018,1,Kansas City Chiefs,21,Los Angeles Chargers,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,45,2018-09-09T15:49:57.530Z,davidcurtc22,0
+11,2018,1,Washington Redskins,21,Arizona Cardinals,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,45,2018-09-09T15:51:20.912Z,davidcurtc22,0
+15,2018,1,New York Jets,20,Detroit Lions,27,,,,-7,47,2018-09-09T15:52:04.171Z,davidcurtc22,
+16,2018,1,Los Angeles Rams,28,Oakland Raiders,21,,,,7,49,2018-09-09T15:52:25.592Z,davidcurtc22,
+3,2018,1,Cincinnati Bengals,23,Indianapolis Colts,24,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-1,47,2018-09-02T17:14:23.537Z,Facebook_10208710241577136,0
+5,2018,1,San Francisco 49ers,19,Minnesota Vikings,23,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-4,42,2018-09-02T17:13:31.280Z,Facebook_10208710241577136,4
+7,2018,1,Houston Texans,17,New England Patriots,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,41,2018-09-06T13:35:40.555Z,thepem,7
+7,2018,1,Houston Texans,31,New England Patriots,14,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",17,45,2018-09-07T00:11:10.186Z,chrisl777,2
+9,2018,1,Tampa Bay Buccaneers,17,New Orleans Saints,30,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-13,47,2018-09-02T17:09:19.561Z,Facebook_10208710241577136,0
+9,2018,1,Tampa Bay Buccaneers,16,New Orleans Saints,31,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-15,47,2018-09-05T20:47:37.064Z,cmaronchick-gmail,0
+8,2018,1,Jacksonville Jaguars,28,New York Giants,20,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",8,48,2018-09-02T17:09:53.960Z,Facebook_10208710241577136,4
+8,2018,1,Jacksonville Jaguars,17,New York Giants,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-3,37,2018-09-05T05:30:51.501Z,cmaronchick-gmail,2
+6,2018,1,Buffalo Bills,18,Baltimore Ravens,20,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-2,38,2018-09-02T17:13:06.325Z,Facebook_10208710241577136,2
+6,2018,1,Buffalo Bills,17,Baltimore Ravens,10,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",7,27,2018-09-06T13:35:58.489Z,thepem,0
+6,2018,1,Buffalo Bills,7,Baltimore Ravens,10,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,17,2018-09-07T00:11:27.026Z,chrisl777,2
+6,2018,1,Buffalo Bills,17,Baltimore Ravens,21,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-4,38,2018-09-09T15:48:22.390Z,davidcurtc22,2
+2,2018,1,Pittsburgh Steelers,31,Cleveland Browns,27,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",4,58,2018-09-02T17:14:40.605Z,Facebook_10208710241577136,2
+2,2018,1,Pittsburgh Steelers,27,Cleveland Browns,10,"{""correct"":0,""push"":1}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",17,37,2018-09-07T00:18:21.146Z,chrisl777,0
+10,2018,1,Kansas City Chiefs,23,Los Angeles Chargers,24,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-1,47,2018-09-02T17:14:55.360Z,Facebook_10208710241577136,2
+10,2018,1,Kansas City Chiefs,16,Los Angeles Chargers,19,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,35,2018-09-05T20:16:27.706Z,cmaronchick-gmail,0
+13,2018,1,Dallas Cowboys,20,Carolina Panthers,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-4,44,2018-09-02T17:15:12.559Z,Facebook_10208710241577136,4
+13,2018,1,Dallas Cowboys,10,Carolina Panthers,17,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-7,27,2018-09-06T13:39:03.748Z,thepem,6
+13,2018,1,Dallas Cowboys,10,Carolina Panthers,21,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",-11,31,2018-09-07T00:18:52.104Z,chrisl777,6
+13,2018,1,Dallas Cowboys,21,Carolina Panthers,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-3,45,2018-09-09T15:50:18.733Z,davidcurtc22,2
+12,2018,1,Seattle Seahawks,17,Denver Broncos,16,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",1,33,2018-09-06T13:38:35.750Z,thepem,0
+12,2018,1,Seattle Seahawks,21,Denver Broncos,20,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":0,""push"":0}",1,41,2018-09-07T00:19:07.864Z,chrisl777,0
+12,2018,1,Seattle Seahawks,27,Denver Broncos,21,"{""correct"":0,""push"":0}","{""correct"":0,""push"":1}","{""correct"":1,""push"":0}",6,48,2018-09-09T15:51:04.770Z,davidcurtc22,2
+11,2018,1,Washington Redskins,13,Arizona Cardinals,10,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":1,""push"":0}",3,23,2018-09-07T00:19:24.947Z,chrisl777,6
+4,2018,1,Tennessee Titans,20,Miami Dolphins,19,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",1,39,2018-09-02T17:14:06.699Z,Facebook_10208710241577136,1
+4,2018,1,Tennessee Titans,17,Miami Dolphins,24,"{""correct"":1,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",-7,41,2018-09-06T13:36:40.805Z,thepem,5
+4,2018,1,Tennessee Titans,21,Miami Dolphins,7,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",14,28,2018-09-07T00:16:20.807Z,chrisl777,0
+4,2018,1,Tennessee Titans,21,Miami Dolphins,17,"{""correct"":0,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",4,38,2018-09-09T15:46:15.373Z,davidcurtc22,0
+14,2018,1,Chicago Bears,10,Green Bay Packers,24,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":0,""push"":0}",-14,34,2018-09-06T13:38:03.808Z,thepem,3
+14,2018,1,Chicago Bears,21,Green Bay Packers,17,"{""correct"":0,""push"":0}","{""correct"":1}","{""correct"":0,""push"":0}",4,38,2018-09-07T00:19:37.609Z,chrisl777,2
+14,2018,1,Chicago Bears,17,Green Bay Packers,30,"{""correct"":1,""push"":0}","{""correct"":0,""push"":0}","{""correct"":1,""push"":0}",-13,47,2018-09-09T20:55:25.284Z,davidcurtc22,5

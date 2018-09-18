@@ -230,7 +230,7 @@ $("#dropdown").on("click", function(e){
 
 $("#dropdown li a").on("click", function() {
     console.log("$(this).text(): ", $(this).text())
-    $("#dropdown").text($(this).text());
+    $("#dropdown span").text($(this).text());
 });
 
 
