@@ -58,6 +58,15 @@
     color: #000;
 }
 
+.CIN .primary {
+    background-color: #FB4F14;
+    color: #000;
+}
+
+.CIN .secondary {
+    background-color: #000;
+}
+
 .TEN .primary {
     background-color: #002A5C;
     color: #fff;
