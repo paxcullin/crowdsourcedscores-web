@@ -482,7 +482,7 @@ color: #fff;
     color: #3A3B6C;
 }
 
-.alt-tr td, .alt-tr td:before {
+.alt-tr td, .alt-tr td:before, .alt-tr td a {
     color: #3A3B6C;
 }
 
