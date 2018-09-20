@@ -566,14 +566,11 @@
                 if (!view) { view = "weekly";}
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
-                console.log("leaderboardData: ", leaderboardData);
-                console.log("weeklyResults: ", weeklyResults);
-                console.log("overallResults: ", overallResults);
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
                 
-                var data = google.visualization.arrayToDataTable(weeklyResults.results);
+                var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
-                    data = google.visualization.arrayToDataTable(overallResults.results);
+                    chartData = google.visualization.arrayToDataTable(overallResults.results);
                 }
                 var options = {
                     weekly: {
@@ -608,7 +605,8 @@
                 };
 
                 var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
-                chart.draw(data, options[view]);
+                console.log("chartData: ", chartData)
+                chart.draw(chartData, options[view]);
             }
 
         var getGameWeek = function (callback) {
@@ -744,9 +742,17 @@
                 .then(function (data) {
                     userInformation.predictionsSubmitted = data.predictionsSubmitted;
                     var totalGames = data.games.length;
+                    if (totalGames === 0) {
+
+                        if (!gameWeekData.year) gameWeekData.year = 2018;
+                        gameWeekData.week--;
+                        $('#weekSelector li').removeClass('active');
+                        $('#resultsContainer').css('display','none');
+                        $('#weekSelector').find("[data-week='" + gameWeekData.week + "']").addClass('active');
+                        setGameWeek(gameWeekData);
+                    }
                     updateProgressBar(userInformation.predictionsSubmitted, totalGames);
                         $("#games-loading-icon").css("display","none")
-
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
@@ -1035,6 +1041,7 @@
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
+                        console.log("chartData: ", chartData)
                         if (chartData && chartData.games && chartData.games.length > 0) {
                             drawChart2(gameWeekData.year, gameWeekData.week, "weekly");
                         }

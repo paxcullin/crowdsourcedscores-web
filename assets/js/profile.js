@@ -73,15 +73,18 @@ var extendedProfile = function() {
                     var rank = 1;
                     userResults.forEach(function(item, index) {
                         var weeklyResults = item;
-                        console.log("weeklyResults: ", weeklyResults)
-                        resultsHTML += "<tr>";
-                        resultsHTML += "<td data-th=\"Week\">" + weeklyResults.gameWeek + "</td>";
-                        resultsHTML += "<td data-th=\"Winners\">" + weeklyResults.winner.correct + "</td>";
-                        resultsHTML += "<td data-th=\"Spread\">" + weeklyResults.spread.correct + "</td>";
-                        resultsHTML += "<td data-th=\"Total\">" + weeklyResults.total.correct + "</td>";
-                        resultsHTML += "<td data-th=\"Score\">" + weeklyResults.predictionScore + "</td>";
-                        resultsHTML += "</tr>";
-                        console.log("index: ", index, " userResults.length: ", userResults.length)
+                        //console.log("weeklyResults: ", weeklyResults)
+                        if (weeklyResults.gameWeek > 0) {
+                            var rowClass = '';
+                            if ((index % 2) === 0) rowClass = ' class="alt-tr"'
+                            resultsHTML += '<tr' + rowClass + '>';
+                            resultsHTML += "<td data-th=\"Week\">" + weeklyResults.gameWeek + "</td>";
+                            resultsHTML += "<td data-th=\"Winners\">" + weeklyResults.winner.correct + "</td>";
+                            resultsHTML += "<td data-th=\"Spread\">" + weeklyResults.spread.correct + "</td>";
+                            resultsHTML += "<td data-th=\"Total\">" + weeklyResults.total.correct + "</td>";
+                            resultsHTML += "<td data-th=\"Score\">" + weeklyResults.predictionScore + "</td>";
+                            resultsHTML += "</tr>";
+                        }
                         if (index === (userResults.length - 1)) {
                             resultsDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"gameWeek\"><span class=\"full abbrev\">Week</span></th><th class=\"Winners\"><span class=\"full abbrev\">Winners</span></th><th class=\"Spread\"><span class=\"full\">Spread</span></th><th class=\"Total\"><span class=\"full\">Total</span></th><th class=\"Score\"><span class=\"full\">Prediction Score</span></th></tr></thead><tbody>";
                             resultsDivHTML += resultsHTML + "</tbody></table>";
