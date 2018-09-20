@@ -135,6 +135,19 @@
         <pubDate>Thu, 12 Sep 2018 23:15:00 GMT</pubDate>
         <itunes:duration>35:44</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 3 - Week 2 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris talk about the crowd's solid performance in Week 2 as they cover all of the games. They also discuss the race for the weekly winner title, fittingly, ended in a tie.</description>
+        <itunes:subtitle>Paul and Chris talk about the crowd's solid performance in Week 2 as they cover all of the games. They also discuss the race for the weekly winner title, fittingly, ended in a tie.</itunes:subtitle>
+        <itunes:episode>9</itunes:episode>
+        <itunes:summary>Paul and Chris talk about the crowd's solid performance in Week 2 as they cover all of the games. They also discuss the race for the weekly winner title, fittingly, ended in a tie.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode3.mp3" length="43:50" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode3.mp3</guid>
+        <pubDate>Thu, 19 Sep 2018 23:00:00 GMT</pubDate>
+        <itunes:duration>43:50</itunes:duration>
+      </item>
     
   </channel>
   </rss>
