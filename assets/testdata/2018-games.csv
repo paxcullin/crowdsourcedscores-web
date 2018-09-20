@@ -1,0 +1,49 @@
+gameId,year,gameWeek,awayTeam.fullName,homeTeam.fullName,odds.spread,odds.total,crowd.awayTeam.score,crowd.homeTeam.score,crowd.results.winner.correct,crowd.results.winner.push,crowd.results.spread.correct,crowd.results.spread.push,crowd.results.total.correct,crowd.results.total.push,crowd.results.predictionScore,results.awayTeam.score,results.homeTeam.score,results.total,results.spread,startDateTime
+33,2018,3,New York Jets,Cleveland Browns,-3,41,18.25,19.5,,,,,,,,,,,,2018-09-21T00:20:00.000Z
+34,2018,3,Cincinnati Bengals,Carolina Panthers,-3,43.5,20.43,24.14,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+35,2018,3,New York Giants,Houston Texans,-6,41.5,13,19.71,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+36,2018,3,Tennessee Titans,Jacksonville Jaguars,-6.5,39.5,13.86,25.57,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+37,2018,3,Denver Broncos,Baltimore Ravens,-5,43,17.29,23,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+38,2018,3,New Orleans Saints,Atlanta Falcons,-3,53,26.86,27.71,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+39,2018,3,San Francisco 49ers,Kansas City Chiefs,-6.5,56,22,31,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+40,2018,3,Green Bay Packers,Washington Redskins,3,46,25.29,20.14,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+41,2018,3,Indianapolis Colts,Philadelphia Eagles,-6,47.5,19.57,28.29,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+42,2018,3,Oakland Raiders,Miami Dolphins,-3,44,17.57,21.57,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+43,2018,3,Buffalo Bills,Minnesota Vikings,-17,41,8.86,27.29,,,,,,,,,,,,2018-09-23T17:00:00.000Z
+44,2018,3,Los Angeles Chargers,Los Angeles Rams,-6.5,48,23.43,28,,,,,,,,,,,,2018-09-23T20:05:00.000Z
+45,2018,3,Chicago Bears,Arizona Cardinals,4,,20.17,14.5,,,,,,,,,,,,2018-09-23T20:25:00.000Z
+46,2018,3,Dallas Cowboys,Seattle Seahawks,-3,44.5,20.71,21.57,,,,,,,,,,,,2018-09-23T20:25:00.000Z
+47,2018,3,New England Patriots,Detroit Lions,6.5,51.5,30.29,16.29,,,,,,,,,,,,2018-09-24T00:20:00.000Z
+48,2018,3,Pittsburgh Steelers,Tampa Bay Buccaneers,2,53.5,26.14,28,,,,,,,,,,,,2018-09-25T00:15:00.000Z
+1,2018,1,Atlanta Falcons,Philadelphia Eagles,-1.5,44.5,20.64,23.21,1,0,1,0,1,0,6,12,18,30,-6,2018-09-07T00:20:00.000Z
+3,2018,1,Cincinnati Bengals,Indianapolis Colts,-1,47.5,17.33,19.67,0,0,0,0,0,0,0,34,23,57,11,2018-09-09T17:00:00.000Z
+5,2018,1,San Francisco 49ers,Minnesota Vikings,-6,46.5,17.17,22.33,1,0,0,0,1,0,4,16,24,40,-8,2018-09-09T17:00:00.000Z
+7,2018,1,Houston Texans,New England Patriots,-6.5,49.5,19.57,26.64,1,0,1,0,1,0,6,20,27,47,-7,2018-09-09T17:00:00.000Z
+9,2018,1,Tampa Bay Buccaneers,New Orleans Saints,-10,49.5,14.38,25.85,0,0,0,0,0,0,0,48,40,88,8,2018-09-09T17:00:00.000Z
+8,2018,1,Jacksonville Jaguars,New York Giants,3,42.5,20.73,14.73,1,0,1,0,1,0,6,20,15,35,5,2018-09-09T17:00:00.000Z
+6,2018,1,Buffalo Bills,Baltimore Ravens,-7.5,39,13.92,17.92,1,0,0,0,0,0,2,3,47,50,-44,2018-09-09T17:00:00.000Z
+2,2018,1,Pittsburgh Steelers,Cleveland Browns,3.5,41,26.67,17.83,0,1,0,0,1,0,2,21,21,42,0,2018-09-09T17:00:00.000Z
+10,2018,1,Kansas City Chiefs,Los Angeles Chargers,-3,48,18.77,21.46,0,0,1,0,0,0,2,38,28,66,10,2018-09-09T20:05:00.000Z
+13,2018,1,Dallas Cowboys,Carolina Panthers,-3,42,16.77,22.23,1,0,1,0,1,0,6,8,16,24,-8,2018-09-09T20:25:00.000Z
+12,2018,1,Seattle Seahawks,Denver Broncos,-3,42.5,20.46,19.08,0,0,0,1,0,0,0,24,27,51,-3,2018-09-09T20:25:00.000Z
+11,2018,1,Washington Redskins,Arizona Cardinals,-2,43.5,21.15,19.38,1,0,1,0,1,0,6,24,6,30,18,2018-09-09T20:25:00.000Z
+4,2018,1,Tennessee Titans,Miami Dolphins,-1,43.5,18.75,18.25,0,0,0,0,0,0,0,20,27,47,-7,2018-09-09T17:00:00.000Z
+14,2018,1,Chicago Bears,Green Bay Packers,-7,46.5,16.23,25.23,1,0,0,0,0,0,2,23,24,47,-1,2018-09-10T00:20:00.000Z
+15,2018,1,New York Jets,Detroit Lions,-7,44.5,17.85,20.62,0,0,1,0,0,0,2,48,17,65,31,2018-09-10T23:10:00.000Z
+16,2018,1,Los Angeles Rams,Oakland Raiders,4.5,47.5,26.23,18.38,1,0,1,0,1,0,6,33,13,46,20,2018-09-11T02:20:00.000Z
+17,2018,2,Baltimore Ravens,Cincinnati Bengals,-1,44.5,22.33,16.75,0,0,0,0,0,0,0,23,34,57,-11,2018-09-14T00:20:00.000Z
+19,2018,2,Cleveland Browns,New Orleans Saints,-9.5,51,17.15,28.92,1,0,0,0,1,0,4,18,21,39,-3,2018-09-16T17:00:00.000Z
+25,2018,2,Houston Texans,Tennessee Titans,3,41,22.67,16.17,0,0,0,0,1,0,2,17,20,37,-3,2018-09-16T17:00:00.000Z
+18,2018,2,Minnesota Vikings,Green Bay Packers,2,45,22.62,21.69,0,1,1,0,0,0,2,29,29,58,0,2018-09-16T17:00:00.000Z
+21,2018,2,Los Angeles Chargers,Buffalo Bills,7.5,41.5,30.42,15.92,1,0,1,0,1,0,6,31,20,51,11,2018-09-16T17:00:00.000Z
+20,2018,2,Miami Dolphins,New York Jets,-3,42.5,18.42,19.67,0,0,1,0,1,0,4,20,12,32,8,2018-09-16T17:00:00.000Z
+23,2018,2,Kansas City Chiefs,Pittsburgh Steelers,-4,52.5,24.77,23.31,1,0,1,0,0,0,4,42,37,79,5,2018-09-16T17:00:00.000Z
+26,2018,2,Philadelphia Eagles,Tampa Bay Buccaneers,3,46.5,24.23,18.08,0,0,0,0,0,0,0,21,27,48,-6,2018-09-16T17:00:00.000Z
+24,2018,2,Indianapolis Colts,Washington Redskins,-6,47.5,18.31,21.15,0,0,1,0,1,0,4,21,9,30,12,2018-09-16T17:00:00.000Z
+22,2018,2,Carolina Panthers,Atlanta Falcons,-5,43.5,21.08,21.5,1,0,0,0,0,0,2,24,31,55,-7,2018-09-16T17:00:00.000Z
+30,2018,2,New England Patriots,Jacksonville Jaguars,1.5,44,24.33,20.25,0,0,0,0,1,0,2,20,31,51,-11,2018-09-16T20:25:00.000Z
+29,2018,2,Oakland Raiders,Denver Broncos,-6.5,44.5,17.33,22,1,0,1,0,1,0,6,19,20,39,-1,2018-09-16T20:25:00.000Z
+27,2018,2,Detroit Lions,San Francisco 49ers,-6,48,19,22.58,1,0,1,0,0,0,4,27,30,57,-3,2018-09-16T20:05:00.000Z
+28,2018,2,Arizona Cardinals,Los Angeles Rams,-12.5,43.5,13.42,27.25,1,0,1,0,1,0,6,0,34,34,-34,2018-09-16T20:05:00.000Z
+31,2018,2,New York Giants,Dallas Cowboys,-3,42,19.25,20.5,1,0,0,0,1,0,4,13,20,33,-7,2018-09-17T00:20:00.000Z
+32,2018,2,Seattle Seahawks,Chicago Bears,-3.5,43,22.45,22.55,1,0,0,0,0,0,2,17,24,41,-7,2018-09-18T00:15:00.000Z
