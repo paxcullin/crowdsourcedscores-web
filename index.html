@@ -559,17 +559,22 @@
         </div>
     </script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script>
         var view;
             function buildChart(leaderboardData) {
-                if (!view) { view = "weekly";}
+                // hide chart after its built on first load
+                var firstChartLoad = true;
+
+                if (!view ? view = "weekly" : firstChartLoad = false);
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
-                
+                console.log('weeklyResults.results: ', weeklyResults.results);
                 var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
+                    console.log('overallResults.results: ', overallResults.results);
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
                 }
                 var options = {
@@ -579,7 +584,8 @@
                         vAxis: {minValue: 0,
                                 maxValue:12},
                         seriesType: 'bars',
-                        series: {3: {type: 'scatter'}},
+                        series: {3: {type: 'line'}},
+                        chartArea: {width: '100%', height: 320},
                         colors: ['#B42135', '#3A3B6C', '#A3A3A4','#000'],
                         legend: {position: 'bottom'},
                         explorer: {
@@ -594,6 +600,7 @@
                         vAxis: {minValue: 0,
                                 maxValue:100},
                         seriesType: 'line',
+                        chartArea: {width: '100%', height: 320},
                         colors: ['#B42135', '#3A3B6C', '#A3A3A4'],
                         legend: {position: 'bottom'},
                         explorer: {
@@ -605,8 +612,24 @@
                 };
 
                 var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
-                console.log("chartData: ", chartData)
                 chart.draw(chartData, options[view]);
+                console.log('firstChartLoad: ', firstChartLoad);
+                if (firstChartLoad) {
+                    $header = $(this);
+                    //getting the next element
+                    $content = $("#weeklyChart");
+                    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                    $content.slideToggle(500, function () {
+                        //execute this after slideToggle is done
+                        //change text of header based on visibility of content div
+                        // $header.text(function () {
+                        //     //change text based on condition
+                        //     //return $content.is(":visible") ? "" : "";
+                        // });
+                    });
+                    $("#switchChartButtons").toggle();
+                    firstChartLoad = false;
+                }
             }
 
         var getGameWeek = function (callback) {
@@ -745,14 +768,12 @@
                     if (totalGames === 0) {
 
                         if (!gameWeekData.year) gameWeekData.year = 2018;
-                        gameWeekData.week--;
-                        $('#weekSelector li').removeClass('active');
-                        $('#resultsContainer').css('display','none');
-                        $('#weekSelector').find("[data-week='" + gameWeekData.week + "']").addClass('active');
-                        setGameWeek(gameWeekData);
+                        $("#games").html("<div>Sorry, there are no games available for that week. Please choose a different week to try again.</div>");
+                        $("#games-loading-icon").css("display","none")
+                        return;
                     }
                     updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                        $("#games-loading-icon").css("display","none")
+                    $("#games-loading-icon").css("display","none")
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
@@ -1041,7 +1062,6 @@
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
-                        console.log("chartData: ", chartData)
                         if (chartData && chartData.games && chartData.games.length > 0) {
                             drawChart2(gameWeekData.year, gameWeekData.week, "weekly");
                         }
@@ -1210,25 +1230,24 @@
 
 
 
-            $("#chartExpand").click(function () {
-
-                $header = $(this);
-                //getting the next element
-                $content = $("#weeklyChart");
-                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-                $content.slideToggle(500, function () {
-                    //execute this after slideToggle is done
-                    //change text of header based on visibility of content div
-                    $header.text(function () {
-                        //change text based on condition
-                        //return $content.is(":visible") ? "" : "";
-                    });
-                });
-                $("#switchChartButtons").toggle()
-
-            });
             var allGroups = getAllGroups(10);
             var allUsers = getAllUsers(10);
+        });
+
+        $("#chartExpand").click(function () {
+            $header = $(this);
+            //getting the next element
+            $content = $("#weeklyChart");
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    //return $content.is(":visible") ? "" : "";
+                });
+            });
+            $("#switchChartButtons").toggle();
         });
         //console.log("dataWeek: ", dataWeek);
         google.load("visualization", "1", {packages:["corechart"]});
@@ -1649,8 +1668,8 @@
             <div id="chartContainer" class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div id="weeklyChart" style="display:none"></div>
-                        <div class="row" id="switchChartButtons" style="display: none">
+                        <div id="weeklyChart"></div>
+                        <div class="row" id="switchChartButtons">
                             <div class="col-xs-6">
                                 <button id="weeklyChartButton">Weekly Results</button>
                             </div>
