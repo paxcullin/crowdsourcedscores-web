@@ -571,7 +571,8 @@
                 var weeklyResults = {results: leaderboardData.weekly};
                 var overallResults = {results: leaderboardData.overall};
                 if (!leaderboardData || weeklyResults.results.length < 2 || overallResults.results.length < 2) { return }
-                console.log('weeklyResults.results: ', weeklyResults.results);
+                //console.log('weeklyResults.results: ', weeklyResults.results);
+                
                 var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
                     console.log('overallResults.results: ', overallResults.results);
@@ -613,7 +614,7 @@
 
                 var chart = new google.visualization.ComboChart(document.getElementById('weeklyChart'));
                 chart.draw(chartData, options[view]);
-                console.log('firstChartLoad: ', firstChartLoad);
+                
                 if (firstChartLoad) {
                     $header = $(this);
                     //getting the next element
@@ -1228,27 +1229,28 @@
                 });
             });
 
+            
+            $("#chartExpand").click(function () {
+                $header = $(this);
+                //getting the next element
+                $content = $("#weeklyChart");
+                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                $content.slideToggle(500, function () {
+                    //execute this after slideToggle is done
+                    //change text of header based on visibility of content div
+                    $header.text(function () {
+                        //change text based on condition
+                        //return $content.is(":visible") ? "" : "";
+                    });
+                });
+                $("#switchChartButtons").toggle();
+            });
 
 
             var allGroups = getAllGroups(10);
             var allUsers = getAllUsers(10);
         });
 
-        $("#chartExpand").click(function () {
-            $header = $(this);
-            //getting the next element
-            $content = $("#weeklyChart");
-            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-            $content.slideToggle(500, function () {
-                //execute this after slideToggle is done
-                //change text of header based on visibility of content div
-                $header.text(function () {
-                    //change text based on condition
-                    //return $content.is(":visible") ? "" : "";
-                });
-            });
-            $("#switchChartButtons").toggle();
-        });
         //console.log("dataWeek: ", dataWeek);
         google.load("visualization", "1", {packages:["corechart"]});
         //console.log("year:", year, "week: ", week);
