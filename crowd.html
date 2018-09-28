@@ -16,7 +16,7 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
@@ -116,7 +116,7 @@
                                                             <thead>
                                                             <tr>
                                                                 <th></th>
-                                                                <th>Me</th>
+                                                                <th>Our Crowd</th>
                                                                 <th class="compareHeader">{{#if comparePrediction}}{{comparePrediction.preferred_username}}{{/if}}{{#unless comparePrediction}}The Crowd{{/unless}}</th>
                                                                 <th>Odds</th>
                                                                 {{#if results}}<th>Actual</th>{{/if}}
@@ -468,18 +468,6 @@
                                                         </table>
                                                         
                                                         <div>
-                                                        {{#unless results}}
-                                                            {{#if userAuthenticated}}
-                                                                {{#dateCheck startDateTime}}
-                                                                    <button class="prediction-btn btn btn-info">Predict</button>
-                                                                {{/dateCheck}}
-                                                            {{/if}}
-                                                            {{#unless userAuthenticated}}
-                                                                {{#dateCheck startDateTime}}
-                                                                    <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')">Log in to Predict</button>
-                                                                {{/dateCheck}}
-                                                            {{/unless}}
-                                                        {{/unless}}
                                                             {{#ifCond prediction.predictionScore '>' -1}}
                                                                 <div class="predictionScore">Prediction Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
                                                             {{/ifCond}}

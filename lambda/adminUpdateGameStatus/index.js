@@ -163,11 +163,14 @@ exports.handler = (event, context) => {
         return context.fail(JSON.stringify(result));
     }
     console.log("game: ", game)
-    var diff = game.results.awayTeam.score - game.results.homeTeam.score;
-    // game.spread = diff < 0 ? -1 * (diff) : diff;
-    console.log("game.results: ", game.results)
-    game.results.spread = game.results.awayTeam.score - game.results.homeTeam.score;
-    game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
+    var diff = 0;
+    if (game.results) {
+        diff = game.results.awayTeam.score - game.results.homeTeam.score;
+        // game.spread = diff < 0 ? -1 * (diff) : diff;
+        console.log("game.results: ", game.results)
+        game.results.spread = game.results.awayTeam.score - game.results.homeTeam.score;
+        game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
+    }
 
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
@@ -181,7 +184,8 @@ exports.handler = (event, context) => {
         const msHour = 3600000;
         
         var now = new Date();
-        var kickoff = game.startDateTime;
+        console.log('now: ', now);
+        var kickoff = new Date(game.startDateTime);
         var cutoff = kickoff - msHour;
         var startDateTime = new Date(game.startDateTime)
         
@@ -190,29 +194,38 @@ exports.handler = (event, context) => {
         console.log((now < kickoff))
         if (now < kickoff) {
             gameUpdate = {
-                startDateTime: startDateTime,
-                status: game.status,
-                odds: game.odds
-            }
-        } else {
-            gameUpdate = {
-                startDateTime: startDateTime,
-                status: game.status,
-                results: {
-                    awayTeam: {
-                        score: game.results.awayTeam.score
-                    },
-                    homeTeam: {
-                        score: game.results.homeTeam.score
-                    },
-                    total: game.results.total,
-                    spread: game.results.spread
+                $set: {
+                    startDateTime: startDateTime,
+                    status: game.status,
+                    odds: {
+                        spread: game.odds.spread,
+                        total: game.odds.total
+                    }
                 }
             }
+        } else if (game.results) {
+            gameUpdate = {
+                $set : {
+                    startDateTime: startDateTime,
+                    status: game.status,
+                    results: {
+                        awayTeam: {
+                            score: game.results.awayTeam.score
+                        },
+                        homeTeam: {
+                            score: game.results.homeTeam.score
+                        },
+                        total: game.results.total,
+                        spread: game.results.spread
+                    }
+                }
+            }
+        } else {
+            context.done(null, "No update");
         }
         console.log("gameUpdate: ", gameUpdate)
         //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
-        db.collection('games').updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, {$set: gameUpdate})
+        db.collection('games').updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, gameUpdate)
         .then(function (gameObj) {
             if (game.status === "final") {
                 console.log("gameObj: ", gameObj)
@@ -254,7 +267,7 @@ exports.handler = (event, context) => {
             }
         })
         .catch(function (findReject) {
-            console.done(findReject, null);
+            context.done(findReject, null);
         })
     });
 };
