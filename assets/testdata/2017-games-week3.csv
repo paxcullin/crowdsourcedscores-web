@@ -1,0 +1,17 @@
+gameId,year,gameWeek,awayTeam.fullName,homeTeam.fullName,odds.spread,odds.total,crowd.awayTeam.score,crowd.homeTeam.score,crowd.results.winner.correct,crowd.results.winner.push,crowd.results.spread.correct,crowd.results.spread.push,crowd.results.total.correct,crowd.results.total.push,crowd.results.predictionScore,results.awayTeam.score,results.homeTeam.score,results.total,results.spread,startDateTime
+33,2018,3,New York Jets,Cleveland Browns,-3,41,18.89,19.56,1,0,0,0,1,0,4,17,21,38,-4,2018-09-21T00:20:00.000Z
+42,2018,3,Oakland Raiders,Miami Dolphins,-3,44.5,17.08,20.77,1,0,1,0,0,0,4,20,28,48,-8,2018-09-23T17:00:00.000Z
+37,2018,3,Denver Broncos,Baltimore Ravens,-5.5,46,18.62,20.38,1,0,0,0,1,0,4,14,27,41,-13,2018-09-23T17:00:00.000Z
+35,2018,3,New York Giants,Houston Texans,-6,44,14.31,20.46,0,0,0,0,0,0,0,27,22,49,5,2018-09-23T17:00:00.000Z
+34,2018,3,Cincinnati Bengals,Carolina Panthers,-2.5,44,20.08,23.38,1,0,1,0,0,0,4,21,31,52,-10,2018-09-23T17:00:00.000Z
+43,2018,3,Buffalo Bills,Minnesota Vikings,-16.5,41,9.42,26,0,0,0,0,1,0,2,27,6,33,21,2018-09-23T17:00:00.000Z
+41,2018,3,Indianapolis Colts,Philadelphia Eagles,-6.5,45.5,19.77,26.62,1,0,0,0,0,0,2,16,20,36,-4,2018-09-23T17:00:00.000Z
+36,2018,3,Tennessee Titans,Jacksonville Jaguars,-10,39.5,13.77,24.08,0,0,0,0,1,0,2,9,6,15,3,2018-09-23T17:00:00.000Z
+40,2018,3,Green Bay Packers,Washington Redskins,2.5,45.5,25.77,19.62,0,0,0,0,0,0,0,17,31,48,-14,2018-09-23T17:00:00.000Z
+38,2018,3,New Orleans Saints,Atlanta Falcons,-1.5,53.5,26.5,26.5,0,0,1,0,0,0,2,43,37,80,6,2018-09-23T17:00:00.000Z
+39,2018,3,San Francisco 49ers,Kansas City Chiefs,-5.5,53.5,21.08,29.15,1,0,1,0,0,0,4,27,38,65,-11,2018-09-23T17:00:00.000Z
+44,2018,3,Los Angeles Chargers,Los Angeles Rams,-7,49,23.08,28.83,1,0,0,0,1,0,4,23,35,58,-12,2018-09-23T20:05:00.000Z
+46,2018,3,Dallas Cowboys,Seattle Seahawks,-1,40,20.93,22,1,0,1,0,0,0,4,13,24,37,-11,2018-09-23T20:25:00.000Z
+45,2018,3,Chicago Bears,Arizona Cardinals,6,39,22.43,14.36,1,0,0,0,1,0,4,16,14,30,2,2018-09-23T20:25:00.000Z
+47,2018,3,New England Patriots,Detroit Lions,6.5,55,30.43,15.93,0,0,0,0,1,0,2,10,26,36,-16,2018-09-24T00:20:00.000Z
+48,2018,3,Pittsburgh Steelers,Tampa Bay Buccaneers,-1.5,54.5,28.07,26.43,1,0,1,0,0,0,4,30,27,57,3,2018-09-25T00:15:00.000Z

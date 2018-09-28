@@ -29,7 +29,11 @@ function buildGroupsTable(allGroupsInformation) {
         } else {
             groupHTML += "<td data-th=\"Score\">0</td>";
         }
-        groupDivHTML += "<tr>" + groupHTML + "</tr>";
+        var rowClass = "";
+        if ((i%2) !== 0) {
+            rowClass = ' class="alt-tr"'
+        }
+        groupDivHTML += '<tr' + rowClass + '>' + groupHTML + '</tr>';
         if (i === allGroupsInformation.length - 1) {
             groupDivHTML += "</tbody></table>";
         }
@@ -46,18 +50,22 @@ function buildUsersTable(allUsersInformation) {
     for (var i=0; i < allUsersInformation.length; i++) {
         usersHTML = "";
         var userObject = allUsersInformation[i];
-        usersHTML = "<td data-th=\"Rank\">" + rank + "</td>";
+        usersHTML = '<td data-th="Rank">' + rank + '</td>';
         if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
-            usersHTML += "<td data-th=\"Username\"><a href=\"/?compareUsername=" + userObject.username + "\">" + userObject.preferred_username + "</a></td>";
+            usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
         } else {
-            usersHTML += "<td data-th=\"Username\"><strong>" + userObject.preferred_username + "</strong></td>";
+            usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
         }
         if (userObject.results && userObject.results.overall) {
             usersHTML += "<td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
         } else {
             usersHTML += "<td data-th=\"Score\">0</td>";
         }
-        usersDivHTML += "<tr>" + usersHTML + "</tr>";
+        var rowClass = "";
+        if ((i%2) === 0) {
+            rowClass = ' class="alt-tr"'
+        }
+        usersDivHTML += '<tr' + rowClass + '>' + usersHTML + '</tr>';
         if (i === allUsersInformation.length - 1) {
             usersDivHTML += "</tbody></table>";
         }
@@ -66,7 +74,7 @@ function buildUsersTable(allUsersInformation) {
     $("#allUsers").html(usersDivHTML);
 }
 
-function getAllGroups(limit) {
+function getAllGroups(limit, callback) {
     useToken(function(token) {
         var allGroupsQuery = "";
         if (limit) {
@@ -96,7 +104,11 @@ function getAllGroups(limit) {
             return;
         })
         .then(function(allGroupsInformation) {
-            buildGroupsTable(allGroupsInformation);
+            if (callback) {
+                callback(allGroupsInformation)
+            } else {
+                buildGroupsTable(allGroupsInformation);
+            }
             return allGroupsInformation;
         })
         if (token !== null) {
@@ -107,7 +119,7 @@ function getAllGroups(limit) {
     })
 }
 
-function getAllUsers(limit) {
+function getAllUsers(limit, callback) {
     useToken(function(token) {
         var allUsersQuery = "";
         if (limit) {
@@ -130,16 +142,22 @@ function getAllUsers(limit) {
 
         get(getAllUsersURL, getAllUsersOptions)
         .then(function(getAllUsersResponse) {
+            //console.log("getAllUsersResponse.json(): ", getAllUsersResponse.json())
             return getAllUsersResponse.json();
         })
         .catch(function(getAllUsersReject) {
             console.log(getAllUsersReject);
-            return;
+            return getAllUsersReject;
         })
         .then(function(allUsersInformation) {
-            buildUsersTable(allUsersInformation);
-            return allUsersInformation;
-        })
+            //console.log("allUsersInformation: ", allUsersInformation)
+            if (callback) {
+                callback(allUsersInformation)
+            } else {
+                buildUsersTable(allUsersInformation);
+                return allUsersInformation;
+            }
+        });
     })
 }
 // Index Page Progress Bar jQuery

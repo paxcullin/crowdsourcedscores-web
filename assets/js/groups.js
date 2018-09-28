@@ -77,22 +77,26 @@ function getGroupInfo() {
             $("#groupDetails").html(groupDetailsHTML);
             console.log("groupInfoDetails: ", groupInfoDetails)
             if (groupInfoDetails.users && groupInfoDetails.users.length > 0) {
-                var groupMembers = {groupMembers: groupInfoDetails.users};
-                // setting up weeks array to build the week-by-week user table
-                var groupMembersWeeks = [];
-                if (groupInfoDetails.results && groupInfoDetails.results.weekly) {
-                    groupInfoDetails.results.weekly.forEach((element, index) => {
-                        groupMembersWeeks.push(index + 1);
-                    });
-                } else {
-                    console.log("gameWeekDataObj: ", gameWeekDataObj)
-                    //if (gameWeekDataObj) groupMembersWeeks = [gameWeekData.week];
-                }
-                //console.log('groupMembersWeeks: ', groupMembersWeeks)
-                var groupMembersObj = {weeks: groupMembersWeeks, groupMembers};
-                console.log('groupMembersObj: ', groupMembersObj)
-                var html = templateScript(groupMembersObj);
-                $('#group').html(html);
+                getGameWeek(function(gameWeekData) {
+                    var groupMembers = groupInfoDetails.users;
+                    // setting up weeks array to build the week-by-week user table
+
+                    var groupMembersWeeks = [];
+                    for (var gw=1; gw <= gameWeekData.week; gw++) {
+                        groupMembersWeeks.push(gw);
+                    }
+                    console.log('groupMembersWeeks: ', groupMembersWeeks)
+                    var groupMembersObj = {weeks: groupMembersWeeks, groupMembers: groupMembers};
+                    if (userInformation.cognitoUser) {
+                        groupMembersObj.user = {
+                            username: userInformation.cognitoUser.username,
+                            preferred_username: userInformation.attributes.preferred_username
+                        }
+                    }
+                    console.log('groupMembersObj: ', groupMembersObj)
+                    var html = templateScript(groupMembersObj);
+                    $('#group').html(html);
+                })
             }
             groupInfoObject = groupInfoDetails;
             return groupInfoDetails;
