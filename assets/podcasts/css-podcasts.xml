@@ -132,7 +132,7 @@
         <itunes:image href="" />
         <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode2.mp3" length="35:44" type="audio/mpeg"/>
         <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode2.mp3</guid>
-        <pubDate>Thu, 12 Sep 2018 23:15:00 GMT</pubDate>
+        <pubDate>Wed, 12 Sep 2018 23:15:00 GMT</pubDate>
         <itunes:duration>35:44</itunes:duration>
       </item>
       <item>
@@ -145,8 +145,21 @@
         <itunes:image href="" />
         <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode3.mp3" length="43:50" type="audio/mpeg"/>
         <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode3.mp3</guid>
-        <pubDate>Thu, 19 Sep 2018 23:00:00 GMT</pubDate>
+        <pubDate>Wed, 19 Sep 2018 23:00:00 GMT</pubDate>
         <itunes:duration>43:50</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 4 - Week 3 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris discuss the craziness that was Week 3 in the NFL and cover the crowd wisdom over a new bottle of small-batch bourbon from J.P. Trodden.</description>
+        <itunes:subtitle>Paul and Chris discuss the craziness that was Week 3 in the NFL and cover the crowd wisdom over a new bottle of small-batch bourbon from J.P. Trodden.</itunes:subtitle>
+        <itunes:episode>10</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the craziness that was Week 3 in the NFL and cover the crowd wisdom over a new bottle of small-batch bourbon from J.P. Trodden.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode4.mp3" length="01:07:41" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode4.mp3</guid>
+        <pubDate>Wed, 26 Sep 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>01:07:41</itunes:duration>
       </item>
     
   </channel>
