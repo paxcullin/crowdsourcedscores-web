@@ -580,7 +580,6 @@
                 
                 var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
-                    console.log('overallResults.results: ', overallResults.results);
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
                 }
                 var options = {
@@ -640,7 +639,6 @@
 
         var getGameWeek = function (callback) {
             useToken(function(token) {
-                console.log("getGameWeek token: ", token);
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week";
                 var getGameWeekURLOptions = {
                     method: "GET",
@@ -686,7 +684,6 @@
             var myTotalResults = 0;
             var myPredictionScore = 0;
 
-            console.log("data: ", gamesData)
             if (gamesData && gamesData.length > 0) {
                 for (i = 0; i < gamesData.length; i++) {
                     if (gamesData[i].prediction && gamesData[i].prediction.results) {
@@ -697,7 +694,6 @@
                         if (gamesData[i].prediction.predictionScore) {myPredictionScore += gamesData[i].prediction.predictionScore;}
                     }
                 }
-                console.log("myStraightUpResults: ", myStraightUpResults);
                 $("#myStraightUpResults").text(myStraightUpResults);
                 $("#mySpreadResults").text(mySpreadResults);
                 $("#myTotalResults").text(myTotalResults);
@@ -740,6 +736,99 @@
                 $("#crowdTotalResults").text(crowdTotalResults);
                 $("#crowdPredictionScore").text(crowdPredictionScore);
             }
+        }
+
+        function submitUpdate(gameId) {
+            var newPrediction = true;
+            var $prediction = $("#container-" + gameId).find('.prediction');
+            var prediction = {
+                gameId: parseInt($prediction.attr('data-game-id')),
+                gameWeek: parseInt($prediction.attr('data-game-week')),
+                year: parseInt($prediction.attr('data-game-year')),
+                awayTeam: {
+                    code: $prediction.attr('data-away-code'),
+                    fullName: $prediction.attr('data-away-name'),
+                    shortName: $prediction.attr('data-away-short')
+                },
+                homeTeam: {
+                    code: $prediction.attr('data-home-code'),
+                    fullName: $prediction.attr('data-home-name'),
+                    shortName: $prediction.attr('data-home-short')
+                }
+            };
+            
+            var accordionId = $(this).parents("#" + prediction.awayTeam.code + "-" + prediction.homeTeam.code + "-accordion");
+            
+            if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
+                prediction.update = true;
+            }
+            var btn = $prediction.find('button');
+            btn.text('Saving...');
+            var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
+            var messageElm = predictionElm.find(".prediction-message");
+            
+
+            var awayTeamPrediction = $prediction.find('.away-team-prediction input').val();
+            var homeTeamPrediction = $prediction.find('.home-team-prediction input').val();
+
+            var away = $prediction.attr('data-away-team');
+            var home = $prediction.attr('data-home-team');
+
+            var awayCode = $prediction.attr('data-away-code');
+            var homeCode = $prediction.attr('data-home-code');
+
+            prediction.awayTeam.score = parseInt(awayTeamPrediction);
+            prediction.homeTeam.score = parseInt(homeTeamPrediction);
+
+            useToken(function(token){
+                apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
+                .then(function(response) {
+                    //console.log("response message:", response)
+                    switch(response.status) {
+                        case 200:
+                            //console.log("200: ", response);
+                            btn.text('Update');
+                            ga('send','event','prediction','submitted',prediction.gameId);
+
+                            var responseData = response.data.game;
+                            responseData.prediction = response.data.prediction;
+                            responseData.userAuthenticated = true;
+                            var messageHtml = statusMessage('success', response.data.message);
+                            messageElm.html(messageHtml)
+                            $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
+                            var gameTemplate = $('#game-template').html();
+                            var gameTemplateScript = Handlebars.compile(gameTemplate);
+                            formatGameTimes([responseData]);
+                            
+                            var html = gameTemplateScript(responseData);
+                            $('#container-' + responseData.gameId).html(html);
+
+                            //$("#" + awayCode + "-" + homeCode).toggleClass("active");
+                            setTimeout(function() {
+                                $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
+                            },500);
+                            return;
+                        case 400:
+                            var errorObj = response.responseText;
+                            console.log("400: ", errorObj);
+                            btn.text('Predict');
+                            var messageHtml = statusMessage('danger', errorObj.message);
+                            messageElm.html(messageHtml);
+                            return;
+                        case 500:
+                            var errorObj = response.responseText;
+                            console.log("500: ", errorObj);
+                            btn.text('Predict');
+                            var messageHtml = statusMessage('danger', errorObj.message);
+                            messageElm.html(messageHtml);
+                            return;
+                    }
+                    return true;
+                })
+                .catch(function(reject) {
+                    console.log("reject message: ", reject)
+                })
+            })
         }
 
         var setGameWeek = function (gameWeekData) {
@@ -788,8 +877,6 @@
                         var html = templateScript(games);
                         $('#games').html(html);
 
-      
-                        //drawChart2(year, week);
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
                             $(this).text('Saving...');
@@ -844,7 +931,6 @@
                                             btn.text('Update');
                                             ga('send','event','prediction','submitted',prediction.gameId);
 
-                                            console.log('response: ', response);
                                             var responseData = response.data.game;
                                             responseData.prediction = response.data.prediction;
                                             responseData.userAuthenticated = true;
@@ -853,7 +939,8 @@
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             var gameTemplate = $('#game-template').html();
                                             var gameTemplateScript = Handlebars.compile(gameTemplate);
-                                            formatGameTimes(responseData);
+                                            formatGameTimes([responseData]);
+                                            console.log('responseData after format: ', responseData);
                                             var html = gameTemplateScript(responseData);
                                             $('#container-' + responseData.gameId).html(html);
 
@@ -862,9 +949,14 @@
                                             //moveBoxes(prediction.gameId);
 
                                             //$("#" + awayCode + "-" + homeCode).toggleClass("active");
+                                            $('#container-' + responseData.gameId).find('.prediction-btn').on('click', function(e) {
+                                                e.preventDefault();
+                                                submitUpdate(responseData.gameId);
+                                            })
                                             setTimeout(function() {
                                                 $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
                                             },500);
+
                                             return;
                                         case 400:
                                             var errorObj = response.responseText;
@@ -898,11 +990,8 @@
                         });
                         return data;
                     })
-                    .catch(function (jqXHR, textStatus, errorThrown) {
-                        console.log("Error getting games: ", jqXHR, textStatus, errorThrown);
-                        if (jqXHR.status == 0) {
-                            lock.show();
-                        }
+                    .catch(function (error) {
+                        console.log("Error getting games: ", error);
                     })
                     .then(function (data) {
                         // Start the tour!
@@ -1055,7 +1144,7 @@
                                     title: "Ready to Play?",
                                     content: "Thanks for taking the tour! If you're ready to play, sign up and get your weekly predictions in!",
                                     target: document.querySelector('#loginButtons'),
-                                    placement: "right",
+                                    placement: "top",
                                         onNext: function() {
                                             ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
                                         }
@@ -1309,30 +1398,6 @@
             //     if(!view) { var view = "weekly";}
             //     drawChart2(gameWeekData.year, gameWeekData.week, view);
             // });
-            var useToken = function (callback) {
-                // console.log("useToken id_token: ", id_token)
-                if (!id_token) {
-                    var cognitoUser = userPool.getCurrentUser();
-                    if (cognitoUser !== null) {
-                        //console.log("useToken cognitoUser = ", cognitoUser);
-                        cognitoUser.getSession(function (err, session) {
-                            if (err) {
-                                //window.location = '/';
-                                console.log("getSession err = ", JSON.stringify(err))
-                            }
-                            console.log("session = ", session)
-                            token = session.getIdToken().getJwtToken();
-                            //console.log(decoded);
-                            id_token = token;
-                            callback(token);
-                        });
-                    } else {
-                        return callback(false);
-                    }
-                } else {
-                    callback(id_token);
-                }
-            };
 
 
             // $("#loginButton").click(function() {
