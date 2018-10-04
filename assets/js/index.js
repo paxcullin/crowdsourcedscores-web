@@ -45,7 +45,7 @@ function buildGroupsTable(allGroupsInformation) {
 function buildUsersTable(allUsersInformation) {
 
     //console.log("allGroupsInformation: ", allUsersInformation)
-    var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
+    var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
     for (var i=0; i < allUsersInformation.length; i++) {
         usersHTML = "";
@@ -57,7 +57,9 @@ function buildUsersTable(allUsersInformation) {
             usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
         }
         if (userObject.results && userObject.results.overall) {
-            usersHTML += "<td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
+            var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
+            var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
+            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
         } else {
             usersHTML += "<td data-th=\"Score\">0</td>";
         }
