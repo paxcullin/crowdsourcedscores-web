@@ -589,7 +589,7 @@
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 
     <script>
-
+        var gameWeekData = {};
         var getGameWeek = function (callback) {
             useToken(function(token) {
                 console.log("getGameWeek token: ", token);
@@ -613,6 +613,8 @@
                 .then(function (data) {
                     //data.year = 2017;
                     console.log("gameWeek data: ", data);
+                    gameWeekData.data = data.week;
+                    gameWeekData.year = data.year;
                     return callback(data);
                 })
                 .catch(function(err) {
