@@ -202,17 +202,19 @@ if (!cognitoUser && GetURLParameter('code')) {
     };
 
 
+
     var useToken = function (callback) {
+        // console.log("useToken id_token: ", id_token)
         if (!id_token) {
             var cognitoUser = userPool.getCurrentUser();
             if (cognitoUser !== null) {
-                console.log("useToken cognitoUser = ", cognitoUser);
                 cognitoUser.getSession(function (err, session) {
                     if (err) {
                         //window.location = '/';
                         console.log("getSession err = ", JSON.stringify(err))
                     }
                     token = session.getIdToken().getJwtToken();
+                    //console.log(decoded);
                     id_token = token;
                     callback(token);
                 });
@@ -220,9 +222,24 @@ if (!cognitoUser && GetURLParameter('code')) {
                 return callback(false);
             }
         } else {
-
-            console.log("id_token exists: ", id_token);
-            callback(id_token);
+            var decodedToken = jwt_decode(id_token);
+            if (decodedToken.exp && ((decodedToken.exp * 1000) < Date.now())) {
+                callback(id_token);
+            } else {
+                var cognitoUser = userPool.getCurrentUser();
+                if (cognitoUser) {
+                    cognitoUser.getSession(function (err, session) {
+                        if (err) {
+                            //window.location = '/';
+                            console.log("getSession err = ", JSON.stringify(err))
+                        }
+                        token = session.getIdToken().getJwtToken();
+                        //console.log(decoded);
+                        id_token = token;
+                        callback(token);
+                    });
+                }
+            }
         }
     };
 
