@@ -1,0 +1,13287 @@
+{
+	"_id": {
+		"$oid": "5b59428a210969c373efb24e"
+	},
+	"groupId": 0,
+	"groupName": "All Users",
+	"public": true,
+	"sport": "nfl",
+	"year": 2018,
+	"users": [
+		{
+			"username": "cmaronchick-yahoo"
+		},
+		{
+			"username": "Facebook_10155298489409129"
+		},
+		{
+			"username": "cmaronchick"
+		},
+		{
+			"username": "cmaronchick-gmail"
+		},
+		{
+			"username": "cmaronchick-hotmail"
+		},
+		{
+			"username": "aronchick-fb"
+		},
+		{
+			"username": "Facebook_10208710241577136",
+			"userFullName": "Paul Cullin"
+		},
+		{
+			"username": "Facebook_10154993923975769",
+			"userFullName": "undefined undefined",
+			"preferred_username": "GemmaAronchick"
+		},
+		{
+			"username": "Facebook_10210894378652618",
+			"userFullName": "undefined undefined",
+			"preferred_username": "MichaelRaymond"
+		},
+		{
+			"username": "Facebook_10205896813734452",
+			"userFullName": "undefined undefined",
+			"preferred_username": "ElliePeterson"
+		},
+		{
+			"username": "Facebook_10154773754448953",
+			"userFullName": "undefined undefined",
+			"preferred_username": "BryanCole"
+		},
+		{
+			"username": "Facebook_10101964290128875",
+			"userFullName": "undefined undefined",
+			"preferred_username": "MarkGehan"
+		},
+		{
+			"username": "Facebook_10213631282628797",
+			"userFullName": "undefined undefined",
+			"preferred_username": "ElrondSheppard"
+		},
+		{
+			"username": "Facebook_10154523075462819",
+			"userFullName": "undefined undefined",
+			"preferred_username": "JordanPeterson"
+		},
+		{
+			"username": "thepem",
+			"userFullName": "undefined undefined",
+			"preferred_username": "MilesPember"
+		},
+		{
+			"username": "Facebook_10156296525208127",
+			"userFullName": "undefined undefined",
+			"preferred_username": "PeteMcKinstry"
+		},
+		{
+			"username": "chrisl777",
+			"userFullName": "undefined undefined",
+			"preferred_username": "chrisl777"
+		},
+		{
+			"username": "ineverwin",
+			"userFullName": "undefined undefined",
+			"preferred_username": "ineverwin"
+		},
+		{
+			"username": "davidcurtc22",
+			"userFullName": "undefined undefined",
+			"preferred_username": "davidcurtc22"
+		},
+		{
+			"username": "murreya",
+			"userFullName": "undefined undefined",
+			"preferred_username": "murreya"
+		},
+		{
+			"username": "eddiefeeley",
+			"userFullName": "undefined undefined",
+			"preferred_username": "eddiefeeley"
+		},
+		{
+			"username": "psmeyerlaw",
+			"userFullName": "undefined undefined",
+			"preferred_username": "psmeyerlaw"
+		},
+		{
+			"username": "Facebook_10155179314751475",
+			"userFullName": "undefined undefined",
+			"preferred_username": "JasonSmoker"
+		},
+		{
+			"username": "Facebook_10214777580983458",
+			"userFullName": "undefined undefined",
+			"preferred_username": "CindySheppard"
+		},
+		{
+			"username": "idowhatican",
+			"userFullName": "undefined undefined",
+			"preferred_username": "idowhatican"
+		},
+		{
+			"username": "Facebook_2410067802353317",
+			"userFullName": "undefined undefined",
+			"preferred_username": "JerethHudson"
+		},
+		{
+			"username": "Facebook_10101668392455333",
+			"userFullName": "undefined undefined",
+			"preferred_username": "MarioEdgar"
+		}
+	],
+	"predictions": [
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20.75
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 45.75,
+			"spread": -4.25
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 29.33
+			},
+			"total": 49.33,
+			"spread": -9.33
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24.33
+			},
+			"homeTeam": {
+				"score": 20.67
+			},
+			"total": 45,
+			"spread": 3.67
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 41.67,
+			"spread": -3
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 17.75
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 38.25,
+			"spread": -2.75
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 28.25
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 46.25,
+			"spread": 10.25
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 23.25
+			},
+			"total": 50.25,
+			"spread": 3.75
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 25.25
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 50.25,
+			"spread": 0.25
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 18.25
+			},
+			"total": 42.25,
+			"spread": 5.75
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17.17
+			},
+			"homeTeam": {
+				"score": 29.33
+			},
+			"total": 46.5,
+			"spread": -12.17
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 25.75
+			},
+			"total": 45.25,
+			"spread": -6.25
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 21.17
+			},
+			"homeTeam": {
+				"score": 29.58
+			},
+			"total": 50.75,
+			"spread": -8.42
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.54
+			},
+			"homeTeam": {
+				"score": 22.85
+			},
+			"total": 43.38,
+			"spread": -2.31
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.64
+			},
+			"homeTeam": {
+				"score": 25.18
+			},
+			"total": 44.82,
+			"spread": -5.55
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15.33
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 36.33,
+			"spread": -5.67
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 19.67
+			},
+			"total": 40.33,
+			"spread": 1
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 18.8
+			},
+			"total": 36.3,
+			"spread": -1.3
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 22.1
+			},
+			"total": 39.1,
+			"spread": -5.1
+		},
+		{
+			"gameId": -17,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 9
+			},
+			"total": 30,
+			"spread": 12
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 16.73
+			},
+			"homeTeam": {
+				"score": 21.55
+			},
+			"total": 38.27,
+			"spread": -4.82
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.82
+			},
+			"homeTeam": {
+				"score": 19.18
+			},
+			"total": 39,
+			"spread": 0.64
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 18.33
+			},
+			"total": 39,
+			"spread": 2.33
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 26.8
+			},
+			"homeTeam": {
+				"score": 17.8
+			},
+			"total": 44.6,
+			"spread": 9
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21.62
+			},
+			"homeTeam": {
+				"score": 19.15
+			},
+			"total": 40.77,
+			"spread": 2.46
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.1
+			},
+			"homeTeam": {
+				"score": 17.6
+			},
+			"total": 36.7,
+			"spread": 1.5
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.7
+			},
+			"homeTeam": {
+				"score": 23.6
+			},
+			"total": 43.3,
+			"spread": -3.9
+		},
+		{
+			"gameId": -21,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 33,
+			"spread": 5
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 34.33,
+			"spread": -4.33
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21.75
+			},
+			"homeTeam": {
+				"score": 14.5
+			},
+			"total": 36.25,
+			"spread": 7.25
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 15.4
+			},
+			"homeTeam": {
+				"score": 21.7
+			},
+			"total": 37.1,
+			"spread": -6.3
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17.33
+			},
+			"homeTeam": {
+				"score": 19.67
+			},
+			"total": 37,
+			"spread": -2.33
+		},
+		{
+			"gameId": -26,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 48.5,
+			"spread": 7.5
+		},
+		{
+			"gameId": -23,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 35,
+			"spread": -3
+		},
+		{
+			"gameId": -31,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": -25,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 41.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 45,
+			"spread": 0
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26.17
+			},
+			"homeTeam": {
+				"score": 19.25
+			},
+			"total": 45.42,
+			"spread": 6.92
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 22.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 44,
+			"spread": 0.67
+		},
+		{
+			"gameId": -18,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 40,
+			"spread": -1
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 15.67
+			},
+			"total": 34.67,
+			"spread": 3.33
+		},
+		{
+			"gameId": -28,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 8.5
+			},
+			"homeTeam": {
+				"score": 18.5
+			},
+			"total": 27,
+			"spread": -10
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 29.86
+			},
+			"homeTeam": {
+				"score": 22.93
+			},
+			"total": 52.79,
+			"spread": 6.93
+		},
+		{
+			"gameId": -29,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 38,
+			"spread": 10
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21.43
+			},
+			"homeTeam": {
+				"score": 25.43
+			},
+			"total": 46.86,
+			"spread": -4
+		},
+		{
+			"gameId": -27,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 34,
+			"spread": 3
+		},
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 38.67,
+			"spread": 2.67
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 13.67
+			},
+			"total": 33.33,
+			"spread": 6
+		},
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15.67
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 35,
+			"spread": -3.67
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 34.5,
+			"spread": -0.5
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.42
+			},
+			"homeTeam": {
+				"score": 19.75
+			},
+			"total": 38.17,
+			"spread": -1.33
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.25
+			},
+			"homeTeam": {
+				"score": 19.88
+			},
+			"total": 38.13,
+			"spread": -1.62
+		},
+		{
+			"gameId": null,
+			"year": 2018,
+			"gameWeek": null,
+			"awayTeam": {
+				"score": 0
+			},
+			"homeTeam": {
+				"score": 0
+			},
+			"total": 0,
+			"spread": 0
+		},
+		{
+			"gameId": -24,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 36.5,
+			"spread": -4.5
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24.83
+			},
+			"homeTeam": {
+				"score": 17.58
+			},
+			"total": 42.42,
+			"spread": 7.25
+		},
+		{
+			"gameId": -30,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 33.5
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 52.5,
+			"spread": 14.5
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 39.67,
+			"spread": 1
+		},
+		{
+			"gameId": -19,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 47,
+			"spread": 9
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 25.1
+			},
+			"total": 39.1,
+			"spread": -11.1
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16.69
+			},
+			"homeTeam": {
+				"score": 27.54
+			},
+			"total": 44.23,
+			"spread": -10.85
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22.31
+			},
+			"homeTeam": {
+				"score": 18.92
+			},
+			"total": 41.23,
+			"spread": 3.38
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17.64
+			},
+			"homeTeam": {
+				"score": 20.45
+			},
+			"total": 38.09,
+			"spread": -2.82
+		},
+		{
+			"gameId": -22,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 38,
+			"spread": 0
+		},
+		{
+			"gameId": -20,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 54,
+			"spread": 2
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 26.5
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 40.5,
+			"spread": 12.5
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 12.64
+			},
+			"total": 33.64,
+			"spread": 8.36
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19.18
+			},
+			"homeTeam": {
+				"score": 22.09
+			},
+			"total": 41.27,
+			"spread": -2.91
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 40.5,
+			"spread": -9.5
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 18.91
+			},
+			"total": 39.91,
+			"spread": 2.09
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 26.83
+			},
+			"total": 46.75,
+			"spread": -6.83
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.7
+			},
+			"homeTeam": {
+				"score": 17.8
+			},
+			"total": 40.5,
+			"spread": 4.9
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 42,
+			"spread": -4
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 26.64
+			},
+			"homeTeam": {
+				"score": 18.36
+			},
+			"total": 45,
+			"spread": 8.27
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13.67
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 35.33,
+			"spread": -8
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24.5
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 48,
+			"spread": 1
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26.73
+			},
+			"homeTeam": {
+				"score": 26.45
+			},
+			"total": 53.18,
+			"spread": 0.27
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.82
+			},
+			"homeTeam": {
+				"score": 15.45
+			},
+			"total": 38.27,
+			"spread": 7.36
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 21.17
+			},
+			"total": 43.67,
+			"spread": 1.33
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 30.64
+			},
+			"homeTeam": {
+				"score": 15.82
+			},
+			"total": 46.45,
+			"spread": 14.82
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 12.73
+			},
+			"homeTeam": {
+				"score": 27.18
+			},
+			"total": 39.91,
+			"spread": -14.45
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 23.73
+			},
+			"homeTeam": {
+				"score": 20.55
+			},
+			"total": 44.27,
+			"spread": 3.18
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19.09
+			},
+			"homeTeam": {
+				"score": 20.18
+			},
+			"total": 39.27,
+			"spread": -1.09
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 9.36
+			},
+			"homeTeam": {
+				"score": 26.45
+			},
+			"total": 35.82,
+			"spread": -17.09
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14.67
+			},
+			"homeTeam": {
+				"score": 20.17
+			},
+			"total": 34.83,
+			"spread": -5.5
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.1
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 38.6,
+			"spread": -2.4
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21.9
+			},
+			"homeTeam": {
+				"score": 22.7
+			},
+			"total": 44.6,
+			"spread": -0.8
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 13.6
+			},
+			"homeTeam": {
+				"score": 16.6
+			},
+			"total": 30.2,
+			"spread": -3
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18.08
+			},
+			"homeTeam": {
+				"score": 20.92
+			},
+			"total": 39,
+			"spread": -2.83
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18.82
+			},
+			"homeTeam": {
+				"score": 19.55
+			},
+			"total": 38.36,
+			"spread": -0.73
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 23.64
+			},
+			"homeTeam": {
+				"score": 28.91
+			},
+			"total": 52.55,
+			"spread": -5.27
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 28,
+			"spread": 0
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17.08
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 37.58,
+			"spread": -3.42
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28.92
+			},
+			"homeTeam": {
+				"score": 26.31
+			},
+			"total": 55.23,
+			"spread": 2.62
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17.67
+			},
+			"homeTeam": {
+				"score": 24.67
+			},
+			"total": 42.33,
+			"spread": -7
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 30.38
+			},
+			"homeTeam": {
+				"score": 15.85
+			},
+			"total": 46.23,
+			"spread": 14.54
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 16.75
+			},
+			"homeTeam": {
+				"score": 22.75
+			},
+			"total": 39.5,
+			"spread": -6
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 23.33
+			},
+			"total": 43.33,
+			"spread": -3.33
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19.75
+			},
+			"homeTeam": {
+				"score": 33
+			},
+			"total": 52.75,
+			"spread": -13.25
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 13.25
+			},
+			"homeTeam": {
+				"score": 23.83
+			},
+			"total": 37.08,
+			"spread": -10.58
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.55
+			},
+			"homeTeam": {
+				"score": 21.55
+			},
+			"total": 42.09,
+			"spread": -1
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21.36
+			},
+			"homeTeam": {
+				"score": 29.29
+			},
+			"total": 50.64,
+			"spread": -7.93
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17.92
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 41.92,
+			"spread": -6.08
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24.36
+			},
+			"homeTeam": {
+				"score": 16.57
+			},
+			"total": 40.93,
+			"spread": 7.79
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14.38
+			},
+			"homeTeam": {
+				"score": 22.69
+			},
+			"total": 37.08,
+			"spread": -8.31
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20.92
+			},
+			"homeTeam": {
+				"score": 21.85
+			},
+			"total": 42.77,
+			"spread": -0.92
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22.77
+			},
+			"homeTeam": {
+				"score": 27.85
+			},
+			"total": 50.62,
+			"spread": -5.08
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.85
+			},
+			"homeTeam": {
+				"score": 13.85
+			},
+			"total": 36.69,
+			"spread": 9
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.14
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 37.64,
+			"spread": 2.64
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24.5
+			},
+			"homeTeam": {
+				"score": 14.79
+			},
+			"total": 39.29,
+			"spread": 9.71
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14.07
+			},
+			"homeTeam": {
+				"score": 29.86
+			},
+			"total": 43.93,
+			"spread": -15.79
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 28.93
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 49.43,
+			"spread": 8.43
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 1
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 48,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 1
+				},
+				"total": {
+					"correct": 10,
+					"push": 0
+				},
+				"predictionScore": 51,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 43,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 52,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 11,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 50,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": null,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 1
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 1
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 38,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 37,
+				"push": 0
+			},
+			"spread": {
+				"correct": 26,
+				"push": 2
+			},
+			"total": {
+				"correct": 31,
+				"push": 0
+			},
+			"predictionScore": 188,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b6e7585c5a8f623a7f144b2"
+	},
+	"owner": {
+		"username": "cmaronchick",
+		"preferred_username": "ChrisAronchick",
+		"firstName": "Chris",
+		"lastName": "Aronchick"
+	},
+	"groupName": "CWS Podcast Group",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"groupId": 2,
+	"users": [
+		{
+			"username": "cmaronchick-gmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cGmail"
+		},
+		{
+			"username": "cmaronchick-hotmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick-hotmail"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "Facebook_10208710241577136",
+			"userFullName": "Paul Cullin",
+			"preferred_username": "pcullin"
+		},
+		{
+			"username": "Facebook_10210894378652618",
+			"userFullName": "Michael Raymond",
+			"preferred_username": "MichaelRaymond"
+		}
+	],
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 40,
+			"spread": 6
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 41.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 48.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 46.5,
+			"spread": 6.5
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 45.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 48,
+			"spread": 14
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 52,
+			"spread": -16
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 9
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 23,
+			"spread": -5
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 44,
+			"spread": -6
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 10
+			},
+			"total": 24,
+			"spread": 4
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 27.5
+			},
+			"total": 49.5,
+			"spread": -5.5
+		},
+		{
+			"gameId": -29,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 52,
+			"spread": -6
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 43,
+			"spread": -3
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 51.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": -31,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 33,
+			"spread": 1
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 39,
+			"spread": -9
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22.25
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 39.75,
+			"spread": 4.75
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 38.5,
+			"spread": -12.5
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 49,
+			"spread": -2
+		},
+		{
+			"gameId": -28,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 45,
+			"spread": -12.33
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 12
+			},
+			"total": 30,
+			"spread": 6
+		},
+		{
+			"gameId": -26,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 32,
+			"spread": 6
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 48,
+			"spread": 0
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 28.33
+			},
+			"total": 53.33,
+			"spread": -3.33
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 43.33,
+			"spread": -9.33
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.8
+			},
+			"homeTeam": {
+				"score": 30.6
+			},
+			"total": 50.4,
+			"spread": -10.8
+		},
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 36,
+			"spread": 10
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": -27,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 43,
+			"spread": 5
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 22.75
+			},
+			"total": 41.25,
+			"spread": -4.25
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 35,
+			"spread": 3
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 44.33,
+			"spread": -0.33
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 45,
+			"spread": 0
+		},
+		{
+			"gameId": -25,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32,
+			"spread": -2
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 29,
+			"spread": -3
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 44,
+			"spread": 4
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 48.5,
+			"spread": -7.5
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 41,
+			"spread": 13
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 43.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 36,
+			"spread": 10
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 38,
+			"spread": -5.33
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 43,
+			"spread": -4
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": -30,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 46.67,
+			"spread": -10.67
+		},
+		{
+			"gameId": -32,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 40,
+			"spread": 8
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 44,
+			"spread": 6
+		},
+		{
+			"gameId": -24,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": -18,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 33,
+			"spread": -7
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 17.25
+			},
+			"total": 42.25,
+			"spread": 7.75
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 50.5,
+			"spread": -0.5
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 50,
+			"spread": 5
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 45.33,
+			"spread": -4.67
+		},
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 12
+			},
+			"total": 31,
+			"spread": 7
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 30,
+			"spread": -4
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 12
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 29,
+			"spread": -5
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 29.67
+			},
+			"total": 50,
+			"spread": -9.33
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 44,
+			"spread": 18
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 40,
+			"spread": 0
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 11.5
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 36.5,
+			"spread": -13.5
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 28.5
+			},
+			"total": 41.5,
+			"spread": -15.5
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 44.5,
+			"spread": -11.5
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 45.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 43,
+			"spread": 1
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 46,
+			"spread": -12
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 44,
+			"spread": 10
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 42.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 46.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 37.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 38.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 55.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 33.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 47,
+			"spread": 20
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16.67
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 39,
+			"spread": -5.67
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 32,
+			"spread": 5
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 10.5
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 41,
+			"spread": -20
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 58,
+			"spread": -6
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22.67
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 45.33,
+			"spread": 0
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 56,
+			"spread": -8
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 37,
+			"spread": -5
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 37,
+			"spread": 6
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 36.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 40.67,
+			"spread": 0.67
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22.67
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 42.67,
+			"spread": 2.67
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 43,
+			"spread": 11
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 43.33,
+			"spread": 4.67
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 13.67
+			},
+			"homeTeam": {
+				"score": 30
+			},
+			"total": 43.67,
+			"spread": -16.33
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.33
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 46.33,
+			"spread": 4.33
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28.5
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 59.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24.33
+			},
+			"homeTeam": {
+				"score": 24.67
+			},
+			"total": 49,
+			"spread": -0.33
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 29.33
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 53,
+			"spread": 5.67
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 42,
+			"spread": -11
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 33
+			},
+			"total": 56,
+			"spread": -10
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 43.5,
+			"spread": 9.5
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 38.67,
+			"spread": 0.67
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 53.5,
+			"spread": 0.5
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 5,
+					"push": 0
+				},
+				"predictionScore": 37,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 41,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 1
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 37,
+				"totalPredictions": 10
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 6,
+					"push": 0
+				},
+				"spread": {
+					"correct": 9,
+					"push": 0
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 0
+				},
+				"total": {
+					"correct": 12,
+					"push": 0
+				},
+				"predictionScore": 51,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 1
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 48,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 29,
+				"push": 0
+			},
+			"spread": {
+				"correct": 28,
+				"push": 2
+			},
+			"total": {
+				"correct": 31,
+				"push": 0
+			},
+			"predictionScore": 181,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7ba1743485c700015f0061"
+	},
+	"owner": {
+		"username": "Facebook_10155298489409129",
+		"preferred_username": "aronchick-fb",
+		"firstName": "Chris",
+		"lastName": "Aronchick"
+	},
+	"groupName": "Raiders Crowd Unite!",
+	"sport": "nfl",
+	"year": 2018,
+	"password": "",
+	"users": [
+		{
+			"username": "cmaronchick-gmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cGmail"
+		},
+		{
+			"username": "cmaronchick-hotmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick-hotmail"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "Facebook_10155298489409129",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "aronchick-fb"
+		}
+	],
+	"groupId": 4,
+	"totalPredictionScore": 0,
+	"public": true,
+	"predictions": [
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 40,
+			"spread": 14
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 47,
+			"spread": 7
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 47,
+			"spread": -21
+		},
+		{
+			"gameId": -28,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 51,
+			"spread": 3
+		},
+		{
+			"gameId": -29,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 52,
+			"spread": -6
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 44,
+			"spread": 18
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 39.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 41.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 45,
+			"spread": -2
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 54,
+			"spread": 14
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 14.33
+			},
+			"homeTeam": {
+				"score": 11.83
+			},
+			"total": 26.17,
+			"spread": 2.5
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 39.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 43,
+			"spread": -3
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 40,
+			"spread": 6
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 44,
+			"spread": 4
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 38,
+			"spread": 4
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 48,
+			"spread": 14
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 40,
+			"spread": 8
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 46,
+			"spread": -5
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 53,
+			"spread": 15
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -3,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 47,
+			"spread": -21
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 11
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 28.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36,
+			"spread": 2
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 10
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 31,
+			"spread": -11
+		},
+		{
+			"gameId": -30,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 44,
+			"spread": -10
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 19.5
+			},
+			"total": 36.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 43.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": -26,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 32,
+			"spread": 6
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 10.33
+			},
+			"total": 33.33,
+			"spread": 12.67
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20.17
+			},
+			"total": 44.17,
+			"spread": 3.83
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13.17
+			},
+			"homeTeam": {
+				"score": 17.67
+			},
+			"total": 30.83,
+			"spread": -4.5
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 41,
+			"spread": -7
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 30
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 43,
+			"spread": 17
+		},
+		{
+			"gameId": -32,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 40,
+			"spread": 8
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 39,
+			"spread": 13
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19.17
+			},
+			"homeTeam": {
+				"score": 17.33
+			},
+			"total": 36.5,
+			"spread": 1.83
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 47,
+			"spread": 1
+		},
+		{
+			"gameId": -27,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 43,
+			"spread": 5
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 37.83,
+			"spread": -5.17
+		},
+		{
+			"gameId": -25,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32,
+			"spread": -2
+		},
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 12.83
+			},
+			"total": 31.83,
+			"spread": 6.17
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 7.83
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 27.83,
+			"spread": -12.17
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 18.5
+			},
+			"total": 37,
+			"spread": 0
+		},
+		{
+			"gameId": -18,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 33,
+			"spread": -7
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 38,
+			"spread": -2
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 33,
+			"spread": 7
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24.83
+			},
+			"homeTeam": {
+				"score": 18.33
+			},
+			"total": 43.17,
+			"spread": 6.5
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 58,
+			"spread": -10
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 35
+			},
+			"total": 66,
+			"spread": -4
+		},
+		{
+			"gameId": -24,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40,
+			"spread": -4
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 48,
+			"spread": -10
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 47,
+			"spread": 1
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 10
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 44,
+			"spread": -24
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 34,
+			"spread": 2
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 10
+			},
+			"total": 27,
+			"spread": 7
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 40,
+			"spread": -14
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 48,
+			"spread": 6
+		},
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 33.5,
+			"spread": 7.5
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13.83
+			},
+			"homeTeam": {
+				"score": 16.83
+			},
+			"total": 30.67,
+			"spread": -3
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 10
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 37,
+			"spread": -17
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 14.67
+			},
+			"homeTeam": {
+				"score": 16.33
+			},
+			"total": 31,
+			"spread": -1.67
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 39,
+			"spread": 1
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32,
+			"spread": -2
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 10
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 37,
+			"spread": -17
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 59,
+			"spread": -3
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 36,
+			"spread": -10
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 42,
+			"spread": -4
+		},
+		{
+			"gameId": -31,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 33,
+			"spread": 1
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 44,
+			"spread": 4
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 27.5
+			},
+			"total": 44,
+			"spread": -11
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 35
+			},
+			"total": 42,
+			"spread": -28
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 62,
+			"spread": -6
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 10
+			},
+			"total": 44,
+			"spread": 24
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 41,
+			"spread": 13
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 32,
+			"spread": -6
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 15
+			},
+			"total": 39,
+			"spread": 9
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 41,
+			"spread": -7
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 47,
+			"spread": 1
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 40.5,
+			"spread": 7.5
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 40,
+			"spread": -6
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 38
+			},
+			"total": 61,
+			"spread": -15
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 46,
+			"spread": -15
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 48,
+			"spread": -2
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 10
+			},
+			"total": 37,
+			"spread": 17
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 42,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -3,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 1,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 2,
+				"totalPredictions": 1
+			},
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 1
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 37,
+				"totalPredictions": 10
+			},
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 9,
+					"push": 0
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 47,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 46,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 1
+				},
+				"total": {
+					"correct": 4,
+					"push": 0
+				},
+				"predictionScore": 42,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 30,
+				"push": 0
+			},
+			"spread": {
+				"correct": 24,
+				"push": 2
+			},
+			"total": {
+				"correct": 29,
+				"push": 0
+			},
+			"predictionScore": 175,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7ca8725c47f700016f7560"
+	},
+	"owner": {
+		"username": "Facebook_10208710241577136",
+		"preferred_username": "paulcullin",
+		"firstName": "Paul",
+		"lastName": "Cullin"
+	},
+	"groupName": "Seahawks Fans",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10208710241577136",
+			"preferred_username": "paulcullin",
+			"userFullName": "Paul Cullin"
+		},
+		{
+			"username": "cmaronchick-gmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cGmail"
+		},
+		{
+			"username": "Facebook_10155298489409129",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "ChrisAronchick"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "cmaronchick-hotmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick-hotmail"
+		}
+	],
+	"groupId": 5,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 34.5,
+			"spread": 8.5
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 48.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 27.5
+			},
+			"total": 49.5,
+			"spread": -5.5
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 42,
+			"spread": -11
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 37,
+			"spread": 6
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 50.5,
+			"spread": -0.5
+		},
+		{
+			"gameId": -31,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 33,
+			"spread": 1
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 14.33
+			},
+			"total": 41.33,
+			"spread": 12.67
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 44.5,
+			"spread": 3.5
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 32,
+			"spread": 5
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 41.67,
+			"spread": -3.67
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 58,
+			"spread": -6
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 23.33
+			},
+			"homeTeam": {
+				"score": 16.33
+			},
+			"total": 39.67,
+			"spread": 7
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 48,
+			"spread": 14
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 43,
+			"spread": -3
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 38.5,
+			"spread": -12.5
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 43,
+			"spread": -4
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 37,
+			"spread": -1
+		},
+		{
+			"gameId": -30,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 27.5
+			},
+			"total": 44,
+			"spread": -11
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 46,
+			"spread": -15
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 36,
+			"spread": -4
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 39.5,
+			"spread": 3.5
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 53.5,
+			"spread": 0.5
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 42,
+			"spread": 6
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 30.5,
+			"spread": -0.5
+		},
+		{
+			"gameId": -21,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 50,
+			"spread": 6
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 42.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21.67
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 39.67,
+			"spread": 3.67
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 45,
+			"spread": -2
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": -24,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 18.5
+			},
+			"total": 33.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": -22,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 40,
+			"spread": 6
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.75
+			},
+			"homeTeam": {
+				"score": 29.75
+			},
+			"total": 48.5,
+			"spread": -11
+		},
+		{
+			"gameId": -20,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 40,
+			"spread": 8
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 15
+			},
+			"total": 35.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": -29,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 52,
+			"spread": -6
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 28.5
+			},
+			"total": 41.5,
+			"spread": -15.5
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 40,
+			"spread": 6
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 13.5
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 44.5,
+			"spread": -17.5
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 49,
+			"spread": -2
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 33
+			},
+			"total": 56,
+			"spread": -10
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 11
+			},
+			"total": 32,
+			"spread": 10
+		},
+		{
+			"gameId": -26,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 34.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 11
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 28.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 11.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 31.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 52,
+			"spread": -16
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 43,
+			"spread": 1
+		},
+		{
+			"gameId": -18,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 35,
+			"spread": -5
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 45.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 41.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 39.5,
+			"spread": -5.5
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 13.5
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 30,
+			"spread": -3
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 44,
+			"spread": 18
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 32
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 53.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 44,
+			"spread": 4
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 38,
+			"spread": 6
+		},
+		{
+			"gameId": -23,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40,
+			"spread": -4
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 57.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 40,
+			"spread": 0
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 43.5,
+			"spread": 9.5
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 15
+			},
+			"total": 33,
+			"spread": 3
+		},
+		{
+			"gameId": -28,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": -27,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 43,
+			"spread": 5
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 37.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 23.5
+			},
+			"total": 45.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 43.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 44,
+			"spread": -7
+		},
+		{
+			"gameId": -17,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 12
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 30,
+			"spread": -6
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 45,
+			"spread": 0
+		},
+		{
+			"gameId": -32,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 36.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 46,
+			"spread": -12
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 44,
+			"spread": -6
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 46.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": -19,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 65,
+			"spread": 3
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28.5
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 59.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 36.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 50,
+			"spread": 5
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 38.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 38,
+			"spread": -5
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 26.5
+			},
+			"total": 55.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 33.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 47,
+			"spread": 20
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 48,
+			"spread": 0
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 23.75
+			},
+			"total": 44.25,
+			"spread": -3.25
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 11.5
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 36.5,
+			"spread": -13.5
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 46.5,
+			"spread": 6.5
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 56,
+			"spread": -8
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 51.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 39.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": -25,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 34.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 48.5,
+			"spread": -7.5
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 51,
+			"spread": -7
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 12.5
+			},
+			"total": 31.5,
+			"spread": 6.5
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 10.5
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 41,
+			"spread": -20
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 47,
+			"spread": -11
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 42.5,
+			"spread": 8.5
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 13.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 35.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 42,
+			"spread": 2
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 52,
+			"spread": 10
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 19.5
+			},
+			"total": 41.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 44,
+			"spread": 10
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 28.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 42,
+			"spread": 15
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 51,
+			"spread": 1
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 41,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 12,
+					"push": 0
+				},
+				"predictionScore": 54,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 0
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 41,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 6,
+					"push": 0
+				},
+				"spread": {
+					"correct": 9,
+					"push": 0
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 0
+				},
+				"total": {
+					"correct": 12,
+					"push": 0
+				},
+				"predictionScore": 53,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 4,
+					"push": 0
+				},
+				"predictionScore": 41,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 31,
+				"push": 0
+			},
+			"spread": {
+				"correct": 26,
+				"push": 2
+			},
+			"total": {
+				"correct": 29,
+				"push": 0
+			},
+			"predictionScore": 180,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7da0d9f7bc6b0001e3351d"
+	},
+	"owner": {
+		"username": "Facebook_10155298489409129",
+		"firstName": "Chris",
+		"lastName": "Aronchick",
+		"preferred_username": "ChrisAronchick"
+	},
+	"groupName": "Good at Maths",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10155298489409129",
+			"firstName": "Chris",
+			"lastName": "Aronchick",
+			"preferred_username": "ChrisAronchick"
+		},
+		{
+			"username": "cmaronchick-gmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cGmail"
+		},
+		{
+			"username": "Facebook_10154993923975769",
+			"userFullName": "Gemma Aronchick",
+			"preferred_username": "GemmaAronchick"
+		},
+		{
+			"username": "Facebook_10210894378652618",
+			"userFullName": "Michael Raymond",
+			"preferred_username": "MichaelRaymond"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		}
+	],
+	"groupId": 6,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 35,
+			"spread": 2
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36,
+			"spread": 2
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 38.5,
+			"spread": 0.5
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 29.5
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 50,
+			"spread": 9
+		},
+		{
+			"gameId": -27,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 43,
+			"spread": 5
+		},
+		{
+			"gameId": -28,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": -31,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 33,
+			"spread": 1
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.67
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 44.67,
+			"spread": -7.33
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 41.33,
+			"spread": -2.67
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 47,
+			"spread": -5
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 21.33
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 45,
+			"spread": -2.33
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 18.5
+			},
+			"total": 41,
+			"spread": 4
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 31.5,
+			"spread": 3.5
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 38,
+			"spread": 0
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 19.67
+			},
+			"total": 36,
+			"spread": -3.33
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 29,
+			"spread": 1
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 43,
+			"spread": -5
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 41.33,
+			"spread": 2.67
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 39.5,
+			"spread": -5.5
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 31,
+			"spread": 0
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 38.5,
+			"spread": -5.5
+		},
+		{
+			"gameId": -18,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 33,
+			"spread": -7
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 43.33,
+			"spread": 4.67
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 10.5
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 29.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 40,
+			"spread": 0
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24.5
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 48.5,
+			"spread": 0.5
+		},
+		{
+			"gameId": -25,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32,
+			"spread": -2
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 43,
+			"spread": -2
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 47,
+			"spread": 5
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 25.33
+			},
+			"total": 41.33,
+			"spread": -9.33
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 39.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": -24,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": -26,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 32,
+			"spread": 6
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 42,
+			"spread": -4
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 43.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": -17,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 7
+			},
+			"total": 25,
+			"spread": 11
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24.5
+			},
+			"homeTeam": {
+				"score": 29.5
+			},
+			"total": 54,
+			"spread": -5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 46.5,
+			"spread": 15.5
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 41,
+			"spread": -1.67
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 34,
+			"spread": 0
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 32,
+			"spread": -1
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 47,
+			"spread": 7
+		},
+		{
+			"gameId": -29,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 52,
+			"spread": -6
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 32.5,
+			"spread": 6.5
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 11.5
+			},
+			"homeTeam": {
+				"score": 19.5
+			},
+			"total": 31,
+			"spread": -8
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 34,
+			"spread": 7
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 44,
+			"spread": -14
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 44,
+			"spread": -8
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 43.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 42.67,
+			"spread": -3.33
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 41.5,
+			"spread": 0.5
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 30
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 53,
+			"spread": 7
+		},
+		{
+			"gameId": -30,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 47,
+			"spread": -5
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 26.33
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 50.33,
+			"spread": 2.33
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 12
+			},
+			"total": 27,
+			"spread": 3
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 50.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 40,
+			"spread": 5
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 43,
+			"spread": -5
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15.67
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 38.33,
+			"spread": -7
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 48,
+			"spread": -2
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 18.5
+			},
+			"total": 34.5,
+			"spread": -2.5
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 36.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 44.33,
+			"spread": -0.33
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 19.5
+			},
+			"total": 46.5,
+			"spread": 7.5
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 48.33,
+			"spread": -9
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 28,
+			"spread": 0
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 35.5,
+			"spread": 8.5
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 43.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 55.33,
+			"spread": 2.67
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 20.67
+			},
+			"total": 42.67,
+			"spread": 1.33
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 36,
+			"spread": -2
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 48.5,
+			"spread": -7.5
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 30
+			},
+			"total": 46.33,
+			"spread": -13.67
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 48,
+			"spread": 3.5
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 8.5
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 29.5,
+			"spread": -12.5
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 30
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 52.5,
+			"spread": 7.5
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 24.5
+			},
+			"total": 50.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18.33
+			},
+			"homeTeam": {
+				"score": 25.67
+			},
+			"total": 44,
+			"spread": -7.33
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 18.67
+			},
+			"total": 32.67,
+			"spread": -4.67
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 44.33,
+			"spread": 1.67
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 38.67,
+			"spread": 2.67
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 41,
+			"spread": 9
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21.67
+			},
+			"homeTeam": {
+				"score": 18.33
+			},
+			"total": 40,
+			"spread": 3.33
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 43.67,
+			"spread": -13.67
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 41.67,
+			"spread": -1.67
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 46,
+			"spread": 2
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 38
+			},
+			"total": 61,
+			"spread": -15
+		},
+		{
+			"gameId": -32,
+			"year": 2018,
+			"gameWeek": -2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 40,
+			"spread": 8
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 39,
+			"spread": 13
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 46,
+			"spread": 2
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 0
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 37,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 6,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 1
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 43,
+				"totalPredictions": 11
+			},
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 1
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 47,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 10,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 50,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 10,
+					"push": 0
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 47,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 1
+				},
+				"total": {
+					"correct": 5,
+					"push": 0
+				},
+				"predictionScore": 38,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 32,
+				"push": 0
+			},
+			"spread": {
+				"correct": 32,
+				"push": 2
+			},
+			"total": {
+				"correct": 26,
+				"push": 0
+			},
+			"predictionScore": 182,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7f4c517a22450001b4e91a"
+	},
+	"owner": {
+		"username": "Facebook_10154993923975769",
+		"firstName": "Gemma",
+		"lastName": "Aronchick",
+		"preferred_username": "GemmaAronchick"
+	},
+	"groupName": "Keen in Kirkland",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10154993923975769",
+			"firstName": "Gemma",
+			"lastName": "Aronchick",
+			"preferred_username": "GemmaAronchick"
+		}
+	],
+	"groupId": 7,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 32,
+			"spread": -4
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 35
+			},
+			"total": 59,
+			"spread": -11
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 45,
+			"spread": -9
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 7
+			},
+			"total": 21,
+			"spread": 7
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 46,
+			"spread": -10
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 32,
+			"spread": -4
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 56,
+			"spread": 14
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 45,
+			"spread": 9
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 38,
+			"spread": -10
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 35,
+			"spread": -7
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 45,
+			"spread": 17
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 35
+			},
+			"total": 49,
+			"spread": -21
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 21,
+			"spread": -7
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 28,
+			"spread": -14
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 32,
+			"spread": -4
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 31,
+			"spread": -3
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 33,
+			"spread": -3
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 63,
+			"spread": 7
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 42,
+			"spread": 14
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 32
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 60,
+			"spread": 4
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 7
+			},
+			"total": 21,
+			"spread": 7
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 42,
+			"spread": 6
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 39,
+			"spread": 3
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 35
+			},
+			"total": 63,
+			"spread": -7
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 7
+			},
+			"total": 21,
+			"spread": 7
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 56,
+			"spread": 14
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 55,
+			"spread": 14
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 56,
+			"spread": 14
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 28,
+			"spread": 0
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 0,
+					"push": 0,
+					"percentage": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0,
+					"percentage": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0,
+					"percentage": 0
+				},
+				"predictionScore": 0,
+				"gameIds": []
+			},
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 10,
+					"push": 1
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 59,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 49,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 51,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 1
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 38,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 31,
+				"push": 0
+			},
+			"spread": {
+				"correct": 30,
+				"push": 2
+			},
+			"total": {
+				"correct": 34,
+				"push": 0
+			},
+			"predictionScore": 197,
+			"totalPredictions": 62
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b7f6c458f44d900011f42ae"
+	},
+	"owner": {
+		"username": "Facebook_10154993923975769",
+		"firstName": "Gemma",
+		"lastName": "Aronchick",
+		"preferred_username": "GemmaAronchick"
+	},
+	"groupName": "Gemma’s Team",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10154993923975769",
+			"firstName": "Gemma",
+			"lastName": "Aronchick",
+			"preferred_username": "GemmaAronchick"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		}
+	],
+	"groupId": 8,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 47,
+			"spread": 7
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 38
+			},
+			"total": 61,
+			"spread": -15
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 27.5
+			},
+			"homeTeam": {
+				"score": 21.5
+			},
+			"total": 49,
+			"spread": 6
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 39,
+			"spread": 12
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 16.5
+			},
+			"total": 35.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 29.5
+			},
+			"total": 45,
+			"spread": -14
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 45.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.5
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 46.5,
+			"spread": 4.5
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 46.5,
+			"spread": -15.5
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36,
+			"spread": 2
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 44.5,
+			"spread": -13.5
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 42,
+			"spread": -4
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 44.5,
+			"spread": 0.5
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 35,
+			"spread": -21
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 34,
+			"spread": 7
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37.5,
+			"spread": 3.5
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40.5,
+			"spread": -3.5
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 63,
+			"spread": 7
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 39,
+			"spread": 3
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 42.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 39.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 31,
+			"spread": -3
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 21,
+			"spread": -7
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 32,
+			"spread": -4
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 36.5,
+			"spread": -1.5
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 42,
+			"spread": -6
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 38,
+			"spread": -10
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 32
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 60,
+			"spread": 4
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 45,
+			"spread": 9
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 52,
+			"spread": 4
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 43,
+			"spread": 5
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.5
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 40,
+			"spread": -1
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 32,
+			"spread": -2
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 12
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 26,
+			"spread": -2
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 27.5
+			},
+			"homeTeam": {
+				"score": 31.5
+			},
+			"total": 59,
+			"spread": -4
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.5
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 51.5,
+			"spread": -6.5
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 13.5
+			},
+			"total": 29.5,
+			"spread": 2.5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 32.5
+			},
+			"homeTeam": {
+				"score": 12
+			},
+			"total": 44.5,
+			"spread": 20.5
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 22.5
+			},
+			"total": 53.5,
+			"spread": 8.5
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 39,
+			"spread": 13
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 41.5,
+			"spread": 10.5
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 47,
+			"spread": 5
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31.5
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 57.5,
+			"spread": 5.5
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 16.5
+			},
+			"homeTeam": {
+				"score": 15
+			},
+			"total": 31.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29.5
+			},
+			"homeTeam": {
+				"score": 27.5
+			},
+			"total": 56.5,
+			"spread": 2
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 48,
+			"spread": -2
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 34.5,
+			"spread": -6.5
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 0,
+					"push": 1,
+					"percentage": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1,
+					"percentage": 0
+				},
+				"total": {
+					"correct": 10,
+					"push": 0,
+					"percentage": 0
+				},
+				"predictionScore": 33,
+				"gameIds": [
+					-30,
+					-28,
+					-21,
+					-32,
+					-24,
+					-25,
+					-29,
+					-19,
+					-26,
+					-31,
+					-23,
+					-22,
+					-27,
+					-20
+				]
+			},
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 10,
+					"push": 1
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 59,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 43,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 7,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 43,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 29,
+				"push": 0
+			},
+			"spread": {
+				"correct": 29,
+				"push": 2
+			},
+			"total": {
+				"correct": 32,
+				"push": 0
+			},
+			"predictionScore": 190,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b877152f7fb140001ac38fd"
+	},
+	"owner": {
+		"username": "Facebook_10210894378652618",
+		"firstName": "Michael",
+		"lastName": "Raymond",
+		"preferred_username": "MichaelRaymond"
+	},
+	"groupName": "Blue Skies",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10210894378652618",
+			"firstName": "Michael",
+			"lastName": "Raymond",
+			"preferred_username": "MichaelRaymond"
+		}
+	],
+	"groupId": 9,
+	"totalPredictionScore": 0,
+	"predictions": [],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": -2,
+				"winner": {
+					"correct": 4,
+					"push": 0,
+					"percentage": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 0,
+					"percentage": 0
+				},
+				"total": {
+					"correct": 4,
+					"push": 0,
+					"percentage": 0
+				},
+				"predictionScore": 28,
+				"gameIds": [
+					-31,
+					-28,
+					-27,
+					-32,
+					-29,
+					-30,
+					-3
+				]
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 0,
+				"push": 0
+			},
+			"spread": {
+				"correct": 0,
+				"push": 0
+			},
+			"total": {
+				"correct": 0,
+				"push": 0
+			},
+			"predictionScore": 0,
+			"totalPredictions": 0
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b884fa0477e2b000190f6f3"
+	},
+	"owner": {
+		"username": "cmaronchick",
+		"firstName": "Chris",
+		"lastName": "Aronchick",
+		"preferred_username": "cmaronchick"
+	},
+	"groupName": "Chainline Regulars",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "cmaronchick",
+			"firstName": "Chris",
+			"lastName": "Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "Facebook_10154993923975769",
+			"userFullName": "Gemma Aronchick",
+			"preferred_username": "GemmaAronchick"
+		},
+		{
+			"username": "Facebook_10205896813734452",
+			"userFullName": "Ellie Peterson",
+			"preferred_username": "ElliePeterson"
+		},
+		{
+			"username": "Facebook_10156852744608694",
+			"userFullName": "Bryan Casey",
+			"preferred_username": "BryanCasey"
+		},
+		{
+			"username": "j_kern",
+			"userFullName": "Joe Kernkamp",
+			"preferred_username": "j_kern"
+		}
+	],
+	"groupId": 10,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 4,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 17.33
+			},
+			"total": 35.33,
+			"spread": 0.67
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 48,
+			"spread": -2
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 38
+			},
+			"total": 61,
+			"spread": -15
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 29.67
+			},
+			"total": 45.67,
+			"spread": -13.67
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 44.67,
+			"spread": -12.67
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 47,
+			"spread": 7
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 47.33,
+			"spread": -6.67
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 18.33
+			},
+			"total": 33.33,
+			"spread": -3.33
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 48,
+			"spread": 4
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17.33
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 48.33,
+			"spread": -13.67
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 25.67
+			},
+			"total": 46.33,
+			"spread": -5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 32
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 48,
+			"spread": 16
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 25.33
+			},
+			"homeTeam": {
+				"score": 17.33
+			},
+			"total": 42.67,
+			"spread": 8
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 28.33
+			},
+			"total": 51.33,
+			"spread": -5.33
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 39,
+			"spread": 13
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 31.33
+			},
+			"total": 55.33,
+			"spread": -7.33
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 21.67
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 40.67,
+			"spread": 2.67
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 43.67,
+			"spread": -4.33
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 16.33
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 39,
+			"spread": -6.33
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 25.33
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 53.67,
+			"spread": -3.33
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 39.67,
+			"spread": -3.67
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 20.33
+			},
+			"total": 42.33,
+			"spread": 1.67
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 40,
+			"spread": -4
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 39,
+			"spread": -4.33
+		},
+		{
+			"gameId": 5,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 43,
+			"spread": -2.33
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 45.67,
+			"spread": -1.67
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 10.33
+			},
+			"homeTeam": {
+				"score": 27.67
+			},
+			"total": 38,
+			"spread": -17.33
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18.33
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39.33,
+			"spread": -2.67
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 41,
+			"spread": -9
+		},
+		{
+			"gameId": -11,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.33
+			},
+			"homeTeam": {
+				"score": 28.33
+			},
+			"total": 48.67,
+			"spread": -8
+		},
+		{
+			"gameId": -6,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": -14,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 40,
+			"spread": 1.33
+		},
+		{
+			"gameId": -9,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 39,
+			"spread": -3
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 15.33
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 33.33,
+			"spread": -2.67
+		},
+		{
+			"gameId": -15,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 7
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 25,
+			"spread": -11
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 16
+			},
+			"total": 31,
+			"spread": -1
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18.33
+			},
+			"homeTeam": {
+				"score": 29.67
+			},
+			"total": 48,
+			"spread": -11.33
+		},
+		{
+			"gameId": 14,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 15
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 41.33,
+			"spread": -11.33
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36,
+			"spread": 2
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26.33
+			},
+			"homeTeam": {
+				"score": 20.67
+			},
+			"total": 47,
+			"spread": 5.67
+		},
+		{
+			"gameId": -4,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 7
+			},
+			"total": 24,
+			"spread": 10
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 32.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 54,
+			"spread": 10.67
+		},
+		{
+			"gameId": -3,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 27.67
+			},
+			"homeTeam": {
+				"score": 22
+			},
+			"total": 49.67,
+			"spread": 5.67
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27.33
+			},
+			"homeTeam": {
+				"score": 18.33
+			},
+			"total": 45.67,
+			"spread": 9
+		},
+		{
+			"gameId": -7,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 39,
+			"spread": 3
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 42.67,
+			"spread": -2.67
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.67
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 43.67,
+			"spread": -6.33
+		},
+		{
+			"gameId": -12,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 32,
+			"spread": 4
+		},
+		{
+			"gameId": -1,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 54.33,
+			"spread": 1.67
+		},
+		{
+			"gameId": null,
+			"year": 2018,
+			"gameWeek": null,
+			"awayTeam": {
+				"score": 0
+			},
+			"homeTeam": {
+				"score": 0
+			},
+			"total": 0,
+			"spread": 0
+		},
+		{
+			"gameId": 17,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 22.67
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 39.67,
+			"spread": 5.67
+		},
+		{
+			"gameId": -2,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 40,
+			"spread": -2
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 22
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 44.33,
+			"spread": -0.33
+		},
+		{
+			"gameId": -16,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": -8,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 11,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 26.33
+			},
+			"homeTeam": {
+				"score": 20.33
+			},
+			"total": 46.67,
+			"spread": 6
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 27.33
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 48.67,
+			"spread": 6
+		},
+		{
+			"gameId": -5,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 45,
+			"spread": 3
+		},
+		{
+			"gameId": 2,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 25.33
+			},
+			"homeTeam": {
+				"score": 20.67
+			},
+			"total": 46,
+			"spread": 4.67
+		},
+		{
+			"gameId": 10,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 43,
+			"spread": -4.33
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36.67,
+			"spread": 2.67
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 27.67
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 51.67,
+			"spread": 3.67
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 23.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 45,
+			"spread": 1.67
+		},
+		{
+			"gameId": 12,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 18.67
+			},
+			"total": 39.33,
+			"spread": 2
+		},
+		{
+			"gameId": 15,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22.67
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 42,
+			"spread": 3.33
+		},
+		{
+			"gameId": 16,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 43.33,
+			"spread": 4.67
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 18.5
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 35.5,
+			"spread": 1.5
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 3,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 22.33
+			},
+			"homeTeam": {
+				"score": 21.67
+			},
+			"total": 44,
+			"spread": 0.67
+		},
+		{
+			"gameId": 9,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17.5
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 43.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": -13,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 35,
+			"spread": 7
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17.33
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 45.33,
+			"spread": -10.67
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 28.67
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 52.33,
+			"spread": 5
+		},
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 37.33,
+			"spread": -5.33
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 49,
+			"spread": 1
+		},
+		{
+			"gameId": 13,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 40,
+			"spread": -6
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 40,
+			"spread": 1.33
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 43,
+			"spread": 9
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 42.33,
+			"spread": -10.33
+		},
+		{
+			"gameId": -10,
+			"year": 2018,
+			"gameWeek": -1,
+			"awayTeam": {
+				"score": 35
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 62,
+			"spread": 8
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 18.67
+			},
+			"homeTeam": {
+				"score": 20.67
+			},
+			"total": 39.33,
+			"spread": -2
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21.67
+			},
+			"homeTeam": {
+				"score": 23.33
+			},
+			"total": 45,
+			"spread": -1.67
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 11,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 1
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 52,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": -1,
+				"winner": {
+					"correct": 5,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 0
+				},
+				"total": {
+					"correct": 5,
+					"push": 0
+				},
+				"predictionScore": 32,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": null,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 1
+			},
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 6,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 42,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 10,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 0
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 55,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 6,
+					"push": 1
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 36,
+				"push": 0
+			},
+			"spread": {
+				"correct": 29,
+				"push": 2
+			},
+			"total": {
+				"correct": 31,
+				"push": 0
+			},
+			"predictionScore": 194,
+			"totalPredictions": 78
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b8b248d8812ed000143c8fd"
+	},
+	"owner": {
+		"username": "cmaronchick",
+		"firstName": "Chris",
+		"lastName": "Aronchick",
+		"preferred_username": "cmaronchick"
+	},
+	"groupName": "ESPN Alumni",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "cmaronchick",
+			"firstName": "Chris",
+			"lastName": "Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "cmaronchick-hotmail",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick-hotmail"
+		}
+	],
+	"groupId": 11,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 6,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": null,
+			"year": "2018",
+			"gameWeek": null,
+			"awayTeam": {
+				"score": 0
+			},
+			"homeTeam": {
+				"score": 0
+			},
+			"total": 0,
+			"spread": 0
+		},
+		{
+			"gameId": 1,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 8,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 37,
+			"spread": -3
+		},
+		{
+			"gameId": 7,
+			"year": 2018,
+			"gameWeek": 1,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 34
+			},
+			"total": 51,
+			"spread": -17
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": null,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 1
+			},
+			{
+				"gameWeek": 1,
+				"winner": {
+					"correct": 3,
+					"push": 0
+				},
+				"spread": {
+					"correct": 3,
+					"push": 0
+				},
+				"total": {
+					"correct": 2,
+					"push": 0
+				},
+				"predictionScore": 16,
+				"totalPredictions": 4
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 3,
+				"push": 0
+			},
+			"spread": {
+				"correct": 3,
+				"push": 0
+			},
+			"total": {
+				"correct": 2,
+				"push": 0
+			},
+			"predictionScore": 16,
+			"totalPredictions": 4
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5b9ace7a6723530001f35f22"
+	},
+	"owner": {
+		"username": "Facebook_10205896813734452",
+		"firstName": "Ellie",
+		"lastName": "Peterson",
+		"preferred_username": "ElliePeterson"
+	},
+	"groupName": "SCDS Guesstimators",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10205896813734452",
+			"firstName": "Ellie",
+			"lastName": "Peterson",
+			"preferred_username": "ElliePeterson"
+		},
+		{
+			"username": "cmaronchick",
+			"userFullName": "Chris Aronchick",
+			"preferred_username": "cmaronchick"
+		},
+		{
+			"username": "eddiefeeley",
+			"userFullName": "Eddie Feeley",
+			"preferred_username": "eddiefeeley"
+		}
+	],
+	"groupId": 12,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 11.33
+			},
+			"homeTeam": {
+				"score": 29.33
+			},
+			"total": 40.67,
+			"spread": -18
+		},
+		{
+			"gameId": 78,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 76,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 48,
+			"spread": -6
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 47,
+			"spread": 7
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 13
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 37,
+			"spread": -11
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 25
+			},
+			"total": 48,
+			"spread": -2
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 13
+			},
+			"total": 39,
+			"spread": 13
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 27.67
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 55.67,
+			"spread": -0.33
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 23.33
+			},
+			"total": 42.67,
+			"spread": -4
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 23.67
+			},
+			"total": 37.67,
+			"spread": -9.67
+		},
+		{
+			"gameId": 40,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 53,
+			"spread": 5
+		},
+		{
+			"gameId": 33,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17.67
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 40.33,
+			"spread": -5
+		},
+		{
+			"gameId": 75,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 51,
+			"spread": -3
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 52.67,
+			"spread": -11.33
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 19
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 36,
+			"spread": 2
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 30.67
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 52,
+			"spread": 9.33
+		},
+		{
+			"gameId": 32,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 58,
+			"spread": 10
+		},
+		{
+			"gameId": 24,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 25.5
+			},
+			"total": 42.5,
+			"spread": -8.5
+		},
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 26.33
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 52.67,
+			"spread": 0
+		},
+		{
+			"gameId": 30,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 45,
+			"spread": -3
+		},
+		{
+			"gameId": 22,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 41,
+			"spread": -7
+		},
+		{
+			"gameId": 26,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 31,
+			"spread": 3
+		},
+		{
+			"gameId": 21,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 34
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 58,
+			"spread": 10
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 12.67
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 36.67,
+			"spread": -11.33
+		},
+		{
+			"gameId": 31,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 38,
+			"spread": -4
+		},
+		{
+			"gameId": 41,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 52.67,
+			"spread": -11.33
+		},
+		{
+			"gameId": 25,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27.5
+			},
+			"homeTeam": {
+				"score": 15.5
+			},
+			"total": 43,
+			"spread": 12
+		},
+		{
+			"gameId": 20,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 15.5
+			},
+			"homeTeam": {
+				"score": 20.5
+			},
+			"total": 36,
+			"spread": -5
+		},
+		{
+			"gameId": 77,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 39.67,
+			"spread": -5.67
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": 23,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 33
+			},
+			"total": 54,
+			"spread": -12
+		},
+		{
+			"gameId": 18,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 44,
+			"spread": 10
+		},
+		{
+			"gameId": 39,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24.33
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 55.33,
+			"spread": -6.67
+		},
+		{
+			"gameId": 27,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 14
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 35,
+			"spread": -7
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 22.33
+			},
+			"total": 42,
+			"spread": -2.67
+		},
+		{
+			"gameId": 28,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 17
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 41,
+			"spread": -7
+		},
+		{
+			"gameId": 36,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 12.67
+			},
+			"homeTeam": {
+				"score": 26
+			},
+			"total": 38.67,
+			"spread": -13.33
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 53,
+			"spread": -5
+		},
+		{
+			"gameId": 47,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 32
+			},
+			"homeTeam": {
+				"score": 19.33
+			},
+			"total": 51.33,
+			"spread": 12.67
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 38
+			},
+			"total": 61,
+			"spread": -15
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 23.67
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 43.67,
+			"spread": 3.67
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 31.33
+			},
+			"total": 54.33,
+			"spread": -8.33
+		},
+		{
+			"gameId": 35,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 14.33
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 35.67,
+			"spread": -7
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 15.67
+			},
+			"total": 41.67,
+			"spread": 10.33
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 22.67
+			},
+			"homeTeam": {
+				"score": 13.67
+			},
+			"total": 36.33,
+			"spread": 9
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 43.33,
+			"spread": -2
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 12.33
+			},
+			"homeTeam": {
+				"score": 32
+			},
+			"total": 44.33,
+			"spread": -19.67
+		},
+		{
+			"gameId": 19,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 52,
+			"spread": -10
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 28.33
+			},
+			"total": 54.33,
+			"spread": -2.33
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 21.33
+			},
+			"total": 40.67,
+			"spread": -2
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 27
+			},
+			"total": 50,
+			"spread": -4
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17.67
+			},
+			"homeTeam": {
+				"score": 23.33
+			},
+			"total": 41,
+			"spread": -5.67
+		},
+		{
+			"gameId": 29,
+			"year": 2018,
+			"gameWeek": 2,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 49,
+			"spread": -7
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 16
+			},
+			"homeTeam": {
+				"score": 26.33
+			},
+			"total": 42.33,
+			"spread": -10.33
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.33
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 45.33,
+			"spread": 5.33
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 28
+			},
+			"homeTeam": {
+				"score": 15.67
+			},
+			"total": 43.67,
+			"spread": 12.33
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 34.33
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 57,
+			"spread": 11.67
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 2,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 0
+				},
+				"total": {
+					"correct": 7,
+					"push": 0
+				},
+				"predictionScore": 40,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 7,
+					"push": 0
+				},
+				"total": {
+					"correct": 10,
+					"push": 0
+				},
+				"predictionScore": 52,
+				"totalPredictions": 16
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 9,
+					"push": 0
+				},
+				"spread": {
+					"correct": 8,
+					"push": 1
+				},
+				"total": {
+					"correct": 6,
+					"push": 0
+				},
+				"predictionScore": 46,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 15
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 26,
+				"push": 0
+			},
+			"spread": {
+				"correct": 19,
+				"push": 1
+			},
+			"total": {
+				"correct": 23,
+				"push": 0
+			},
+			"predictionScore": 138,
+			"totalPredictions": 61
+		}
+	}
+}
+{
+	"_id": {
+		"$oid": "5ba3376ae4c3bb0001c19716"
+	},
+	"owner": {
+		"username": "Facebook_10208710241577136",
+		"firstName": "Paul",
+		"lastName": "Cullin",
+		"preferred_username": "PaulCullin"
+	},
+	"groupName": "Globant Seattle",
+	"sport": "nfl",
+	"year": 2018,
+	"public": true,
+	"password": "",
+	"users": [
+		{
+			"username": "Facebook_10208710241577136",
+			"firstName": "Paul",
+			"lastName": "Cullin",
+			"preferred_username": "PaulCullin"
+		},
+		{
+			"username": "chrisl777",
+			"userFullName": "Chris L.",
+			"preferred_username": "ChrisLivdahl"
+		},
+		{
+			"username": "Facebook_2410067802353317",
+			"userFullName": "Jereth Hudson",
+			"preferred_username": "JerethHudson"
+		},
+		{
+			"username": "murreya",
+			"userFullName": "alex murrey",
+			"preferred_username": "murreya"
+		}
+	],
+	"groupId": 13,
+	"totalPredictionScore": 0,
+	"predictions": [
+		{
+			"gameId": 48,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 60,
+			"spread": 2
+		},
+		{
+			"gameId": 74,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 47,
+			"spread": 1
+		},
+		{
+			"gameId": 67,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 47,
+			"spread": -11
+		},
+		{
+			"gameId": 68,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 14
+			},
+			"total": 37,
+			"spread": 9
+		},
+		{
+			"gameId": 69,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 41,
+			"spread": 7
+		},
+		{
+			"gameId": 70,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 31
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 59,
+			"spread": 3
+		},
+		{
+			"gameId": 72,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 51,
+			"spread": 3
+		},
+		{
+			"gameId": 71,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 27
+			},
+			"homeTeam": {
+				"score": 21
+			},
+			"total": 48,
+			"spread": 6
+		},
+		{
+			"gameId": 64,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 51,
+			"spread": -5
+		},
+		{
+			"gameId": 63,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 51.67,
+			"spread": 6.33
+		},
+		{
+			"gameId": 62,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25.67
+			},
+			"homeTeam": {
+				"score": 28.67
+			},
+			"total": 54.33,
+			"spread": -3
+		},
+		{
+			"gameId": 60,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26.67
+			},
+			"homeTeam": {
+				"score": 19
+			},
+			"total": 45.67,
+			"spread": 7.67
+		},
+		{
+			"gameId": 53,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 40,
+			"spread": 6
+		},
+		{
+			"gameId": 34,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 24
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 52,
+			"spread": -4
+		},
+		{
+			"gameId": 44,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 21
+			},
+			"homeTeam": {
+				"score": 29
+			},
+			"total": 50,
+			"spread": -8
+		},
+		{
+			"gameId": 45,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 12
+			},
+			"total": 35.5,
+			"spread": 11.5
+		},
+		{
+			"gameId": 37,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 73,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 47,
+			"spread": -1
+		},
+		{
+			"gameId": 66,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 26
+			},
+			"homeTeam": {
+				"score": 20
+			},
+			"total": 46,
+			"spread": 6
+		},
+		{
+			"gameId": 46,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 17
+			},
+			"total": 37,
+			"spread": 3
+		},
+		{
+			"gameId": null,
+			"year": 2018,
+			"gameWeek": null,
+			"awayTeam": {
+				"score": 0
+			},
+			"homeTeam": {
+				"score": 0
+			},
+			"total": 0,
+			"spread": 0
+		},
+		{
+			"gameId": 58,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 26.33
+			},
+			"homeTeam": {
+				"score": 11.33
+			},
+			"total": 37.67,
+			"spread": 15
+		},
+		{
+			"gameId": 38,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 29
+			},
+			"homeTeam": {
+				"score": 31
+			},
+			"total": 60,
+			"spread": -2
+		},
+		{
+			"gameId": 65,
+			"year": 2018,
+			"gameWeek": 5,
+			"awayTeam": {
+				"score": 23
+			},
+			"homeTeam": {
+				"score": 28
+			},
+			"total": 51,
+			"spread": -5
+		},
+		{
+			"gameId": 59,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 20.67
+			},
+			"homeTeam": {
+				"score": 15.67
+			},
+			"total": 36.33,
+			"spread": 5
+		},
+		{
+			"gameId": 52,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.33
+			},
+			"homeTeam": {
+				"score": 20.33
+			},
+			"total": 39.67,
+			"spread": -1
+		},
+		{
+			"gameId": 42,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 20
+			},
+			"homeTeam": {
+				"score": 24
+			},
+			"total": 44,
+			"spread": -4
+		},
+		{
+			"gameId": 49,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 23.5
+			},
+			"homeTeam": {
+				"score": 30.5
+			},
+			"total": 54,
+			"spread": -7
+		},
+		{
+			"gameId": 43,
+			"year": 2018,
+			"gameWeek": 3,
+			"awayTeam": {
+				"score": 8.5
+			},
+			"homeTeam": {
+				"score": 29.5
+			},
+			"total": 38,
+			"spread": -21
+		},
+		{
+			"gameId": 50,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18.25
+			},
+			"homeTeam": {
+				"score": 17.5
+			},
+			"total": 35.75,
+			"spread": 0.75
+		},
+		{
+			"gameId": 56,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 19.67
+			},
+			"homeTeam": {
+				"score": 18
+			},
+			"total": 37.67,
+			"spread": 1.67
+		},
+		{
+			"gameId": 57,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 18
+			},
+			"homeTeam": {
+				"score": 22.67
+			},
+			"total": 40.67,
+			"spread": -4.67
+		},
+		{
+			"gameId": 61,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14.67
+			},
+			"homeTeam": {
+				"score": 32.33
+			},
+			"total": 47,
+			"spread": -17.67
+		},
+		{
+			"gameId": 55,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 17.67
+			},
+			"homeTeam": {
+				"score": 24.67
+			},
+			"total": 42.33,
+			"spread": -7
+		},
+		{
+			"gameId": 54,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 25
+			},
+			"homeTeam": {
+				"score": 28.33
+			},
+			"total": 53.33,
+			"spread": -3.33
+		},
+		{
+			"gameId": 51,
+			"year": 2018,
+			"gameWeek": 4,
+			"awayTeam": {
+				"score": 14.33
+			},
+			"homeTeam": {
+				"score": 23
+			},
+			"total": 37.33,
+			"spread": -8.67
+		}
+	],
+	"results": {
+		"weekly": [
+			{
+				"gameWeek": 3,
+				"winner": {
+					"correct": 6,
+					"push": 0
+				},
+				"spread": {
+					"correct": 4,
+					"push": 0
+				},
+				"total": {
+					"correct": 8,
+					"push": 0
+				},
+				"predictionScore": 39,
+				"totalPredictions": 9
+			},
+			{
+				"gameWeek": 4,
+				"winner": {
+					"correct": 8,
+					"push": 0
+				},
+				"spread": {
+					"correct": 5,
+					"push": 1
+				},
+				"total": {
+					"correct": 9,
+					"push": 0
+				},
+				"predictionScore": 45,
+				"totalPredictions": 15
+			},
+			{
+				"gameWeek": null,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 1
+			},
+			{
+				"gameWeek": 5,
+				"winner": {
+					"correct": 0,
+					"push": 0
+				},
+				"spread": {
+					"correct": 0,
+					"push": 0
+				},
+				"total": {
+					"correct": 0,
+					"push": 0
+				},
+				"predictionScore": 0,
+				"totalPredictions": 11
+			}
+		],
+		"overall": {
+			"winner": {
+				"correct": 14,
+				"push": 0
+			},
+			"spread": {
+				"correct": 9,
+				"push": 1
+			},
+			"total": {
+				"correct": 17,
+				"push": 0
+			},
+			"predictionScore": 84,
+			"totalPredictions": 35
+		}
+	}
+}
