@@ -161,6 +161,19 @@
         <pubDate>Wed, 26 Sep 2018 23:30:00 GMT</pubDate>
         <itunes:duration>01:07:41</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 5 - Week 4 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Chris is joined by special guest and Week 4 champ Jordan to cover, over a bottle of Whipper Snapper Whiskey, the crowd's performance in Week 4 which was bookended by great predictions and great games.</description>
+        <itunes:subtitle>Chris is joined by special guest and Week 4 champ Jordan to cover, over a bottle of Whipper Snapper Whiskey, the crowd's performance in Week 4 which was bookended by great predictions and great games.</itunes:subtitle>
+        <itunes:episode>11</itunes:episode>
+        <itunes:summary>Chris is joined by special guest and Week 4 champ Jordan to cover, over a bottle of Whipper Snapper Whiskey, the crowd's performance in Week 4 which was bookended by great predictions and great games.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode5.mp3" length="31:34" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode5.mp3</guid>
+        <pubDate>Wed, 3 Oct 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>31:34</itunes:duration>
+      </item>
     
   </channel>
   </rss>
