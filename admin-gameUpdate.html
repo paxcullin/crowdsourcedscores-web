@@ -623,31 +623,6 @@
             }, 1000);
         });
 
-            var useToken = function (callback) {
-                // console.log("useToken id_token: ", id_token)
-                if (!id_token) {
-                    var cognitoUser = userPool.getCurrentUser();
-                    if (cognitoUser !== null) {
-                        //console.log("useToken cognitoUser = ", cognitoUser);
-                        cognitoUser.getSession(function (err, session) {
-                            if (err) {
-                                //window.location = '/';
-                                console.log("getSession err = ", JSON.stringify(err))
-                            }
-                            console.log("session = ", session)
-                            token = session.getIdToken().getJwtToken();
-                            //console.log(decoded);
-                            id_token = token;
-                            callback(token);
-                        });
-                    } else {
-                        return callback(false);
-                    }
-                } else {
-                    callback(id_token);
-                }
-            };
-
 
             // $("#loginButton").click(function() {
             //     $("#loginModal").modal('show',{
