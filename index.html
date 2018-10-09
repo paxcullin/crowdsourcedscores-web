@@ -82,7 +82,8 @@
                         <div class="panel-heading" role="tab" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                             <h4 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{awayTeam.code}}}-{{{homeTeam.code}}}">
-                                    {{{awayTeam.fullName}}} vs. {{{homeTeam.fullName}}}
+                                    <span class="hidden-md">{{{awayTeam.fullName}}} vs. {{{homeTeam.fullName}}}</span>
+                                    <span class="visible-md">{{{awayTeam.shortName}}} vs. {{{homeTeam.shortName}}}</span>
                                 </a>
                             </h4>
                         </div>
@@ -268,7 +269,9 @@
                                                             <sup><i class="fas fa-bullseye"></i></sup>
                                                         {{/ifCond}}
                                                     {{/if}}
+                                                    {{#if odds.total}}
                                                     <span style="font-size: 0.8em; font-weight: bold">{{#ifCond prediction.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}{{#ifCond prediction.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}</span>
+                                                    {{/if}}
                                                     </td>
                                                     <td
                                                         {{#if results}}
@@ -305,8 +308,10 @@
                                                                                 <sup><i class="fas fa-bullseye"></i></sup>
                                                                             {{/ifCond}}
                                                                         {{/if}}
+                                                                        {{#if odds.total}}
                                                                         {{#ifCond crowd.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}
-                                                                        {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}</span>
+                                                                        {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}
+                                                                        {{/if}}</span>
 
                                                                     </span>
                                                                     {{#unless prediction}}
@@ -349,19 +354,21 @@
                                                             {{/if}}
                                                             <!-- Show the side picked against the spread -->
                                                             <span style="font-size: 0.8em; font-weight: bold">
-                                                                {{#ifCond prediction.spread '>' odds.spread}}
-                                                                    <br>({{awayTeam.code}}
-                                                                        <!-- Format the odds -->
-                                                                        {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                        {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                        {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
-                                                                {{/ifCond}}
-                                                                {{#ifCond prediction.spread '<' odds.spread}}
-                                                                    <br>({{homeTeam.code}}
-                                                                        {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
-                                                                        {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
-                                                                        {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
-                                                                {{/ifCond}}
+                                                                {{#if odds.spread}}
+                                                                    {{#ifCond prediction.spread '>' odds.spread}}
+                                                                        <br>({{awayTeam.code}}
+                                                                            <!-- Format the odds -->
+                                                                            {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                            {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                            {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
+                                                                    {{/ifCond}}
+                                                                    {{#ifCond prediction.spread '<' odds.spread}}
+                                                                        <br>({{homeTeam.code}}
+                                                                            {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
+                                                                            {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
+                                                                            {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
+                                                                    {{/ifCond}}
+                                                                {{/if}}
                                                             </span>
                                                     </td>
                                                     <td
@@ -402,18 +409,20 @@
                                                                         {{/ifCond}}
                                                                     {{/if}}
                                                                     <span style="font-size: 0.8em; font-weight: bold">
-                                                                        {{#ifCond crowd.spread '>' odds.spread}}
-                                                                            <br>({{awayTeam.code}} 
-                                                                            {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                            {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                            {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}){{/ifCond}}
-                                                                        {{/ifCond}}
-                                                                        {{#ifCond crowd.spread '<' odds.spread}}
-                                                                            <br>({{homeTeam.code}}
-                                                                            {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
-                                                                            {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
-                                                                            {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
-                                                                        {{/ifCond}}
+                                                                        {{#if odds.spread}}
+                                                                            {{#ifCond crowd.spread '>' odds.spread}}
+                                                                                <br>({{awayTeam.code}} 
+                                                                                {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}){{/ifCond}}
+                                                                            {{/ifCond}}
+                                                                            {{#ifCond crowd.spread '<' odds.spread}}
+                                                                                <br>({{homeTeam.code}}
+                                                                                {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
+                                                                            {{/ifCond}}
+                                                                        {{/if}}
                                                                     </span>
 
                                                             </span>
@@ -1299,7 +1308,8 @@
             $('#overallChartButton').click(function () {
                 view = "overall";
                 ga('send','event','chartSwitch','switched',view);
-                drawChart2($(this).attr("year"), $(this).attr("week"), "overall")
+                drawChart2($(this).attr("year"), $(this).attr("week"), "overall");
+
             });
             $('#newsletter-signup-div').click(function () {
                 ga('send','event','newsletter','viewed');
