@@ -59,7 +59,7 @@ function buildUsersTable(allUsersInformation) {
         if (userObject.results && userObject.results.overall) {
             var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
             var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
-            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore + "</td>";
+            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\" onmouseover='showUserScoreDetails({winner: " + userObject.results.overall.winner.correct + ", spread: " + userObject.results.overall.spread.correct + ", total: " + userObject.results.overall.total.correct + "})'>" + userObject.results.overall.predictionScore + "</td>";
         } else {
             usersHTML += "<td data-th=\"Score\">0</td>";
         }
