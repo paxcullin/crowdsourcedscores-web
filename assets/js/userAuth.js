@@ -1,3 +1,19 @@
+
+
+   //var id_token = "";
+
+var cognitoData = {
+    UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
+    ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
+};
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
+
+
+var userData = {
+    Username : '',
+    Pool : userPool
+};
+
 var userInformation = cognitoUser || {};
 
 function GetURLParameter(sParam) {
@@ -60,11 +76,6 @@ function showLogoutButton() {
 // Pool ID and Client ID sourced from AWS
 
 var id_token = "";
-var cognitoData = {
-   UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
-   ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
-};
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
 
 
 
@@ -124,6 +135,10 @@ if (cognitoUser) {
         getUserAttributes();
         token = session.getIdToken().getJwtToken();
         id_token = token;
+
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.idToken', session.getIdToken().getJwtToken());
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.accessToken', session.getAccessToken().getJwtToken());
+        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.refreshToken', session.getRefreshToken().getToken());
         return token;
     });
     showLogoutButton();
@@ -187,19 +202,6 @@ if (!cognitoUser && GetURLParameter('code')) {
 
 
 
-   //var id_token = "";
-
-    var cognitoData = {
-        UserPoolId: 'us-west-2_zym3aCbQ3',     // Insert your user pool id
-        ClientId: '2n15lhk845sucm0k4fejjqcbev' // Insert your app client id
-    };
-    var userPool = new AmazonCognitoIdentity.CognitoUserPool(cognitoData);
-
-
-    var userData = {
-        Username : '',
-        Pool : userPool
-    };
 
 
 
