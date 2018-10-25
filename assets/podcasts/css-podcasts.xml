@@ -187,6 +187,19 @@
         <pubDate>Wed, 10 Oct 2018 23:30:00 GMT</pubDate>
         <itunes:duration>1:13:11</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 7 - Week 6 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Chris mourns the Raiders lackluster performance in London, and Paul lifts his spirits with some Heritage Distilling Whiskey as they cover a great performance by the crowd in Week 6.</description>
+        <itunes:subtitle>Chris mourns the Raiders lackluster performance in London, and Paul lifts his spirits with some Heritage Distilling Whiskey as they cover a great performance by the crowd in Week 6.</itunes:subtitle>
+        <itunes:episode>13</itunes:episode>
+        <itunes:summary>Chris mourns the Raiders lackluster performance in London, and Paul lifts his spirits with some Heritage Distilling Whiskey as they cover a great performance by the crowd in Week 6.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode7.mp3" length="1:32:06" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode7.mp3</guid>
+        <pubDate>Wed, 17 Oct 2018 11:00:00 GMT</pubDate>
+        <itunes:duration>1:32:06</itunes:duration>
+      </item>
     
   </channel>
   </rss>
