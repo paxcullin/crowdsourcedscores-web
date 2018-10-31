@@ -645,3 +645,8 @@ color: #fff;
         margin: 3px 0;
     }
 }
+
+.leaderboard.userScoreDetails {
+    display: none;
+    font-size: 0.8em;
+}
