@@ -9,7 +9,7 @@
     <meta name="keywords" content="football,crowdsourced,wisdom,wisdom of the crowd,sportsbook,spread,total,moneyline">
     <base href="https://crowdsourcedscores.com">
 
-    <title>Crowdsourced Scores - Beating the Sportsbooks through Crowd Wisdom</title>
+    <title>Admin - Crowd Wisdom Sports - Beating the Sportsbooks through Crowd Wisdom</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -156,15 +156,16 @@
                                             <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><input type="datetime" style="float:left; color:#3A3B6C" class="startDateTime" value="{{startDateTime}}">{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
                                             
                                             <select class="dropdown" id="{{{gameId}}}-gameStatus">
-                                                    <option value="notStarted"
-                                                        {{#ifCond this.status '===' "notStarted"}}selected{{/ifCond}}>Not Started
-                                                    </option>
-                                                    <option value="inProgress"
-                                                        {{#ifCond this.status '===' "inProgress"}}selected{{/ifCond}}>In Progress
-                                                    </option>
-                                                    <option value="final"
-                                                        {{#ifCond this.statu '===' "final"}}selected{{/ifCond}}>Final</option>
-                                                </select>
+                                                <option value="notStarted"
+                                                    {{#ifCond this.status '===' 'notStarted'}}selected{{/ifCond}}>Not Started
+                                                </option>
+                                                <option value="inProgress"
+                                                    {{#ifCond this.status '===' 'inProgress'}}selected{{/ifCond}}>In Progress
+                                                </option>
+                                                <option value="final"
+                                                    {{#ifCond this.status '===' 'final'}}selected{{/ifCond}}>Final
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
 
