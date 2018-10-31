@@ -11,10 +11,6 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-$('.predictionScoreColumn').on('mouseover', function(e) {
-    console.log('$(this): ', $(this));
-});
-
 function buildGroupsTable(allGroupsInformation) {
 
    //console.log("allGroupsInformation: ", allGroupsInformation)
