@@ -457,12 +457,11 @@
                                                     {{#dateCheck startDateTime}}
                                                         <button class="prediction-btn btn btn-info">Predict</button>
                                                     {{/dateCheck}}
-                                                {{/if}}
-                                                {{#unless userAuthenticated}}
+                                                {{else}}
                                                     {{#dateCheck startDateTime}}
-                                                        <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')">Log in to Predict</button>
+                                                        <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://{{getWindowLocation}}')">Log in to Predict</button>
                                                     {{/dateCheck}}
-                                                {{/unless}}
+                                                {{/if}}
                                             {{/unless}}
                                                 {{#ifCond prediction.predictionScore '>' -1}}
                                                     <div class="predictionScore myResultsRow">My Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
@@ -502,6 +501,11 @@
                 out += options.fn(subcontext);
             }
             return out;
+        });
+        
+        Handlebars.registerHelper('getWindowLocation', function(v1, v2, options) {
+            console.log('window.location.hostname:', window.location.hostname);
+            return window.location.hostname;
         });
 
         Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
@@ -575,6 +579,7 @@
     <script>
         var view;
             function buildChart(leaderboardData) {
+                console.log('leaderboardData: ', leaderboardData);
                 // hide chart after its built on first load
                 var firstChartLoad = true;
 
@@ -587,6 +592,7 @@
                 var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
+                    getOverallCrowdResults(leaderboardData.overallRecord);
                 }
                 var options = {
                     weekly: {
@@ -745,6 +751,48 @@
             }
         }
 
+        // setting user weekly results
+        var getOverallResults = function(overallUserData) {
+            var myStraightUpResults = 0;
+            var mySpreadResults = 0;
+            var myTotalResults = 0;
+            var myPredictionScore = 0;
+
+            if (gamesData && gamesData.length > 0) {
+                for (i = 0; i < gamesData.length; i++) {
+                    if (gamesData[i].prediction && gamesData[i].prediction.results) {
+                        $("#resultsContainer").css("display","block");
+                        if (gamesData[i].prediction.results.winner.correct) {myStraightUpResults += gamesData[i].prediction.results.winner.correct;}
+                        if (gamesData[i].prediction.results.spread.correct) {mySpreadResults += gamesData[i].prediction.results.spread.correct;}
+                        if (gamesData[i].prediction.results.total.correct) {myTotalResults += gamesData[i].prediction.results.total.correct;}
+                        if (gamesData[i].prediction.predictionScore) {myPredictionScore += gamesData[i].prediction.predictionScore;}
+                    }
+                }
+                $("#myStraightUpResults").text(myStraightUpResults);
+                $("#mySpreadResults").text(mySpreadResults);
+                $("#myTotalResults").text(myTotalResults);
+                $("#myPredictionScore").text(myPredictionScore);
+            }
+        }
+
+        var getOverallCrowdResults = function(overallCrowdData) {
+            console.log('overallCrowdData: ', overallCrowdData)
+            if (overallCrowdData) {
+                var overallSURecord = overallCrowdData.winner.correct
+                    + "-" + overallCrowdData.winner.incorrect;
+                var overallATSRecord = overallCrowdData.spread.correct
+                    + "-" + overallCrowdData.spread.incorrect
+                    + "-" + overallCrowdData.spread.push;
+                var overallOURecord = overallCrowdData.total.correct
+                    + "-" + overallCrowdData.total.incorrect
+                    + "-" + overallCrowdData.total.push;
+                $("#crowdStraightUpResults").text(overallSURecord);
+                $("#crowdSpreadResults").text(overallATSRecord);
+                $("#crowdTotalResults").text(overallOURecord);
+                $("#crowdPredictionScore").text(overallCrowdData.predictionScore);
+            }
+        }
+
         function submitUpdate(gameId) {
             var newPrediction = true;
             var $prediction = $("#container-" + gameId).find('.prediction');
@@ -841,6 +889,7 @@
         var setGameWeek = function (gameWeekData) {
 
             useToken(function(token) {
+                if (!token) { console.log('token expired'); return;}
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
