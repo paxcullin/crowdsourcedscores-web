@@ -67,6 +67,7 @@
             var nowDateTimeDate = Date.parse(now);
             var startDateTimeDate = Date.parse(startDateTime);
             var cutoff = startDateTimeDate - 300000;
+            
             if (now < cutoff) {
                 return options.fn(this);
             } else {
