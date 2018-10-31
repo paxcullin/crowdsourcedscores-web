@@ -11,6 +11,10 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
+$('.predictionScoreColumn').on('mouseover', function(e) {
+    console.log('$(this): ', $(this));
+});
+
 function buildGroupsTable(allGroupsInformation) {
 
    //console.log("allGroupsInformation: ", allGroupsInformation)
@@ -42,6 +46,21 @@ function buildGroupsTable(allGroupsInformation) {
     $("#allGroups").html(groupDivHTML);
 }
 
+
+$(".predictionScoreColumn").on(['mouseover', 'mouseout'],function () {
+    //getting the next element
+    $content = $(this).find('.userScoreDetails');
+    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+    $content.slideToggle(500, function () {
+        //execute this after slideToggle is done
+        //change text of header based on visibility of content div
+        $header.text(function () {
+            //change text based on condition
+            //return $content.is(":visible") ? "" : "";
+        });
+    });
+});
+
 function buildUsersTable(allUsersInformation) {
 
     //console.log("allGroupsInformation: ", allUsersInformation)
@@ -59,21 +78,44 @@ function buildUsersTable(allUsersInformation) {
         if (userObject.results && userObject.results.overall) {
             var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
             var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
-            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\" onmouseover='showUserScoreDetails({winner: " + userObject.results.overall.winner.correct + ", spread: " + userObject.results.overall.spread.correct + ", total: " + userObject.results.overall.total.correct + "})'>" + userObject.results.overall.predictionScore + "</td>";
+            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore
+                         + "<div class='leaderboard userScoreDetails'>"
+                         + "S/U: " + userObject.results.overall.winner.correct + "<br>"
+                         + "ATS: " + userObject.results.overall.spread.correct + "<br>"
+                         + "O/U: " + userObject.results.overall.total.correct
+                         + "</div></td>";
         } else {
             usersHTML += "<td data-th=\"Score\">0</td>";
         }
         var rowClass = "";
         if ((i%2) === 0) {
-            rowClass = ' class="alt-tr"'
+            rowClass = ' alt-tr'
         }
-        usersDivHTML += '<tr' + rowClass + '>' + usersHTML + '</tr>';
+        usersDivHTML += '<tr class="userScoreRow' + rowClass + '">' + usersHTML + '</tr>';
         if (i === allUsersInformation.length - 1) {
             usersDivHTML += "</tbody></table>";
         }
         rank += 1;
     }
     $("#allUsers").html(usersDivHTML);
+    $('.userScoreRow').mouseenter(function(e) {
+        e.preventDefault();
+        $content = $(this).find('.userScoreDetails');
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+        });
+    })
+    .mouseleave(function(e) {
+        e.preventDefault();
+        $content = $(this).find('.userScoreDetails');
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+        });
+    });
 }
 
 function getAllGroups(limit, callback) {
@@ -238,7 +280,6 @@ $('.predictionScore').on('click', function() {
 
 $("#dropdown").on("click", function(e){
     e.preventDefault();
-    
     if($(this).hasClass("open")) {
       $(this).removeClass("open");
       $(this).children("ul").slideDown("fast");
@@ -259,7 +300,6 @@ $("#dropdown li a").on("click", function() {
     $(".toggle-accordion").on("click", function() {
         var accordionId = $(this).attr("accordion-id"),
         numPanelOpen = $(accordionId + ' .collapse.in').length;
-        
         $(this).toggleClass("active");
 
         if (numPanelOpen == 0) {
@@ -284,7 +324,6 @@ $("#dropdown li a").on("click", function() {
 
 function getOtherUserPredictions(otherUsername) {
     useToken(function(token) {
-        
         var getOtherUserPredictionsOptions = {
             method: "GET",
             headers: {
@@ -360,7 +399,7 @@ Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
     var nowDateTimeDate = Date.parse(now);
     var startDateTimeDate = Date.parse(startDateTime);
     var cutoff = startDateTimeDate - 300000;
-    if (now < cutoff) {
+    if (nowDateTimeDate < cutoff) {
         return options.fn(this);
     } else {
         return options.inverse(this);
