@@ -75,7 +75,7 @@ function showLogoutButton() {
 //var tokenFromURL = processToken();
 // Pool ID and Client ID sourced from AWS
 
-var id_token = "";
+var id_token = null;
 
 
 
@@ -209,7 +209,7 @@ if (!cognitoUser && GetURLParameter('code')) {
         // console.log("useToken id_token: ", id_token)
         if (!id_token) {
             var cognitoUser = userPool.getCurrentUser();
-            if (cognitoUser !== null) {
+            if (cognitoUser) {
                 cognitoUser.getSession(function (err, session) {
                     if (err) {
                         //window.location = '/';
@@ -221,22 +221,25 @@ if (!cognitoUser && GetURLParameter('code')) {
                     callback(token);
                 });
             } else {
-                return callback(false);
+                callback(false);
             }
         } else {
             var decodedToken = jwt_decode(id_token);
-            if (decodedToken.exp && ((decodedToken.exp * 1000) < Date.now())) {
+            if (decodedToken.exp && ((decodedToken.exp * 1000) > Date.now())) {
                 callback(id_token);
             } else {
                 var cognitoUser = userPool.getCurrentUser();
                 if (cognitoUser) {
+                    console.log('cognitoUser: ', cognitoUser)
                     cognitoUser.getSession(function (err, session) {
+
                         if (err) {
                             //window.location = '/';
                             console.log("getSession err = ", JSON.stringify(err))
+                            return false;
                         }
                         token = session.getIdToken().getJwtToken();
-                        //console.log(decoded);
+                        console.log('session token: ', token);
                         id_token = token;
                         callback(token);
                     });
