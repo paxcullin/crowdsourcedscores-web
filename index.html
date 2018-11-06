@@ -870,7 +870,7 @@
         var setGameWeek = function (gameWeekData) {
 
             useToken(function(token) {
-                if (!token) { console.log('token expired'); return;}
+                if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
