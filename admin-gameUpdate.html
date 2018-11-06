@@ -126,6 +126,13 @@
             }
         });
 
+        Handlebars.registerHelper('dateFormat', function (date) {
+            var options = { month: 'short', day: 'numeric' };
+            var dateObj = new Date(date).toLocaleString('en-US', options);
+
+            return dateObj;
+        });
+
         Handlebars.registerHelper('debug', function (the_string) {
             console.log(the_string, ": ", the_string);
         });
@@ -193,6 +200,11 @@
                                             </td>
                                             <td id="{{gameId}}-odds-spread" class="odds-spread">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.spread}}">
+                                                <div>
+                                                    {{#each odds.history}}
+                                                        ({{#dateFormat this.date}}{{/dateFormat}}: {{this.spread}})<br>
+                                                    {{/each}}
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">
@@ -200,6 +212,11 @@
                                             <td id="{{gameId}}-total">{{results.total}}</td>
                                             <td class="odds-total">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.total}}">
+                                                <div>
+                                                    {{#each odds.history}}
+                                                        ({{#dateFormat this.date}}{{/dateFormat}}: {{this.total}})<br>
+                                                    {{/each}}
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">
