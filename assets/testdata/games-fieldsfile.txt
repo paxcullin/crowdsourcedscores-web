@@ -7,6 +7,8 @@ odds.spread
 odds.total
 crowd.awayTeam.score
 crowd.homeTeam.score
+crowd.spread
+crowd.total
 crowd.results.winner.correct
 crowd.results.winner.push
 crowd.results.spread.correct
