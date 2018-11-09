@@ -15,7 +15,7 @@ exports.handler = (event, context) => {
         if(err) {
             context.done(err, null);
         }
-
+        console.log('db version: ', db)
         var collection = db.collection('profileExtended');
         collection.findOne({"username":event.username}, {groups: 1})
         .then(function(extendedProfile) {
@@ -43,22 +43,22 @@ exports.handler = (event, context) => {
                 console.log('groups: ', groups);
                 groups.forEach((group, index) => {
                     var update = { $set: 
-                        { "users.$[elem].preferred_username" : event.preferred_username }
+                        { "users.$[element].preferred_username" : 'cmaronchick-hotmail' }
                     }
                     var arrayFilters = {
-                        arrayFilters: [ { "elem.username": event.username } ]
+                        arrayFilters: [ { "element.username": 'cmaronchick-hotmail' } ]
                     }
                     console.log('arrayFilters: ', arrayFilters)
-                    groupsCollection.updateOne({ groupId: 11 }, 
-                        update, 
-                        arrayFilters
+                    groupsCollection.update({ groupId:11 },
+                        { $set: { "users.$[elem1].preferred_username": 'cmaronchick-hotmail2'} },
+                        { arrayFilters: [ {"elem1.username":'cmaronchick-hotmail'} ] }
                         )
                         .then(groupUpdate => {
                             console.log(groupUpdate)
                             context.done(null, extendedProfile);
                             })
                         .catch(updateError => {
-                            console.log(updateError)
+                            console.log('updateError: ', updateError)
                             context.done(updateError, null);
                             });
                     //queryPromises.push(groupsCollection.findOneAndModify()
