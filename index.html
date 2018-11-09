@@ -296,9 +296,11 @@
                                                                         <sup><i class="fas fa-bullseye"></i></sup>
                                                                     {{/ifCond}}
                                                                 {{/if}}
+                                                                {{#if crowd.total}}
                                                                 {{#if odds.total}}
-                                                                {{#ifCond crowd.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}
-                                                                {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}
+                                                                    {{#ifCond crowd.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}
+                                                                    {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}
+                                                                {{/if}}
                                                                 {{/if}}</span>
 
                                                             </span>
@@ -395,6 +397,7 @@
                                                                         {{/ifCond}}
                                                                     {{/if}}
                                                                     <span style="font-size: 0.8em; font-weight: bold">
+                                                                        {{#if crowd.spread}}
                                                                         {{#if odds.spread}}
                                                                             {{#ifCond crowd.spread '>' odds.spread}}
                                                                                 <br>({{awayTeam.code}} 
@@ -408,6 +411,7 @@
                                                                                 {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
                                                                                 {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
                                                                             {{/ifCond}}
+                                                                        {{/if}}
                                                                         {{/if}}
                                                                     </span>
 
@@ -1203,6 +1207,9 @@
                     })
                     .then(function (crowdResultsData) {
                         getWeeklyCrowdResults(crowdResultsData.games)
+                        getAllGroups(10);
+                        getAllUsers(10);
+                        getWeeklyUsers(10, gameWeekData.week)
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
@@ -1305,6 +1312,7 @@
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
+                getAllUsers(10,gameWeekData.week);
                 //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
@@ -1313,15 +1321,15 @@
             setTimeout(function () {
                 getGameWeek(function (data) {
                     if (data) {
-                        week = data.week;
-                        year = parseInt($('#dropdown span').text);
+                        gameWeekData.week = data.week;
+                        gameWeekData.year = parseInt($('#dropdown span').text);
                         if (data.year) {
-                            year = data.year;
+                            gameWeekData.year = data.year;
                         }
-                        var $selectorElm = $('*[data-week="' + week + '"]');
+                        var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
-                        $("#weeklyChartButton").attr({"year":year,"week": week});
-                        $("#overallChartButton").attr({"year":year,"week": week});
+                        $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
+                        $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         setGameWeek(data);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
@@ -1389,10 +1397,6 @@
                 });
                 $("#switchChartButtons").toggle();
             });
-
-
-            var allGroups = getAllGroups(10);
-            var allUsers = getAllUsers(10);
         });
 
         //console.log("dataWeek: ", dataWeek);
@@ -1909,28 +1913,23 @@
                     <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
-                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
-                                <li role="presentation" class="active">
-                                <a href="#usersDiv" id="users-tab" role="tab" data-toggle="tab" aria-controls="users" aria-expanded="true">
-                                    <span class="text">User Leaderboard</span>
-                                </a>
-                                </li>
-                                <li role="presentation" class="next">
-                                <a href="#crowdsDiv" role="tab" id="crowds-tab" data-toggle="tab" aria-controls="crowds">
-                                    <span class="text">Crowd Leaderboard</span>
-                                </a>
-                                </li>
-                            </ul>
-                        <div id="myTabContent" class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade in active" id="usersDiv" aria-labelledby="home-tab">
-                                <div id="allUsers"></div>
-                                <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="crowdsDiv" aria-labelledby="groups-tab">
-                                <div id="allGroups"></div>
-                                <div id="createCrowdButtonDiv"></div>
-                            </div>
+                    <div class="tab">
+                        <button class="tablinks active" onclick="openLeaderboard(event, 'usersDiv')"><span class="hidden-xs hidden-lg">User Leaderboard</span><span class="visible-xs visible-lg">Overall</span></button>
+                        <button class="tablinks" onclick="openLeaderboard(event, 'weeklyDiv')"><span class="hidden-xs hidden-lg">Weekly Leaderboard</span><span class="visible-xs visible-lg">Weekly</span></button>
+                        <button class="tablinks" onclick="openLeaderboard(event, 'crowdsDiv')"><span class="hidden-xs hidden-lg">Crowd Leaderboard</span><span class="visible-xs visible-lg">Crowd</span></button>
+                    </div>
+                    <div id="myTabContent">
+                        <div class="tabcontent" id="usersDiv" style="display:block">
+                            <div id="allUsers"></div>
+                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+                        </div>
+                        <div class="tabcontent" id="weeklyDiv">
+                            <div id="weeklyUsers"></div>
+                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+                        </div>
+                        <div class="tabcontent" id="crowdsDiv">
+                            <div id="allGroups"></div>
+                            <div id="createCrowdButtonDiv"></div>
                         </div>
                     </div>
                 </div>

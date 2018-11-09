@@ -106,6 +106,29 @@ var extendedProfile = function() {
     })
 }
 
+function updatePreferredUsername() {
+    useToken(function(token) {
+        if (!token) {
+            $("#updateErrorText").text("Please login and try again.")
+            return;
+        }
+        var preferred_username = $("#preferred_username").val();
+        var postOptions = {
+            method: "POST",
+            headers: {
+                "Authorization": token,
+                "Content-type": "application/json"
+            },
+            body: '{"preferred_username":"' + preferred_username + '"}'
+        }
+        get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile/updateusername", postOptions)
+        .then(function(extProfileResponse) {
+            console.log('extProfileResponse: ', JSON.stringify(extProfileResponse))
+            return extProfileResponse.json()
+        })
+    });
+}
+
 function updateProfile () {
 
     //console.log("useToken cognitoUser = ", cognitoUser);
@@ -154,6 +177,7 @@ function updateProfile () {
                 return;
             }
             console.log('call result: ' + result);
+            updatePreferredUsername();
         });
     });
 };
