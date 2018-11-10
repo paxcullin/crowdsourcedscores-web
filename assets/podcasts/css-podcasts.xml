@@ -200,6 +200,45 @@
         <pubDate>Wed, 17 Oct 2018 11:00:00 GMT</pubDate>
         <itunes:duration>1:32:06</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 8 - Week 7 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris enjoy some 2Bars Whiskey as they celebrate an amazing performance by the crowd in Week 7 in which it went 12, 12, and 10 with its predictions.</description>
+        <itunes:subtitle>Paul and Chris enjoy some 2Bars Whiskey as they celebrate an amazing performance by the crowd in Week 7 in which it went 12, 12, and 10 with its predictions.</itunes:subtitle>
+        <itunes:episode>14</itunes:episode>
+        <itunes:summary>Paul and Chris enjoy some 2Bars Whiskey as they celebrate an amazing performance by the crowd in Week 7 in which it went 12, 12, and 10 with its predictions.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode8.mp3" length="1:14:51" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode8.mp3</guid>
+        <pubDate>Wed, 25 Oct 2018 13:30:00 GMT</pubDate>
+        <itunes:duration>1:14:51</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 9 - Week 8 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>The crowd followed up their stellar Week 7 performance with a great Week 8, so Paul and Chris go back to the well for some 2Bars Whiskey. They also review the crowd's performance as the season passes the halfway point (spoiler alert: the crowd is crushing it).</description>
+        <itunes:subtitle>The crowd followed up their stellar Week 7 performance with a great Week 8, so Paul and Chris go back to the well for some 2Bars Whiskey. They also review the crowd's performance as the season passes the halfway point (spoiler alert: the crowd is crushing it).</itunes:subtitle>
+        <itunes:episode>15</itunes:episode>
+        <itunes:summary>The crowd followed up their stellar Week 7 performance with a great Week 8, so Paul and Chris go back to the well for some 2Bars Whiskey. They also review the crowd's performance as the season passes the halfway point (spoiler alert: the crowd is crushing it).</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode9.mp3" length="1:13:15" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode9.mp3</guid>
+        <pubDate>Wed, 30 Oct 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>1:13:15</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 10 - Week 9 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>The crowd continues to tear it up, hitting on 8 of 13 games across the board to improve their season-long accuracy numbers. Paul and Chris cover all the Week 9 games while enjoying the Macallan on the rocks.</description>
+        <itunes:subtitle>The crowd continues to tear it up, hitting on 8 of 13 games across the board to improve their season-long accuracy numbers. Paul and Chris cover all the Week 9 games while enjoying the Macallan on the rocks.</itunes:subtitle>
+        <itunes:episode>16</itunes:episode>
+        <itunes:summary>The crowd continues to tear it up, hitting on 8 of 13 games across the board to improve their season-long accuracy numbers. Paul and Chris cover all the Week 9 games while enjoying the Macallan on the rocks.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode10.mp3" length="1:20:26" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode10.mp3</guid>
+        <pubDate>Wed, 7 Nov 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>1:20:26</itunes:duration>
+      </item>
     
   </channel>
   </rss>
