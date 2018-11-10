@@ -191,6 +191,11 @@
                                             </td>
                                             <td id="{{gameId}}-odds-spread" class="odds-spread">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.spread}}">
+                                                {{#ifCond odds.history.length '>' 0}}
+                                                    {{#each odds.history}}
+                                                        ({{spread}})<br>
+                                                    {{/each}}
+                                                {{/ifCond}}
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">
@@ -198,6 +203,11 @@
                                             <td id="{{gameId}}-total">{{results.total}}</td>
                                             <td class="odds-total">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.total}}">
+                                                {{#ifCond odds.history.length '>' 0}}
+                                                    {{#each odds.history}}
+                                                        ({{total}})<br>
+                                                    {{/each}}
+                                                {{/ifCond}}
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">
