@@ -42,13 +42,69 @@ function buildGroupsTable(allGroupsInformation) {
     $("#allGroups").html(groupDivHTML);
 }
 
+
+$(".predictionScoreColumn").on(['mouseover', 'mouseout'],function () {
+    //getting the next element
+    $content = $(this).find('.userScoreDetails');
+    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+    $content.slideToggle(500, function () {
+        //execute this after slideToggle is done
+        //change text of header based on visibility of content div
+        $header.text(function () {
+            //change text based on condition
+            //return $content.is(":visible") ? "" : "";
+        });
+    });
+});
+
+function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
+    var weeklyRank = 1;
+    var weeklyUsersArray = [];
+    var weeklyDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
+    console.log('buildWeeklyTable weeklyUsersInformation: ', weeklyUsersInformation)
+    for (var i=0; i < weeklyUsersInformation.length; i++) {
+        // set up user array to filter out users with no score for the week
+        
+        var userObject = weeklyUsersInformation[i];
+        console.log('userObject: ', userObject)
+        if (userObject.results.weekly) {
+            var usersHTML = "";
+            var userWeeklyResults = userObject.results.weekly;
+            usersHTML = '<td data-th="Rank">' + weeklyRank + '</td>';
+            if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
+                usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
+            } else {
+                usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+            }
+            usersHTML += "<td data-th=\"Record\">"
+                + "S/U: " + userWeeklyResults.winner.correct + "<br>"
+                + "ATS: " + userWeeklyResults.spread.correct + "<br>"
+                + "O/U: " + userWeeklyResults.total.correct + "</td>"
+                + "<td data-th=\"Score\">" + userWeeklyResults.predictionScore + "</td>"
+                        
+            var rowClass = "";
+            if ((i%2) === 0) {
+                rowClass = ' alt-tr'
+            }
+            weeklyDivHTML += '<tr class="' + rowClass + '">' + usersHTML + '</tr>';
+            if (i === weeklyUsersInformation.length - 1) {
+                weeklyDivHTML += "</tbody></table>";
+            }
+            weeklyRank += 1;
+        }
+    }
+
+    $("#weeklyUsers").html(weeklyDivHTML);
+
+}
+
 function buildUsersTable(allUsersInformation) {
 
     //console.log("allGroupsInformation: ", allUsersInformation)
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
     for (var i=0; i < allUsersInformation.length; i++) {
-        usersHTML = "";
+        var usersHTML = "";
         var userObject = allUsersInformation[i];
         usersHTML = '<td data-th="Rank">' + rank + '</td>';
         if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
@@ -59,21 +115,46 @@ function buildUsersTable(allUsersInformation) {
         if (userObject.results && userObject.results.overall) {
             var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
             var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
-            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\" onmouseover='showUserScoreDetails({winner: " + userObject.results.overall.winner.correct + ", spread: " + userObject.results.overall.spread.correct + ", total: " + userObject.results.overall.total.correct + "})'>" + userObject.results.overall.predictionScore + "</td>";
+            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore
+                         + "<div class='leaderboard userScoreDetails'>"
+                         + "S/U: " + userObject.results.overall.winner.correct + "<br>"
+                         + "ATS: " + userObject.results.overall.spread.correct + "<br>"
+                         + "O/U: " + userObject.results.overall.total.correct
+                         + "</div></td>";
         } else {
             usersHTML += "<td data-th=\"Score\">0</td>";
         }
         var rowClass = "";
         if ((i%2) === 0) {
-            rowClass = ' class="alt-tr"'
+            rowClass = ' alt-tr'
         }
-        usersDivHTML += '<tr' + rowClass + '>' + usersHTML + '</tr>';
+        usersDivHTML += '<tr class="userScoreRow' + rowClass + '">' + usersHTML + '</tr>';
         if (i === allUsersInformation.length - 1) {
             usersDivHTML += "</tbody></table>";
         }
         rank += 1;
     }
     $("#allUsers").html(usersDivHTML);
+
+    
+    $('.userScoreRow').mouseenter(function(e) {
+        e.preventDefault();
+        $content = $(this).find('.userScoreDetails');
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+        });
+    })
+    .mouseleave(function(e) {
+        e.preventDefault();
+        $content = $(this).find('.userScoreDetails');
+        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+        $content.slideToggle(500, function () {
+            //execute this after slideToggle is done
+            //change text of header based on visibility of content div
+        });
+    });
 }
 
 function getAllGroups(limit, callback) {
@@ -124,8 +205,11 @@ function getAllGroups(limit, callback) {
 function getAllUsers(limit, callback) {
     useToken(function(token) {
         var allUsersQuery = "";
+        if (limit || gameWeek) {
+            allUsersQuery = "?";
+        }
         if (limit) {
-            allUsersQuery = "?limit=" + limit;
+            allUsersQuery += "limit=" + limit;
         }
         var getAllUsersOptions = {
             method: "GET"
@@ -158,6 +242,51 @@ function getAllUsers(limit, callback) {
             } else {
                 buildUsersTable(allUsersInformation);
                 return allUsersInformation;
+            }
+        });
+    })
+}
+
+
+function getWeeklyUsers(limit, gameWeek, callback) {
+    if (!gameWeek) {
+        console.log('No gameWeek submitted')
+    }
+    useToken(function(token) {
+        var weeklyUsersQuery = (limit || gameWeek) ? "?" : ""
+        weeklyUsersQuery += (limit) ? "limit=" + limit : ""
+
+        var getWeeklyUsersOptions = {
+            method: "GET"
+        }
+        var getWeeklyUsersURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/2018/${gameWeek}/leaderboards/weekly/anon${weeklyUsersQuery}`;
+        
+        if (token !== false) {
+            getWeeklyUsersOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: token
+                }
+            }
+            getWeeklyUsersURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/2018/${gameWeek}/leaderboards/weekly/${weeklyUsersQuery}`;
+        }
+
+        get(getWeeklyUsersURL, getWeeklyUsersOptions)
+        .then(function(getWeeklyUsersResponse) {
+            //console.log("getAllUsersResponse.json(): ", getAllUsersResponse.json())
+            return getWeeklyUsersResponse.json();
+        })
+        .catch(function(getWeeklyUsersReject) {
+            console.log(getWeeklyUsersReject);
+            return getWeeklyUsersReject;
+        })
+        .then(function(weeklyUsersInformation) {
+            //console.log("allUsersInformation: ", allUsersInformation)
+            if (callback) {
+                callback(weeklyUsersInformation)
+            } else {
+                buildWeeklyTable(weeklyUsersInformation);
+                return weeklyUsersInformation;
             }
         });
     })
@@ -238,7 +367,6 @@ $('.predictionScore').on('click', function() {
 
 $("#dropdown").on("click", function(e){
     e.preventDefault();
-    
     if($(this).hasClass("open")) {
       $(this).removeClass("open");
       $(this).children("ul").slideDown("fast");
@@ -254,29 +382,28 @@ $("#dropdown li a").on("click", function() {
 });
 
 
-  // Collapse prediction functionality
+// Collapse prediction functionality
 
-    $(".toggle-accordion").on("click", function() {
-        var accordionId = $(this).attr("accordion-id"),
-        numPanelOpen = $(accordionId + ' .collapse.in').length;
-        
-        $(this).toggleClass("active");
+$(".toggle-accordion").on("click", function() {
+    var accordionId = $(this).attr("accordion-id"),
+    numPanelOpen = $(accordionId + ' .collapse.in').length;
+    $(this).toggleClass("active");
 
-        if (numPanelOpen == 0) {
-        openAllPanels(accordionId);
-        } else {
-        closeAllPanels(accordionId);
-        }
-    })
-
-    openAllPanels = function(aId) {
-        console.log("setAllPanelOpen");
-        $(aId + ' .panel-collapse:not(".in")').collapse('show');
+    if (numPanelOpen == 0) {
+    openAllPanels(accordionId);
+    } else {
+    closeAllPanels(accordionId);
     }
-    closeAllPanels = function(aId) {
-        console.log("setAllPanelclose");
-        $(aId + ' .panel-collapse.in').collapse('hide');
-    }
+})
+
+openAllPanels = function(aId) {
+    console.log("setAllPanelOpen");
+    $(aId + ' .panel-collapse:not(".in")').collapse('show');
+}
+closeAllPanels = function(aId) {
+    console.log("setAllPanelclose");
+    $(aId + ' .panel-collapse.in').collapse('hide');
+}
 
 // Collapse prediction functionality
 
@@ -284,7 +411,6 @@ $("#dropdown li a").on("click", function() {
 
 function getOtherUserPredictions(otherUsername) {
     useToken(function(token) {
-        
         var getOtherUserPredictionsOptions = {
             method: "GET",
             headers: {
@@ -300,10 +426,7 @@ function getOtherUserPredictions(otherUsername) {
         })
         .then(function(otherUserPredictionOptionsJSON) {
             console.log(JSON.stringify(otherUserPredictionOptionsJSON))
-            
             $("#games").text(otherUserPredictionOptionsJSON + '!');
-            
-            
         })
     })
 }
@@ -327,7 +450,6 @@ Handlebars.registerHelper('grouped_each', function(every, context, options) {
 });
 
 Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
-    
     switch (operator) {
         case '==':
             return (v1 == v2) ? options.fn(this) : options.inverse(this);
@@ -360,7 +482,7 @@ Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
     var nowDateTimeDate = Date.parse(now);
     var startDateTimeDate = Date.parse(startDateTime);
     var cutoff = startDateTimeDate - 300000;
-    if (now < cutoff) {
+    if (nowDateTimeDate < cutoff) {
         return options.fn(this);
     } else {
         return options.inverse(this);
@@ -370,3 +492,24 @@ Handlebars.registerHelper('dateCheck', function (startDateTime, options) {
 Handlebars.registerHelper('debug', function (the_string) {
     console.log(the_string, ": ", the_string);
 });
+
+function openLeaderboard(evt, leaderboardName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(leaderboardName).style.display = "block";
+    evt.currentTarget.className += " active";
+}

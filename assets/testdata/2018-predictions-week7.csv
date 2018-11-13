@@ -1,0 +1,147 @@
+gameId,year,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.total.correct,results.total.push,spread,total,submitted,userId,predictionScore
+103,2018,7,Detroit Lions,31,Miami Dolphins,23,1,0,1,0,1,0,8,54,2018-10-21T07:15:26.228Z,Facebook_10154523075462819,6
+98,2018,7,Carolina Panthers,20,Philadelphia Eagles,27,0,0,0,0,0,0,-7,47,2018-10-21T07:16:00.666Z,Facebook_10154523075462819,0
+101,2018,7,Buffalo Bills,17,Indianapolis Colts,23,1,0,0,0,1,0,-6,40,2018-10-21T07:16:30.707Z,Facebook_10154523075462819,4
+96,2018,7,Houston Texans,23,Jacksonville Jaguars,17,1,0,1,0,1,0,6,40,2018-10-21T07:17:22.666Z,Facebook_10154523075462819,6
+97,2018,7,Cleveland Browns,20,Tampa Bay Buccaneers,23,1,0,1,0,1,0,-3,43,2018-10-21T07:17:49.229Z,Facebook_10154523075462819,7
+99,2018,7,Minnesota Vikings,23,New York Jets,17,1,0,1,0,0,0,6,40,2018-10-21T07:19:24.268Z,Facebook_10154523075462819,5
+100,2018,7,New England Patriots,27,Chicago Bears,23,1,0,1,0,1,0,4,50,2018-10-21T07:20:05.369Z,Facebook_10154523075462819,6
+104,2018,7,New Orleans Saints,27,Baltimore Ravens,24,1,0,1,0,0,0,3,51,2018-10-21T07:20:29.187Z,Facebook_10154523075462819,4
+106,2018,7,Los Angeles Rams,34,San Francisco 49ers,20,1,0,1,0,0,0,14,54,2018-10-21T07:20:53.265Z,Facebook_10154523075462819,4
+105,2018,7,Dallas Cowboys,20,Washington Redskins,23,1,0,1,0,0,0,-3,43,2018-10-21T07:21:20.653Z,Facebook_10154523075462819,5
+102,2018,7,Cincinnati Bengals,23,Kansas City Chiefs,34,1,0,1,0,0,0,-11,57,2018-10-21T07:21:43.827Z,Facebook_10154523075462819,4
+107,2018,7,New York Giants,23,Atlanta Falcons,24,1,0,1,0,1,0,-1,47,2018-10-21T07:22:04.587Z,Facebook_10154523075462819,6
+103,2018,7,Detroit Lions,24,Miami Dolphins,17,1,0,1,0,0,0,7,41,2018-10-21T13:50:10.212Z,Facebook_10155179314751475,4
+98,2018,7,Carolina Panthers,21,Philadelphia Eagles,17,1,0,1,0,1,0,4,38,2018-10-21T13:50:19.351Z,Facebook_10155179314751475,10
+101,2018,7,Buffalo Bills,14,Indianapolis Colts,17,1,0,0,0,1,0,-3,31,2018-10-21T13:50:28.283Z,Facebook_10155179314751475,4
+96,2018,7,Houston Texans,14,Jacksonville Jaguars,17,0,0,1,0,1,0,-3,31,2018-10-21T13:50:43.191Z,Facebook_10155179314751475,4
+97,2018,7,Cleveland Browns,21,Tampa Bay Buccaneers,20,0,0,1,0,1,0,1,41,2018-10-21T13:50:55.330Z,Facebook_10155179314751475,4
+99,2018,7,Minnesota Vikings,24,New York Jets,17,1,0,1,0,0,0,7,41,2018-10-21T13:51:11.053Z,Facebook_10155179314751475,5
+100,2018,7,New England Patriots,17,Chicago Bears,14,1,0,1,0,0,0,3,31,2018-10-21T13:51:31.272Z,Facebook_10155179314751475,4
+97,2018,7,Cleveland Browns,21,Tampa Bay Buccaneers,27,1,0,0,0,1,0,-6,48,2018-10-21T16:07:34.711Z,Facebook_10205896813734452,4
+98,2018,7,Carolina Panthers,17,Philadelphia Eagles,27,0,0,0,0,1,0,-10,44,2018-10-21T16:07:54.030Z,Facebook_10205896813734452,2
+99,2018,7,Minnesota Vikings,21,New York Jets,31,0,0,0,0,1,0,-10,52,2018-10-21T16:08:17.009Z,Facebook_10205896813734452,2
+100,2018,7,New England Patriots,27,Chicago Bears,21,1,0,1,0,0,0,6,48,2018-10-21T16:09:27.135Z,Facebook_10205896813734452,4
+96,2018,7,Houston Texans,17,Jacksonville Jaguars,27,0,0,0,0,0,0,-10,44,2018-10-21T16:09:45.174Z,Facebook_10205896813734452,0
+101,2018,7,Buffalo Bills,21,Indianapolis Colts,31,1,0,1,0,0,0,-10,52,2018-10-21T16:10:08.291Z,Facebook_10205896813734452,4
+103,2018,7,Detroit Lions,27,Miami Dolphins,21,1,0,1,0,1,0,6,48,2018-10-21T16:10:32.711Z,Facebook_10205896813734452,7
+94,2018,7,Denver Broncos,20,Arizona Cardinals,17,1,0,1,0,0,0,3,37,2018-10-18T15:49:44.182Z,cmaronchick,4
+95,2018,7,Tennessee Titans,13,Los Angeles Chargers,23,1,0,0,0,1,0,-10,36,2018-10-16T21:26:15.604Z,cmaronchick,4
+96,2018,7,Houston Texans,20,Jacksonville Jaguars,24,0,0,0,0,0,0,-4,44,2018-10-16T21:22:00.701Z,cmaronchick,1
+97,2018,7,Cleveland Browns,24,Tampa Bay Buccaneers,27,1,0,1,0,1,0,-3,51,2018-10-16T21:22:19.102Z,cmaronchick,7
+98,2018,7,Carolina Panthers,23,Philadelphia Eagles,27,0,0,1,0,0,0,-4,50,2018-10-16T21:22:29.327Z,cmaronchick,2
+99,2018,7,Minnesota Vikings,27,New York Jets,17,1,0,1,0,0,0,10,44,2018-10-16T21:22:39.726Z,cmaronchick,5
+100,2018,7,New England Patriots,24,Chicago Bears,14,1,0,1,0,0,0,10,38,2018-10-16T21:22:49.727Z,cmaronchick,4
+101,2018,7,Buffalo Bills,10,Indianapolis Colts,27,1,0,1,0,1,0,-17,37,2018-10-16T21:23:00.110Z,cmaronchick,6
+102,2018,7,Cincinnati Bengals,24,Kansas City Chiefs,31,1,0,1,0,1,0,-7,55,2018-10-16T21:23:16.383Z,cmaronchick,7
+103,2018,7,Detroit Lions,26,Miami Dolphins,23,1,0,0,0,1,0,3,49,2018-10-16T21:23:41.143Z,cmaronchick,4
+104,2018,7,New Orleans Saints,20,Baltimore Ravens,30,0,0,0,0,0,0,-10,50,2018-10-16T21:24:00.821Z,cmaronchick,0
+105,2018,7,Dallas Cowboys,27,Washington Redskins,24,0,0,0,0,0,0,3,51,2018-10-16T21:24:55.141Z,cmaronchick,0
+106,2018,7,Los Angeles Rams,27,San Francisco 49ers,21,1,0,0,0,1,0,6,48,2018-10-16T21:25:10.027Z,cmaronchick,4
+107,2018,7,New York Giants,20,Atlanta Falcons,35,1,0,0,0,0,0,-15,55,2018-10-16T21:25:36.483Z,cmaronchick,3
+95,2018,7,Tennessee Titans,19,Los Angeles Chargers,25,1,0,1,0,1,0,-6,44,2018-10-17T03:15:29.506Z,psmeyerlaw,7
+96,2018,7,Houston Texans,19,Jacksonville Jaguars,24,0,0,0,0,0,0,-5,43,2018-10-17T03:15:52.586Z,psmeyerlaw,0
+97,2018,7,Cleveland Browns,23,Tampa Bay Buccaneers,26,1,0,1,0,1,0,-3,49,2018-10-17T03:16:41.146Z,psmeyerlaw,10
+98,2018,7,Carolina Panthers,20,Philadelphia Eagles,25,0,0,0,0,0,0,-5,45,2018-10-17T03:17:09.246Z,psmeyerlaw,0
+102,2018,7,Cincinnati Bengals,26,Kansas City Chiefs,32,1,0,0,0,0,0,-6,58,2018-10-17T03:19:43.649Z,psmeyerlaw,2
+104,2018,7,New Orleans Saints,24,Baltimore Ravens,26,0,0,1,0,0,0,-2,50,2018-10-17T03:20:32.928Z,psmeyerlaw,3
+106,2018,7,Los Angeles Rams,31,San Francisco 49ers,21,1,0,1,0,1,0,10,52,2018-10-17T03:21:29.465Z,psmeyerlaw,6
+94,2018,7,Denver Broncos,27,Arizona Cardinals,20,1,0,1,0,1,0,7,47,2018-10-17T04:53:01.866Z,Facebook_10154773754448953,6
+94,2018,7,Denver Broncos,23,Arizona Cardinals,19,1,0,1,0,0,0,4,42,2018-10-17T07:23:32.902Z,Facebook_10208710241577136,4
+95,2018,7,Tennessee Titans,16,Los Angeles Chargers,26,1,0,0,0,1,0,-10,42,2018-10-17T07:24:10.842Z,Facebook_10208710241577136,4
+96,2018,7,Houston Texans,17,Jacksonville Jaguars,20,0,0,1,0,1,0,-3,37,2018-10-17T07:25:28.481Z,Facebook_10208710241577136,4
+97,2018,7,Cleveland Browns,27,Tampa Bay Buccaneers,24,0,0,1,0,1,0,3,51,2018-10-17T07:26:08.741Z,Facebook_10208710241577136,4
+99,2018,7,Minnesota Vikings,26,New York Jets,22,1,0,1,0,1,0,4,48,2018-10-17T07:26:44.281Z,Facebook_10208710241577136,6
+100,2018,7,New England Patriots,28,Chicago Bears,23,1,0,1,0,1,0,5,51,2018-10-17T07:27:01.282Z,Facebook_10208710241577136,6
+101,2018,7,Buffalo Bills,10,Indianapolis Colts,20,1,0,1,0,1,0,-10,30,2018-10-17T07:27:46.562Z,Facebook_10208710241577136,6
+102,2018,7,Cincinnati Bengals,28,Kansas City Chiefs,31,1,0,0,0,0,0,-3,59,2018-10-17T07:28:52.384Z,Facebook_10208710241577136,2
+103,2018,7,Detroit Lions,23,Miami Dolphins,24,0,0,0,0,0,0,-1,47,2018-10-17T07:30:44.224Z,Facebook_10208710241577136,0
+98,2018,7,Carolina Panthers,23,Philadelphia Eagles,25,0,0,1,0,0,0,-2,48,2018-10-17T07:31:13.463Z,Facebook_10208710241577136,2
+104,2018,7,New Orleans Saints,24,Baltimore Ravens,21,1,0,1,0,1,0,3,45,2018-10-17T07:34:10.001Z,Facebook_10208710241577136,7
+105,2018,7,Dallas Cowboys,20,Washington Redskins,23,1,0,1,0,0,0,-3,43,2018-10-17T07:34:53.041Z,Facebook_10208710241577136,5
+106,2018,7,Los Angeles Rams,33,San Francisco 49ers,24,1,0,1,0,0,0,9,57,2018-10-21T17:54:34.148Z,Facebook_10208710241577136,4
+107,2018,7,New York Giants,23,Atlanta Falcons,31,1,0,0,0,0,0,-8,54,2018-10-21T17:53:18.771Z,Facebook_10208710241577136,2
+94,2018,7,Denver Broncos,31,Arizona Cardinals,10,1,0,1,0,0,0,21,41,2018-10-17T22:39:00.813Z,Facebook_10210894378652618,5
+95,2018,7,Tennessee Titans,21,Los Angeles Chargers,24,1,0,1,0,0,0,-3,45,2018-10-17T22:39:24.821Z,Facebook_10210894378652618,4
+96,2018,7,Houston Texans,21,Jacksonville Jaguars,17,1,0,1,0,1,0,4,38,2018-10-17T22:39:54.132Z,Facebook_10210894378652618,6
+97,2018,7,Cleveland Browns,18,Tampa Bay Buccaneers,24,1,0,0,0,1,0,-6,42,2018-10-17T22:40:05.472Z,Facebook_10210894378652618,4
+99,2018,7,Minnesota Vikings,21,New York Jets,26,0,0,0,0,1,0,-5,47,2018-10-17T22:40:19.371Z,Facebook_10210894378652618,2
+100,2018,7,New England Patriots,28,Chicago Bears,23,1,0,1,0,1,0,5,51,2018-10-17T22:40:40.284Z,Facebook_10210894378652618,6
+102,2018,7,Cincinnati Bengals,14,Kansas City Chiefs,32,1,0,1,0,1,0,-18,46,2018-10-17T22:40:54.954Z,Facebook_10210894378652618,6
+98,2018,7,Carolina Panthers,21,Philadelphia Eagles,23,0,0,1,0,1,0,-2,44,2018-10-17T22:42:37.372Z,Facebook_10210894378652618,5
+103,2018,7,Detroit Lions,21,Miami Dolphins,23,0,0,0,0,0,0,-2,44,2018-10-17T22:43:49.071Z,Facebook_10210894378652618,0
+101,2018,7,Buffalo Bills,11,Indianapolis Colts,24,1,0,1,0,1,0,-13,35,2018-10-17T22:44:01.334Z,Facebook_10210894378652618,6
+104,2018,7,New Orleans Saints,24,Baltimore Ravens,21,1,0,1,0,1,0,3,45,2018-10-17T22:44:10.250Z,Facebook_10210894378652618,7
+105,2018,7,Dallas Cowboys,21,Washington Redskins,26,1,0,1,0,0,0,-5,47,2018-10-17T22:44:27.171Z,Facebook_10210894378652618,4
+106,2018,7,Los Angeles Rams,42,San Francisco 49ers,17,1,0,1,0,0,0,25,59,2018-10-17T22:45:17.532Z,Facebook_10210894378652618,4
+107,2018,7,New York Giants,21,Atlanta Falcons,28,1,0,0,0,1,0,-7,49,2018-10-17T22:45:12.643Z,Facebook_10210894378652618,4
+94,2018,7,Denver Broncos,20,Arizona Cardinals,24,0,0,0,0,1,0,-4,44,2018-10-18T01:35:16.433Z,Facebook_10154523075462819,2
+95,2018,7,Tennessee Titans,20,Los Angeles Chargers,28,1,0,0,0,0,0,-8,48,2018-10-18T01:36:09.011Z,Facebook_10154523075462819,2
+106,2018,7,Los Angeles Rams,35,San Francisco 49ers,20,1,0,1,0,0,0,15,55,2018-10-18T14:56:28.663Z,eddiefeeley,4
+107,2018,7,New York Giants,24,Atlanta Falcons,31,1,0,0,0,0,0,-7,55,2018-10-18T14:57:26.651Z,eddiefeeley,2
+105,2018,7,Dallas Cowboys,17,Washington Redskins,21,1,0,1,0,1,0,-4,38,2018-10-18T14:57:24.997Z,eddiefeeley,7
+104,2018,7,New Orleans Saints,24,Baltimore Ravens,21,1,0,1,0,1,0,3,45,2018-10-18T14:57:24.169Z,eddiefeeley,7
+103,2018,7,Detroit Lions,24,Miami Dolphins,14,1,0,1,0,0,0,10,38,2018-10-18T14:56:36.076Z,eddiefeeley,4
+98,2018,7,Carolina Panthers,17,Philadelphia Eagles,20,0,0,1,0,1,0,-3,37,2018-10-18T14:57:22.029Z,eddiefeeley,4
+101,2018,7,Buffalo Bills,10,Indianapolis Colts,24,1,0,1,0,1,0,-14,34,2018-10-18T14:57:24.103Z,eddiefeeley,6
+102,2018,7,Cincinnati Bengals,28,Kansas City Chiefs,38,1,0,1,0,0,0,-10,66,2018-10-18T14:56:40.475Z,eddiefeeley,4
+94,2018,7,Denver Broncos,28,Arizona Cardinals,20,1,0,1,0,1,0,8,48,2018-10-18T14:56:44.863Z,eddiefeeley,6
+99,2018,7,Minnesota Vikings,35,New York Jets,28,1,0,1,0,1,0,7,63,2018-10-18T14:57:19.443Z,eddiefeeley,6
+100,2018,7,New England Patriots,24,Chicago Bears,21,1,0,1,0,0,0,3,45,2018-10-18T14:56:46.580Z,eddiefeeley,4
+95,2018,7,Tennessee Titans,17,Los Angeles Chargers,31,1,0,0,0,0,0,-14,48,2018-10-18T14:56:48.944Z,eddiefeeley,2
+97,2018,7,Cleveland Browns,17,Tampa Bay Buccaneers,26,1,0,0,0,1,0,-9,43,2018-10-18T14:57:15.544Z,eddiefeeley,5
+96,2018,7,Houston Texans,12,Jacksonville Jaguars,20,0,0,0,0,1,0,-8,32,2018-10-18T14:57:13.706Z,eddiefeeley,2
+94,2018,7,Denver Broncos,24,Arizona Cardinals,18,1,0,1,0,0,0,6,42,2018-10-18T19:02:51.658Z,Facebook_10154993923975769,4
+103,2018,7,Detroit Lions,24,Miami Dolphins,21,1,0,0,0,0,0,3,45,2018-10-18T19:03:13.640Z,Facebook_10154993923975769,3
+94,2018,7,Denver Broncos,17,Arizona Cardinals,14,1,0,1,0,0,0,3,31,2018-10-18T23:35:04.016Z,chrisl777,4
+95,2018,7,Tennessee Titans,14,Los Angeles Chargers,21,1,0,0,0,1,0,-7,35,2018-10-18T23:35:17.657Z,chrisl777,4
+103,2018,7,Detroit Lions,21,Miami Dolphins,7,1,0,1,0,0,0,14,28,2018-10-18T23:35:35.276Z,chrisl777,4
+98,2018,7,Carolina Panthers,21,Philadelphia Eagles,24,0,0,1,0,0,0,-3,45,2018-10-18T23:35:48.658Z,chrisl777,3
+101,2018,7,Buffalo Bills,3,Indianapolis Colts,21,1,0,1,0,1,0,-18,24,2018-10-18T23:36:01.499Z,chrisl777,6
+96,2018,7,Houston Texans,21,Jacksonville Jaguars,10,1,0,1,0,1,0,11,31,2018-10-18T23:36:12.481Z,chrisl777,6
+97,2018,7,Cleveland Browns,21,Tampa Bay Buccaneers,20,0,0,1,0,1,0,1,41,2018-10-18T23:36:27.347Z,chrisl777,4
+99,2018,7,Minnesota Vikings,28,New York Jets,24,1,0,1,0,1,0,4,52,2018-10-18T23:36:43.437Z,chrisl777,6
+100,2018,7,New England Patriots,31,Chicago Bears,17,1,0,1,0,0,0,14,48,2018-10-18T23:36:55.500Z,chrisl777,4
+104,2018,7,New Orleans Saints,17,Baltimore Ravens,10,1,0,1,0,1,0,7,27,2018-10-18T23:37:06.957Z,chrisl777,6
+106,2018,7,Los Angeles Rams,27,San Francisco 49ers,17,1,0,1,0,1,0,10,44,2018-10-18T23:37:21.138Z,chrisl777,6
+105,2018,7,Dallas Cowboys,21,Washington Redskins,17,0,0,0,0,1,0,4,38,2018-10-18T23:37:42.699Z,chrisl777,2
+102,2018,7,Cincinnati Bengals,31,Kansas City Chiefs,33,1,0,0,0,0,0,-2,64,2018-10-18T23:37:55.684Z,chrisl777,2
+107,2018,7,New York Giants,20,Atlanta Falcons,24,1,0,0,0,1,0,-4,44,2018-10-18T23:38:18.160Z,chrisl777,5
+94,2018,7,Denver Broncos,24,Arizona Cardinals,27,0,0,0,0,1,0,-3,51,2018-10-19T00:04:38.296Z,Facebook_10205896813734452,2
+94,2018,7,Denver Broncos,21,Arizona Cardinals,20,1,0,0,0,0,0,1,41,2018-10-17T03:15:07.166Z,psmeyerlaw,2
+95,2018,7,Tennessee Titans,20,Los Angeles Chargers,27,1,0,0,0,0,0,-7,47,2018-10-20T15:19:55.499Z,Facebook_10154773754448953,2
+103,2018,7,Detroit Lions,24,Miami Dolphins,16,1,0,1,0,0,0,8,40,2018-10-20T15:20:16.158Z,Facebook_10154773754448953,4
+98,2018,7,Carolina Panthers,21,Philadelphia Eagles,17,1,0,1,0,1,0,4,38,2018-10-20T15:21:01.698Z,Facebook_10154773754448953,10
+101,2018,7,Buffalo Bills,13,Indianapolis Colts,24,1,0,1,0,1,0,-11,37,2018-10-20T15:21:20.878Z,Facebook_10154773754448953,6
+96,2018,7,Houston Texans,21,Jacksonville Jaguars,20,1,0,1,0,1,0,1,41,2018-10-20T15:21:59.317Z,Facebook_10154773754448953,6
+97,2018,7,Cleveland Browns,17,Tampa Bay Buccaneers,20,1,0,1,0,1,0,-3,37,2018-10-20T15:23:12.060Z,Facebook_10154773754448953,7
+99,2018,7,Minnesota Vikings,24,New York Jets,17,1,0,1,0,0,0,7,41,2018-10-20T15:26:04.616Z,Facebook_10154773754448953,5
+100,2018,7,New England Patriots,28,Chicago Bears,24,1,0,1,0,1,0,4,52,2018-10-20T15:26:55.577Z,Facebook_10154773754448953,6
+104,2018,7,New Orleans Saints,24,Baltimore Ravens,27,0,0,0,0,0,0,-3,51,2018-10-20T15:27:44.437Z,Facebook_10154773754448953,1
+106,2018,7,Los Angeles Rams,30,San Francisco 49ers,24,1,0,0,0,0,0,6,54,2018-10-20T15:28:29.357Z,Facebook_10154773754448953,2
+105,2018,7,Dallas Cowboys,20,Washington Redskins,21,1,0,1,0,0,0,-1,41,2018-10-20T15:29:40.420Z,Facebook_10154773754448953,4
+102,2018,7,Cincinnati Bengals,21,Kansas City Chiefs,30,1,0,1,0,1,0,-9,51,2018-10-20T15:29:57.696Z,Facebook_10154773754448953,6
+107,2018,7,New York Giants,17,Atlanta Falcons,20,1,0,1,0,1,0,-3,37,2018-10-20T15:31:04.078Z,Facebook_10154773754448953,7
+95,2018,7,Tennessee Titans,14,Los Angeles Chargers,18,1,0,1,0,1,0,-4,32,2018-10-18T19:03:03.995Z,Facebook_10154993923975769,6
+98,2018,7,Carolina Panthers,28,Philadelphia Eagles,24,1,0,1,0,0,0,4,52,2018-10-18T19:03:25.240Z,Facebook_10154993923975769,5
+101,2018,7,Buffalo Bills,18,Indianapolis Colts,25,1,0,0,0,1,0,-7,43,2018-10-17T03:19:01.887Z,psmeyerlaw,4
+101,2018,7,Buffalo Bills,14,Indianapolis Colts,18,1,0,0,0,1,0,-4,32,2018-10-18T19:03:37.043Z,Facebook_10154993923975769,4
+96,2018,7,Houston Texans,28,Jacksonville Jaguars,24,1,0,1,0,0,0,4,52,2018-10-18T19:03:48.082Z,Facebook_10154993923975769,4
+103,2018,7,Detroit Lions,21,Miami Dolphins,21,0,0,0,0,0,0,0,42,2018-10-17T03:20:08.070Z,psmeyerlaw,1
+100,2018,7,New England Patriots,26,Chicago Bears,22,1,0,1,0,0,0,4,48,2018-10-17T03:18:34.127Z,psmeyerlaw,4
+100,2018,7,New England Patriots,32,Chicago Bears,28,1,0,1,0,1,0,4,60,2018-10-18T19:04:24.861Z,Facebook_10154993923975769,6
+97,2018,7,Cleveland Browns,28,Tampa Bay Buccaneers,21,0,0,1,0,1,0,7,49,2018-10-18T19:03:59.521Z,Facebook_10154993923975769,5
+99,2018,7,Minnesota Vikings,25,New York Jets,22,1,0,0,0,1,0,3,47,2018-10-17T03:17:48.866Z,psmeyerlaw,4
+99,2018,7,Minnesota Vikings,28,New York Jets,14,1,0,1,0,0,0,14,42,2018-10-18T19:04:12.517Z,Facebook_10154993923975769,4
+104,2018,7,New Orleans Saints,35,Baltimore Ravens,28,1,0,1,0,0,0,7,63,2018-10-18T19:04:39.236Z,Facebook_10154993923975769,4
+105,2018,7,Dallas Cowboys,20,Washington Redskins,22,1,0,1,0,0,0,-2,42,2018-10-17T03:21:08.748Z,psmeyerlaw,4
+105,2018,7,Dallas Cowboys,18,Washington Redskins,14,0,0,0,0,1,0,4,32,2018-10-18T19:05:25.856Z,Facebook_10154993923975769,2
+106,2018,7,Los Angeles Rams,21,San Francisco 49ers,28,0,0,0,0,1,0,-7,49,2018-10-18T19:04:51.661Z,Facebook_10154993923975769,3
+107,2018,7,New York Giants,17,Atlanta Falcons,28,1,0,0,0,1,0,-11,45,2018-10-22T01:30:33.739Z,Facebook_10155179314751475,4
+104,2018,7,New Orleans Saints,31,Baltimore Ravens,35,0,0,0,0,0,0,-4,66,2018-10-22T01:30:33.739Z,Facebook_10155179314751475,0
+106,2018,7,Los Angeles Rams,37,San Francisco 49ers,14,1,0,1,0,1,0,23,51,2018-10-22T01:30:33.739Z,Facebook_10155179314751475,6
+105,2018,7,Dallas Cowboys,17,Washington Redskins,21,1,0,1,0,1,0,-4,38,2018-10-22T01:30:33.739Z,Facebook_10155179314751475,7
+102,2018,7,Cincinnati Bengals,41,Kansas City Chiefs,44,1,0,0,0,0,0,-3,85,2018-10-22T01:30:33.739Z,Facebook_10155179314751475,2
+102,2018,7,Cincinnati Bengals,18,Kansas City Chiefs,15,0,0,0,0,1,0,3,33,2018-10-18T19:05:46.897Z,Facebook_10154993923975769,2
+107,2018,7,New York Giants,24,Atlanta Falcons,30,1,0,0,0,0,0,-6,54,2018-10-17T03:21:47.987Z,psmeyerlaw,2
+107,2018,7,New York Giants,21,Atlanta Falcons,24,1,0,1,0,1,0,-3,45,2018-10-18T19:06:13.237Z,Facebook_10154993923975769,7

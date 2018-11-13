@@ -251,15 +251,8 @@
                                                 <tr class="predictionRow">
                                                     <td>Total</td>
                                                     <td{{#if results}}
-                                                        {{#ifCond prediction.total '>' odds.total}}
-                                                            {{#ifCond results.total '>' odds.total}}
-                                                                class="alert alert-success"
-                                                            {{/ifCond}}
-                                                        {{/ifCond}}
-                                                        {{#ifCond odds.total '>' prediction.total}}
-                                                            {{#ifCond odds.total '>' results.total}}
+                                                        {{#ifCond prediction.results.total.correct '===' 1}}
                                                             class="alert alert-success"
-                                                            {{/ifCond}}
                                                         {{/ifCond}}
                                                     {{/if}} id="{{{awayTeam.code}}}{{{homeTeam.code}}}-total-prediction">
                                                     {{prediction.total}}
@@ -274,59 +267,49 @@
                                                     </td>
                                                     <td
                                                         {{#if results}}
-                                                            {{#unless comparePrediction}}
-                                                                {{#ifCond crowd.total '>' odds.total}}
-                                                                    {{#ifCond results.total '>' odds.total}} class="crowdCorrect"
-                                                                    {{/ifCond}}
-                                                                {{/ifCond}}
-                                                                {{#ifCond odds.total '>' crowd.total}}
-                                                                    {{#ifCond odds.total '>' results.total}} class="crowdCorrect"
-                                                                    {{/ifCond}}
-                                                                {{/ifCond}}
-                                                            {{/unless}}
                                                             {{#if comparePrediction}}
-                                                                {{#ifCond comparePrediction.total '>' odds.total}}
-                                                                    {{#ifCond results.total '>' odds.total}} class="crowdCorrect"
-                                                                    {{/ifCond}}
+                                                                {{#ifCond comparePrediction.results.total.correct '===' 1}}
+                                                                    class="crowdCorrect"
                                                                 {{/ifCond}}
-                                                                {{#ifCond odds.total '>' comparePrediction.total}}
-                                                                    {{#ifCond odds.total '>' results.total}} class="crowdCorrect"
-                                                                    {{/ifCond}}
+                                                            {{else}}
+                                                                {{#ifCond crowd.results.total.correct '===' 1}}
+                                                                    class="crowdCorrect"
                                                                 {{/ifCond}}
                                                             {{/if}}
                                                         {{/if}}>
-                                                                {{#unless comparePrediction}}
-                                                                    <span{{#unless prediction}}
-                                                                        {{#unless results}} class="crowdHidden"
-                                                                        {{/unless}}
-                                                                    {{/unless}}>
-                                                                    {{crowd.total}}
-                                                                    <span style="font-size: 0.8em; font-weight: bold">
-                                                                        {{#if results}}
-                                                                            {{#ifCond crowd.total '===' results.total}}
-                                                                                <sup><i class="fas fa-bullseye"></i></sup>
-                                                                            {{/ifCond}}
-                                                                        {{/if}}
-                                                                        {{#if odds.total}}
-                                                                        {{#ifCond crowd.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}
-                                                                        {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}
-                                                                        {{/if}}</span>
-
-                                                                    </span>
-                                                                    {{#unless prediction}}
-                                                                        {{#unless results}}
-                                                                            <span class="fa fa-lock crowdShown"></span>
-                                                                        {{/unless}}
-                                                                    {{/unless}}
+                                                        {{#if comparePrediction}}
+                                                            {{comparePrediction.total}}
+                                                            {{#if results}}
+                                                                {{#ifCond comparePrediction.total '===' results.total}}
+                                                                    <sup><i class="fas fa-bullseye"></i></sup>
+                                                                {{/ifCond}}
+                                                            {{/if}}
+                                                        {{else}}
+                                                            <span{{#unless prediction}}
+                                                                {{#unless results}} class="crowdHidden"
                                                                 {{/unless}}
-                                                                {{#if comparePrediction}}
-                                                                    {{comparePrediction.total}}
-                                                                    {{#if results}}
-                                                                        {{#ifCond comparePrediction.total '===' results.total}}
-                                                                            <sup><i class="fas fa-bullseye"></i></sup>
-                                                                        {{/ifCond}}
-                                                                    {{/if}}
+                                                            {{/unless}}>
+                                                            {{crowd.total}}
+                                                            <span style="font-size: 0.8em; font-weight: bold">
+                                                                {{#if results}}
+                                                                    {{#ifCond crowd.total '===' results.total}}
+                                                                        <sup><i class="fas fa-bullseye"></i></sup>
+                                                                    {{/ifCond}}
                                                                 {{/if}}
+                                                                {{#if crowd.total}}
+                                                                {{#if odds.total}}
+                                                                    {{#ifCond crowd.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}
+                                                                    {{#ifCond crowd.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}
+                                                                {{/if}}
+                                                                {{/if}}</span>
+
+                                                            </span>
+                                                            {{#unless prediction}}
+                                                                {{#unless results}}
+                                                                    <span class="fa fa-lock crowdShown"></span>
+                                                                {{/unless}}
+                                                            {{/unless}}
+                                                        {{/if}}
                                                     </td>
                                                     <td>
                                                         <span
@@ -381,43 +364,7 @@
                                                                 {{/ifCond}}
                                                             {{/if}}
                                                         {{/if}}>
-                                                        {{#unless comparePrediction}}
-                                                            <span
-                                                                {{#unless prediction}}
-                                                                    {{#unless results}}
-                                                                    class="crowdHidden"
-                                                                    {{/unless}}
-                                                                {{/unless}}>
-                                                                    {{#ifCond crowd.spread '>' 0}}+{{/ifCond}}
-                                                                    {{crowd.spread}}
-                                                                    {{#if results}}
-                                                                        {{#ifCond crowd.spread '===' results.spread}}
-                                                                            <sup><i class="fas fa-bullseye"></i></sup>
-                                                                        {{/ifCond}}
-                                                                    {{/if}}
-                                                                    <span style="font-size: 0.8em; font-weight: bold">
-                                                                        {{#if odds.spread}}
-                                                                            {{#ifCond crowd.spread '>' odds.spread}}
-                                                                                <br>({{awayTeam.code}} 
-                                                                                {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                                {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
-                                                                                {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}){{/ifCond}}
-                                                                            {{/ifCond}}
-                                                                            {{#ifCond crowd.spread '<' odds.spread}}
-                                                                                <br>({{homeTeam.code}}
-                                                                                {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
-                                                                                {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
-                                                                                {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
-                                                                            {{/ifCond}}
-                                                                        {{/if}}
-                                                                    </span>
-
-                                                            </span>
-                                                            {{#unless prediction}}
-                                                                {{#unless results}}<span class="fa fa-lock crowdShown"></span>
-                                                                {{/unless}}
-                                                            {{/unless}}
-                                                        {{/unless}}
+                                                        
                                                         {{#if comparePrediction}}
                                                             {{#ifCond comparePrediction.spread '>' 0}}+{{/ifCond}}
                                                             {{comparePrediction.spread}}
@@ -435,6 +382,44 @@
                                                                     <br>({{homeTeam.code}} {{#ifCond odds.spread '>' 0}}+{{/ifCond}}{{odds.spread}})
                                                                 {{/ifCond}}
                                                             </span>
+                                                        {{else}}
+                                                            <span
+                                                                {{#unless prediction}}
+                                                                    {{#unless results}}
+                                                                    class="crowdHidden"
+                                                                    {{/unless}}
+                                                                {{/unless}}>
+                                                                    {{#ifCond crowd.spread '>' 0}}+{{/ifCond}}
+                                                                    {{crowd.spread}}
+                                                                    {{#if results}}
+                                                                        {{#ifCond crowd.spread '===' results.spread}}
+                                                                            <sup><i class="fas fa-bullseye"></i></sup>
+                                                                        {{/ifCond}}
+                                                                    {{/if}}
+                                                                    <span style="font-size: 0.8em; font-weight: bold">
+                                                                        {{#if crowd.spread}}
+                                                                        {{#if odds.spread}}
+                                                                            {{#ifCond crowd.spread '>' odds.spread}}
+                                                                                <br>({{awayTeam.code}} 
+                                                                                {{#ifCond odds.spread '<' 0}}+{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '>' 0}}{{#math odds.spread '*' -1}}{{/math}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '===' 0}}EV{{odds.spread}}){{/ifCond}}
+                                                                            {{/ifCond}}
+                                                                            {{#ifCond crowd.spread '<' odds.spread}}
+                                                                                <br>({{homeTeam.code}}
+                                                                                {{#ifCond odds.spread '<' 0}}{{odds.spread}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '>' 0}}+{{odds.spread}}){{/ifCond}}
+                                                                                {{#ifCond odds.spread '===' 0}}EV){{/ifCond}}
+                                                                            {{/ifCond}}
+                                                                        {{/if}}
+                                                                        {{/if}}
+                                                                    </span>
+
+                                                            </span>
+                                                            {{#unless prediction}}
+                                                                {{#unless results}}<span class="fa fa-lock crowdShown"></span>
+                                                                {{/unless}}
+                                                            {{/unless}}
                                                         {{/if}}
                                                     </td>
                                                     <td>
@@ -457,12 +442,11 @@
                                                     {{#dateCheck startDateTime}}
                                                         <button class="prediction-btn btn btn-info">Predict</button>
                                                     {{/dateCheck}}
-                                                {{/if}}
-                                                {{#unless userAuthenticated}}
+                                                {{else}}
                                                     {{#dateCheck startDateTime}}
-                                                        <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com')">Log in to Predict</button>
+                                                        <button type="button" class="btn btn-info" onclick="ga('send','event','login','loginClicked');window.location=('https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=code&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://{{getWindowLocation}}')">Log in to Predict</button>
                                                     {{/dateCheck}}
-                                                {{/unless}}
+                                                {{/if}}
                                             {{/unless}}
                                                 {{#ifCond prediction.predictionScore '>' -1}}
                                                     <div class="predictionScore myResultsRow">My Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
@@ -502,6 +486,11 @@
                 out += options.fn(subcontext);
             }
             return out;
+        });
+        
+        Handlebars.registerHelper('getWindowLocation', function(v1, v2, options) {
+            console.log('window.location.hostname:', window.location.hostname);
+            return window.location.hostname;
         });
 
         Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
@@ -575,6 +564,7 @@
     <script>
         var view;
             function buildChart(leaderboardData) {
+                console.log('leaderboardData: ', leaderboardData);
                 // hide chart after its built on first load
                 var firstChartLoad = true;
 
@@ -587,6 +577,7 @@
                 var chartData = google.visualization.arrayToDataTable(weeklyResults.results);
                 if (view === "overall") {
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
+                    getOverallCrowdResults(leaderboardData.overallRecord);
                 }
                 var options = {
                     weekly: {
@@ -745,6 +736,48 @@
             }
         }
 
+        // setting user weekly results
+        var getOverallResults = function(overallUserData) {
+            var myStraightUpResults = 0;
+            var mySpreadResults = 0;
+            var myTotalResults = 0;
+            var myPredictionScore = 0;
+
+            if (gamesData && gamesData.length > 0) {
+                for (i = 0; i < gamesData.length; i++) {
+                    if (gamesData[i].prediction && gamesData[i].prediction.results) {
+                        $("#resultsContainer").css("display","block");
+                        if (gamesData[i].prediction.results.winner.correct) {myStraightUpResults += gamesData[i].prediction.results.winner.correct;}
+                        if (gamesData[i].prediction.results.spread.correct) {mySpreadResults += gamesData[i].prediction.results.spread.correct;}
+                        if (gamesData[i].prediction.results.total.correct) {myTotalResults += gamesData[i].prediction.results.total.correct;}
+                        if (gamesData[i].prediction.predictionScore) {myPredictionScore += gamesData[i].prediction.predictionScore;}
+                    }
+                }
+                $("#myStraightUpResults").text(myStraightUpResults);
+                $("#mySpreadResults").text(mySpreadResults);
+                $("#myTotalResults").text(myTotalResults);
+                $("#myPredictionScore").text(myPredictionScore);
+            }
+        }
+
+        var getOverallCrowdResults = function(overallCrowdData) {
+            console.log('overallCrowdData: ', overallCrowdData)
+            if (overallCrowdData) {
+                var overallSURecord = overallCrowdData.winner.correct
+                    + "-" + overallCrowdData.winner.incorrect;
+                var overallATSRecord = overallCrowdData.spread.correct
+                    + "-" + overallCrowdData.spread.incorrect
+                    + "-" + overallCrowdData.spread.push;
+                var overallOURecord = overallCrowdData.total.correct
+                    + "-" + overallCrowdData.total.incorrect
+                    + "-" + overallCrowdData.total.push;
+                $("#crowdStraightUpResults").text(overallSURecord);
+                $("#crowdSpreadResults").text(overallATSRecord);
+                $("#crowdTotalResults").text(overallOURecord);
+                $("#crowdPredictionScore").text(overallCrowdData.predictionScore);
+            }
+        }
+
         function submitUpdate(gameId) {
             var newPrediction = true;
             var $prediction = $("#container-" + gameId).find('.prediction');
@@ -841,6 +874,7 @@
         var setGameWeek = function (gameWeekData) {
 
             useToken(function(token) {
+                if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
@@ -1173,6 +1207,9 @@
                     })
                     .then(function (crowdResultsData) {
                         getWeeklyCrowdResults(crowdResultsData.games)
+                        getAllGroups(10);
+                        getAllUsers(10);
+                        getWeeklyUsers(10, gameWeekData.week)
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
@@ -1275,6 +1312,7 @@
                 $('#resultsContainer').css('display','none');
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
+                getAllUsers(10,gameWeekData.week);
                 //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
@@ -1283,15 +1321,15 @@
             setTimeout(function () {
                 getGameWeek(function (data) {
                     if (data) {
-                        week = data.week;
-                        year = parseInt($('#dropdown span').text);
+                        gameWeekData.week = data.week;
+                        gameWeekData.year = parseInt($('#dropdown span').text);
                         if (data.year) {
-                            year = data.year;
+                            gameWeekData.year = data.year;
                         }
-                        var $selectorElm = $('*[data-week="' + week + '"]');
+                        var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
-                        $("#weeklyChartButton").attr({"year":year,"week": week});
-                        $("#overallChartButton").attr({"year":year,"week": week});
+                        $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
+                        $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         setGameWeek(data);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
@@ -1359,10 +1397,6 @@
                 });
                 $("#switchChartButtons").toggle();
             });
-
-
-            var allGroups = getAllGroups(10);
-            var allUsers = getAllUsers(10);
         });
 
         //console.log("dataWeek: ", dataWeek);
@@ -1824,7 +1858,6 @@
             </div>
 
             <div id="resultsContainer">
-
                 <div class="row myResultsRow" id="myResultsRow">
                     <div class="col-xs-12 col-sm-1">
                         <span id="youHeader">You:</span>
@@ -1880,28 +1913,23 @@
                     <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4" id="competitionDiv">
-                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                            <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
-                                <li role="presentation" class="active">
-                                <a href="#usersDiv" id="users-tab" role="tab" data-toggle="tab" aria-controls="users" aria-expanded="true">
-                                    <span class="text">User Leaderboard</span>
-                                </a>
-                                </li>
-                                <li role="presentation" class="next">
-                                <a href="#crowdsDiv" role="tab" id="crowds-tab" data-toggle="tab" aria-controls="crowds">
-                                    <span class="text">Crowd Leaderboard</span>
-                                </a>
-                                </li>
-                            </ul>
-                        <div id="myTabContent" class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade in active" id="usersDiv" aria-labelledby="home-tab">
-                                <div id="allUsers"></div>
-                                <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="crowdsDiv" aria-labelledby="groups-tab">
-                                <div id="allGroups"></div>
-                                <div id="createCrowdButtonDiv"></div>
-                            </div>
+                    <div class="tab">
+                        <button class="tablinks active" onclick="openLeaderboard(event, 'usersDiv')"><span class="hidden-xs hidden-lg">User Leaderboard</span><span class="visible-xs visible-lg">Overall</span></button>
+                        <button class="tablinks" onclick="openLeaderboard(event, 'weeklyDiv')"><span class="hidden-xs hidden-lg">Weekly Leaderboard</span><span class="visible-xs visible-lg">Weekly</span></button>
+                        <button class="tablinks" onclick="openLeaderboard(event, 'crowdsDiv')"><span class="hidden-xs hidden-lg">Crowd Leaderboard</span><span class="visible-xs visible-lg">Crowd</span></button>
+                    </div>
+                    <div id="myTabContent">
+                        <div class="tabcontent" id="usersDiv" style="display:block">
+                            <div id="allUsers"></div>
+                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+                        </div>
+                        <div class="tabcontent" id="weeklyDiv">
+                            <div id="weeklyUsers"></div>
+                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+                        </div>
+                        <div class="tabcontent" id="crowdsDiv">
+                            <div id="allGroups"></div>
+                            <div id="createCrowdButtonDiv"></div>
                         </div>
                     </div>
                 </div>

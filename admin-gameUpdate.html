@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="description" content="Beating the sportsbooks with the Wisdom of the Crowd NFL Score Predictions">
     <meta name="keywords" content="football,crowdsourced,wisdom,wisdom of the crowd,sportsbook,spread,total,moneyline">
-    
-    <title>Crowdsourced Scores - Beating the Sportsbooks through Crowd Wisdom</title>
+    <base href="https://crowdsourcedscores.com">
+
+    <title>Admin - Crowd Wisdom Sports - Beating the Sportsbooks through Crowd Wisdom</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -125,6 +126,13 @@
             }
         });
 
+        Handlebars.registerHelper('dateFormat', function (date) {
+            var options = { month: 'short', day: 'numeric' };
+            var dateObj = new Date(date).toLocaleString('en-US', options);
+
+            return dateObj;
+        });
+
         Handlebars.registerHelper('debug', function (the_string) {
             console.log(the_string, ": ", the_string);
         });
@@ -155,15 +163,16 @@
                                             <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><input type="datetime" style="float:left; color:#3A3B6C" class="startDateTime" value="{{startDateTime}}">{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
                                             
                                             <select class="dropdown" id="{{{gameId}}}-gameStatus">
-                                                    <option value="notStarted"
-                                                        {{#ifCond this.status '===' "notStarted"}}selected{{/ifCond}}>Not Started
-                                                    </option>
-                                                    <option value="inProgress"
-                                                        {{#ifCond this.status '===' "inProgress"}}selected{{/ifCond}}>In Progress
-                                                    </option>
-                                                    <option value="final"
-                                                        {{#ifCond this.statu '===' "final"}}selected{{/ifCond}}>Final</option>
-                                                </select>
+                                                <option value="notStarted"
+                                                    {{#ifCond this.status '===' 'notStarted'}}selected{{/ifCond}}>Not Started
+                                                </option>
+                                                <option value="inProgress"
+                                                    {{#ifCond this.status '===' 'inProgress'}}selected{{/ifCond}}>In Progress
+                                                </option>
+                                                <option value="final"
+                                                    {{#ifCond this.status '===' 'final'}}selected{{/ifCond}}>Final
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -191,11 +200,11 @@
                                             </td>
                                             <td id="{{gameId}}-odds-spread" class="odds-spread">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.spread}}">
-                                                {{#ifCond odds.history.length '>' 0}}
+                                                <div>
                                                     {{#each odds.history}}
-                                                        ({{spread}})<br>
+                                                        ({{#dateFormat this.date}}{{/dateFormat}}: {{this.spread}})<br>
                                                     {{/each}}
-                                                {{/ifCond}}
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">
@@ -203,11 +212,11 @@
                                             <td id="{{gameId}}-total">{{results.total}}</td>
                                             <td class="odds-total">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.total}}">
-                                                {{#ifCond odds.history.length '>' 0}}
+                                                <div>
                                                     {{#each odds.history}}
-                                                        ({{total}})<br>
+                                                        ({{#dateFormat this.date}}{{/dateFormat}}: {{this.total}})<br>
                                                     {{/each}}
-                                                {{/ifCond}}
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr class="predictionRow">

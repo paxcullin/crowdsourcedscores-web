@@ -1,0 +1,16 @@
+{
+  "name": "get-all-users-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^3.1.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r user-getAllUsers.zip ."
+  },
+  "author": "",
+  "license": "ISC"
+}
