@@ -441,6 +441,13 @@
                                                 {{#if userAuthenticated}}
                                                     {{#dateCheck startDateTime}}
                                                         <button class="prediction-btn btn btn-info">Predict</button>
+                                                        
+                                                        {{#ifCond prediction.total '===' odds.total}}
+                                                            <br><sup><i class="fas fa-exclamation-triangle total"></i><span class="warningTextTotal">Your total matches the odds total.</span></sup>
+                                                        {{/ifCond}}
+                                                        {{#ifCond prediction.spread '===' odds.spread}}
+                                                            <br><sup><i class="fas fa-exclamation-triangle spread"></i><span class="warningTextSpread">Your spread matches the odds spread.</span></sup>
+                                                        {{/ifCond}}
                                                     {{/dateCheck}}
                                                 {{else}}
                                                     {{#dateCheck startDateTime}}
@@ -777,6 +784,8 @@
                 $("#crowdPredictionScore").text(overallCrowdData.predictionScore);
             }
         }
+        
+    
 
         function submitUpdate(gameId) {
             var newPrediction = true;
@@ -842,6 +851,31 @@
                             
                             var html = gameTemplateScript(responseData);
                             $('#container-' + responseData.gameId).html(html);
+                            
+                            $('.fa-exclamation-triangle.total').mouseover(function(e) {
+                                e.preventDefault();
+                                $content = $(this).find('.warningTextTotal');
+                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                $content.show();
+                            })
+                            $('.fa-exclamation-triangle.spread').mouseover(function(e) {
+                                e.preventDefault();
+                                $content = $(this).find('.warningTextSpread');
+                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                $content.show();
+                            })
+                            $('.fa-exclamation-triangle.total').mouseout(function(e) {
+                                e.preventDefault();
+                                $content = $(this).find('.warningTextTotal');
+                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                $content.hide();
+                            })
+                            $('.fa-exclamation-triangle.spread').mouseout(function(e) {
+                                e.preventDefault();
+                                $content = $(this).find('.warningTextSpread');
+                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                $content.hide();
+                            })
 
                             //$("#" + awayCode + "-" + homeCode).toggleClass("active");
                             setTimeout(function() {
@@ -985,6 +1019,7 @@
                                             var html = gameTemplateScript(responseData);
                                             $('#container-' + responseData.gameId).html(html);
 
+
                                             //console.log("response.data.updated: ", response.data.updated)
                                             if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
                                             //moveBoxes(prediction.gameId);
@@ -993,6 +1028,31 @@
                                             $('#container-' + responseData.gameId).find('.prediction-btn').on('click', function(e) {
                                                 e.preventDefault();
                                                 submitUpdate(responseData.gameId);
+                                            })
+                                            
+                                            $('.fa-exclamation-triangle.total').mouseover(function(e) {
+                                                e.preventDefault();
+                                                $content = $(this).find('.warningTextTotal');
+                                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                                $content.show();
+                                            })
+                                            $('.fa-exclamation-triangle.spread').mouseover(function(e) {
+                                                e.preventDefault();
+                                                $content = $(this).find('.warningTextSpread');
+                                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                                $content.show();
+                                            })
+                                            $('.fa-exclamation-triangle.total').mouseout(function(e) {
+                                                e.preventDefault();
+                                                $content = $(this).find('.warningTextTotal');
+                                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                                $content.hide();
+                                            })
+                                            $('.fa-exclamation-triangle.spread').mouseout(function(e) {
+                                                e.preventDefault();
+                                                $content = $(this).find('.warningTextSpread');
+                                                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+                                                $content.hide();
                                             })
                                             setTimeout(function() {
                                                 $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');

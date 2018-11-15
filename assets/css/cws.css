@@ -530,6 +530,17 @@ color: #fff;
     margin-bottom: 0;
 }
 
+.fa-exclamation-triangle {
+    color: #B22438;
+}
+
+.warningTextSpread {
+    color: #B22438
+}
+.warningTextTotal {
+    color: #B22438
+}
+
 /* Index Progress Bar */
 
 
@@ -679,3 +690,4 @@ color: #fff;
     display: none;
     font-size: 0.8em;
 }
+
