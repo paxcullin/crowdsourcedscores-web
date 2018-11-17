@@ -239,6 +239,19 @@
         <pubDate>Wed, 7 Nov 2018 23:30:00 GMT</pubDate>
         <itunes:duration>1:20:26</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 11 - Week 10 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>The crowd had a bit of a mixed bag this week, but it is still a fair bit above water. Chris and Paul talk through the crowd's Week 10 performance in each game while enjoying some Chuckanut Bay bourbon.</description>
+        <itunes:subtitle>The crowd had a bit of a mixed bag this week, but it is still a fair bit above water. Chris and Paul talk through the crowd's Week 10 performance in each game while enjoying some Chuckanut Bay bourbon.</itunes:subtitle>
+        <itunes:episode>17</itunes:episode>
+        <itunes:summary>The crowd had a bit of a mixed bag this week, but it is still a fair bit above water. Chris and Paul talk through the crowd's Week 10 performance in each game while enjoying some Chuckanut Bay bourbon.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode11.mp3" length="1:20:15" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode11.mp3</guid>
+        <pubDate>Wed, 14 Nov 2018 00:30:00 GMT</pubDate>
+        <itunes:duration>1:20:15</itunes:duration>
+      </item>
     
   </channel>
   </rss>

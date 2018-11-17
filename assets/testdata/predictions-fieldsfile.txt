@@ -16,3 +16,4 @@ total
 submitted
 userId
 predictionScore
+preferred_username
