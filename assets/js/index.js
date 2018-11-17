@@ -61,38 +61,42 @@ function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
     var weeklyRank = 1;
     var weeklyUsersArray = [];
     var weeklyDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
-    console.log('buildWeeklyTable weeklyUsersInformation: ', weeklyUsersInformation)
-    for (var i=0; i < weeklyUsersInformation.length; i++) {
-        // set up user array to filter out users with no score for the week
-        
-        var userObject = weeklyUsersInformation[i];
-        console.log('userObject: ', userObject)
-        if (userObject.results.weekly) {
-            var usersHTML = "";
-            var userWeeklyResults = userObject.results.weekly;
-            usersHTML = '<td data-th="Rank">' + weeklyRank + '</td>';
-            if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
-                usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
-            } else {
-                usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+    if (weeklyUsersInformation.length === 0) {
+        weeklyDivHTML += '<tr><td colspan="4">No results for the week. Stay tuned!</td></tbody></table>';
+    } else {
+        console.log('buildWeeklyTable weeklyUsersInformation: ', weeklyUsersInformation)
+        for (var i=0; i < weeklyUsersInformation.length; i++) {
+            // set up user array to filter out users with no score for the week
+            
+            var userObject = weeklyUsersInformation[i];
+            console.log('userObject: ', userObject)
+            if (userObject.results.weekly) {
+                var usersHTML = "";
+                var userWeeklyResults = userObject.results.weekly;
+                usersHTML = '<td data-th="Rank">' + weeklyRank + '</td>';
+                if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
+                    usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
+                } else {
+                    usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+                }
+                usersHTML += "<td data-th=\"Record\">"
+                    + "S/U: " + userWeeklyResults.winner.correct + "<br>"
+                    + "ATS: " + userWeeklyResults.spread.correct + "<br>"
+                    + "O/U: " + userWeeklyResults.total.correct + "</td>"
+                    + "<td data-th=\"Score\">" + userWeeklyResults.predictionScore + "</td>"
+                            
+                var rowClass = "";
+                if ((i%2) === 0) {
+                    rowClass = ' alt-tr'
+                }
+                weeklyDivHTML += '<tr class="' + rowClass + '">' + usersHTML + '</tr>';
+                if (i === weeklyUsersInformation.length - 1) {
+                    weeklyDivHTML += "</tbody></table>";
+                }
+                weeklyRank += 1;
             }
-            usersHTML += "<td data-th=\"Record\">"
-                + "S/U: " + userWeeklyResults.winner.correct + "<br>"
-                + "ATS: " + userWeeklyResults.spread.correct + "<br>"
-                + "O/U: " + userWeeklyResults.total.correct + "</td>"
-                + "<td data-th=\"Score\">" + userWeeklyResults.predictionScore + "</td>"
-                        
-            var rowClass = "";
-            if ((i%2) === 0) {
-                rowClass = ' alt-tr'
-            }
-            weeklyDivHTML += '<tr class="' + rowClass + '">' + usersHTML + '</tr>';
-            if (i === weeklyUsersInformation.length - 1) {
-                weeklyDivHTML += "</tbody></table>";
-            }
-            weeklyRank += 1;
         }
-    }
+    } // ends if-else for no results yet
 
     $("#weeklyUsers").html(weeklyDivHTML);
 
