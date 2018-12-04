@@ -206,7 +206,7 @@ function getAllGroups(limit, callback) {
     })
 }
 
-function getAllUsers(limit, callback) {
+function getAllUsers(limit, gameWeek, callback) {
     useToken(function(token) {
         var allUsersQuery = "";
         if (limit || gameWeek) {
