@@ -861,7 +861,7 @@
                             formatGameTimes([responseData]);
                             
                             var gameRenderer = Handlebars.templates['template.gameNFL'];
-                            var gameResult = gameRenderer({responseData});
+                            var gameResult = gameRenderer(responseData);
 
                             $('#container-' + responseData.gameId).html(gameResult);
 
@@ -1265,10 +1265,13 @@
                                 ],
                                 onEnd: function() {
                                     localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                                },
+                                onClose: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                                 }
                             };
                             var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
-                            if (localTourState === true) {
+                            if (localTourState === 'true' || localTourState === true) {
                                 console.log("logged out user has taken the tour");
                             } else {
                                 hopscotch.startTour(anonymousTour);
