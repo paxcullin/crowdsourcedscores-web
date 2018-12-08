@@ -69,7 +69,6 @@ function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
             // set up user array to filter out users with no score for the week
             
             var userObject = weeklyUsersInformation[i];
-            console.log('userObject: ', userObject)
             if (userObject.results.weekly) {
                 var usersHTML = "";
                 var userWeeklyResults = userObject.results.weekly;
@@ -322,7 +321,7 @@ function createCrowd() {
         if ($("#crowdPublic").is(":checked")) {
             public = false;
         }
-        var crowdParams = "{\"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"nfl\", \"year\": 2018 }";
+        var crowdParams = "{\"crowdName\": \"" + $("#crowdName").val() + "\", \"public\": " + public + ", \"sport\": \"" + gameWeekData.sport + "\", \"year\": 2018 }";
         console.log("crowdParams: ", crowdParams)
         if ($("crowdPassword").val() !== null) {
             crowdParams.crowdPassword = $("crowdPassword").val()

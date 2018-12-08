@@ -61,6 +61,7 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
         <script src="assets/js/template.gameNFL.js" type="text/javascript"></script>
+        <script src="assets/js/template.gameNCAAF.js" type="text/javascript"></script>
         <!--Cognito Code-->
         <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
         <!--End Cognito Code-->
@@ -561,6 +562,7 @@
 
         Handlebars.registerPartial('game', $("#game-template").html());
         Handlebars.registerPartial('gameTemplate', Handlebars.templates['template.gameNFL'])
+        Handlebars.registerPartial('gameNCAAFTemplate', Handlebars.templates['template.gameNCAAF'])
             </script>
 
 
@@ -571,6 +573,23 @@
                 {{#each this}}
                     <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
                         {{> gameTemplate}}
+                    </div>
+                {{/each}}
+                <div class="clearfix"></div>
+            {{/grouped_each}}
+        </div>
+        <div id="lastRow" class="row"></div>
+        </div>
+    </script>
+
+    
+    <script id="gamesNCAA-template" type="text/x-handlebars-template">
+        <div class="container">
+            <div class="row">
+            {{#grouped_each 2 games}}
+                {{#each this}}
+                    <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
+                        {{> gameNCAAFTemplate}}
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>
@@ -807,6 +826,7 @@
                 gameId: parseInt($prediction.attr('data-game-id')),
                 gameWeek: parseInt($prediction.attr('data-game-week')),
                 year: parseInt($prediction.attr('data-game-year')),
+                sport: parseInt($prediction.attr('data-game-sport')),
                 awayTeam: {
                     code: $prediction.attr('data-away-code'),
                     fullName: $prediction.attr('data-away-name'),
@@ -859,8 +879,11 @@
                             messageElm.html(messageHtml)
                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                             formatGameTimes([responseData]);
-                            
-                            var gameRenderer = Handlebars.templates['template.gameNFL'];
+                            var gameTemplateId = 'template.gameNFL';
+                            if (responseData.sport === 'ncaaf') {
+                                gameTemplateId = 'template.gameNCAAF';
+                            }
+                            var gameRenderer = Handlebars.templates[gameTemplateId];
                             var gameResult = gameRenderer(responseData);
 
                             $('#container-' + responseData.gameId).html(gameResult);
@@ -924,14 +947,17 @@
         }
 
         var setGameWeek = function (gameWeekData) {
-
+            console.log('gameWeekData :', gameWeekData);
             useToken(function(token) {
+                if (!gameWeekData.sport) {
+                    gameWeekData.sport = 'nfl';
+                }
                 if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
                 }
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games" + compareQuery;
+                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games" + compareQuery;
                 var setGameWeekGetOptions = 
                     {     
                         method: "GET",
@@ -941,7 +967,7 @@
                     }
                     // creating anonymous API call for games
                 if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
+                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
                     setGameWeekGetOptions = {     
                         method: "GET"
                     }
@@ -964,7 +990,11 @@
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
-                        var template = $('#games-template').html();
+                        var templateId = '#games-template';
+                        if (gameWeekData.sport === 'ncaaf') {
+                            templateId = '#gamesNCAA-template';
+                        }
+                        var template = $(templateId).html();
                         var templateScript = Handlebars.compile(template);
                         var html = templateScript(games);
                         $('#games').html(html);
@@ -978,6 +1008,7 @@
                                 gameId: parseInt($prediction.attr('data-game-id')),
                                 gameWeek: parseInt($prediction.attr('data-game-week')),
                                 year: parseInt($prediction.attr('data-game-year')),
+                                sport: parseInt($prediction.attr('data-game-sport')),
                                 awayTeam: {
                                     code: $prediction.attr('data-away-code'),
                                     fullName: $prediction.attr('data-away-name'),
@@ -1031,7 +1062,12 @@
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             formatGameTimes([responseData]);
                                             console.log('responseData after format: ', responseData);
-                                            var gameRenderer = Handlebars.templates['template.gameNFL'];
+                                            
+                                            var gameTemplateId = 'template.gameNFL';
+                                            if (responseData.sport === 'ncaaf') {
+                                                gameTemplateId = 'template.gameNCAAF';
+                                            }
+                                            var gameRenderer = Handlebars.templates[gameTemplateId];
                                             var gameResult = gameRenderer(responseData);
                                             $('#container-' + responseData.gameId).html(gameResult);
                                             
@@ -1284,7 +1320,7 @@
                         getWeeklyCrowdResults(crowdResultsData.games)
                         getAllGroups(10);
                         getAllUsers(10);
-                        getWeeklyUsers(10, gameWeekData.week)
+                        getWeeklyUsers(null, gameWeekData.week)
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
@@ -1356,7 +1392,8 @@
 
         var gameWeekData = {};
         $(document).ready(function () {
-
+            
+            var extendedProfileData = {};
             if (cognitoUser) {
                 showLogoutButton();
                 getExtendedProfile();
@@ -1376,7 +1413,7 @@
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
                 getAllUsers(10,gameWeekData.week);
-                getWeeklyUsers(10, gameWeekData.week);
+                getWeeklyUsers(null, gameWeekData.week);
                 //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
@@ -1387,6 +1424,7 @@
                     if (data) {
                         gameWeekData.week = data.week;
                         gameWeekData.year = parseInt($('#dropdown span').text);
+                        gameWeekData.sport = getUrlParameter('sport');
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
@@ -1394,7 +1432,7 @@
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
-                        setGameWeek(data);
+                        setGameWeek(gameWeekData);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
                 });
@@ -1820,7 +1858,8 @@
                 </div>
 
                 <div class="row" id="feedbackDiv">
-                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
                     <!-- <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div> -->
                     <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                     <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
@@ -2221,7 +2260,6 @@
     <script type="text/javascript" src="assets/js/index.js"></script>
     <script type="text/javascript" src="assets/js/profile.js"></script>
     <script type="text/javascript">
-        var extendedProfileData = {};
         function getExtendedProfile() {
             useToken(function(token) {
                 var getProfileOptions = {
@@ -2236,6 +2274,7 @@
                 })
                 .then(function(extProfileResponseJSON) {
                     extendedProfileData = extProfileResponseJSON;
+                    console.log('extendedProfileData :', extendedProfileData);
                 })
             });
         };
