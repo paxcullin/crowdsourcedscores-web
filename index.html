@@ -85,6 +85,14 @@
                                     <span class="visible-md">{{{awayTeam.shortName}}} vs. {{{homeTeam.shortName}}}</span>
                                 </a>
                             </h4>
+                            {{#if prediction}}
+                                {{#ifCond prediction.total '===' odds.total}}
+                                    <sup><i class="fas fa-exclamation-triangle total"></i></sup>
+                                {{/ifCond}}
+                                {{#ifCond prediction.spread '===' odds.spread}}
+                                    <sup><i class="fas fa-exclamation-triangle spread"></i></sup>
+                                {{/ifCond}}
+                            {{/if}}
                         </div>
                         <div id="{{{awayTeam.code}}}-{{{homeTeam.code}}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                             <div class="panel-body">
@@ -94,8 +102,10 @@
                                             <div class="prediction-message" data-game-id="{{{gameId}}}"></div>
                                             <div>
                                                 <div class="form-group">
-                                                    <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}"><span style="float:left">{{startDateTime}}<br/>{{tvStation}}</span>{{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}</div>
-                                                    
+                                                    <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}">
+                                                        <span style="float:left">{{startDateTime}}<br/>{{tvStation}}</span>
+                                                        {{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -585,6 +595,10 @@
                 if (view === "overall") {
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
                     getOverallCrowdResults(leaderboardData.overallRecord);
+                } else {
+                    console.log('[ { crowd: { results: leaderboardData.weeklyRecord } }]: ', [ { crowd: { results: leaderboardData.weeklyRecord } }])
+
+                    getWeeklyCrowdResults([ { crowd: { results: leaderboardData.weeklyRecord[window.gameWeekData.week-1] } }]);
                 }
                 var options = {
                     weekly: {

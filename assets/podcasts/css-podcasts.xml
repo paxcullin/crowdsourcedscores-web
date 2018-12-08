@@ -252,6 +252,45 @@
         <pubDate>Wed, 14 Nov 2018 00:30:00 GMT</pubDate>
         <itunes:duration>1:20:15</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 12 - Week 11 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Terrific 12 charter member Bryan Cole (thank you Bryan!) review the Week 11 crowd performance while enjoying some Clyde May's Straight Bourbon Whiskey.</description>
+        <itunes:subtitle>Paul and Terrific 12 charter member Bryan Cole (thank you Bryan!) review the Week 11 crowd performance while enjoying some Clyde May's Straight Bourbon Whiskey.</itunes:subtitle>
+        <itunes:episode>18</itunes:episode>
+        <itunes:summary>Paul and Terrific 12 charter member Bryan Cole (thank you Bryan!) review the Week 11 crowd performance while enjoying some Clyde May's Straight Bourbon Whiskey.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode12-r1.mp3" length="44:01" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode12-r1.mp3</guid>
+        <pubDate>Wed, 21 Nov 2018 20:00:00 GMT</pubDate>
+        <itunes:duration>44:01</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 13 - Week 12 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Jordan, another Terrific 12 charter member (thank you Jordan!), and Chris review a good week by the crowd capped by some drama at the top of the leaderboard while also sampling some Ghost Owl Whiskey.</description>
+        <itunes:subtitle>Jordan, another Terrific 12 charter member (thank you Jordan!), and Chris review a good week by the crowd capped by some drama at the top of the leaderboard while also sampling some Ghost Owl Whiskey.</itunes:subtitle>
+        <itunes:episode>19</itunes:episode>
+        <itunes:summary>Jordan, another Terrific 12 charter member (thank you Jordan!), and Chris review a good week by the crowd capped by some drama at the top of the leaderboard while also sampling some Ghost Owl Whiskey.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode13.mp3" length="36:24" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode13.mp3</guid>
+        <pubDate>Tues, 27 Nov 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>36:24</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 14 - Week 13 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris are back at full strength, just in time for a full slate of games in Week 13. While sampling some more Ghost Owl Whiskey, Paul and Chris cover a solid performance by the crowd despite some crazy results.</description>
+        <itunes:subtitle>Paul and Chris are back at full strength, just in time for a full slate of games in Week 13. While sampling some more Ghost Owl Whiskey, Paul and Chris cover a solid performance by the crowd despite some crazy results.</itunes:subtitle>
+        <itunes:episode>20</itunes:episode>
+        <itunes:summary>Paul and Chris are back at full strength, just in time for a full slate of games in Week 13. While sampling some more Ghost Owl Whiskey, Paul and Chris cover a solid performance by the crowd despite some crazy results.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode14.mp3" length="1:23:15" type="audio/mpeg"/>
+        <guid>https://s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode14.mp3</guid>
+        <pubDate>Tues, 4 Dec 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>1:23:15</itunes:duration>
+      </item>
     
   </channel>
   </rss>

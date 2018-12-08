@@ -1,1 +1,3 @@
 mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password=*dZ2HaWN --out=assets/testdata/2018-preseasonweek3-games.json --query='{"gameWeek":-2,"year":2018}'
+
+mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=assets/testdata/2018-week11-predictions.csv --query='{"gameWeek":11,"year":2018}' --fieldFile=predictions-fieldsFile
