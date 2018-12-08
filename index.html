@@ -27,7 +27,8 @@
 
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-
+    <script src="assets/js/handlebars.runtime-v4.0.12.js" type="text/javascript"></script>
+    
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -59,6 +60,8 @@
     <!-- Handlebars.js -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+        <script src="assets/js/template.gameNFL.js" type="text/javascript"></script>
+        <script src="assets/js/template.gameNCAAF.js" type="text/javascript"></script>
         <!--Cognito Code-->
         <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
         <!--End Cognito Code-->
@@ -83,7 +86,14 @@
                                 <a role="button" data-toggle="collapse" data-parent="#{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{awayTeam.code}}}-{{{homeTeam.code}}}">
                                     <span class="hidden-md">{{{awayTeam.fullName}}} vs. {{{homeTeam.fullName}}}</span>
                                     <span class="visible-md">{{{awayTeam.shortName}}} vs. {{{homeTeam.shortName}}}</span>
+                                    {{#ifCond prediction.total '===' odds.total}}
+                                        <i class="fas fa-exclamation-triangle total"></i>
+                                    {{/ifCond}}
+                                    {{#ifCond prediction.spread '===' odds.spread}}
+                                        <i class="fas fa-exclamation-triangle spread"></i>
+                                    {{/ifCond}}
                                 </a>
+
                             </h4>
                             {{#if prediction}}
                                 {{#ifCond prediction.total '===' odds.total}}
@@ -104,7 +114,9 @@
                                                 <div class="form-group">
                                                     <div class="gameHeader{{#if prediction}} gameHeaderPredicted{{/if}}{{#unless prediction}} gameHeaderNotPredicted{{/unless}}">
                                                         <span style="float:left">{{startDateTime}}<br/>{{tvStation}}</span>
-                                                        {{#if results}}<span class="finalRow" style="float: right">FINAL</span>{{/if}}
+                                                        {{#if results}}
+                                                            <span class="finalRow" style="float: right">FINAL</span>
+                                                        {{/if}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -557,6 +569,8 @@
 
 
         Handlebars.registerPartial('game', $("#game-template").html());
+        Handlebars.registerPartial('gameTemplate', Handlebars.templates['template.gameNFL'])
+        Handlebars.registerPartial('gameNCAAFTemplate', Handlebars.templates['template.gameNCAAF'])
             </script>
 
 
@@ -566,7 +580,24 @@
             {{#grouped_each 2 games}}
                 {{#each this}}
                     <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
-                        {{> game}}
+                        {{> gameTemplate}}
+                    </div>
+                {{/each}}
+                <div class="clearfix"></div>
+            {{/grouped_each}}
+        </div>
+        <div id="lastRow" class="row"></div>
+        </div>
+    </script>
+
+    
+    <script id="gamesNCAA-template" type="text/x-handlebars-template">
+        <div class="container">
+            <div class="row">
+            {{#grouped_each 2 games}}
+                {{#each this}}
+                    <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
+                        {{> gameNCAAFTemplate}}
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>
@@ -651,7 +682,6 @@
                         //     //return $content.is(":visible") ? "" : "";
                         // });
                     });
-                    $("#switchChartButtons").toggle();
                     firstChartLoad = false;
                 }
             }
@@ -808,6 +838,7 @@
                 gameId: parseInt($prediction.attr('data-game-id')),
                 gameWeek: parseInt($prediction.attr('data-game-week')),
                 year: parseInt($prediction.attr('data-game-year')),
+                sport: parseInt($prediction.attr('data-game-sport')),
                 awayTeam: {
                     code: $prediction.attr('data-away-code'),
                     fullName: $prediction.attr('data-away-name'),
@@ -859,12 +890,20 @@
                             var messageHtml = statusMessage('success', response.data.message);
                             messageElm.html(messageHtml)
                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
-                            var gameTemplate = $('#game-template').html();
-                            var gameTemplateScript = Handlebars.compile(gameTemplate);
                             formatGameTimes([responseData]);
-                            
-                            var html = gameTemplateScript(responseData);
-                            $('#container-' + responseData.gameId).html(html);
+                            var gameTemplateId = 'template.gameNFL';
+                            if (responseData.sport === 'ncaaf') {
+                                gameTemplateId = 'template.gameNCAAF';
+                            }
+                            var gameRenderer = Handlebars.templates[gameTemplateId];
+                            var gameResult = gameRenderer(responseData);
+
+                            $('#container-' + responseData.gameId).html(gameResult);
+
+                            $('#container-' + responseData.gameId).find('.prediction-btn').on('click', function(e) {
+                                e.preventDefault();
+                                submitUpdate(responseData.gameId);
+                            });
                             
                             $('.fa-exclamation-triangle.total').mouseover(function(e) {
                                 e.preventDefault();
@@ -920,14 +959,17 @@
         }
 
         var setGameWeek = function (gameWeekData) {
-
+            console.log('gameWeekData :', gameWeekData);
             useToken(function(token) {
+                if (!gameWeekData.sport) {
+                    gameWeekData.sport = 'nfl';
+                }
                 if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
                 }
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games" + compareQuery;
+                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games" + compareQuery;
                 var setGameWeekGetOptions = 
                     {     
                         method: "GET",
@@ -937,7 +979,7 @@
                     }
                     // creating anonymous API call for games
                 if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
+                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
                     setGameWeekGetOptions = {     
                         method: "GET"
                     }
@@ -950,7 +992,6 @@
                     userInformation.predictionsSubmitted = data.predictionsSubmitted;
                     var totalGames = data.games.length;
                     if (totalGames === 0) {
-
                         if (!gameWeekData.year) gameWeekData.year = 2018;
                         $("#games").html("<div>Sorry, there are no games available for that week. Please choose a different week to try again.</div>");
                         $("#games-loading-icon").css("display","none")
@@ -961,7 +1002,11 @@
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
-                        var template = $('#games-template').html();
+                        var templateId = '#games-template';
+                        if (gameWeekData.sport === 'ncaaf') {
+                            templateId = '#gamesNCAA-template';
+                        }
+                        var template = $(templateId).html();
                         var templateScript = Handlebars.compile(template);
                         var html = templateScript(games);
                         $('#games').html(html);
@@ -975,6 +1020,7 @@
                                 gameId: parseInt($prediction.attr('data-game-id')),
                                 gameWeek: parseInt($prediction.attr('data-game-week')),
                                 year: parseInt($prediction.attr('data-game-year')),
+                                sport: parseInt($prediction.attr('data-game-sport')),
                                 awayTeam: {
                                     code: $prediction.attr('data-away-code'),
                                     fullName: $prediction.attr('data-away-name'),
@@ -1026,19 +1072,19 @@
                                             var messageHtml = statusMessage('success', response.data.message);
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
-                                            var gameTemplate = $('#game-template').html();
-                                            var gameTemplateScript = Handlebars.compile(gameTemplate);
                                             formatGameTimes([responseData]);
                                             console.log('responseData after format: ', responseData);
-                                            var html = gameTemplateScript(responseData);
-                                            $('#container-' + responseData.gameId).html(html);
-
-
-                                            //console.log("response.data.updated: ", response.data.updated)
+                                            
+                                            var gameTemplateId = 'template.gameNFL';
+                                            if (responseData.sport === 'ncaaf') {
+                                                gameTemplateId = 'template.gameNCAAF';
+                                            }
+                                            var gameRenderer = Handlebars.templates[gameTemplateId];
+                                            var gameResult = gameRenderer(responseData);
+                                            $('#container-' + responseData.gameId).html(gameResult);
+                                            
                                             if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
-                                            //moveBoxes(prediction.gameId);
-
-                                            //$("#" + awayCode + "-" + homeCode).toggleClass("active");
+                                            
                                             $('#container-' + responseData.gameId).find('.prediction-btn').on('click', function(e) {
                                                 e.preventDefault();
                                                 submitUpdate(responseData.gameId);
@@ -1267,10 +1313,13 @@
                                 ],
                                 onEnd: function() {
                                     localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                                },
+                                onClose: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                                 }
                             };
                             var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
-                            if (localTourState === true) {
+                            if (localTourState === 'true' || localTourState === true) {
                                 console.log("logged out user has taken the tour");
                             } else {
                                 hopscotch.startTour(anonymousTour);
@@ -1283,7 +1332,7 @@
                         getWeeklyCrowdResults(crowdResultsData.games)
                         getAllGroups(10);
                         getAllUsers(10);
-                        getWeeklyUsers(10, gameWeekData.week)
+                        getWeeklyUsers(null, gameWeekData.week)
                         return crowdResultsData;
                     })
                     .then(function(chartData) {
@@ -1293,16 +1342,6 @@
                     });
             });
         };
-
-        //jQuery for animating boxes after they're predicted
-
-            function moveBoxes(gameId) {
-                $("#container-" + gameId).animate({opacity: '0.1'}, 1500, function() {
-                    var predictedGame = $("#container-" + gameId).detach();
-                    $("#lastRow").append(predictedGame);
-                });
-                $("#container-" + gameId).animate({opacity: '1.0'}, 1500);
-            }
 
         var submitPrediction = function (prediction, btn) {
             useToken(function(token) {
@@ -1343,9 +1382,6 @@
                     });
                 var predictionElm = $('#games').find("[data-game-id='" + prediction.gameId + "']");
                 var messageElm = predictionElm.find(".prediction-message");
-                // ,
-                //             statusCode: {
-                //             }
             });
         };
 
@@ -1368,9 +1404,11 @@
 
         var gameWeekData = {};
         $(document).ready(function () {
-
+            
+            var extendedProfileData = {};
             if (cognitoUser) {
                 showLogoutButton();
+                getExtendedProfile();
             } else {
                 showLoginButton();
             }
@@ -1387,6 +1425,7 @@
                 $(this).parent('li').addClass('active');
                 setGameWeek(gameWeekData);
                 getAllUsers(10,gameWeekData.week);
+                getWeeklyUsers(null, gameWeekData.week);
                 //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
             });
 
@@ -1397,6 +1436,7 @@
                     if (data) {
                         gameWeekData.week = data.week;
                         gameWeekData.year = parseInt($('#dropdown span').text);
+                        gameWeekData.sport = getUrlParameter('sport');
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
@@ -1404,7 +1444,7 @@
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
-                        setGameWeek(data);
+                        setGameWeek(gameWeekData);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
                 });
@@ -1469,7 +1509,6 @@
                         //return $content.is(":visible") ? "" : "";
                     });
                 });
-                $("#switchChartButtons").toggle();
             });
         });
 
@@ -1748,49 +1787,7 @@
         <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
     <div class="main">
         <div class="container">
-            <div class="row">
-                <div class="navbar navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <div class="header-icon"><a href="/"><img src="https://crowdsourcedscores.files.wordpress.com/2016/11/cropped-css-logo-footballleft-webres-1300px.jpg?w=520" alt="Crowd Wisdom Sports"></a></div>
-                        <div class="navbar-header"><a href="/" class="navbar-brand"><span class="hidden-md">Crowd Wisdom Sports</span><span class="visible-md">CW Sports</span></a>
-                        <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        </div>
-                        <div id="navbar-main" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
-                            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="leaderboards">Leaderboards<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li style="text-align: center"><a href="/crowd.html"><span class="glyphicons glyphicons-group"></span> Groups</a></li>
-                                    <li style="text-align: center"><a href="/leaderboard.html"><span><i class="glyphicon glyphicon-user"></i></span> Users</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="podcasts"><i class="fa fa-headphones" aria-hidden="true"></i> Podcast<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li style="text-align: center">
-                                        <a target="_blank" href="https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/podcast-lrg.svg) no-repeat;width:133px;height:34px;background-size:contain;"><span style="height: 34px; width:133px; padding: 16px 0"></span></a>
-                                    </li>
-                                    <li style="text-align: center">
-                                        <a href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/stitcher-banner-88x31.jpg" width="88" height="31" alt="Listen to Stitcher"></a>
-                                    </li>
-                                    <li style="text-align: center">
-                                        <a target="_blank" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="profileName"><span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> Profile</a></li>
-                                    <li style="text-align: center"><button type="button" class="btn btn-default" id="btn-logout" onclick="logout()">Logout</button></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="navRow"></div>
             <div class="row topRow">
                 <div class="col-xs-7 col-sm-10">
                     <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>-->
@@ -1869,19 +1866,12 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="weeklyChart"></div>
-                        <div class="row" id="switchChartButtons">
-                            <div class="col-xs-6">
-                                <button id="weeklyChartButton">Weekly Results</button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button id="overallChartButton">Overall Accuracy</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="row" id="feedbackDiv">
-                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdsourcedscores.com">Send Feedback</a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
                     <!-- <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div> -->
                     <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                     <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
@@ -1932,6 +1922,14 @@
             </div>
 
             <div id="resultsContainer">
+                <div class="row" id="switchChartButtons">
+                    <div class="col-xs-6">
+                        <button id="weeklyChartButton">Weekly Results</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="overallChartButton">Overall Accuracy</button>
+                    </div>
+                </div>
                 <div class="row myResultsRow" id="myResultsRow">
                     <div class="col-xs-12 col-sm-1">
                         <span id="youHeader">You:</span>
@@ -2272,6 +2270,34 @@
     
     </script>
     <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/profile.js"></script>
+    <script type="text/javascript">
+        function getExtendedProfile() {
+            useToken(function(token) {
+                var getProfileOptions = {
+                    method: "GET",
+                    headers: {
+                        "Authorization": token
+                    }
+                }
+                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/extendedprofile", getProfileOptions)
+                .then(function(extProfileResponse) {
+                    return extProfileResponse.json()
+                })
+                .then(function(extProfileResponseJSON) {
+                    extendedProfileData = extProfileResponseJSON;
+                    console.log('extendedProfileData :', extendedProfileData);
+                })
+            });
+        };
+    </script>
+    <script type="text/javascript" src="assets/js/template.nav.js"></script>
+    <script type="text/javascript">
+        var navRenderer = Handlebars.templates['template.nav'];
+        var navResult = navRenderer({userInformation});
+
+        $("#navRow").html(navResult);
+    </script>
     <footer>
         Copyright &copy;2018 PCSM, LLC
     </footer>
