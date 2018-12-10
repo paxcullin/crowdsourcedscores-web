@@ -1767,6 +1767,45 @@
             </div>
         </div>
     </div>
+    <!--newsletter modal-->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+        <div class="row" id="newsletter-form-div">
+            <div class="col-xs-12">
+                <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                <div id="mc_embed_signup">
+                <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                    <h2>Get Weekly Reminders + a Bonus!</h2>
+                    <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
+                    <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
+                    <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div class="mc-field-group">
+                    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                </label>
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                </div>
+                <div class="mc-field-group">
+                    <label for="mce-FNAME">First Name (optional) </label>
+                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                </div>
+                <div class="mc-field-group">
+                    <label for="mce-LNAME">Last Name (optional) </label>
+                    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
+                    <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                    </div>
+                </form>
+                </div>
+                <scr{{!}}ipt type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></scr{{!}}ipt><scr{{!}}ipt type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</scr{{!}}ipt>
+            </div>
+        </div>
+    </div>
 
 <div class="wrapper">
         <!--<div class="header">-->
@@ -1800,20 +1839,6 @@
                         </div>
                         <ul id="loginUserResults"></ul>
                     </fieldset>-->
-
-                    <div id="dropdown" class="ddmenu">
-                    <span class="dropdownSelection">Select Week</span>
-                        <ul id="seasonSelector">
-                          <li><a href="#">2018</a></li>
-                          <li><a href="#">2017</a></li>
-                          <li><a href="#">2016</a></li>
-                        </ul>
-                      </div>
-                      <!-- <select class="dropdown" id="seasonSelectorOld">
-                        <option value="2018" selected>2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                    </select> -->
                 </div>
                 <div class="col-xs-5 col-sm-2">
                     <a href="https://twitter.com/crowdbrains" class="twitter-follow-button" data-show-count="false">Follow @crowdbrains</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
@@ -1821,138 +1846,7 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 weekSelector">
-
-                    <ul id="weekSelector" class="pagination pagination-info">
-                        <li><a href="javascript:void(0);" data-week="1">1</a></li>
-                        <li><a href="javascript:void(0);" data-week="2">2</a></li>
-                        <li><a href="javascript:void(0);" data-week="3">3</a></li>
-                        <li><a href="javascript:void(0);" data-week="4">4</a></li>
-                        <li><a href="javascript:void(0);" data-week="5">5</a></li>
-                        <li><a href="javascript:void(0);" data-week="6">6</a></li>
-                        <li><a href="javascript:void(0);" data-week="7">7</a></li>
-                        <li><a href="javascript:void(0);" data-week="8">8</a></li>
-                        <li><a href="javascript:void(0);" data-week="9">9</a></li>
-                        <li><a href="javascript:void(0);" data-week="10">10</a></li>
-                        <li><a href="javascript:void(0);" data-week="11">11</a></li>
-                        <li><a href="javascript:void(0);" data-week="12">12</a></li>
-                        <li><a href="javascript:void(0);" data-week="13">13</a></li>
-                        <li><a href="javascript:void(0);" data-week="14">14</a></li>
-                        <li><a href="javascript:void(0);" data-week="15">15</a></li>
-                        <li><a href="javascript:void(0);" data-week="16">16</a></li>
-                        <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                        <!-- <li><a href="javascript:void(0);" data-week="18">WC</a></li>
-                        <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
-                        <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                        <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
-                        <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="chartContainer" class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div id="weeklyChart"></div>
-                    </div>
-                </div>
-
-                <div class="row" id="feedbackDiv">
-                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
-                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
-                    <!-- <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div> -->
-                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
-                    <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
-                </div>
-                <div class="row" id="newsletter-form-div">
-                    <div class="col-xs-12">
-                        <!-- Begin MailChimp Signup Form -->
-                        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                        <style type="text/css">
-                            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
-                            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                        </style>
-                        <div id="mc_embed_signup">
-                        <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                            <div id="mc_embed_signup_scroll">
-                            <h2>Get Weekly Reminders + a Bonus!</h2>
-                            <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
-                            <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
-                            <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
-                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                        <div class="mc-field-group">
-                            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                        </label>
-                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-FNAME">First Name (optional) </label>
-                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-LNAME">Last Name (optional) </label>
-                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                        </div>
-                            <div id="mce-responses" class="clear">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
-                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
-                            <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                            </div>
-                        </form>
-                        </div>
-                        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-                        <!--End mc_embed_signup-->
-                    </div>
-                </div>
-            </div>
-
-            <div id="resultsContainer">
-                <div class="row" id="switchChartButtons">
-                    <div class="col-xs-6">
-                        <button id="weeklyChartButton">Weekly Results</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button id="overallChartButton">Overall Accuracy</button>
-                    </div>
-                </div>
-                <div class="row myResultsRow" id="myResultsRow">
-                    <div class="col-xs-12 col-sm-1">
-                        <span id="youHeader">You:</span>
-                    </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="mySpreadResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="myTotalResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="myPredictionScore"></span>
-                    </div>
-                </div>
-                <div class="row crowdResultsRow" id="crowdResultsRow">
-                    <div class="col-xs-12 col-sm-1">
-                        <span id="crowdHeader">Crowd:</span>
-                    </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="crowdSpreadResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="crowdTotalResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="crowdPredictionScore"></span>
-                    </div>
-                </div>
-            </div>
+            <div id="sportSpecificNavContainer"></div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                         <div class="cont">
@@ -2280,11 +2174,18 @@
         };
     </script>
     <script type="text/javascript" src="assets/js/template.nav.js"></script>
+    <script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
-        var navResult = navRenderer({userInformation});
+        var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
 
         $("#navRow").html(navResult);
+
+        
+        var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
+        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
+
+        $("#sportSpecificNavRow").html(sportSpecificNavResult);
     </script>
     <footer>
         Copyright &copy;2018 PCSM, LLC

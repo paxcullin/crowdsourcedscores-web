@@ -1,0 +1,109 @@
+            <div class="row">
+            {{#ifCond sport '===' 'nfl'}}
+                <div id="dropdown" class="ddmenu">
+                    <span class="dropdownSelection">Select Year</span>
+                    <ul id="seasonSelector">
+                        <li><a href="#">2018</a></li>
+                        <li><a href="#">2017</a></li>
+                        <li><a href="#">2016</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 weekSelector">
+
+                    <ul id="weekSelector" class="pagination pagination-info">
+                        <li><a href="javascript:void(0);" data-week="1">1</a></li>
+                        <li><a href="javascript:void(0);" data-week="2">2</a></li>
+                        <li><a href="javascript:void(0);" data-week="3">3</a></li>
+                        <li><a href="javascript:void(0);" data-week="4">4</a></li>
+                        <li><a href="javascript:void(0);" data-week="5">5</a></li>
+                        <li><a href="javascript:void(0);" data-week="6">6</a></li>
+                        <li><a href="javascript:void(0);" data-week="7">7</a></li>
+                        <li><a href="javascript:void(0);" data-week="8">8</a></li>
+                        <li><a href="javascript:void(0);" data-week="9">9</a></li>
+                        <li><a href="javascript:void(0);" data-week="10">10</a></li>
+                        <li><a href="javascript:void(0);" data-week="11">11</a></li>
+                        <li><a href="javascript:void(0);" data-week="12">12</a></li>
+                        <li><a href="javascript:void(0);" data-week="13">13</a></li>
+                        <li><a href="javascript:void(0);" data-week="14">14</a></li>
+                        <li><a href="javascript:void(0);" data-week="15">15</a></li>
+                        <li><a href="javascript:void(0);" data-week="16">16</a></li>
+                        <li><a href="javascript:void(0);" data-week="17">17</a></li>
+                        <!-- <li><a href="javascript:void(0);" data-week="18">WC</a></li>
+                        <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
+                        <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
+                        <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
+                        <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
+                    </ul>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaa-button','clicked');window.location=('?sport=ncaaf')">College Bowls</button>
+                </div>
+            {{/ifCond}}
+            {{#ifCond sport '===' 'ncaaf'}}
+                <div>
+                    <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/')">NFL Games</button>
+                </div>
+            {{/ifCond}}
+            </div>
+            <div id="chartContainer" class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="weeklyChart"></div>
+                    </div>
+                </div>
+
+                <div class="row" id="feedbackDiv">
+                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
+                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
+                </div>
+            </div>
+
+            
+
+            <div id="resultsContainer">
+                {{#ifCond sport '===' 'nfl'}}
+                <div class="row" id="switchChartButtons">
+                    <div class="col-xs-6">
+                        <button id="weeklyChartButton">Weekly Results</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="overallChartButton">Overall Accuracy</button>
+                    </div>
+                </div>
+                {{/ifCond}}
+                <div class="row myResultsRow" id="myResultsRow">
+                    <div class="col-xs-12 col-sm-1">
+                        <span id="youHeader">You:</span>
+                    </div>
+                    <div class="col-xs-3 col-sm-2">
+                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="mySpreadResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="myTotalResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="myPredictionScore"></span>
+                    </div>
+                </div>
+                <div class="row crowdResultsRow" id="crowdResultsRow">
+                    <div class="col-xs-12 col-sm-1">
+                        <span id="crowdHeader">Crowd:</span>
+                    </div>
+                    <div class="col-xs-3 col-sm-2">
+                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="crowdSpreadResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="crowdTotalResults"></span>
+                    </div>
+                    <div class="col-xs-3">
+                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="crowdPredictionScore"></span>
+                    </div>
+                </div>
+            </div>

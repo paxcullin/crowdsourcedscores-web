@@ -536,7 +536,9 @@
                 getGameWeek(function (data) {
                     if (data) {
                         week = data.week;
-                        year = parseInt(document.getElementById('seasonSelector').value);
+                        if (document.getElementById('seasonSelector')) { 
+                            year = parseInt(document.getElementById('seasonSelector').value);
+                        }
                         if (data.year) {
                             year = data.year;
                         }
@@ -582,50 +584,14 @@
         <div class="container">
             <div id="navRow"></div>
             <div class="row topRow">
-                <div class="col-xs-7 col-sm-10">
-                    <div id="loginButtons"></div>
-                    <select class="dropdown" id="seasonSelector">
-                        <option value="2018" selected>2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                    </select>
-                    <button id="buttonNCAA" onClick='setGameWeek({ sport: "ncaaf", year: 2018, week: 16 })' class="btn btn-primary">Show NCAA Games</button>
-                    <h4>Select Week</h4>
-                </div>
                 <div class="col-xs-5 col-sm-2">
                     <a href="https://twitter.com/sourcedscores" class="twitter-follow-button" data-show-count="false">Follow @sourcedscores</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
                     <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcrowdsourcedscores&width=20px&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId=220211628373013" width="160px" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 weekSelector">
-
-                    <ul id="weekSelector" class="pagination pagination-info">
-                        <li><a href="javascript:void(0);" data-week="1">1</a></li>
-                        <li><a href="javascript:void(0);" data-week="2">2</a></li>
-                        <li><a href="javascript:void(0);" data-week="3">3</a></li>
-                        <li><a href="javascript:void(0);" data-week="4">4</a></li>
-                        <li><a href="javascript:void(0);" data-week="5">5</a></li>
-                        <li><a href="javascript:void(0);" data-week="6">6</a></li>
-                        <li><a href="javascript:void(0);" data-week="7">7</a></li>
-                        <li><a href="javascript:void(0);" data-week="8">8</a></li>
-                        <li><a href="javascript:void(0);" data-week="9">9</a></li>
-                        <li><a href="javascript:void(0);" data-week="10">10</a></li>
-                        <li><a href="javascript:void(0);" data-week="11">11</a></li>
-                        <li><a href="javascript:void(0);" data-week="12">12</a></li>
-                        <li><a href="javascript:void(0);" data-week="13">13</a></li>
-                        <li><a href="javascript:void(0);" data-week="14">14</a></li>
-                        <li><a href="javascript:void(0);" data-week="15">15</a></li>
-                        <li><a href="javascript:void(0);" data-week="16">16</a></li>
-                        <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                        <li><a href="javascript:void(0);" data-week="18">WC</a></li>
-                        <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
-                        <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                        <li><a href="javascript:void(0);" data-week="21">SB</a></li>
-                        <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
-                    </ul>
-                </div>
+            <div id="sportSpecificNavRow">
+                
             </div>
         </div>
 
@@ -831,13 +797,24 @@
     var apiClient = apigClientFactory.newClient();
     
     </script>
+
     <script type="text/javascript" src="assets/js/index.js"></script>
     <script type="text/javascript" src="assets/js/template.nav.js"></script>
+    <script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
-        var navResult = navRenderer({userInformation});
-
+        var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
+        console.log('{userInformation: userInformation, sport: gameWeekData.sport}: ', {userInformation: userInformation, sport: gameWeekData.sport})
         $("#navRow").html(navResult);
+
+        
+        var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
+        if (!gameWeekData || !gameWeekData.sport) {
+            gameWeekData.sport = 'nfl';
+        }
+        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
+
+        $("#sportSpecificNavRow").html(sportSpecificNavResult);
     </script>
 </body>
 
