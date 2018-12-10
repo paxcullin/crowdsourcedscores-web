@@ -560,22 +560,30 @@
                                 <tr>
                                     <th class="Rank">Rank</th>
                                     <th class="Crowd">Crowd</th>
-                                    <th class="Weekly Totals">Weekly Totals</th>
+                                    {{#each weeks}}
+                                    <th class="W{{this}}">
+                                            <span class="hidden-xs">Week </span>
+                                            <span class="visible-xs">W</span>{{{this}}}
+                                    </th>
+                                    {{/each}}
                                     <th class="Score">Score</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {{#each this}}
+                            {{#each this.leaderboardGroups}}
                                 <tr {{rowColor @index}} id="container-{{{this.username}}}">
                                     <td data-th="Rank">{{{math @index '+' 1}}}</td>
                                     <td data-th="Crowd"><a href="/crowd.html?groupId={{{this.groupId}}}&year={{{this.year}}}&sport={{{this.sport}}}">{{{this.groupName}}}</a></td>
-                                        <td data-th="Weekly Totals">
-                                                {{#each this.results.weekly}}
-                                                    {{#ifCond gameWeek '>' 0}}
-                                                        Week {{{gameWeek}}}: Winners: {{{winner.correct}}} | Spread: {{{spread.correct}}} | Total: {{{total.correct}}} | <strong>Score: {{{predictionScore}}}</strong><br>
-                                                    {{/ifCond}}
-                                                {{/each}}
-                                        </td>
+                                    {{~#each ../weeks~}}
+                                    <td data-th="W{{this}}">
+                                            {{#each ../this.results.weekly}}
+                                                {{#ifCond this.gameWeek '===' ../this}}
+                                                    <strong>Score: {{{predictionScore}}}</strong><br>
+                                                    <span class="hidden-xs">S/U: {{{winner.correct}}} | ATS: {{{spread.correct}}} | O/U: {{{total.correct}}}</span>
+                                                {{/ifCond}}
+                                            {{/each}}
+                                    </td>
+                                    {{~/each}}
                                     <td data-th="Score">{{{this.results.overall.predictionScore}}}</td>
                                 </tr>
                             {{/each}}
@@ -611,7 +619,6 @@
                 })
                 .then(function (data) {
                     //data.year = 2017;
-                    console.log("gameWeek data: ", data);
                     gameWeekData.data = data.week;
                     gameWeekData.year = data.year;
                     return callback(data);
@@ -759,14 +766,39 @@
         var gameWeekDataObj = {};
 
         function buildCrowdLeaderboard(crowdLeaderboardData) {
+            function buildHTML(crowdLeaderboardData, weeks) {
+                console.log('crowdLeaderboardData: ', crowdLeaderboardData)
+                var crowdLeaderboard = {
+                    weeks: weeks,
+                    leaderboardGroups: crowdLeaderboardData
+                }
+                var crowdTemplate = $('#leaderboard-template').html();
+                var crowdTemplateScript = Handlebars.compile(crowdTemplate);
+                var html = crowdTemplateScript(crowdLeaderboard);
+                $('#allGroups').html(html);
+            }
+            if (window.gameWeekData.week) {
+                var gwData = {
+                    week: window.gameWeekData.week
+                }
+                var weeks = [];
+                for (var w = 1; w <= gwData.week; w++) {
+                    weeks.push(w)
+                }
+                //console.log('crowdLeaderboardData: ', crowdLeaderboardData);
+                
+                buildHTML(crowdLeaderboardData, weeks);
+            //console.log("crowdLeaderboardData: ", crowdLeaderboardData)
+            } else {
 
-        //console.log("crowdLeaderboardData: ", crowdLeaderboardData)
-        
-            var crowdLeaderboard = crowdLeaderboardData;
-            var crowdTemplate = $('#leaderboard-template').html();
-            var crowdTemplateScript = Handlebars.compile(crowdTemplate);
-            var html = crowdTemplateScript(crowdLeaderboard);
-            $('#allGroups').html(html);
+                getGameWeek(function(gwData) {
+                    var weeks = [];
+                    for (var w = 1; w <= gwData.week; w++) {
+                        weeks.push(w)
+                    }
+                    buildHTML(crowdLeaderboardData, weeks);
+                })
+            }
         }
         $(document).ready(function () {
 

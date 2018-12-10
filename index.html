@@ -95,6 +95,14 @@
                                 </a>
 
                             </h4>
+                            {{#if prediction}}
+                                {{#ifCond prediction.total '===' odds.total}}
+                                    <sup><i class="fas fa-exclamation-triangle total"></i></sup>
+                                {{/ifCond}}
+                                {{#ifCond prediction.spread '===' odds.spread}}
+                                    <sup><i class="fas fa-exclamation-triangle spread"></i></sup>
+                                {{/ifCond}}
+                            {{/if}}
                         </div>
                         <div id="{{{awayTeam.code}}}-{{{homeTeam.code}}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                             <div class="panel-body">
@@ -618,6 +626,10 @@
                 if (view === "overall") {
                     chartData = google.visualization.arrayToDataTable(overallResults.results);
                     getOverallCrowdResults(leaderboardData.overallRecord);
+                } else {
+                    console.log('[ { crowd: { results: leaderboardData.weeklyRecord } }]: ', [ { crowd: { results: leaderboardData.weeklyRecord } }])
+
+                    getWeeklyCrowdResults([ { crowd: { results: leaderboardData.weeklyRecord[window.gameWeekData.week-1] } }]);
                 }
                 var options = {
                     weekly: {
@@ -675,8 +687,12 @@
             }
 
         var getGameWeek = function (callback) {
+
+            if (!gameWeekData.sport) {
+                gameWeekData.sport = 'nfl';
+            }
             useToken(function(token) {
-                var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week";
+                var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/week";
                 var getGameWeekURLOptions = {
                     method: "GET",
                     headers: {
@@ -684,7 +700,7 @@
                     }
                 }
                 if (token === false) {
-                    getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/week/anon"
+                    getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/week/anon"
                     getGameWeekURLOptions = {
                         method: "GET"
                     }
@@ -826,7 +842,7 @@
                 gameId: parseInt($prediction.attr('data-game-id')),
                 gameWeek: parseInt($prediction.attr('data-game-week')),
                 year: parseInt($prediction.attr('data-game-year')),
-                sport: parseInt($prediction.attr('data-game-sport')),
+                sport: $prediction.attr('data-game-sport'),
                 awayTeam: {
                     code: $prediction.attr('data-away-code'),
                     fullName: $prediction.attr('data-away-name'),
@@ -1008,7 +1024,7 @@
                                 gameId: parseInt($prediction.attr('data-game-id')),
                                 gameWeek: parseInt($prediction.attr('data-game-week')),
                                 year: parseInt($prediction.attr('data-game-year')),
-                                sport: parseInt($prediction.attr('data-game-sport')),
+                                sport: $prediction.attr('data-game-sport'),
                                 awayTeam: {
                                     code: $prediction.attr('data-away-code'),
                                     fullName: $prediction.attr('data-away-name'),
@@ -1053,8 +1069,11 @@
                                             //console.log("200: ", response);
                                             btn.text('Update');
                                             ga('send','event','prediction','submitted',prediction.gameId);
+                                            console.log('response: ', response);
+                                            
 
                                             var responseData = response.data.game;
+                                            console.log('responseData: ', responseData);
                                             responseData.prediction = response.data.prediction;
                                             responseData.userAuthenticated = true;
                                             var messageHtml = statusMessage('success', response.data.message);
@@ -1517,7 +1536,8 @@
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
                     method: "GET",
                     headers: {
-                        'Authorization': leaderboardToken
+                        'Authorization': leaderboardToken,
+                        'sport': gameWeekData.sport
                     }
                 })
                 .then(function (response) {

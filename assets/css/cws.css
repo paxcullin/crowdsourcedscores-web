@@ -434,8 +434,8 @@ div#OR {
 /* Table CSS */
 @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 .rwd-table {
-margin: 1em 0;
-min-width: 300px;
+    margin: 1em 0;
+    min-width: 300px;
 }
 .rwd-table tr {
 border-top: 1px solid #ddd;
@@ -460,9 +460,13 @@ width: 6.5em;
 display: inline-block;
 }
 @media (min-width: 480px) {
-.rwd-table td:before {
-    display: none;
-}
+    .rwd-table {
+        max-width: 767px;
+        overflow-x: scroll;
+    }
+    .rwd-table td:before {
+        display: none;
+    }
 }
 .rwd-table th, .rwd-table td {
 text-align: left;
@@ -614,6 +618,10 @@ color: #fff;
         position: absolute;
         top: 8px;
     }
+    .rwd-table {
+        max-width: 959px;
+        overflow-x: scroll;
+    }
 }    
 
 .profileDetails {
@@ -685,6 +693,14 @@ color: #fff;
         margin: 3px 0;
     }
 }
+
+@media (min-width: 960px) {
+    .rwd-table {
+        max-width: 1167px;
+        overflow-x: scroll;
+    }
+}
+
 
 .leaderboard.userScoreDetails {
     display: none;

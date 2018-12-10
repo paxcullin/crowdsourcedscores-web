@@ -436,7 +436,6 @@
                         switch(response.status) {
                             case "200":
                                 console.log("200: ", response);
-                                ga('send','event','prediction','submitted',prediction.gameId);
                                 btn.text('Predict');
                                 var messageHtml = statusMessage('success', response.message);
                                 messageElm.html(messageHtml)
