@@ -248,6 +248,7 @@
 
             useToken(function(token) {
                 if (!gameWeekData.sport) gameWeekData.sport = 'nfl';
+                if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
                 var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
                 var setGameWeekGetOptions = 
                     {     
@@ -803,7 +804,6 @@
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
         var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
-        console.log('{userInformation: userInformation, sport: gameWeekData.sport}: ', {userInformation: userInformation, sport: gameWeekData.sport})
         $("#navRow").html(navResult);
 
         

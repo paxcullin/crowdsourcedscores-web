@@ -968,6 +968,7 @@
                 if (!gameWeekData.sport) {
                     gameWeekData.sport = 'nfl';
                 }
+                if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
                 if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
@@ -1444,6 +1445,7 @@
                         gameWeekData.week = data.week;
                         gameWeekData.year = parseInt($('#dropdown span').text);
                         gameWeekData.sport = getUrlParameter('sport');
+                        
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
