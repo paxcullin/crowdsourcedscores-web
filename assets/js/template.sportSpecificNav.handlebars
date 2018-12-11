@@ -35,12 +35,12 @@
                         <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
                     </ul>
                 </div>
-                <div>
+                <div style="padding-left: 40%">
                     <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaa-button','clicked');window.location=('?sport=ncaaf')">College Bowls</button>
                 </div>
             {{/ifCond}}
             {{#ifCond sport '===' 'ncaaf'}}
-                <div>
+                <div style="padding-left: 40%">
                     <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/')">NFL Games</button>
                 </div>
             {{/ifCond}}
@@ -55,7 +55,7 @@
                 <div class="row" id="feedbackDiv">
                     <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
                     <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
-                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
+                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"  data-toggle="modal" data-target="#newsletterModal"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                 </div>
             </div>
 

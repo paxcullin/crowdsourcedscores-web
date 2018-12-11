@@ -688,7 +688,7 @@
 
         var getGameWeek = function (callback) {
 
-            if (!gameWeekData.sport) {
+            if (!gameWeekData.sport || gameWeekData.sport === '') {
                 gameWeekData.sport = 'nfl';
             }
             useToken(function(token) {
@@ -1449,6 +1449,9 @@
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
+                        if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
+                        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
+                        $("#sportSpecificNavRow").html(sportSpecificNavResult);
                         var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
@@ -1470,21 +1473,10 @@
                 drawChart2($(this).attr("year"), $(this).attr("week"), "overall");
 
             });
-            $('#newsletter-signup-div').click(function () {
+            $('#newsletter-signup-div').click(function (e) {
                 ga('send','event','newsletter','viewed');
+                
 
-                $header = $(this);
-                //getting the next element
-                $content = $("#newsletter-form-div");
-                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-                $content.slideToggle(500, function () {
-                    //execute this after slideToggle is done
-                    //change text of header based on visibility of content div
-                    $header.text(function () {
-                        //change text based on condition
-                        //return $content.is(":visible") ? "" : "";
-                    });
-                });
             });
 
             $('#mc-embedded-subscribe').click(function () {
@@ -1538,8 +1530,7 @@
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
                     method: "GET",
                     headers: {
-                        'Authorization': leaderboardToken,
-                        'sport': gameWeekData.sport
+                        'Authorization': leaderboardToken
                     }
                 })
                 .then(function (response) {
@@ -1868,7 +1859,7 @@
 
                 </div>
             </div>
-            <div id="sportSpecificNavContainer"></div>
+            <div id="sportSpecificNavRow"></div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                         <div class="cont">
@@ -2202,12 +2193,8 @@
         var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
 
         $("#navRow").html(navResult);
-
-        
         var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
-        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
-
-        $("#sportSpecificNavRow").html(sportSpecificNavResult);
+        
     </script>
     <footer>
         Copyright &copy;2018 PCSM, LLC

@@ -148,6 +148,14 @@ text-rendering: optimizeLegibility;
 .topRow {
     padding-top: 90px;
 }
+.topRow div {
+    display: flex;
+    justify-content: space-evenly;
+}
+#sportSpecificNavRow {
+    margin: 0 15px;
+}
+
 .gameHeader {
     color:#000;
     padding: 3px 15px;
