@@ -899,6 +899,9 @@
                             if (responseData.sport === 'ncaaf') {
                                 gameTemplateId = 'template.gameNCAAF';
                             }
+                            //adding collegeBowlPremium to the response in order to display crowd data
+                            responseData.collegeBowlPremium = userInformation.attributes['custom:collegeBowlPremium'];
+                            console.log('responseData after format: ', responseData);
                             var gameRenderer = Handlebars.templates[gameTemplateId];
                             var gameResult = gameRenderer(responseData);
 
@@ -1081,14 +1084,18 @@
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             formatGameTimes([responseData]);
-                                            console.log('responseData after format: ', responseData);
+                                            
                                             
                                             var gameTemplateId = 'template.gameNFL';
                                             if (responseData.sport === 'ncaaf') {
                                                 gameTemplateId = 'template.gameNCAAF';
                                             }
                                             var gameRenderer = Handlebars.templates[gameTemplateId];
+                                            //adding collegeBowlPremium to the response in order to display crowd data
+                                            responseData.collegeBowlPremium = userInformation.attributes['custom:collegeBowlPremium'];
+                                            console.log('responseData after format: ', responseData);
                                             var gameResult = gameRenderer(responseData);
+                            
                                             $('#container-' + responseData.gameId).html(gameResult);
                                             
                                             if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
@@ -1229,7 +1236,7 @@
                                 {
                                     title: "Lots of ways to Compete",
                                     content: "<p>By making predictions, you are automatically competing against every other user in our Crowd.</p><p>But you can also create your own Mini-Crowd (coworkers, friends, enemies) and compete for bragging rights.</p><p>Each Mini-Crowd generates its own crowd wisdom, and you can watch how your Mini-Crowd's crowd wisdom performs against the others.</p><p>So you can always contribute to the crowd wisdom and help your Mini-Crowd compete!",
-                                    target: document.querySelector('#allGroupsHeader'),
+                                    target: document.querySelector('#allGroups'),
                                     placement: "top",
                                     onNext: function() {
                                         console.log("setTourState")
@@ -1242,10 +1249,13 @@
                                     localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
                                     updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
                                     ga('send','event','tour','step','ended');
+                                },
+                                onClose: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                                 }
                             };
                             var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
-                            if (parseInt(userInformation.attributes["custom:completedTour"]) === 1) {
+                            if (parseInt(userInformation.attributes["custom:completedTour"]) === 1 || localTourState === "true" || localTourState === true) {
                                 console.log("user has taken the tour");
                             } else {
                                 hopscotch.startTour(tour);
@@ -1423,19 +1433,6 @@
 
 
 
-            $('#weekSelector li').on('click', 'a', function () {
-                gameWeekData.year = parseInt($('#dropdown span').text());
-                if (!gameWeekData.year) gameWeekData.year = 2018;
-                gameWeekData.week = parseInt($(this).attr('data-week'));
-                $("#games-loading-icon").css("display","block")
-                $('#weekSelector li').removeClass('active');
-                $('#resultsContainer').css('display','none');
-                $(this).parent('li').addClass('active');
-                setGameWeek(gameWeekData);
-                getAllUsers(10,gameWeekData.week);
-                getWeeklyUsers(null, gameWeekData.week);
-                //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
-            });
 
             console.log("gameWeekData.week: ", gameWeekData.week);
 
@@ -1450,12 +1447,30 @@
                             gameWeekData.year = data.year;
                         }
                         if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
+                        
                         var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
                         $("#sportSpecificNavRow").html(sportSpecificNavResult);
+                        var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
+                        $("#navRow").html(navResult);
+                        
                         var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
+                        
+                        $('#weekSelector li').on('click', 'a', function () {
+                            gameWeekData.year = parseInt($('#dropdown span').text());
+                            if (!gameWeekData.year) gameWeekData.year = 2018;
+                            gameWeekData.week = parseInt($(this).attr('data-week'));
+                            $("#games-loading-icon").css("display","block")
+                            $('#weekSelector li').removeClass('active');
+                            $('#resultsContainer').css('display','none');
+                            $(this).parent('li').addClass('active');
+                            setGameWeek(gameWeekData);
+                            getAllUsers(10,gameWeekData.week);
+                            getWeeklyUsers(null, gameWeekData.week);
+                            //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
+                        });
                         setGameWeek(gameWeekData);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
@@ -2190,9 +2205,6 @@
     <script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
-        var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
-
-        $("#navRow").html(navResult);
         var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
         
     </script>
