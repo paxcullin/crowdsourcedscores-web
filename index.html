@@ -1448,10 +1448,13 @@
                         }
                         if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
                         
-                        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
-                        $("#sportSpecificNavRow").html(sportSpecificNavResult);
+                        
                         var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
                         $("#navRow").html(navResult);
+                        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
+                        $("#sportSpecificNavRow").html(sportSpecificNavResult);
+                        var competitionDivResult = competitionDivRenderer({sport: gameWeekData.sport});
+                        $("#competitionDiv").html(competitionDivResult);
                         
                         var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
@@ -1467,7 +1470,7 @@
                             $('#resultsContainer').css('display','none');
                             $(this).parent('li').addClass('active');
                             setGameWeek(gameWeekData);
-                            getAllUsers(10,gameWeekData.week);
+                            getAllUsers(10,gameWeekData.week, gameWeekData.sport);
                             getWeeklyUsers(null, gameWeekData.week);
                             //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
                         });
@@ -1795,45 +1798,91 @@
             </div>
         </div>
     </div>
-    <!--newsletter modal-->
-    <div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
-        <div class="row" id="newsletter-form-div">
-            <div class="col-xs-12">
-                <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                <div id="mc_embed_signup">
-                <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                    <div id="mc_embed_signup_scroll">
-                    <h2>Get Weekly Reminders + a Bonus!</h2>
-                    <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
-                    <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
-                    <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
-                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                <div class="mc-field-group">
-                    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                </label>
-                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    <!--NCAA How It Works Modal-->
+    <div class="modal fade" id="ncaaHowItWorksModal" tabindex="-1" role="dialog" aria-labelledby="predictionScoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Welcome to the College Bowl Prediction Challenge!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="mc-field-group">
-                    <label for="mce-FNAME">First Name (optional) </label>
-                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                </div>
-                <div class="mc-field-group">
-                    <label for="mce-LNAME">Last Name (optional) </label>
-                    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                </div>
-                    <div id="mce-responses" class="clear">
-                        <div class="response" id="mce-error-response" style="display:none"></div>
-                        <div class="response" id="mce-success-response" style="display:none"></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12" id="predictionScoreDetails">
+                            <p>Predict scores for each of the college bowl games that conclude the 2018 season.</p>
+                            <p>After each game, we calculate how well your prediction did using the odds, as set by Oddsshark.com the morning of the event, and the actual results.</p>
+                            <p>After all the bowl games have been played, the predictors with one of the top 3 scores wins prize money!</p>
+                            <p>The prize money increases or decreases depending on how well the crowd predictions perform. The bigger the crowd, the better it performs, so the more users we have, the better!</p>
+                            <p>How we calculate your prediction score:
+                            <ul>
+                                <li>Pick the Winner: 2 points</li>
+                                <li>Pick the Spread: 2 points</li>
+                                <li>Pick the Over/Under: 2 points</li>
+                                <li>Get any prediction exactly right: 1 point each</li>
+                                <li><strong>Maximum Score: 10 points</strong></li>
+                            </ul>
+                            </p>
+                        </div>
                     </div>
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
-                    <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                    </div>
-                </form>
                 </div>
-                <scr{{!}}ipt type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></scr{{!}}ipt><scr{{!}}ipt type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</scr{{!}}ipt>
             </div>
         </div>
     </div>
+    <!--newsletter modal-->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Sign up for the Weekly Reminder Newsletter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                            <div id="mc_embed_signup">
+                            <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+                                <h2>Get Weekly Reminders + a Bonus!</h2>
+                                <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
+                                <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
+                                <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
+                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                            </label>
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name (optional) </label>
+                                <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name (optional) </label>
+                                <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                            </div>
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
+                                <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </div>
+                            </form>
+                            </div>
+                            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+                            <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 
 <div class="wrapper">
         <!--<div class="header">-->
@@ -1894,27 +1943,7 @@
 
                     <div id="games"></div>
                 </div>
-                <div class="col-sm-12 col-md-4" id="competitionDiv">
-                    <div class="tab">
-                        <button class="tablinks active" onclick="openLeaderboard(event, 'usersDiv')"><span class="hidden-xs hidden-lg">User Leaderboard</span><span class="visible-xs visible-lg">Overall</span></button>
-                        <button class="tablinks" onclick="openLeaderboard(event, 'weeklyDiv')"><span class="hidden-xs hidden-lg">Weekly Leaderboard</span><span class="visible-xs visible-lg">Weekly</span></button>
-                        <button class="tablinks" onclick="openLeaderboard(event, 'crowdsDiv')"><span class="hidden-xs hidden-lg">Crowd Leaderboard</span><span class="visible-xs visible-lg">Crowd</span></button>
-                    </div>
-                    <div id="myTabContent">
-                        <div class="tabcontent" id="usersDiv" style="display:block">
-                            <div id="allUsers"></div>
-                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                        </div>
-                        <div class="tabcontent" id="weeklyDiv">
-                            <div id="weeklyUsers"></div>
-                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                        </div>
-                        <div class="tabcontent" id="crowdsDiv">
-                            <div id="allGroups"></div>
-                            <div id="createCrowdButtonDiv"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-sm-12 col-md-4" id="competitionDiv"></div>
             </div>
             <div class="row">
                 <div class="col-sm-12" style="font-size: 0.8em">
@@ -2203,9 +2232,11 @@
     </script>
     <script type="text/javascript" src="assets/js/template.nav.js"></script>
     <script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
+    <script type="text/javascript" src="assets/js/template.competitionDiv.js"></script>
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
         var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
+        var competitionDivRenderer = Handlebars.templates['template.competitionDiv'];
         
     </script>
     <footer>

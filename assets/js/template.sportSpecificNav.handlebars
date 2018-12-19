@@ -40,7 +40,11 @@
                 </div>
             {{/ifCond}}
             {{#ifCond sport '===' 'ncaaf'}}
-                <div style="padding-left: 40%">
+                <div id="ncaaBanner">
+                    <h3>Make Predictions and Win</h2>
+                    <span style="cursor:pointer;" data-toggle="modal" data-target="#ncaaHowItWorksModal">How It Works</span> | <a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/">Official Rules</a>
+                </div>
+                <div style="display: inline;">
                     <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/')">NFL Games</button>
                 </div>
             {{/ifCond}}

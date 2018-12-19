@@ -262,6 +262,24 @@ text-rendering: optimizeLegibility;
     color:#3A3B6C
 }
 
+#ncaaBanner {
+    background: #3A3B6C;
+    padding: 14px 16px;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#ncaaBanner h2,h3 {
+    font-size: 2em;
+    font-weight: 500;
+    color: #fff;
+}
+#ncaaBanner span {
+    color: #fff;
+}
+
+
 @media(max-width:768px) {
     #resultRow {
         text-align: center;
@@ -656,6 +674,13 @@ color: #fff;
 
 .extendedDetail div {
     margin: 10px;
+}
+
+.modalLabel {
+    background: #B22438;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 /*#predictionDetails a {

@@ -1,0 +1,24 @@
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openLeaderboard(event, 'usersDiv')"><span class="hidden-xs hidden-lg">User Leaderboard</span><span class="visible-xs visible-lg">Overall</span></button>
+        {{#ifCond sport '===' 'nfl'}}
+            <button class="tablinks" onclick="openLeaderboard(event, 'weeklyDiv')"><span class="hidden-xs hidden-lg">Weekly Leaderboard</span><span class="visible-xs visible-lg">Weekly</span></button>
+            <button class="tablinks" onclick="openLeaderboard(event, 'crowdsDiv')"><span class="hidden-xs hidden-lg">Crowd Leaderboard</span><span class="visible-xs visible-lg">Crowd</span></button>
+        {{/ifCond}}
+    </div>
+    <div id="myTabContent">
+        <div class="tabcontent" id="usersDiv" style="display:block">
+            <div id="allUsers"></div>
+            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+        </div>
+        {{#ifCond sport '===' 'nfl'}}
+            <div class="tabcontent" id="weeklyDiv">
+                <div id="weeklyUsers"></div>
+                <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
+            </div>
+            <div class="tabcontent" id="crowdsDiv">
+                <div id="allGroups"></div>
+                <div id="createCrowdButtonDiv"></div>
+            </div>
+        {{/ifCond}}
+    </div>

@@ -101,41 +101,45 @@ function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
 
 }
 
-function buildUsersTable(allUsersInformation) {
+function buildUsersTable(allUsersInformation, sport) {
 
     //console.log("allGroupsInformation: ", allUsersInformation)
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
-    for (var i=0; i < allUsersInformation.length; i++) {
-        var usersHTML = "";
-        var userObject = allUsersInformation[i];
-        usersHTML = '<td data-th="Rank">' + rank + '</td>';
-        if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
-            usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
-        } else {
-            usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+    if (sport === 'ncaaf') {
+        usersDivHTML += '<tr><td colspan="4">College Bowl Leaderboard coming soon!</td></tr></table>';
+    } else {
+        for (var i=0; i < allUsersInformation.length; i++) {
+            var usersHTML = "";
+            var userObject = allUsersInformation[i];
+            usersHTML = '<td data-th="Rank">' + rank + '</td>';
+            if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
+                usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
+            } else {
+                usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+            }
+            if (userObject.results && userObject.results.overall) {
+                var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
+                var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
+                usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore
+                            + "<div class='leaderboard userScoreDetails'>"
+                            + "S/U: " + userObject.results.overall.winner.correct + "<br>"
+                            + "ATS: " + userObject.results.overall.spread.correct + "<br>"
+                            + "O/U: " + userObject.results.overall.total.correct
+                            + "</div></td>";
+            } else {
+                usersHTML += "<td data-th=\"Score\">0</td>";
+            }
+            var rowClass = "";
+            if ((i%2) === 0) {
+                rowClass = ' alt-tr'
+            }
+            usersDivHTML += '<tr class="userScoreRow' + rowClass + '">' + usersHTML + '</tr>';
+            if (i === allUsersInformation.length - 1) {
+                usersDivHTML += "</tbody></table>";
+            }
+            rank += 1;
         }
-        if (userObject.results && userObject.results.overall) {
-            var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
-            var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
-            usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore
-                         + "<div class='leaderboard userScoreDetails'>"
-                         + "S/U: " + userObject.results.overall.winner.correct + "<br>"
-                         + "ATS: " + userObject.results.overall.spread.correct + "<br>"
-                         + "O/U: " + userObject.results.overall.total.correct
-                         + "</div></td>";
-        } else {
-            usersHTML += "<td data-th=\"Score\">0</td>";
-        }
-        var rowClass = "";
-        if ((i%2) === 0) {
-            rowClass = ' alt-tr'
-        }
-        usersDivHTML += '<tr class="userScoreRow' + rowClass + '">' + usersHTML + '</tr>';
-        if (i === allUsersInformation.length - 1) {
-            usersDivHTML += "</tbody></table>";
-        }
-        rank += 1;
     }
     $("#allUsers").html(usersDivHTML);
 
@@ -205,7 +209,7 @@ function getAllGroups(limit, callback) {
     })
 }
 
-function getAllUsers(limit, gameWeek, callback) {
+function getAllUsers(limit, gameWeek, sport, callback) {
     useToken(function(token) {
         var allUsersQuery = "";
         if (limit || gameWeek) {
@@ -243,7 +247,7 @@ function getAllUsers(limit, gameWeek, callback) {
             if (callback) {
                 callback(allUsersInformation)
             } else {
-                buildUsersTable(allUsersInformation);
+                buildUsersTable(allUsersInformation, sport);
                 return allUsersInformation;
             }
         });
