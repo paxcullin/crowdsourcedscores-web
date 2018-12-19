@@ -291,6 +291,32 @@
         <pubDate>Tues, 4 Dec 2018 23:30:00 GMT</pubDate>
         <itunes:duration>1:23:15</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 15 - Week 14 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul fights through flu-like symptoms (which he gets into in gory detail) to join Chris, along with some Basil Hayden Kentucky Bourbon, to cover another solid performance by the crowd in Week 14.</description>
+        <itunes:subtitle>Paul fights through flu-like symptoms (which he gets into in gory detail) to join Chris, along with some Basil Hayden Kentucky Bourbon, to cover another solid performance by the crowd in Week 14.</itunes:subtitle>
+        <itunes:episode>20</itunes:episode>
+        <itunes:summary>Paul fights through flu-like symptoms (which he gets into in gory detail) to join Chris, along with some Basil Hayden Kentucky Bourbon, to cover another solid performance by the crowd in Week 14.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode15.mp3" length="1:11:08" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode15.mp3</guid>
+        <pubDate>Thurs, 13 Dec 2018 23:30:00 GMT</pubDate>
+        <itunes:duration>1:11:08</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 16 - Week 15 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul brings along some John Jacob Rye from Mischief Distillery in Fremont, and he and Chris cover all of the excitement and upsets that composed a wild Week 15.</description>
+        <itunes:subtitle>Paul brings along some John Jacob Rye from Mischief Distillery in Fremont, and he and Chris cover all of the excitement and upsets that composed a wild Week 15.</itunes:subtitle>
+        <itunes:episode>21</itunes:episode>
+        <itunes:summary>Paul brings along some John Jacob Rye from Mischief Distillery in Fremont, and he and Chris cover all of the excitement and upsets that composed a wild Week 15.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode16.mp3" length="1:14:33" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode16.mp3</guid>
+        <pubDate>Wed, 19 Dec 2018 00:30:00 GMT</pubDate>
+        <itunes:duration>1:14:33</itunes:duration>
+      </item>
     
   </channel>
   </rss>
