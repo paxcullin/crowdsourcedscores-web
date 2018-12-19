@@ -688,7 +688,7 @@
 
         var getGameWeek = function (callback) {
 
-            if (!gameWeekData.sport) {
+            if (!gameWeekData.sport || gameWeekData.sport === '') {
                 gameWeekData.sport = 'nfl';
             }
             useToken(function(token) {
@@ -899,6 +899,9 @@
                             if (responseData.sport === 'ncaaf') {
                                 gameTemplateId = 'template.gameNCAAF';
                             }
+                            //adding collegeBowlPremium to the response in order to display crowd data
+                            responseData.collegeBowlPremium = userInformation.attributes['custom:collegeBowlPremium'];
+                            console.log('responseData after format: ', responseData);
                             var gameRenderer = Handlebars.templates[gameTemplateId];
                             var gameResult = gameRenderer(responseData);
 
@@ -968,6 +971,7 @@
                 if (!gameWeekData.sport) {
                     gameWeekData.sport = 'nfl';
                 }
+                if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
                 if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
@@ -1080,14 +1084,18 @@
                                             messageElm.html(messageHtml)
                                             $prediction.find('.gameHeaderPredicted').html("<i class=\"fa fa-check-circle\"></i>")
                                             formatGameTimes([responseData]);
-                                            console.log('responseData after format: ', responseData);
+                                            
                                             
                                             var gameTemplateId = 'template.gameNFL';
                                             if (responseData.sport === 'ncaaf') {
                                                 gameTemplateId = 'template.gameNCAAF';
                                             }
                                             var gameRenderer = Handlebars.templates[gameTemplateId];
+                                            //adding collegeBowlPremium to the response in order to display crowd data
+                                            responseData.collegeBowlPremium = userInformation.attributes['custom:collegeBowlPremium'];
+                                            console.log('responseData after format: ', responseData);
                                             var gameResult = gameRenderer(responseData);
+                            
                                             $('#container-' + responseData.gameId).html(gameResult);
                                             
                                             if (response.data.predictionsSubmitted > -1) updateProgressBar(response.data.predictionsSubmitted, totalGames);
@@ -1228,7 +1236,7 @@
                                 {
                                     title: "Lots of ways to Compete",
                                     content: "<p>By making predictions, you are automatically competing against every other user in our Crowd.</p><p>But you can also create your own Mini-Crowd (coworkers, friends, enemies) and compete for bragging rights.</p><p>Each Mini-Crowd generates its own crowd wisdom, and you can watch how your Mini-Crowd's crowd wisdom performs against the others.</p><p>So you can always contribute to the crowd wisdom and help your Mini-Crowd compete!",
-                                    target: document.querySelector('#allGroupsHeader'),
+                                    target: document.querySelector('#allGroups'),
                                     placement: "top",
                                     onNext: function() {
                                         console.log("setTourState")
@@ -1241,10 +1249,13 @@
                                     localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
                                     updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
                                     ga('send','event','tour','step','ended');
+                                },
+                                onClose: function() {
+                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                                 }
                             };
                             var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
-                            if (parseInt(userInformation.attributes["custom:completedTour"]) === 1) {
+                            if (parseInt(userInformation.attributes["custom:completedTour"]) === 1 || localTourState === "true" || localTourState === true) {
                                 console.log("user has taken the tour");
                             } else {
                                 hopscotch.startTour(tour);
@@ -1422,19 +1433,6 @@
 
 
 
-            $('#weekSelector li').on('click', 'a', function () {
-                gameWeekData.year = parseInt($('#dropdown span').text());
-                if (!gameWeekData.year) gameWeekData.year = 2018;
-                gameWeekData.week = parseInt($(this).attr('data-week'));
-                $("#games-loading-icon").css("display","block")
-                $('#weekSelector li').removeClass('active');
-                $('#resultsContainer').css('display','none');
-                $(this).parent('li').addClass('active');
-                setGameWeek(gameWeekData);
-                getAllUsers(10,gameWeekData.week);
-                getWeeklyUsers(null, gameWeekData.week);
-                //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
-            });
 
             console.log("gameWeekData.week: ", gameWeekData.week);
 
@@ -1444,13 +1442,38 @@
                         gameWeekData.week = data.week;
                         gameWeekData.year = parseInt($('#dropdown span').text);
                         gameWeekData.sport = getUrlParameter('sport');
+                        
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
+                        if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
+                        
+                        
+                        var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
+                        $("#navRow").html(navResult);
+                        var sportSpecificNavResult = sportSpecificNavRenderer({sport: gameWeekData.sport});
+                        $("#sportSpecificNavRow").html(sportSpecificNavResult);
+                        var competitionDivResult = competitionDivRenderer({sport: gameWeekData.sport});
+                        $("#competitionDiv").html(competitionDivResult);
+                        
                         var $selectorElm = $('*[data-week="' + gameWeekData.week + '"]');
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
                         $("#overallChartButton").attr({"year":gameWeekData.year,"week": gameWeekData.week});
+                        
+                        $('#weekSelector li').on('click', 'a', function () {
+                            gameWeekData.year = parseInt($('#dropdown span').text());
+                            if (!gameWeekData.year) gameWeekData.year = 2018;
+                            gameWeekData.week = parseInt($(this).attr('data-week'));
+                            $("#games-loading-icon").css("display","block")
+                            $('#weekSelector li').removeClass('active');
+                            $('#resultsContainer').css('display','none');
+                            $(this).parent('li').addClass('active');
+                            setGameWeek(gameWeekData);
+                            getAllUsers(10,gameWeekData.week, gameWeekData.sport);
+                            getWeeklyUsers(null, gameWeekData.week);
+                            //deferredLeaderboardRequest2(gameWeekData.year, gameWeekData.week, id_token, buildChart);
+                        });
                         setGameWeek(gameWeekData);
                         //deferredLeaderboardRequest2(year, week, id_token, buildChart);
                     }
@@ -1468,21 +1491,10 @@
                 drawChart2($(this).attr("year"), $(this).attr("week"), "overall");
 
             });
-            $('#newsletter-signup-div').click(function () {
+            $('#newsletter-signup-div').click(function (e) {
                 ga('send','event','newsletter','viewed');
+                
 
-                $header = $(this);
-                //getting the next element
-                $content = $("#newsletter-form-div");
-                //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-                $content.slideToggle(500, function () {
-                    //execute this after slideToggle is done
-                    //change text of header based on visibility of content div
-                    $header.text(function () {
-                        //change text based on condition
-                        //return $content.is(":visible") ? "" : "";
-                    });
-                });
             });
 
             $('#mc-embedded-subscribe').click(function () {
@@ -1536,8 +1548,7 @@
                 get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
                     method: "GET",
                     headers: {
-                        'Authorization': leaderboardToken,
-                        'sport': gameWeekData.sport
+                        'Authorization': leaderboardToken
                     }
                 })
                 .then(function (response) {
@@ -1787,6 +1798,91 @@
             </div>
         </div>
     </div>
+    <!--NCAA How It Works Modal-->
+    <div class="modal fade" id="ncaaHowItWorksModal" tabindex="-1" role="dialog" aria-labelledby="predictionScoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Welcome to the College Bowl Prediction Challenge!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12" id="predictionScoreDetails">
+                            <p>Predict scores for each of the college bowl games that conclude the 2018 season.</p>
+                            <p>After each game, we calculate how well your prediction did using the odds, as set by Oddsshark.com the morning of the event, and the actual results.</p>
+                            <p>After all the bowl games have been played, the predictors with one of the top 3 scores wins prize money!</p>
+                            <p>The prize money increases or decreases depending on how well the crowd predictions perform. The bigger the crowd, the better it performs, so the more users we have, the better!</p>
+                            <p>How we calculate your prediction score:
+                            <ul>
+                                <li>Pick the Winner: 2 points</li>
+                                <li>Pick the Spread: 2 points</li>
+                                <li>Pick the Over/Under: 2 points</li>
+                                <li>Get any prediction exactly right: 1 point each</li>
+                                <li><strong>Maximum Score: 10 points</strong></li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--newsletter modal-->
+    <div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Sign up for the Weekly Reminder Newsletter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+                            <div id="mc_embed_signup">
+                            <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+                                <h2>Get Weekly Reminders + a Bonus!</h2>
+                                <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
+                                <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
+                                <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
+                            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                            </label>
+                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name (optional) </label>
+                                <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name (optional) </label>
+                                <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                            </div>
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
+                                <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </div>
+                            </form>
+                            </div>
+                            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+                            <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 
 <div class="wrapper">
         <!--<div class="header">-->
@@ -1820,20 +1916,6 @@
                         </div>
                         <ul id="loginUserResults"></ul>
                     </fieldset>-->
-
-                    <div id="dropdown" class="ddmenu">
-                    <span class="dropdownSelection">Select Week</span>
-                        <ul id="seasonSelector">
-                          <li><a href="#">2018</a></li>
-                          <li><a href="#">2017</a></li>
-                          <li><a href="#">2016</a></li>
-                        </ul>
-                      </div>
-                      <!-- <select class="dropdown" id="seasonSelectorOld">
-                        <option value="2018" selected>2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                    </select> -->
                 </div>
                 <div class="col-xs-5 col-sm-2">
                     <a href="https://twitter.com/crowdbrains" class="twitter-follow-button" data-show-count="false">Follow @crowdbrains</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
@@ -1841,138 +1923,7 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 weekSelector">
-
-                    <ul id="weekSelector" class="pagination pagination-info">
-                        <li><a href="javascript:void(0);" data-week="1">1</a></li>
-                        <li><a href="javascript:void(0);" data-week="2">2</a></li>
-                        <li><a href="javascript:void(0);" data-week="3">3</a></li>
-                        <li><a href="javascript:void(0);" data-week="4">4</a></li>
-                        <li><a href="javascript:void(0);" data-week="5">5</a></li>
-                        <li><a href="javascript:void(0);" data-week="6">6</a></li>
-                        <li><a href="javascript:void(0);" data-week="7">7</a></li>
-                        <li><a href="javascript:void(0);" data-week="8">8</a></li>
-                        <li><a href="javascript:void(0);" data-week="9">9</a></li>
-                        <li><a href="javascript:void(0);" data-week="10">10</a></li>
-                        <li><a href="javascript:void(0);" data-week="11">11</a></li>
-                        <li><a href="javascript:void(0);" data-week="12">12</a></li>
-                        <li><a href="javascript:void(0);" data-week="13">13</a></li>
-                        <li><a href="javascript:void(0);" data-week="14">14</a></li>
-                        <li><a href="javascript:void(0);" data-week="15">15</a></li>
-                        <li><a href="javascript:void(0);" data-week="16">16</a></li>
-                        <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                        <!-- <li><a href="javascript:void(0);" data-week="18">WC</a></li>
-                        <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
-                        <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                        <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
-                        <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="chartContainer" class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div id="weeklyChart"></div>
-                    </div>
-                </div>
-
-                <div class="row" id="feedbackDiv">
-                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
-                    <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
-                    <!-- <div class="col-xs-12 col-sm-4" id="contest-div"><a href="https://blog.crowdsourcedscores.com/2018-postseason-contest/how-the-nfl-postseason-contest-works/" target="_blank"><i class="fa fa-trophy" aria-hidden="true"></i> Postseason Contest Details</a></div> -->
-                    <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
-                    <!--<div class="col-xs-12 col-sm-4"><i class="fa fa-trophy" aria-hidden="true"></i>Postseason Contest Rules</a></div>-->
-                </div>
-                <div class="row" id="newsletter-form-div">
-                    <div class="col-xs-12">
-                        <!-- Begin MailChimp Signup Form -->
-                        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-                        <style type="text/css">
-                            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
-                            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-                        </style>
-                        <div id="mc_embed_signup">
-                        <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                            <div id="mc_embed_signup_scroll">
-                            <h2>Get Weekly Reminders + a Bonus!</h2>
-                            <p>Get Weekly Reminders to make your picks throughout the regular season to make sure you can stay ahead of the crowd.</p>
-                            <p>We are planning on rolling out subscriptions at mid-season, and all Newsletter subscribers will <strong>get a free month</strong> to test the crowd wisdom!</p>
-                            <p>We will <span style="color:#B42135; font-weight:bold">NEVER</span> give your information to anyone <span style="color:#B42135;font-weight:bold">EVER</span>.</p>
-                        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                        <div class="mc-field-group">
-                            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                        </label>
-                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-FNAME">First Name (optional) </label>
-                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-LNAME">Last Name (optional) </label>
-                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                        </div>
-                            <div id="mce-responses" class="clear">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
-                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d16f245296d7d248af2da3413_cf6ceb921e" tabindex="-1" value=""></div>
-                            <div class="clear"><input style="background-color: #B42135" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                            </div>
-                        </form>
-                        </div>
-                        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-                        <!--End mc_embed_signup-->
-                    </div>
-                </div>
-            </div>
-
-            <div id="resultsContainer">
-                <div class="row" id="switchChartButtons">
-                    <div class="col-xs-6">
-                        <button id="weeklyChartButton">Weekly Results</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button id="overallChartButton">Overall Accuracy</button>
-                    </div>
-                </div>
-                <div class="row myResultsRow" id="myResultsRow">
-                    <div class="col-xs-12 col-sm-1">
-                        <span id="youHeader">You:</span>
-                    </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="myStraightUpResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="mySpreadResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="myTotalResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="myPredictionScore"></span>
-                    </div>
-                </div>
-                <div class="row crowdResultsRow" id="crowdResultsRow">
-                    <div class="col-xs-12 col-sm-1">
-                        <span id="crowdHeader">Crowd:</span>
-                    </div>
-                    <div class="col-xs-3 col-sm-2">
-                        <span class="hidden-xs">Winners:</span><span class="visible-xs">Wins:</span> <span id="crowdStraightUpResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Spread:</span><span class="visible-xs">ATS:</span> <span id="crowdSpreadResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-xs">Over/Under:</span><span class="visible-xs">O/U:</span> <span id="crowdTotalResults"></span>
-                    </div>
-                    <div class="col-xs-3">
-                        <span class="hidden-sm">Prediction Score:</span><span class="visible-sm">Score:</span> <span id="crowdPredictionScore"></span>
-                    </div>
-                </div>
-            </div>
+            <div id="sportSpecificNavRow"></div>
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                         <div class="cont">
@@ -1992,27 +1943,7 @@
 
                     <div id="games"></div>
                 </div>
-                <div class="col-sm-12 col-md-4" id="competitionDiv">
-                    <div class="tab">
-                        <button class="tablinks active" onclick="openLeaderboard(event, 'usersDiv')"><span class="hidden-xs hidden-lg">User Leaderboard</span><span class="visible-xs visible-lg">Overall</span></button>
-                        <button class="tablinks" onclick="openLeaderboard(event, 'weeklyDiv')"><span class="hidden-xs hidden-lg">Weekly Leaderboard</span><span class="visible-xs visible-lg">Weekly</span></button>
-                        <button class="tablinks" onclick="openLeaderboard(event, 'crowdsDiv')"><span class="hidden-xs hidden-lg">Crowd Leaderboard</span><span class="visible-xs visible-lg">Crowd</span></button>
-                    </div>
-                    <div id="myTabContent">
-                        <div class="tabcontent" id="usersDiv" style="display:block">
-                            <div id="allUsers"></div>
-                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                        </div>
-                        <div class="tabcontent" id="weeklyDiv">
-                            <div id="weeklyUsers"></div>
-                            <button type="button" class="btn btn-primary" id="leaderboardButton" onclick="window.location='/leaderboard.html'">Leaderboard</button>
-                        </div>
-                        <div class="tabcontent" id="crowdsDiv">
-                            <div id="allGroups"></div>
-                            <div id="createCrowdButtonDiv"></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-sm-12 col-md-4" id="competitionDiv"></div>
             </div>
             <div class="row">
                 <div class="col-sm-12" style="font-size: 0.8em">
@@ -2300,11 +2231,13 @@
         };
     </script>
     <script type="text/javascript" src="assets/js/template.nav.js"></script>
+    <script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
+    <script type="text/javascript" src="assets/js/template.competitionDiv.js"></script>
     <script type="text/javascript">
         var navRenderer = Handlebars.templates['template.nav'];
-        var navResult = navRenderer({userInformation});
-
-        $("#navRow").html(navResult);
+        var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
+        var competitionDivRenderer = Handlebars.templates['template.competitionDiv'];
+        
     </script>
     <footer>
         Copyright &copy;2018 PCSM, LLC

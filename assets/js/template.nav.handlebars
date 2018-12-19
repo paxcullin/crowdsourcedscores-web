@@ -8,6 +8,12 @@
                 <div id="navbar-main" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
+                    {{#ifCond sport '!==' 'nfl'}}
+                        <li><a href="/">NFL</a></li>
+                    {{/ifCond}}
+                    {{#ifCond sport '!==' 'ncaaf'}}
+                        <li><a href="/?sport=ncaaf">College Bowls</a></li>
+                    {{/ifCond}}
                     <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
                     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="leaderboards">Leaderboards<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -30,7 +36,7 @@
                         </ul>
                     </li>
                     {{#if userInformation}}
-                        <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> My Profile</a></li>
+                        <li style="text-align: center"><a href="/profile.html"><span><i class="glyphicon glyphicon-user"></i></span> {{userInformation.attributes.preferred_username}}</a></li>
                     {{/if}}
                     
                 </ul>

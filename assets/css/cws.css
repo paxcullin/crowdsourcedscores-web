@@ -148,6 +148,14 @@ text-rendering: optimizeLegibility;
 .topRow {
     padding-top: 90px;
 }
+.topRow div {
+    display: flex;
+    justify-content: space-evenly;
+}
+#sportSpecificNavRow {
+    margin: 0 15px;
+}
+
 .gameHeader {
     color:#000;
     padding: 3px 15px;
@@ -253,6 +261,24 @@ text-rendering: optimizeLegibility;
 #feedbackDiv a {
     color:#3A3B6C
 }
+
+#ncaaBanner {
+    background: #3A3B6C;
+    padding: 14px 16px;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#ncaaBanner h2,h3 {
+    font-size: 2em;
+    font-weight: 500;
+    color: #fff;
+}
+#ncaaBanner span {
+    color: #fff;
+}
+
 
 @media(max-width:768px) {
     #resultRow {
@@ -650,6 +676,13 @@ color: #fff;
     margin: 10px;
 }
 
+.modalLabel {
+    background: #B22438;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
 /*#predictionDetails a {
     color: #B22438;    
 }*/
@@ -707,3 +740,4 @@ color: #fff;
     font-size: 0.8em;
 }
 
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
