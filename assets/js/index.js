@@ -103,29 +103,41 @@ function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
 
 function buildUsersTable(allUsersInformation, sport) {
 
-    //console.log("allGroupsInformation: ", allUsersInformation)
+    console.log("allUsersInformation: ", allUsersInformation)
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
-    if (sport === 'ncaaf') {
-        usersDivHTML += '<tr><td colspan="4">College Bowl Leaderboard coming soon!</td></tr></table>';
-    } else {
+        if (sport === 'ncaaf') {
+            allUsersInformation.sort(function(a,b) {
+                if (a.results.ncaaf[2018] && a.results.ncaaf[2018].overall && b.results.ncaaf[2018] && b.results.ncaaf[2018].overall) {
+                    if (a.results.ncaaf[2018].overall.predictionScore > b.results.ncaaf[2018].overall.predictionScore) return -1
+                    if (a.results.ncaaf[2018].overall.predictionScore < b.results.ncaaf[2018].overall.predictionScore) return 1
+                } else {
+                    return 1
+                }
+            })
+        }
         for (var i=0; i < allUsersInformation.length; i++) {
+            
             var usersHTML = "";
-            var userObject = allUsersInformation[i];
+            var userObject = allUsersInformation[i].results;
+            if (sport === 'ncaaf') {
+                userObject = allUsersInformation[i].results.ncaaf[2018]
+                if (!userObject) continue;
+            }
             usersHTML = '<td data-th="Rank">' + rank + '</td>';
             if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
-                usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + userObject.username + '">' + userObject.preferred_username + '</a></td>';
+                usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + allUsersInformation[i].username + '">' + allUsersInformation[i].preferred_username + '</a></td>';
             } else {
-                usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + userObject.preferred_username + '</strong></a></td>';
+                usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + allUsersInformation[i].preferred_username + '</strong></a></td>';
             }
-            if (userObject.results && userObject.results.overall) {
-                var userCorrect = userObject.results.overall.winner.correct + userObject.results.overall.spread.correct + userObject.results.overall.total.correct;
-                var userIncorrect = ((userObject.results.overall.totalPredictions * 3) - (userObject.results.overall.spread.push + userObject.results.overall.total.push)) - userCorrect;
-                usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.results.overall.predictionScore
+            if (userObject.overall) {
+                var userCorrect = userObject.overall.winner.correct + userObject.overall.spread.correct + userObject.overall.total.correct;
+                var userIncorrect = ((userObject.overall.totalPredictions * 3) - (userObject.overall.spread.push + userObject.overall.total.push)) - userCorrect;
+                usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.overall.predictionScore
                             + "<div class='leaderboard userScoreDetails'>"
-                            + "S/U: " + userObject.results.overall.winner.correct + "<br>"
-                            + "ATS: " + userObject.results.overall.spread.correct + "<br>"
-                            + "O/U: " + userObject.results.overall.total.correct
+                            + "S/U: " + userObject.overall.winner.correct + "<br>"
+                            + "ATS: " + userObject.overall.spread.correct + "<br>"
+                            + "O/U: " + userObject.overall.total.correct
                             + "</div></td>";
             } else {
                 usersHTML += "<td data-th=\"Score\">0</td>";
@@ -140,7 +152,6 @@ function buildUsersTable(allUsersInformation, sport) {
             }
             rank += 1;
         }
-    }
     $("#allUsers").html(usersDivHTML);
 
     
@@ -212,11 +223,20 @@ function getAllGroups(limit, callback) {
 function getAllUsers(limit, gameWeek, sport, callback) {
     useToken(function(token) {
         var allUsersQuery = "";
-        if (limit || gameWeek) {
+        if (limit || gameWeek || sport) {
             allUsersQuery = "?";
         }
         if (limit) {
             allUsersQuery += "limit=" + limit;
+        }
+        if (!sport) {
+            sport = "nfl";
+        }
+        if (sport) {
+            if (allUsersQuery.length > 1) {
+                allUsersQuery += "&";
+            }
+            allUsersQuery += "sport=" + sport
         }
         var getAllUsersOptions = {
             method: "GET"
@@ -519,4 +539,38 @@ function openLeaderboard(evt, leaderboardName) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(leaderboardName).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+
+function runningPoolTotalChart() {
+    // hide chart after its built on first load
+    get('/assets/js/collegePoolTotal.json')
+    .then((data) => {
+        return data.json()
+    })
+    .then((dataJSON) => {
+        console.log('dataJSON: ', dataJSON)
+        $('#winningsTotal').html('<h2>Current Winnings: $' + dataJSON.poolTotal + '</h2>')
+        var chartData = google.visualization.arrayToDataTable(dataJSON.history);
+    
+        var options = {
+            title: 'Running Winnings Total',
+            hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+            seriesType: 'line',
+            series: {2: {type: 'line', lineDashStyle: [2, 2, 20, 2, 20, 2]}},
+            chartArea: {width: '100%', height: 320},
+            colors: ['#B42135', '#000'],
+            legend: {position: 'bottom'},
+            explorer: {
+                    axis: 'horizontal',
+                    keepInBounds: true,
+                    maxZoomIn: 4.0
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('winningsChart'));
+        chart.draw(chartData, options);
+
+    })
+    
 }

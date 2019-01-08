@@ -317,6 +317,32 @@
         <pubDate>Wed, 19 Dec 2018 00:30:00 GMT</pubDate>
         <itunes:duration>1:14:33</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 17 - Week 16 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris try their first podcast from different parts of the country while sipping some Tin Cup Whiskey. The crowd performed admirably in Week 16, pushing their accuracy against the spread and the total to around 54% on the season.</description>
+        <itunes:subtitle>Paul and Chris try their first podcast from different parts of the country while sipping some Tin Cup Whiskey. The crowd performed admirably in Week 16, pushing their accuracy against the spread and the total to around 54% on the season.</itunes:subtitle>
+        <itunes:episode>21</itunes:episode>
+        <itunes:summary>Paul and Chris try their first podcast from different parts of the country while sipping some Tin Cup Whiskey. The crowd performed admirably in Week 16, pushing their accuracy against the spread and the total to around 54% on the season.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode17.mp3" length="1:10:46" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode17.mp3</guid>
+        <pubDate>Thurs, 27 Dec 2018 22:30:00 GMT</pubDate>
+        <itunes:duration>1:10:46</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 18 - Week 17 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris are together again enjoying some Elijah Craig bourbon and basking in the glow of an outstanding finish by the crowd in Week 17.</description>
+        <itunes:subtitle>Paul and Chris are together again enjoying some Elijah Craig bourbon and basking in the glow of an outstanding finish by the crowd in Week 17.</itunes:subtitle>
+        <itunes:episode>22</itunes:episode>
+        <itunes:summary>Paul and Chris are together again enjoying some Elijah Craig bourbon and basking in the glow of an outstanding finish by the crowd in Week 17.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode18.mp3" length="1:20:19" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode18.mp3</guid>
+        <pubDate>Fri, 4 Jan 2019 00:00:00 GMT</pubDate>
+        <itunes:duration>1:20:19</itunes:duration>
+      </item>
     
   </channel>
   </rss>

@@ -6,6 +6,7 @@
     data-away-code="{{{awayTeam.code}}}"
     data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
     data-game-sport="{{{sport}}}"
+    data-game-season="{{{season}}}"
     {{#if prediction.awayTeam.score}} data-predicted="true" {{/if}}
     style="display: inline-block;">
     <div class="panel-group" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" role="tablist" aria-multiselectable="true">
@@ -108,7 +109,7 @@
                                             {{#unless comparePrediction}}
                                                 {{#unless prediction}}
                                                     {{#unless results}}
-                                                        <span class="fa fa-lock crowdShown"></span>
+                                                        <div style="width:40%; position: relative; left: 30%">Predict to Access Crowd Wisdom</div>
                                                     {{/unless}}
                                                 {{/unless}}
                                             {{/unless}}</td>
@@ -164,7 +165,7 @@
                                                 </span>
                                                 {{#unless prediction}}
                                                     {{#unless results}}
-                                                        <span class="fa fa-lock crowdShown"></span>
+                                                        <div style="width:40%; position: relative; left: 30%">Predict to Access Crowd Wisdom</div>
                                                     {{/unless}}
                                                 {{/unless}}
                                             {{/unless}}
@@ -249,7 +250,7 @@
                                                 </span>
                                                 {{#unless prediction}}
                                                     {{#unless results}}
-                                                        <span class="fa fa-lock crowdShown"></span>
+                                                        <div style="width:40%; position: relative; left: 30%">Predict to Access Crowd Wisdom</div>
                                                     {{/unless}}
                                                 {{/unless}}
                                             {{/if}}
@@ -360,7 +361,8 @@
 
                                                 </span>
                                                 {{#unless prediction}}
-                                                    {{#unless results}}<span class="fa fa-lock crowdShown"></span>
+                                                    {{#unless results}}
+                                                        <div style="width:40%; position: relative; left: 30%">Predict to Access Crowd Wisdom</div>
                                                     {{/unless}}
                                                 {{/unless}}
                                             {{/if}}

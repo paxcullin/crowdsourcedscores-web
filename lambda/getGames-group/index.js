@@ -94,6 +94,9 @@ exports.handler = (event, context) => {
                     if (event.userId) {
                         game.userAuthenticated = true;
                     }
+                    if (event.sport === 'ncaaf' && event.collegeBowlPremium === "1") {
+                        game.collegeBowlPremium = 1;
+                    }
 
                 });
                 
