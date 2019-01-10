@@ -1460,23 +1460,21 @@
                 showLoginButton();
             }
 
-
-
-
-            console.log("gameWeekData.week: ", gameWeekData.week);
-
             setTimeout(function () {
                 getGameWeek(function (data) {
                     if (data) {
                         gameWeekData.week = data.week;
                         gameWeekData.year = parseInt($('#dropdown span').text);
                         gameWeekData.sport = getUrlParameter('sport');
+                        gameWeekData.season = 'reg';
                         
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
                         if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
-                        
+                        if (data.season) {
+                            gameWeekData.season = data.season 
+                        }
                         
                         var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
                         $("#navRow").html(navResult);
