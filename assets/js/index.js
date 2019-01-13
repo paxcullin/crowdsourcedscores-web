@@ -222,21 +222,28 @@ function getAllGroups(limit, callback) {
 
 function getAllUsers(limit, gameWeek, sport, callback) {
     useToken(function(token) {
+        var allUsersQueryArray = [];
         var allUsersQuery = "";
-        if (limit || gameWeek || sport) {
-            allUsersQuery = "?";
-        }
         if (limit) {
-            allUsersQuery += "limit=" + limit;
+            allUsersQueryArray.push("limit=" + limit);
         }
         if (!sport) {
             sport = "nfl";
         }
         if (sport) {
-            if (allUsersQuery.length > 1) {
-                allUsersQuery += "&";
-            }
-            allUsersQuery += "sport=" + sport
+            allUsersQueryArray.push("sport=" + sport)
+        }
+        if (gameWeek) {
+            allUsersQueryArray.push("gameWeek=" + gameWeek);
+        }
+        if (allUsersQueryArray.length > 0) {
+            allUsersQuery = "?";
+            allUsersQueryArray.forEach((arrayString, arrayStringIndex) => {
+                if (arrayStringIndex > 0) {
+                    allUsersQuery += "&";
+                }
+                allUsersQuery += arrayString;
+            })
         }
         var getAllUsersOptions = {
             method: "GET"
