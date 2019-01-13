@@ -621,6 +621,8 @@
                     //data.year = 2017;
                     gameWeekData.data = data.week;
                     gameWeekData.year = data.year;
+                    gameWeekData.sport = 'nfl';
+                    gameWeekData.season = data.season;
                     return callback(data);
                 })
                 .catch(function(err) {
@@ -808,6 +810,10 @@
                 showLoginButton();
             }
 
+            var navResult = navRenderer({userInformation});
+            $("#navRow").html(navResult);
+            var sportSpecificNavResult = sportSpecificNavRenderer({sport: 'nfl'});
+            $("#sportSpecificNavRow").html(sportSpecificNavResult);
             
             if (groupParams.groupId && groupParams.sport && groupParams.year) {
                 getGroupInfo();
@@ -849,6 +855,8 @@
                         }
                         gameWeekDataObj.week = data.week;
                         gameWeekDataObj.year = data.year;
+                        gameWeekDataObj.sport = 'nfl';
+                        gameWeekDataObj.season = data.season;
                         var $selectorElm = $('*[data-week="' + week + '"]');
                         $selectorElm.parent('li').addClass('active');
                         $("#weeklyChartButton").attr({"year":year,"week": week});
@@ -1024,7 +1032,7 @@
         <!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
         <div class="main">
             <div class="container">
-                <div class="navRow"></div>
+                <div id="navRow"></div>
                 <div class="row topRow">
                     <div class="col-xs-7 col-sm-10">
                         <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/login?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Login</a>-->
@@ -1049,10 +1057,6 @@
                             </div>
                             <ul id="loginUserResults"></ul>
                         </fieldset>-->
-    
-                        <div id="dropdown" class="ddmenu">
-                            2018
-                        </div>
                     </div>
                     <div class="col-xs-5 col-sm-2">
                         <a href="https://twitter.com/crowdbrains" class="twitter-follow-button" data-show-count="false">Follow @crowdbrains</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br>
@@ -1060,35 +1064,7 @@
     
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 weekSelector">
-    
-                        <ul id="weekSelector" class="pagination pagination-info">
-                            <li><a href="javascript:void(0);" data-week="1">1</a></li>
-                            <li><a href="javascript:void(0);" data-week="2">2</a></li>
-                            <li><a href="javascript:void(0);" data-week="3">3</a></li>
-                            <li><a href="javascript:void(0);" data-week="4">4</a></li>
-                            <li><a href="javascript:void(0);" data-week="5">5</a></li>
-                            <li><a href="javascript:void(0);" data-week="6">6</a></li>
-                            <li><a href="javascript:void(0);" data-week="7">7</a></li>
-                            <li><a href="javascript:void(0);" data-week="8">8</a></li>
-                            <li><a href="javascript:void(0);" data-week="9">9</a></li>
-                            <li><a href="javascript:void(0);" data-week="10">10</a></li>
-                            <li><a href="javascript:void(0);" data-week="11">11</a></li>
-                            <li><a href="javascript:void(0);" data-week="12">12</a></li>
-                            <li><a href="javascript:void(0);" data-week="13">13</a></li>
-                            <li><a href="javascript:void(0);" data-week="14">14</a></li>
-                            <li><a href="javascript:void(0);" data-week="15">15</a></li>
-                            <li><a href="javascript:void(0);" data-week="16">16</a></li>
-                            <li><a href="javascript:void(0);" data-week="17">17</a></li>
-                            <!-- <li><a href="javascript:void(0);" data-week="18">WC</a></li>
-                            <li><a href="javascript:void(0);" data-week="19">DIV</a></li>
-                            <li><a href="javascript:void(0);" data-week="20">CONF</a></li>
-                            <li><a href="javascript:void(0);" data-week="21">SB</a></li> -->
-                            <li><i class="fa fa-bar-chart" aria-hidden="true" id="chartExpand"></i></li>
-                        </ul>
-                    </div>
-                </div>
+                <div id="sportSpecificNavRow"></div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 groupDiv">
                         <div class="row">
@@ -1311,11 +1287,11 @@
 <script src="assets/js/index.js" type="text/javascript"></script>
 <script src="assets/js/groups.js" type="text/javascript"></script>
 <script type="text/javascript" src="assets/js/template.nav.js"></script>
+<script type="text/javascript" src="assets/js/template.sportSpecificNav.js"></script>
 <script type="text/javascript">
     var navRenderer = Handlebars.templates['template.nav'];
-    var navResult = navRenderer({userInformation});
-
-    $("#navRow").html(navResult);
+    var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav']
+                        
 </script>
 
 </body>

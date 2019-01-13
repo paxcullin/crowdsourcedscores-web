@@ -116,28 +116,44 @@ function buildUsersTable(allUsersInformation, sport) {
                 }
             })
         }
+        if (gameWeekData.week > 17 && gameWeekData.year === 2018) {
+            allUsersInformation.sort(function(a,b) {
+                // needs to be updated later when the next season comes around
+                if (a.results.nfl && a.results.nfl[2018] && b.results.nfl && b.results.nfl[2018]) {
+                    if (a.results.nfl[2018].overall.post.predictionScore > b.results.nfl[2018].overall.post.predictionScore) return -1
+                    if (a.results.nfl[2018].overall.post.predictionScore < b.results.nfl[2018].overall.post.predictionScore) return 1
+                } else {
+                    return 1
+                }
+            })
+        }
         for (var i=0; i < allUsersInformation.length; i++) {
             
             var usersHTML = "";
-            var userObject = allUsersInformation[i].results;
+            if (!allUsersInformation[i].results) continue;
+            var userObject = allUsersInformation[i].results.overall;
             if (sport === 'ncaaf') {
-                userObject = allUsersInformation[i].results.ncaaf[2018]
+                userObject = allUsersInformation[i].results.ncaaf[2018].overall
                 if (!userObject) continue;
+            } else if (gameWeekData.week > 17) {
+                if (!allUsersInformation[i].results || !allUsersInformation[i].results.nfl) continue;
+                userObject = allUsersInformation[i].results.nfl[2018].overall.post;
+                
             }
             usersHTML = '<td data-th="Rank">' + rank + '</td>';
-            if (userInformation.cognitoUser && userObject.username !== userInformation.cognitoUser.username) {
+            if (userInformation.cognitoUser && allUsersInformation[i].username !== userInformation.cognitoUser.username) {
                 usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + allUsersInformation[i].username + '">' + allUsersInformation[i].preferred_username + '</a></td>';
             } else {
                 usersHTML += '<td data-th="Username"><a href="/profile.html"><strong>' + allUsersInformation[i].preferred_username + '</strong></a></td>';
             }
-            if (userObject.overall) {
-                var userCorrect = userObject.overall.winner.correct + userObject.overall.spread.correct + userObject.overall.total.correct;
-                var userIncorrect = ((userObject.overall.totalPredictions * 3) - (userObject.overall.spread.push + userObject.overall.total.push)) - userCorrect;
-                usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.overall.predictionScore
+            if (userObject) {
+                var userCorrect = userObject.winner.correct + userObject.spread.correct + userObject.total.correct;
+                var userIncorrect = ((userObject.totalPredictions * 3) - (userObject.spread.push + userObject.total.push)) - userCorrect;
+                usersHTML += "<td data-th=\"Record\">" + userCorrect + "-" + userIncorrect + "</td><td data-th=\"Score\">" + userObject.predictionScore
                             + "<div class='leaderboard userScoreDetails'>"
-                            + "S/U: " + userObject.overall.winner.correct + "<br>"
-                            + "ATS: " + userObject.overall.spread.correct + "<br>"
-                            + "O/U: " + userObject.overall.total.correct
+                            + "S/U: " + userObject.winner.correct + "<br>"
+                            + "ATS: " + userObject.spread.correct + "<br>"
+                            + "O/U: " + userObject.total.correct
                             + "</div></td>";
             } else {
                 usersHTML += "<td data-th=\"Score\">0</td>";
@@ -224,26 +240,26 @@ function getAllUsers(limit, gameWeek, sport, callback) {
     useToken(function(token) {
         var allUsersQueryArray = [];
         var allUsersQuery = "";
+        if (limit || gameWeek || sport) {
+            allUsersQuery = "?";
+        }
+        if (gameWeek) {
+            allUsersQuery += "gameWeek=" + gameWeek;
+        }
         if (limit) {
-            allUsersQueryArray.push("limit=" + limit);
+            if (gameWeek) {
+                allUsersQuery += "&";
+            }
+            allUsersQuery += "limit=" + limit;
         }
         if (!sport) {
             sport = "nfl";
         }
         if (sport) {
-            allUsersQueryArray.push("sport=" + sport)
-        }
-        if (gameWeek) {
-            allUsersQueryArray.push("gameWeek=" + gameWeek);
-        }
-        if (allUsersQueryArray.length > 0) {
-            allUsersQuery = "?";
-            allUsersQueryArray.forEach((arrayString, arrayStringIndex) => {
-                if (arrayStringIndex > 0) {
-                    allUsersQuery += "&";
-                }
-                allUsersQuery += arrayString;
-            })
+            if (gameWeek || limit) {
+                allUsersQuery += "&";
+            }
+            allUsersQuery += "sport=" + sport
         }
         var getAllUsersOptions = {
             method: "GET"
