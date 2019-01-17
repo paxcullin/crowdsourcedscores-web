@@ -238,6 +238,7 @@ function getAllGroups(limit, callback) {
 
 function getAllUsers(limit, gameWeek, sport, callback) {
     useToken(function(token) {
+        var allUsersQueryArray = [];
         var allUsersQuery = "";
         if (limit || gameWeek || sport) {
             allUsersQuery = "?";
