@@ -870,6 +870,7 @@
                 gameWeek: parseInt($prediction.attr('data-game-week')),
                 year: parseInt($prediction.attr('data-game-year')),
                 sport: $prediction.attr('data-game-sport'),
+                season: $prediction.attr('data-game-season'),
                 awayTeam: {
                     code: $prediction.attr('data-away-code'),
                     fullName: $prediction.attr('data-away-name'),
@@ -913,7 +914,7 @@
                         case 200:
                             //console.log("200: ", response);
                             btn.text('Update');
-                            ga('send','event','prediction','submitted',prediction.gameId);
+                            ga('send','event','prediction','updated',prediction.gameId);
 
                             var responseData = response.data.game;
                             responseData.prediction = response.data.prediction;
