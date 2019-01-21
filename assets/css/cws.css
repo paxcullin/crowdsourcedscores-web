@@ -28,6 +28,11 @@ text-rendering: optimizeLegibility;
 .fbName {
     margin: 10px 0;
 }
+
+#rightNav div {
+    display: block;
+}
+
 /* Dropdown Button */
 .dropbtn {
     background-color: #4CAF50;
@@ -154,6 +159,17 @@ text-rendering: optimizeLegibility;
 }
 #sportSpecificNavRow {
     margin: 0 15px;
+}
+
+#podcasts {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#podcasts div {
+    display: block;
+    margin-bottom: 3px;
 }
 
 .gameHeader {

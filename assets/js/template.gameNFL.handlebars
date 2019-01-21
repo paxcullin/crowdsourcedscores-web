@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
 
-
+                                {{#ifCond prediction '||' results}}
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -380,6 +380,35 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                {{/ifCond}}
+                                {{#unless prediction}}
+                                <!--No prediction-->
+                                    {{#unless results}}
+                                        <!--no results -->
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th><i class="fa fa-plane" aria-hidden="true"></i>{{awayTeam.code}}</th>
+                                                    <th><i class="fa fa-home" aria-hidden="true"></i>{{homeTeam.code}}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                <!-- Initial Prediction Row -->
+                                                <tr class="predictionRow">
+                                                    <td class="away-team-prediction">
+                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                            value="{{prediction.awayTeam.score}}">
+                                                    </td>
+                                                    <td class="home-team-prediction">
+                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                            value="{{prediction.homeTeam.score}}">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                    {{/unless}}
+                                {{/unless}}
                                 
                                 <div>
                                 {{#unless results}}
