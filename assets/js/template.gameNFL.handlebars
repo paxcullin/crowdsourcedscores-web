@@ -49,6 +49,9 @@
                                     <tr>
                                         <th></th>
                                         <th>Me</th>
+                                        {{#ifCond gameId '===' 267}}
+                                        <th class="quarters">Quarters</th>
+                                        {{/ifCond}}
                                         <th class="compareHeader">{{#if comparePrediction}}{{comparePrediction.preferred_username}}{{/if}}{{#unless comparePrediction}}The Crowd{{/unless}}</th>
                                         <th>Odds</th>
                                         {{#if results}}<th>Actual</th>{{/if}}
@@ -61,7 +64,7 @@
                                         <td><i class="fa fa-plane" aria-hidden="true"></i>{{awayTeam.code}}</td>
                                         <td class="away-team-prediction {{#if results}}{{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond prediction.awayTeam.score '>' prediction.homeTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{awayTeam.code}}}-prediction">
                                             {{#ifCond status '===' 'notStarted'}}
-                                                <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                <input type="number" min="0" max="70" class="form-control predictionInput" placeholder="##"
                                                 value="{{prediction.awayTeam.score}}">
                                             {{/ifCond}}
                                             {{#ifCond status '!==' 'notStarted'}}
@@ -73,6 +76,19 @@
                                                 {{/if}}
                                             {{/ifCond}}
                                         </td>
+                                        
+                                        {{#ifCond gameId '===' 267}}
+                                        <td class="quarters awayQuarters">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q1}}" id="{{gameId}}-away-team-q1-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q2}}" id="{{gameId}}-away-team-q2-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q3}}" id="{{gameId}}-away-team-q3-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q4}}" id="{{gameId}}-away-team-q4-prediction">
+                                        </td>
+                                        {{/ifCond}}
                                         <td{{#if results}}
                                             {{#unless comparePrediction}}
                                                 {{#ifCond results.awayTeam.score '>' results.homeTeam.score}}{{#ifCond crowd.awayTeam.score '>' crowd.homeTeam.score}} class="crowdCorrect"{{/ifCond}}{{/ifCond}}
@@ -121,8 +137,8 @@
                                         <td><i class="fa fa-home" aria-hidden="true"></i> {{homeTeam.code}}</td>
                                         <td class="home-team-prediction{{#if results}}{{#ifCond results.homeTeam.score '>' results.awayTeam.score}}{{#ifCond prediction.homeTeam.score '>' prediction.awayTeam.score}} alert alert-success{{/ifCond}}{{/ifCond}}{{/if}}" id="{{{homeTeam.code}}}-prediction">
                                             {{#ifCond status '===' 'notStarted'}}
-                                                <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
-                                                value="{{prediction.homeTeam.score}}">
+                                                <input type="number" min="0" max="70" class="form-control predictionInput" placeholder="##"
+                                                value="{{prediction.homeTeam.score}}" id="{{gameId}}-home-team-prediction">
                                             {{/ifCond}}
                                             {{#ifCond status '!==' 'notStarted'}}
                                                 {{#ifCond prediction.awayTeam.score '<' prediction.homeTeam.score}}<i class="fas fa-angle-double-right"></i>{{/ifCond}}
@@ -134,6 +150,18 @@
                                                 {{/if}}
                                             {{/ifCond}}
                                         </td>
+                                        {{#ifCond gameId '===' 267}}
+                                        <td class="quarters homeQuarters">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.homeTeam.periods.q1}}" id="{{gameId}}-home-team-q1-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.homeTeam.periods.q2}}" id="{{gameId}}-home-team-q2-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.homeTeam.periods.q3}}" id="{{gameId}}-home-team-q3-prediction">
+                                            <input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.homeTeam.periods.q4}}" id="{{gameId}}-home-team-q4-prediction">
+                                        </td>
+                                        {{/ifCond}}
                                         <td
                                             {{#if results}}
                                                     {{#ifCond results.homeTeam.score '>' results.awayTeam.score}}
@@ -397,11 +425,11 @@
                                                 <!-- Initial Prediction Row -->
                                                 <tr class="predictionRow">
                                                     <td class="away-team-prediction">
-                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                        <input type="number" min="0" max="70" class="form-control predictionInput" placeholder="##"
                                                             value="{{prediction.awayTeam.score}}">
                                                     </td>
                                                     <td class="home-team-prediction">
-                                                        <input type="number" min="0" max="50" class="form-control predictionInput" placeholder="##"
+                                                        <input type="number" min="0" max="70" class="form-control predictionInput" placeholder="##"
                                                             value="{{prediction.homeTeam.score}}">
                                                     </td>
                                                 </tr>
