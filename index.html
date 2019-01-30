@@ -906,6 +906,56 @@
             prediction.awayTeam.score = parseInt(awayTeamPrediction);
             prediction.homeTeam.score = parseInt(homeTeamPrediction);
 
+            
+            $('.predictionQuarterInput').on('change', function(e) {
+                var $prediction = $(this).parents('.prediction');
+                var gameId = parseInt($prediction.attr('data-game-id'));
+                var quarterInputs = $('.predictionQuarterInput');
+                var awayQuarterInputs = [];
+                var homeQuarterInputs = [];
+                console.log('quarterInputs: ', quarterInputs);
+                for (var i=0; i < quarterInputs.length; i++) {
+                    var quarter = quarterInputs[i];
+                    if (!quarter.value) {
+                        quarter.value = 0;
+                    }
+                    if (i < 4) {
+                        awayQuarterInputs.push(quarter);
+                    } else {
+                        homeQuarterInputs.push(quarter);
+                    }
+                }
+                
+                var awayTeamPredictionValue = 0;
+                awayQuarterInputs.forEach((awayQuarter, index) => {
+                    awayTeamPredictionValue += parseInt(awayQuarter.value);
+                })
+                
+                $prediction.find('.away-team-prediction input').val(awayTeamPredictionValue);
+
+                var homeTeamPredictionValue = 0;
+                homeQuarterInputs.forEach((homeQuarter, index) => {
+                    homeTeamPredictionValue += parseInt(homeQuarter.value);
+                })
+                $prediction.find('.home-team-prediction input').val(homeTeamPredictionValue);
+            })
+            
+            if (gameId === 267) {
+                prediction.awayTeam.periods = {
+                    q1: parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val()),
+                    q2: parseInt($prediction.find('#' + gameId + '-away-team-q2-prediction').val()),
+                    q3: parseInt($prediction.find('#' + gameId + '-away-team-q3-prediction').val()),
+                    q4: parseInt($prediction.find('#' + gameId + '-away-team-q4-prediction').val())
+                }
+                
+                prediction.homeTeam.periods  = {
+                    q1: parseInt($prediction.find('#' + gameId + '-home-team-q1-prediction').val()),
+                    q2: parseInt($prediction.find('#' + gameId + '-home-team-q2-prediction').val()),
+                    q3: parseInt($prediction.find('#' + gameId + '-home-team-q3-prediction').val()),
+                    q4: parseInt($prediction.find('#' + gameId + '-home-team-q4-prediction').val())
+                }
+            }
+
             useToken(function(token){
                 apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})
                 .then(function(response) {
@@ -1047,13 +1097,47 @@
                         var html = templateScript(games);
                         $('#games').html(html);
 
+                        $('.predictionQuarterInput').on('change', function(e) {
+                            var $prediction = $(this).parents('.prediction');
+                            var gameId = parseInt($prediction.attr('data-game-id'));
+                            var quarterInputs = $('.predictionQuarterInput');
+                            var awayQuarterInputs = [];
+                            var homeQuarterInputs = [];
+                            console.log('quarterInputs: ', quarterInputs);
+                            for (var i=0; i < quarterInputs.length; i++) {
+                                var quarter = quarterInputs[i];
+                                if (!quarter.value) {
+                                    quarter.value = 0;
+                                }
+                                if (i < 4) {
+                                    awayQuarterInputs.push(quarter);
+                                } else {
+                                    homeQuarterInputs.push(quarter);
+                                }
+                            }
+                            
+                            var awayTeamPredictionValue = 0;
+                            awayQuarterInputs.forEach((awayQuarter, index) => {
+                                awayTeamPredictionValue += parseInt(awayQuarter.value);
+                            })
+                            
+                            $prediction.find('.away-team-prediction input').val(awayTeamPredictionValue);
+
+                            var homeTeamPredictionValue = 0;
+                            homeQuarterInputs.forEach((homeQuarter, index) => {
+                                homeTeamPredictionValue += parseInt(homeQuarter.value);
+                            })
+                            $prediction.find('.home-team-prediction input').val(homeTeamPredictionValue);
+                        })
+
                         $('.prediction-btn').on('click', function (e) {
                             e.preventDefault();
                             $(this).text('Saving...');
                             var newPrediction = true;
                             var $prediction = $(this).parents('.prediction');
+                            var gameId = parseInt($prediction.attr('data-game-id'))
                             var prediction = {
-                                gameId: parseInt($prediction.attr('data-game-id')),
+                                gameId: gameId,
                                 gameWeek: parseInt($prediction.attr('data-game-week')),
                                 year: parseInt($prediction.attr('data-game-year')),
                                 sport: $prediction.attr('data-game-sport'),
@@ -1090,6 +1174,22 @@
 
                             prediction.awayTeam.score = parseInt(awayTeamPrediction);
                             prediction.homeTeam.score = parseInt(homeTeamPrediction);
+                            
+                            if (gameId === 267) {
+                                prediction.awayTeam.periods = {
+                                    q1: parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val()),
+                                    q2: parseInt($prediction.find('#' + gameId + '-away-team-q2-prediction').val()),
+                                    q3: parseInt($prediction.find('#' + gameId + '-away-team-q3-prediction').val()),
+                                    q4: parseInt($prediction.find('#' + gameId + '-away-team-q4-prediction').val())
+                                }
+                                
+                                prediction.homeTeam.periods  = {
+                                    q1: parseInt($prediction.find('#' + gameId + '-home-team-q1-prediction').val()),
+                                    q2: parseInt($prediction.find('#' + gameId + '-home-team-q2-prediction').val()),
+                                    q3: parseInt($prediction.find('#' + gameId + '-home-team-q3-prediction').val()),
+                                    q4: parseInt($prediction.find('#' + gameId + '-home-team-q4-prediction').val())
+                                }
+                            }
 
                             //console.log("submitPrediction Token: ", token)
                             apiClient.predictionsPost({},JSON.stringify(prediction),{headers: {Authorization: token}})

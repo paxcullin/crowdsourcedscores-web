@@ -295,13 +295,6 @@ text-rendering: optimizeLegibility;
     color: #fff;
 }
 
-
-@media(max-width:768px) {
-    #resultRow {
-        text-align: center;
-    }
-}
-
 .loading-icon {
     position: relative;
     width: 20px;
@@ -501,29 +494,8 @@ font-weight: bold;
 width: 6.5em;
 display: inline-block;
 }
-@media (min-width: 480px) {
-    .rwd-table {
-        max-width: 767px;
-        overflow-x: scroll;
-    }
-    .rwd-table td:before {
-        display: none;
-    }
-}
 .rwd-table th, .rwd-table td {
 text-align: left;
-}
-@media (min-width: 480px) {
-.rwd-table th, .rwd-table td {
-    display: table-cell;
-    padding: .25em .5em;
-}
-.rwd-table th:first-child, .rwd-table td:first-child {
-    padding-left: 0;
-}
-.rwd-table th:last-child, .rwd-table td:last-child {
-    padding-right: 0;
-}
 }
 
 
@@ -541,11 +513,6 @@ border-color: #B22438;
 
 .rwd-table th, .rwd-table td {
 margin: .5em 1em;
-}
-@media (min-width: 480px) {
-.rwd-table th, .rwd-table td {
-    padding: 1em !important;
-}
 }
 .rwd-table th, .rwd-table td:before {
 color: #fff;
@@ -575,6 +542,10 @@ color: #fff;
     text-align: center;
     margin-bottom: 0;
     min-width: 40px;
+}
+
+.quarters {
+    display: none;
 }
 
 .fa-exclamation-triangle {
@@ -654,19 +625,6 @@ color: #fff;
     font-weight: 600;
 }
 
-@media (min-width:768px) {
-    .profileDetails h4 {
-        width: 150 px;
-        left: 0;
-        position: absolute;
-        top: 8px;
-    }
-    .rwd-table {
-        max-width: 959px;
-        overflow-x: scroll;
-    }
-}    
-
 .profileDetails {
     min-height: 20px;
     padding: 19px;
@@ -738,23 +696,57 @@ color: #fff;
     color: #333
 }
 
+@media (min-width: 480px) {
+    .rwd-table td:before {
+        display: none;
+    }
+    .rwd-table th, .rwd-table td {
+        display: table-cell;
+        padding: .25em .5em;
+    }
+    .rwd-table th:first-child, .rwd-table td:first-child {
+        padding-left: 0;
+    }
+    .rwd-table th:last-child, .rwd-table td:last-child {
+        padding-right: 0;
+    }
+    .rwd-table th, .rwd-table td {
+        padding: 1em !important;
+    }
+}
 @media (min-width: 768px) {
+    .profileDetails h4 {
+        width: 150 px;
+        left: 0;
+        position: absolute;
+        top: 8px;
+    }
+    .rwd-table {
+        max-width: 959px;
+        overflow-x: scroll;
+    }
     .form-group>label.control-label {
         margin: 3px 0;
+    }
+    
+    #resultRow {
+        text-align: center;
     }
 }
 
 @media (min-width: 960px) {
-    .rwd-table {
-        max-width: 1167px;
-        overflow-x: scroll;
-    }
 }
 
+
+.leaderboard.allUsers {
+    max-width: 90%;
+    overflow-x: scroll;
+}
 
 .leaderboard.userScoreDetails {
     display: none;
     font-size: 0.8em;
 }
+
 
 #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;}
