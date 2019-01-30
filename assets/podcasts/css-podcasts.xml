@@ -369,6 +369,19 @@
         <pubDate>Tues, 15 Jan 2019 23:00:00 GMT</pubDate>
         <itunes:duration>1:00:06</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 21 - Conference Championship CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris drown their sorrows with some Woodford Reserve as they lament how the coin flip that is the NFL overtime went against the crowd and resulted in yet another Patriots Super Bowl appearance.</description>
+        <itunes:subtitle>Paul and Chris drown their sorrows with some Woodford Reserve as they lament how the coin flip that is the NFL overtime went against the crowd and resulted in yet another Patriots Super Bowl appearance.</itunes:subtitle>
+        <itunes:episode>25</itunes:episode>
+        <itunes:summary>Paul and Chris drown their sorrows with some Woodford Reserve as they lament how the coin flip that is the NFL overtime went against the crowd and resulted in yet another Patriots Super Bowl appearance.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode21.mp3" length="45:20" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode21.mp3</guid>
+        <pubDate>Tues, 22 Jan 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>45:20</itunes:duration>
+      </item>
     
   </channel>
   </rss>
