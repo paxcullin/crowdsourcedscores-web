@@ -354,7 +354,20 @@
         <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode19.mp3" length="51:40" type="audio/mpeg"/>
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode19.mp3</guid>
         <pubDate>Tues, 8 Jan 2019 22:00:00 GMT</pubDate>
-        <itunes:duration>51Z40</itunes:duration>
+        <itunes:duration>51:40</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 20 - Divisional Round CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris return to their roots and enjoy some Woodinville Whiskey Double Barrel Bourbon while celebrating an outstanding weekend of predictions by the crowd in the Divisional Round.</description>
+        <itunes:subtitle>Paul and Chris return to their roots and enjoy some Woodinville Whiskey Double Barrel Bourbon while celebrating an outstanding weekend of predictions by the crowd in the Divisional Round.</itunes:subtitle>
+        <itunes:episode>24</itunes:episode>
+        <itunes:summary>Paul and Chris return to their roots and enjoy some Woodinville Whiskey Double Barrel Bourbon while celebrating an outstanding weekend of predictions by the crowd in the Divisional Round.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode20.mp3" length="1:00:06" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode20.mp3</guid>
+        <pubDate>Tues, 15 Jan 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>1:00:06</itunes:duration>
       </item>
     
   </channel>
