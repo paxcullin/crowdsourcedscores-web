@@ -548,6 +548,12 @@ color: #fff;
     display: none;
 }
 
+.quarterLabels {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top:3px;
+}
+
 .fa-exclamation-triangle {
     color: #B22438;
 }
