@@ -433,6 +433,28 @@
                                                             value="{{prediction.homeTeam.score}}">
                                                     </td>
                                                 </tr>
+                                                <tr class="predictionRow">
+                                                    <td class="quarters awayQuarters">
+                                                        <span class="quarterLabels">Q1: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.awayTeam.periods.q1}}" id="{{gameId}}-away-team-q1-prediction">
+                                                        <span class="quarterLabels">Q2: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.awayTeam.periods.q2}}" id="{{gameId}}-away-team-q2-prediction">
+                                                        <span class="quarterLabels">Q3: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.awayTeam.periods.q3}}" id="{{gameId}}-away-team-q3-prediction">
+                                                        <span class="quarterLabels">Q4: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.awayTeam.periods.q4}}" id="{{gameId}}-away-team-q4-prediction">
+                                                    </td>
+                                                    <td class="quarters homeQuarters">
+                                                        <span class="quarterLabels">Q1: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.homeTeam.periods.q1}}" id="{{gameId}}-home-team-q1-prediction">
+                                                        <span class="quarterLabels">Q2: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.homeTeam.periods.q2}}" id="{{gameId}}-home-team-q2-prediction">
+                                                        <span class="quarterLabels">Q3: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.homeTeam.periods.q3}}" id="{{gameId}}-home-team-q3-prediction">
+                                                        <span class="quarterLabels">Q4: </span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                            value="{{prediction.homeTeam.periods.q4}}" id="{{gameId}}-home-team-q4-prediction">
+                                                    </td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                     {{/unless}}

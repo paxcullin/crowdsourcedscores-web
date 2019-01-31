@@ -681,7 +681,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
   return "                                <!--No prediction-->\n"
     + ((stack1 = helpers.unless.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.results : depth0),{"name":"unless","hash":{},"fn":container.program(177, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"177":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+    var stack1, helper, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), alias4=helpers.helperMissing, alias5="function";
 
   return "                                        <!--no results -->\n                                            <table class=\"table\">\n                                                <thead>\n                                                <tr>\n                                                    <th><i class=\"fa fa-plane\" aria-hidden=\"true\"></i>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0))
@@ -691,7 +691,39 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
     + "\">\n                                                    </td>\n                                                    <td class=\"home-team-prediction\">\n                                                        <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1), depth0))
-    + "\">\n                                                    </td>\n                                                </tr>\n                                                </tbody>\n                                            </table>\n";
+    + "\">\n                                                    </td>\n                                                </tr>\n                                                <tr class=\"predictionRow\">\n                                                    <td class=\"quarters awayQuarters\">\n                                                        <span class=\"quarterLabels\">Q1: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-away-team-q1-prediction\">\n                                                        <span class=\"quarterLabels\">Q2: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-away-team-q2-prediction\">\n                                                        <span class=\"quarterLabels\">Q3: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-away-team-q3-prediction\">\n                                                        <span class=\"quarterLabels\">Q4: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-away-team-q4-prediction\">\n                                                    </td>\n                                                    <td class=\"quarters homeQuarters\">\n                                                        <span class=\"quarterLabels\">Q1: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q1-prediction\">\n                                                        <span class=\"quarterLabels\">Q2: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q2-prediction\">\n                                                        <span class=\"quarterLabels\">Q3: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q3-prediction\">\n                                                        <span class=\"quarterLabels\">Q4: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q4-prediction\">\n                                                    </td>\n                                                </tr>\n                                                </tbody>\n                                            </table>\n";
 },"179":function(container,depth0,helpers,partials,data) {
     var stack1;
 
