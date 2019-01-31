@@ -544,8 +544,13 @@ color: #fff;
     min-width: 40px;
 }
 
-.quarters {
-    display: none;
+td.quarters {
+    display: flex;
+    flex-direction: row
+}
+
+.quarters input {
+    margin: 0 2px;
 }
 
 .quarterLabels {
@@ -718,6 +723,14 @@ color: #fff;
     }
     .rwd-table th, .rwd-table td {
         padding: 1em !important;
+    }
+
+}
+@media (max-width: 480px) {
+
+    td.quarters {
+        display: flex;
+        flex-direction: column
     }
 }
 @media (min-width: 768px) {
