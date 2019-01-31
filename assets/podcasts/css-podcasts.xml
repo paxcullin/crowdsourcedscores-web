@@ -382,6 +382,19 @@
         <pubDate>Tues, 22 Jan 2019 23:00:00 GMT</pubDate>
         <itunes:duration>45:20</itunes:duration>
       </item>
+      <item>
+        <title>2018 Season - Episode 22 - 2018 Crowd Wisdom Sports Honors Awards Show!</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris hand out awards to the best of the best and highlight some of the most intriguing results that the crowd produced during the 2018 NFL Regular Season.</description>
+        <itunes:subtitle>Paul and Chris hand out awards to the best of the best and highlight some of the most intriguing results that the crowd produced during the 2018 NFL Regular Season.</itunes:subtitle>
+        <itunes:episode>26</itunes:episode>
+        <itunes:summary>Paul and Chris hand out awards to the best of the best and highlight some of the most intriguing results that the crowd produced during the 2018 NFL Regular Season.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode22.mp3" length="52:02" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode22.mp3</guid>
+        <pubDate>Tues, 29 Jan 2019 23:30:00 GMT</pubDate>
+        <itunes:duration>52:02</itunes:duration>
+      </item>
     
   </channel>
   </rss>
