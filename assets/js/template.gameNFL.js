@@ -3,35 +3,35 @@
 templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,partials,data) {
     return " data-predicted=\"true\" ";
 },"3":function(container,depth0,helpers,partials,data) {
-    return "                            <i class=\"fas fa-exclamation-triangle total\"></i>\n";
+    return "                            <i class=\"fas fa-exclamation-triangle total\"></i>\r\n";
 },"5":function(container,depth0,helpers,partials,data) {
-    return "                            <i class=\"fas fa-exclamation-triangle spread\"></i>\n";
+    return "                            <i class=\"fas fa-exclamation-triangle spread\"></i>\r\n";
 },"7":function(container,depth0,helpers,partials,data) {
     return " gameHeaderPredicted";
 },"9":function(container,depth0,helpers,partials,data) {
     return " gameHeaderNotPredicted";
 },"11":function(container,depth0,helpers,partials,data) {
-    return "                                                <span class=\"finalRow\" style=\"float: right\">FINAL</span>\n";
+    return "                                                <span class=\"finalRow\" style=\"float: right\">FINAL</span>\r\n";
 },"13":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3=container.lambda, alias4=container.escapeExpression;
 
-  return "                                <table class=\"table\">\n                                    <thead>\n                                    <tr>\n                                        <th></th>\n                                        <th>Me</th>\n"
+  return "                                <table class=\"table\">\r\n                                    <thead>\r\n                                    <tr>\r\n                                        <th></th>\r\n                                        <th>Me</th>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.gameId : depth0),"===",267,{"name":"ifCond","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                        <th class=\"compareHeader\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.comparePrediction : depth0),{"name":"if","hash":{},"fn":container.program(16, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.comparePrediction : depth0),{"name":"unless","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</th>\n                                        <th>Odds</th>\n                                        "
+    + "</th>\r\n                                        <th>Odds</th>\r\n                                        "
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(20, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n                                    </tr>\n                                    </thead>\n                                    <tbody>\n\n                                    <!-- Away Team Row -->\n                                    <tr class=\"predictionRow\">\n                                        <td><i class=\"fa fa-plane\" aria-hidden=\"true\"></i>"
+    + "\r\n                                    </tr>\r\n                                    </thead>\r\n                                    <tbody>\r\n\r\n                                    <!-- Away Team Row -->\r\n                                    <tr class=\"predictionRow\">\r\n                                        <td><i class=\"fa fa-plane\" aria-hidden=\"true\"></i>"
     + alias4(alias3(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0))
-    + "</td>\n                                        <td class=\"away-team-prediction "
+    + "</td>\r\n                                        <td class=\"away-team-prediction "
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(22, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\" id=\""
     + ((stack1 = alias3(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "-prediction\">\n"
+    + "-prediction\">\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"===","notStarted",{"name":"ifCond","hash":{},"fn":container.program(26, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"!==","notStarted",{"name":"ifCond","hash":{},"fn":container.program(28, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                                        </td>\n                                        \n"
+    + "                                        </td>\r\n                                        \r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.gameId : depth0),"===",267,{"name":"ifCond","hash":{},"fn":container.program(34, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                        <td"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(41, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -69,7 +69,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + " id=\""
     + ((stack1 = alias3(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + ((stack1 = alias3(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "-total-prediction\">\n                                        "
+    + "-total-prediction\">\r\n                                        "
     + alias4(alias3(((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.total : stack1), depth0))
     + "\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(104, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -110,7 +110,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(184, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\n                                    </tr>\n                                    </tbody>\n                                </table>\n";
 },"14":function(container,depth0,helpers,partials,data) {
-    return "                                        <th class=\"quarters\">Quarters</th>\n";
+    return "                                        <th class=\"quarters\">Quarters</th>\r\n";
 },"16":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -132,16 +132,16 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 },"26":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "                                                <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\n                                                value=\""
+  return "                                                <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\r\n                                                value=\""
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
-    + "\">\n";
+    + "\">\r\n";
 },"28":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
   return "                                                "
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),">",((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1),{"name":"ifCond","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
-    + "\n"
+    + "\r\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(31, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"29":function(container,depth0,helpers,partials,data) {
     return "<i class=\"fas fa-angle-double-right\"></i>";
@@ -150,7 +150,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 
   return ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),"===",((stack1 = ((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),{"name":"ifCond","hash":{},"fn":container.program(32, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"32":function(container,depth0,helpers,partials,data) {
-    return "                                                        <sup><i class=\"fas fa-bullseye\"></i></sup>\n";
+    return "                                                        <sup><i class=\"fas fa-bullseye\"></i></sup>\r\n";
 },"34":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
@@ -165,16 +165,16 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q1-prediction\">\n                                            <span class=\"visible-xs\">Q2: </span><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
+    + "-away-team-q1-prediction\">\r\n                                            <span class=\"quarterLabel visible-xs\">Q2</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q2-prediction\">\n                                            <span class=\"visible-xs\">Q3: </span><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
+    + "-away-team-q2-prediction\">\r\n                                            <span class=\"quarterLabel visible-xs\">Q3</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q3-prediction\">\n                                            <span class=\"visible-xs\">Q4: </span><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
+    + "-away-team-q3-prediction\">\r\n                                            <span class=\"quarterLabel visible-xs\">Q4</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
     + "-away-team-q4-prediction\">\n";
@@ -240,7 +240,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.prediction : depth0),{"name":"unless","hash":{},"fn":container.program(50, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ">\n                                                    "
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.crowd : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),">",((stack1 = ((stack1 = (depth0 != null ? depth0.crowd : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1),{"name":"ifCond","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n                                                    "
+    + "\r\n                                                    "
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.crowd : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
     + "\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(53, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -261,7 +261,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 
   return "                                                    "
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.comparePrediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),">",((stack1 = ((stack1 = (depth0 != null ? depth0.comparePrediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1),{"name":"ifCond","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n                                                    "
+    + "\r\n                                                    "
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.comparePrediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
     + "\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(56, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
@@ -297,7 +297,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 },"67":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=container.escapeExpression;
 
-  return "                                                <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\n                                                value=\""
+  return "                                                <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\r\n                                                value=\""
     + alias1(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1), depth0))
     + "\" id=\""
     + alias1(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"gameId","hash":{},"data":data}) : helper)))
@@ -307,7 +307,7 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 
   return "                                                "
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),"<",((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1),{"name":"ifCond","hash":{},"fn":container.program(29, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n                                                "
+    + "\r\n                                                "
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1), depth0))
     + "\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(70, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
@@ -747,43 +747,49 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
 },"187":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), alias4=helpers.helperMissing, alias5="function";
 
-  return "                                        <!--no results -->\n                                            <table class=\"table\">\n                                                <thead>\n                                                <tr>\n                                                    <th><i class=\"fa fa-plane\" aria-hidden=\"true\"></i>"
+  return "                                        <!--no results -->\r\n                                            <table class=\"table\">\r\n                                                <thead>\r\n                                                <tr>\r\n                                                    <th><i class=\"fa fa-plane\" aria-hidden=\"true\"></i>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0))
-    + "</th>\n                                                    <th><i class=\"fa fa-home\" aria-hidden=\"true\"></i>"
+    + "</th>\r\n                                                    <th><i class=\"fa fa-home\" aria-hidden=\"true\"></i>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0))
-    + "</th>\n                                                </tr>\n                                                </thead>\n                                                <tbody>\n\n                                                <!-- Initial Prediction Row -->\n                                                <tr class=\"predictionRow\">\n                                                    <td class=\"away-team-prediction\">\n                                                        <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\n                                                            value=\""
+    + "</th>\r\n                                                </tr>\r\n                                                </thead>\r\n                                                <tbody>\r\n\r\n                                                <!-- Initial Prediction Row -->\r\n                                                <tr class=\"predictionRow\">\r\n                                                    <td class=\"away-team-prediction\">\r\n                                                        <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1), depth0))
-    + "\">\n                                                    </td>\n                                                    <td class=\"home-team-prediction\">\n                                                        <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\n                                                            value=\""
+    + "\">\r\n                                                    </td>\r\n                                                    <td class=\"home-team-prediction\">\r\n                                                        <input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.score : stack1), depth0))
-    + "\">\n                                                    </td>\n                                                </tr>\n                                                <tr class=\"predictionRow\">\n                                                    <td class=\"quarters awayQuarters\">\n                                                        <span class=\"quarterLabels\">Q1: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
-    + "\" id=\""
-    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q1-prediction\">\n                                                        <span class=\"quarterLabels\">Q2: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
-    + "\" id=\""
-    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q2-prediction\">\n                                                        <span class=\"quarterLabels\">Q3: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
-    + "\" id=\""
-    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q3-prediction\">\n                                                        <span class=\"quarterLabels\">Q4: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
-    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
-    + "\" id=\""
-    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-away-team-q4-prediction\">\n                                                    </td>\n                                                    <td class=\"quarters homeQuarters\">\n                                                        <span class=\"quarterLabels\">Q1: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + "\">\r\n                                                    </td>\r\n                                                </tr>\r\n"
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.gameId : depth0),"===",267,{"name":"ifCond","hash":{},"fn":container.program(178, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "                                                </tbody>\r\n                                            </table>\r\n";
+},"178":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), alias4=helpers.helperMissing, alias5="function";
+
+  return "                                                \r\n                                                <!-- Initial Prediction Quarters Row -->\r\n                                                <tr class=\"predictionRow\">\r\n                                                    <td class=\"away-team-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q1</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-home-team-q1-prediction\">\n                                                        <span class=\"quarterLabels\">Q2: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + "-away-team-q1-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q2</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-home-team-q2-prediction\">\n                                                        <span class=\"quarterLabels\">Q3: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + "-away-team-q2-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q3</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
-    + "-home-team-q3-prediction\">\n                                                        <span class=\"quarterLabels\">Q4: </span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\n                                                            value=\""
+    + "-away-team-q3-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q4</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-away-team-q4-prediction\">\r\n                                                    </td>\r\n                                                    <td class=\"home-team-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q1</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q1 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q1-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q2</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q2 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q2-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q3</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
+    + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q3 : stack1), depth0))
+    + "\" id=\""
+    + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
+    + "-home-team-q3-prediction\">\r\n                                                        <span class=\"quarterLabel\">Q4</span><br><input type=\"number\" min=\"0\" max=\"70\" class=\"form-control predictionInput predictionQuarterInput\" placeholder=\"##\"\r\n                                                            value=\""
     + alias2(alias1(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.homeTeam : stack1)) != null ? stack1.periods : stack1)) != null ? stack1.q4 : stack1), depth0))
     + "\" id=\""
     + alias2(((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias4),(typeof helper === alias5 ? helper.call(alias3,{"name":"gameId","hash":{},"data":data}) : helper)))
@@ -843,43 +849,43 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.comparePrediction : depth0)) != null ? stack1.preferred_username : stack1), depth0))
     + "</span> Score: "
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.comparePrediction : depth0)) != null ? stack1.predictionScore : stack1), depth0))
-    + " <i class=\"fas fa-info-circle\" data-toggle=\"modal\" data-target=\"#predictionScoreModal\"></i></div>\n";
+    + " <i class=\"fas fa-info-circle\" data-toggle=\"modal\" data-target=\"#predictionScoreModal\"></i></div>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.lambda, alias5=container.escapeExpression;
 
   return "<div class=\"card prediction\" style=\"margin-bottom:10px;min-width: 293px;\" data-game-id=\""
     + ((stack1 = ((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gameId","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"\n    data-game-week=\""
+    + "\"\r\n    data-game-week=\""
     + ((stack1 = ((helper = (helper = helpers.gameWeek || (depth0 != null ? depth0.gameWeek : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gameWeek","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"\n    data-game-year=\""
+    + "\"\r\n    data-game-year=\""
     + ((stack1 = ((helper = (helper = helpers.year || (depth0 != null ? depth0.year : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"year","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"\n    data-home-code=\""
+    + "\"\r\n    data-home-code=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "\"\n    data-home-name=\""
+    + "\"\r\n    data-home-name=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.fullName : stack1), depth0)) != null ? stack1 : "")
     + "\" data-home-short=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.shortName : stack1), depth0)) != null ? stack1 : "")
-    + "\"\n    data-away-code=\""
+    + "\"\r\n    data-away-code=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "\"\n    data-away-name=\""
+    + "\"\r\n    data-away-name=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.fullName : stack1), depth0)) != null ? stack1 : "")
     + "\" data-away-short=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.shortName : stack1), depth0)) != null ? stack1 : "")
-    + "\"\n    data-game-sport=\""
+    + "\"\r\n    data-game-sport=\""
     + ((stack1 = ((helper = (helper = helpers.sport || (depth0 != null ? depth0.sport : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"sport","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"\n    data-game-season=\""
+    + "\"\r\n    data-game-season=\""
     + ((stack1 = ((helper = (helper = helpers.season || (depth0 != null ? depth0.season : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"season","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"\n    "
+    + "\"\r\n    "
     + ((stack1 = helpers["if"].call(alias1,((stack1 = ((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.awayTeam : stack1)) != null ? stack1.score : stack1),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n    style=\"display: inline-block;\">\n    <div class=\"panel-group\" id=\""
+    + "\r\n    style=\"display: inline-block;\">\r\n    <div class=\"panel-group\" id=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "-accordion\" role=\"tablist\" aria-multiselectable=\"true\">\n        <div class=\"panel panel-default\">\n            <div class=\"panel-heading\" role=\"tab\" id=\""
+    + "-accordion\" role=\"tablist\" aria-multiselectable=\"true\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-heading\" role=\"tab\" id=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "-heading\">\n                <h4 class=\"panel-title\">\n                    <a role=\"button\" data-toggle=\"collapse\" data-parent=\"#"
+    + "-heading\">\r\n                <h4 class=\"panel-title\">\r\n                    <a role=\"button\" data-toggle=\"collapse\" data-parent=\"#"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
@@ -891,18 +897,18 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "\">\n                        <span class=\"hidden-md\">"
+    + "\">\r\n                        <span class=\"hidden-md\">"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.fullName : stack1), depth0)) != null ? stack1 : "")
     + " vs. "
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.fullName : stack1), depth0)) != null ? stack1 : "")
-    + "</span>\n                        <span class=\"visible-md\">"
+    + "</span>\r\n                        <span class=\"visible-md\">"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.shortName : stack1), depth0)) != null ? stack1 : "")
     + " vs. "
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.shortName : stack1), depth0)) != null ? stack1 : "")
-    + "</span>\n"
+    + "</span>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.total : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.spread : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                    </a>\n\n                </h4>\n            </div>\n            <div id=\""
+    + "                    </a>\r\n\r\n                </h4>\r\n            </div>\r\n            <div id=\""
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
@@ -910,18 +916,18 @@ templates['template.gameNFL'] = template({"1":function(container,depth0,helpers,
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.awayTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
     + "-"
     + ((stack1 = alias4(((stack1 = (depth0 != null ? depth0.homeTeam : depth0)) != null ? stack1.code : stack1), depth0)) != null ? stack1 : "")
-    + "-heading\">\n                <div class=\"panel-body\">\n                    <div class=\"content\">\n                        <div class=\"tab-content text-center\">\n                            <div class=\"tab-pane active\">\n                                <div class=\"prediction-message\" data-game-id=\""
+    + "-heading\">\r\n                <div class=\"panel-body\">\r\n                    <div class=\"content\">\r\n                        <div class=\"tab-content text-center\">\r\n                            <div class=\"tab-pane active\">\r\n                                <div class=\"prediction-message\" data-game-id=\""
     + ((stack1 = ((helper = (helper = helpers.gameId || (depth0 != null ? depth0.gameId : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gameId","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "\"></div>\n                                <div>\n                                    <div class=\"form-group\">\n                                        <div class=\"gameHeader"
+    + "\"></div>\r\n                                <div>\r\n                                    <div class=\"form-group\">\r\n                                        <div class=\"gameHeader"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.prediction : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.prediction : depth0),{"name":"unless","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\">\n                                            <span style=\"float:left\">"
+    + "\">\r\n                                            <span style=\"float:left\">"
     + alias5(((helper = (helper = helpers.startDateTime || (depth0 != null ? depth0.startDateTime : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"startDateTime","hash":{},"data":data}) : helper)))
     + "<br/>"
     + alias5(((helper = (helper = helpers.tvStation || (depth0 != null ? depth0.tvStation : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"tvStation","hash":{},"data":data}) : helper)))
-    + "</span>\n"
+    + "</span>\r\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                                        </div>\n                                    </div>\n                                </div>\n\n"
+    + "                                        </div>\r\n                                    </div>\r\n                                </div>\r\n\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.prediction : depth0),"||",(depth0 != null ? depth0.results : depth0),{"name":"ifCond","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0.prediction : depth0),{"name":"unless","hash":{},"fn":container.program(186, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                \n                                <div>\n"

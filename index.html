@@ -1176,18 +1176,20 @@
                             prediction.homeTeam.score = parseInt(homeTeamPrediction);
                             
                             if (gameId === 267) {
-                                prediction.awayTeam.periods = {
-                                    q1: parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val()),
-                                    q2: parseInt($prediction.find('#' + gameId + '-away-team-q2-prediction').val()),
-                                    q3: parseInt($prediction.find('#' + gameId + '-away-team-q3-prediction').val()),
-                                    q4: parseInt($prediction.find('#' + gameId + '-away-team-q4-prediction').val())
-                                }
-                                
-                                prediction.homeTeam.periods  = {
-                                    q1: parseInt($prediction.find('#' + gameId + '-home-team-q1-prediction').val()),
-                                    q2: parseInt($prediction.find('#' + gameId + '-home-team-q2-prediction').val()),
-                                    q3: parseInt($prediction.find('#' + gameId + '-home-team-q3-prediction').val()),
-                                    q4: parseInt($prediction.find('#' + gameId + '-home-team-q4-prediction').val())
+                                if (parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val())) {
+                                    prediction.awayTeam.periods = {
+                                        q1: parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val()),
+                                        q2: parseInt($prediction.find('#' + gameId + '-away-team-q2-prediction').val()),
+                                        q3: parseInt($prediction.find('#' + gameId + '-away-team-q3-prediction').val()),
+                                        q4: parseInt($prediction.find('#' + gameId + '-away-team-q4-prediction').val())
+                                    }
+                                    
+                                    prediction.homeTeam.periods  = {
+                                        q1: parseInt($prediction.find('#' + gameId + '-home-team-q1-prediction').val()),
+                                        q2: parseInt($prediction.find('#' + gameId + '-home-team-q2-prediction').val()),
+                                        q3: parseInt($prediction.find('#' + gameId + '-home-team-q3-prediction').val()),
+                                        q4: parseInt($prediction.find('#' + gameId + '-home-team-q4-prediction').val())
+                                    }
                                 }
                             }
 
