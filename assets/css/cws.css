@@ -546,10 +546,14 @@ color: #fff;
 
 td.quarters {
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .quarters input {
+    margin: 0 2px;
+}
+.quarterResults {
     margin: 0 2px;
 }
 

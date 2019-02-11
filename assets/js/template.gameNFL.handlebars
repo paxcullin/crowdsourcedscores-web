@@ -79,14 +79,48 @@
                                         
                                         {{#ifCond gameId '===' 267}}
                                         <td class="quarters awayQuarters">
-                                            <span class="quarterLabel visible-xs">Q1</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q1}}" id="{{gameId}}-away-team-q1-prediction">
-                                            <span class="quarterLabel visible-xs">Q2</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q2}}" id="{{gameId}}-away-team-q2-prediction">
-                                            <span class="quarterLabel visible-xs">Q3</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q3}}" id="{{gameId}}-away-team-q3-prediction">
-                                            <span class="quarterLabel visible-xs">Q4</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q4}}" id="{{gameId}}-away-team-q4-prediction">
+                                            {{#ifCond status '===' 'notStarted'}}
+                                            <span class="visible-xs">Q1: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q1}}" id="{{gameId}}-away-team-q1-prediction">
+                                            <span class="visible-xs">Q2: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q2}}" id="{{gameId}}-away-team-q2-prediction">
+                                            <span class="visible-xs">Q3: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q3}}" id="{{gameId}}-away-team-q3-prediction">
+                                            <span class="visible-xs">Q4: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                value="{{prediction.awayTeam.periods.q4}}" id="{{gameId}}-away-team-q4-prediction">
+                                            {{/ifCond}}
+                                            {{#ifCond status '!==' 'notStarted'}}
+                                                {{#if prediction.awayTeam.periods.q1}}
+                                                <span class="visible-xs">Q1:<br></span>
+                                                    <span class="quarterResults">
+                                                        {{prediction.awayTeam.periods.q1}}
+                                                        {{#ifCond results.awayTeam.periods.q1 '===' prediction.awayTeam.periods.q1}}
+                                                            <sup><i class="fas fa-bullseye"></i></sup>
+                                                        {{/ifCond}}
+                                                    </span>
+                                                <span class="visible-xs">Q2:<br></span>
+                                                    <span class="quarterResults">
+                                                        {{prediction.awayTeam.periods.q2}}
+                                                        {{#ifCond results.awayTeam.periods.q2 '===' prediction.awayTeam.periods.q2}}
+                                                            <sup><i class="fas fa-bullseye"></i></sup>
+                                                        {{/ifCond}}
+                                                    </span>
+                                                <span class="visible-xs">Q3:<br></span>
+                                                    <span class="quarterResults">
+                                                        {{prediction.awayTeam.periods.q3}}
+                                                        {{#ifCond results.awayTeam.periods.q3 '===' prediction.awayTeam.periods.q3}}
+                                                            <sup><i class="fas fa-bullseye"></i></sup>
+                                                        {{/ifCond}}
+                                                    </span>
+                                                <span class="visible-xs">Q4:<br></span>
+                                                    <span class="quarterResults">
+                                                        {{prediction.awayTeam.periods.q4}}
+                                                        {{#ifCond results.awayTeam.periods.q4 '===' prediction.awayTeam.periods.q4}}
+                                                            <sup><i class="fas fa-bullseye"></i></sup>
+                                                        {{/ifCond}}
+                                                    </span>
+                                                {{/if}}
+                                            {{/ifCond}}
                                         </td>
                                         {{/ifCond}}
                                         <td{{#if results}}
@@ -151,16 +185,46 @@
                                             {{/ifCond}}
                                         </td>
                                         {{#ifCond gameId '===' 267}}
-                                        <td class="quarters homeQuarters">
-                                            <span class="quarterLabel visible-xs">Q1</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q1}}" id="{{gameId}}-home-team-q1-prediction">
-                                            <span class="quarterLabel visible-xs">Q2</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q2}}" id="{{gameId}}-home-team-q2-prediction">
-                                            <span class="quarterLabel visible-xs">Q3</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q3}}" id="{{gameId}}-home-team-q3-prediction">
-                                            <span class="quarterLabel visible-xs">Q4</span><br><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
-                                                value="{{prediction.homeTeam.periods.q4}}" id="{{gameId}}-home-team-q4-prediction">
-                            </td>
+                                            <td class="quarters homeQuarters">
+                                                {{#ifCond status '===' 'notStarted'}}
+                                                <span class="visible-xs">Q1: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                    value="{{prediction.homeTeam.periods.q1}}" id="{{gameId}}-home-team-q1-prediction">
+                                                <span class="visible-xs">Q2: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                    value="{{prediction.homeTeam.periods.q2}}" id="{{gameId}}-home-team-q2-prediction">
+                                                <span class="visible-xs">Q3: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                    value="{{prediction.homeTeam.periods.q3}}" id="{{gameId}}-home-team-q3-prediction">
+                                                <span class="visible-xs">Q4: </span><input type="number" min="0" max="70" class="form-control predictionInput predictionQuarterInput" placeholder="##"
+                                                    value="{{prediction.homeTeam.periods.q4}}" id="{{gameId}}-home-team-q4-prediction">
+                                                {{/ifCond}}
+                                                {{#ifCond status '!==' 'notStarted'}}
+                                                    {{#if prediction.homeTeam.periods.q1}}
+                                                    <span class="visible-xs">Q1:<br></span>
+                                                        <span class="quarterResults">{{prediction.homeTeam.periods.q1}}
+                                                            {{#ifCond results.homeTeam.periods.q1 '===' prediction.homeTeam.periods.q1}}
+                                                                <sup><i class="fas fa-bullseye"></i></sup>
+                                                            {{/ifCond}}</span>
+                                                    <span class="visible-xs">Q2:<br></span>
+                                                        <span class="quarterResults">{{prediction.homeTeam.periods.q2}}
+                                                            {{#ifCond results.homeTeam.periods.q2 '===' prediction.homeTeam.periods.q2}}
+                                                                <sup><i class="fas fa-bullseye"></i></sup>
+                                                            {{/ifCond}}
+                                                        </span>
+                                                    <span class="visible-xs">Q3:<br></span>
+                                                        <span class="quarterResults">{{prediction.homeTeam.periods.q3}}
+                                                            {{#ifCond results.homeTeam.periods.q3 '===' prediction.homeTeam.periods.q3}}
+                                                                <sup><i class="fas fa-bullseye"></i></sup>
+                                                            {{/ifCond}}
+                                                        </span>
+                                                    <span class="visible-xs">Q4:<br></span>
+                                                        <span class="quarterResults">
+                                                            {{prediction.homeTeam.periods.q4}}
+                                                            {{#ifCond results.homeTeam.periods.q4 '===' prediction.homeTeam.periods.q4}}
+                                                                <sup><i class="fas fa-bullseye"></i></sup>
+                                                            {{/ifCond}}
+                                                        </span>
+                                                    {{/if}}
+                                                {{/ifCond}}
+                                            </td>
                                         {{/ifCond}}
                                         <td
                                             {{#if results}}
@@ -237,6 +301,7 @@
                                         <span style="font-size: 0.8em; font-weight: bold">{{#ifCond prediction.total '>' odds.total}}<br>(o{{odds.total}}){{/ifCond}}{{#ifCond prediction.total '<' odds.total}}<br>(u{{odds.total}}){{/ifCond}}</span>
                                         {{/if}}
                                         </td>
+                                        <td></td>
                                         <td
                                             {{#if results}}
                                                 {{#if comparePrediction}}
@@ -325,6 +390,7 @@
                                                     {{/if}}
                                                 </span>
                                         </td>
+                                        <td></td>
                                         <td
                                             {{#if results}}
                                                 {{#unless comparePrediction}}
