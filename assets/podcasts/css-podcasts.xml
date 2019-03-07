@@ -10,6 +10,7 @@
     <googleplay:author>Crowd Wisdom Sports</googleplay:author>
     <itunes:summary>The Crowd Wisdom Sports Podcast brings you fun and unique discussions about sports predictions generated through crowd wisdom. Rather than relying on one or two experts, we believe that the crowd is wiser in the long run. Each week Paul and Chris review how the crowd performed over the weekend, identify some things that the crowd got really right (and really wrong), and talk to our best predictors to see how they make their predictions.</itunes:summary>
     <googleplay:description>The Crowd Wisdom Sports Podcast brings you fun and unique discussions about sports predictions generated through crowd wisdom. Rather than relying on one or two experts, we believe that the crowd is wiser in the long run. Each week Paul and Chris review how the crowd performed over the weekend, identify some things that the crowd got really right (and really wrong), and talk to our best predictors to see how they make their predictions.</googleplay:description>  
+    <description>The Crowd Wisdom Sports Podcast brings you fun and unique discussions about sports predictions generated through crowd wisdom. Rather than relying on one or two experts, we believe that the crowd is wiser in the long run. Each week Paul and Chris review how the crowd performed over the weekend, identify some things that the crowd got really right (and really wrong), and talk to our best predictors to see how they make their predictions.</description>  
     <itunes:owner>
       <itunes:name>Crowd Wisdom Sports</itunes:name>
       <itunes:email>feedback@crowdsourcedscores.com</itunes:email>
@@ -394,6 +395,19 @@
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode22.mp3</guid>
         <pubDate>Tues, 29 Jan 2019 23:30:00 GMT</pubDate>
         <itunes:duration>52:02</itunes:duration>
+      </item>
+      <item>
+        <title>2018 Season - Episode 23 - Game 267 CPR</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>The 2018 NFL Season comes to a close, and Paul and Chris celebrate with their first live show at the 520 Bar and Grill. They review the big game and announce the final postseason prediction challenge standings.</description>
+        <itunes:subtitle>The 2018 NFL Season comes to a close, and Paul and Chris celebrate with their first live show at the 520 Bar and Grill. They review the big game and announce the final postseason prediction challenge standings.</itunes:subtitle>
+        <itunes:episode>27</itunes:episode>
+        <itunes:summary>The 2018 NFL Season comes to a close, and Paul and Chris celebrate with their first live show at the 520 Bar and Grill. They review the big game and announce the final postseason prediction challenge standings.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode23.mp3" length="35:57" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2018-episode23.mp3</guid>
+        <pubDate>Tues, Feb 5 2019 21:30:00 GMT</pubDate>
+        <itunes:duration>35:57</itunes:duration>
       </item>
     
   </channel>
