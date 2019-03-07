@@ -165,38 +165,43 @@ if (!cognitoUser && GetURLParameter('code')) {
         console.log("token reject: ", reject);
     })
     .then(function(tokenResponse) {
-        console.log("tokenResponse: ", tokenResponse);
-        var decodedToken = jwt_decode(tokenResponse.id_token);
-        userData = {
-            Username : decodedToken["cognito:username"],
-            Pool : userPool
-        }
-        cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.LastAuthUser', decodedToken["cognito:username"]);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.idToken', tokenResponse.id_token);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.accessToken', tokenResponse.access_token);
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + decodedToken["cognito:username"] + '.refreshToken', tokenResponse.refresh_token);
-        ga('send','event','login','successful');
-        showLogoutButton();
+            if (tokenResponse) {
+            console.log("tokenResponse: ", tokenResponse);
+            var decodedToken = jwt_decode(tokenResponse.id_token);
+            var CognitoIdToken = new AmazonCognitoIdentity.CognitoIdToken({ IdToken: tokenResponse.id_token });
+            var CognitoAccessToken = new AmazonCognitoIdentity.CognitoAccessToken({ AccessToken: tokenResponse.access_token });
+            var CognitoRefreshToken = new AmazonCognitoIdentity.CognitoRefreshToken({ RefreshToken: tokenResponse.refresh_token });
+            console.log('Tokens: ', { CognitoIdToken, CognitoAccessToken, CognitoRefreshToken })
+            var CognitoUserSession = new AmazonCognitoIdentity.CognitoUserSession({ IdToken: CognitoIdToken, AccessToken: CognitoAccessToken, RefreshToken: CognitoRefreshToken })
+            ga('send','event','login','successful');
+            showLogoutButton();
 
-        userInformation.cognitoUser = cognitoUser;
-        getUserAttributes();
-        var token;
-        if (tokenResponse && tokenResponse.id_token) {
-            token = tokenResponse.id_token;
-        } else {
-            cognitoUser.getSession(function(err, session) {
-                if (err) {
-                    //window.location = '/';
-                    console.log("getSession err = ", JSON.stringify(err))
-                    return;
-                }
-                token = session.getIdToken().getJwtToken();
-                console.log("second token: ", token)
-            });
+            
+            const userData = {
+                Username: CognitoUserSession.idToken.payload.email,
+                Pool: userPool
+            };
+            cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            cognitoUser.setSignInUserSession(CognitoUserSession);
+            userInformation.cognitoUser = cognitoUser;
+            getUserAttributes();
+            var token;
+            if (tokenResponse && tokenResponse.id_token) {
+                token = tokenResponse.id_token;
+            } else {
+                cognitoUser.getSession(function(err, session) {
+                    if (err) {
+                        //window.location = '/';
+                        console.log("getSession err = ", JSON.stringify(err))
+                        return;
+                    }
+                    token = session.getIdToken().getJwtToken();
+                    console.log("second token: ", token)
+                });
+            }
+            id_token = token;
+            return id_token;
         }
-        id_token = token;
-        return id_token;
     })
 }
 
