@@ -106,22 +106,21 @@ function buildUsersTable(allUsersInformation, sport) {
     console.log("allUsersInformation: ", allUsersInformation)
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
-        if (sport === 'ncaaf') {
             allUsersInformation.sort(function(a,b) {
-                if (a.results.ncaaf[2018] && a.results.ncaaf[2018].overall && b.results.ncaaf[2018] && b.results.ncaaf[2018].overall) {
-                    if (a.results.ncaaf[2018].overall.predictionScore > b.results.ncaaf[2018].overall.predictionScore) return -1
-                    if (a.results.ncaaf[2018].overall.predictionScore < b.results.ncaaf[2018].overall.predictionScore) return 1
+                if (a.results.overall && b.results.overall) {
+                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1
+                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1
                 } else {
                     return 1
                 }
             })
-        }
+            
         if (gameWeekData.week > 17 && gameWeekData.year === 2018) {
             allUsersInformation.sort(function(a,b) {
                 // needs to be updated later when the next season comes around
                 if (a.results.nfl && a.results.nfl[2018] && b.results.nfl && b.results.nfl[2018]) {
-                    if (a.results.nfl[2018].overall.post.predictionScore > b.results.nfl[2018].overall.post.predictionScore) return -1
-                    if (a.results.nfl[2018].overall.post.predictionScore < b.results.nfl[2018].overall.post.predictionScore) return 1
+                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1
+                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1
                 } else {
                     return 1
                 }
@@ -132,14 +131,14 @@ function buildUsersTable(allUsersInformation, sport) {
             var usersHTML = "";
             if (!allUsersInformation[i].results) continue;
             var userObject = allUsersInformation[i].results.overall;
-            if (sport === 'ncaaf') {
-                userObject = allUsersInformation[i].results.ncaaf[2018].overall
-                if (!userObject) continue;
-            } else if (gameWeekData.week > 17) {
-                if (!allUsersInformation[i].results || !allUsersInformation[i].results.nfl) continue;
-                userObject = allUsersInformation[i].results.nfl[2018].overall.post;
+            // if (sport === 'ncaaf') {
+            //     userObject = allUsersInformation[i].results.ncaaf[2018].overall
+            //     if (!userObject) continue;
+            // } else if (gameWeekData.week > 17) {
+            //     if (!allUsersInformation[i].results || !allUsersInformation[i].results.nfl) continue;
+            //     userObject = allUsersInformation[i].results.nfl[2018].overall.post;
                 
-            }
+            // }
             usersHTML = '<td data-th="Rank">' + rank + '</td>';
             if (userInformation.cognitoUser && allUsersInformation[i].username !== userInformation.cognitoUser.username) {
                 usersHTML += '<td data-th="Username"><a href="/?compareUsername=' + allUsersInformation[i].username + '">' + allUsersInformation[i].preferred_username + '</a></td>';
