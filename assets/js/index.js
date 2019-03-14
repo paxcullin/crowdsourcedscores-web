@@ -597,6 +597,20 @@ function runningPoolTotalChart() {
     
 }
 
+// intro slideshow code
+var slideIndex = 1;
+function plusSlides(n) {
+    showSlides(slideIndex += n)
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(slideIndex) {
+    
+}
+
 /**
 * Function that tracks a click on an outbound link in Analytics.
 * This function takes a valid URL string as an argument, and uses that URL string
