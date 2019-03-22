@@ -1,33 +1,17 @@
 gameId,date,location,tv,awayTeam,awayTeamRank,homeTeam,homeTeamRank,total,spread
-game-3103780,3/21/2019 9:15,"    Des Moines, IA",,Minnesota,10,Louisville,7,134.5,-5
-game-3103782,3/21/2019 9:40,"    Jacksonville, FL",TRU,Yale,14,LSU,3,157.5,-7.5
-game-3103798,3/21/2019 10:30,"    Salt Lake City, Utah",TNT,N. Mex. St.,12,Auburn,5,146,-5.5
-game-3103803,3/21/2019 11:00,"    Hartford, CT",TBS,Vermont,13,Florida State,4,133.5,-9
-game-3103778,3/21/2019 11:45,"    Des Moines, IA",,Bradley,15,Michigan St.,2,133.5,-18.5
-game-3103784,3/21/2019 12:10,"    Jacksonville, FL",TRU,TBD,11,Maryland,6,133.5,-18.5
-game-3103789,3/21/2019 13:00,"    Salt Lake City, Utah",TNT,Northeastern,13,Kansas,4,143.5,-6.5
-game-3103796,3/21/2019 13:30,"    Hartford, CT",TBS,Murray State,12,Marquette,5,149.5,-4
-game-3103808,3/21/2019 15:50,"    Des Moines, IA",TNT,Florida,10,Nevada,7,133.5,-2.5
-game-3103799,3/21/2019 16:10,"    Jacksonville, FL",,Abilene Chr.,15,Kentucky,2,132,-22.5
-game-3103792,3/21/2019 16:20,"    Hartford, CT",TBS,Saint Mary's,11,Villanova,6,130.5,-5
-game-3103806,3/21/2019 16:27,"    Salt Lake City, Utah",TRU,TBD,16,Gonzaga,1,130.5,-5
-game-3103788,3/21/2019 18:20,"    Des Moines, IA",TNT,Montana,15,Michigan,2,130.5,-15.5
-game-3103786,3/21/2019 18:40,"    Jacksonville, FL",,Seton Hall,10,Wofford,7,143.5,-2.5
-game-3103802,3/21/2019 18:50,"    Hartford, CT",TBS,Old Dominion,14,Purdue,3,126,-13
-game-3103794,3/21/2019 18:57,"    Salt Lake City, Utah",TRU,Baylor,9,Syracuse,8,131.5,-2
-game-3103838,3/22/2019 9:15,"    Columbus, Ohio",,Iowa,10,Cincinnati,7,,
-game-3103824,3/22/2019 9:40,"    Columbia, SC",TRU,Oklahoma,9,Ole Miss,8,,
-game-3103832,3/22/2019 10:30,"    Tulsa, OK",TNT,N. Kentucky,14,Texas Tech,3,,
-game-3103821,3/22/2019 11:00,"    San Jose, CA",TBS,UC Irvine,13,Kansas State,4,,
-game-3103836,3/22/2019 11:45,"    Columbus, Ohio",,Colgate,15,Tennessee,2,,
-game-3103830,3/22/2019 12:10,"    Columbia, SC",TRU,Gardner-Webb,16,Virginia,1,,
-game-3103817,3/22/2019 13:00,"    Tulsa, OK",TNT,TBD,11,Buffalo,6,,
-game-3103826,3/22/2019 13:30,"    San Jose, CA",TBS,Oregon,12,Wisconsin,5,,
-game-3103841,3/22/2019 15:50,"    Columbus, Ohio",TNT,Washington,9,Utah State,8,,
-game-3103810,3/22/2019 16:10,"    Columbia, SC",,TBD,16,Duke,1,,
-game-3103827,3/22/2019 16:20,"    Tulsa, OK",TBS,Georgia State,14,Houston,3,,
-game-3103816,3/22/2019 16:27,"    San Jose, CA",TRU,Liberty,12,Miss. State,5,,
-game-3103833,3/22/2019 18:20,"    Columbus, Ohio",TNT,Iona,16,N. Carolina,1,,
-game-3103811,3/22/2019 18:40,"    Columbia, SC",,UCF,9,VCU,8,,
-game-3103820,3/22/2019 18:50,"    Tulsa, OK",TBS,Ohio State,11,Iowa State,6,,
-game-3103814,3/22/2019 18:57,"    San Jose, CA",TRU,Saint Louis,13,Virginia Tech,4,,
+game-3103838,2019-03-22 09:15:00,"    Columbus, Ohio",,Iowa,10,Cincinnati,7,o137.5,-4
+game-3103824,2019-03-22 09:40:00,"    Columbia, SC",TRU,Oklahoma,9,Ole Miss,8,o142.5,-1
+game-3103832,2019-03-22 10:30:00,"    Tulsa, OK",TNT,N. Kentucky,14,Texas Tech,3,o137,-13
+game-3103821,2019-03-22 11:00:00,"    San Jose, CA",TBS,UC Irvine,13,Kansas State,4,o119,-4.5
+game-3103836,2019-03-22 11:45:00,"    Columbus, Ohio",,Colgate,15,Tennessee,2,o147.5,-17.5
+game-3103830,2019-03-22 12:10:00,"    Columbia, SC",TRU,Gardner-Webb,16,Virginia,1,o130.5,-22
+game-3103817,2019-03-22 13:00:00,"    Tulsa, OK",TNT,Arizona State,11,Buffalo,6,o156.5,-5
+game-3103826,2019-03-22 13:30:00,"    San Jose, CA",TBS,Oregon,12,Wisconsin,5,o116.5,-2
+game-3103841,2019-03-22 15:50:00,"    Columbus, Ohio",TNT,Washington,9,Utah State,8,o135,-3
+game-3103810,2019-03-22 16:10:00,"    Columbia, SC",,N. Dak. St.,16,Duke,1,o149.5,-27
+game-3103827,2019-03-22 16:20:00,"    Tulsa, OK",TBS,Georgia State,14,Houston,3,o141.5,-12
+game-3103816,2019-03-22 16:27:00,"    San Jose, CA",TRU,Liberty,12,Miss. State,5,o133.5,-6.5
+game-3103833,2019-03-22 18:20:00,"    Columbus, Ohio",TNT,Iona,16,N. Carolina,1,o166,-23
+game-3103811,2019-03-22 18:40:00,"    Columbia, SC",,UCF,9,VCU,8,o126.5,+1
+game-3103820,2019-03-22 18:50:00,"    Tulsa, OK",TBS,Ohio State,11,Iowa State,6,o140,-5.5
+game-3103814,2019-03-22 18:57:00,"    San Jose, CA",TRU,Saint Louis,13,Virginia Tech,4,o126,-10.5

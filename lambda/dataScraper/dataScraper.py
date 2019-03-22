@@ -4,7 +4,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from csv import writer
 
-urls = ['https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190321/','https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190322/']
+urls = ['https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190322/']
 
 # response = requests.get('https://www.cbssports.com/college-basketball/scoreboard/')
 # soup = BeautifulSoup(response.text, 'html.parser')
