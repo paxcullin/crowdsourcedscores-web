@@ -8,11 +8,11 @@
     data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
     {{#if prediction.awayTeam.score}} data-predicted="true" {{/if}}
     style="display: inline-block;">
-    <div class="panel-group" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="{{{gameId}}}-accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                 <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{awayTeam.code}}}-{{{homeTeam.code}}}">
+                    <a role="button" data-toggle="collapse" data-parent="#{{{gameId}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{gameId}}}">
                         {{bowlName}}
                         {{#ifCond prediction.total '===' odds.total}}
                             <i class="fas fa-exclamation-triangle total"></i>

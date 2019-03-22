@@ -80,11 +80,11 @@
                 data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
                 {{#if prediction.awayTeam.score}} data-predicted="true" {{/if}}
                 style="display: inline-block;">
-                <div class="panel-group" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel-group" id="{{{gameId}}}-accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{awayTeam.code}}}-{{{homeTeam.code}}}">
+                                <a role="button" data-toggle="collapse" data-parent="#{{{gameId}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{gameId}}}">
                                     <span class="hidden-md">{{{awayTeam.fullName}}} vs. {{{homeTeam.fullName}}}</span>
                                     <span class="visible-md">{{{awayTeam.shortName}}} vs. {{{homeTeam.shortName}}}</span>
                                     {{#ifCond prediction.total '===' odds.total}}
@@ -898,7 +898,7 @@
                 }
             };
             
-            var accordionId = $(this).parents("#" + prediction.awayTeam.code + "-" + prediction.homeTeam.code + "-accordion");
+            var accordionId = $(this).parents("#" + gameId + "-accordion");
             
             if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
                 prediction.update = true;
@@ -1179,7 +1179,7 @@
                                     shortName: $prediction.attr('data-home-short')
                                 }
                             };
-                            var accordionId = $(this).parents("#" + prediction.awayTeam.code + "-" + prediction.homeTeam.code + "-accordion");
+                            var accordionId = $(this).parents("#" + gameId + "-accordion");
                             
                             if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
                                 prediction.update = true;
