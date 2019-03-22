@@ -446,9 +446,10 @@ div#OR {
   /**
    * Demo Styles
    */
-  
+
  /* Style the tab */
 .tab {
+    padding: 0 12px;
     overflow: hidden;
 }
 
