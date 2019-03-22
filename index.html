@@ -1104,11 +1104,11 @@
                         if (!gameWeekData.year) gameWeekData.year = 2018;
                         if (gameWeekData.sport === 'ncaam') gameWeekData.year = 2019;
                         $("#games").html("<div>Sorry, there are no games available for that week. Please choose a different week to try again.</div>");
-                        $("#games-loading-icon").css("display","none")
+                        //$("#games-loading-icon").css("display","none")
                         return;
                     }
                     updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                    $("#games-loading-icon").css("display","none")
+                    //$("#games-loading-icon").css("display","none")
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
@@ -1638,7 +1638,8 @@
                             gameWeekData.year = parseInt($('#dropdown span').text());
                             if (!gameWeekData.year) gameWeekData.year = 2018;
                             gameWeekData.week = parseInt($(this).attr('data-week'));
-                            $("#games-loading-icon").css("display","block")
+                            //$("#games-loading-icon").css("display","block")
+                            $('#games').html(`<i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`)
                             $('#weekSelector li').removeClass('active');
                             $('#resultsContainer').css('display','none');
                             $(this).parent('li').addClass('active');
@@ -2110,12 +2111,12 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                    <div id="games-loading-icon">
+                    
+
+                    <div id="games">
                         <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </div>
-
-                    <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <div id="winningsTotal"></div>
