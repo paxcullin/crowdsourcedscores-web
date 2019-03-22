@@ -249,6 +249,7 @@
             useToken(function(token) {
                 if (!gameWeekData.sport) gameWeekData.sport = 'nfl';
                 if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
+                if (gameWeekData.sport === 'ncaam') { gameWeekData.week = 12; gameWeekData.year = 2019; }
                 var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
                 var setGameWeekGetOptions = 
                     {     

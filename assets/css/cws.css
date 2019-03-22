@@ -4,6 +4,20 @@ body {
 text-rendering: optimizeLegibility;
 }
 
+.promoContainer {
+    margin: 12px;
+    padding: 24px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #DFDFDF;
+    background-color: #3A3B6C;
+}
+
+#games {
+    border: #B22438 1px solid;
+}
+
 .card .content {
     padding-left:5px;
     padding-right: 5px;

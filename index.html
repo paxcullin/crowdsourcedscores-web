@@ -611,14 +611,12 @@
     <script id="gamesNCAAM-template" type="text/x-handlebars-template">
         <div class="container">
             <div class="row">
-            {{#grouped_each 2 games}}
-                {{#each this}}
-                    <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
+                {{#each this.games}}
+                    <div class="col-xs-12" id="container-{{{gameId}}}">
                         {{> gameNCAAMTemplate}}
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>
-            {{/grouped_each}}
         </div>
         <div id="lastRow" class="row"></div>
         </div>
@@ -1037,9 +1035,9 @@
                             })
 
                             //$("#" + awayCode + "-" + homeCode).toggleClass("active");
-                            setTimeout(function() {
-                                $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
-                            },500);
+                            // setTimeout(function() {
+                            //     $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
+                            // },500);
                             return;
                         case 400:
                             var errorObj = response.responseText;
@@ -1287,9 +1285,9 @@
                                             //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
                                             $content.hide();
                                         })
-                                        setTimeout(function() {
-                                            $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
-                                        },500);
+                                        // setTimeout(function() {
+                                        //     $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
+                                        // },500);
 
                                         return;
                                     case 400:
