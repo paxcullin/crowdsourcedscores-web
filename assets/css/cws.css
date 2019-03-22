@@ -16,6 +16,7 @@ text-rendering: optimizeLegibility;
 
 #games {
     border: #B22438 1px solid;
+    margin: 5px;
 }
 
 .card .content {
