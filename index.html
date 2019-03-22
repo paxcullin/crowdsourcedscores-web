@@ -62,6 +62,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
         <script src="assets/js/template.gameNFL.js" type="text/javascript"></script>
         <script src="assets/js/template.gameNCAAF.js" type="text/javascript"></script>
+        <script src="assets/js/template.gameNCAAM.js" type="text/javascript"></script>
         <!--Cognito Code-->
         <script type="text/javascript" src="assets/js/amazon-cognito-identity.js"></script>
         <!--End Cognito Code-->
@@ -571,6 +572,7 @@
         Handlebars.registerPartial('game', $("#game-template").html());
         Handlebars.registerPartial('gameTemplate', Handlebars.templates['template.gameNFL'])
         Handlebars.registerPartial('gameNCAAFTemplate', Handlebars.templates['template.gameNCAAF'])
+        Handlebars.registerPartial('gameNCAAMTemplate', Handlebars.templates['template.gameNCAAM'])
             </script>
 
 
@@ -598,6 +600,21 @@
                 {{#each this}}
                     <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
                         {{> gameNCAAFTemplate}}
+                    </div>
+                {{/each}}
+                <div class="clearfix"></div>
+            {{/grouped_each}}
+        </div>
+        <div id="lastRow" class="row"></div>
+        </div>
+    </script>
+    <script id="gamesNCAAM-template" type="text/x-handlebars-template">
+        <div class="container">
+            <div class="row">
+            {{#grouped_each 2 games}}
+                {{#each this}}
+                    <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
+                        {{> gameNCAAMTemplate}}
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>
@@ -816,9 +833,9 @@
             var myPredictionScore = 0;
             if (overallUserData && overallUserData.results) {
                 gamesData = overallUserData.results.overall;
-                if (gameWeekData.sport === 'ncaaf') {
-                    gamesData = overallUserData.results.ncaaf[2018].overall;
-                }
+                // if (gameWeekData.sport === 'ncaaf') {
+                //     gamesData = overallUserData.results.ncaaf[2018].overall;
+                // }
                 if (gamesData) {
                     const winnerIncorrect = gamesData.totalPredictions - gamesData.winner.correct
                     const spreadIncorrect = gamesData.totalPredictions - gamesData.spread.correct - gamesData.spread.push
@@ -978,6 +995,8 @@
                             var gameTemplateId = 'template.gameNFL';
                             if (responseData.sport === 'ncaaf') {
                                 gameTemplateId = 'template.gameNCAAF';
+                            } else if (responseData.sport === 'ncaam') {
+                                gameTemplateId = 'template.gameNCAAM';
                             }
                             //adding collegeBowlPremium to the response in order to display crowd data
                             responseData.collegeBowlPremium = userInformation.attributes['custom:collegeBowlPremium'];
@@ -1052,6 +1071,10 @@
                     gameWeekData.sport = 'nfl';
                 }
                 if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
+                if (gameWeekData.sport === 'ncaam') {
+                    gameWeekData.week = 12;
+                    gameWeekData.year = 2019;
+                }
                 if (!token) { console.log('token expired'); }
                 var compareQuery = "";
                 if (getUrlParameter('compareUsername')) {
@@ -1081,6 +1104,7 @@
                     var totalGames = data.games.length;
                     if (totalGames === 0) {
                         if (!gameWeekData.year) gameWeekData.year = 2018;
+                        if (gameWeekData.sport === 'ncaam') gameWeekData.year = 2019;
                         $("#games").html("<div>Sorry, there are no games available for that week. Please choose a different week to try again.</div>");
                         $("#games-loading-icon").css("display","none")
                         return;
@@ -1093,6 +1117,8 @@
                         var templateId = '#games-template';
                         if (gameWeekData.sport === 'ncaaf') {
                             templateId = '#gamesNCAA-template';
+                        } else if (gameWeekData.sport === 'ncaam') {
+                            templateId = '#gamesNCAAM-template';
                         }
                         var template = $(templateId).html();
                         var templateScript = Handlebars.compile(template);
@@ -1219,6 +1245,8 @@
                                         var gameTemplateId = 'template.gameNFL';
                                         if (responseData.sport === 'ncaaf') {
                                             gameTemplateId = 'template.gameNCAAF';
+                                        } else if (responseData.sport === 'ncaam') {
+                                            gameTemplateId = 'template.gameNCAAM';
                                         }
                                         var gameRenderer = Handlebars.templates[gameTemplateId];
                                         //adding collegeBowlPremium to the response in order to display crowd data
