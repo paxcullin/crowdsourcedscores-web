@@ -1,33 +1,9 @@
 gameId,date,location,tv,awayTeam,awayTeamRank,homeTeam,homeTeamRank,total,spread
-game-3103780,3/21/2019 9:15,"    Des Moines, IA",,Minnesota,10,Louisville,7,134.5,-5
-game-3103782,3/21/2019 9:40,"    Jacksonville, FL",TRU,Yale,14,LSU,3,157.5,-7.5
-game-3103798,3/21/2019 10:30,"    Salt Lake City, Utah",TNT,N. Mex. St.,12,Auburn,5,146,-5.5
-game-3103803,3/21/2019 11:00,"    Hartford, CT",TBS,Vermont,13,Florida State,4,133.5,-9
-game-3103778,3/21/2019 11:45,"    Des Moines, IA",,Bradley,15,Michigan St.,2,133.5,-18.5
-game-3103784,3/21/2019 12:10,"    Jacksonville, FL",TRU,TBD,11,Maryland,6,133.5,-18.5
-game-3103789,3/21/2019 13:00,"    Salt Lake City, Utah",TNT,Northeastern,13,Kansas,4,143.5,-6.5
-game-3103796,3/21/2019 13:30,"    Hartford, CT",TBS,Murray State,12,Marquette,5,149.5,-4
-game-3103808,3/21/2019 15:50,"    Des Moines, IA",TNT,Florida,10,Nevada,7,133.5,-2.5
-game-3103799,3/21/2019 16:10,"    Jacksonville, FL",,Abilene Chr.,15,Kentucky,2,132,-22.5
-game-3103792,3/21/2019 16:20,"    Hartford, CT",TBS,Saint Mary's,11,Villanova,6,130.5,-5
-game-3103806,3/21/2019 16:27,"    Salt Lake City, Utah",TRU,TBD,16,Gonzaga,1,130.5,-5
-game-3103788,3/21/2019 18:20,"    Des Moines, IA",TNT,Montana,15,Michigan,2,130.5,-15.5
-game-3103786,3/21/2019 18:40,"    Jacksonville, FL",,Seton Hall,10,Wofford,7,143.5,-2.5
-game-3103802,3/21/2019 18:50,"    Hartford, CT",TBS,Old Dominion,14,Purdue,3,126,-13
-game-3103794,3/21/2019 18:57,"    Salt Lake City, Utah",TRU,Baylor,9,Syracuse,8,131.5,-2
-game-3103838,3/22/2019 9:15,"    Columbus, Ohio",,Iowa,10,Cincinnati,7,,
-game-3103824,3/22/2019 9:40,"    Columbia, SC",TRU,Oklahoma,9,Ole Miss,8,,
-game-3103832,3/22/2019 10:30,"    Tulsa, OK",TNT,N. Kentucky,14,Texas Tech,3,,
-game-3103821,3/22/2019 11:00,"    San Jose, CA",TBS,UC Irvine,13,Kansas State,4,,
-game-3103836,3/22/2019 11:45,"    Columbus, Ohio",,Colgate,15,Tennessee,2,,
-game-3103830,3/22/2019 12:10,"    Columbia, SC",TRU,Gardner-Webb,16,Virginia,1,,
-game-3103817,3/22/2019 13:00,"    Tulsa, OK",TNT,TBD,11,Buffalo,6,,
-game-3103826,3/22/2019 13:30,"    San Jose, CA",TBS,Oregon,12,Wisconsin,5,,
-game-3103841,3/22/2019 15:50,"    Columbus, Ohio",TNT,Washington,9,Utah State,8,,
-game-3103810,3/22/2019 16:10,"    Columbia, SC",,TBD,16,Duke,1,,
-game-3103827,3/22/2019 16:20,"    Tulsa, OK",TBS,Georgia State,14,Houston,3,,
-game-3103816,3/22/2019 16:27,"    San Jose, CA",TRU,Liberty,12,Miss. State,5,,
-game-3103833,3/22/2019 18:20,"    Columbus, Ohio",TNT,Iona,16,N. Carolina,1,,
-game-3103811,3/22/2019 18:40,"    Columbia, SC",,UCF,9,VCU,8,,
-game-3103820,3/22/2019 18:50,"    Tulsa, OK",TBS,Ohio State,11,Iowa State,6,,
-game-3103814,3/22/2019 18:57,"    San Jose, CA",TRU,Saint Louis,13,Virginia Tech,4,,
+game-3107218,2019-03-23 09:10:00,"    NCAA 2nd Rd., Jacksonville, FL",CBS,Maryland,6,LSU,3,o147,-3
+game-3107305,2019-03-23 11:40:00,"    NCAA 2nd Rd., Jacksonville, FL",CBS,Wofford,7,Kentucky,2,o140,-5
+game-3107308,2019-03-23 14:15:00,"    NCAA 2nd Rd., Des Moines, IA",CBS,Florida,10,Michigan,2,o124,-6
+game-3107237,2019-03-23 15:10:00,"    NCAA 2nd Rd., Hartford, CT",TNT,Murray State,12,Florida State,4,o147.5,-4.5
+game-3107316,2019-03-23 16:10:00,"    NCAA 2nd Rd., Salt Lake City, UT",TBS,Baylor,9,Gonzaga,1,o148.5,-13.5
+game-3107213,2019-03-23 16:45:00,"    NCAA 2nd Rd., Des Moines, IA",CBS,Minnesota,10,Michigan St.,2,o141.5,-10.5
+game-3107323,2019-03-23 17:40:00,"    NCAA 2nd Rd., Hartford, CT",TNT,Villanova,6,Purdue,3,o138,-3.5
+game-3107232,2019-03-23 18:40:00,"    NCAA 2nd Rd., Salt Lake City, UT",TBS,Auburn,5,Kansas,4,o148,+2

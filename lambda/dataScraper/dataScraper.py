@@ -4,14 +4,14 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from csv import writer
 
-urls = ['https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190321/','https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190322/']
+urls = ['https://www.cbssports.com/college-basketball/scoreboard/NCAA/20190323/']
 
 # response = requests.get('https://www.cbssports.com/college-basketball/scoreboard/')
 # soup = BeautifulSoup(response.text, 'html.parser')
 
 #el = soup.find(class_='single-score-card')
 
-with open('games.csv', 'wb') as csv_file:
+with open('games.csv', 'w') as csv_file:
     csv_writer = writer(csv_file)
     headers = ['gameId', 'date', 'location', 'tv', 'awayTeam', 'awayTeamRank', 'homeTeam', 'homeTeamRank', 'total', 'spread']
     csv_writer.writerow(headers)

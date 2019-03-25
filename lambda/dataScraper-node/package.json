@@ -1,0 +1,19 @@
+{
+  "name": "datascraper-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dataScraper-node.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "cli-table": "^0.3.1",
+    "mongodb": "^3.2.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
