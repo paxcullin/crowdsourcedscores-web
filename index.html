@@ -80,11 +80,11 @@
                 data-away-name="{{{awayTeam.fullName}}}" data-away-short="{{{awayTeam.shortName}}}"
                 {{#if prediction.awayTeam.score}} data-predicted="true" {{/if}}
                 style="display: inline-block;">
-                <div class="panel-group" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel-group" id="{{{gameId}}}-accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="{{{awayTeam.code}}}-{{{homeTeam.code}}}-heading">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#{{{awayTeam.code}}}-{{{homeTeam.code}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{awayTeam.code}}}-{{{homeTeam.code}}}">
+                                <a role="button" data-toggle="collapse" data-parent="#{{{gameId}}}-accordion" href="#{{{awayTeam.code}}}-{{{homeTeam.code}}}" aria-expanded="true" aria-controls="{{{gameId}}}">
                                     <span class="hidden-md">{{{awayTeam.fullName}}} vs. {{{homeTeam.fullName}}}</span>
                                     <span class="visible-md">{{{awayTeam.shortName}}} vs. {{{homeTeam.shortName}}}</span>
                                     {{#ifCond prediction.total '===' odds.total}}
@@ -611,14 +611,12 @@
     <script id="gamesNCAAM-template" type="text/x-handlebars-template">
         <div class="container">
             <div class="row">
-            {{#grouped_each 2 games}}
-                {{#each this}}
-                    <div class="col-sm-8 col-md-4" id="container-{{{gameId}}}">
+                {{#each this.games}}
+                    <div class="col-xs-12" id="container-{{{gameId}}}">
                         {{> gameNCAAMTemplate}}
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>
-            {{/grouped_each}}
         </div>
         <div id="lastRow" class="row"></div>
         </div>
@@ -900,7 +898,7 @@
                 }
             };
             
-            var accordionId = $(this).parents("#" + prediction.awayTeam.code + "-" + prediction.homeTeam.code + "-accordion");
+            var accordionId = $(this).parents("#" + gameId + "-accordion");
             
             if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
                 prediction.update = true;
@@ -1037,9 +1035,9 @@
                             })
 
                             //$("#" + awayCode + "-" + homeCode).toggleClass("active");
-                            setTimeout(function() {
-                                $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
-                            },500);
+                            // setTimeout(function() {
+                            //     $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
+                            // },500);
                             return;
                         case 400:
                             var errorObj = response.responseText;
@@ -1106,11 +1104,11 @@
                         if (!gameWeekData.year) gameWeekData.year = 2018;
                         if (gameWeekData.sport === 'ncaam') gameWeekData.year = 2019;
                         $("#games").html("<div>Sorry, there are no games available for that week. Please choose a different week to try again.</div>");
-                        $("#games-loading-icon").css("display","none")
+                        //$("#games-loading-icon").css("display","none")
                         return;
                     }
                     updateProgressBar(userInformation.predictionsSubmitted, totalGames);
-                    $("#games-loading-icon").css("display","none")
+                    //$("#games-loading-icon").css("display","none")
                         formatGameTimes(data.games);
                         var games = {games: data.games};
                         //console.log("games: ", games)
@@ -1181,7 +1179,7 @@
                                     shortName: $prediction.attr('data-home-short')
                                 }
                             };
-                            var accordionId = $(this).parents("#" + prediction.awayTeam.code + "-" + prediction.homeTeam.code + "-accordion");
+                            var accordionId = $(this).parents("#" + gameId + "-accordion");
                             
                             if ($prediction.attr('data-predicted') === true || $prediction.attr('data-predicted') === "true") {
                                 prediction.update = true;
@@ -1287,9 +1285,9 @@
                                             //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
                                             $content.hide();
                                         })
-                                        setTimeout(function() {
-                                            $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
-                                        },500);
+                                        // setTimeout(function() {
+                                        //     $("#container-" + responseData.gameId).find('.panel-collapse.in').collapse('hide');
+                                        // },500);
 
                                         return;
                                     case 400:
@@ -1640,7 +1638,8 @@
                             gameWeekData.year = parseInt($('#dropdown span').text());
                             if (!gameWeekData.year) gameWeekData.year = 2018;
                             gameWeekData.week = parseInt($(this).attr('data-week'));
-                            $("#games-loading-icon").css("display","block")
+                            //$("#games-loading-icon").css("display","block")
+                            $('#games').html(`<i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`)
                             $('#weekSelector li').removeClass('active');
                             $('#resultsContainer').css('display','none');
                             $(this).parent('li').addClass('active');
@@ -2112,12 +2111,12 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                    <div id="games-loading-icon">
+                    
+
+                    <div id="games">
                         <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
                         <span class="sr-only">Loading...</span>
                     </div>
-
-                    <div id="games"></div>
                 </div>
                 <div class="col-sm-12 col-md-4">
                     <div id="winningsTotal"></div>

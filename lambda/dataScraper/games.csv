@@ -1,9 +1,17 @@
 gameId,date,location,tv,awayTeam,awayTeamRank,homeTeam,homeTeamRank,total,spread
-game-3107218,2019-03-23 09:10:00,"    NCAA 2nd Rd., Jacksonville, FL",CBS,Maryland,6,LSU,3,o147,-3
-game-3107305,2019-03-23 11:40:00,"    NCAA 2nd Rd., Jacksonville, FL",CBS,Wofford,7,Kentucky,2,o140,-5
-game-3107308,2019-03-23 14:15:00,"    NCAA 2nd Rd., Des Moines, IA",CBS,Florida,10,Michigan,2,o124,-6
-game-3107237,2019-03-23 15:10:00,"    NCAA 2nd Rd., Hartford, CT",TNT,Murray State,12,Florida State,4,o147.5,-4.5
-game-3107316,2019-03-23 16:10:00,"    NCAA 2nd Rd., Salt Lake City, UT",TBS,Baylor,9,Gonzaga,1,o148.5,-13.5
-game-3107213,2019-03-23 16:45:00,"    NCAA 2nd Rd., Des Moines, IA",CBS,Minnesota,10,Michigan St.,2,o141.5,-10.5
-game-3107323,2019-03-23 17:40:00,"    NCAA 2nd Rd., Hartford, CT",TNT,Villanova,6,Purdue,3,o138,-3.5
-game-3107232,2019-03-23 18:40:00,"    NCAA 2nd Rd., Salt Lake City, UT",TBS,Auburn,5,Kansas,4,o148,+2
+game-3103838,2019-03-22 09:15:00,"    Columbus, Ohio",,Iowa,10,Cincinnati,7,o137.5,-4
+game-3103824,2019-03-22 09:40:00,"    Columbia, SC",TRU,Oklahoma,9,Ole Miss,8,o142.5,-1
+game-3103832,2019-03-22 10:30:00,"    Tulsa, OK",TNT,N. Kentucky,14,Texas Tech,3,o137,-13
+game-3103821,2019-03-22 11:00:00,"    San Jose, CA",TBS,UC Irvine,13,Kansas State,4,o119,-4.5
+game-3103836,2019-03-22 11:45:00,"    Columbus, Ohio",,Colgate,15,Tennessee,2,o147.5,-17.5
+game-3103830,2019-03-22 12:10:00,"    Columbia, SC",TRU,Gardner-Webb,16,Virginia,1,o130.5,-22
+game-3103817,2019-03-22 13:00:00,"    Tulsa, OK",TNT,Arizona State,11,Buffalo,6,o156.5,-5
+game-3103826,2019-03-22 13:30:00,"    San Jose, CA",TBS,Oregon,12,Wisconsin,5,o116.5,-2
+game-3103841,2019-03-22 15:50:00,"    Columbus, Ohio",TNT,Washington,9,Utah State,8,o135,-3
+game-3103810,2019-03-22 16:10:00,"    Columbia, SC",,N. Dak. St.,16,Duke,1,o149.5,-27
+game-3103827,2019-03-22 16:20:00,"    Tulsa, OK",TBS,Georgia State,14,Houston,3,o141.5,-12
+game-3103816,2019-03-22 16:27:00,"    San Jose, CA",TRU,Liberty,12,Miss. State,5,o133.5,-6.5
+game-3103833,2019-03-22 18:20:00,"    Columbus, Ohio",TNT,Iona,16,N. Carolina,1,o166,-23
+game-3103811,2019-03-22 18:40:00,"    Columbia, SC",,UCF,9,VCU,8,o126.5,+1
+game-3103820,2019-03-22 18:50:00,"    Tulsa, OK",TBS,Ohio State,11,Iowa State,6,o140,-5.5
+game-3103814,2019-03-22 18:57:00,"    San Jose, CA",TRU,Saint Louis,13,Virginia Tech,4,o126,-10.5
