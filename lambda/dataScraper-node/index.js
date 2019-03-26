@@ -85,6 +85,8 @@ urls.forEach((url, urlIndex) => {
                                         }
                                     } else {
                                         gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
+                                        gameResult.odds.spread = game.odds.spread
+                                        gameResult.odds.total = game.odds.total
                                         gameUpdate = {
                                             $set: {
                                                 odds: gameResult.odds
