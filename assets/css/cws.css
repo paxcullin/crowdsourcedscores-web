@@ -16,11 +16,6 @@ text-rendering: optimizeLegibility;
 
 #games {
     border: #B22438 1px solid;
-    margin: 5px;
-}
-
-#games .container {
-    width: 100%
 }
 
 .card .content {

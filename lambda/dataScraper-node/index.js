@@ -24,12 +24,14 @@ function parseGames(games) {
             awayTeam: {
                 fullName: game.away_name,
                 shortName: game.away_display_name,
-                code: game.away_abbreviation
+                code: game.away_abbreviation,
+                rank: game.away_rank
             },
             homeTeam: {
                 fullName: game.home_name,
                 shortName: game.home_display_name,
-                code: game.home_abbreviation
+                code: game.home_abbreviation,
+                rank: game.home_rank
             },
             odds: {
                 spread: parseInt(game.home_spread),
@@ -89,14 +91,15 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     }
+                                    console.log(`gameQuery: ${JSON.stringify(gameQuery)}; gameUpdate: ${JSON.stringify(gameUpdate)}`);
                                     queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
 
                                         console.log('queryPromises.length :', queryPromises.length);
                                         Promise.all(queryPromises)
-                                            .then(response => { return { response } })
-                                            .catch(reject => { return { reject }})
-                                        context.done(null, { message: `${queryPromises.length} updated; ${games.length} total games`})
+                                            .then(response => { console.log(`Promise response: ${response}`); context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                            .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                        
                                     }
                                 })
                                 .catch(gameReject => {
