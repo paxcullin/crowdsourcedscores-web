@@ -409,6 +409,19 @@
         <pubDate>Tues, Feb 5 2019 21:30:00 GMT</pubDate>
         <itunes:duration>35:57</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 24 - NCAA March Madness and NFL Offseason Moves</title>
+        <itunes:author>Crowd Wisdom Sports</itunes:author>
+        <description>Paul and Chris are back with some Elijah Craig whiskey and they talk March Madness and the NFL offseason moves.</description>
+        <itunes:subtitle>Paul and Chris are back with some Elijah Craig whiskey and they talk March Madness and the NFL offseason moves.</itunes:subtitle>
+        <itunes:episode>28</itunes:episode>
+        <itunes:summary>Paul and Chris are back with some Elijah Craig whiskey and they talk March Madness and the NFL offseason moves.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2019-episode24-v2.mp3" length="31:36" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/cws-2019-episode24-v2.mp3</guid>
+        <pubDate>Wed, Mar 27 2019 23:30:00 GMT</pubDate>
+        <itunes:duration>31:36</itunes:duration>
+      </item>
     
   </channel>
   </rss>
