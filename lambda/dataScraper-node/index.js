@@ -7,7 +7,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/ncaab/2019-03-28`, `https://io.oddsshark.com/scores/ncaab/2019-03-29`]
+let urls = [`https://io.oddsshark.com/scores/ncaab/2019-03-28`, `https://io.oddsshark.com/scores/ncaab/2019-03-29`,`https://io.oddsshark.com/scores/ncaab/2019-03-30`, `https://io.oddsshark.com/scores/ncaab/2019-03-31`]
 
 exports.handler = (event, context) => {
     console.log('Received event :', JSON.stringify(event, null, 2));
