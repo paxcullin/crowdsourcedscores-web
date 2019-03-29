@@ -15,7 +15,7 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
 },"13":function(container,depth0,helpers,partials,data) {
     return "                                                <th>Side</th>\r\n                                                <th>Total</th>\r\n";
 },"15":function(container,depth0,helpers,partials,data) {
-    return "                                                    Prediction Score\r\n";
+    return "                                                    <span class=\"hidden-xs\">Prediction </span>Score\r\n";
 },"17":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -179,7 +179,7 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
 },"67":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "                                                        <div class=\"predictionScore myResultsRow\">My Score: "
+  return "                                                        <div class=\"predictionScore myResultsRow\">"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.predictionScore : stack1), depth0))
     + " <i class=\"fas fa-info-circle\" data-toggle=\"modal\" data-target=\"#predictionScoreModal\"></i></div>\r\n";
 },"69":function(container,depth0,helpers,partials,data) {
@@ -230,7 +230,9 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(83, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                                </td>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias1,(depth0 != null ? depth0.crowd : depth0),"||",(depth0 != null ? depth0.results : depth0),{"name":"ifCond","hash":{},"fn":container.program(86, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                                                <td>\r\n                                                </td>\r\n                                            </tr>\r\n";
+    + "                                                <td>\r\n"
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.crowd : depth0)) != null ? stack1.results : stack1),{"name":"if","hash":{},"fn":container.program(103, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "                                                </td>\r\n                                            </tr>\r\n";
 },"78":function(container,depth0,helpers,partials,data) {
     var stack1;
 
@@ -314,6 +316,12 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
 },"101":function(container,depth0,helpers,partials,data) {
     return "                                                            Push\r\n";
 },"103":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "                                                        <div class=\"predictionScore crowdResultsRow\">"
+    + container.escapeExpression(container.lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.crowd : depth0)) != null ? stack1.results : stack1)) != null ? stack1.predictionScore : stack1), depth0))
+    + "</div>\r\n";
+},"105":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=helpers.helperMissing, alias4=container.escapeExpression;
 
   return "                                        <tr class=\"predictionRow\">\r\n                                            <td>Actual</td>\r\n                                            <td class=\"away-team-results\" id=\""
@@ -329,19 +337,19 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
     + "\r\n                                            </td>\r\n                                                <td>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.spread : stack1),">",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(41, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.spread : stack1),"<",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(49, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.spread : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(104, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.spread : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(106, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                                </td>\r\n                                                <td>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.total : stack1),">",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(60, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.total : stack1),"<",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(62, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.total : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(106, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias3).call(alias2,((stack1 = (depth0 != null ? depth0.results : depth0)) != null ? stack1.total : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(108, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                                </td>\r\n                                            <td>\r\n                                            </td>\r\n                                        </tr>\r\n";
-},"104":function(container,depth0,helpers,partials,data) {
-    return "                                                        PUSH\r\n";
 },"106":function(container,depth0,helpers,partials,data) {
-    return "                                                        Push\r\n";
+    return "                                                        PUSH\r\n";
 },"108":function(container,depth0,helpers,partials,data) {
-    return "                                                            <br><sup><i class=\"fas fa-exclamation-triangle total\"></i><span class=\"warningTextTotal\">Your total matches the odds total.</span></sup>\r\n";
+    return "                                                        Push\r\n";
 },"110":function(container,depth0,helpers,partials,data) {
+    return "                                                            <br><sup><i class=\"fas fa-exclamation-triangle total\"></i><span class=\"warningTextTotal\">Your total matches the odds total.</span></sup>\r\n";
+},"112":function(container,depth0,helpers,partials,data) {
     return "                                                            <br><sup><i class=\"fas fa-exclamation-triangle spread\"></i><span class=\"warningTextSpread\">Your spread matches the odds spread.</span></sup>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.lambda, alias5=container.escapeExpression;
@@ -444,10 +452,10 @@ templates['template.gameNCAAM'] = template({"1":function(container,depth0,helper
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(66, data, 0),"inverse":container.program(69, data, 0),"data":data})) != null ? stack1 : "")
     + "                                            </td>\r\n                                        </tr>\r\n"
     + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.prediction : depth0),"||",(depth0 != null ? depth0.results : depth0),{"name":"ifCond","hash":{},"fn":container.program(76, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(103, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.results : depth0),{"name":"if","hash":{},"fn":container.program(105, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                        <!--\r\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.total : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(108, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.spread : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(110, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.total : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.total : stack1),{"name":"ifCond","hash":{},"fn":container.program(110, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.prediction : depth0)) != null ? stack1.spread : stack1),"===",((stack1 = (depth0 != null ? depth0.odds : depth0)) != null ? stack1.spread : stack1),{"name":"ifCond","hash":{},"fn":container.program(112, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                                        \r\n                                        -->\r\n                                    </tbody>\r\n                                </table>\r\n                                \r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 },"useData":true});
 })();

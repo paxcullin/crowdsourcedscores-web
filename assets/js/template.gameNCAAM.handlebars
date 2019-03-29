@@ -57,7 +57,7 @@
                                             {{/ifCond}}
                                             <th>
                                                 {{#if results}}
-                                                    Prediction Score
+                                                    <span class="hidden-xs">Prediction </span>Score
                                                 {{/if}}
                                             </th>
                                         </tr>
@@ -128,7 +128,7 @@
                                             <td>
                                                 {{#if results}}
                                                     {{#ifCond prediction.predictionScore '>' -1}}
-                                                        <div class="predictionScore myResultsRow">My Score: {{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
+                                                        <div class="predictionScore myResultsRow">{{prediction.predictionScore}} <i class="fas fa-info-circle" data-toggle="modal" data-target="#predictionScoreModal"></i></div>
                                                     {{/ifCond}}
 
                                                 {{else}}
@@ -198,6 +198,9 @@
                                                     </td>
                                                 {{/ifCond}}
                                                 <td>
+                                                    {{#if crowd.results}}
+                                                        <div class="predictionScore crowdResultsRow">{{crowd.results.predictionScore}}</div>
+                                                    {{/if}}
                                                 </td>
                                             </tr>
                                             {{/if}}
