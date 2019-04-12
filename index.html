@@ -1743,19 +1743,6 @@
             // });
 
 
-            // $("#loginButton").click(function() {
-            //     $("#loginModal").modal('show',{
-            //         fadeDuration: 100
-            //     });
-            // });
-
-            function logout () {
-                var cognitoUser = userPool.getCurrentUser();
-                ga('send','event','login','logout');
-                cognitoUser.signOut();
-                showLoginButton();
-                window.location = '/';
-            };
             // $("#logoutButton").click(function() {
             //     console.log("logout clicked")
             //     logout();
@@ -1782,11 +1769,11 @@
 
     <!-- end navbar -->
     <!--login modal-->
-    <!--<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
+                <h5 class="modal-title" id="loginModalLabel">Log in to Crowd Wisdom Sports</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -1794,28 +1781,28 @@
             <div class="modal-body">
                     <div class="row">
                       <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                        <!-- Nav tabs --
+                        <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
                             <li><a href="#Registration" data-toggle="tab">Registration</a></li>
                         </ul>
-                        <!-- Tab panes --
+                        <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
                                 <form role="form" class="form-horizontal">
                                     <div class="form-group">
                                         <fieldset>
-                                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                                            Username: <input type="text" id="username" placeholder="Enter your username">
                                             <br>
                                             <br>
                                             Password: <input type="password" id="password" placeholder="Enter password">
                                             <br>
-                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>--
+                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
                                             <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
-                                            <!--<div style="width: 90%;">
+                                            <div style="width: 90%;">
                                                 <button id="loginUser">Log In</button>
-                                            </div>--
+                                            </div>
                                             <ul id="loginUserResults"></ul>
                                             <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
                                         </fieldset>
@@ -1893,7 +1880,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     
     <!--close login modal-->
     <!--create crowd modal-->
@@ -2134,6 +2121,21 @@
 </div>
 
 <script>
+    
+    $("#loginButton").click(function() {
+        $("#loginModal").modal('show',{
+            fadeDuration: 100
+        });
+    });
+
+            function logout () {
+                if (!cognitoUser) return { message: 'Sorry, an error occured. Please refresh the page and try again.'}
+                ga('send','event','login','logout');
+                cognitoUser.signOut();
+                showLoginButton();
+                window.location = '/';
+                return true;
+            };
     var cognitoUser = userPool.getCurrentUser();
     var attributeList = [];
 
@@ -2163,19 +2165,20 @@
     //     });
     // });
 
-    $("#loginUser").click(function() {
+    document.getElementById('loginUser').addEventListener('click', function() {
         login();
-    });
-    var login = function () {
-        var email = $('#email').val();
+    })
+
+    function login() {
+        var username = $('#username').val();
         var authenticationData = {
-            Username: email,
+            Username: username,
             Password: $('#password').val()
         };
 
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
         var userData = {
-            Username: email,
+            Username: username,
             Pool: userPool
         };
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
@@ -2189,7 +2192,7 @@
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
-                    console.log(CognitoUser.resendConfirmationCode(email))
+                    //console.log(CognitoUser.resendConfirmationCode(email))
                     // CognitoUser.resendConfirmationCode(userData)
                     // .then(function(result) {
                     //     console.log(`Resend result ${result}`)
