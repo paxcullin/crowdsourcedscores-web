@@ -7,7 +7,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/ncaab/2019-03-28`, `https://io.oddsshark.com/scores/ncaab/2019-03-29`]
+let urls = [`https://io.oddsshark.com/scores/ncaab/2019-04-06`, `https://io.oddsshark.com/scores/ncaab/2019-04-08`]
 
 exports.handler = (event, context) => {
     console.log('Received event :', JSON.stringify(event, null, 2));
@@ -17,7 +17,7 @@ queryPromises = [];
 
 function parseGames(games) {
     games.forEach((game, index) => {
-        const gameObj = {
+        var gameObj = {
             gameId: parseInt(game.event_id),
             startDateTime: new Date(game.event_date),
             location: game.stadium,
@@ -25,13 +25,13 @@ function parseGames(games) {
                 fullName: game.away_name,
                 shortName: game.away_display_name,
                 code: game.away_abbreviation,
-                rank: game.away_rank
+                rank: parseInt(game.away_rank)
             },
             homeTeam: {
                 fullName: game.home_name,
                 shortName: game.home_display_name,
                 code: game.home_abbreviation,
-                rank: game.home_rank
+                rank: parseInt(game.home_rank)
             },
             odds: {
                 spread: parseInt(game.home_spread),
@@ -40,8 +40,19 @@ function parseGames(games) {
             },
             sport: 'ncaam',
             year: 2019,
-            status: 'notStarted',
-            gameWeek: 12
+            status: game.status,
+            gameWeek: 14
+        };
+        if (game.away_score && game.home_score) {
+            gameObj.results = {
+                awayTeam: {
+                    score: parseInt(game.away_score)
+                },
+                homeTeam: {
+                    score: parseInt(game.home_score)
+                }
+            }
+            (game.status === 'FINAL') ? gameObj.status = 'final' : gameObj.status = 'inProgress'
         }
         gameObjectsArray.push(gameObj)
     })
@@ -68,7 +79,7 @@ urls.forEach((url, urlIndex) => {
     }
     rp(options)
         .then(async (games) => {
-            console.log('games :', games);
+            //console.log('games :', games);
             if (games.length > 0) {
                 await parseGames(games)
                 if (gameObjectsArray.length > 0) {
@@ -80,11 +91,15 @@ urls.forEach((url, urlIndex) => {
                         gameObjectsArray.forEach((game, gameIndex) => {
                                 const gameQuery = {
                                     gameId: game.gameId,
-                                    year: game.year
+                                    year: game.year,
+                                    status: {
+                                        $ne: 'final'
+                                    }
                                 }
 
                                 collection.findOne(gameQuery)
                                 .then(gameResult => {
+                                    //console.log('game :', gameResult);
                                     var gameUpdate = {}
                                     if (!gameResult) {
                                         gameUpdate = {
@@ -103,8 +118,11 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     }
+                                    
                                     queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
+
+                                        
                                         Promise.all(queryPromises)
                                             .then(response => { console.log(`Promise response: ${response}`); context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                             .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})

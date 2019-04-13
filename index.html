@@ -612,7 +612,7 @@
         <div class="container">
             <div class="row">
                 {{#each this.games}}
-                    <div class="col-xs-12" id="container-{{{gameId}}}">
+                    <div class="col-sm-12 col-md-8" id="container-{{{gameId}}}">
                         {{> gameNCAAMTemplate}}
                     </div>
                 {{/each}}
@@ -1743,19 +1743,6 @@
             // });
 
 
-            // $("#loginButton").click(function() {
-            //     $("#loginModal").modal('show',{
-            //         fadeDuration: 100
-            //     });
-            // });
-
-            function logout () {
-                var cognitoUser = userPool.getCurrentUser();
-                ga('send','event','login','logout');
-                cognitoUser.signOut();
-                showLoginButton();
-                window.location = '/';
-            };
             // $("#logoutButton").click(function() {
             //     console.log("logout clicked")
             //     logout();
@@ -1770,6 +1757,28 @@
     </head>
 
     <body>
+        
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : 1562547140702907,
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.2'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -1782,11 +1791,11 @@
 
     <!-- end navbar -->
     <!--login modal-->
-    <!--<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Log in to PCSM</h5>
+                <h5 class="modal-title" id="loginModalLabel">Log in to Crowd Wisdom Sports</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -1794,33 +1803,36 @@
             <div class="modal-body">
                     <div class="row">
                       <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
-                        <!-- Nav tabs --
+                        <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
                             <li><a href="#Registration" data-toggle="tab">Registration</a></li>
                         </ul>
-                        <!-- Tab panes --
+                        <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
+                                <div class="loginFields">
+                                    <form role="form" class="form-horizontal">
                                         <fieldset>
-                                            E-mail: <input type="text" id="email" placeholder="Enter your e-mail address">
+                                            Username: <input type="text" id="username" placeholder="Enter your username">
                                             <br>
                                             <br>
                                             Password: <input type="password" id="password" placeholder="Enter password">
                                             <br>
-                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>--
+                                            <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
                                             <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
-                                            <!--<div style="width: 90%;">
-                                                <button id="loginUser">Log In</button>
-                                            </div>--
                                             <ul id="loginUserResults"></ul>
-                                            <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                                            
                                         </fieldset>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <div class="loginFields-FB">
+                                    <fb:login-button 
+                                    scope="public_profile,email"
+                                    onlogin="checkLoginState();">
+                                    </fb:login-button>
+                                </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1893,7 +1905,7 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     
     <!--close login modal-->
     <!--create crowd modal-->
@@ -2092,8 +2104,8 @@
                         <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcrowdsourcedscores&width=20px&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId=220211628373013" width="160px" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                     </div>
                     <div id="podcasts" class="hidden-xs col-sm-3">
-                        <div><a onclick="trackOutboundLink('https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2'); return false;" target="_blank" href="https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/podcast-lrg.svg) no-repeat;width:133px;height:34px;background-size:contain;"><span style="height: 34px; width:133px; padding: 16px 0"></span></a></div>
-                        <div><a onclick="trackOutboundLink('https://www.stitcher.com/s?fid=162919&refid=stpr'); return false;" target="_blank" href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/stitcher-banner-88x31.jpg" width="88" height="31" alt="Listen to Stitcher"></a></div>
+                        <div><a onclick="trackOutboundLink('https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2'); return false;" target="_blank" href="https://itunes.apple.com/us/podcast/the-crowd-wisdom-sports-podcast/id1331165617?mt=2" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/podcast-lrg.svg) no-repeat;width:125px;height:29px;background-size:contain;"><span style="height: 34px; width:133px; padding: 16px 0"></span></a></div>
+                        <div><a onclick="trackOutboundLink('https://www.stitcher.com/s?fid=162919&refid=stpr'); return false;" target="_blank" href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/badges/Stitcher_Listen_Badge_Color_Light_BG.png" width="125" height="37" alt="Listen to the Crowd Wisdom Sports Podcast on Stitcher"></a></div>
                         <div><a onclick="trackOutboundLink('https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16'); return false;" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a></div>
                     </div>
                 </div>
@@ -2134,6 +2146,21 @@
 </div>
 
 <script>
+    
+    $("#loginButton").click(function() {
+        $("#loginModal").modal('show',{
+            fadeDuration: 100
+        });
+    });
+
+            function logout () {
+                if (!cognitoUser) return { message: 'Sorry, an error occured. Please refresh the page and try again.'}
+                ga('send','event','login','logout');
+                cognitoUser.signOut();
+                showLoginButton();
+                window.location = '/';
+                return true;
+            };
     var cognitoUser = userPool.getCurrentUser();
     var attributeList = [];
 
@@ -2163,22 +2190,26 @@
     //     });
     // });
 
-    $("#loginUser").click(function() {
+    document.getElementById('loginUser').addEventListener('click', function(e) {
+        e.preventDefault();
         login();
-    });
-    var login = function () {
-        var email = $('#email').val();
+    })
+
+    function login() {
+        console.log('login clicked')
+        var username = $('#username').val();
         var authenticationData = {
-            Username: email,
+            Username: username,
             Password: $('#password').val()
         };
 
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
         var userData = {
-            Username: email,
+            Username: username,
             Pool: userPool
         };
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        console.log('authentication details: ', authenticationDetails)
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function () {
                 $("#loginModal").modal("hide");
@@ -2189,14 +2220,14 @@
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
-                    console.log(CognitoUser.resendConfirmationCode(email))
-                    // CognitoUser.resendConfirmationCode(userData)
-                    // .then(function(result) {
-                    //     console.log(`Resend result ${result}`)
-                    // })
-                    // .catch(function(err) {
-                    //     console.log(`Resend error: ${err}`)
-                    // })
+                    console.log('resending code')
+                    CognitoUser.resendConfirmationCode(userData)
+                    .then(function(result) {
+                        console.log(`Resend result ${result}`)
+                    })
+                    .catch(function(err) {
+                        console.log(`Resend error: ${err}`)
+                    })
                     
                     //var tempUser = getUser();
                     //console.log(`tempUser = ${tempUser}`)
@@ -2204,6 +2235,12 @@
             }
         });
     }
+
+    
+    FB.getLoginStatus(function(response) {
+        console.log('Facebook response: ', response)
+        
+    });
 
 
 
