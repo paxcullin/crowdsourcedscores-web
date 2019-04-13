@@ -309,6 +309,13 @@ text-rendering: optimizeLegibility;
     color: #fff;
 }
 
+.buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
 .loading-icon {
     position: relative;
     width: 20px;
@@ -441,6 +448,9 @@ div#OR {
     .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-right {
       left: auto;
       right: 0;
+    }
+    .prediction-btn {
+        padding: 5px;
     }
   }
   /**

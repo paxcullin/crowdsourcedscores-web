@@ -710,7 +710,7 @@
         var getGameWeek = function (callback) {
 
             if (!gameWeekData.sport || gameWeekData.sport === '') {
-                gameWeekData.sport = 'nfl';
+                gameWeekData.sport = 'ncaam';
             }
             useToken(function(token) {
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/week";
@@ -1063,14 +1063,14 @@
         }
 
         var setGameWeek = function (gameWeekData) {
-            //console.log('gameWeekData :', gameWeekData);
+            console.log('gameWeekData :', gameWeekData);
             useToken(function(token) {
                 if (!gameWeekData.sport) {
                     gameWeekData.sport = 'nfl';
                 }
                 if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
                 if (gameWeekData.sport === 'ncaam') {
-                    gameWeekData.week = 12;
+                    gameWeekData.week = 13;
                     gameWeekData.year = 2019;
                 }
                 if (!token) { console.log('token expired'); }
@@ -1602,7 +1602,7 @@
                         if (data.year) {
                             gameWeekData.year = data.year;
                         }
-                        if (gameWeekData.sport === '') gameWeekData.sport = 'nfl';
+                        if (gameWeekData.sport === '') gameWeekData.sport = 'ncaam';
                         if (data.season) {
                             gameWeekData.season = data.season 
                         }

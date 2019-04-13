@@ -48,6 +48,16 @@ function parseGames(games) {
     
 }
 
+function gameCannotBeUpdated(startDateTime) {
+    //cutoff for odds updates is 1 hour prior to start
+    const msHour = 3600000;
+    var now = new Date();
+    var start = Date.parse(startDateTime);
+    var cutoff = start - msHour;
+
+    return (now > cutoff)
+}
+
 urls.forEach((url, urlIndex) => {
     const options = {
         url: url,
@@ -75,7 +85,6 @@ urls.forEach((url, urlIndex) => {
 
                                 collection.findOne(gameQuery)
                                 .then(gameResult => {
-                                    console.log('game :', gameResult);
                                     var gameUpdate = {}
                                     if (!gameResult) {
                                         gameUpdate = {
@@ -84,6 +93,7 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     } else {
+                                        if (gameResult.status !== "notStarted" || gameCannotBeUpdated(game.startDateTime)) return;
                                         gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
                                         gameResult.odds.spread = game.odds.spread
                                         gameResult.odds.total = game.odds.total
@@ -93,11 +103,8 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     }
-                                    console.log(`gameQuery: ${JSON.stringify(gameQuery)}; gameUpdate: ${JSON.stringify(gameUpdate)}`);
                                     queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
-
-                                        console.log('queryPromises.length :', queryPromises.length);
                                         Promise.all(queryPromises)
                                             .then(response => { console.log(`Promise response: ${response}`); context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                             .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})

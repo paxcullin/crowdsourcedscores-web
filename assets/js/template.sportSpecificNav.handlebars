@@ -35,18 +35,38 @@
                         <li><i class="fas fa-chart-bar" aria-hidden="true" id="chartExpand"></i></li>
                     </ul>
                 </div>
-                <div style="padding-left: 40%">
+            <div class="buttonDiv">
+                <div>
+                    <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaam-button','clicked');window.location=('?sport=ncaam')">March Madness</button>
+                </div>
+                <div>
                     <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaa-button','clicked');window.location=('?sport=ncaaf')">College Bowls</button>
                 </div>
+            </div>
             {{/ifCond}}
             {{#ifCond sport '===' 'ncaaf'}}
                 <div id="ncaaBanner">
                     <h3>Make Predictions and Win</h2>
                     <span style="cursor:pointer;" data-toggle="modal" data-target="#ncaaHowItWorksModal">How It Works</span> | <a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/">Official Rules</a>
                 </div>
-                <div style="display: inline;">
-                    <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/')">NFL Games</button>
+                <div class="buttonDiv">
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaam-button','clicked');window.location=('?sport=ncaam')">March Madness</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/?sport=nfl')">NFL Games</button>
+                    </div>
                 </div>
+            {{/ifCond}}
+            {{#ifCond sport '===' 'ncaam'}}
+                <div class="buttonDiv">
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="ga('send','event','ncaaf-button','clicked');window.location=('?sport=ncaaf')">College Bowls</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="ga('send','event','nfl-button','clicked');window.location=('https://www.crowdwisdomsports.com/?sport=nfl')">NFL Games</button>
+                    </div>
+                </div>  
             {{/ifCond}}
             </div>
             <div id="chartContainer" class="container">
@@ -57,7 +77,7 @@
                 </div>
 
                 <div class="row" id="feedbackDiv">
-                    <div class="col-xs-12 col-sm-4"><a href="https://blog.crowdsourcedscores.com/2018-college-bowl-contest-official-rules/" target="blog"><strong>2018-19 College Bowl Contest Rules</strong></a></div>
+                    <div class="col-xs-12 col-sm-4"><a href="https://www.surveymonkey.com/r/ZF9M3D7" target="survey"><strong>Short Survey</strong></a></div>
                     <div class="col-xs-12 col-sm-4"><a href="mailto:feedback@crowdwisdomsports.com">Send Feedback</a></div>
                     <div class="col-xs-12 col-sm-4" id="newsletter-signup-div"  data-toggle="modal" data-target="#newsletterModal"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> Get Weekly Reminders + a Bonus!</div>
                 </div>
