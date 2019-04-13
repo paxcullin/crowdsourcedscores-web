@@ -134,7 +134,7 @@
                                                 {{else}}
                                                     {{#if userAuthenticated}}
                                                         {{#dateCheck startDateTime}}
-                                                            <button class="prediction-btn btn btn-info">Predict</button>
+                                                            <button class="prediction-btn btn btn-info">{{#if prediction}}Update{{else}}Predict{{/if}}</button>
                                                         {{/dateCheck}}
                                                     {{else}}
                                                         {{#dateCheck startDateTime}}

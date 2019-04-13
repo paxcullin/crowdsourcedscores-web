@@ -7,16 +7,10 @@
                 </div>
                 <div id="navbar-main" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    {{#ifCond sport '!==' 'nfl'}}
-                        <li><a href="/">NFL</a></li>
-                    {{/ifCond}}
-                    {{#ifCond sport '!==' 'ncaaf'}}
-                        <li><a href="/?sport=ncaaf">College Bowls</a></li>
-                    {{/ifCond}}
-                    {{#ifCond sport '!==' 'ncaam'}}
-                        <li><a href="/?sport=ncaam">March Madness</a></li>
-                    {{/ifCond}}
+                    <li><a href="#">Home</a></li>
+                    <li {{#ifCond sport '!==' 'nfl'}} class="active"{{/ifCond}}><a href="/">NFL</a></li>
+                    <li {{#ifCond sport '!==' 'ncaaf'}} class="active"{{/ifCond}}><a href="/?sport=ncaaf">College Bowls</a></li>
+                    <li {{#ifCond sport '!==' 'ncaam'}} class="active"{{/ifCond}}><a href="/?sport=ncaam">March Madness</a></li>
                     <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
                     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="leaderboards">Leaderboards<span class="caret"></span></a>
                         <ul class="dropdown-menu">
