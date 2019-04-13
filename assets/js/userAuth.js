@@ -135,10 +135,6 @@ if (cognitoUser) {
         getUserAttributes();
         token = session.getIdToken().getJwtToken();
         id_token = token;
-
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.idToken', session.getIdToken().getJwtToken());
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.accessToken', session.getAccessToken().getJwtToken());
-        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.refreshToken', session.getRefreshToken().getToken());
         return token;
     });
     showLogoutButton();

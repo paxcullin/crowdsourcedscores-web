@@ -688,6 +688,11 @@ td.quarters {
     font-size: 1.3em;
 }
 
+.loginFields {
+    margin: 0 auto;
+}
+
+
 /*#predictionDetails a {
     color: #B22438;    
 }*/
@@ -769,6 +774,20 @@ td.quarters {
     
     #resultRow {
         text-align: center;
+    }
+    .loginFields {
+        width: 75%;
+    }
+    .loginFields-FB {
+        width: 25%;
+    }
+}
+@media (max-width: 767px) {
+    .loginFields {
+        width: 100%;  
+    }
+    .loginFields-FB {
+        width: 100%;
     }
 }
 

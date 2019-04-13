@@ -1757,6 +1757,28 @@
     </head>
 
     <body>
+        
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : 1562547140702907,
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.2'
+          });
+            
+          FB.AppEvents.logPageView();   
+            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -1789,8 +1811,8 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
+                                <div class="loginFields">
+                                    <form role="form" class="form-horizontal">
                                         <fieldset>
                                             Username: <input type="text" id="username" placeholder="Enter your username">
                                             <br>
@@ -1800,14 +1822,17 @@
                                             <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
                                             <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
                                             <br>
-                                            <div style="width: 90%;">
-                                                <button id="loginUser">Log In</button>
-                                            </div>
                                             <ul id="loginUserResults"></ul>
-                                            <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+                                            
                                         </fieldset>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <div class="loginFields-FB">
+                                    <fb:login-button 
+                                    scope="public_profile,email"
+                                    onlogin="checkLoginState();">
+                                    </fb:login-button>
+                                </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -2165,11 +2190,13 @@
     //     });
     // });
 
-    document.getElementById('loginUser').addEventListener('click', function() {
+    document.getElementById('loginUser').addEventListener('click', function(e) {
+        e.preventDefault();
         login();
     })
 
     function login() {
+        console.log('login clicked')
         var username = $('#username').val();
         var authenticationData = {
             Username: username,
@@ -2182,6 +2209,7 @@
             Pool: userPool
         };
         var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        console.log('authentication details: ', authenticationDetails)
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function () {
                 $("#loginModal").modal("hide");
@@ -2192,14 +2220,14 @@
                 console.log(JSON.stringify(err))
                 alert(JSON.stringify(err));
                 if (err.code === "NotAuthorizedException") {
-                    //console.log(CognitoUser.resendConfirmationCode(email))
-                    // CognitoUser.resendConfirmationCode(userData)
-                    // .then(function(result) {
-                    //     console.log(`Resend result ${result}`)
-                    // })
-                    // .catch(function(err) {
-                    //     console.log(`Resend error: ${err}`)
-                    // })
+                    console.log('resending code')
+                    CognitoUser.resendConfirmationCode(userData)
+                    .then(function(result) {
+                        console.log(`Resend result ${result}`)
+                    })
+                    .catch(function(err) {
+                        console.log(`Resend error: ${err}`)
+                    })
                     
                     //var tempUser = getUser();
                     //console.log(`tempUser = ${tempUser}`)
@@ -2207,6 +2235,12 @@
             }
         });
     }
+
+    
+    FB.getLoginStatus(function(response) {
+        console.log('Facebook response: ', response)
+        
+    });
 
 
 
