@@ -702,6 +702,25 @@ td.quarters {
     margin: 0 auto;
 }
 
+.socialButton-customizable {
+    height: 40px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.facebook-button {
+    background-color: #4267b2;
+    color: white;
+}
+
+.social-logo {
+    width: 35px;
+    height: 100%;
+    text-align: center;
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
 
 /*#predictionDetails a {
     color: #B22438;    
