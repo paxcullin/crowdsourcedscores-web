@@ -63,6 +63,16 @@ function parseGames(games) {
     
 }
 
+function gameCannotBeUpdated(startDateTime) {
+    //cutoff for odds updates is 1 hour prior to start
+    const msHour = 3600000;
+    var now = new Date();
+    var start = Date.parse(startDateTime);
+    var cutoff = start - msHour;
+
+    return (now > cutoff)
+}
+
 urls.forEach((url, urlIndex) => {
     const options = {
         url: url,
@@ -102,6 +112,7 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     } else {
+                                        if (gameResult.status !== "notStarted" || gameCannotBeUpdated(game.startDateTime)) return;
                                         gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
                                         gameResult.odds.spread = game.odds.spread
                                         gameResult.odds.total = game.odds.total

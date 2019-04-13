@@ -309,6 +309,13 @@ text-rendering: optimizeLegibility;
     color: #fff;
 }
 
+.buttonDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
 .loading-icon {
     position: relative;
     width: 20px;
@@ -441,6 +448,9 @@ div#OR {
     .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-right {
       left: auto;
       right: 0;
+    }
+    .prediction-btn {
+        padding: 5px;
     }
   }
   /**
@@ -688,6 +698,30 @@ td.quarters {
     font-size: 1.3em;
 }
 
+.loginFields {
+    margin: 0 auto;
+}
+
+.socialButton-customizable {
+    height: 40px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.facebook-button {
+    background-color: #4267b2;
+    color: white;
+}
+
+.social-logo {
+    width: 35px;
+    height: 100%;
+    text-align: center;
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /*#predictionDetails a {
     color: #B22438;    
 }*/
@@ -769,6 +803,20 @@ td.quarters {
     
     #resultRow {
         text-align: center;
+    }
+    .loginFields {
+        width: 75%;
+    }
+    .loginFields-FB {
+        width: 25%;
+    }
+}
+@media (max-width: 767px) {
+    .loginFields {
+        width: 100%;  
+    }
+    .loginFields-FB {
+        width: 100%;
     }
 }
 

@@ -104,7 +104,8 @@ function buildWeeklyTable(weeklyUsersInformation, gameWeek) {
 function buildUsersTable(allUsersInformation, sport) {
 
     console.log("allUsersInformation: ", allUsersInformation)
-    if (allUsersInformation.length === 0) return;
+    if (!allUsersInformation) return;
+    if (allUsersInformation.length === 0 || allUsersInformation.errorMessage) return;
     var usersDivHTML = "<table class=\"rwd-table\"><thead><tr><th class=\"rank\"><span class=\"full abbrev\">Rank</span></th><th class=\"entryowner\"><span class=\"full\">Username</span></th><th class=\"Record\"><span class=\"full\">Record</span></th><th class=\"total\"><span class=\"full\">Score</span></th></tr></thead><tbody>";
     var rank = 1;
             allUsersInformation.sort(function(a,b) {

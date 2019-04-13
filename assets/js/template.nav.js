@@ -1,7 +1,7 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['template.nav'] = template({"1":function(container,depth0,helpers,partials,data) {
-    return "                        <li><a href=\"/\">NFL</a></li>\r\n";
+    return "                        <li><a href=\"/?sport=nfl\">NFL</a></li>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
     return "                        <li><a href=\"/?sport=ncaaf\">College Bowls</a></li>\r\n";
 },"5":function(container,depth0,helpers,partials,data) {
