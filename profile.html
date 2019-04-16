@@ -358,6 +358,10 @@
         var navResult = navRenderer({userInformation});
 
         $("#navRow").html(navResult);
+        document.getElementById('loginUser').addEventListener('click', function(e) {
+            e.preventDefault();
+            login();
+        })
     </script>
 
 </body>

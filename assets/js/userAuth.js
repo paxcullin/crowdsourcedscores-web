@@ -266,4 +266,257 @@ function logout () {
 // $("#logoutButton").click(logout());
 // $("#btn_logout").click(logout());
 
+$("#loginButton").click(function() {
+    $("#loginModal").modal('show',{
+        fadeDuration: 100
+    });
+});
+
+        function logout () {
+            if (!cognitoUser) return { message: 'Sorry, an error occured. Please refresh the page and try again.'}
+            ga('send','event','login','logout');
+            cognitoUser.signOut();
+            showLoginButton();
+            window.location = '/';
+            return true;
+        };
+var cognitoUser = userPool.getCurrentUser();
+var attributeList = [];
+
+var dataEmail = {
+    Name : 'email',
+    Value : 'email@mydomain.com'
+};
+
+var dataUsername = {
+    Name : 'preferred_username',
+    Value : 'email@mydomain.com'
+};
+var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+var attributeUsername = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+// document.getElementById('loginUser').addEventListener('click', function () {
+//   userPool.signUp(document.getElementById('username').value, document.getElementById('password').value,
+//     attributeList, null,
+//     function (err, result) {
+//         if (err) {
+//             alert(JSON.stringify(err));
+//             return;
+//         }
+//         document.getElementById('signupUserResults').innerHTML = "Results: " + JSON.stringify(
+//           result.user, null, 2);
+//         cognitoUser = result.user;
+//         console.log(cognitoUser);
+//     });
+// });
+
+
+function login() {
+    console.log('login clicked')
+    var username = $('#username').val();
+    var authenticationData = {
+        Username: username,
+        Password: $('#password').val()
+    };
+
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+    var userData = {
+        Username: username,
+        Pool: userPool
+    };
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    console.log('authentication details: ', authenticationDetails)
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function () {
+            $("#loginModal").modal("hide");
+            showLogoutButton();
+            getGameWeek(setGameWeek)
+        },
+        onFailure: function (err) {
+            console.log(JSON.stringify(err))
+            alert(JSON.stringify(err));
+            if (err.code === "NotAuthorizedException") {
+                console.log('resending code')
+                CognitoUser.resendConfirmationCode(userData)
+                .then(function(result) {
+                    console.log(`Resend result ${result}`)
+                    showConfirmUI()
+                })
+                .catch(function(err) {
+                    console.log(`Resend error: ${err}`)
+                })
+                
+                //var tempUser = getUser();
+                //console.log(`tempUser = ${tempUser}`)
+            }
+        }
+    });
+}
+
+
+
+
+
+// Commenting out and will remove once login flow is confirmed
+
+// document.getElementById('signUpUser').addEventListener('click', function() {
+//     console.log('clicked');
+//     var attributeList = [];
+    
+//     var dataEmail = {
+//             Name : 'email',
+//             Value : $('#newEmail').val()
+//         };
+
+//     var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+//     attributeList.push(attributeEmail);
+    
+//     var dataFirst = {
+//             Name : 'given_name',
+//             Value : $('#firstName').val()
+//         };
+
+//     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataFirst);
+//     attributeList.push(dataFirst);
+
+//     var dataLast = {
+//             Name : 'family_name',
+//             Value : $('#lastName').val()
+//         };
+
+//     var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataLast);
+//     attributeList.push(dataLast);
+
+//     // var dataUsername = {
+//     //         Name : 'username',
+//     //         Value : document.getElementById('newUsername').value()
+//     //     };
+
+//     // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataUsername);
+//     // attributeList.push(dataUsername);
+
+//     // var dataPassword = {
+//     //         Name : 'password',
+//     //         Value : document.getElementById('newPassword').value()
+//     //     };
+
+//     // var attributeFirst = new AmazonCognitoIdentity.CognitoUserAttribute(dataPassword);
+//     // attributeList.push(dataPassword);
+
+//     var cognitoUser;
+
+//     userPool.signUp($('#newUsername').val(), $('#newPassword').val(), attributeList, null, function(err, result) {
+//         if (err) {
+//             alert(err);
+//             return;
+//         }
+//         cognitoUser = result.user;
+
+//         console.log('user name is ' + cognitoUser.getUsername());
+//         showConfirmUI(cognitoUser);
+//     });
+// });
+
+function showConfirmUI(cognitoUser) {
+    $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
+}
+
+
+function confirmUser(username) {
+
+    var userData = {
+        Username: username,
+        Pool: userPool
+    };
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    
+    cognitoUser.confirmRegistration($('#confirmUserCode').val(), true, function (err, results) {
+        if (err) {
+            alert(err);
+        } else {
+            window.location = '/';
+        }
+    });
+};
+
+
+function resetVerificationPIN(username){
+    const p = new Promise((res, rej)=>{
+    
+    var userData = {
+        Username: username,
+        Pool: userPool
+    };
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+    cognitoUser.resendConfirmationCode(function(err, result) {
+        if (err) {
+            rej(err)
+            return
+        }
+            res()
+        })
+    });
+};
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function showForgotPasswordUI() {
+    $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
+}
+
+
+function forgotPassword() { 
+
+    var forgotPasswordEmail = $('#forgotPasswordEmail').val()
+    var userData = {
+        Username: forgotPasswordEmail,
+        Pool: userPool
+    };
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+    cognitoUser.forgotPassword({
+        onSuccess: function (result) {
+            console.log('call result: ' + result);
+            $("#loginRegistrationColumn").html("<div>Enter the confirmation code sent to the e-mail address you provided and your new password.<br><label for=\"forgotPasswordConfirmationCode\">Confirmation Code:</label><input type=\"number\" id=\"forgotPasswordConfirmationCode\"><br><label for=\"forgotPasswordNewPassword\">New Password</label><input type=\"password\" id=\"forgotPasswordNewPassword\"><button class=\"btn btn-primary btn-sm\" id=\"changePasswordButton\" onclick=\"inputVerificationCode('" + forgotPasswordEmail + "')\">Reset Password</button><br></div>")
+        },
+        onFailure: function(err) {
+            console.log(JSON.stringify(err));
+        }
+    });
+
+
+    // cognitoUser.confirmRegistration($("#confirmUserCode").val(), true, function(err, result) {
+    //         if (err) {
+    //             alert(JSON.stringify(err));
+    //             return;
+    //         }
+    //         alert("result: ", JSON.stringify(result));
+    //     });
+};
+
+function inputVerificationCode(userEmail) {
+    var userData = {
+        Username: userEmail,
+        Pool: userPool
+    }
+var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    var verificationCode = $('#forgotPasswordConfirmationCode').val();
+    var newPassword = $('#forgotPasswordNewPassword').val();
+    
+    cognitoUser.confirmPassword(verificationCode, newPassword, {
+        onFailure(err) {
+            console.log(err);
+        },
+        onSuccess() {
+            $("#loginRegistrationColumn").html("<form role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><fieldset>E-mail: <input type=\"text\" id=\"email\" placeholder=\"Enter your e-mail address\"><br><br>Password: <input type=\"password\" id=\"password\" placeholder=\"Enter password\"><br><a href=\"#\" onClick=\"showForgotPasswordUI()\">Forgot Password?</a><br><ul id=\"loginUserResults\"></ul><div class=\"fb-login-button\" data-show-faces=\"false\" data-width=\"200\" data-max-rows=\"1\"></div></fieldset></div></form><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\" id=\"loginUser\" onclick=\"login()\">Login</button><br></div>");
+        }
+    });
+}
+
 console.log("userInformation: ", userInformation)
+

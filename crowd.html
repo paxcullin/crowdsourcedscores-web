@@ -812,6 +812,10 @@
 
             var navResult = navRenderer({userInformation});
             $("#navRow").html(navResult);
+            document.getElementById('loginUser').addEventListener('click', function(e) {
+                e.preventDefault();
+                login();
+            })
             var sportSpecificNavResult = sportSpecificNavRenderer({sport: 'nfl'});
             $("#sportSpecificNavRow").html(sportSpecificNavResult);
             
@@ -1297,7 +1301,7 @@
 <script type="text/javascript">
     var navRenderer = Handlebars.templates['template.nav'];
     var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav']
-                        
+    
 </script>
 
 </body>

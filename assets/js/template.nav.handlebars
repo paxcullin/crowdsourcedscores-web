@@ -1,3 +1,149 @@
+    
+    <!--login modal-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log in to Crowd Wisdom Sports</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;" id="loginRegistrationColumn">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="Login">
+                                    <div class="loginFields">
+                                        <form role="form" class="form-horizontal">
+                                            <fieldset>
+                                                Username: <input type="text" id="username" placeholder="Enter your username">
+                                                <br>
+                                                <br>
+                                                Password: <input type="password" id="password" placeholder="Enter password">
+                                                <br>
+                                                <!--<a href="https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/forgotPassword?response_type=token&client_id=2n15lhk845sucm0k4fejjqcbev&redirect_uri=https://crowdsourcedscores.com">Forgot Password?</a>-->
+                                                <a href="#" onClick="showForgotPasswordUI()">Forgot Password?</a>
+                                                <br>
+                                                <ul id="loginUserResults"></ul>
+                                                
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="loginUser">Login</button><br>
+                                    </div>
+                                    <div class="loginFields-FB">
+                                        <span class="idpDescription-customizable">Sign In with your social account</span>
+                                        <button name="facebookSignUpButton" onclick="window.location.href='https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&amp;redirect_uri=https://crowdsourcedscores.com&amp;response_type=CODE&amp;client_id=2n15lhk845sucm0k4fejjqcbev&amp;scope=aws.cognito.signin.user.admin email openid phone profile'" class="btn facebook-button socialButton-customizable">
+                                            <span><svg class="social-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" color="#ffffff">
+                                                <path fill="#ffffff" d="
+                                                    M204.1 0H11.9C5.3 0 0 5.3 0 11.9v192.2c0 6.6 5.3 11.9 11.9
+                                                    11.9h103.5v-83.6H87.2V99.8h28.1v-24c0-27.9 17-43.1 41.9-43.1
+                                                    11.9 0 22.2.9 25.2 1.3v29.2h-17.3c-13.5 0-16.2 6.4-16.2
+                                                    15.9v20.8h32.3l-4.2 32.6h-28V216h55c6.6 0 11.9-5.3
+                                                    11.9-11.9V11.9C216 5.3 210.7 0 204.1 0z"></path>
+                                            </svg></span>
+                                            <span>Continue with Facebook</span>
+                                        </button><br>
+                                        
+                                        <span class="legalText-customizable">We won't post to any of your accounts without asking first</span>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane" id="Registration">
+                                    <div class="loginFields">
+                                        <form role="form" class="form-horizontal">
+                                            <div class="form-group">
+                                            <label for="firstName" class="col-sm-2 control-label">
+                                                                First</label>
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="firstName" placeholder="First Name" />
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lastName" class="col-sm-2 control-label">
+                                                                    Last</label>
+                                                <div class="col-sm-6">
+                                                    <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="newUsername" class="col-sm-2 control-label">
+                                                                    Username (max: 25 characters)</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="newUsername" placeholder="Username" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="email" class="col-sm-2 control-label">
+                                                                Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="newEmail" placeholder="Email" />
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="newPassword" class="col-sm-2 control-label">
+                                                                Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="newPassword" placeholder="Password" />
+                                            </div>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <button type="button" class="btn btn-primary btn-sm" id="signUpUser">
+                                                                    Submit</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="loginFields-FB">
+                                        <span class="idpDescription-customizable">Sign In with your social account</span>
+                                        <button name="facebookSignUpButton" onclick="window.location.href='https://crowdsourcedscores.auth.us-west-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&amp;redirect_uri=https://crowdsourcedscores.com&amp;response_type=CODE&amp;client_id=2n15lhk845sucm0k4fejjqcbev&amp;scope=aws.cognito.signin.user.admin email openid phone profile'" class="btn facebook-button socialButton-customizable">
+                                            <span><svg class="social-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" color="#ffffff">
+                                                <path fill="#ffffff" d="
+                                                    M204.1 0H11.9C5.3 0 0 5.3 0 11.9v192.2c0 6.6 5.3 11.9 11.9
+                                                    11.9h103.5v-83.6H87.2V99.8h28.1v-24c0-27.9 17-43.1 41.9-43.1
+                                                    11.9 0 22.2.9 25.2 1.3v29.2h-17.3c-13.5 0-16.2 6.4-16.2
+                                                    15.9v20.8h32.3l-4.2 32.6h-28V216h55c6.6 0 11.9-5.3
+                                                    11.9-11.9V11.9C216 5.3 210.7 0 204.1 0z"></path>
+                                            </svg></span>
+                                            <span>Continue with Facebook</span>
+                                        </button><br>
+                                        
+                                        <span class="legalText-customizable">We won't post to any of your accounts without asking first</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--close login modal-->
     <div class="row">
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -8,9 +154,9 @@
                 <div id="navbar-main" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Home</a></li>
-                    <li {{#ifCond sport '!==' 'nfl'}} class="active"{{/ifCond}}><a href="/">NFL</a></li>
-                    <li {{#ifCond sport '!==' 'ncaaf'}} class="active"{{/ifCond}}><a href="/?sport=ncaaf">College Bowls</a></li>
-                    <li {{#ifCond sport '!==' 'ncaam'}} class="active"{{/ifCond}}><a href="/?sport=ncaam">March Madness</a></li>
+                    <li {{#ifCond sport '===' 'nfl'}} class="active"{{/ifCond}}><a href="/">NFL</a></li>
+                    <li {{#ifCond sport '===' 'ncaaf'}} class="active"{{/ifCond}}><a href="/?sport=ncaaf">College Bowls</a></li>
+                    <li {{#ifCond sport '===' 'ncaam'}} class="active"{{/ifCond}}><a href="/?sport=ncaam">March Madness</a></li>
                     <li><a href="https://blog.crowdsourcedscores.com/" target="blog">Blog</a></li>
                     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="leaderboards">Leaderboards<span class="caret"></span></a>
                         <ul class="dropdown-menu">
