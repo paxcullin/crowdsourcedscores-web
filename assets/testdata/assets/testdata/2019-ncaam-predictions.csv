@@ -1,0 +1,126 @@
+gameId,year,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.total.correct,results.total.push,spread,total,submitted,userId,predictionScore,preferred_username
+3103788,2019,12,Montana,53,Michigan,85,1,0,1,0,0,0,-32,138,2019-03-20T21:52:34.960Z,cmaronchick,4,cmaronchick
+3103780,2019,12,Minnesota,63,Louisville,75,0,0,0,0,1,0,-12,138,2019-03-20T23:32:15.271Z,cmaronchick,2,cmaronchick
+3103786,2019,12,Seton Hall,69,Wofford,71,1,0,0,0,0,0,-2,140,2019-03-21T23:38:47.531Z,cmaronchick,2,cmaronchick
+3107305,2019,12,Wofford,67,Kentucky,78,1,0,0,1,1,0,-11,145,2019-03-23T18:10:35.206Z,Facebook_10208710241577136,4,PaulCullin
+3103802,2019,12,Old Dominion,59,Purdue,74,1,0,0,1,0,0,-15,133,2019-03-21T23:42:28.708Z,cmaronchick,2,cmaronchick
+3103794,2019,12,Baylor,57,Syracuse,69,0,0,0,0,0,0,-12,126,2019-03-22T00:25:17.332Z,cmaronchick,1,cmaronchick
+3103841,2019,12,Washington,75,Utah State,68,1,0,1,0,1,0,7,143,2019-03-22T22:37:13.919Z,cmaronchick,6,cmaronchick
+3103810,2019,12,TBD,55,Duke,83,1,0,0,0,1,0,-28,138,2019-03-22T22:37:24.017Z,cmaronchick,4,cmaronchick
+3103827,2019,12,Georgia State,56,Houston,66,1,0,0,0,1,0,-10,122,2019-03-22T22:37:43.378Z,cmaronchick,4,cmaronchick
+3103811,2019,12,UCF,76,VCU,73,1,0,1,0,1,0,3,149,2019-03-22T22:39:09.138Z,cmaronchick,6,cmaronchick
+3103820,2019,12,Ohio State,70,Iowa State,75,0,0,1,0,0,0,-5,145,2019-03-22T22:41:07.881Z,cmaronchick,2,cmaronchick
+3103814,2019,12,Saint Louis,54,Virginia Tech,71,1,0,1,0,1,0,-17,125,2019-03-22T22:41:22.717Z,cmaronchick,6,cmaronchick
+3103816,2019,12,Liberty,75,Miss. State,73,1,0,1,0,1,0,2,148,2019-03-22T22:49:12.557Z,cmaronchick,6,cmaronchick
+3103833,2019,12,Iona,55,N. Carolina,74,1,0,1,0,1,0,-19,129,2019-03-22T22:49:33.038Z,cmaronchick,6,cmaronchick
+3107305,2019,12,Wofford,67,Kentucky,74,1,0,0,1,1,0,-7,141,2019-03-23T17:39:12.545Z,cmaronchick,4,cmaronchick
+3107308,2019,12,Florida,61,Michigan,64,1,0,0,0,0,0,-3,125,2019-03-23T18:12:14.626Z,Facebook_10208710241577136,3,PaulCullin
+3107316,2019,12,Baylor,65,Gonzaga,75,1,0,1,0,0,0,-10,140,2019-03-23T18:13:55.665Z,Facebook_10208710241577136,4,PaulCullin
+3107213,2019,12,Minnesota,60,Michigan St.,68,1,0,0,0,1,0,-8,128,2019-03-23T18:43:42.526Z,Facebook_10208710241577136,4,PaulCullin
+3107323,2019,12,Villanova,68,Purdue,69,1,0,0,0,0,0,-1,137,2019-03-23T18:44:43.547Z,Facebook_10208710241577136,2,PaulCullin
+3107232,2019,12,Auburn,78,Kansas,81,0,0,0,0,1,0,-3,159,2019-03-23T18:46:05.906Z,Facebook_10208710241577136,2,PaulCullin
+3107213,2019,12,Minnesota,68,Michigan St.,82,1,0,1,0,0,0,-14,150,2019-03-23T23:35:24.710Z,cmaronchick,4,cmaronchick
+1106306,2019,13,Florida State Seminoles,64,Gonzaga Bulldogs,60,0,0,0,0,1,0,4,124,2019-03-28T00:53:00.420Z,mhepler,2,mhepler
+1106416,2019,13,Purdue Boilermakers,68,Tennessee Volunteers,67,1,0,1,0,0,0,1,135,2019-03-28T00:53:43.640Z,mhepler,4,mhepler
+3107323,2019,12,Villanova,69,Purdue,68,0,0,0,0,0,0,1,137,2019-03-23T23:35:41.529Z,cmaronchick,0,cmaronchick
+3107232,2019,12,Auburn,71,Kansas,74,0,0,0,0,0,0,-3,145,2019-03-23T23:36:11.257Z,cmaronchick,0,cmaronchick
+1106123,2019,12,Iowa Hawkeyes,75,Tennessee Volunteers,63,0,0,1,0,0,0,12,138,2019-03-24T17:08:16.734Z,cmaronchick,2,cmaronchick
+1106261,2019,12,Washington Huskies,77,North Carolina Tar Heels,75,0,0,0,0,0,0,2,152,2019-03-24T17:08:27.294Z,cmaronchick,0,cmaronchick
+1106256,2019,12,Central Florida Knights,78,Duke Blue Devils,89,1,0,1,0,1,0,-11,167,2019-03-24T17:08:39.497Z,cmaronchick,6,cmaronchick
+1106128,2019,12,Buffalo Bulls,85,Texas Tech Red Raiders,81,0,0,0,0,0,0,4,166,2019-03-24T17:09:13.693Z,cmaronchick,0,cmaronchick
+1106271,2019,12,Liberty Flames,76,Virginia Tech Hokies,79,1,0,0,0,0,1,-3,155,2019-03-24T17:10:25.426Z,cmaronchick,2,cmaronchick
+1106118,2019,12,Oklahoma Sooners,65,Virginia Cavaliers,79,1,0,1,0,0,0,-14,144,2019-03-24T17:10:43.433Z,cmaronchick,4,cmaronchick
+1106266,2019,12,Ohio State Buckeyes,76,Houston Cougars,69,0,0,0,0,1,0,7,145,2019-03-24T17:11:04.292Z,cmaronchick,2,cmaronchick
+1106133,2019,12,UC Irvine Anteaters,75,Oregon Ducks,77,1,0,0,0,1,0,-2,152,2019-03-24T17:11:19.232Z,cmaronchick,4,cmaronchick
+3107237,2019,12,Murray State,60,Florida State,80,1,0,1,0,0,0,-20,140,2019-03-23T18:12:35.626Z,Facebook_10208710241577136,4,PaulCullin
+1106416,2019,13,Purdue Boilermakers,67,Tennessee Volunteers,63,1,0,1,0,0,0,4,130,2019-03-25T21:50:11.070Z,cmaronchick,4,cmaronchick
+1106423,2019,13,Texas Tech Red Raiders,65,Michigan Wolverines,81,0,0,0,0,0,0,-16,146,2019-03-25T21:50:47.989Z,cmaronchick,0,cmaronchick
+1106522,2019,13,Oregon Ducks,73,Virginia Cavaliers,71,0,0,1,0,0,0,2,144,2019-03-25T21:51:30.749Z,cmaronchick,2,cmaronchick
+1106306,2019,13,Florida State Seminoles,68,Gonzaga Bulldogs,73,1,0,0,0,1,0,-5,141,2019-03-25T21:51:44.469Z,cmaronchick,4,cmaronchick
+1106421,2019,13,Auburn Tigers,75,North Carolina Tar Heels,65,1,0,1,0,0,0,10,140,2019-03-25T21:51:56.529Z,cmaronchick,4,cmaronchick
+1106433,2019,13,Virginia Tech Hokies,68,Duke Blue Devils,78,1,0,0,0,1,0,-10,146,2019-03-25T21:53:56.152Z,cmaronchick,4,cmaronchick
+1106527,2019,13,Houston Cougars,75,Kentucky Wildcats,79,1,0,1,0,0,0,-4,154,2019-03-30T01:44:38.783Z,cmaronchick,5,cmaronchick
+1106341,2019,13,LSU Tigers,74,Michigan State Spartans,84,1,0,1,0,0,0,-10,158,2019-03-25T22:05:30.630Z,cmaronchick,4,cmaronchick
+1106306,2019,13,Florida State Seminoles,72,Gonzaga Bulldogs,77,1,0,0,0,0,0,-5,149,2019-03-28T02:04:36.713Z,ausame,2,ausame
+1106416,2019,13,Purdue Boilermakers,70,Tennessee Volunteers,72,0,0,0,0,0,0,-2,142,2019-03-28T02:05:22.514Z,ausame,0,ausame
+1106423,2019,13,Texas Tech Red Raiders,62,Michigan Wolverines,66,0,0,0,0,0,0,-4,128,2019-03-28T02:05:49.872Z,ausame,0,ausame
+1106522,2019,13,Oregon Ducks,64,Virginia Cavaliers,73,1,0,0,0,0,0,-9,137,2019-03-28T02:06:38.292Z,ausame,2,ausame
+1106341,2019,13,LSU Tigers,72,Michigan State Spartans,73,1,0,0,0,1,0,-1,145,2019-03-28T02:07:17.092Z,ausame,4,ausame
+1106421,2019,13,Auburn Tigers,79,North Carolina Tar Heels,85,0,0,0,0,0,0,-6,164,2019-03-28T02:07:49.412Z,ausame,0,ausame
+1106433,2019,13,Virginia Tech Hokies,70,Duke Blue Devils,72,1,0,1,0,0,0,-2,142,2019-03-28T02:08:15.652Z,ausame,5,ausame
+1106527,2019,13,Houston Cougars,67,Kentucky Wildcats,72,1,0,1,0,0,0,-5,139,2019-03-28T02:09:23.677Z,ausame,4,ausame
+1106416,2019,13,Purdue Boilermakers,68,Tennessee Volunteers,73,0,0,0,0,0,0,-5,141,2019-03-28T03:26:39.874Z,Facebook_10210894378652618,0,MichaelRaymond
+1106306,2019,13,Florida State Seminoles,72,Gonzaga Bulldogs,86,1,0,1,0,0,0,-14,158,2019-03-28T03:26:42.869Z,Facebook_10210894378652618,5,MichaelRaymond
+1106423,2019,13,Texas Tech Red Raiders,65,Michigan Wolverines,76,0,0,0,0,0,0,-11,141,2019-03-28T03:27:11.469Z,Facebook_10210894378652618,0,MichaelRaymond
+1106522,2019,13,Oregon Ducks,78,Virginia Cavaliers,81,1,0,1,0,0,0,-3,159,2019-03-28T03:27:23.871Z,Facebook_10210894378652618,4,MichaelRaymond
+1106341,2019,13,LSU Tigers,73,Michigan State Spartans,78,1,0,0,0,0,0,-5,151,2019-03-28T03:27:42.910Z,Facebook_10210894378652618,2,MichaelRaymond
+1106421,2019,13,Auburn Tigers,62,North Carolina Tar Heels,73,0,0,0,0,0,0,-11,135,2019-03-29T05:39:41.885Z,Facebook_10210894378652618,0,MichaelRaymond
+1106527,2019,13,Houston Cougars,68,Kentucky Wildcats,64,0,0,0,0,1,0,4,132,2019-03-29T05:40:13.079Z,Facebook_10210894378652618,2,MichaelRaymond
+1106306,2019,13,Florida State Seminoles,71,Gonzaga Bulldogs,80,1,0,1,0,0,0,-9,151,2019-03-28T04:23:24.720Z,Facebook_10154773754448953,4,BryanCole
+1106416,2019,13,Purdue Boilermakers,66,Tennessee Volunteers,69,0,0,0,0,0,0,-3,135,2019-03-28T04:24:27.897Z,Facebook_10154773754448953,0,BryanCole
+1106423,2019,13,Texas Tech Red Raiders,72,Michigan Wolverines,76,0,0,0,0,0,0,-4,148,2019-03-28T04:24:42.557Z,Facebook_10154773754448953,0,BryanCole
+1106522,2019,13,Oregon Ducks,74,Virginia Cavaliers,78,1,0,1,0,0,0,-4,152,2019-03-28T04:25:02.636Z,Facebook_10154773754448953,5,BryanCole
+1106341,2019,13,LSU Tigers,68,Michigan State Spartans,64,0,0,0,0,1,0,4,132,2019-03-28T04:25:53.578Z,Facebook_10154773754448953,2,BryanCole
+1106421,2019,13,Auburn Tigers,70,North Carolina Tar Heels,82,0,0,0,0,0,0,-12,152,2019-03-28T04:26:13.117Z,Facebook_10154773754448953,0,BryanCole
+1106433,2019,13,Virginia Tech Hokies,70,Duke Blue Devils,76,1,0,1,0,1,0,-6,146,2019-03-28T04:26:32.216Z,Facebook_10154773754448953,6,BryanCole
+1106527,2019,13,Houston Cougars,78,Kentucky Wildcats,75,0,0,0,0,0,0,3,153,2019-03-28T04:26:51.656Z,Facebook_10154773754448953,0,BryanCole
+1106416,2019,13,Purdue Boilermakers,65,Tennessee Volunteers,60,1,0,1,0,0,0,5,125,2019-03-28T08:22:07.088Z,Facebook_10208710241577136,5,PaulCullin
+1106423,2019,13,Texas Tech Red Raiders,68,Michigan Wolverines,77,0,0,0,0,0,0,-9,145,2019-03-28T08:22:47.028Z,Facebook_10208710241577136,0,PaulCullin
+1106522,2019,13,Oregon Ducks,57,Virginia Cavaliers,69,1,0,0,0,0,0,-12,126,2019-03-28T08:23:09.591Z,Facebook_10208710241577136,2,PaulCullin
+1106341,2019,13,LSU Tigers,70,Michigan State Spartans,75,1,0,0,0,1,0,-5,145,2019-03-28T08:23:33.933Z,Facebook_10208710241577136,4,PaulCullin
+1106421,2019,13,Auburn Tigers,68,North Carolina Tar Heels,76,0,0,0,0,0,0,-8,144,2019-03-28T08:24:08.130Z,Facebook_10208710241577136,0,PaulCullin
+1106433,2019,13,Virginia Tech Hokies,73,Duke Blue Devils,81,1,0,0,0,1,0,-8,154,2019-03-28T08:25:11.328Z,Facebook_10208710241577136,5,PaulCullin
+1106527,2019,13,Houston Cougars,70,Kentucky Wildcats,75,1,0,1,0,0,0,-5,145,2019-03-28T08:26:02.848Z,Facebook_10208710241577136,4,PaulCullin
+1106306,2019,13,Florida State Seminoles,61,Gonzaga Bulldogs,58,0,0,0,0,1,0,3,119,2019-03-28T15:21:14.210Z,Facebook_10213631282628797,2,ElrondSheppard
+1106416,2019,13,Purdue Boilermakers,48,Tennessee Volunteers,61,0,0,0,0,0,0,-13,109,2019-03-28T15:21:50.350Z,Facebook_10213631282628797,0,ElrondSheppard
+1106423,2019,13,Texas Tech Red Raiders,74,Michigan Wolverines,69,1,0,1,0,0,0,5,143,2019-03-28T15:22:19.368Z,Facebook_10213631282628797,4,ElrondSheppard
+1106522,2019,13,Oregon Ducks,56,Virginia Cavaliers,69,1,0,0,0,0,0,-13,125,2019-03-28T15:22:44.808Z,Facebook_10213631282628797,2,ElrondSheppard
+1106341,2019,13,LSU Tigers,54,Michigan State Spartans,61,1,0,1,0,1,0,-7,115,2019-03-28T15:23:05.114Z,Facebook_10213631282628797,6,ElrondSheppard
+1106421,2019,13,Auburn Tigers,58,North Carolina Tar Heels,72,0,0,0,0,0,0,-14,130,2019-03-28T15:23:25.988Z,Facebook_10213631282628797,0,ElrondSheppard
+1106433,2019,13,Virginia Tech Hokies,56,Duke Blue Devils,78,1,0,0,0,0,0,-22,134,2019-03-28T15:23:42.648Z,Facebook_10213631282628797,2,ElrondSheppard
+1106527,2019,13,Houston Cougars,62,Kentucky Wildcats,67,1,0,1,0,1,0,-5,129,2019-03-28T15:24:06.408Z,Facebook_10213631282628797,6,ElrondSheppard
+1106306,2019,13,Florida State Seminoles,66,Gonzaga Bulldogs,74,1,0,1,0,1,0,-8,140,2019-03-28T15:44:53.390Z,murreya,6,murreya
+1106416,2019,13,Purdue Boilermakers,64,Tennessee Volunteers,71,0,0,0,0,0,0,-7,135,2019-03-28T15:45:12.809Z,murreya,0,murreya
+1106423,2019,13,Texas Tech Red Raiders,73,Michigan Wolverines,75,0,0,0,0,0,0,-2,148,2019-03-28T15:45:30.891Z,murreya,0,murreya
+1106522,2019,13,Oregon Ducks,62,Virginia Cavaliers,66,1,0,1,0,0,0,-4,128,2019-03-28T15:45:53.327Z,murreya,5,murreya
+1106341,2019,13,LSU Tigers,71,Michigan State Spartans,72,1,0,0,0,1,0,-1,143,2019-03-28T15:46:17.248Z,murreya,5,murreya
+1106421,2019,13,Auburn Tigers,63,North Carolina Tar Heels,77,0,0,0,0,0,0,-14,140,2019-03-28T15:46:31.767Z,murreya,0,murreya
+1106433,2019,13,Virginia Tech Hokies,67,Duke Blue Devils,74,1,0,0,0,0,0,-7,141,2019-03-28T15:46:46.708Z,murreya,2,murreya
+1106527,2019,13,Houston Cougars,72,Kentucky Wildcats,76,1,0,1,0,0,0,-4,148,2019-03-28T15:47:02.807Z,murreya,5,murreya
+1106306,2019,13,Florida State Seminoles,67,Gonzaga Bulldogs,73,1,0,0,0,1,0,-6,140,2019-03-28T16:24:52.008Z,Facebook_10154523075462819,4,JordanPeterson
+1106416,2019,13,Purdue Boilermakers,65,Tennessee Volunteers,67,0,0,0,0,0,0,-2,132,2019-03-28T16:27:10.147Z,Facebook_10154523075462819,0,JordanPeterson
+1106423,2019,13,Texas Tech Red Raiders,70,Michigan Wolverines,72,0,0,0,0,0,0,-2,142,2019-03-28T16:27:43.246Z,Facebook_10154523075462819,0,JordanPeterson
+1106522,2019,13,Oregon Ducks,68,Virginia Cavaliers,71,1,0,1,0,0,0,-3,139,2019-03-28T16:28:14.167Z,Facebook_10154523075462819,4,JordanPeterson
+1106341,2019,13,LSU Tigers,61,Michigan State Spartans,63,1,0,0,0,1,0,-2,124,2019-03-28T16:28:33.108Z,Facebook_10154523075462819,4,JordanPeterson
+1106421,2019,13,Auburn Tigers,70,North Carolina Tar Heels,76,0,0,0,0,0,0,-6,146,2019-03-28T16:29:10.830Z,Facebook_10154523075462819,0,JordanPeterson
+1106433,2019,13,Virginia Tech Hokies,68,Duke Blue Devils,76,1,0,0,0,1,0,-8,144,2019-03-28T16:29:29.090Z,Facebook_10154523075462819,4,JordanPeterson
+1106527,2019,13,Houston Cougars,68,Kentucky Wildcats,72,1,0,1,0,0,0,-4,140,2019-03-28T16:30:13.891Z,Facebook_10154523075462819,5,JordanPeterson
+1106306,2019,13,Florida State Seminoles,73,Gonzaga Bulldogs,78,1,0,0,0,0,0,-5,151,2019-03-28T08:21:35.830Z,Facebook_10208710241577136,2,PaulCullin
+1106306,2019,13,Florida State Seminoles,67,Gonzaga Bulldogs,72,1,0,0,0,1,0,-5,139,2019-03-28T22:54:35.309Z,Facebook_10154993923975769,5,GemmaAronchick
+1106416,2019,13,Purdue Boilermakers,54,Tennessee Volunteers,57,0,0,0,0,0,0,-3,111,2019-03-28T22:52:38.888Z,Facebook_10154993923975769,0,GemmaAronchick
+1106423,2019,13,Texas Tech Red Raiders,47,Michigan Wolverines,45,1,0,1,0,1,0,2,92,2019-03-28T22:54:54.326Z,Facebook_10154993923975769,6,GemmaAronchick
+1106522,2019,13,Oregon Ducks,64,Virginia Cavaliers,63,0,0,1,0,0,0,1,127,2019-03-28T22:53:14.728Z,Facebook_10154993923975769,2,GemmaAronchick
+1106433,2019,13,Virginia Tech Hokies,63,Duke Blue Devils,81,1,0,0,0,1,0,-18,144,2019-03-29T05:40:00.366Z,Facebook_10210894378652618,4,MichaelRaymond
+1106341,2019,13,LSU Tigers,76,Michigan State Spartans,79,1,0,0,0,0,0,-3,155,2019-03-28T22:53:28.406Z,Facebook_10154993923975769,2,GemmaAronchick
+1106421,2019,13,Auburn Tigers,53,North Carolina Tar Heels,69,0,0,0,0,0,0,-16,122,2019-03-28T22:53:41.880Z,Facebook_10154993923975769,0,GemmaAronchick
+1106433,2019,13,Virginia Tech Hokies,56,Duke Blue Devils,67,1,0,0,0,0,0,-11,123,2019-03-28T22:53:52.206Z,Facebook_10154993923975769,2,GemmaAronchick
+1106527,2019,13,Houston Cougars,75,Kentucky Wildcats,72,0,0,0,0,0,0,3,147,2019-03-28T22:54:03.727Z,Facebook_10154993923975769,0,GemmaAronchick
+1106742,2019,13,Texas Tech Red Raiders,75,Gonzaga Bulldogs,89,0,0,0,0,1,0,-14,164,2019-03-30T17:18:51.096Z,cmaronchick,3,cmaronchick
+1106747,2019,13,Purdue Boilermakers,79,Virginia Cavaliers,71,0,0,0,0,1,0,8,150,2019-03-30T17:19:16.816Z,cmaronchick,2,cmaronchick
+1106742,2019,13,Texas Tech Red Raiders,67,Gonzaga Bulldogs,84,0,0,0,0,1,0,-17,151,2019-03-30T16:41:47.658Z,Facebook_10208710241577136,2,PaulCullin
+1106747,2019,13,Purdue Boilermakers,65,Virginia Cavaliers,58,0,0,0,0,0,0,7,123,2019-03-30T16:42:12.701Z,Facebook_10208710241577136,0,PaulCullin
+1106766,2019,12,Auburn Tigers,78,Kentucky Wildcats,83,0,0,0,0,1,0,-5,161,2019-03-30T16:42:47.637Z,Facebook_10208710241577136,2,PaulCullin
+1106771,2019,12,Michigan State Spartans,80,Duke Blue Devils,77,1,0,1,0,0,0,3,157,2019-03-30T16:43:23.358Z,Facebook_10208710241577136,4,PaulCullin
+1106766,2019,12,Auburn Tigers,85,Kentucky Wildcats,78,1,0,1,0,1,0,7,163,2019-03-30T17:19:33.260Z,cmaronchick,6,cmaronchick
+1106771,2019,12,Michigan State Spartans,78,Duke Blue Devils,79,0,0,1,0,0,0,-1,157,2019-03-30T17:20:08.275Z,cmaronchick,2,cmaronchick
+1106866,2019,13,Texas Tech Red Raiders,71,Michigan State Spartans,77,0,0,0,0,0,0,-6,148,2019-04-03T22:33:30.166Z,Facebook_10155298489409129,0,CMANFLSpinzone
+1106787,2019,13,Auburn Tigers,83,Virginia Cavaliers,73,0,0,1,0,0,0,10,156,2019-04-03T22:33:37.962Z,Facebook_10155298489409129,2,CMANFLSpinzone
+1106787,2019,13,Auburn Tigers,67,Virginia Cavaliers,72,1,0,1,0,0,0,-5,139,2019-04-06T09:05:50.299Z,Facebook_10208710241577136,4,PaulCullin
+1107278,2019,14,Texas Tech Red Raiders,71,Virginia Cavaliers,68,0,0,0,0,1,0,3,139,2019-04-08T14:18:18.195Z,Facebook_10155298489409129,2,CMANFLSpinzone
+1106787,2019,12,Auburn Tigers,81,Virginia Cavaliers,78,,,,,,,3,159,2019-04-01T15:45:21.905Z,cmaronchick,,cmaronchick
+1106866,2019,12,Texas Tech Red Raiders,68,Michigan State Spartans,77,,,,,,,-9,145,2019-04-01T15:45:56.623Z,cmaronchick,,cmaronchick
+1106866,2019,13,Texas Tech Red Raiders,69,Michigan State Spartans,68,1,0,1,0,0,0,1,137,2019-04-06T23:38:48.326Z,psmeyerlaw,4,psmeyerlaw
+1106866,2019,13,Texas Tech Red Raiders,65,Michigan State Spartans,66,0,0,1,0,1,0,-1,131,2019-04-06T09:06:32.058Z,Facebook_10208710241577136,4,PaulCullin
+1107278,2019,14,Texas Tech Red Raiders,61,Virginia Cavaliers,63,1,0,1,0,1,0,-2,124,2019-04-07T17:35:43.614Z,cmaronchick,6,cmaronchick
+1107278,2019,13,Texas Tech Red Raiders,59,Virginia Cavaliers,62,,,,,,,-3,121,2019-04-07T20:58:52.865Z,psmeyerlaw,,psmeyerlaw
+1107278,2019,14,Texas Tech Red Raiders,62,Virginia Cavaliers,59,0,0,0,0,1,0,3,121,2019-04-08T23:29:19.274Z,Facebook_10208710241577136,2,PaulCullin
