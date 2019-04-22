@@ -42,7 +42,7 @@ function parseGames(games) {
     games.forEach((game, index) => {
         var gameObj = {
             gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() + (5*60*60*1000)),
+            startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
             location: game.stadium,
             awayTeam: {
                 fullName: game.away_name,

@@ -708,10 +708,8 @@
             }
 
         var getGameWeek = function (callback) {
+            (!gameWeekData.sport && getUrlParameter('sport')) ? gameWeekData.sport = getUrlParameter('sport') : (!gameWeekData.sport || gameWeekData.sport === '' || !getUrlParameter('sport')) ? gameWeekData.sport = 'ncaam' : null
 
-            if (!gameWeekData.sport || gameWeekData.sport === '') {
-                gameWeekData.sport = 'ncaam';
-            }
             useToken(function(token) {
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/week";
                 var getGameWeekURLOptions = {
@@ -1068,7 +1066,10 @@
                 if (!gameWeekData.sport) {
                     gameWeekData.sport = 'nfl';
                 }
-                if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
+                if (gameWeekData.sport === 'ncaaf') {
+                    gameWeekData.season = "post";
+                    gameWeekData.week = 16;
+                }
                 if (gameWeekData.sport === 'ncaam') {
                     gameWeekData.week = 13;
                     gameWeekData.year = 2019;
@@ -1078,7 +1079,7 @@
                 if (getUrlParameter('compareUsername')) {
                     compareQuery = "?compareUsername=" + getUrlParameter('compareUsername');
                 }
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games" + compareQuery;
+                var setGameWeekURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/${gameWeekData.sport}/${gameWeekData.year}/${gameWeekData.season}/${gameWeekData.week}/games${compareQuery}`;
                 var setGameWeekGetOptions = 
                     {     
                         method: "GET",
@@ -1088,7 +1089,7 @@
                     }
                     // creating anonymous API call for games
                 if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
+                    setGameWeekURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/${gameWeekData.sport}/${gameWeekData.year}/${gameWeekData.season}/${gameWeekData.week}/games/anon`;
                     setGameWeekGetOptions = {     
                         method: "GET"
                     }
@@ -1330,179 +1331,7 @@
                         console.log("Error getting games: ", error);
                     })
                     .then(function (data) {
-                        // Start the tour!
-                        // Check for users who have finished/closed the tour
-                        var userState = hopscotch.getState();
-                        if (cognitoUser) {
-                            // Define the tour!
-                            var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
-                            var tour = {
-                                id: "hello-hopscotch",
-                                steps: [
-                                    {
-                                        title: "Thanks for joining the crowd!",
-                                        content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
-                                        target: document.querySelector('#games'),
-                                        placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                    },
-                                    {
-                                        title: "Worried you're not an expert?",
-                                        content: "Don't fret! You know just as much as anyone about what's going to happen, and the experts are wrong all the time. So just have fun! It's easy. We'll show you.",
-                                        target: document.getElementsByClassName('card')[0],
-                                        placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                    },
-                                {
-                                        title: "Away Team Score",
-                                        content: "How many points do you think the <b>away team</b> will score?",
-                                        target: document.getElementsByClassName('predictionInput')[0],
-                                        placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                },
-                                {
-                                    title: "Home Team Score",
-                                    content: "How many points do you think the <b>home team</b> will score?",
-                                    target: document.getElementsByClassName('predictionInput')[1],
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                },
-                                {
-                                    title: "Predict!",
-                                    content: "That's it! Now click the predict button.",
-                                    target: document.getElementsByClassName('prediction-btn')[0],
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                },
-                                {
-                                    title: "Nice! Keep It Up!",
-                                    content: "You'll be able to see how many games are still waiting for your expertise in the progress bar.",
-                                    target: document.querySelector('#progress-bar'),
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
-                                        }
-                                },
-                                {
-                                    title: "Lots of ways to Compete",
-                                    content: "<p>By making predictions, you are automatically competing against every other user in our Crowd.</p><p>But you can also create your own Mini-Crowd (coworkers, friends, enemies) and compete for bragging rights.</p><p>Each Mini-Crowd generates its own crowd wisdom, and you can watch how your Mini-Crowd's crowd wisdom performs against the others.</p><p>So you can always contribute to the crowd wisdom and help your Mini-Crowd compete!",
-                                    target: document.querySelector('#allGroups'),
-                                    placement: "top",
-                                    onNext: function() {
-                                        console.log("setTourState")
-                                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
-                                        ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum())
-                                    }
-                                }
-                                ],
-                                onEnd: function() {
-                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
-                                    updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
-                                    ga('send','event','tour','step','ended');
-                                },
-                                onClose: function() {
-                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
-                                }
-                            };
-                            var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
-                            if (parseInt(userInformation.attributes["custom:completedTour"]) === 1 || localTourState === "true" || localTourState === true) {
-                                console.log("user has taken the tour");
-                            } else {
-                                hopscotch.startTour(tour);
-                            }
-                        } else {
-
-                            var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
-                            var anonymousTour = {
-                                id: "intro-tour",
-                                steps: [
-                                    {
-                                        title: "Welcome!",
-                                        content: "New here? Want to know what this is about? Take the Tour!",
-                                        target: document.querySelector('#games'),
-                                        placement: "top",
-                                        showPrevButton: true,
-                                        i18n: {
-                                            nextBtn: "Start the Tour!",
-                                            prevBtn: "No thanks!"
-                                        },
-                                        onPrev: function() {
-                                            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true)
-                                        },
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                    },
-                                    {
-                                    title: "Beyond the Coin Flip",
-                                    content: "We wanted to create a game that gives you a chance to use your expertise.<br>Instead of a 50/50 chance at picking the winner or the side, you predict the score for each team in (probably) the same amount of time.",
-                                    target: document.getElementsByClassName('card')[0],
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                    },
-                                {
-                                    title: "Prediction Scoring",
-                                    content: "<p>Instead of an all-or-nothing result that can turn be decided on the last play, you earn points for each part of your score: winner (2 points), spread (2 points), and total (2 points). You also get a +1 bonus for an on-the-money (i.e. exact) prediction.</p><p>Each prediction can earn up to 10 points; a 4-point score is good, 6 is great, 7 is incredible, and 10 means you should take your act to Vegas.</p>",
-                                    target: document.getElementsByClassName('predictionInput')[0],
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                },
-                                {
-                                    title: "Compete against the entire Crowd. Compete against just your Crowd.",
-                                    content: "<p>By participating, you are already competing against everyone else to see who has the best prediction skills.</p><p>You can also create or join a crowd to earn bragging rights among your friends, enemies, or coworkers.</p>",
-                                    target: document.getElementById('competitionDiv'),
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                },
-                                {
-                                    title: "Crowd vs. Crowd",
-                                    content: "Last thing: each crowd will have its own wisdom, so each crowd can compete against every other crowd to see who has the best crowd wisdom.",
-                                    target: document.getElementById('crowds-tab'),
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                },
-                                {
-                                    title: "Ready to Play?",
-                                    content: "Thanks for taking the tour! If you're ready to play, sign up and get your weekly predictions in!",
-                                    target: document.querySelector('#loginButtons'),
-                                    placement: "top",
-                                        onNext: function() {
-                                            ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
-                                        }
-                                }
-                                ],
-                                onEnd: function() {
-                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
-                                },
-                                onClose: function() {
-                                    localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
-                                }
-                            };
-                            var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
-                            if (localTourState === 'true' || localTourState === true) {
-                                console.log("logged out user has taken the tour");
-                            } else {
-                                hopscotch.startTour(anonymousTour);
-                            }
-                        }
+                        
                         getWeeklyResults(data.games);
                         return data;
                     })
@@ -1517,9 +1346,186 @@
                         if (chartData && chartData.games && chartData.games.length > 0) {
                             drawChart2(gameWeekData.year, gameWeekData.week, "weekly");
                         }
-                    });
+                    })
+                    .catch(loadingError => console.log('loadingError :', loadingError))
             });
         };
+
+        var tourCheck = () => {
+            // Start the tour!
+            // Check for users who have finished/closed the tour
+            var userState = hopscotch.getState();
+            if (cognitoUser) {
+                // Define the tour!
+                var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                var tour = {
+                    id: "hello-hopscotch",
+                    steps: [
+                        {
+                            title: "Thanks for joining the crowd!",
+                            content: "Let's walk you through how you can add your expertise to the crowd wisdom.",
+                            target: document.querySelector('#games'),
+                            placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                        },
+                        {
+                            title: "Worried you're not an expert?",
+                            content: "Don't fret! You know just as much as anyone about what's going to happen, and the experts are wrong all the time. So just have fun! It's easy. We'll show you.",
+                            target: document.getElementsByClassName('card')[0],
+                            placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                        },
+                    {
+                            title: "Away Team Score",
+                            content: "How many points do you think the <b>away team</b> will score?",
+                            target: document.getElementsByClassName('predictionInput')[0],
+                            placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                    },
+                    {
+                        title: "Home Team Score",
+                        content: "How many points do you think the <b>home team</b> will score?",
+                        target: document.getElementsByClassName('predictionInput')[1],
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                    },
+                    {
+                        title: "Predict!",
+                        content: "That's it! Now click the predict button.",
+                        target: document.getElementsByClassName('prediction-btn')[0],
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                    },
+                    {
+                        title: "Nice! Keep It Up!",
+                        content: "You'll be able to see how many games are still waiting for your expertise in the progress bar.",
+                        target: document.querySelector('#progress-bar'),
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum());
+                            }
+                    },
+                    {
+                        title: "Lots of ways to Compete",
+                        content: "<p>By making predictions, you are automatically competing against every other user in our Crowd.</p><p>But you can also create your own Mini-Crowd (coworkers, friends, enemies) and compete for bragging rights.</p><p>Each Mini-Crowd generates its own crowd wisdom, and you can watch how your Mini-Crowd's crowd wisdom performs against the others.</p><p>So you can always contribute to the crowd wisdom and help your Mini-Crowd compete!",
+                        target: document.querySelector('#allGroups'),
+                        placement: "top",
+                        onNext: function() {
+                            console.log("setTourState")
+                            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                            ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum())
+                        }
+                    }
+                    ],
+                    onEnd: function() {
+                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                        updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
+                        ga('send','event','tour','step','ended');
+                    },
+                    onClose: function() {
+                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                    }
+                };
+                var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour');
+                if (parseInt(userInformation.attributes["custom:completedTour"]) === 1 || localTourState === "true" || localTourState === true) {
+                    console.log("user has taken the tour");
+                } else {
+                    hopscotch.startTour(tour);
+                }
+            } else {
+
+                var userTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                var anonymousTour = {
+                    id: "intro-tour",
+                    steps: [
+                        {
+                            title: "Welcome!",
+                            content: "New here? Want to know what this is about? Take the Tour!",
+                            target: document.querySelector('#games'),
+                            placement: "top",
+                            showPrevButton: true,
+                            i18n: {
+                                nextBtn: "Start the Tour!",
+                                prevBtn: "No thanks!"
+                            },
+                            onPrev: function() {
+                                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true)
+                            },
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                        },
+                        {
+                        title: "Beyond the Coin Flip",
+                        content: "We wanted to create a game that gives you a chance to use your expertise.<br>Instead of a 50/50 chance at picking the winner or the side, you predict the score for each team in (probably) the same amount of time.",
+                        target: document.getElementsByClassName('card')[0],
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                        },
+                    {
+                        title: "Prediction Scoring",
+                        content: "<p>Instead of an all-or-nothing result that can turn be decided on the last play, you earn points for each part of your score: winner (2 points), spread (2 points), and total (2 points). You also get a +1 bonus for an on-the-money (i.e. exact) prediction.</p><p>Each prediction can earn up to 10 points; a 4-point score is good, 6 is great, 7 is incredible, and 10 means you should take your act to Vegas.</p>",
+                        target: document.getElementsByClassName('predictionInput')[0],
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                    },
+                    {
+                        title: "Compete against the entire Crowd. Compete against just your Crowd.",
+                        content: "<p>By participating, you are already competing against everyone else to see who has the best prediction skills.</p><p>You can also create or join a crowd to earn bragging rights among your friends, enemies, or coworkers.</p>",
+                        target: document.getElementById('competitionDiv'),
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                    },
+                    {
+                        title: "Crowd vs. Crowd",
+                        content: "Last thing: each crowd will have its own wisdom, so each crowd can compete against every other crowd to see who has the best crowd wisdom.",
+                        target: document.getElementById('crowds-tab'),
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                    },
+                    {
+                        title: "Ready to Play?",
+                        content: "Thanks for taking the tour! If you're ready to play, sign up and get your weekly predictions in!",
+                        target: document.querySelector('#loginButtons'),
+                        placement: "top",
+                            onNext: function() {
+                                ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
+                            }
+                    }
+                    ],
+                    onEnd: function() {
+                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                    },
+                    onClose: function() {
+                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
+                    }
+                };
+                var localTourState = localStorage.getItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour');
+                if (localTourState === 'true' || localTourState === true) {
+                    console.log("logged out user has taken the tour");
+                } else {
+                    hopscotch.startTour(anonymousTour);
+                }
+            }
+        }
 
         var submitPrediction = function (prediction, btn) {
             useToken(function(token) {
@@ -1594,18 +1600,23 @@
             setTimeout(function () {
                 getGameWeek(function (data) {
                     if (data) {
-                        gameWeekData.week = data.week;
-                        gameWeekData.year = parseInt($('#dropdown span').text);
-                        gameWeekData.sport = getUrlParameter('sport');
-                        gameWeekData.season = 'reg';
+                        gameWeekData = {
+                            ...data
+                        }
+                        // gameWeekData.week = data.week;
+                        // gameWeekData.year = parseInt($('#dropdown span').text);
+                        // gameWeekData.sport = getUrlParameter('sport');
+                        // console.log('getUrlParameter(\'sport\'):', getUrlParameter('sport'));
+                        // gameWeekData.season = 'reg';
                         
-                        if (data.year) {
-                            gameWeekData.year = data.year;
-                        }
-                        if (gameWeekData.sport === '') gameWeekData.sport = 'ncaam';
-                        if (data.season) {
-                            gameWeekData.season = data.season 
-                        }
+                        // if (data.year) {
+                        //     gameWeekData.year = data.year;
+                        // }
+                        // if (data.season) {
+                        //     gameWeekData.season = data.season 
+                        // }
+                        if (gameWeekData.sport === '' || !gameWeekData.sport) gameWeekData.sport = 'ncaam';
+                        
                         
                         var navResult = navRenderer({userInformation: userInformation, sport: gameWeekData.sport});
                         $("#navRow").html(navResult);
@@ -2099,6 +2110,7 @@
             console.log("$(this).text(): ", $(this).text())
             $("#dropdown span").text($(this).text());
         });
+        tourCheck();
     </script>
     <footer>
         Copyright &copy;2018 PCSM, LLC
