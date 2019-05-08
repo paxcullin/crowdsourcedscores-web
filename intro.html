@@ -37,8 +37,19 @@
                 transform: translate(-50%, 0%);
             }
             @media(min-width: 768px) {
-                .sellImage img {
-                    transform: translate(-50%, 33%);
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center
+                }
+            }
+            @media(max-width: 767px) {
+                .row {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center
                 }
             }
         </style>
