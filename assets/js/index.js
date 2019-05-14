@@ -416,16 +416,16 @@ $('.predictionScore').on('click', function() {
     $("#predictionScoreModal").dialog("open");
 })
 
-$("#dropdown").on("click", function(e){
-    e.preventDefault();
-    if($(this).hasClass("open")) {
-      $(this).removeClass("open");
-      $(this).children("ul").slideDown("fast");
-    } else {
-      $(this).addClass("open");
-      $(this).children("ul").slideUp("fast");
-    }
-  });
+// $("#dropdown").on("click", function(e){
+//     e.preventDefault();
+//     if($(this).hasClass("open")) {
+//       $(this).removeClass("open");
+//       $(this).children("ul").slideDown("fast");
+//     } else {
+//       $(this).addClass("open");
+//       $(this).children("ul").slideUp("fast");
+//     }
+//   });
 
 $("#dropdown li a").on("click", function() {
     console.log("$(this).text(): ", $(this).text())

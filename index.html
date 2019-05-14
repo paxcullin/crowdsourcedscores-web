@@ -1649,11 +1649,35 @@
                             drawChart2($(this).attr("year"), $(this).attr("week"), "overall");
                             getOverallResults(extendedProfileData);
                             getOverallCrowdResults(gameWeekData.leaderboardData.overallRecord);
+                        });  
+                        $("#dropdown").on("click", function(e){
+                            console.log('dropdown clicked')
+                            e.preventDefault();
+                            if($(this).hasClass("open")) {
+                            $(this).removeClass("open");
+                            $(this).children("ul").slideDown("fast");
+                            } else {
+                            $(this).addClass("open");
+                            $(this).children("ul").slideUp("fast");
+                            }
+                        });
+
+                        $("#dropdown li a").on("click", function() {
+                            console.log("$(this).text(): ", $(this).text())
+                            $("#dropdown span").text($(this).text());
+                            gameWeekData = {
+                                season: 'reg',
+                                week: 1,
+                                year: parseInt($(this).text()),
+                                sport: gameWeekData.sport
+                            }
+                            setGameWeek({ sport: gameWeekData.sport, week: gameWeekData.week, year: parseInt($(this).text()), season: gameWeekData.season})
                         });
                         $('#weekSelector li').on('click', 'a', function () {
                             gameWeekData.year = parseInt($('#dropdown span').text());
                             if (!gameWeekData.year) gameWeekData.year = 2018;
                             gameWeekData.week = parseInt($(this).attr('data-week'));
+                            (gameWeekData.week > 17) ? gameWeekData.season = 'post' : gameWeekData.season = 'reg' 
                             //$("#games-loading-icon").css("display","block")
                             $('#games').html(`<i class="fa fa-cog fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`)
                             $('#weekSelector li').removeClass('active');
@@ -1689,6 +1713,8 @@
                 });
             }, 1000);
 
+            
+                      
             $('#newsletter-signup-div').click(function (e) {
                 ga('send','event','newsletter','viewed');
             });
@@ -2093,23 +2119,6 @@
         var navRenderer = Handlebars.templates['template.nav'];
         var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
         var competitionDivRenderer = Handlebars.templates['template.competitionDiv'];
-        
-
-        $("#dropdown").on("click", function(e){
-            e.preventDefault();
-            if($(this).hasClass("open")) {
-            $(this).removeClass("open");
-            $(this).children("ul").slideDown("fast");
-            } else {
-            $(this).addClass("open");
-            $(this).children("ul").slideUp("fast");
-            }
-        });
-
-        $("#dropdown li a").on("click", function() {
-            console.log("$(this).text(): ", $(this).text())
-            $("#dropdown span").text($(this).text());
-        });
         tourCheck();
     </script>
     <footer>
