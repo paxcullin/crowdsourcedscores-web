@@ -4,12 +4,23 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69748662-5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-69748662-5');
+        </script>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Welcome to Stakehouse Sports!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <link rel="icon" type="image/png" href="assets/img/crowdsourcedscores-icon.png">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
         <style type="text/css">
         /* rgb(215, 40, 46) */
@@ -56,6 +67,11 @@
             .row {
                 margin-bottom: 10px;
             }
+
+            .row:first-child {
+                border: 1px solid #fff;
+                border-radius: 5px;
+            }
             @media(min-width: 992px) {
                 .sellImage img {
                     width: 450px;
@@ -69,14 +85,26 @@
                     align-items: center;
                     justify-content: center;
                     margin: 10px 0;
+                    padding: 30px 0;
                 }
             }
             @media(max-width: 767px) {
+                .titleRow img {
+                    max-width: 80%;
+                    height: auto;
+                }
                 .row {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: center
+                    justify-content: center;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+                .sellImage img {
+                    max-width: 70%;
+                    height: auto;
+                    margin-top: 20px;
                 }
             }
         </style>
@@ -87,10 +115,10 @@
         <![endif]-->
         <div class="titleRow">
             <img src='assets/img/shs-banner-768.png' alt='Stakehouse Sports' />
-            <h2>Sign up for an alert, get a free month's subscription!</h2>
+            <h2 style='padding: 0 20px'>Sign up for an alert, get a free month's subscription!</h2>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row gameRow">
                 <div class="col-xs-12 col-sm-6 sellImage"'>
                     <img src='assets/img/game-scoring-wide.png' alt='Stakehouse Sports'/>
                 </div>
