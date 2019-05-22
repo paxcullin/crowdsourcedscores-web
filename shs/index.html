@@ -22,92 +22,8 @@
         <link rel="stylesheet" href="">
         <link rel="icon" type="image/png" href="assets/img/crowdsourcedscores-icon.png">
         <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-        <style type="text/css">
-        /* rgb(215, 40, 46) */
-            body {
-                background-color: rgb(50, 62, 73);
-                color: rgb(256, 255, 255);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            .titleRow {
-                width: 100%;
-                margin: 15px auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column
-            }
-            .signUpButton {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 20px auto;
-                font-size: 1.5em;
-                text-align: center;
-                background-color: red
-            }
-            .sellImage img {
-                position: relative; left: 50%;
-                transform: translate(-50%, 0%);
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .mailchimp {
-                color: rgb(50, 62, 73);
-                background-color: #fff;
-                border-radius: 5px;
-            }
-            #mc_embed_signup {
-                border-radius: 12px;
-            }
-            .row {
-                margin-bottom: 10px;
-            }
-
-            .row:first-child {
-                border: 1px solid #fff;
-                border-radius: 5px;
-            }
-            @media(min-width: 992px) {
-                .sellImage img {
-                    width: 450px;
-                    height: 314px;
-                }
-            }
-            @media(min-width: 768px) {
-                .row {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 10px 0;
-                    padding: 30px 0;
-                }
-            }
-            @media(max-width: 767px) {
-                .titleRow img {
-                    max-width: 80%;
-                    height: auto;
-                }
-                .row {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                }
-                .sellImage img {
-                    max-width: 70%;
-                    height: auto;
-                    margin-top: 20px;
-                }
-            }
-        </style>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+        <link href="/assets/css/shs.css" rel="stylesheet"/>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -115,11 +31,11 @@
         <![endif]-->
         <div class="titleRow">
             <img src='assets/img/shs-banner-768.png' alt='Stakehouse Sports' />
-            <h2 style='padding: 0 20px'>Sign up for an alert, get a free month's subscription!</h2>
+            <h2 style='padding: 0 20px; text-align: center;'>Sign up for our newsletter, get a free month's subscription!</h2>
         </div>
         <div class="container">
             <div class="row gameRow">
-                <div class="col-xs-12 col-sm-6 sellImage"'>
+                <div class="col-xs-12 col-sm-6 sellImage">
                     <img src='assets/img/game-scoring-wide.png' alt='Stakehouse Sports'/>
                 </div>
                 <div class="col-xs-12 col-sm-6 sellText">
@@ -147,12 +63,12 @@
                     <div id="mc_embed_signup">
                     <form action="https://crowdsourcedscores.us14.list-manage.com/subscribe/post?u=d16f245296d7d248af2da3413&amp;id=cf6ceb921e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                         <div id="mc_embed_signup_scroll">
-                        <h2 style="text-align: center">Subscribe now to get a FREE month of premium service!</h2>
+                        <h2 style="text-align: center">Subscribe now to get a FREE month of access to our premium data!</h2>
                         
                         <ul>
                             <li>Do you like to watch sports with a little skin in the game?</li>
                             <li>Our crowd wisdom data had an impressive 55% accuracy against the spread and the total in 2018.</li>
-                            <li>Sign up for our newsletter today and get access to both our college and NFL crowd data through September! <strong>(a $40 value!)</strong></li>
+                            <li>Sign up for our newsletter today and get access to both our college and NFL crowd data through September! <strong>(an $80 value!)</strong></li>
                         </ul>
                     <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
                     <div class="mc-field-group">
@@ -185,6 +101,12 @@
                     <img src='assets/img/shs-tagline-300x300.jpg' alt='How do you like your stakes?' />
                 </div>
             </div>
+            <div class="row footer">
+                <div class="col-xs-12" style="padding: 0 30%">
+                    <a href="/about.html" style="color: #fff">About Stakehouse Sports</a> | <a href="https://app.termly.io/document/privacy-policy/79832fc4-999b-4a5c-b459-002bb84e862e" target="_blank" style="color:#fff">Privacy Policy</a>
+                </div>
+            </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
     </body>
 </html>
