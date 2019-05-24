@@ -8,7 +8,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'mono45-headline', 'monospace';
+            font-style: normal;
+            font-weight: 500
         }
         a {
             color: #b42135;
