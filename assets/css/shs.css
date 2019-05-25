@@ -33,26 +33,35 @@
             text-align: center;
             background-color: red
         }
+        .gameRow {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        
         .sellImage img {
             position: relative; left: 50%;
             transform: translate(-50%, 0%);
             margin-left: auto;
             margin-right: auto;
-            max-width: 70%;
+            max-width: 90%;
             height: auto;
             margin-top: 20px;
         }
         .sellText {
-            margin: 0 12px;
+            margin: 5px 12px;
         }
         .mailchimp {
             color: rgb(50, 62, 73);
             background-color: #fff;
             border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
         #mc_embed_signup {
             border-radius: 12px;
-            font-family: 'Roboto Condensed', sans-serif;
+            /* font-family: 'Roboto Condensed', sans-serif; */
         }
         .row {
             margin-bottom: 10px;
