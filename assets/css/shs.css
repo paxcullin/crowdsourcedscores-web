@@ -10,7 +10,6 @@
             align-items: center;
             font-family: 'mono45-headline', 'monospace';
             font-style: normal;
-            font-weight: 500
         }
         a {
             color: #b42135;
@@ -62,6 +61,9 @@
         #mc_embed_signup {
             border-radius: 12px;
             /* font-family: 'Roboto Condensed', sans-serif; */
+        }
+        #mc-embedded-subscribe {
+            background-color: #124734;
         }
         .row {
             margin-bottom: 10px;
