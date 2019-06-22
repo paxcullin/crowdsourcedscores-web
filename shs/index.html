@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 gameRow">
                     <div class="sellImage">
-                        <img src='assets/img/game-scoring-wide.png' alt='Stakehouse Sports'/>
+                        <img src='assets/img/game-scoring-wide.png' alt='Stakehouse Sports' data-modal="open" style="cursor: pointer;"/>
                     </div>
                     <div class="sellText">
                         <strong>It's new, fun, and FREE!</strong>
@@ -137,6 +137,28 @@
                 </div>
             </div>
         </div>
+        
+        <div class="modal-wrapper" data-modal="wrapper">
+            <div class="modal-content">
+                <div class="relative">
+                    <button data-modal="close" class="btn btn-close">&times;</button>
+                    <img src='assets/img/game-scoring-wide.png' alt='Stakehouse Sports'/>
+                    <div class="text">
+                        <p>How to Play:
+                            <ul>
+                                <li>Predict the scores of each game</li>
+                                <li>Correct prediction of the straight-up winner: 2 points</li>
+                                <li>Correct prediction of the winner with the spread: 2 points</li>
+                                <li>Correct prediction of the over/under: 2 points</li>
+                                <li>Any exact prediction of either score, the spread, or the total: 1 bonus point</li> 
+                                <li>Total possible score: 10 points</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+        <script src="/assets/js/modalzinha.js"></script>
     </body>
 </html>

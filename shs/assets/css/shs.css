@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700");
         /* rgb(215, 40, 46) */
         
         body {
@@ -8,7 +8,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'mono45-headline', 'monospace';
+            font-family: 'Source Sans Pro', sans-serif;
             font-style: normal;
         }
         a {
@@ -104,4 +104,70 @@
                 margin-left: 10px;
                 margin-right: 10px;
             }
+        }
+
+        .modal-wrapper { 
+            width: 100%; 
+            height: 100%; 
+            min-height: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            background-color: rgba(0,0,0,.7); 
+            transition: .4s; 
+            visibility: hidden; 
+            opacity: 0; 
+            z-index: 100;
+        }
+        
+        .modal-content { 
+            max-width: 800px;
+            /* width: 100%; */
+            position: absolute;
+            top: 30%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 10;
+            background-color: #fff;
+            border-radius: 8px;
+            color: #000;
+        }
+        
+        .modal-opened { 
+            opacity: 1; 
+            visibility: visible;
+        }
+        
+        .relative {
+            position: relative;
+            padding: 32px 16px;
+        }
+
+        
+        .btn {
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .btn-open {
+            background-color: #337357;
+            color: #E4E3D3;
+            font-size: 15px;
+            border-radius: 4px;
+            padding: 8px 16px;
+        }
+
+        .btn-close {
+            font-size: 30px;
+            border-radius: 100%;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            line-height: 16px;
+            background-color: #333;
+            color: #fff;
         }
