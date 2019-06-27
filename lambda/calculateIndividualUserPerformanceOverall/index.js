@@ -26,7 +26,7 @@ exports.handler = (event, context, callback) => {
         // set defaults
         var sport = 'nfl';
         var year = 2018;
-        var gameWeekMatch = 0;
+        var gameWeekMatch = { $gt: 0, $lte: event.gameWeek };
         var predictionsCollection = 'predictions';
         var query = {}
         
@@ -39,7 +39,7 @@ exports.handler = (event, context, callback) => {
             sport = 'ncaam'
             predictionsCollection = 'predictions-ncaam'
             year = 2019;
-            gameWeekMatch = 12;
+            gameWeekMatch = { $gt: 12 };
         }
         
             var aggOpts = [
@@ -47,7 +47,7 @@ exports.handler = (event, context, callback) => {
                     $match: {
                         year: year,
                         results: { $exists: true },
-                        gameWeek: { $gt: gameWeekMatch }
+                        gameWeek: gameWeekMatch
                     }
                 },
                 {
@@ -89,7 +89,7 @@ exports.handler = (event, context, callback) => {
                 if (season === 'reg' && sport !== 'ncaam') {
                     resultsObjKey = "results.overall";
                 }
-                console.log('resultsObjKey: ', resultsObjKey)
+                //console.log('resultsObjKey: ', resultsObjKey)
                 resultsObj[resultsObjKey] = {
                             winner: {
                                 correct: result.suCorrect,
@@ -111,13 +111,56 @@ exports.handler = (event, context, callback) => {
                             predictionScore: result.predictionScore,
                             totalPredictions: result.totalPredictions
                         }
-                console.log('result._id.userId: ', result._id.userId)
+                //console.log('result._id.userId: ', result._id.userId)
                 queryPromises.push(extendedProfile.update({username: result._id.userId}, { $set: resultsObj }))
                 resultsLength--;
             })
             if (resultsLength === 0) {
+                let overallUserArray = [];
+                let filteredResults = resultsArray.sort((a, b) => {
+                    let returnValue = (a.predictionScore > b.predictionScore) ? -1 : 1;
+                    return returnValue
+                })
+                //console.log({ filteredResults })
+                filteredResults.forEach(result => {
+                    let user = { 
+                        username: result._id.userId,
+                        winner: {
+                            correct: result.suCorrect,
+                            push: result.suPush,
+                            bullseyes: result.suBullseyes
+                        },
+                        spread: {
+                            correct: result.atsCorrect,
+                            push: result.atsPush,
+                            bullseyes: result.atsBullseyes
+                        },
+                        total: {
+                            correct: result.totalCorrect,
+                            push: result.totalPush,
+                            bullseyes: result.totalBullseyes
+                        },
+                        predictionScore: result.predictionScore,
+                        totalPredictions: result.totalPredictions
+                    }
+                    overallUserArray.push(user)
+                })
+                console.log({ overallUserArray: JSON.stringify(overallUserArray)})
+                let leaderboardCriteria = {
+                  year: event.year,
+                  gameWeek: event.gameWeek
+                }
+                let leaderboardUpdate = {
+                    $set: {
+                        "overall.users": overallUserArray
+                    }
+                }
+                //console.log({ leaderboardCriteria, leaderboardUpdate })
+                //console.log({filteredResults: JSON.stringify(filteredResults)});
+                queryPromises.push(db.collection('leaderboards').update(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
                 Promise.all(queryPromises)
                 .then((promiseResult) => {
+                    //db.collection('leaderboards').update({ })
                     context.done(null, queryPromises.length + ' users updated')
                 })
                 .catch(promiseError => context.done(promiseError, null))
