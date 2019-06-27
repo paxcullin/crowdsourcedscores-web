@@ -34,11 +34,11 @@ exports.handler = (event, context) => {
         leaderboardsCollection.findOne({ year: year, gameWeek: week })
         .then(async (leaderboard) => {
             console.log({ leaderboard })
-            if (!leaderboard.weekly.users) {
+            if (!leaderboard.overall.users) {
                 context.done(null, { leaderboard })
             }
-            var leaderboardArrayLength = leaderboard.weekly.users.length;
-            var leaderboardUsers = leaderboard.weekly.users;
+            var leaderboardArrayLength = leaderboard.overall.users.length;
+            var leaderboardUsers = leaderboard.overall.users;
             console.log({leaderboardUsers})
             let leaderboardUsersMapped = await Promise.all(leaderboardUsers.map(async (user) => {
                 try {
@@ -88,7 +88,7 @@ exports.handler = (event, context) => {
             console.log({leaderboardArrayLength, leaderboardUsers})
             
             if (leaderboardArrayLength === 0) {
-                leaderboard.weekly.users = leaderboardUsers
+                leaderboard.overall.users = leaderboardUsers
                 console.log({ Leaderboard: JSON.stringify(leaderboard)})
                 context.done(null, leaderboard)
             }
