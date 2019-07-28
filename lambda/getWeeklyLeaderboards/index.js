@@ -13,75 +13,89 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-
+    const { year, week, season } = event;
+    const limit = event.limit ? parseInt(event.limit) : 100;
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
         if(err) {
             context.done(err, null);
         }
-
-        var limit = 100;
-        if (event.limit && event.limit != "") {
-            limit = parseInt(event.limit);
+        
+        if (!event.week) {
+            context.done(null, { success: false, message: "No week submitted"})
         }
-
-        var collection = db.collection('profileExtended');
-        collection.find({}, {_id: false, username: 1, results: 1}, {sort: {"results.overall.predictionScore": -1}, limit: limit}).toArray(function(err, extendedProfiles) {
-            var extendedProfilesArrayLength = extendedProfiles.length;
-            extendedProfiles.map(function(extendedProfile) {
-                if (event.gameWeek) {
-                    var weeklyResultsArray = extendedProfile.results.weekly.filter(function(result) {
-                        return result.gameWeek === parseInt(event.gameWeek)
-                    });
-                    extendedProfile.results.weekly = weeklyResultsArray;
+        
+        const dbPCSM = db.db('pcsm');
+        const leaderboardsCollection = dbPCSM.collection('leaderboards');
+        const profileExtendedCollection = dbPCSM.collection('profileExtended');
+        
+        
+        
+        leaderboardsCollection.findOne({ year: year, gameWeek: week })
+        .then(async (leaderboard) => {
+            console.log({ leaderboard })
+            if (!leaderboard.weekly.users) {
+                context.done(null, { leaderboard })
+            }
+            var leaderboardArrayLength = leaderboard.weekly.users.length;
+            var leaderboardUsers = leaderboard.weekly.users;
+            console.log({leaderboardUsers})
+            let leaderboardUsersMapped = await Promise.all(leaderboardUsers.map(async (user) => {
+                try {
+                    let epUser = await profileExtendedCollection.findOne({ username: user.username })
+                    user.preferred_username = epUser.preferred_username;
+                    console.log({user})
+                    leaderboardArrayLength--;
+                    return user;
+                
+                // console.log('extendedProfiles: ', extendedProfiles)
+                // var extendedProfilesArrayLength = extendedProfiles.length;
+                // if (extendedProfiles.length === 0 || !extendedProfiles) {
+                //     context.done(null,[])
+                // }
+                // extendedProfiles.map(function(extendedProfile) {
+                // var weeklyResultsArray = extendedProfile.results.weekly.filter(function(result) {
+                //     return result.gameWeek === gameWeek
+                // });
+                // extendedProfile.results.weekly = weeklyResultsArray[0];
+                // extendedProfile.groups = [];
+                
+                // console.log('extendedProfile.results.weekly: ', extendedProfile.results.weekly);
+                // if (!extendedProfile.results) {
+                //     extendedProfile.results = {
+                //         weekly: [],
+                //         overall: {
+                //             predictionScore: 0
+                //         }
+                //     }
+                // }
+                // extendedProfilesArrayLength--;
+                // if (extendedProfilesArrayLength === 0) {
+                //     extendedProfiles.sort(function(a,b) {
+                //         if (a.results.weekly.predictionScore > b.results.weekly.predictionScore) return -1
+                //         if (a.results.weekly.predictionScore < b.results.weekly.predictionScore) return 1
+                //         return 0
+                //     })
+                //     console.log('extendedProfiles: ', extendedProfiles)
+                //     context.done(null, extendedProfiles)
+                // }
+                } catch (extendedProfileError) {
+                    console.log({ extendedProfileError })
+                    leaderboardArrayLength--;
+                    return user;
                 }
-                console.log('extendedProfile.results.weekly: ', extendedProfile.results.weekly);
-                if(extendedProfile.username) {
-                    var userData = {
-                        UserPoolId: 'us-west-2_zym3aCbQ3', /* required */
-                        Username: extendedProfile.username /* required */
-                    }
-                    client.getUser(userData, function(err, userData) {
-                        if (err) {
-                            context.done(err, null);
-                        }
-                        //console.log("userCognitoData: ", userData);
-                        userData.UserAttributes.forEach(function(item) {
-                            if (item.Name === "preferred_username") extendedProfile.preferred_username = item.Value
-                        })
-                        if (!extendedProfile.results) {
-                            extendedProfile.results = {
-                                weekly: [],
-                                overall: {
-                                    predictionScore: 0
-                                }
-                            }
-                        }
-                        extendedProfilesArrayLength--;
-                        if (extendedProfilesArrayLength === 0) {
-                            extendedProfiles.sort(function(a,b) {
-                                if (a.results && a.results.overall && b.results && b.results.overall) {
-                                    if (a.results.overall.predictionScore > b.results.overall.predictionScore) return -1
-                                    if (a.results.overall.predictionScore < b.results.overall.predictionScore) return 1
-                                } else {
-                                    return 1
-                                }
-                            })
-                            console.log('extendedProfiles: ', extendedProfiles)
-                            context.done(null, extendedProfiles)
-                        }
-                    });
-                    
-                    assert.equal(err, null);
-                    if(err) {
-                        context.done(err, null);
-                    }
-                } else {
-                        extendedProfilesArrayLength--;
-                    console.log("no username: ", event)
-                }
-            })
+            }))
+            console.log({leaderboardArrayLength, leaderboardUsers})
             
+            if (leaderboardArrayLength === 0) {
+                leaderboard.weekly.users = leaderboardUsers
+                console.log({ Leaderboard: JSON.stringify(leaderboard)})
+                context.done(null, leaderboard)
+            }
         })
+        .catch(getLeaderboardError => console.log({getLeaderboardError}))
+            
+        //})
+        
     });
 };

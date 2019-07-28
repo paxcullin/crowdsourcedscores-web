@@ -1422,13 +1422,13 @@
                         placement: "top",
                         onNext: function() {
                             console.log("setTourState")
-                            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                            localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                             ga('send','event','authenticated-tour','step',hopscotch.getCurrStepNum())
                         }
                     }
                     ],
                     onEnd: function() {
-                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.' + cognitoUser.username + '.finishedTour', true);
+                        localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                         updateUserAttributes([{Name: "custom:completedTour", Value: "1"}])
                         ga('send','event','tour','step','ended');
                     },
@@ -1507,6 +1507,8 @@
                         target: document.querySelector('#loginButtons'),
                         placement: "top",
                             onNext: function() {
+                                console.log("setTourState")
+                                localStorage.setItem('CognitoIdentityServiceProvider.' + cognitoData.ClientId + '.finishedTour', true);
                                 ga('send','event','anonymous-tour','step',hopscotch.getCurrStepNum())
                             }
                     }
