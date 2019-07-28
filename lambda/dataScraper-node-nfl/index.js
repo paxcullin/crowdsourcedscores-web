@@ -12,7 +12,9 @@ let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p0`,
     `https://io.oddsshark.com/scores/football/nfl/2019/p2`,
     `https://io.oddsshark.com/scores/football/nfl/2019/p3`,
     `https://io.oddsshark.com/scores/football/nfl/2019/p4`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p5`]
+    `https://io.oddsshark.com/scores/football/nfl/2019/p5`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/1`]
+    
 /*
 `https://io.oddsshark.com/scores/football/nfl/2019/1`,
 `https://io.oddsshark.com/scores/football/nfl/2019/2`,
@@ -35,14 +37,14 @@ let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p0`,
 exports.handler = (event, context) => {
     console.log('Received event :', JSON.stringify(event, null, 2));
 
-gameObjectsArray = [];
-queryPromises = [];
+var gameObjectsArray = [];
+var queryPromises = [];
 
 function parseGames(games) {
     games.forEach((game, index) => {
         var gameObj = {
             gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
+            startDateTime: new Date(new Date(game.event_date).getTime() + (3*60*60*1000)),
             location: game.stadium,
             awayTeam: {
                 fullName: game.away_name,
@@ -55,8 +57,8 @@ function parseGames(games) {
                 code: game.home_abbreviation
             },
             odds: (game.home_spread || game.total) ? {
-                spread: game.home_spread ? parseInt(game.home_spread) : '',
-                total: game.total ? parseInt(game.total) : '',
+                spread: game.home_spread ? parseFloat(game.home_spread) : '',
+                total: game.total ? parseFloat(game.total) : '',
                 history: [{ date: new Date(), spread: parseInt(game.home_spread), total: parseInt(game.total)}]
             } : {
                 spread: '',
@@ -67,8 +69,9 @@ function parseGames(games) {
             year: 2019,
             status: 'notStarted',
             gameWeek: parseInt(game.week) ? parseInt(game.week) : game.week,
-            season: (game.week.indexOf('p') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
+            season: (game.week.indexOf('P') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
         };
+        console.log({gameObj});
         if (game.away_score && game.home_score) {
             gameObj.results = {
                 awayTeam: {
@@ -107,6 +110,7 @@ urls.forEach((url, urlIndex) => {
         },
         json: true
     }
+    gameObjectsArray = []
     rp(options)
         .then(async (games) => {
             //console.log('games :', games);
