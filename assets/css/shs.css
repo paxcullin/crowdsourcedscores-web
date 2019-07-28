@@ -2,7 +2,7 @@
         /* rgb(215, 40, 46) */
         
         body {
-            background-color: rgb(50, 62, 73);
+            background-color: #323e49;
             color: rgb(256, 255, 255);
             display: flex;
             flex-direction: column;
