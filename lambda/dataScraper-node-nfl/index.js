@@ -110,7 +110,7 @@ urls.forEach((url, urlIndex) => {
         },
         json: true
     }
-    gameObjectsArray = []
+    gameObjectsArray = [];
     rp(options)
         .then(async (games) => {
             //console.log('games :', games);
