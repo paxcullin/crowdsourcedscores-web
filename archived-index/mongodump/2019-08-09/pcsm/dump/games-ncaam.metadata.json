@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"pcsm-restore.games-ncaam"},{"v":2,"unique":true,"key":{"gameId":1},"name":"gameId","ns":"pcsm-restore.games-ncaam","background":true}]}
