@@ -314,7 +314,7 @@
                                 status: $("#" + parseInt($game.attr('data-game-id')) + "-gameStatus").val(),
                                 sport: $game.attr('data-game-sport'),
                                 startDateTime: Date.parse($game.find('.startDateTime').val()),
-                                season: gameWeekData.season,
+                                season: $game.attr('data-game-season'),
                                 results: {
                                     awayTeam: {
                                         score: -1

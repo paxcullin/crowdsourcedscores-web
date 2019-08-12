@@ -8,6 +8,7 @@
                         data-game-week="{{{gameWeek}}}"
                         data-game-year="{{{year}}}"
                         data-game-sport="{{{sport}}}"
+                        data-game-season="{{{season}}}"
                         data-home-code="{{{homeTeam.code}}}"
                         data-home-name="{{{homeTeam.fullName}}}" data-home-short="{{{homeTeam.shortName}}}"
                         data-away-code="{{{awayTeam.code}}}"
@@ -60,7 +61,7 @@
                                             </td>
                                             <td id="{{gameId}}-odds-spread" class="odds-spread">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.spread}}">
-                                                <div>
+                                                <div style="height: 50, overflow: scroll">
                                                     {{#each odds.history}}
                                                         ({{#dateFormat this.date}}{{/dateFormat}}: {{this.spread}})<br>
                                                     {{/each}}
@@ -72,7 +73,7 @@
                                             <td id="{{gameId}}-total">{{results.total}}</td>
                                             <td class="odds-total">
                                                 <input type="number" class="form-control predictionInput" placeholder="##" value="{{odds.total}}">
-                                                <div>
+                                                <div style="height: 50px, overflow: scroll">
                                                     {{#each odds.history}}
                                                         ({{#dateFormat this.date}}{{/dateFormat}}: {{this.total}})<br>
                                                     {{/each}}

@@ -12,7 +12,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 exports.handler = (event, context, callback) => {
     var updateOverall = {};
     var queryPromises = [];
-    function callCalculateIndividualCrowdPerformanceOverall(resultsLength, sport, year, gameWeek) {
+    function callCalculateIndividualCrowdPerformanceOverall(resultsLength, sport, year, season, gameWeek) {
         console.log({queryPromises})
         Promise.all(queryPromises).then((result) => {
             console.log('callCalculateIndividualCrowdPerformanceOverall called')
@@ -20,7 +20,7 @@ exports.handler = (event, context, callback) => {
                 FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
                 InvocationType: 'Event',
                 LogType: 'None',
-                Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}}, "gameWeek": ${gameWeek}`
+                Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
             };
             lambda.invoke(calculateIndividualUserPerformanceOverallParams, function(err, data) {
                 if (err) {
@@ -40,7 +40,7 @@ exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     var gamesCollection = 'games';
     var predictionsCollection = 'predictions';
-    var year = 2018;
+    var year = event.year ? event.year : 2018;
     if (event.sport === 'ncaaf') {
         predictionsCollection = 'predictions-ncaaf';
     } else if (event.sport === 'ncaam') {
@@ -71,21 +71,26 @@ exports.handler = (event, context, callback) => {
                 {
                     $match: {
                         year: year,
-                        results: { $exists: true }
+                        results: { $exists: true },
+                        season: event.season
                     }
                 },
                 {
                     $group: {
-                        _id: {userId: "$userId", gameWeek: "$gameWeek"},
+                        _id: {userId: "$userId", gameWeek: "$gameWeek", season: "$season"},
                         suCorrect: {$sum: "$results.winner.correct"},
                         suPush: {$sum: "$results.winner.push"},
                         suBullseyes: {$sum: "$results.winner.bullseyes"},
                         atsCorrect: {$sum: "$results.spread.correct"},
                         atsPush: {$sum: "$results.spread.push"},
                         atsBullseyes: {$sum: "$results.spread.bullseyes"},
+                        atsStarsWagered: {$sum: "$results.spread.stars.wagered"},
+                        atsStarsNet: {$sum: "$results.spread.stars.Net"},
                         totalCorrect: {$sum: "$results.total.correct"},
                         totalPush: {$sum: "$results.total.push"},
                         totalBullseyes: {$sum: "$results.total.bullseyes"},
+                        totalStarsWagered: {$sum: "$results.total.stars.wagered"},
+                        totalStarsNet: {$sum: "$results.total.stars.net"},
                         predictionScore: {$sum: "$predictionScore"},
                         totalPredictions: {$sum: 1}
                     }
@@ -101,7 +106,7 @@ exports.handler = (event, context, callback) => {
                     console.log(err);
                     return context.fail(err, null);
                 }
-                //console.log({results: JSON.stringify(results)})
+                console.log({results})
                 _.each(results, function (result) {
                     var criteria = {
                         username: result._id.userId,
@@ -110,33 +115,46 @@ exports.handler = (event, context, callback) => {
                         }
                         
                     }
-                     var update = {
+                    var update = {
                         $set: {
-                            "results.weekly.$.gameWeek": result._id.gameWeek,
-                            "results.weekly.$.winner": {
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.gameWeek`]: result._id.gameWeek,
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.winner`]: {
                                 correct: result.suCorrect,
                                 push: result.suPush,
                                 bullseyes: result.suBullseyes
                             },
-                            "results.weekly.$.spread": {
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.spread`]: {
                                 correct: result.atsCorrect,
                                 push: result.atsPush,
-                                bullseyes: result.atsBullseyes
+                                bullseyes: result.atsBullseyes,
+                                stars: {
+                                    wagered: result.atsStarsWagered,
+                                    net: result.atsStarsNet
+                                }
                             },
-                            "results.weekly.$.total": {
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.total`]: {
                                 correct: result.totalCorrect,
                                 push: result.totalPush,
-                                bullseyes: result.totalBullseyes
+                                bullseyes: result.totalBullseyes,
+                                stars: {
+                                    wagered: result.totalStarsWagered,
+                                    net: result.totalStarsNet
+                                }
                             },
-                            "results.weekly.$.predictionScore": result.predictionScore,
-                            "results.weekly.$.totalPredictions": result.totalPredictions
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.predictionScore`]: result.predictionScore,
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.stars`]: {
+                                wagered: result.atsStarsWagered + result.totalStarsWagered,
+                                net: result.atsStarsNet + result.totalStarsNet,
+                                roi: (result.atsStarsNet + result.totalStarsNet)/(result.atsStarsWagered + result.totalStarsWagered)
+                            },
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly.$.totalPredictions`]: result.totalPredictions
                         }
                     }
                     if (event.sport === 'ncaaf') {
                         
                         criteria = {
                             username: result._id.userId,
-                            "results.ncaaf.2018.weekly": {
+                            ["results.ncaaf.2018.weekly"]: {
                                 $elemMatch: { gameWeek: result._id.gameWeek } 
                             }
                             
@@ -215,21 +233,37 @@ exports.handler = (event, context, callback) => {
                                 }
                                 var pushUpdate = {
                                     $push: {
-                                        "results.weekly": {
+                                        [`results.${event.sport}.${year}.${result._id.season}.weekly`]: {
                                             gameWeek: result._id.gameWeek,
                                             winner: {
                                                 correct: result.suCorrect,
-                                                push: result.suPush
+                                                push: result.suPush,
+                                                bullseyes: result.suBullseyes
                                             },
                                             spread: {
                                                 correct: result.atsCorrect,
-                                                push: result.atsPush
+                                                push: result.atsPush,
+                                                bullseyes: result.atsBullseyes,
+                                                stars: {
+                                                    wagered: result.atsStarsWagered,
+                                                    net: result.atsStarsNet
+                                                }
                                             },
                                             total: {
                                                 correct: result.totalCorrect,
-                                                push: result.totalPush
+                                                push: result.totalPush,
+                                                bullseyes: result.totalBullseyes,
+                                                stars: {
+                                                    wagered: result.totalStarsWagered,
+                                                    net: result.totalStarsNet
+                                                }
                                             },
                                             predictionScore: result.predictionScore,
+                                            stars: {
+                                                wagered: result.atsStarsWagered + result.totalStarsWagered,
+                                                net: result.atsStarsNet + result.totalStarsNet,
+                                                roi: (result.atsStarsNet + result.totalStarsNet)/(result.atsStarsWagered + result.totalStarsWagered)
+                                            },
                                             totalPredictions: result.totalPredictions
                                         }
                                     }
@@ -279,22 +313,22 @@ exports.handler = (event, context, callback) => {
                                         $push: updateObject
                                     }
                                 }
-                                console.log(`pushUpdate: ${JSON.stringify(pushUpdate)}`)
+                                //console.log(`pushUpdate: ${JSON.stringify(pushUpdate)}`)
                                 extendedProfile.updateOne(pushCriteria, pushUpdate)
                                 .then(function(pushUpdateResult) {
-                                    console.log("pushUpdateResult.result: ", pushUpdateResult.result)
+                                    //console.log("pushUpdateResult.result: ", pushUpdateResult.result)
                                     var pushUpdateRespObj = JSON.parse(pushUpdateResult)
                                     if (pushUpdateRespObj.nModified === 1) {
-                                        console.log("pushCriteria:", pushCriteria, " updated")
+                                        //console.log("pushCriteria:", pushCriteria, " updated")
                                         resultsArrayLength--;
                                         if (resultsArrayLength === 0) {
-                                            callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.gameWeek)
+                                            callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.season, event.gameWeek)
                                         }
                                     } else {
-                                        console.log("no push update for ", result._id.userId)
+                                        //console.log("no push update for ", result._id.userId)
                                         resultsArrayLength--;
                                         if (resultsArrayLength === 0) {
-                                            callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.gameWeek)
+                                            callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.season, event.gameWeek)
                                         }
                                     }
                                 })
@@ -302,11 +336,11 @@ exports.handler = (event, context, callback) => {
                                     console.log("pushUpdateReject: ", pushUpdateReject)
                                 })
                             } else {
-                                console.log({ respObj } )
-                                console.log({ resultsArrayLength });
+                                //console.log({ respObj } )
+                                //console.log({ resultsArrayLength });
                                 resultsArrayLength--;
                                 if (resultsArrayLength === 0) {
-                                    callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.gameWeek)
+                                    callCalculateIndividualCrowdPerformanceOverall(results.length, event.sport, year, event.season, event.gameWeek)
                                 }
                             }
                             return update;
@@ -318,14 +352,14 @@ exports.handler = (event, context, callback) => {
                         
                 }); // end _.each aggregate result
                     let filteredResults = results.filter((result) => {
-                        return result._id.gameWeek === event.gameWeek
+                        return (result._id.gameWeek === event.gameWeek && result._id.season === event.season)
                     })
                     
                     filteredResults = filteredResults.sort((a, b) => {
                         let returnValue = (a.predictionScore > b.predictionScore) ? -1 : 1;
                         return returnValue
                     })
-                    console.log({ filteredResults })
+                    //console.log({ filteredResults })
                     filteredResults.forEach(result => {
                         let user = { 
                             username: result._id.userId,
@@ -349,20 +383,23 @@ exports.handler = (event, context, callback) => {
                         }
                         weeklyUserArray.push(user)
                     })
-                    console.log({ weeklyUserArray: JSON.stringify(weeklyUserArray)})
-                    let leaderboardCriteria = {
-                      year: event.year,
-                      gameWeek: event.gameWeek
-                    }
-                    let leaderboardUpdate = {
-                        $set: {
-                            "weekly.users": weeklyUserArray
+                    console.log({ weeklyUserArray })
+                    if (weeklyUserArray.length > 0) {
+                        let leaderboardCriteria = {
+                          year: year,
+                          sport: event.sport,
+                          season: event.season,
+                          gameWeek: event.gameWeek
                         }
+                        let leaderboardUpdate = {
+                            $set: {
+                                "weekly.users": weeklyUserArray
+                            }
+                        }
+                        // console.log({ leaderboardCriteria, leaderboardUpdate })
+                        // console.log({filteredResults: JSON.stringify(filteredResults)});
+                        queryPromises.push(db.collection('leaderboards').update(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
                     }
-                    console.log({ leaderboardCriteria, leaderboardUpdate })
-                    console.log({filteredResults: JSON.stringify(filteredResults)});
-                    queryPromises.push(db.collection('leaderboards').update(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
-                
             }); //end aggregate predictions function
                 
         })
