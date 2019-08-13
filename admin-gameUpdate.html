@@ -250,7 +250,7 @@
                 if (!gameWeekData.sport) gameWeekData.sport = 'nfl';
                 if (gameWeekData.sport === 'ncaaf') gameWeekData.week = 16;
                 if (gameWeekData.sport === 'ncaam') { gameWeekData.week = 12; gameWeekData.year = 2019; }
-                var setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games";
+                var setGameWeekURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/${gameWeekData.sport}/${gameWeekData.year}/${gameWeekData.season}/${gameWeekData.week}/games`;
                 var setGameWeekGetOptions = 
                     {     
                         method: "GET",
@@ -260,7 +260,7 @@
                     }
                     // creating anonymous API call for games
                 if (token === false) {
-                    setGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/" + gameWeekData.year + "/" + gameWeekData.week + "/games/anon";
+                    setGameWeekURL = `https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/${gameWeekData.sport}/${gameWeekData.year}/${gameWeekData.season}/${gameWeekData.week}/games/anon`;
                     setGameWeekGetOptions = {     
                         method: "GET"
                     }
