@@ -7,12 +7,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p0`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p1`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p2`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p3`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p4`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p5`]
+let urls = [`https://io.oddsshark.com/scores/football/ncaaf/2019/0`]
 /*
 `https://io.oddsshark.com/scores/football/nfl/2019/1`,
 `https://io.oddsshark.com/scores/football/nfl/2019/2`,
@@ -32,8 +27,8 @@ let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p0`,
 `https://io.oddsshark.com/scores/football/nfl/2019/16`,
 `https://io.oddsshark.com/scores/football/nfl/2019/17`*/
 
-exports.handler = (event, context) => {
-    console.log('Received event :', JSON.stringify(event, null, 2));
+// exports.handler = (event, context) => {
+//     console.log('Received event :', JSON.stringify(event, null, 2));
 
 gameObjectsArray = [];
 queryPromises = [];
@@ -62,7 +57,7 @@ function parseGames(games) {
                 spread: '',
                 total: ''
             },
-            sport: 'nfl',
+            sport: 'ncaaf',
 
             year: 2019,
             status: 'notStarted',
@@ -103,7 +98,7 @@ urls.forEach((url, urlIndex) => {
     const options = {
         url: url,
         headers: {
-            'Referer': 'https://www.oddsshark.com/nfl/scores'
+            'Referer': 'https://www.oddsshark.com/ncaaf/scores'
         },
         json: true
     }
@@ -117,7 +112,7 @@ urls.forEach((url, urlIndex) => {
                         assert.equal(err, null)
 
                         const db = client.db('pcsm')
-                        const collection = db.collection('games')
+                        const collection = db.collection('games-ncaaf')
                         gameObjectsArray.forEach((game, gameIndex) => {
                                 const gameQuery = {
                                     gameId: game.gameId,
@@ -182,4 +177,4 @@ urls.forEach((url, urlIndex) => {
             context.done(rpError, null)
         })
     })
-}
+//}

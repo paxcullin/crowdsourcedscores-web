@@ -66,9 +66,7 @@ function getWinnerLoser(game, gamePrediction) {
         gamePrediction.results.winner.bullseyes += 1;
     }
     //gamePrediction.predictionScore = predictionScore;
-    console.log('game.results: ', game.results);
-    console.log('gamePrediction.awayTeam.periods: ', gamePrediction.awayTeam.periods);
-    console.log('gamePrediction.homeTeam.periods: ', gamePrediction.homeTeam.periods);
+    
     if (game.results.homeTeam.periods && gamePrediction.homeTeam.periods) {
         const homeTeamKeys = Object.keys(gamePrediction.homeTeam.periods);
         console.log('homeTeamKeys: ', homeTeamKeys)
@@ -94,41 +92,66 @@ function getWinnerLoser(game, gamePrediction) {
 function getSpread(game, gameOdds, gamePrediction) {
     var gameSpread = game.results.awayTeam.score - game.results.homeTeam.score;
     var predictedSpread = gamePrediction.awayTeam.score - gamePrediction.homeTeam.score;
+    var spread = {
+        correct: 0,
+        push: 0,
+        bullseyes: 0,
+        stars: {
+            wagered: 0,
+            earned: 0
+        }
+    }
     
     //predicted underdog
     if (((gameSpread) > gameOdds.spread) && ((predictedSpread) > gameOdds.spread)) {
         // console.log("winner! - correct spread pick")
-        gamePrediction.results.spread = {
+        spread = {
             correct: 1,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
+                earned: gamePrediction.stars ? gamePrediction.stars.spread : 0
+            }
         };
         gamePrediction.predictionScore += 2;
-        
     } else if (((gameSpread) < gameOdds.spread) && ((predictedSpread) < gameOdds.spread)) {
     //predicted favorite
         // console.log("winner! - correct spread pick")
-        gamePrediction.results.spread = {
+        spread = {
             correct: 1,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
+                earned: gamePrediction.stars ? gamePrediction.stars.spread : 0
+            }
         };
         gamePrediction.predictionScore += 2;
     } else if (gameSpread === gameOdds.spread) {
-        // console.log("sad trombone - incorrect spread pick")
-        gamePrediction.results.spread = {
+        // console.log("spread push")
+        spread = {
             correct: 0,
             push: 1,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: 0,
+                earned: 0
+            }
         };
     } else {
         // console.log("sad trombone - incorrect spread pick")
-        gamePrediction.results.spread = {
+        spread = {
             correct: 0,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
+                earned: 0
+            }
         };
     }
+    gamePrediction.results.spread = spread;
     if (gameSpread === predictedSpread) {
         gamePrediction.predictionScore += 1;
         gamePrediction.results.spread.bullseyes = 1;
@@ -136,39 +159,64 @@ function getSpread(game, gameOdds, gamePrediction) {
     return gamePrediction;
 }
 function getTotalResult(game, gameOdds, gamePrediction) {
-    
+    var total = {
+        correct: 0,
+        push: 0,
+        bullseyes: 0,
+        stars: {
+            wagered: 0,
+            earned: 0
+        }
+    };
     //predicted over
     if ((game.results.total > gameOdds.total) && (gamePrediction.total > gameOdds.total)) {
-        gamePrediction.results.total = {
+        total = {
             correct: 1,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
+                earned: gamePrediction.stars ? gamePrediction.stars.total : 0
+            }   
         };
         gamePrediction.predictionScore += 2;
     } else if ((game.results.total < gameOdds.total) && (gamePrediction.total < gameOdds.total)) {
     //predicted under
         // console.log("totalWinner! - under");
-        gamePrediction.results.total = {
+        total = {
             correct: 1,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
+                earned: gamePrediction.stars ? gamePrediction.stars.total : 0
+            }
         };
         gamePrediction.predictionScore += 2;
     } else if (game.results.total === gameOdds.total) {
-        // console.log("sad trombone - incorrect total pick")
-        gamePrediction.results.total = {
+        // console.log("push on total")
+        total = {
             correct: 0,
             push: 1,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: 0,
+                earned: 0
+            }
         };
     } else {
-        // console.log("sad trombone - incorrect total pick")
-        gamePrediction.results.total = {
+        // console.log("incorrect total pick")
+        total = {
             correct: 0,
             push: 0,
-            bullseyes: 0
+            bullseyes: 0,
+            stars: {
+                wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
+                earned: 0
+            }
         };
     }
+    gamePrediction.results.total = total;
     if (game.results.total === gamePrediction.total) {
         gamePrediction.predictionScore += 1;
         gamePrediction.results.total.bullseyes = 1;
@@ -183,7 +231,7 @@ exports.handler = (event, context) => {
     if (event.Records) {
         record = event.Records[0];
     }
-    var eventGameId, eventGameWeek, eventSport;
+    var eventGameId, eventGameWeek, eventSport, eventSeason, eventYear;
     var gamesCollection = 'games';
     var predictionsCollection = 'predictions';
     var gameQuery = {year:2018, results: {$exists: true}}
@@ -196,6 +244,8 @@ exports.handler = (event, context) => {
         eventGameId = parseInt(record.Sns.MessageAttributes.gameId.Value);
         eventGameWeek = parseInt(record.Sns.MessageAttributes.gameWeek.Value);
         eventSport = record.Sns.MessageAttributes.sport.Value;
+        eventSeason = record.Sns.MessageAttributes.season.Value;
+        eventYear = parseInt(record.Sns.MessageAttributes.year.Value);
         if (eventSport === 'ncaaf') {
             gamesCollection = 'games-ncaaf';
             predictionsCollection = 'predictions-ncaaf';
@@ -203,7 +253,6 @@ exports.handler = (event, context) => {
             gamesCollection = 'games-ncaam'
             predictionsCollection = 'predictions-ncaam'
         }
-        var eventYear = parseInt(record.Sns.MessageAttributes.year.Value);
         gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, gameWeek: eventGameWeek, results: {$exists: true}}
     }
     //console.log("gameQuery: ", gameQuery)
@@ -324,7 +373,7 @@ exports.handler = (event, context) => {
                                       FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
                                       InvocationType: 'Event',
                                       LogType: 'None',
-                                      Payload: '{ "message": "calculateUserPerformance completed", "sport": "' + eventSport + '" }'
+                                      Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": "${eventSeason}", "year": ${eventYear} }`
                                     };
                                     lambda.invoke(calculateIndividualUserPerformanceWeeklyParams, function(err, data) {
                                       if (err) {
@@ -351,7 +400,7 @@ exports.handler = (event, context) => {
                       FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
                       InvocationType: 'Event',
                       LogType: 'None',
-                      Payload: '{ "message": "calculateUserPerformance completed", "sport": "' + eventSport + '" }'
+                      Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": ${eventSeason}, "year": ${eventYear} }`
                     };
                     lambda.invoke(calculateIndividualUserPerformanceWeeklyParams, function(err, data) {
                       if (err) {

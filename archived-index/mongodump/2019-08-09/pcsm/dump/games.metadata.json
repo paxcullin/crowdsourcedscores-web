@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"pcsm-restore.games"},{"v":2,"key":{"gameId":1},"name":"gameId_1","ns":"pcsm-restore.games","background":true}]}
