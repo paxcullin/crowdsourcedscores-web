@@ -544,7 +544,8 @@
                         var $selectorElm = $('*[data-week="' + week + '"]');
                         $selectorElm.parent('li').addClass('active');
                         $('#weekSelector li').on('click', 'a', function () {
-                            gameWeekData.year = parseInt(document.getElementById('seasonSelector').value);
+                            !gameWeekData.year ? gameWeekData.year = parseInt(document.getElementById('seasonSelector').value) : null
+                            console.log({gameWeekData})
                             if (!gameWeekData.year) {
                                 gameWeekData.year = 2018;
                             }
