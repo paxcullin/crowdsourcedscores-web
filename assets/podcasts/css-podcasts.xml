@@ -435,6 +435,19 @@
         <pubDate>Mon, Aug 12 2019 17:00:00 GMT</pubDate>
         <itunes:duration>18:39</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 2 - What is Crowd Wisdom?</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>In the second episode of our opening three-part series, Paul and Chris talk about the hidden competitor on Stakehouse Sports: the crowd. We talk through how our predictions generate crowd wisdom, and why we think it can predict value at the sportsbook better than the experts.</description>
+        <itunes:subtitle>Paul and Chris cover the concept of the Wisdom of the Crowd and how it can help you find value at the sportsbook.</itunes:subtitle>
+        <itunes:episode>30</itunes:episode>
+        <itunes:summary>Paul and Chris cover the concept of the Wisdom of the Crowd and how it can help you find value at the sportsbook.</itunes:summary>
+        <itunes:image href="" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode2.mp3" length="7:42" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode2.mp3</guid>
+        <pubDate>Mon, Aug 19 2019 17:00:00 GMT</pubDate>
+        <itunes:duration>7:42</itunes:duration>
+      </item>
     
   </channel>
   </rss>
