@@ -142,7 +142,7 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     } else {
-                                        if (gameResult.status !== "notStarted" || gameCannotBeUpdated(game.startDateTime)) return;
+                                        if (gameResult.status !== "final" && gameCannotBeUpdated(game.startDateTime)) return;
                                         if (game.odds.total !== '' || game.odds.spread !== '') {
                                             gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
                                         }
@@ -154,7 +154,7 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     }
-                                    console.log('gameUpdate :', gameUpdate);
+                                    //console.log('gameUpdate :', gameUpdate);
                                     queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
 
