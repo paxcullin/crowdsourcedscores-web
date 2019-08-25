@@ -7,7 +7,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/football/ncaaf/2019/0`]
+let urls = [`https://io.oddsshark.com/scores/football/ncaaf/2019/1`]
 /*
 `https://io.oddsshark.com/scores/football/nfl/2019/1`,
 `https://io.oddsshark.com/scores/football/nfl/2019/2`,
@@ -35,19 +35,22 @@ queryPromises = [];
 
 function parseGames(games) {
     games.forEach((game, index) => {
-        var gameObj = {
+        if (game.away_rank === "" && game.home_rank === "") return;
+        const gameObj = {
             gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
+            startDateTime: new Date(new Date(game.event_date).getTime() - (7*60*60*1000)),
             location: game.stadium,
             awayTeam: {
                 fullName: game.away_name,
                 shortName: game.away_nick_name,
-                code: game.away_abbreviation
+                code: game.away_abbreviation,
+                rank: parseInt(game.away_rank) ? parseInt(game.away_rank) : ''
             },
             homeTeam: {
                 fullName: game.home_name,
                 shortName: game.home_nick_name,
-                code: game.home_abbreviation
+                code: game.home_abbreviation,
+                rank: parseInt(game.home_rank) ? parseInt(game.home_rank) : ''
             },
             odds: (game.home_spread || game.total) ? {
                 spread: game.home_spread ? parseInt(game.home_spread) : '',
@@ -104,11 +107,14 @@ urls.forEach((url, urlIndex) => {
     }
     rp(options)
         .then(async (games) => {
-            //console.log('games :', games);
+            //console.log('games :', JSON.stringify(games));
             if (games.length > 0) {
                 await parseGames(games)
+                console.log({ gameObjectsArray: gameObjectsArray.length})
+                //console.log(JSON.stringify(gameObjectsArray));
                 if (gameObjectsArray.length > 0) {
-                    mongo.connect(MONGO_URL, (err, client) => {
+                    // return;
+                    mongo.connect(MONGO_URL, { useNewUrlParser: true }, (err, client) => {
                         assert.equal(err, null)
 
                         const db = client.db('pcsm')
@@ -137,10 +143,16 @@ urls.forEach((url, urlIndex) => {
                                         if (game.odds.total !== '' || game.odds.spread !== '') {
                                             gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
                                         }
+                                        gameResult.startDateTime = game.startDateTime
+                                        gameResult.homeTeam.rank = game.homeTeam.rank
+                                        gameResult.awayTeam.rank = game.awayTeam.rank
                                         gameResult.odds.spread = game.odds.spread
                                         gameResult.odds.total = game.odds.total
                                         gameUpdate = {
                                             $set: {
+                                                homeTeam: gameResult.homeTeam,
+                                                awayTeam: gameResult.awayTeam,
+                                                startDateTime: gameResult.startDateTime,
                                                 odds: gameResult.odds
                                             }
                                         }
