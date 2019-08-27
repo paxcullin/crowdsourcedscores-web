@@ -16,8 +16,8 @@
       <itunes:email>feedback@stakehousesports.com</itunes:email>
       <googleplay:email>feedback@stakehousesports.com</googleplay:email>
     </itunes:owner>
-    <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/icon-1024x1024.png" />
-    <googleplay:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/icon-1024x1024.png" />
+    <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x.png" />
+    <googleplay:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x.png" />
     <itunes:category text="Sports &amp; Recreation"/>
     <googleplay:category text="Sports &amp; Recreation"/>
     <itunes:explicit>No</itunes:explicit>
@@ -447,6 +447,19 @@
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode2.mp3</guid>
         <pubDate>Mon, Aug 19 2019 17:00:00 GMT</pubDate>
         <itunes:duration>7:42</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 3 - Crowd vs. Crowd</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>In the final episode of our opening three-part series, Paul and Chris discuss the competition that really draws people in, and that's about earning bragging rights over your friends and coworkers. We also discuss how you can pit your office pool against competing office pools in a crowd vs. crowd competition.</description>
+        <itunes:subtitle>In the final episode of our opening three-part series, Paul and Chris discuss the competition that really draws people in, and that's about earning bragging rights over your friends and coworkers. We also discuss how you can pit your office pool against competing office pools in a crowd vs. crowd competition.</itunes:subtitle>
+        <itunes:episode>31</itunes:episode>
+        <itunes:summary>In the final episode of our opening three-part series, Paul and Chris discuss the competition that really draws people in, and that's about earning bragging rights over your friends and coworkers. We also discuss how you can pit your office pool against competing office pools in a crowd vs. crowd competition.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x.png" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode3.mp3" length="10:25" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode3.mp3</guid>
+        <pubDate>Mon, Aug 27 2019 17:00:00 GMT</pubDate>
+        <itunes:duration>10:25</itunes:duration>
       </item>
     
   </channel>
