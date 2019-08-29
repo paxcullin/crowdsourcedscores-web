@@ -4,13 +4,14 @@ const Table = require('cli-table')
 const mongo = require('mongodb').MongoClient
 const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
+const AWS = require('aws-sdk');    
+const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
+const sns = new AWS.SNS();
+
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p0`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p1`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p2`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p3`,
+let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p3`,
     `https://io.oddsshark.com/scores/football/nfl/2019/p4`,
     `https://io.oddsshark.com/scores/football/nfl/2019/p5`,
     `https://io.oddsshark.com/scores/football/nfl/2019/1`]
@@ -44,7 +45,7 @@ function parseGames(games) {
     games.forEach((game, index) => {
         var gameObj = {
             gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() + (3*60*60*1000)),
+            startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
             location: game.stadium,
             awayTeam: {
                 fullName: game.away_name,
@@ -68,18 +69,21 @@ function parseGames(games) {
 
             year: 2019,
             status: 'notStarted',
-            gameWeek: parseInt(game.week) ? parseInt(game.week) : game.week,
+            gameWeek: parseInt(game.week) ? parseInt(game.week) : (game.week.indexOf('P') > -1) ? parseInt((game.week[1])) + 1 : game.week,
             season: (game.week.indexOf('P') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
         };
-        console.log({gameObj});
         if (game.away_score && game.home_score) {
+            let homeScore = parseInt(game.home_score)
+            let awayScore = parseInt(game.away_score)
             gameObj.results = {
                 awayTeam: {
-                    score: parseInt(game.away_score)
+                    score: awayScore
                 },
                 homeTeam: {
-                    score: parseInt(game.home_score)
-                }
+                    score: homeScore
+                },
+                total: (homeScore + awayScore),
+                spread: (awayScore - homeScore),
             }
             if (game.status === 'FINAL') {
                 gameObj.status = 'final';
@@ -87,6 +91,7 @@ function parseGames(games) {
                 gameObj.status = 'inProgress'
              } 
         }
+        console.log({gameObj});
         gameObjectsArray.push(gameObj)
     })
     
@@ -125,16 +130,14 @@ urls.forEach((url, urlIndex) => {
                         gameObjectsArray.forEach((game, gameIndex) => {
                                 const gameQuery = {
                                     gameId: game.gameId,
-                                    year: game.year,
-                                    status: {
-                                        $ne: 'final'
-                                    }
+                                    year: game.year
                                 }
 
                                 collection.findOne(gameQuery)
                                 .then(gameResult => {
-                                    //console.log('game :', gameResult);
+                                    console.log('game :', gameResult);
                                     var gameUpdate = {}
+                                    let upsert = true;
                                     if (!gameResult) {
                                         gameUpdate = {
                                             $set: {
@@ -142,25 +145,75 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     } else {
-                                        if (gameResult.status !== "notStarted" || gameCannotBeUpdated(game.startDateTime)) return;
-                                        if (game.odds.total !== '' || game.odds.spread !== '') {
-                                            gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
-                                        }
-                                        gameResult.odds.spread = game.odds.spread
-                                        gameResult.odds.total = game.odds.total
-                                        gameUpdate = {
-                                            $set: {
-                                                odds: gameResult.odds
+                                        //update game score
+                                        if (game.status === "final" || gameCannotBeUpdated(game.startDateTime)) {
+                                            upsert = false;
+                                            gameUpdate = {
+                                                $set: {
+                                                    status: game.status,
+                                                    results: game.results
+                                                }
+                                            }
+                                        } else {
+                                            if (game.odds.total !== '' || game.odds.spread !== '') {
+                                                gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
+                                            }
+                                            gameResult.odds.spread = game.odds.spread
+                                            gameResult.odds.total = game.odds.total
+                                            gameUpdate = {
+                                                $set: {
+                                                    startDateTime: game.startDateTime,
+                                                    odds: gameResult.odds
+                                                }
                                             }
                                         }
                                     }
-                                    console.log('gameUpdate :', gameUpdate);
-                                    queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
+                                    //console.log('gameUpdate :', gameUpdate);
+                                    queryPromises.push(collection.updateOne({gameId: game.gameId,year: game.year}, gameUpdate, { upsert: upsert }))
+
+                                    if (game.status === 'final' && gameResult.status !== 'final') {
+                                        var params = {
+                                            Message: "Game " + game.gameId + " updated by OS feed",
+                                            MessageAttributes: { 
+                                                gameId: {
+                                                    DataType: "Number",
+                                                    StringValue: game.gameId.toString()
+                                                },
+                                                gameWeek: {
+                                                    DataType: "Number",
+                                                    StringValue: game.gameWeek.toString()
+                                                },
+                                                year: {
+                                                    DataType: "Number",
+                                                    StringValue: game.year.toString()
+                                                },
+                                                sport: {
+                                                    DataType: "String",
+                                                    StringValue: game.sport
+                                                },
+                                                season: {
+                                                    DataType: "String",
+                                                    StringValue: game.season
+                                                }
+                                                
+                                            },
+                                            Subject: "Game Update",
+                                            TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated"
+                                        };
+                                        console.log(`SNS Publishing: ${JSON.stringify(game)}`)
+                                        // add an SNS promise to kick off other actions related to a game going final
+                                        queryPromises.push(sns.publish(params, (err, response) => {
+                                            if (err) {
+                                                console.log("SNS error: " + err, null);
+                                            }
+                                            console.log("SNS Publish complete: ", response);
+                                        }))
+                                    } 
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
 
                                         
                                         Promise.all(queryPromises)
-                                            .then(response => { console.log(`Promise response: ${response}`); context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                            .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                             .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                         
                                     }
