@@ -1,9 +1,15 @@
-var AWS = require('aws-sdk');
-  var cognitoidentityserviceprovider = AWS.CognitoIdentityServiceProvider;
-  var client = new cognitoidentityserviceprovider({ apiVersion: '2016-04-19', region: 'us-west-2' });
+const AWS = require('aws-sdk'),
+  cognitoidentityserviceprovider = AWS.CognitoIdentityServiceProvider,
+  client = new cognitoidentityserviceprovider({ apiVersion: '2016-04-19', region: 'us-west-2' }),
+  mongo = require("mongodb").MongoClient,
+  assert = require("assert"),
+  MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
-exports.handler = (event, context, callback) => {
+
+exports.handler = function (event, context, callback) {
     console.log('Received event:', event);
+    console.log({context: JSON.stringify(context)});
+    console.log({callback: JSON.stringify(callback)});
     if (event.request.userAttributes.preferred_username) {
       console.log("preferred_username is already set as ", event.preferred_username)
         callback(null, event)
@@ -46,17 +52,48 @@ exports.handler = (event, context, callback) => {
 
     
     console.log("params: ", params)
-    var updatedProfile = function updateAttributes(params) {
+    var updatedProfile = (params) => {
         client.adminUpdateUserAttributes(params, function(err, data) {
               if (data) {
                   console.log("data: ", data);
-                  callback(null, event);
+                  
+                    console.log({params: JSON.stringify(params)})
+                    let username = params.Username;
+                    let preferred_username = params.UserAttributes[0].Value
+                    
+                      mongo.connect(MONGO_URL, (err, dbResponse) => {
+                          if (err) {
+                            callback(null, event);
+                          }
+                          let db = dbResponse.db('pcsm');
+                          let coll = db.collection('profileExtended');
+                          coll.insertOne({ username: username, preferred_username: preferred_username })
+                          .then(insertResponse => {
+                              console.log({insertResponse: JSON.stringify(insertResponse)})
+                              callback(null, event);
+                              context.done(null, event);
+                              context.callbackWaitsForEmptyEventLoop = false;
+                              return context;
+                              //return callback.functionName
+                          })
+                          .catch(insertError => {
+                              console.log({insertError});
+                              context.callbackWaitsForEmptyEventLoop = false;
+                              callback(null, event);
+                              context.done(null, event);
+                              return true;
+                              //return callback.functionName
+                          })
+                          .catch(callbackError => {
+                              context.done(null, event);
+                              return;
+                          })
+                      })
               }
               if (err) {
                   console.log(err, err.stack); // an error occurred
                   params = updateParams(params);
-                  updateAttributes(params);
-                  callback(null, event);
+                  updatedProfile(params);
                   
               }
         }); 
