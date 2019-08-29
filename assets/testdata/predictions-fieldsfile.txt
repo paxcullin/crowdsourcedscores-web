@@ -11,6 +11,8 @@ results.spread.correct
 results.spread.push
 results.total.correct
 results.total.push
+stars.spread
+stars.total
 spread
 total
 submitted
