@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\v-chraro\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-server-sdk-node
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI\wbin;C:\Program Files\Perforce;C:\Program Files\Perforce\DVCS\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Python27;C:\Program Files\Amazon\AWSCLI\bin\;C:\Program Files (x86)\Microsoft Emulator Manager\1.0\;C:\Users\v-chraro\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\v-chraro\AppData\Local\Programs\Python\Python37-32;C:\Users\v-chraro\AppData\Local\Programs\Python\Python37-32\scripts;C:\Program Files\PuTTY\;C:\Program Files (x86)\Xoreax\IncrediBuild;C:\Users\v-chraro\Desktop\PODSSClient_0.1.10-3fc4f9b1-5fd4-4685-ada7-5257f2caada7\PODSSClient;C:\Users\v-chraro\AppData\Local\Microsoft\WindowsApps;C:\Users\v-chraro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\v-chraro\AppData\Roaming\npm;C:\Users\v-chraro\AppData\Local\Programs\Fiddler;C:\Python27;C:\Users\v-chraro\AppData\Local\Programs\Python\Python37-32;C:\Users\v-chraro\AppData\Local\Programs\Python\Python37-32\scripts;C:\Users\v-chraro\.ebcli-virtual-env\executables;C:\Program Files\heroku\bin;C:\Users\v-chraro\AppData\Local\Android\Sdk\platform-tools;
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  10.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/expo-server-sdk-node: Not found
+      at Request.params.callback [as _callback] (C:\Users\v-chraro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66255:18)
+      at Request.self.callback (C:\Users\v-chraro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129397:22)
+      at Request.emit (events.js:182:13)
+      at Request.<anonymous> (C:\Users\v-chraro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130369:10)
+      at Request.emit (events.js:182:13)
+      at IncomingMessage.<anonymous> (C:\Users\v-chraro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130291:12)
+      at Object.onceWrapper (events.js:273:13)
+      at IncomingMessage.emit (events.js:187:15)
+      at endReadableNT (_stream_readable.js:1094:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "pushNotifications",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
