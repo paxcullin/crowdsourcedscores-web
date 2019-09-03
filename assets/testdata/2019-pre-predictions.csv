@@ -1,0 +1,112 @@
+gameId,year,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+1108878,2019,1,Denver Broncos,21,Atlanta Falcons,27,2,3,0,0,0,0,2,,0,0,3,,-6,48,2019-08-01T19:33:48.805Z,cmaronchick,0,cmaronchick
+1108878,2019,1,Denver Broncos,18,Atlanta Falcons,23,2,2,0,0,0,0,2,,0,0,2,,-5,41,2019-06-19T23:14:32.681Z,Facebook_10155298489409129,0,CMANFLSpinzone
+1108888,2019,2,Indianapolis Colts,20,Buffalo Bills,16,,,0,0,0,0,0,0,1,0,0,0,4,36,2019-06-05T06:29:47.203Z,Facebook_10155298489409129,2,CMANFLSpinzone
+1108883,2019,2,New York Jets,27,New York Giants,21,,,0,0,0,0,0,0,1,0,0,0,6,48,2019-06-05T06:30:19.481Z,Facebook_10155298489409129,2,CMANFLSpinzone
+1108908,2019,2,New England Patriots,17,Detroit Lions,22,,,0,0,0,0,0,0,0,0,0,0,-5,39,2019-06-05T06:30:26.262Z,Facebook_10155298489409129,0,CMANFLSpinzone
+1108888,2019,2,Indianapolis Colts,17,Buffalo Bills,20,1,0,1,0,1,0,1,2,1,0,0,0,-3,37,2019-08-03T04:31:33.973Z,cmaronchick,6,cmaronchick
+1108893,2019,2,Tennessee Titans,13,Philadelphia Eagles,17,1,0,0,0,0,0,1,-1,0,0,0,0,-4,30,2019-08-03T04:33:20.072Z,cmaronchick,0,cmaronchick
+1108898,2019,2,Washington Redskins,10,Cleveland Browns,20,1,1,1,0,1,0,1,2,0,0,1,-1,-10,30,2019-08-03T04:33:45.412Z,cmaronchick,5,cmaronchick
+1108903,2019,2,Jacksonville Jaguars,17,Baltimore Ravens,20,1,2,1,0,0,0,1,-1,0,0,2,-2,-3,37,2019-08-03T04:35:35.214Z,cmaronchick,2,cmaronchick
+1108923,2019,2,Houston Texans,10,Green Bay Packers,20,2,1,1,0,0,0,2,-2,0,0,1,-1,-10,30,2019-08-03T04:36:28.974Z,cmaronchick,2,cmaronchick
+1108888,2019,2,Indianapolis Colts,0,Buffalo Bills,18,1,1,1,0,1,0,1,2,0,0,1,-1,-18,18,2019-06-30T04:55:43.130Z,Facebook_10210894378652618,4,MichaelRaymond
+1108883,2019,2,New York Jets,17,New York Giants,20,0,0,1,0,1,0,0,0,1,0,0,0,-3,37,2019-06-30T04:48:59.131Z,Facebook_10210894378652618,6,MichaelRaymond
+1108878,2019,1,Denver Broncos,24,Atlanta Falcons,31,2,3,0,0,0,0,2,,0,0,3,,-7,55,2019-07-03T04:11:41.531Z,Facebook_10210894378652618,0,MichaelRaymond
+1108918,2019,2,Carolina Panthers,13,Chicago Bears,24,0,0,0,0,0,0,0,0,1,0,0,0,-11,37,2019-07-12T18:53:42.142Z,cmaronchick,2,cmaronchick
+1109038,2019,4,New York Giants,19,Cincinnati Bengals,22,0,2,0,0,0,0,0,0,0,0,2,-2,-3,41,2019-08-21T16:20:05.842Z,cmaronchick,0,cmaronchick1
+1111003,2019,2,Los Angeles Rams,13,Oakland Raiders,16,1,1,1,0,0,0,1,-1,1,0,1,2,-3,29,2019-08-01T17:48:38.011Z,cmaronchick,4,cmaronchick
+1108958,2019,3,Philadelphia Eagles,13,Jacksonville Jaguars,17,1,0,0,0,0,0,1,-1,1,0,0,0,-4,30,2019-08-12T01:36:30.291Z,cmaronchick,2,cmaronchick
+1108933,2019,2,Denver Broncos,20,Seattle Seahawks,17,0,0,0,0,0,0,0,0,0,1,0,0,3,37,2019-08-03T04:48:09.739Z,cmaronchick,0,cmaronchick
+1108943,2019,2,Minnesota Vikings,20,New Orleans Saints,21,3,0,0,0,1,0,3,6,1,0,0,0,-1,41,2019-08-03T04:49:40.176Z,cmaronchick,4,cmaronchick
+1108938,2019,2,Tampa Bay Buccaneers,13,Pittsburgh Steelers,17,0,0,1,0,0,0,0,0,0,0,0,0,-4,30,2019-08-05T06:24:42.494Z,cmaronchick,2,cmaronchick
+1108888,2019,2,Indianapolis Colts,18,Buffalo Bills,12,2,3,0,0,0,0,2,-2,0,0,3,-3,6,30,2019-08-06T04:07:16.901Z,Facebook_10154993923975769,0,GemmaAronchick
+1108923,2019,2,Houston Texans,17,Green Bay Packers,23,2,1,1,0,0,0,2,-2,1,0,1,2,-6,40,2019-08-06T04:18:04.100Z,Facebook_10155298489409129,4,CMANFLSpinzone
+1108898,2019,2,Washington Redskins,14,Cleveland Browns,10,1,2,0,0,0,0,1,-1,0,0,2,-2,4,24,2019-08-06T05:46:24.925Z,Facebook_10155298489409129,0,CMANFLSpinzone
+1108893,2019,2,Tennessee Titans,13,Philadelphia Eagles,17,1,2,0,0,0,0,1,-1,0,0,2,-2,-4,30,2019-08-06T13:47:40.551Z,Facebook_10155298489409129,0,CMANFLSpinzone
+1108888,2019,2,Indianapolis Colts,20,Buffalo Bills,17,1,1,0,0,0,0,1,-1,1,0,1,2,3,37,2019-08-07T04:53:48.869Z,Facebook_10208710241577136,2,PaulCullin
+1108948,2019,2,Cincinnati Bengals,14,Kansas City Chiefs,19,1,2,1,0,1,0,1,2,0,0,2,-2,-5,33,2019-08-08T19:08:51.067Z,cmaronchick,4,cmaronchick
+1108953,2019,2,Dallas Cowboys,13,San Francisco 49ers,23,0,0,1,0,1,0,0,0,0,0,0,0,-10,36,2019-08-08T19:09:37.426Z,cmaronchick,4,cmaronchick
+1108943,2019,2,Minnesota Vikings,20,New Orleans Saints,17,1,1,1,0,1,0,1,2,0,0,1,-1,3,37,2019-08-09T13:33:25.430Z,Facebook_10155298489409129,4,CMANFLSpinzone2
+1108938,2019,2,Tampa Bay Buccaneers,17,Pittsburgh Steelers,24,0,2,1,0,0,0,0,0,1,0,2,4,-7,41,2019-08-09T13:33:50.071Z,Facebook_10155298489409129,4,CMANFLSpinzone2
+1108953,2019,2,Dallas Cowboys,10,San Francisco 49ers,20,1,1,1,0,1,0,1,2,1,0,1,2,-10,30,2019-08-09T13:34:13.789Z,Facebook_10155298489409129,6,CMANFLSpinzone2
+1108948,2019,2,Cincinnati Bengals,14,Kansas City Chiefs,24,0,0,1,0,1,0,0,0,1,0,0,0,-10,38,2019-08-09T13:34:25.809Z,Facebook_10155298489409129,6,CMANFLSpinzone2
+1111003,2019,2,Los Angeles Rams,17,Oakland Raiders,23,1,0,1,0,1,0,1,2,0,0,0,0,-6,40,2019-08-09T13:34:39.008Z,Facebook_10155298489409129,4,CMANFLSpinzone2
+1108883,2019,2,New York Jets,17,New York Giants,23,,,1,0,1,0,0,0,1,0,0,0,-6,40,2019-06-19T01:20:17.914Z,cmaronchick,6,cmaronchick
+1108883,2019,2,New York Jets,24,New York Giants,32,1,2,1,0,1,0,1,2,1,0,2,4,-8,56,2019-08-06T04:07:45.681Z,Facebook_10154993923975769,6,GemmaAronchick
+1108913,2019,2,Atlanta Falcons,21,Miami Dolphins,17,,,0,0,0,0,0,0,1,0,0,0,4,38,2019-06-16T19:54:09.272Z,cmaronchick,2,cmaronchick
+1108913,2019,2,Atlanta Falcons,14,Miami Dolphins,21,2,3,1,0,1,0,2,4,0,0,3,-3,-7,35,2019-08-06T04:08:06.921Z,Facebook_10154993923975769,5,GemmaAronchick
+1108908,2019,2,New England Patriots,17,Detroit Lions,27,,,0,0,0,0,0,0,0,0,0,0,-10,44,2019-06-16T19:55:27.094Z,cmaronchick,0,cmaronchick
+1108908,2019,2,New England Patriots,28,Detroit Lions,14,2,2,1,0,1,0,2,4,0,0,2,-2,14,42,2019-08-06T04:10:12.141Z,Facebook_10154993923975769,4,GemmaAronchick
+1108893,2019,2,Tennessee Titans,18,Philadelphia Eagles,21,1,1,0,0,0,0,1,-1,1,0,1,2,-3,39,2019-08-06T04:10:58.421Z,Facebook_10154993923975769,2,GemmaAronchick
+1108903,2019,2,Jacksonville Jaguars,17,Baltimore Ravens,23,,,1,0,1,0,0,0,0,0,0,0,-6,40,2019-06-08T04:38:56.559Z,Facebook_10155298489409129,4,CMANFLSpinzone
+1108903,2019,2,Jacksonville Jaguars,14,Baltimore Ravens,18,2,3,1,0,0,0,2,-2,0,0,3,-3,-4,32,2019-08-06T04:09:48.221Z,Facebook_10154993923975769,2,GemmaAronchick
+1108898,2019,2,Washington Redskins,15,Cleveland Browns,24,2,3,1,0,1,0,2,4,1,0,3,6,-9,39,2019-08-06T04:08:40.801Z,Facebook_10154993923975769,6,GemmaAronchick
+1108923,2019,2,Houston Texans,12,Green Bay Packers,21,2,3,1,0,0,0,2,-2,0,0,3,-3,-9,33,2019-08-06T04:11:24.401Z,Facebook_10154993923975769,2,GemmaAronchick
+1108918,2019,2,Carolina Panthers,24,Chicago Bears,22,2,2,1,0,1,0,2,4,1,0,2,4,2,46,2019-08-06T04:11:56.182Z,Facebook_10154993923975769,6,GemmaAronchick
+1108928,2019,2,Los Angeles Chargers,21,Arizona Cardinals,13,,,0,0,0,0,0,0,1,0,0,0,8,34,2019-06-16T19:56:38.106Z,cmaronchick,2,cmaronchick
+1108928,2019,2,Los Angeles Chargers,18,Arizona Cardinals,21,1,1,1,0,1,0,1,2,0,0,1,-1,-3,39,2019-08-06T04:12:24.482Z,Facebook_10154993923975769,4,GemmaAronchick
+1108933,2019,2,Denver Broncos,18,Seattle Seahawks,21,0,0,1,0,1,0,0,0,0,1,0,0,-3,39,2019-08-06T04:12:47.100Z,Facebook_10154993923975769,4,GemmaAronchick
+1108943,2019,2,Minnesota Vikings,12,New Orleans Saints,14,1,3,0,0,1,0,1,2,0,0,3,-3,-2,26,2019-08-06T04:13:19.880Z,Facebook_10154993923975769,2,GemmaAronchick
+1108938,2019,2,Tampa Bay Buccaneers,14,Pittsburgh Steelers,32,1,1,1,0,0,0,1,-1,1,0,1,2,-18,46,2019-08-06T04:15:03.880Z,Facebook_10154993923975769,4,GemmaAronchick
+1108948,2019,2,Cincinnati Bengals,21,Kansas City Chiefs,24,0,0,1,0,0,0,0,0,1,0,0,0,-3,45,2019-08-06T04:15:22.080Z,Facebook_10154993923975769,4,GemmaAronchick
+1108953,2019,2,Dallas Cowboys,24,San Francisco 49ers,28,2,3,1,0,0,0,2,-2,0,0,3,-3,-4,52,2019-08-09T01:34:56.877Z,Facebook_10154993923975769,2,Wifey
+1111003,2019,2,Los Angeles Rams,21,Oakland Raiders,24,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,45,2019-08-06T04:15:54.961Z,Facebook_10154993923975769,2,GemmaAronchick
+1108968,2019,3,Green Bay Packers,20,Baltimore Ravens,16,0,0,0,0,0,0,0,0,0,0,0,0,4,36,2019-08-12T01:36:44.789Z,cmaronchick,0,cmaronchick
+1108973,2019,3,New York Jets,23,Atlanta Falcons,17,0,0,1,0,1,0,0,0,1,0,0,0,6,40,2019-08-12T01:37:26.369Z,cmaronchick,6,cmaronchick
+1108963,2019,3,Cincinnati Bengals,17,Washington Redskins,23,0,0,0,0,0,0,0,0,1,0,0,0,-6,40,2019-08-13T06:12:44.635Z,cmaronchick,2,cmaronchick
+1108978,2019,3,Oakland Raiders,14,Arizona Cardinals,20,0,0,0,0,0,0,0,0,0,0,0,0,-6,34,2019-08-12T17:34:05.473Z,cmaronchick,0,cmaronchick
+1108983,2019,3,Buffalo Bills,24,Carolina Panthers,20,3,3,1,0,1,0,3,6,1,0,3,6,4,44,2019-08-16T06:39:21.016Z,cmaronchick,6,cmaronchick1
+1108993,2019,3,Chicago Bears,16,New York Giants,21,0,0,1,0,1,0,0,0,0,0,0,0,-5,37,2019-08-12T17:34:39.391Z,cmaronchick,4,cmaronchick
+1108988,2019,3,Miami Dolphins,13,Tampa Bay Buccaneers,17,1,1,1,0,0,0,1,-1,1,0,1,2,-4,30,2019-08-13T06:13:01.015Z,cmaronchick,5,cmaronchick
+1108958,2019,3,Philadelphia Eagles,23,Jacksonville Jaguars,27,3,3,0,0,0,0,3,-3,0,0,3,-3,-4,50,2019-08-14T19:40:04.268Z,Facebook_10154773754448953,0,BryanCole
+1108968,2019,3,Green Bay Packers,17,Baltimore Ravens,20,1,1,1,0,0,0,1,-1,0,0,1,-1,-3,37,2019-08-14T19:38:24.428Z,Facebook_10154773754448953,2,BryanCole
+1108963,2019,3,Cincinnati Bengals,14,Washington Redskins,21,1,1,0,0,0,0,1,-1,1,0,1,2,-7,35,2019-08-14T19:39:29.168Z,Facebook_10154773754448953,2,BryanCole
+1108973,2019,3,New York Jets,17,Atlanta Falcons,24,1,1,0,0,0,0,1,-1,1,0,1,2,-7,41,2019-08-14T19:39:41.409Z,Facebook_10154773754448953,2,BryanCole
+1108998,2019,3,Cleveland Browns,24,Indianapolis Colts,13,1,2,1,0,1,0,1,2,1,0,2,4,11,37,2019-08-14T20:53:28.778Z,cmaronchick,6,cmaronchick1
+1109003,2019,3,New England Patriots,24,Tennessee Titans,20,1,0,1,0,1,0,1,2,0,0,0,0,4,44,2019-08-17T01:13:40.667Z,cmaronchick,4,cmaronchick1
+1109008,2019,3,Kansas City Chiefs,21,Pittsburgh Steelers,20,1,0,0,0,1,0,1,2,1,0,0,0,1,41,2019-08-14T20:54:24.919Z,cmaronchick,4,cmaronchick1
+1109013,2019,3,Detroit Lions,10,Houston Texans,20,2,2,1,0,1,0,2,4,0,0,2,-2,-10,30,2019-08-14T20:54:41.132Z,cmaronchick,4,cmaronchick1
+1109018,2019,3,Dallas Cowboys,24,Los Angeles Rams,10,3,0,1,0,1,0,3,6,1,0,0,0,14,34,2019-08-14T20:54:57.179Z,cmaronchick,7,cmaronchick1
+1109023,2019,3,New Orleans Saints,13,Los Angeles Chargers,17,1,0,0,0,0,0,1,-1,1,0,0,0,-4,30,2019-08-16T06:11:43.774Z,cmaronchick,3,cmaronchick1
+1109028,2019,3,Seattle Seahawks,21,Minnesota Vikings,14,0,0,0,0,0,0,0,0,0,0,0,0,7,35,2019-08-14T20:55:38.399Z,cmaronchick,0,cmaronchick1
+1109033,2019,3,San Francisco 49ers,17,Denver Broncos,20,0,0,0,0,0,0,0,0,1,0,0,0,-3,37,2019-08-14T20:55:58.319Z,cmaronchick,2,cmaronchick1
+1108993,2019,3,Chicago Bears,14,New York Giants,17,0,0,1,0,1,0,0,0,0,0,0,0,-3,31,2019-08-15T05:32:36.084Z,Facebook_10155298489409129,4,CMANFLSpinzone2
+1108983,2019,3,Buffalo Bills,24,Carolina Panthers,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2019-08-15T05:36:03.765Z,Facebook_10155298489409129,6,CMANFLSpinzone2
+1108973,2019,3,New York Jets,10,Atlanta Falcons,20,0,0,0,0,0,0,0,0,1,0,0,0,-10,30,2019-08-15T05:39:05.524Z,Facebook_10155298489409129,2,CMANFLSpinzone2
+1108968,2019,3,Green Bay Packers,21,Baltimore Ravens,17,0,0,0,0,0,0,0,0,1,0,0,0,4,38,2019-08-15T05:40:28.546Z,Facebook_10155298489409129,2,CMANFLSpinzone2
+1108958,2019,3,Philadelphia Eagles,13,Jacksonville Jaguars,20,0,0,0,0,0,0,0,0,1,0,0,0,-7,33,2019-08-15T05:40:55.569Z,Facebook_10155298489409129,2,CMANFLSpinzone2
+1108963,2019,3,Cincinnati Bengals,17,Washington Redskins,27,0,0,0,0,0,0,0,0,0,0,0,0,-10,44,2019-08-15T05:43:00.444Z,Facebook_10155298489409129,0,CMANFLSpinzone2
+1108988,2019,3,Miami Dolphins,20,Tampa Bay Buccaneers,24,0,0,1,0,0,0,0,0,0,0,0,0,-4,44,2019-08-15T05:57:54.695Z,Facebook_10155298489409129,2,CMANFLSpinzone2
+1108978,2019,3,Oakland Raiders,13,Arizona Cardinals,17,0,0,0,0,0,0,0,0,0,0,0,0,-4,30,2019-08-15T06:02:28.674Z,Facebook_10155298489409129,0,CMANFLSpinzone2
+1108958,2019,3,Philadelphia Eagles,23,Jacksonville Jaguars,15,1,2,1,0,1,0,1,2,0,0,2,-2,8,38,2019-08-10T18:13:07.081Z,Facebook_10208710241577136,4,PaulCullin
+1109043,2019,4,Baltimore Ravens,24,Philadelphia Eagles,14,2,0,1,0,1,0,2,2,1,0,0,0,10,38,2019-08-21T16:20:36.487Z,cmaronchick,6,cmaronchick1
+1109048,2019,4,Washington Redskins,13,Atlanta Falcons,14,0,0,0,0,0,0,0,0,1,0,0,0,-1,27,2019-08-22T03:03:25.526Z,cmaronchick,2,cmaronchick1
+1109053,2019,4,Carolina Panthers,17,New England Patriots,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2019-08-22T03:03:49.767Z,cmaronchick,4,cmaronchick1
+1125185,2019,4,Green Bay Packers,16,Oakland Raiders,24,0,0,1,0,1,0,0,0,1,0,0,0,-8,40,2019-08-22T20:18:13.520Z,cmaronchick,6,cmaronchick1
+1109058,2019,4,Jacksonville Jaguars,24,Miami Dolphins,18,0,0,0,0,0,0,0,0,0,0,0,0,6,42,2019-08-22T20:18:42.280Z,cmaronchick,0,cmaronchick1
+1109063,2019,4,Cleveland Browns,14,Tampa Bay Buccaneers,24,1,1,1,0,1,0,1,1,1,0,1,1,-10,38,2019-08-22T20:19:10.239Z,cmaronchick,6,cmaronchick1
+1109068,2019,4,Buffalo Bills,14,Detroit Lions,20,0,0,0,0,0,0,0,0,0,0,0,0,-6,34,2019-08-22T20:23:56.059Z,cmaronchick,1,cmaronchick1
+1109073,2019,4,Arizona Cardinals,13,Minnesota Vikings,24,2,2,1,0,1,0,2,2,1,0,2,2,-11,37,2019-08-22T20:24:13.819Z,cmaronchick,7,cmaronchick1
+1109083,2019,4,Chicago Bears,17,Indianapolis Colts,21,0,0,0,0,0,0,0,0,1,0,0,0,-4,38,2019-08-22T20:36:18.333Z,cmaronchick,2,cmaronchick1
+1109078,2019,4,Houston Texans,17,Dallas Cowboys,13,0,0,0,0,0,0,0,0,1,0,0,0,4,30,2019-08-24T03:56:33.707Z,cmaronchick,2,cmaronchick
+1109088,2019,4,New Orleans Saints,7,New York Jets,24,2,1,0,0,0,0,2,-2,1,0,1,1,-17,31,2019-08-24T03:56:50.907Z,cmaronchick,2,cmaronchick
+1109093,2019,4,San Francisco 49ers,21,Kansas City Chiefs,17,1,0,1,0,1,0,1,1,1,0,0,0,4,38,2019-08-24T03:57:07.727Z,cmaronchick,7,cmaronchick
+1111008,2019,4,Denver Broncos,14,Los Angeles Rams,10,2,2,0,0,0,0,2,-2,1,0,2,2,4,24,2019-08-24T03:57:23.607Z,cmaronchick,3,cmaronchick
+1109098,2019,4,Seattle Seahawks,20,Los Angeles Chargers,6,1,1,1,0,1,0,1,1,1,0,1,1,14,26,2019-08-24T03:57:40.327Z,cmaronchick,6,cmaronchick
+1109103,2019,4,Pittsburgh Steelers,14,Tennessee Titans,20,2,2,0,0,0,0,2,-2,1,0,2,2,-6,34,2019-08-24T03:58:04.867Z,cmaronchick,2,cmaronchick
+1109118,2019,5,Indianapolis Colts,20,Cincinnati Bengals,14,0,0,1,0,1,0,0,0,0,0,0,0,6,34,2019-08-29T00:56:11.855Z,cmaronchick,4,cmaronchick
+1109113,2019,5,Atlanta Falcons,10,Jacksonville Jaguars,17,1,2,0,0,0,0,1,-1,0,0,2,-2,-7,27,2019-08-29T00:56:36.094Z,cmaronchick,0,cmaronchick
+1109108,2019,5,Philadelphia Eagles,17,New York Jets,20,1,0,1,0,0,0,1,-1,0,0,0,0,-3,37,2019-08-29T02:03:15.072Z,cmaronchick,2,cmaronchick
+1109143,2019,5,Pittsburgh Steelers,10,Carolina Panthers,13,0,3,1,0,1,0,0,0,0,0,3,-3,-3,23,2019-08-29T02:03:52.010Z,cmaronchick,4,cmaronchick
+1109133,2019,5,New York Giants,17,New England Patriots,24,2,0,0,0,0,0,2,-2,1,0,0,0,-7,41,2019-08-29T02:04:07.349Z,cmaronchick,2,cmaronchick
+1109128,2019,5,Detroit Lions,7,Cleveland Browns,13,2,3,1,0,0,0,2,-2,0,0,3,-3,-6,20,2019-08-29T02:04:39.991Z,cmaronchick,2,cmaronchick
+1109123,2019,5,Baltimore Ravens,17,Washington Redskins,10,1,1,1,0,1,0,1,1,1,0,1,1,7,27,2019-08-29T02:05:10.090Z,cmaronchick,7,cmaronchick
+1110572,2019,5,Los Angeles Rams,7,Houston Texans,14,1,1,0,0,0,0,1,-1,1,0,1,1,-7,21,2019-08-29T02:05:48.170Z,cmaronchick,2,cmaronchick
+1109168,2019,5,Kansas City Chiefs,10,Green Bay Packers,20,0,0,1,0,1,0,0,0,0,0,0,0,-10,30,2019-08-29T02:06:11.790Z,cmaronchick,4,cmaronchick
+1109158,2019,5,Miami Dolphins,6,New Orleans Saints,10,0,0,0,0,0,0,0,0,1,0,0,0,-4,16,2019-08-29T02:06:30.851Z,cmaronchick,2,cmaronchick
+1109163,2019,5,Tennessee Titans,7,Chicago Bears,17,0,0,0,0,0,0,0,0,0,0,0,0,-10,24,2019-08-29T02:06:51.630Z,cmaronchick,0,cmaronchick
+1109153,2019,5,Tampa Bay Buccaneers,19,Dallas Cowboys,7,0,0,1,0,1,0,0,0,1,0,0,0,12,26,2019-08-29T02:07:09.550Z,cmaronchick,6,cmaronchick
+1109148,2019,5,Arizona Cardinals,10,Denver Broncos,13,1,2,1,0,1,0,1,1,1,0,2,2,-3,23,2019-08-29T02:07:36.752Z,cmaronchick,6,cmaronchick
+1109173,2019,5,Los Angeles Chargers,13,San Francisco 49ers,21,1,0,0,0,0,0,1,-1,0,0,0,0,-8,34,2019-08-29T02:08:02.572Z,cmaronchick,0,cmaronchick
+1109178,2019,5,Oakland Raiders,6,Seattle Seahawks,16,1,1,1,0,0,0,1,-1,1,0,1,1,-10,22,2019-08-29T02:08:43.610Z,cmaronchick,4,cmaronchick
+1109138,2019,5,Minnesota Vikings,13,Buffalo Bills,20,0,0,1,0,1,0,0,0,0,0,0,0,-7,33,2019-08-29T02:09:50.270Z,cmaronchick,4,cmaronchick
