@@ -1,13 +1,17 @@
 const rp = require('request-promise')
-const cheerio = require('cheerio')
-const Table = require('cli-table')
 const mongo = require('mongodb').MongoClient
 const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
+
+const AWS = require('aws-sdk');    
+const sns = new AWS.SNS();
 
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/football/ncaaf/2019/1`]
+let urls = [
+    `https://io.oddsshark.com/scores/football/ncaaf/2019/1`,
+    `https://io.oddsshark.com/scores/football/ncaaf/2019/2`]
+    
 /*
 `https://io.oddsshark.com/scores/football/nfl/2019/1`,
 `https://io.oddsshark.com/scores/football/nfl/2019/2`,
@@ -27,62 +31,68 @@ let urls = [`https://io.oddsshark.com/scores/football/ncaaf/2019/1`]
 `https://io.oddsshark.com/scores/football/nfl/2019/16`,
 `https://io.oddsshark.com/scores/football/nfl/2019/17`*/
 
-// exports.handler = (event, context) => {
-//     console.log('Received event :', JSON.stringify(event, null, 2));
+exports.handler = (event, context) => {
+    console.log('Received event :', JSON.stringify(event, null, 2));
 
-gameObjectsArray = [];
-queryPromises = [];
+var gameObjectsArray = [];
+var queryPromises = [];
 
 function parseGames(games) {
     games.forEach((game, index) => {
-        if (game.away_rank === "" && game.home_rank === "") return;
-        const gameObj = {
-            gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() - (7*60*60*1000)),
-            location: game.stadium,
-            awayTeam: {
-                fullName: game.away_name,
-                shortName: game.away_nick_name,
-                code: game.away_abbreviation,
-                rank: parseInt(game.away_rank) ? parseInt(game.away_rank) : ''
-            },
-            homeTeam: {
-                fullName: game.home_name,
-                shortName: game.home_nick_name,
-                code: game.home_abbreviation,
-                rank: parseInt(game.home_rank) ? parseInt(game.home_rank) : ''
-            },
-            odds: (game.home_spread || game.total) ? {
-                spread: game.home_spread ? parseInt(game.home_spread) : '',
-                total: game.total ? parseInt(game.total) : '',
-                history: [{ date: new Date(), spread: parseInt(game.home_spread), total: parseInt(game.total)}]
-            } : {
-                spread: '',
-                total: ''
-            },
-            sport: 'ncaaf',
-
-            year: 2019,
-            status: 'notStarted',
-            gameWeek: parseInt(game.week) ? parseInt(game.week) : game.week,
-            season: (game.week.indexOf('p') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
-        };
-        if (game.away_score && game.home_score) {
-            gameObj.results = {
+        if (game.home_rank > 0 || game.away_rank > 0) {
+            var gameObj = {
+                gameId: parseInt(game.event_id),
+                startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
+                location: game.stadium,
                 awayTeam: {
-                    score: parseInt(game.away_score)
+                    fullName: game.away_name,
+                    shortName: game.away_nick_name,
+                    code: game.away_abbreviation,
+                    rank: game.away_rank
                 },
                 homeTeam: {
-                    score: parseInt(game.home_score)
+                    fullName: game.home_name,
+                    shortName: game.home_nick_name,
+                    code: game.home_abbreviation,
+                    rank: game.home_rank
+                },
+                odds: (game.home_spread || game.total) ? {
+                    spread: game.home_spread ? parseFloat(game.home_spread) : '',
+                    total: game.total ? parseFloat(game.total) : '',
+                    history: [{ date: new Date(), spread: parseInt(game.home_spread), total: parseInt(game.total)}]
+                } : {
+                    spread: '',
+                    total: ''
+                },
+                sport: 'ncaaf',
+
+                year: 2019,
+                status: 'notStarted',
+                gameWeek: parseInt(game.week) ? parseInt(game.week) : (game.week.indexOf('P') > -1) ? parseInt((game.week[1])) + 1 : game.week,
+                season: (game.week.indexOf('P') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
+            };
+            if (game.away_score && game.home_score) {
+                let homeScore = parseInt(game.home_score)
+                let awayScore = parseInt(game.away_score)
+                gameObj.results = {
+                    awayTeam: {
+                        score: awayScore
+                    },
+                    homeTeam: {
+                        score: homeScore
+                    },
+                    total: (homeScore + awayScore),
+                    spread: (awayScore - homeScore),
                 }
+                if (game.status === 'FINAL') {
+                    gameObj.status = 'final';
+                } else {
+                    gameObj.status = 'inProgress'
+                } 
             }
-            if (game.status === 'FINAL') {
-                gameObj.status = 'final';
-             } else {
-                gameObj.status = 'inProgress'
-             } 
+            console.log({gameObj});
+            gameObjectsArray.push(gameObj)
         }
-        gameObjectsArray.push(gameObj)
     })
     
 }
@@ -105,16 +115,14 @@ urls.forEach((url, urlIndex) => {
         },
         json: true
     }
+    gameObjectsArray = []
     rp(options)
         .then(async (games) => {
-            //console.log('games :', JSON.stringify(games));
+            //console.log('games :', games);
             if (games.length > 0) {
                 await parseGames(games)
-                console.log({ gameObjectsArray: gameObjectsArray.length})
-                //console.log(JSON.stringify(gameObjectsArray));
                 if (gameObjectsArray.length > 0) {
-                    // return;
-                    mongo.connect(MONGO_URL, { useNewUrlParser: true }, (err, client) => {
+                    mongo.connect(MONGO_URL, (err, client) => {
                         assert.equal(err, null)
 
                         const db = client.db('pcsm')
@@ -122,16 +130,14 @@ urls.forEach((url, urlIndex) => {
                         gameObjectsArray.forEach((game, gameIndex) => {
                                 const gameQuery = {
                                     gameId: game.gameId,
-                                    year: game.year,
-                                    status: {
-                                        $ne: 'final'
-                                    }
+                                    year: game.year
                                 }
 
                                 collection.findOne(gameQuery)
                                 .then(gameResult => {
-                                    //console.log('game :', gameResult);
+                                    console.log('game :', gameResult);
                                     var gameUpdate = {}
+                                    let upsert = true;
                                     if (!gameResult) {
                                         gameUpdate = {
                                             $set: {
@@ -139,31 +145,75 @@ urls.forEach((url, urlIndex) => {
                                             }
                                         }
                                     } else {
-                                        if (gameResult.status !== "notStarted" || gameCannotBeUpdated(game.startDateTime)) return;
-                                        if (game.odds.total !== '' || game.odds.spread !== '') {
-                                            gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
-                                        }
-                                        gameResult.startDateTime = game.startDateTime
-                                        gameResult.homeTeam.rank = game.homeTeam.rank
-                                        gameResult.awayTeam.rank = game.awayTeam.rank
-                                        gameResult.odds.spread = game.odds.spread
-                                        gameResult.odds.total = game.odds.total
-                                        gameUpdate = {
-                                            $set: {
-                                                homeTeam: gameResult.homeTeam,
-                                                awayTeam: gameResult.awayTeam,
-                                                startDateTime: gameResult.startDateTime,
-                                                odds: gameResult.odds
+                                        //update game score
+                                        if (game.status === "final" || gameCannotBeUpdated(game.startDateTime)) {
+                                            upsert = false;
+                                            gameUpdate = {
+                                                $set: {
+                                                    status: game.status,
+                                                    results: game.results
+                                                }
+                                            }
+                                        } else {
+                                            if (game.odds.total !== '' || game.odds.spread !== '') {
+                                                gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
+                                            }
+                                            gameResult.odds.spread = game.odds.spread
+                                            gameResult.odds.total = game.odds.total
+                                            gameUpdate = {
+                                                $set: {
+                                                    startDateTime: game.startDateTime,
+                                                    odds: gameResult.odds
+                                                }
                                             }
                                         }
                                     }
-                                    console.log('gameUpdate :', gameUpdate);
-                                    queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: true }))
+                                    //console.log('gameUpdate :', gameUpdate);
+                                    queryPromises.push(collection.updateOne({gameId: game.gameId,year: game.year}, gameUpdate, { upsert: upsert }))
+
+                                    if (game.status === 'final' && gameResult.status !== 'final') {
+                                        var params = {
+                                            Message: "Game " + game.gameId + " updated by OS feed",
+                                            MessageAttributes: { 
+                                                gameId: {
+                                                    DataType: "Number",
+                                                    StringValue: game.gameId.toString()
+                                                },
+                                                gameWeek: {
+                                                    DataType: "Number",
+                                                    StringValue: game.gameWeek.toString()
+                                                },
+                                                year: {
+                                                    DataType: "Number",
+                                                    StringValue: game.year.toString()
+                                                },
+                                                sport: {
+                                                    DataType: "String",
+                                                    StringValue: game.sport
+                                                },
+                                                season: {
+                                                    DataType: "String",
+                                                    StringValue: game.season
+                                                }
+                                                
+                                            },
+                                            Subject: "Game Update",
+                                            TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated"
+                                        };
+                                        console.log(`SNS Publishing: ${JSON.stringify(game)}`)
+                                        // add an SNS promise to kick off other actions related to a game going final
+                                        queryPromises.push(sns.publish(params, (err, response) => {
+                                            if (err) {
+                                                console.log("SNS error: " + err, null);
+                                            }
+                                            console.log("SNS Publish complete: ", response);
+                                        }))
+                                    } 
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
 
                                         
                                         Promise.all(queryPromises)
-                                            .then(response => { console.log(`Promise response: ${response}`); context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                            .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                             .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                         
                                     }
@@ -189,4 +239,4 @@ urls.forEach((url, urlIndex) => {
             context.done(rpError, null)
         })
     })
-//}
+}

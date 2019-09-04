@@ -31,64 +31,65 @@ exports.handler = (event, context) => {
         
         
         
-        leaderboardsCollection.findOne({ year: year, gameWeek: week })
+        leaderboardsCollection.findOne({ year: year, gameWeek: week, season: season })
         .then(async (leaderboard) => {
             console.log({ leaderboard })
-            if (!leaderboard.weekly.users) {
+            if (!leaderboard || !leaderboard.weekly || !leaderboard.weekly.users || !leaderboard.overall.users) {
                 context.done(null, { leaderboard })
             }
-            var leaderboardArrayLength = leaderboard.weekly.users.length;
-            var leaderboardUsers = leaderboard.weekly.users;
-            console.log({leaderboardUsers})
-            let leaderboardUsersMapped = await Promise.all(leaderboardUsers.map(async (user) => {
+            var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
+            var leaderboardWeeklyUsers = leaderboard.weekly.users;
+            var leaderboardOverallArrayLength = leaderboard.overall.users.length;
+            var leaderboardOverallUsers = leaderboard.overall.users;
+            //console.log({leaderboardUsers})
+            let leaderboardWeeklyUsersMapped = await Promise.all(leaderboardWeeklyUsers.map(async (user) => {
+                try {
+                    let epUser = await profileExtendedCollection.findOne({ username: user.username });
+                    user.preferred_username = epUser.preferred_username;
+                    //console.log({user})
+                    leaderboardWeeklyArrayLength--;
+                    return user;
+                } catch (extendedProfileError) {
+                    console.log({ extendedProfileError })
+                    leaderboardWeeklyArrayLength--;
+                    return user;
+                }
+            }))
+            let leaderboardOverallUsersMapped = await Promise.all(leaderboardOverallUsers.map(async (user) => {
                 try {
                     let epUser = await profileExtendedCollection.findOne({ username: user.username })
                     user.preferred_username = epUser.preferred_username;
                     console.log({user})
-                    leaderboardArrayLength--;
+                    leaderboardOverallArrayLength--;
                     return user;
-                
-                // console.log('extendedProfiles: ', extendedProfiles)
-                // var extendedProfilesArrayLength = extendedProfiles.length;
-                // if (extendedProfiles.length === 0 || !extendedProfiles) {
-                //     context.done(null,[])
-                // }
-                // extendedProfiles.map(function(extendedProfile) {
-                // var weeklyResultsArray = extendedProfile.results.weekly.filter(function(result) {
-                //     return result.gameWeek === gameWeek
-                // });
-                // extendedProfile.results.weekly = weeklyResultsArray[0];
-                // extendedProfile.groups = [];
-                
-                // console.log('extendedProfile.results.weekly: ', extendedProfile.results.weekly);
-                // if (!extendedProfile.results) {
-                //     extendedProfile.results = {
-                //         weekly: [],
-                //         overall: {
-                //             predictionScore: 0
-                //         }
-                //     }
-                // }
-                // extendedProfilesArrayLength--;
-                // if (extendedProfilesArrayLength === 0) {
-                //     extendedProfiles.sort(function(a,b) {
-                //         if (a.results.weekly.predictionScore > b.results.weekly.predictionScore) return -1
-                //         if (a.results.weekly.predictionScore < b.results.weekly.predictionScore) return 1
-                //         return 0
-                //     })
-                //     console.log('extendedProfiles: ', extendedProfiles)
-                //     context.done(null, extendedProfiles)
-                // }
                 } catch (extendedProfileError) {
                     console.log({ extendedProfileError })
-                    leaderboardArrayLength--;
+                    leaderboardOverallArrayLength--;
                     return user;
                 }
             }))
-            console.log({leaderboardArrayLength, leaderboardUsers})
+            //console.log({leaderboardArrayLength, leaderboardUsers})
             
-            if (leaderboardArrayLength === 0) {
-                leaderboard.weekly.users = leaderboardUsers
+            if (leaderboardWeeklyArrayLength === 0 && leaderboardOverallArrayLength === 0) {
+                let leaderboardWeeklyStars = leaderboardWeeklyUsersMapped.filter(user => {
+                    if (user.stars && user.stars.roi) return user;
+                })
+                let leaderboardOverallStars = leaderboardOverallUsersMapped.filter(user => {
+                    if (user.stars && user.stars.roi) return user;
+                })
+                //console.log({ leaderboardOverallStars, leaderboardWeeklyStars })
+                leaderboardWeeklyStars.sort((a,b) => {
+                    if (a.roi > b.roi) return 1
+                    if (a.roi < b.roi) return -1
+                })
+                leaderboardOverallStars.sort((a,b) => {
+                    if (a.roi > b.roi) return 1
+                    if (a.roi < b.roi) return -1
+                })
+                leaderboard.weekly.users = leaderboardWeeklyUsersMapped
+                leaderboard.overall.users = leaderboardOverallUsersMapped
+                leaderboard.weekly.usersStars = leaderboardWeeklyStars
+                leaderboard.overall.usersStars = leaderboardOverallStars
                 console.log({ Leaderboard: JSON.stringify(leaderboard)})
                 context.done(null, leaderboard)
             }
