@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "cli-table": "^0.3.1",
     "mongodb": "^3.3.0-beta2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
