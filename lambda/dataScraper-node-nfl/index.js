@@ -11,14 +11,12 @@ const sns = new AWS.SNS();
 const assert = require('assert')
 
 let games = []
-let urls = [`https://io.oddsshark.com/scores/football/nfl/2019/p3`,
+let urls = [
     `https://io.oddsshark.com/scores/football/nfl/2019/p4`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/p5`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/1`]
+    `https://io.oddsshark.com/scores/football/nfl/2019/1`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/2`]
     
 /*
-`https://io.oddsshark.com/scores/football/nfl/2019/1`,
-`https://io.oddsshark.com/scores/football/nfl/2019/2`,
 `https://io.oddsshark.com/scores/football/nfl/2019/3`,
 `https://io.oddsshark.com/scores/football/nfl/2019/4`,
 `https://io.oddsshark.com/scores/football/nfl/2019/5`,
@@ -91,7 +89,7 @@ function parseGames(games) {
                 gameObj.status = 'inProgress'
              } 
         }
-        console.log({gameObj});
+        //console.log({gameObj});
         gameObjectsArray.push(gameObj)
     })
     
@@ -135,7 +133,7 @@ urls.forEach((url, urlIndex) => {
 
                                 collection.findOne(gameQuery)
                                 .then(gameResult => {
-                                    console.log('game :', gameResult);
+                                    //console.log('game :', gameResult);
                                     var gameUpdate = {}
                                     let upsert = true;
                                     if (!gameResult) {
@@ -170,8 +168,8 @@ urls.forEach((url, urlIndex) => {
                                     }
                                     //console.log('gameUpdate :', gameUpdate);
                                     queryPromises.push(collection.updateOne({gameId: game.gameId,year: game.year}, gameUpdate, { upsert: upsert }))
-
-                                    if (game.status === 'final' && gameResult.status !== 'final') {
+                                    //console.log({status: game.status, gameResultStatus: gameResult.status, gameResultCrowd: gameResult.crowd})
+                                    if (game.status === 'final' && (gameResult.status !== 'final' || (gameResult.crowd && !gameResult.crowd.results))) {
                                         var params = {
                                             Message: "Game " + game.gameId + " updated by OS feed",
                                             MessageAttributes: { 
@@ -208,7 +206,7 @@ urls.forEach((url, urlIndex) => {
                                             }
                                             console.log("SNS Publish complete: ", response);
                                         }))
-                                    } 
+                                    }
                                     if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
 
                                         
