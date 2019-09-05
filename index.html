@@ -708,7 +708,7 @@
             }
 
         var getGameWeek = function (callback) {
-            (!gameWeekData.sport && getUrlParameter('sport')) ? gameWeekData.sport = getUrlParameter('sport') : (!gameWeekData.sport || gameWeekData.sport === '' || !getUrlParameter('sport')) ? gameWeekData.sport = 'ncaam' : null
+            (!gameWeekData.sport && getUrlParameter('sport')) ? gameWeekData.sport = getUrlParameter('sport') : (!gameWeekData.sport || gameWeekData.sport === '' || !getUrlParameter('sport')) ? gameWeekData.sport = 'nfl' : null
 
             useToken(function(token) {
                 var getGameWeekURL = "https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/" + gameWeekData.sport + "/week";
