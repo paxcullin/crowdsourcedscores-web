@@ -22,6 +22,16 @@
             justify-content: center;
             flex-direction: column
         }
+        .compareTableRow {
+            width: 100%;
+            margin: 0 10px;
+        }
+        .compareTableRow td {
+            border-width: 1px;
+            border-color: #f6dfa4;
+            border-style: solid;
+            padding: 5px 15px;
+        }
         .signUpButton {
             position: absolute;
             bottom: 0;
