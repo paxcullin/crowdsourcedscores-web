@@ -471,8 +471,21 @@
         <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
         <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-rosstuckerinterview.mp3" length="18:56" type="audio/mpeg"/>
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-rosstuckerinterview.mp3</guid>
-        <pubDate>Thu, Aug 29 2019 17:00:00 GMT</pubDate>
+        <pubDate>Thu, 29 Aug 2019 17:00:00 GMT</pubDate>
         <itunes:duration>18:56</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 4 - Week 1/Season Preview Extravaganza</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris are back at full strength to talk about all of the exciting developments of the offseason and preseason. They also put their dignity on the line with some choice barrel wagers for the season.</description>
+        <itunes:subtitle>Paul and Chris are back at full strength to talk about all of the exciting developments of the offseason and preseason. They also put their dignity on the line with some choice barrel wagers for the season.</itunes:subtitle>
+        <itunes:episode>33</itunes:episode>
+        <itunes:summary>Paul and Chris are back at full strength to talk about all of the exciting developments of the offseason and preseason. They also put their dignity on the line with some choice barrel wagers for the season.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode4.mp3" length="1:15:46" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode4.mp3</guid>
+        <pubDate>Thu, 5 Sep 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:15:46</itunes:duration>
       </item>
     
   </channel>
