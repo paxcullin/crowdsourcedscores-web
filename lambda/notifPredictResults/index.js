@@ -1,6 +1,16 @@
 'use strict'
 const { Expo } = require('expo-server-sdk');
 
+/*
+
+This function:
+1. getCognitoUsers - Retrieves all users who both allowed notifications and opted in for results notifications
+2. Retrieves the results for each user from the predictions collection
+3. Sends a summary of the results for each user
+
+*/
+
+
 // Create a new Expo SDK client
 let expo = new Expo();
 
@@ -39,7 +49,7 @@ function getCognitoUsers(params) {
                     if (attribute.Name === 'custom:device_token' && attribute.Value) {
                         deviceToken = true
                     }
-                    if (deviceToken && attribute.Name === 'custom:notifyPredictRemind' && parseInt(attribute.Value) === 1) {
+                    if (deviceToken && attribute.Name === 'custom:notifyPredictResult' && parseInt(attribute.Value) === 1) {
                         optInUsers.push(user)
                     }
                     
@@ -63,7 +73,7 @@ exports.handler = async (event, context, callback) => {
         FunctionName: 'getGameWeek', // the lambda function we are going to invoke
         InvocationType: 'RequestResponse',
         LogType: 'None',
-        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2019, "season": "reg"}`
+        Payload: `{ "message": "results notification", "sport": "nfl", "year": 2019, "season": "reg"}`
     };
     // const gameWeek = await lambda.invoke(getGameWeekParams, function(err, data) {
     //             if (err) {
@@ -81,6 +91,7 @@ exports.handler = async (event, context, callback) => {
         console.log({optInUsers: optInUsers.length})
         // Create the messages that you want to send to clents
         let somePushTokens = ['ExponentPushToken[VOI6eeBiU0Py2dXRoMO6gZ]']
+        
         for (let user in optInUsers) {
             for (let attribute in user.Attributes) {
                 (attribute.Name === 'custom:device_token') ? somePushTokens.push(attribute.Value) : null
@@ -100,7 +111,7 @@ exports.handler = async (event, context, callback) => {
             messages.push({
                 to: pushToken,
                 sound: 'default',
-                body: `There are 13 Week 1games on the NFL schedule today. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
+                body: `There are 13 Week 1 games on the NFL schedule today. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
                 data: { withSome: 'data' },
             })
         }
