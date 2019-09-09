@@ -1,16 +1,6 @@
 'use strict'
 const { Expo } = require('expo-server-sdk');
 
-/*
-
-This function:
-1. getCognitoUsers - Retrieves all users who both allowed notifications and opted in for results notifications
-2. Retrieves the results for each user from the predictions collection
-3. Sends a summary of the results for each user
-
-*/
-
-
 // Create a new Expo SDK client
 let expo = new Expo();
 
@@ -65,6 +55,22 @@ function getCognitoUsers(params) {
     })
 }
 
+function getGameWeek(getGameWeekParams) {
+    return new Promise((resolve, reject) => {
+        lambda.invoke(getGameWeekParams, function(err, data) {
+                if (err) {
+                    console.log("getGameWeek err: ", err);
+                    reject()
+                } else {
+                    console.log('getGameWeek response: ', data.Payload);
+                    console.log({gameWeek: data.Payload})
+                    return data.Payload
+                    resolve()
+                }
+            });
+    })
+}
+
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(`Event: ${event}`))
@@ -73,31 +79,49 @@ exports.handler = async (event, context, callback) => {
         FunctionName: 'getGameWeek', // the lambda function we are going to invoke
         InvocationType: 'RequestResponse',
         LogType: 'None',
-        Payload: `{ "message": "results notification", "sport": "nfl", "year": 2019, "season": "reg"}`
+        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2019, "season": "reg"}`
     };
-    // const gameWeek = await lambda.invoke(getGameWeekParams, function(err, data) {
-    //             if (err) {
-    //                 console.log("getGameWeek err: ", err);
-    //             } else {
-    //                 console.log('getGameWeek response: ', data.Payload);
-    //                 console.log({gameWeek: data.Payload})
-    //                 return data.Payload
-    //             }
-    //         });
-    //         console.log({gameWeek})
+    let gameWeek = await getGameWeek(getGameWeekParams)
     let cognitoListUsersArray = await getCognitoUsers(cognitoParams)
     .then(async data => {
         //console.log({data})
         console.log({optInUsers: optInUsers.length})
+        let userMessages = {};
+
         // Create the messages that you want to send to clents
         let somePushTokens = ['ExponentPushToken[VOI6eeBiU0Py2dXRoMO6gZ]']
-        
-        for (let user in optInUsers) {
-            for (let attribute in user.Attributes) {
-                (attribute.Name === 'custom:device_token') ? somePushTokens.push(attribute.Value) : null
+        optInUsers.forEach(async (user) => {
+            let deviceToken = ''
+            try {
+                for (let attribute in user.Attributes) {
+                    if (attribute.Name === 'custom:device_token') {
+                        somePushTokens.push(attribute.Value)
+                        deviceToken = attribute.Value
+                    }
+                }
+                let userResults = await db.collection('profileExtended').find({username: user.username})
+                if (userResults && userResults.nfl && userResults.nfl[2019] && userResults.nfl[2019].reg && userResults.nfl[2019].reg.weekly && userResults.nfl[2019].reg.weekly.length > 0) {
+                    let weeklyResults = userResults.nfl[2019].reg.weekly;
+                    weeklyResults.forEach(result => {
+                        if (result.gameWeek === gameWeek) {
+                            let weeklyResult = `Congrats on a great week! You earned ${result.predictionScore} (${result.winner.correct} straight-up, ${result.spread.correct} ATS, ${result.total.correct} O/U).`
+                            if (result.stars && result.stars.roi) {
+                                weeklyResult += ` You also earned a ${result.stars.roi} ROI on your stakes!`
+                            }
+                            userMessages[deviceToken] = weeklyResult;
+                        }
+                    })
+                } else {
+                    return;
+                }
+
+            } catch (userError) {
+                console.log('userError :', userError);
             }
-        }
+
+        })
         let messages = [];
+        console.log({gameWeek})
         for (let pushToken of somePushTokens) {
             // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
 
@@ -111,10 +135,12 @@ exports.handler = async (event, context, callback) => {
             messages.push({
                 to: pushToken,
                 sound: 'default',
-                body: `There are 13 Week 1 games on the NFL schedule today. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
+                body: userMessages[pushToken],
                 data: { withSome: 'data' },
             })
         }
+        context.done({messages: JSON.stringify(messages)})
+        return;
 
         // The Expo push notification service accepts batches of notifications so
         // that you don't need to send 1000 requests to send 1000 notifications. We

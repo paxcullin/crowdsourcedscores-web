@@ -55,6 +55,20 @@ function getCognitoUsers(params) {
     })
 }
 
+function getGameWeek(getGameWeekParams) {
+    return new Promise((resolve, reject) => {
+        lambda.invoke(getGameWeekParams, function(err, data) {
+                if (err) {
+                    console.log("getGameWeek err: ", err);
+                } else {
+                    console.log('getGameWeek response: ', data.Payload);
+                    console.log({gameWeek: data.Payload})
+                    return data.Payload
+                }
+            });
+    })
+}
+
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(`Event: ${event}`))
@@ -65,16 +79,7 @@ exports.handler = async (event, context, callback) => {
         LogType: 'None',
         Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2019, "season": "reg"}`
     };
-    // const gameWeek = await lambda.invoke(getGameWeekParams, function(err, data) {
-    //             if (err) {
-    //                 console.log("getGameWeek err: ", err);
-    //             } else {
-    //                 console.log('getGameWeek response: ', data.Payload);
-    //                 console.log({gameWeek: data.Payload})
-    //                 return data.Payload
-    //             }
-    //         });
-    //         console.log({gameWeek})
+    let gameWeek = await getGameWeek(getGameWeekParams)
     let cognitoListUsersArray = await getCognitoUsers(cognitoParams)
     .then(async data => {
         //console.log({data})
@@ -87,6 +92,7 @@ exports.handler = async (event, context, callback) => {
             }
         }
         let messages = [];
+        console.log({gameWeek})
         for (let pushToken of somePushTokens) {
             // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
 
@@ -100,7 +106,7 @@ exports.handler = async (event, context, callback) => {
             messages.push({
                 to: pushToken,
                 sound: 'default',
-                body: `There are 13 Week 1games on the NFL schedule today. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
+                body: `There are 13 Week 1 games on the NFL schedule today. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
                 data: { withSome: 'data' },
             })
         }
