@@ -13,7 +13,7 @@ const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { year, week, season } = event;
+    const { year, week, season, sport } = event;
     const limit = event.limit ? parseInt(event.limit) : 100;
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
@@ -31,67 +31,82 @@ exports.handler = (event, context) => {
         
         
         
-        leaderboardsCollection.findOne({ year: year, gameWeek: week, season: season })
+        leaderboardsCollection.findOne({ sport: sport, year: year, gameWeek: week, season: season })
         .then(async (leaderboard) => {
             console.log({ leaderboard })
-            if (!leaderboard || !leaderboard.weekly || !leaderboard.weekly.users || !leaderboard.overall.users) {
-                context.done(null, { leaderboard })
-            }
-            var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
-            var leaderboardWeeklyUsers = leaderboard.weekly.users;
-            var leaderboardOverallArrayLength = leaderboard.overall.users.length;
-            var leaderboardOverallUsers = leaderboard.overall.users;
-            //console.log({leaderboardUsers})
-            let leaderboardWeeklyUsersMapped = await Promise.all(leaderboardWeeklyUsers.map(async (user) => {
-                try {
-                    let epUser = await profileExtendedCollection.findOne({ username: user.username });
-                    user.preferred_username = epUser.preferred_username;
-                    //console.log({user})
-                    leaderboardWeeklyArrayLength--;
-                    return user;
-                } catch (extendedProfileError) {
-                    console.log({ extendedProfileError })
-                    leaderboardWeeklyArrayLength--;
-                    return user;
+            if (leaderboard && leaderboard.weekly && leaderboard.weekly.users && leaderboard.overall && leaderboard.overall.users) {
+                var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
+                var leaderboardWeeklyUsers = leaderboard.weekly.users;
+                var leaderboardOverallArrayLength = leaderboard.overall.users.length;
+                var leaderboardOverallUsers = leaderboard.overall.users;
+                //console.log({leaderboardUsers})
+                let leaderboardWeeklyUsersMapped = await Promise.all(leaderboardWeeklyUsers.map(async (user) => {
+                    try {
+                        let epUser = await profileExtendedCollection.findOne({ username: user.username });
+                        user.preferred_username = epUser.preferred_username;
+                        //console.log({user})
+                        leaderboardWeeklyArrayLength--;
+                        return user;
+                    } catch (extendedProfileError) {
+                        console.log({ extendedProfileError })
+                        leaderboardWeeklyArrayLength--;
+                        return user;
+                    }
+                }))
+                let leaderboardOverallUsersMapped = await Promise.all(leaderboardOverallUsers.map(async (user) => {
+                    try {
+                        let epUser = await profileExtendedCollection.findOne({ username: user.username })
+                        user.preferred_username = epUser.preferred_username;
+                        console.log({user})
+                        leaderboardOverallArrayLength--;
+                        return user;
+                    } catch (extendedProfileError) {
+                        console.log({ extendedProfileError })
+                        leaderboardOverallArrayLength--;
+                        return user;
+                    }
+                }))
+                //console.log({leaderboardArrayLength, leaderboardUsers})
+                
+                if (leaderboardWeeklyArrayLength === 0 && leaderboardOverallArrayLength === 0) {
+                    let leaderboardWeeklyStars = leaderboardWeeklyUsersMapped.filter(user => {
+                        if (user.stars && user.stars.roi) return user;
+                    })
+                    let leaderboardOverallStars = leaderboardOverallUsersMapped.filter(user => {
+                        if (user.stars && user.stars.roi) return user;
+                    })
+                    console.log({ leaderboardOverallStars: JSON.stringify(leaderboardOverallStars), leaderboardWeeklyStars: JSON.stringify(leaderboardWeeklyStars) })
+                    leaderboardWeeklyStars.sort((a,b) => {
+                        return (a.stars.roi - b.stars.roi) * -1 || (a.stars.net - b.stars.net) * -1
+                        
+                        // if (a.stars.roi > b.stars.roi) return 1
+                        // if (a.stars.roi < b.stars.roi) return -1
+                    })
+                    leaderboardOverallStars.sort((a,b) => {
+                        return (a.stars.roi - b.stars.roi) * -1 || (a.stars.net - b.stars.net) * -1
+                    })
+                    leaderboard.weekly.users = leaderboardWeeklyUsersMapped
+                    leaderboard.overall.users = leaderboardOverallUsersMapped
+                    leaderboard.weekly.usersStars = leaderboardWeeklyStars
+                    leaderboard.overall.usersStars = leaderboardOverallStars
+                    console.log({ Leaderboard: JSON.stringify(leaderboard)})
+                    context.done(null, leaderboard)
                 }
-            }))
-            let leaderboardOverallUsersMapped = await Promise.all(leaderboardOverallUsers.map(async (user) => {
-                try {
-                    let epUser = await profileExtendedCollection.findOne({ username: user.username })
-                    user.preferred_username = epUser.preferred_username;
-                    console.log({user})
-                    leaderboardOverallArrayLength--;
-                    return user;
-                } catch (extendedProfileError) {
-                    console.log({ extendedProfileError })
-                    leaderboardOverallArrayLength--;
-                    return user;
-                }
-            }))
-            //console.log({leaderboardArrayLength, leaderboardUsers})
-            
-            if (leaderboardWeeklyArrayLength === 0 && leaderboardOverallArrayLength === 0) {
-                let leaderboardWeeklyStars = leaderboardWeeklyUsersMapped.filter(user => {
-                    if (user.stars && user.stars.roi) return user;
+            } else {
+                console.log({
+                        year,
+                        season,
+                        sport,
+                        week
+                    })
+                context.done(null, { 
+                    leaderboard: {
+                        year,
+                        season,
+                        sport,
+                        week
+                    }
                 })
-                let leaderboardOverallStars = leaderboardOverallUsersMapped.filter(user => {
-                    if (user.stars && user.stars.roi) return user;
-                })
-                //console.log({ leaderboardOverallStars, leaderboardWeeklyStars })
-                leaderboardWeeklyStars.sort((a,b) => {
-                    if (a.roi > b.roi) return 1
-                    if (a.roi < b.roi) return -1
-                })
-                leaderboardOverallStars.sort((a,b) => {
-                    if (a.roi > b.roi) return 1
-                    if (a.roi < b.roi) return -1
-                })
-                leaderboard.weekly.users = leaderboardWeeklyUsersMapped
-                leaderboard.overall.users = leaderboardOverallUsersMapped
-                leaderboard.weekly.usersStars = leaderboardWeeklyStars
-                leaderboard.overall.usersStars = leaderboardOverallStars
-                console.log({ Leaderboard: JSON.stringify(leaderboard)})
-                context.done(null, leaderboard)
             }
         })
         .catch(getLeaderboardError => console.log({getLeaderboardError}))

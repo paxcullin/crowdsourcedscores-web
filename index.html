@@ -1756,7 +1756,7 @@
             if (sport === 'nfl') {
                 //var id_token = localStorage.getItem('id_token') || "";
                 //console.log("deferredLeaderboardRequest2: ", year, " ", week);
-                get("https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/nfl/" + year + "/" + week + "/leaderboards",{
+                get(`https://y5f8dr2inb.execute-api.us-west-2.amazonaws.com/dev/${sport}/${year}/${season}/${week}/leaderboards`,{
                     method: "GET",
                     headers: {
                         'Authorization': leaderboardToken
