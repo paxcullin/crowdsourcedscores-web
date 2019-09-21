@@ -1,6 +1,4 @@
 const rp = require('request-promise')
-const cheerio = require('cheerio')
-const Table = require('cli-table')
 const mongo = require('mongodb').MongoClient
 const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
