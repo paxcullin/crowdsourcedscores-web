@@ -487,6 +487,32 @@
         <pubDate>Thu, 5 Sep 2019 09:00:00 GMT</pubDate>
         <itunes:duration>1:15:46</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 5 - Week 1 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris sit down at the Stakehouse to cover the Week 1 games and go over how well the Crowd performed. They also spend a little time at the Hot Take Counter to chat about some overreactions to the first week of games.</description>
+        <itunes:subtitle>Paul and Chris sit down at the Stakehouse to cover the Week 1 games and go over how well the Crowd performed. They also spend a little time at the Hot Take Counter to chat about some overreactions to the first week of games.</itunes:subtitle>
+        <itunes:episode>34</itunes:episode>
+        <itunes:summary>Paul and Chris sit down at the Stakehouse to cover the Week 1 games and go over how well the Crowd performed. They also spend a little time at the Hot Take Counter to chat about some overreactions to the first week of games.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode5.v2.mp3" length="1:11:29" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode5.v2.mp3</guid>
+        <pubDate>Thu, 12 Sep 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:11:29</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 6 - Week 2 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris enjoy some Heritage Batch No. 12 while talking through the inches and injuries that played big roles in the Week 2 outcomes.</description>
+        <itunes:subtitle>Paul and Chris enjoy some Heritage Batch No. 12 while talking through the inches and injuries that played big roles in the Week 2 outcomes.</itunes:subtitle>
+        <itunes:episode>35</itunes:episode>
+        <itunes:summary>Paul and Chris enjoy some Heritage Batch No. 12 while talking through the inches and injuries that played big roles in the Week 2 outcomes.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode6.mp3" length="1:23:42" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode6.mp3</guid>
+        <pubDate>Thu, 19 Sep 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:23:42</itunes:duration>
+      </item>
     
   </channel>
   </rss>
