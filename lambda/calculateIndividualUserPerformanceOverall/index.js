@@ -24,18 +24,19 @@ exports.handler = (event, context, callback) => {
         var extendedProfile = db.collection('profileExtended');
         
         // set defaults
-        var sport = 'nfl';
-        var year = 2018;
+        var sport = event.sport ? event.sport : 'nfl';
+        var year = event.year ? event.year : 2018;
+        var season = event.season ? event.season : 'reg';
         var gameWeekMatch = { $gt: 0, $lte: event.gameWeek };
         var predictionsCollection = 'predictions';
         var query = {}
         
         
         if (event.username) query = { username: event.username }
-        if (event.sport === 'ncaaf') {
+        if (sport === 'ncaaf') {
             sport = 'ncaaf'
             predictionsCollection = 'predictions-ncaaf'
-        } else if (event.sport === 'ncaam') {
+        } else if (sport === 'ncaam') {
             sport = 'ncaam'
             predictionsCollection = 'predictions-ncaam'
             year = 2019;
@@ -47,21 +48,26 @@ exports.handler = (event, context, callback) => {
                     $match: {
                         year: year,
                         results: { $exists: true },
-                        gameWeek: gameWeekMatch
+                        gameWeek: gameWeekMatch,
+                        season: season
                     }
                 },
                 {
                     $group: {
-                        _id: {userId: "$userId", year: "$year"},
+                        _id: {userId: "$userId", year: "$year", season: "$season"},
                         suCorrect: {$sum: "$results.winner.correct"},
                         suPush: {$sum: "$results.winner.push"},
                         suBullseyes: {$sum: "$results.winner.bullseyes"},
                         atsCorrect: {$sum: "$results.spread.correct"},
                         atsPush: {$sum: "$results.spread.push"},
                         atsBullseyes: {$sum: "$results.spread.bullseyes"},
+                        atsStarsWagered: {$sum: "$results.spread.stars.wagered"},
+                        atsStarsNet: {$sum: "$results.spread.stars.net"},
                         totalCorrect: {$sum: "$results.total.correct"},
                         totalPush: {$sum: "$results.total.push"},
                         totalBullseyes: {$sum: "$results.total.bullseyes"},
+                        totalStarsWagered: {$sum: "$results.total.stars.wagered"},
+                        totalStarsNet: {$sum: "$results.total.stars.net"},
                         predictionScore: {$sum: "$predictionScore"},
                         totalPredictions: {$sum: 1}
                     }
@@ -84,8 +90,11 @@ exports.handler = (event, context, callback) => {
                 var season = 'reg';
                 if (sport === 'ncaam') season = 'post'
                 if (result._id.season) { season = result._id.season };
+                
+                let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
+                let starsNet = result.atsStarsNet + result.totalStarsNet;
                 var resultsObj = {};
-                var resultsObjKey = "results." + sport + "." + [result._id.year] + "." + "overall." + [season];
+                var resultsObjKey = `results.${sport}.${result._id.year}.${season}.overall`;
                 if (season === 'reg' && sport !== 'ncaam') {
                     resultsObjKey = "results.overall";
                 }
@@ -100,15 +109,28 @@ exports.handler = (event, context, callback) => {
                                 correct: result.atsCorrect,
                                 push: result.atsPush,
                                 bullseyes: result.atsBullseyes,
-                                percentage: result.overallATSPercentage
+                                percentage: result.overallATSPercentage,
+                                stars: {
+                                    wagered: result.atsStarsWagered,
+                                    net: result.atsStarsNet
+                                }
                             },
                             total: {
                                 correct: result.totalCorrect,
                                 push: result.totalPush,
                                 bullseyes: result.totalBullseyes,
-                                percentage: result.overallOUPercentage
+                                percentage: result.overallOUPercentage,
+                                stars: {
+                                    wagered: result.totalStarsWagered,
+                                    net: result.totalStarsNet,
+                                }
                             },
                             predictionScore: result.predictionScore,
+                            stars: {
+                                wagered: starsWagered,
+                                net: starsNet,
+                                roi: starsNet/starsWagered
+                            },
                             totalPredictions: result.totalPredictions
                         }
                 //console.log('result._id.userId: ', result._id.userId)
@@ -123,6 +145,8 @@ exports.handler = (event, context, callback) => {
                 })
                 //console.log({ filteredResults })
                 filteredResults.forEach(result => {
+                    let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
+                    let starsNet = result.atsStarsNet + result.totalStarsNet;
                     let user = { 
                         username: result._id.userId,
                         winner: {
@@ -140,6 +164,11 @@ exports.handler = (event, context, callback) => {
                             push: result.totalPush,
                             bullseyes: result.totalBullseyes
                         },
+                        stars: {
+                            wagered: starsWagered,
+                            net: starsNet,
+                            roi: starsNet/starsWagered
+                        },
                         predictionScore: result.predictionScore,
                         totalPredictions: result.totalPredictions
                     }
@@ -148,14 +177,15 @@ exports.handler = (event, context, callback) => {
                 console.log({ overallUserArray: JSON.stringify(overallUserArray)})
                 let leaderboardCriteria = {
                   year: event.year,
-                  gameWeek: event.gameWeek
+                  gameWeek: event.gameWeek,
+                  season: season
                 }
                 let leaderboardUpdate = {
                     $set: {
                         "overall.users": overallUserArray
                     }
                 }
-                //console.log({ leaderboardCriteria, leaderboardUpdate })
+                console.log({ leaderboardCriteria, leaderboardUpdate })
                 //console.log({filteredResults: JSON.stringify(filteredResults)});
                 queryPromises.push(db.collection('leaderboards').update(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
                 Promise.all(queryPromises)

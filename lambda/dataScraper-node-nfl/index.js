@@ -12,7 +12,22 @@ let games = []
 let urls = [
     `https://io.oddsshark.com/scores/football/nfl/2019/p4`,
     `https://io.oddsshark.com/scores/football/nfl/2019/1`,
-    `https://io.oddsshark.com/scores/football/nfl/2019/2`]
+    `https://io.oddsshark.com/scores/football/nfl/2019/2`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/3`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/4`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/5`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/6`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/7`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/8`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/9`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/10`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/11`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/12`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/13`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/14`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/15`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/16`,
+    `https://io.oddsshark.com/scores/football/nfl/2019/17`]
     
 /*
 `https://io.oddsshark.com/scores/football/nfl/2019/3`,
