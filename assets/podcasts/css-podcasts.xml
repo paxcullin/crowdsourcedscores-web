@@ -513,6 +513,19 @@
         <pubDate>Thu, 19 Sep 2019 09:00:00 GMT</pubDate>
         <itunes:duration>1:23:42</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 7 - Week 3 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris pull out some Dark Door bourbon from Wildwood Spirits while covering the surprising victories led by backup QBs and the blown chances by Super Bowl hopefuls in Week 3.</description>
+        <itunes:subtitle>Paul and Chris pull out some Dark Door bourbon from Wildwood Spirits while covering the surprising victories led by backup QBs and the blown chances by Super Bowl hopefuls in Week 3.</itunes:subtitle>
+        <itunes:episode>36</itunes:episode>
+        <itunes:summary>Paul and Chris pull out some Dark Door bourbon from Wildwood Spirits while covering the surprising victories led by backup QBs and the blown chances by Super Bowl hopefuls in Week 3.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode7.mp3" length="1:22:37" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode7.mp3</guid>
+        <pubDate>Thu, 26 Sep 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>1:22:37</itunes:duration>
+      </item>
     
   </channel>
   </rss>
