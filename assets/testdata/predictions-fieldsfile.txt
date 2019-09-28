@@ -17,8 +17,6 @@ results.total.correct
 results.total.push
 results.total.stars.wagered
 results.total.stars.net
-stars.spread
-stars.total
 spread
 total
 submitted

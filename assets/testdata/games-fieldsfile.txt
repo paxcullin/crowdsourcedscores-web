@@ -5,6 +5,8 @@ awayTeam.fullName
 homeTeam.fullName
 odds.spread
 odds.total
+odds.history
+odds.history
 crowd.awayTeam.score
 crowd.homeTeam.score
 crowd.spread
