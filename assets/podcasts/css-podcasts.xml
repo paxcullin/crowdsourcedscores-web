@@ -526,6 +526,19 @@
         <pubDate>Thu, 26 Sep 2019 23:00:00 GMT</pubDate>
         <itunes:duration>1:22:37</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 8 - Week 4 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris dig into the cellar and find some Four Roses Kentucky Bourbon while they talk about where they see each team now that a quarter of the season is in the books.</description>
+        <itunes:subtitle>Paul and Chris dig into the cellar and find some Four Roses Kentucky Bourbon while they talk about where they see each team now that a quarter of the season is in the books.</itunes:subtitle>
+        <itunes:episode>37</itunes:episode>
+        <itunes:summary>Paul and Chris dig into the cellar and find some Four Roses Kentucky Bourbon while they talk about where they see each team now that a quarter of the season is in the books.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode8.mp3" length="1:23:59" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode8.mp3</guid>
+        <pubDate>Wed, 2 Oct 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:23:59</itunes:duration>
+      </item>
     
   </channel>
   </rss>
