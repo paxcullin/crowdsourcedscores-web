@@ -539,6 +539,32 @@
         <pubDate>Wed, 2 Oct 2019 09:00:00 GMT</pubDate>
         <itunes:duration>1:23:59</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 9 - Week 5 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Week 5 was a mixed bag of results, so Paul and Chris mix up their whiskey selections with Basil Hayden's and Buchanan's Deluxe while trying to figure out just who is good and who is not.</description>
+        <itunes:subtitle>Week 5 was a mixed bag of results, so Paul and Chris mix up their whiskey selections with Basil Hayden's and Buchanan's Deluxe while trying to figure out just who is good and who is not.</itunes:subtitle>
+        <itunes:episode>37</itunes:episode>
+        <itunes:summary>Week 5 was a mixed bag of results, so Paul and Chris mix up their whiskey selections with Basil Hayden's and Buchanan's Deluxe while trying to figure out just who is good and who is not.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode9.mp3" length="1:26:54" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode9.mp3</guid>
+        <pubDate>Wed, 9 Oct 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:26:54</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 10 - Week 6 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Week 6 was tough for a lot of experts out there, and our crowd was no exception. Paul and Chris drown their sorrows with some Batch 206 whiskey and talk about why this season feels so unpredictable.</description>
+        <itunes:subtitle>Week 6 was tough for a lot of experts out there, and our crowd was no exception. Paul and Chris drown their sorrows with some Batch 206 whiskey and talk about why this season feels so unpredictable.</itunes:subtitle>
+        <itunes:episode>38</itunes:episode>
+        <itunes:summary>Week 6 was tough for a lot of experts out there, and our crowd was no exception. Paul and Chris drown their sorrows with some Batch 206 whiskey and talk about why this season feels so unpredictable.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode10.mp3" length="1:17:42" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode10.mp3</guid>
+        <pubDate>Wed, 17 Oct 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:17:42</itunes:duration>
+      </item>
     
   </channel>
   </rss>
