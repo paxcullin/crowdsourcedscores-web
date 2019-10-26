@@ -565,6 +565,19 @@
         <pubDate>Wed, 17 Oct 2019 09:00:00 GMT</pubDate>
         <itunes:duration>1:17:42</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 11 - Week 7 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>The crowd started to make improvements in Week 7, and Paul and Chris celebrate with some Heritage Distillery Brown Sugar Bourbon. They talk about the cupcake and beefcake teams and which teams have really been tested so far.</description>
+        <itunes:subtitle>The crowd started to make improvements in Week 7, and Paul and Chris celebrate with some Heritage Distillery Brown Sugar Bourbon. They talk about the cupcake and beefcake teams and which teams have really been tested so far.</itunes:subtitle>
+        <itunes:episode>39</itunes:episode>
+        <itunes:summary>The crowd started to make improvements in Week 7, and Paul and Chris celebrate with some Heritage Distillery Brown Sugar Bourbon. They talk about the cupcake and beefcake teams and which teams have really been tested so far.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode11.mp3" length="1:15:04" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode11.mp3</guid>
+        <pubDate>Wed, 23 Oct 2019 09:00:00 GMT</pubDate>
+        <itunes:duration>1:15:04</itunes:duration>
+      </item>
     
   </channel>
   </rss>
