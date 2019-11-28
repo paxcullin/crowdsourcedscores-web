@@ -24,15 +24,34 @@
             justify-content: center;
             flex-direction: column
         }
-        @media(min-width: 901) {
+        
+
+        @media(min-width: 768px) {
+            .row {
+                display: flex;
+                flex-direction: row;
+                /* align-items: center; */
+                justify-content: center;
+                margin: 10px 0;
+                padding: 30px 0;
+            }
+
+            .row > .col-sm-6 {
+                margin: 0 3px;
+            }
+        }
+        @media(min-width: 901px) {
             .compareDiv {
                 display: flex;
                 flex-direction: row;
                 margin: 0 10%;
             }
+            .compareDiv div {
+                margin: 0 10px;
+            }
         }
 
-        @media(max-width: 900) {
+        @media(max-width: 900px) {
             .compareDiv {
                 display: flex;
                 flex-direction: column;
@@ -115,21 +134,6 @@
         .gameRow {
             border: 1px solid #fff;
             border-radius: 5px;
-        }
-
-        @media(min-width: 768px) {
-            .row {
-                display: flex;
-                flex-direction: row;
-                /* align-items: center; */
-                justify-content: center;
-                margin: 10px 0;
-                padding: 30px 0;
-            }
-
-            .row > .col-sm-6 {
-                margin: 0 3px;
-            }
         }
         @media(max-width: 767px) {
             .titleRow img {
