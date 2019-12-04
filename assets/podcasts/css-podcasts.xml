@@ -643,6 +643,19 @@
         <pubDate>Wed, 27 Nov 2019 23:00:00 GMT</pubDate>
         <itunes:duration>38:29</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 17 - Week 13 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</description>
+        <itunes:subtitle>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</itunes:subtitle>
+        <itunes:episode>45</itunes:episode>
+        <itunes:summary>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode17.mp3" length="1:23:58" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode17.mp3</guid>
+        <pubDate>Wed, 3 Dec 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>1:23:58</itunes:duration>
+      </item>
     
   </channel>
   </rss>
