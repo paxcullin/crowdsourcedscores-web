@@ -617,6 +617,45 @@
         <pubDate>Tues, 12 Nov 2019 23:00:00 GMT</pubDate>
         <itunes:duration>1:10:51</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Episode 15 - Week 11 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris talk through the gut check games that some of the playoff contenders survived while utilizing the remnants of whiskey bottles from episodes past. </description>
+        <itunes:subtitle>Paul and Chris talk through the gut check games that some of the playoff contenders survived while utilizing the remnants of whiskey bottles from episodes past.</itunes:subtitle>
+        <itunes:episode>43</itunes:episode>
+        <itunes:summary>Paul and Chris talk through the gut check games that some of the playoff contenders survived while utilizing the remnants of whiskey bottles from episodes past.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode15.mp3" length="1:27:22" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode15.mp3</guid>
+        <pubDate>Wed, 20 Nov 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>1:27:22</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 16 - Week 12 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris drowns his sorrows with some top-shelf whiskey while he covers the mixed results from the crowd in Week 12.</description>
+        <itunes:subtitle>Chris drowns his sorrows with some top-shelf whiskey while he covers the mixed results from the crowd in Week 12.</itunes:subtitle>
+        <itunes:episode>44</itunes:episode>
+        <itunes:summary>Chris drowns his sorrows with some top-shelf whiskey while he covers the mixed results from the crowd in Week 12.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode16.mp3" length="38:29" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode16.mp3</guid>
+        <pubDate>Wed, 27 Nov 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>38:29</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Episode 17 - Week 13 Recap</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</description>
+        <itunes:subtitle>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</itunes:subtitle>
+        <itunes:episode>45</itunes:episode>
+        <itunes:summary>Paul and Chris are back together again and have a dynamite show. We enjoy some more Woodinville Whiskey at the saloon while talking about the high-noon games coming in Week 14.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode17.mp3" length="1:23:58" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode17.mp3</guid>
+        <pubDate>Wed, 3 Dec 2019 23:00:00 GMT</pubDate>
+        <itunes:duration>1:23:58</itunes:duration>
+      </item>
     
   </channel>
   </rss>
