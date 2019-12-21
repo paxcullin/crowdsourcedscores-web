@@ -701,86 +701,12 @@
     $("#loginUser").click(function() {
         login();
     });
-    var login = function () {
-        var email = $('#email').val();
-        var authenticationData = {
-            Username: email,
-            Password: $('#password').val()
-        };
-
-        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
-        var userData = {
-            Username: email,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        cognitoUser.authenticateUser(authenticationDetails, {
-            onSuccess: function () {
-                $("#loginModal").modal("hide");
-                showLogoutButton();
-                getGameWeek(setGameWeek)
-            },
-            onFailure: function (err) {
-                console.log(JSON.stringify(err))
-                alert(JSON.stringify(err));
-                if (err.code === "NotAuthorizedException") {
-                    console.log(CognitoUser.resendConfirmationCode(email))
-                    // CognitoUser.resendConfirmationCode(userData)
-                    // .then(function(result) {
-                    //     console.log(`Resend result ${result}`)
-                    // })
-                    // .catch(function(err) {
-                    //     console.log(`Resend error: ${err}`)
-                    // })
-                    
-                    //var tempUser = getUser();
-                    //console.log(`tempUser = ${tempUser}`)
-                }
-            }
-        });
-    }
 
     function showConfirmUI(cognitoUser) {
         $("#loginRegistrationColumn").html("<h1>Welcome " + cognitoUser.getUsername() + "!</h1><p>We have sent a confirmation code to the email address that you provided.</p><div><label for=\"confirmUserCode\">Enter your confirmation code:</label><input type=\"number\" id=\"confirmUserCode\"><button class=\"btn btn-primary btn-sm\" id=\"confirmUser\" onclick=\"confirmUser('" + cognitoUser.getUsername() + "')\">Confirm</button><br><a href=\"#\" id=\"resendCode\" onclick=\"resetVerificationPIN('" + cognitoUser.getUsername() + "')\">Resend Confirmation Code</a></div>")
     }
 
 
-    function confirmUser(username) {
-
-        var userData = {
-            Username: username,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        
-        cognitoUser.confirmRegistration($('#confirmUserCode').val(), true, function (err, results) {
-            if (err) {
-                alert(err);
-            } else {
-                window.location = '/';
-            }
-        });
-    };
-
-    
-    function resetVerificationPIN(username){
-        const p = new Promise((res, rej)=>{
-        
-        var userData = {
-            Username: username,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-        cognitoUser.resendConfirmationCode(function(err, result) {
-            if (err) {
-                rej(err)
-                return
-            }
-                res()
-            })
-        });
-    };
 
     function getUrlParameter(name) {
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -793,45 +719,6 @@
         $("#loginRegistrationColumn").html("<div>Please provide your e-mail address and, if it exists in our system, we will send you a link to reset your password.<br><label for=\"forgotPasswordEmail\">Enter your e-mail address:</label><input type=\"email\" id=\"forgotPasswordEmail\"><button class=\"btn btn-primary btn-sm\" id=\"forgotPasswordButton\" onclick=\"forgotPassword()\">Reset Password</button><br></div>")
     }
 
-
-    function forgotPassword() { 
-
-        var forgotPasswordEmail = $('#forgotPasswordEmail').val()
-        var userData = {
-            Username: forgotPasswordEmail,
-            Pool: userPool
-        };
-        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-
-        cognitoUser.forgotPassword({
-            onSuccess: function (result) {
-                console.log('call result: ' + result);
-                $("#loginRegistrationColumn").html("<div>Enter the confirmation code sent to the e-mail address you provided and your new password.<br><label for=\"forgotPasswordConfirmationCode\">Confirmation Code:</label><input type=\"number\" id=\"forgotPasswordConfirmationCode\"><br><label for=\"forgotPasswordNewPassword\">New Password</label><input type=\"password\" id=\"forgotPasswordNewPassword\"><button class=\"btn btn-primary btn-sm\" id=\"changePasswordButton\" onclick=\"inputVerificationCode('" + forgotPasswordEmail + "')\">Reset Password</button><br></div>")
-            },
-            onFailure: function(err) {
-                console.log(JSON.stringify(err));
-            }
-        });
-    };
-
-    function inputVerificationCode(userEmail) {
-        var userData = {
-            Username: userEmail,
-            Pool: userPool
-        }
-    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-        var verificationCode = $('#forgotPasswordConfirmationCode').val();
-        var newPassword = $('#forgotPasswordNewPassword').val();
-        
-        cognitoUser.confirmPassword(verificationCode, newPassword, {
-            onFailure(err) {
-                console.log(err);
-            },
-            onSuccess() {
-                $("#loginRegistrationColumn").html("<form role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><fieldset>E-mail: <input type=\"text\" id=\"email\" placeholder=\"Enter your e-mail address\"><br><br>Password: <input type=\"password\" id=\"password\" placeholder=\"Enter password\"><br><a href=\"#\" onClick=\"showForgotPasswordUI()\">Forgot Password?</a><br><ul id=\"loginUserResults\"></ul><div class=\"fb-login-button\" data-show-faces=\"false\" data-width=\"200\" data-max-rows=\"1\"></div></fieldset></div></form><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\" id=\"loginUser\" onclick=\"login()\">Login</button><br></div>");
-            }
-        });
-    }
 
 
 </script>
@@ -861,6 +748,10 @@
         $("#navRow").html(navResult);
 
         
+        document.getElementById('loginUser').addEventListener('click', function(e) {
+            e.preventDefault();
+            login();
+        })
         var sportSpecificNavRenderer = Handlebars.templates['template.sportSpecificNav'];
         if (!gameWeekData || !gameWeekData.sport) {
             gameWeekData.sport = 'nfl';
