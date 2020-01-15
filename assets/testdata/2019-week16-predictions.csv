@@ -1,0 +1,207 @@
+gameId,year,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+1110348,2019,16,Cincinnati Bengals,23,Miami Dolphins,22,3,3,0,0,1,0,3,3,0,0,3,-3,1,45,2019-12-20T14:48:41.684Z,psmeyerlaw,2,psmeyerlaw
+1110323,2019,16,Houston Texans,17,Tampa Bay Buccaneers,24,0,0,0,0,0,1,0,0,1,0,0,0,-7,41,2019-12-17T06:23:57.201Z,Facebook_10210894378652618,2,MichaelRaymond
+1110313,2019,16,Buffalo Bills,20,New England Patriots,27,0,0,1,0,1,0,0,0,1,0,0,0,-7,47,2019-12-17T06:24:13.999Z,Facebook_10210894378652618,7,MichaelRaymond
+1110318,2019,16,Los Angeles Rams,20,San Francisco 49ers,32,1,3,1,0,0,0,1,-1,1,0,3,3,-12,52,2019-12-17T06:24:30.799Z,Facebook_10210894378652618,4,MichaelRaymond
+1110328,2019,16,New Orleans Saints,27,Tennessee Titans,20,2,1,1,0,1,0,2,2,0,0,1,-1,7,47,2019-12-17T06:24:50.219Z,Facebook_10210894378652618,4,MichaelRaymond
+1110343,2019,16,Carolina Panthers,24,Indianapolis Colts,27,2,0,1,0,0,0,2,-2,0,0,0,0,-3,51,2019-12-17T06:25:06.199Z,Facebook_10210894378652618,2,MichaelRaymond
+1110338,2019,16,Baltimore Ravens,32,Cleveland Browns,20,2,0,1,0,1,0,2,2,0,0,0,0,12,52,2019-12-17T06:25:20.960Z,Facebook_10210894378652618,4,MichaelRaymond
+1110333,2019,16,Jacksonville Jaguars,24,Atlanta Falcons,21,2,1,0,0,0,0,2,-2,1,0,1,1,3,45,2019-12-17T06:25:39.800Z,Facebook_10210894378652618,2,MichaelRaymond
+1110363,2019,16,Arizona Cardinals,20,Seattle Seahawks,23,3,0,0,0,1,0,3,3,1,0,0,0,-3,43,2019-12-17T06:26:01.320Z,Facebook_10210894378652618,4,MichaelRaymond
+1110378,2019,16,Green Bay Packers,27,Minnesota Vikings,21,0,0,1,0,1,0,0,0,0,0,0,0,6,48,2019-12-17T06:26:22.020Z,Facebook_10210894378652618,4,MichaelRaymond
+1110373,2019,16,Kansas City Chiefs,24,Chicago Bears,20,0,2,1,0,0,0,0,0,1,0,2,2,4,44,2019-12-17T06:26:58.620Z,Facebook_10210894378652618,4,MichaelRaymond
+1110323,2019,16,Houston Texans,30,Tampa Bay Buccaneers,28,0,3,1,0,0,1,0,0,0,0,3,-3,2,58,2019-12-21T00:39:30.822Z,cmaronchick,2,cmaronchick
+1110313,2019,16,Buffalo Bills,13,New England Patriots,27,3,0,1,0,1,0,3,3,1,0,0,0,-14,40,2019-12-17T15:56:08.917Z,cmaronchick,6,cmaronchick
+1110318,2019,16,Los Angeles Rams,20,San Francisco 49ers,28,0,3,1,0,0,0,0,0,1,0,3,3,-8,48,2019-12-21T23:25:25.507Z,cmaronchick,4,cmaronchick
+1110328,2019,16,New Orleans Saints,24,Tennessee Titans,20,0,3,1,0,1,0,0,0,0,0,3,-3,4,44,2019-12-17T15:57:40.797Z,cmaronchick,4,cmaronchick
+1110343,2019,16,Carolina Panthers,20,Indianapolis Colts,27,0,3,1,0,1,0,0,0,0,0,3,-3,-7,47,2019-12-17T18:18:10.706Z,cmaronchick,4,cmaronchick
+1110338,2019,16,Baltimore Ravens,38,Cleveland Browns,14,0,0,1,0,1,0,0,0,0,0,0,0,24,52,2019-12-18T00:33:31.614Z,cmaronchick,4,cmaronchick
+1110333,2019,16,Jacksonville Jaguars,20,Atlanta Falcons,31,0,3,1,0,1,0,0,0,0,0,3,-3,-11,51,2019-12-18T00:33:53.854Z,cmaronchick,4,cmaronchick
+1110348,2019,16,Cincinnati Bengals,13,Miami Dolphins,24,3,0,1,0,1,0,3,3,0,0,0,0,-11,37,2019-12-18T00:34:13.054Z,cmaronchick,4,cmaronchick
+1110358,2019,16,New York Giants,24,Washington Redskins,20,0,3,1,0,1,0,0,0,1,0,3,3,4,44,2019-12-18T00:34:29.253Z,cmaronchick,6,cmaronchick
+1110353,2019,16,Pittsburgh Steelers,24,New York Jets,17,3,3,0,0,0,0,3,-3,0,0,3,-3,7,41,2019-12-18T00:35:13.593Z,cmaronchick,0,cmaronchick
+1110303,2019,16,Detroit Lions,17,Denver Broncos,16,0,3,0,0,0,0,0,0,0,0,3,-3,1,33,2019-12-18T00:36:02.494Z,cmaronchick,1,cmaronchick
+1110308,2019,16,Oakland Raiders,14,Los Angeles Chargers,20,0,0,0,0,1,0,0,0,1,0,0,0,-6,34,2019-12-18T00:36:41.835Z,cmaronchick,4,cmaronchick
+1110363,2019,16,Arizona Cardinals,17,Seattle Seahawks,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2019-12-18T00:36:56.745Z,cmaronchick,2,cmaronchick
+1110368,2019,16,Dallas Cowboys,24,Philadelphia Eagles,27,3,3,1,0,1,0,3,3,0,0,3,-3,-3,51,2019-12-18T00:37:33.995Z,cmaronchick,4,cmaronchick
+1110373,2019,16,Kansas City Chiefs,30,Chicago Bears,13,3,0,1,0,1,0,3,3,1,0,0,0,17,43,2019-12-18T00:37:46.696Z,cmaronchick,6,cmaronchick
+1110378,2019,16,Green Bay Packers,21,Minnesota Vikings,24,3,3,0,0,1,0,3,3,1,0,3,3,-3,45,2019-12-23T21:59:26.569Z,cmaronchick,4,cmaronchick
+1110323,2019,16,Houston Texans,28,Tampa Bay Buccaneers,23,0,0,1,0,0,1,0,0,0,0,0,0,5,51,2019-12-20T23:33:05.950Z,Facebook_10154773754448953,2,BryanCole
+1110313,2019,16,Buffalo Bills,17,New England Patriots,21,0,0,1,0,0,0,0,0,1,0,0,0,-4,38,2019-12-18T04:38:21.043Z,Facebook_10154773754448953,5,BryanCole
+1110318,2019,16,Los Angeles Rams,28,San Francisco 49ers,27,0,3,0,0,1,0,0,0,1,0,3,3,1,55,2019-12-18T04:39:28.041Z,Facebook_10154773754448953,4,BryanCole
+1110323,2019,16,Houston Texans,28,Tampa Bay Buccaneers,24,0,0,1,0,0,1,0,0,0,0,0,0,4,52,2019-12-19T03:07:56.477Z,Facebook_10208710241577136,2,PaulCullin
+1110313,2019,16,Buffalo Bills,20,New England Patriots,23,0,0,1,0,0,0,0,0,1,0,0,0,-3,43,2019-12-19T03:08:39.856Z,Facebook_10208710241577136,4,PaulCullin
+1110318,2019,16,Los Angeles Rams,23,San Francisco 49ers,27,0,0,1,0,1,0,0,0,1,0,0,0,-4,50,2019-12-19T04:33:45.293Z,Facebook_10208710241577136,6,PaulCullin
+1110328,2019,16,New Orleans Saints,30,Tennessee Titans,21,0,0,1,0,1,0,0,0,1,0,0,0,9,51,2019-12-22T17:41:34.420Z,Facebook_10208710241577136,6,PaulCullin
+1110343,2019,16,Carolina Panthers,17,Indianapolis Colts,24,0,0,1,0,1,0,0,0,1,0,0,0,-7,41,2019-12-19T04:34:52.391Z,Facebook_10208710241577136,6,PaulCullin
+1110348,2019,16,Cincinnati Bengals,24,Miami Dolphins,20,0,0,0,0,0,0,0,0,0,0,0,0,4,44,2019-12-19T04:42:44.114Z,Facebook_10210894378652618,0,MichaelRaymond
+1110358,2019,16,New York Giants,24,Washington Redskins,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2019-12-19T04:42:58.650Z,Facebook_10210894378652618,6,MichaelRaymond
+1110353,2019,16,Pittsburgh Steelers,21,New York Jets,26,0,0,1,0,1,0,0,0,0,0,0,0,-5,47,2019-12-19T04:43:14.171Z,Facebook_10210894378652618,4,MichaelRaymond
+1110308,2019,16,Oakland Raiders,24,Los Angeles Chargers,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2019-12-19T04:43:23.312Z,Facebook_10210894378652618,7,MichaelRaymond
+1110303,2019,16,Detroit Lions,24,Denver Broncos,27,0,0,1,0,0,0,0,0,1,0,0,0,-3,51,2019-12-19T04:43:34.492Z,Facebook_10210894378652618,5,MichaelRaymond
+1110368,2019,16,Dallas Cowboys,24,Philadelphia Eagles,26,0,0,1,0,1,0,0,0,0,0,0,0,-2,50,2019-12-19T04:43:53.372Z,Facebook_10210894378652618,4,MichaelRaymond
+1110323,2019,16,Houston Texans,27,Tampa Bay Buccaneers,23,1,0,1,0,0,1,1,0,1,0,0,0,4,50,2019-12-21T00:11:24.315Z,rosstuckerNFL,4,rosstuckerNFL
+1110313,2019,16,Buffalo Bills,14,New England Patriots,17,1,2,1,0,0,0,1,-1,0,0,2,-2,-3,31,2019-12-21T00:10:39.376Z,rosstuckerNFL,2,rosstuckerNFL
+1110318,2019,16,Los Angeles Rams,17,San Francisco 49ers,31,1,0,1,0,0,0,1,-1,1,0,0,0,-14,48,2019-12-21T00:12:00.496Z,rosstuckerNFL,4,rosstuckerNFL
+1110358,2019,16,New York Giants,17,Washington Redskins,23,1,0,0,0,0,0,1,-1,0,0,0,0,-6,40,2019-12-20T23:56:47.634Z,rosstuckerNFL,0,rosstuckerNFL
+1110353,2019,16,Pittsburgh Steelers,17,New York Jets,13,2,2,0,0,0,0,2,-2,1,0,2,2,4,30,2019-12-20T23:59:38.413Z,rosstuckerNFL,2,rosstuckerNFL
+1110338,2019,16,Baltimore Ravens,33,Cleveland Browns,17,0,0,1,0,1,0,0,0,0,0,0,0,16,50,2019-12-19T05:01:29.274Z,Facebook_10208710241577136,5,PaulCullin
+1110303,2019,16,Detroit Lions,17,Denver Broncos,24,1,0,1,0,0,0,1,-1,1,0,0,0,-7,41,2019-12-21T00:04:02.033Z,rosstuckerNFL,5,rosstuckerNFL
+1110308,2019,16,Oakland Raiders,17,Los Angeles Chargers,27,1,0,0,0,0,0,1,-1,1,0,0,0,-10,44,2019-12-21T00:03:16.673Z,rosstuckerNFL,2,rosstuckerNFL
+1110363,2019,16,Arizona Cardinals,24,Seattle Seahawks,27,2,0,0,0,1,0,2,2,0,0,0,0,-3,51,2019-12-21T00:04:45.754Z,rosstuckerNFL,2,rosstuckerNFL
+1110373,2019,16,Kansas City Chiefs,23,Chicago Bears,13,1,0,1,0,1,0,1,1,1,0,0,0,10,36,2019-12-21T00:06:43.335Z,rosstuckerNFL,6,rosstuckerNFL
+1110323,2019,16,Houston Texans,24,Tampa Bay Buccaneers,28,1,1,0,0,0,1,1,0,0,0,1,-1,-4,52,2019-12-20T14:45:54.984Z,psmeyerlaw,0,psmeyerlaw
+1110313,2019,16,Buffalo Bills,16,New England Patriots,24,0,2,1,0,1,0,0,0,1,0,2,2,-8,40,2019-12-20T14:46:19.162Z,psmeyerlaw,7,psmeyerlaw
+1110318,2019,16,Los Angeles Rams,19,San Francisco 49ers,26,3,3,1,0,0,0,3,-3,1,0,3,3,-7,45,2019-12-20T14:46:43.903Z,psmeyerlaw,4,psmeyerlaw
+1110328,2019,16,New Orleans Saints,27,Tennessee Titans,24,3,3,1,0,1,0,3,3,1,0,3,3,3,51,2019-12-20T14:47:06.583Z,psmeyerlaw,6,psmeyerlaw
+1110338,2019,16,Baltimore Ravens,34,Cleveland Browns,18,2,3,1,0,1,0,2,2,0,0,3,-3,16,52,2019-12-20T14:47:27.163Z,psmeyerlaw,5,psmeyerlaw
+1110333,2019,16,Jacksonville Jaguars,20,Atlanta Falcons,27,1,1,1,0,0,0,1,-1,1,0,1,1,-7,47,2019-12-20T14:47:50.504Z,psmeyerlaw,4,psmeyerlaw
+1110343,2019,16,Carolina Panthers,20,Indianapolis Colts,26,2,1,1,0,0,0,2,-2,1,0,1,1,-6,46,2019-12-20T14:48:16.484Z,psmeyerlaw,4,psmeyerlaw
+1110358,2019,16,New York Giants,20,Washington Redskins,22,1,1,0,0,0,0,1,-1,0,0,1,-1,-2,42,2019-12-20T14:49:05.744Z,psmeyerlaw,0,psmeyerlaw
+1110353,2019,16,Pittsburgh Steelers,20,New York Jets,17,1,1,0,0,0,0,1,-1,0,0,1,-1,3,37,2019-12-20T14:49:19.944Z,psmeyerlaw,0,psmeyerlaw
+1110308,2019,16,Oakland Raiders,20,Los Angeles Chargers,31,3,3,0,0,0,0,3,-3,0,0,3,-3,-11,51,2019-12-20T14:49:47.965Z,psmeyerlaw,0,psmeyerlaw
+1110303,2019,16,Detroit Lions,16,Denver Broncos,23,3,3,1,0,0,0,3,-3,1,0,3,3,-7,39,2019-12-20T14:50:22.185Z,psmeyerlaw,4,psmeyerlaw
+1110363,2019,16,Arizona Cardinals,20,Seattle Seahawks,31,2,1,0,0,0,0,2,-2,0,0,1,-1,-11,51,2019-12-20T14:50:40.685Z,psmeyerlaw,0,psmeyerlaw
+1110368,2019,16,Dallas Cowboys,24,Philadelphia Eagles,22,1,1,0,0,0,0,1,-1,0,0,1,-1,2,46,2019-12-20T14:51:02.466Z,psmeyerlaw,0,psmeyerlaw
+1110373,2019,16,Kansas City Chiefs,26,Chicago Bears,18,1,2,1,0,1,0,1,1,1,0,2,2,8,44,2019-12-20T14:51:23.303Z,psmeyerlaw,7,psmeyerlaw
+1110378,2019,16,Green Bay Packers,16,Minnesota Vikings,21,2,2,0,0,0,0,2,-2,1,0,2,2,-5,37,2019-12-20T14:51:57.585Z,psmeyerlaw,2,psmeyerlaw
+1110328,2019,16,New Orleans Saints,24,Tennessee Titans,20,0,3,1,0,1,0,0,0,0,0,3,-3,4,44,2019-12-20T23:33:34.429Z,Facebook_10154773754448953,4,BryanCole
+1110338,2019,16,Baltimore Ravens,30,Cleveland Browns,17,0,0,1,0,1,0,0,0,1,0,0,0,13,47,2019-12-20T23:34:03.130Z,Facebook_10154773754448953,6,BryanCole
+1110328,2019,16,New Orleans Saints,27,Tennessee Titans,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2019-12-20T23:57:29.534Z,rosstuckerNFL,6,rosstuckerNFL
+1110348,2019,16,Cincinnati Bengals,23,Miami Dolphins,24,0,0,1,0,1,0,0,0,1,0,0,0,-1,47,2019-12-21T00:00:00.733Z,rosstuckerNFL,6,rosstuckerNFL
+1110343,2019,16,Carolina Panthers,20,Indianapolis Colts,24,0,0,1,0,0,0,0,0,1,0,0,0,-4,44,2019-12-21T00:01:00.253Z,rosstuckerNFL,5,rosstuckerNFL
+1110338,2019,16,Baltimore Ravens,31,Cleveland Browns,17,0,0,1,0,1,0,0,0,1,0,0,0,14,48,2019-12-21T00:01:50.613Z,rosstuckerNFL,7,rosstuckerNFL
+1110333,2019,16,Jacksonville Jaguars,17,Atlanta Falcons,27,0,0,1,0,1,0,0,0,1,0,0,0,-10,44,2019-12-21T00:02:20.874Z,rosstuckerNFL,6,rosstuckerNFL
+1110368,2019,16,Dallas Cowboys,27,Philadelphia Eagles,20,0,0,0,0,0,0,0,0,0,0,0,0,7,47,2019-12-21T00:05:52.256Z,rosstuckerNFL,0,rosstuckerNFL
+1110378,2019,16,Green Bay Packers,23,Minnesota Vikings,24,0,0,0,0,1,0,0,0,0,0,0,0,-1,47,2019-12-21T00:07:50.854Z,rosstuckerNFL,3,rosstuckerNFL
+1110333,2019,16,Jacksonville Jaguars,22,Atlanta Falcons,26,0,0,1,0,0,0,0,0,0,0,0,0,-4,48,2019-12-21T01:08:44.945Z,Facebook_10208710241577136,2,PaulCullin
+1110348,2019,16,Cincinnati Bengals,27,Miami Dolphins,24,0,0,0,0,0,0,0,0,1,0,0,0,3,51,2019-12-21T01:09:23.366Z,Facebook_10208710241577136,2,PaulCullin
+1110358,2019,16,New York Giants,23,Washington Redskins,20,0,0,1,0,1,0,0,0,1,0,0,0,3,43,2019-12-21T01:09:41.104Z,Facebook_10208710241577136,6,PaulCullin
+1110353,2019,16,Pittsburgh Steelers,24,New York Jets,14,3,0,0,0,0,0,3,-3,0,0,0,0,10,38,2019-12-22T17:41:49.558Z,Facebook_10208710241577136,0,PaulCullin
+1110308,2019,16,Oakland Raiders,20,Los Angeles Chargers,24,0,0,0,0,1,0,0,0,1,0,0,0,-4,44,2019-12-21T01:10:23.304Z,Facebook_10208710241577136,4,PaulCullin
+1110363,2019,16,Arizona Cardinals,27,Seattle Seahawks,30,3,1,0,0,1,0,3,3,0,0,1,-1,-3,57,2019-12-22T17:42:13.098Z,Facebook_10208710241577136,3,PaulCullin
+1110368,2019,16,Dallas Cowboys,27,Philadelphia Eagles,17,3,0,0,0,0,0,3,-3,1,0,0,0,10,44,2019-12-21T01:13:30.926Z,Facebook_10208710241577136,3,PaulCullin
+1110378,2019,16,Green Bay Packers,27,Minnesota Vikings,24,3,0,1,0,1,0,3,3,0,0,0,0,3,51,2019-12-21T01:12:44.965Z,Facebook_10208710241577136,4,PaulCullin
+1110323,2019,16,Houston Texans,24,Tampa Bay Buccaneers,17,0,0,1,0,0,1,0,0,1,0,0,0,7,41,2019-12-21T08:52:13.814Z,ausame,4,ausame
+1110313,2019,16,Buffalo Bills,17,New England Patriots,21,3,0,1,0,0,0,3,-3,1,0,0,0,-4,38,2019-12-21T09:02:26.914Z,ausame,5,ausame
+1110318,2019,16,Los Angeles Rams,23,San Francisco 49ers,27,0,0,1,0,1,0,0,0,1,0,0,0,-4,50,2019-12-21T09:04:16.612Z,ausame,6,ausame
+1110343,2019,16,Carolina Panthers,15,Indianapolis Colts,32,0,0,1,0,1,0,0,0,0,0,0,0,-17,47,2019-12-21T09:43:08.732Z,cmaronchick-gmail,4,oddsshark
+1110333,2019,16,Jacksonville Jaguars,9,Atlanta Falcons,37,0,0,1,0,1,0,0,0,1,0,0,0,-28,46,2019-12-21T09:43:32.092Z,cmaronchick-gmail,6,oddsshark
+1110328,2019,16,New Orleans Saints,24,Tennessee Titans,29,0,0,0,0,0,0,0,0,1,0,0,0,-5,53,2019-12-21T09:43:41.052Z,cmaronchick-gmail,2,oddsshark
+1110308,2019,16,Oakland Raiders,12,Los Angeles Chargers,33,0,0,0,0,0,0,0,0,1,0,0,0,-21,45,2019-12-21T09:44:23.912Z,cmaronchick-gmail,2,oddsshark
+1110323,2019,16,Houston Texans,30,Tampa Bay Buccaneers,26,0,0,1,0,0,1,0,0,0,0,0,0,4,56,2019-12-21T09:51:13.293Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1110313,2019,16,Buffalo Bills,14,New England Patriots,16,0,0,1,0,0,0,0,0,0,0,0,0,-2,30,2019-12-21T09:51:23.954Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1110318,2019,16,Los Angeles Rams,20,San Francisco 49ers,28,0,0,1,0,0,0,0,0,1,0,0,0,-8,48,2019-12-21T09:51:38.614Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110353,2019,16,Pittsburgh Steelers,17,New York Jets,11,0,0,0,0,0,0,0,0,1,0,0,0,6,28,2019-12-21T09:52:47.575Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1110348,2019,16,Cincinnati Bengals,24,Miami Dolphins,17,0,0,0,0,0,0,0,0,0,0,0,0,7,41,2019-12-21T09:53:02.673Z,cmaronchick-yahoo,0,greggrosenthalNFL
+1110358,2019,16,New York Giants,24,Washington Redskins,21,0,0,1,0,1,0,0,0,1,0,0,0,3,45,2019-12-21T09:53:17.593Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1110343,2019,16,Carolina Panthers,17,Indianapolis Colts,30,0,0,1,0,1,0,0,0,0,0,0,0,-13,47,2019-12-21T09:53:27.713Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110338,2019,16,Baltimore Ravens,30,Cleveland Browns,17,0,0,1,0,1,0,0,0,1,0,0,0,13,47,2019-12-21T09:53:39.093Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1110333,2019,16,Jacksonville Jaguars,18,Atlanta Falcons,24,0,0,1,0,0,0,0,0,1,0,0,0,-6,42,2019-12-21T09:54:04.873Z,cmaronchick-yahoo,5,greggrosenthalNFL
+1110328,2019,16,New Orleans Saints,30,Tennessee Titans,29,0,0,1,0,0,0,0,0,1,0,0,0,1,59,2019-12-21T09:54:34.813Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110308,2019,16,Oakland Raiders,21,Los Angeles Chargers,30,0,0,0,0,0,0,0,0,0,0,0,0,-9,51,2019-12-21T09:54:47.353Z,cmaronchick-yahoo,0,greggrosenthalNFL
+1110303,2019,16,Detroit Lions,20,Denver Broncos,25,0,0,1,0,0,0,0,0,1,0,0,0,-5,45,2019-12-21T09:54:53.333Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110363,2019,16,Arizona Cardinals,20,Seattle Seahawks,28,0,0,0,0,1,0,0,0,1,0,0,0,-8,48,2019-12-21T09:54:59.593Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110368,2019,16,Dallas Cowboys,24,Philadelphia Eagles,21,0,0,0,0,0,0,0,0,1,0,0,0,3,45,2019-12-21T09:55:06.114Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1110373,2019,16,Kansas City Chiefs,29,Chicago Bears,17,0,0,1,0,1,0,0,0,0,0,0,0,12,46,2019-12-21T09:55:11.373Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1110378,2019,16,Green Bay Packers,24,Minnesota Vikings,27,0,0,0,0,1,0,0,0,0,0,0,0,-3,51,2019-12-21T09:55:16.334Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1110368,2019,16,Dallas Cowboys,27,Philadelphia Eagles,20,0,0,0,0,0,0,0,0,0,0,0,0,7,47,2019-12-21T10:04:02.675Z,vinnieiyer,0,vinnieiyer
+1110378,2019,16,Green Bay Packers,23,Minnesota Vikings,20,0,0,1,0,1,0,0,0,1,0,0,0,3,43,2019-12-21T10:04:14.674Z,vinnieiyer,7,vinnieiyer
+1110313,2019,16,Buffalo Bills,13,New England Patriots,23,0,0,1,0,1,0,0,0,0,0,0,0,-10,36,2019-12-21T10:04:29.555Z,vinnieiyer,4,vinnieiyer
+1110323,2019,16,Houston Texans,34,Tampa Bay Buccaneers,31,0,0,1,0,0,1,0,0,0,0,0,0,3,65,2019-12-21T10:04:36.335Z,vinnieiyer,3,vinnieiyer
+1110318,2019,16,Los Angeles Rams,27,San Francisco 49ers,31,0,0,1,0,1,0,0,0,1,0,0,0,-4,58,2019-12-21T10:04:44.836Z,vinnieiyer,6,vinnieiyer
+1110328,2019,16,New Orleans Saints,24,Tennessee Titans,21,0,0,1,0,1,0,0,0,0,0,0,0,3,45,2019-12-21T10:04:51.356Z,vinnieiyer,4,vinnieiyer
+1110338,2019,16,Baltimore Ravens,31,Cleveland Browns,24,0,0,1,0,0,0,0,0,0,0,0,0,7,55,2019-12-21T10:05:08.874Z,vinnieiyer,3,vinnieiyer
+1110353,2019,16,Pittsburgh Steelers,20,New York Jets,10,0,0,0,0,0,0,0,0,1,0,0,0,10,30,2019-12-21T10:05:21.754Z,vinnieiyer,2,vinnieiyer
+1110358,2019,16,New York Giants,17,Washington Redskins,20,0,0,0,0,0,0,0,0,0,0,0,0,-3,37,2019-12-21T10:05:40.815Z,vinnieiyer,0,vinnieiyer
+1110343,2019,16,Carolina Panthers,17,Indianapolis Colts,27,0,0,1,0,1,0,0,0,1,0,0,0,-10,44,2019-12-21T10:05:53.941Z,vinnieiyer,7,vinnieiyer
+1110333,2019,16,Jacksonville Jaguars,14,Atlanta Falcons,24,0,0,1,0,1,0,0,0,1,0,0,0,-10,38,2019-12-21T10:06:03.397Z,vinnieiyer,7,vinnieiyer
+1110348,2019,16,Cincinnati Bengals,20,Miami Dolphins,23,0,0,1,0,1,0,0,0,0,0,0,0,-3,43,2019-12-21T10:06:14.654Z,vinnieiyer,5,vinnieiyer
+1110303,2019,16,Detroit Lions,6,Denver Broncos,20,0,0,1,0,1,0,0,0,0,0,0,0,-14,26,2019-12-21T10:06:23.695Z,vinnieiyer,4,vinnieiyer
+1110308,2019,16,Oakland Raiders,17,Los Angeles Chargers,24,0,0,0,0,1,0,0,0,1,0,0,0,-7,41,2019-12-21T10:06:32.434Z,vinnieiyer,5,vinnieiyer
+1110363,2019,16,Arizona Cardinals,24,Seattle Seahawks,31,0,0,0,0,1,0,0,0,0,0,0,0,-7,55,2019-12-21T10:06:47.134Z,vinnieiyer,2,vinnieiyer
+1110373,2019,16,Kansas City Chiefs,24,Chicago Bears,20,0,0,1,0,0,0,0,0,1,0,0,0,4,44,2019-12-21T10:07:00.397Z,vinnieiyer,4,vinnieiyer
+1110323,2019,16,Houston Texans,34,Tampa Bay Buccaneers,27,0,0,1,0,0,1,0,0,0,0,0,0,7,61,2019-12-21T10:08:16.056Z,yardbarker,2,yardbarker
+1110313,2019,16,Buffalo Bills,20,New England Patriots,14,0,0,0,0,0,0,0,0,0,0,0,0,6,34,2019-12-21T10:08:30.615Z,yardbarker,0,yardbarker
+1110318,2019,16,Los Angeles Rams,14,San Francisco 49ers,27,0,0,1,0,0,0,0,0,0,0,0,0,-13,41,2019-12-21T10:08:37.155Z,yardbarker,2,yardbarker
+1110353,2019,16,Pittsburgh Steelers,16,New York Jets,14,0,0,0,0,1,0,0,0,1,0,0,0,2,30,2019-12-21T10:08:51.776Z,yardbarker,4,yardbarker
+1110333,2019,16,Jacksonville Jaguars,14,Atlanta Falcons,30,0,0,1,0,1,0,0,0,1,0,0,0,-16,44,2019-12-21T10:09:09.515Z,yardbarker,6,yardbarker
+1110338,2019,16,Baltimore Ravens,31,Cleveland Browns,26,0,0,1,0,0,0,0,0,0,0,0,0,5,57,2019-12-21T10:09:25.175Z,yardbarker,3,yardbarker
+1110328,2019,16,New Orleans Saints,30,Tennessee Titans,28,0,0,1,0,0,0,0,0,1,0,0,0,2,58,2019-12-21T10:09:35.255Z,yardbarker,5,yardbarker
+1110343,2019,16,Carolina Panthers,13,Indianapolis Colts,24,0,0,1,0,1,0,0,0,1,0,0,0,-11,37,2019-12-21T10:09:46.816Z,yardbarker,6,yardbarker
+1110348,2019,16,Cincinnati Bengals,20,Miami Dolphins,24,0,0,1,0,1,0,0,0,0,0,0,0,-4,44,2019-12-21T10:09:58.677Z,yardbarker,4,yardbarker
+1110358,2019,16,New York Giants,17,Washington Redskins,20,0,0,0,0,0,0,0,0,0,0,0,0,-3,37,2019-12-21T10:10:14.115Z,yardbarker,0,yardbarker
+1110303,2019,16,Detroit Lions,16,Denver Broncos,19,0,0,1,0,0,0,0,0,0,0,0,0,-3,35,2019-12-21T10:10:24.178Z,yardbarker,2,yardbarker
+1110308,2019,16,Oakland Raiders,20,Los Angeles Chargers,23,0,0,0,0,1,0,0,0,1,0,0,0,-3,43,2019-12-21T10:10:32.334Z,yardbarker,4,yardbarker
+1110368,2019,16,Dallas Cowboys,20,Philadelphia Eagles,26,0,0,1,0,1,0,0,0,0,0,0,0,-6,46,2019-12-21T10:10:47.596Z,yardbarker,4,yardbarker
+1110363,2019,16,Arizona Cardinals,20,Seattle Seahawks,33,0,0,0,0,0,0,0,0,0,0,0,0,-13,53,2019-12-21T10:10:54.836Z,yardbarker,0,yardbarker
+1110373,2019,16,Kansas City Chiefs,27,Chicago Bears,17,0,0,1,0,1,0,0,0,1,0,0,0,10,44,2019-12-21T10:11:04.081Z,yardbarker,6,yardbarker
+1110378,2019,16,Green Bay Packers,28,Minnesota Vikings,27,0,0,1,0,1,0,0,0,0,0,0,0,1,55,2019-12-21T10:11:10.936Z,yardbarker,4,yardbarker
+1110323,2019,16,Houston Texans,34,Tampa Bay Buccaneers,17,3,3,1,0,0,1,3,0,0,0,3,-3,17,51,2019-12-21T17:11:45.653Z,Facebook_2328097410559627,2,GusDawson
+1110313,2019,16,Buffalo Bills,21,New England Patriots,37,3,3,1,0,1,0,3,3,1,0,3,3,-16,58,2019-12-21T17:12:01.792Z,Facebook_2328097410559627,6,GusDawson
+1110318,2019,16,Los Angeles Rams,24,San Francisco 49ers,31,3,3,1,0,0,0,3,-3,1,0,3,3,-7,55,2019-12-21T17:12:17.186Z,Facebook_2328097410559627,4,GusDawson
+1110323,2019,16,Houston Texans,16,Tampa Bay Buccaneers,34,0,0,0,0,0,1,0,0,1,0,0,0,-18,50,2019-12-21T09:42:27.101Z,cmaronchick-gmail,2,oddsshark
+1110323,2019,16,Houston Texans,30,Tampa Bay Buccaneers,31,0,0,0,0,0,1,0,0,0,0,0,0,-1,61,2019-12-21T09:47:43.193Z,cmaronchick-hotmail,0,CBSPetePrisco
+1110343,2019,16,Carolina Panthers,20,Indianapolis Colts,24,0,3,1,0,0,0,0,0,1,0,3,3,-4,44,2019-12-22T00:20:57.599Z,Facebook_10154773754448953,5,BryanCole
+1110348,2019,16,Cincinnati Bengals,17,Miami Dolphins,20,0,3,1,0,1,0,0,0,0,0,3,-3,-3,37,2019-12-22T00:21:19.878Z,Facebook_10154773754448953,5,BryanCole
+1110333,2019,16,Jacksonville Jaguars,24,Atlanta Falcons,27,3,0,1,0,0,0,3,-3,0,0,0,0,-3,51,2019-12-22T00:21:37.956Z,Facebook_10154773754448953,2,BryanCole
+1110358,2019,16,New York Giants,20,Washington Redskins,18,0,0,1,0,1,0,0,0,0,0,0,0,2,38,2019-12-22T00:21:55.257Z,Facebook_10154773754448953,4,BryanCole
+1110353,2019,16,Pittsburgh Steelers,21,New York Jets,17,0,3,0,0,0,0,0,0,0,0,3,-3,4,38,2019-12-22T00:22:13.178Z,Facebook_10154773754448953,0,BryanCole
+1110308,2019,16,Oakland Raiders,19,Los Angeles Chargers,24,3,0,0,0,1,0,3,3,1,0,0,0,-5,43,2019-12-22T00:22:37.597Z,Facebook_10154773754448953,4,BryanCole
+1110303,2019,16,Detroit Lions,17,Denver Broncos,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2019-12-22T00:23:05.178Z,Facebook_10154773754448953,3,BryanCole
+1110363,2019,16,Arizona Cardinals,24,Seattle Seahawks,28,3,0,0,0,1,0,3,3,0,0,0,0,-4,52,2019-12-22T00:23:22.678Z,Facebook_10154773754448953,2,BryanCole
+1110368,2019,16,Dallas Cowboys,20,Philadelphia Eagles,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2019-12-22T00:23:43.278Z,Facebook_10154773754448953,6,BryanCole
+1110373,2019,16,Kansas City Chiefs,27,Chicago Bears,17,3,0,1,0,1,0,3,3,1,0,0,0,10,44,2019-12-22T00:23:54.159Z,Facebook_10154773754448953,6,BryanCole
+1110378,2019,16,Green Bay Packers,21,Minnesota Vikings,23,0,0,0,0,1,0,0,0,1,0,0,0,-2,44,2019-12-22T00:24:03.419Z,Facebook_10154773754448953,4,BryanCole
+1110313,2019,16,Buffalo Bills,22,New England Patriots,20,0,0,0,0,0,0,0,0,1,0,0,0,2,42,2019-12-21T09:42:35.855Z,cmaronchick-gmail,2,oddsshark
+1110313,2019,16,Buffalo Bills,20,New England Patriots,17,0,0,0,0,0,0,0,0,0,0,0,0,3,37,2019-12-21T09:46:59.394Z,cmaronchick-hotmail,0,CBSPetePrisco
+1110318,2019,16,Los Angeles Rams,16,San Francisco 49ers,29,0,0,1,0,0,0,0,0,1,0,0,0,-13,45,2019-12-21T09:42:46.734Z,cmaronchick-gmail,4,oddsshark
+1110318,2019,16,Los Angeles Rams,17,San Francisco 49ers,24,0,0,1,0,0,0,0,0,0,0,0,0,-7,41,2019-12-21T09:47:35.414Z,cmaronchick-hotmail,2,CBSPetePrisco
+1110343,2019,16,Carolina Panthers,17,Indianapolis Colts,25,3,3,1,0,1,0,3,3,1,0,3,3,-8,42,2019-12-22T06:21:59.655Z,Facebook_2328097410559627,6,GusDawson
+1110348,2019,16,Cincinnati Bengals,10,Miami Dolphins,24,3,3,1,0,1,0,3,3,0,0,3,-3,-14,34,2019-12-22T06:22:09.275Z,Facebook_2328097410559627,4,GusDawson
+1110333,2019,16,Jacksonville Jaguars,17,Atlanta Falcons,31,3,3,1,0,1,0,3,3,0,0,3,-3,-14,48,2019-12-22T06:22:24.374Z,Facebook_2328097410559627,4,GusDawson
+1110358,2019,16,New York Giants,27,Washington Redskins,17,3,3,1,0,1,0,3,3,1,0,3,3,10,44,2019-12-22T06:22:36.944Z,Facebook_2328097410559627,6,GusDawson
+1110353,2019,16,Pittsburgh Steelers,20,New York Jets,27,3,3,1,0,1,0,3,3,0,0,3,-3,-7,47,2019-12-22T06:22:50.853Z,Facebook_2328097410559627,4,GusDawson
+1110308,2019,16,Oakland Raiders,17,Los Angeles Chargers,27,3,3,0,0,0,0,3,-3,1,0,3,3,-10,44,2019-12-22T06:23:03.793Z,Facebook_2328097410559627,2,GusDawson
+1110303,2019,16,Detroit Lions,16,Denver Broncos,24,3,3,1,0,1,0,3,3,1,0,3,3,-8,40,2019-12-22T06:23:16.094Z,Facebook_2328097410559627,6,GusDawson
+1110363,2019,16,Arizona Cardinals,14,Seattle Seahawks,31,3,3,0,0,0,0,3,-3,1,0,3,3,-17,45,2019-12-22T06:23:28.094Z,Facebook_2328097410559627,2,GusDawson
+1110368,2019,16,Dallas Cowboys,28,Philadelphia Eagles,24,3,3,0,0,0,0,3,-3,0,0,3,-3,4,52,2019-12-22T06:23:40.114Z,Facebook_2328097410559627,0,GusDawson
+1110373,2019,16,Kansas City Chiefs,27,Chicago Bears,17,3,3,1,0,1,0,3,3,1,0,3,3,10,44,2019-12-22T06:23:51.094Z,Facebook_2328097410559627,6,GusDawson
+1110378,2019,16,Green Bay Packers,27,Minnesota Vikings,24,3,3,1,0,1,0,3,3,0,0,3,-3,3,51,2019-12-22T06:24:01.934Z,Facebook_2328097410559627,4,GusDawson
+1110328,2019,16,New Orleans Saints,24,Tennessee Titans,23,0,0,1,0,0,0,0,0,0,0,0,0,1,47,2019-12-22T09:33:46.987Z,ausame,2,ausame
+1110338,2019,16,Baltimore Ravens,28,Cleveland Browns,17,0,0,1,0,1,0,0,0,1,0,0,0,11,45,2019-12-22T09:07:53.946Z,ausame,6,ausame
+1110343,2019,16,Carolina Panthers,17,Indianapolis Colts,27,0,3,1,0,1,0,0,0,1,0,3,3,-10,44,2019-12-22T09:10:07.265Z,ausame,7,ausame
+1110348,2019,16,Cincinnati Bengals,20,Miami Dolphins,23,3,0,1,0,1,0,3,3,0,0,0,0,-3,43,2019-12-22T09:11:39.243Z,ausame,5,ausame
+1110333,2019,16,Jacksonville Jaguars,20,Atlanta Falcons,27,0,0,1,0,0,0,0,0,1,0,0,0,-7,47,2019-12-22T09:13:32.263Z,ausame,4,ausame
+1110358,2019,16,New York Giants,17,Washington Redskins,23,0,0,0,0,0,0,0,0,0,0,0,0,-6,40,2019-12-22T09:15:33.537Z,ausame,0,ausame
+1110353,2019,16,Pittsburgh Steelers,20,New York Jets,21,3,3,1,0,1,0,3,3,0,0,3,-3,-1,41,2019-12-22T12:56:38.343Z,ausame,4,ausame
+1110308,2019,16,Oakland Raiders,23,Los Angeles Chargers,24,3,3,0,0,1,0,3,3,0,0,3,-3,-1,47,2019-12-22T12:57:18.406Z,ausame,2,ausame
+1110303,2019,16,Detroit Lions,10,Denver Broncos,24,0,3,1,0,1,0,0,0,0,0,3,-3,-14,34,2019-12-22T09:20:53.823Z,ausame,4,ausame
+1110363,2019,16,Arizona Cardinals,24,Seattle Seahawks,28,3,0,0,0,1,0,3,3,0,0,0,0,-4,52,2019-12-22T12:58:22.325Z,ausame,2,ausame
+1110368,2019,16,Dallas Cowboys,21,Philadelphia Eagles,23,3,3,1,0,1,0,3,3,1,0,3,3,-2,44,2019-12-22T12:58:40.365Z,ausame,6,ausame
+1110373,2019,16,Kansas City Chiefs,32,Chicago Bears,21,3,3,1,0,1,0,3,3,0,0,3,-3,11,53,2019-12-22T09:30:55.746Z,ausame,4,ausame
+1110378,2019,16,Green Bay Packers,21,Minnesota Vikings,24,3,0,0,0,1,0,3,3,1,0,0,0,-3,45,2019-12-22T09:31:55.466Z,ausame,4,ausame
+1110353,2019,16,Pittsburgh Steelers,16,New York Jets,22,0,0,1,0,1,0,0,0,0,0,0,0,-6,38,2019-12-21T09:44:07.992Z,cmaronchick-gmail,5,oddsshark
+1110353,2019,16,Pittsburgh Steelers,19,New York Jets,16,0,0,0,0,0,0,0,0,1,0,0,0,3,35,2019-12-21T09:48:36.552Z,cmaronchick-hotmail,3,CBSPetePrisco
+1110338,2019,16,Baltimore Ravens,31,Cleveland Browns,15,0,0,1,0,1,0,0,0,1,0,0,0,16,46,2019-12-21T09:43:00.072Z,cmaronchick-gmail,10,oddsshark
+1110338,2019,16,Baltimore Ravens,35,Cleveland Browns,20,0,0,1,0,1,0,0,0,0,0,0,0,15,55,2019-12-21T09:48:04.614Z,cmaronchick-hotmail,4,CBSPetePrisco
+1110343,2019,16,Carolina Panthers,15,Indianapolis Colts,23,0,0,1,0,1,0,0,0,1,0,0,0,-8,38,2019-12-21T09:48:21.494Z,cmaronchick-hotmail,6,CBSPetePrisco
+1110328,2019,16,New Orleans Saints,21,Tennessee Titans,24,0,0,0,0,0,0,0,0,0,0,0,0,-3,45,2019-12-21T09:49:05.532Z,cmaronchick-hotmail,0,CBSPetePrisco
+1110333,2019,16,Jacksonville Jaguars,23,Atlanta Falcons,30,0,0,1,0,0,0,0,0,0,0,0,0,-7,53,2019-12-21T09:47:55.392Z,cmaronchick-hotmail,2,CBSPetePrisco
+1110358,2019,16,New York Giants,16,Washington Redskins,25,0,0,0,0,0,0,0,0,0,0,0,0,-9,41,2019-12-21T09:43:53.152Z,cmaronchick-gmail,0,oddsshark
+1110358,2019,16,New York Giants,20,Washington Redskins,26,0,0,0,0,0,0,0,0,1,0,0,0,-6,46,2019-12-21T09:48:52.213Z,cmaronchick-hotmail,2,CBSPetePrisco
+1110348,2019,16,Cincinnati Bengals,21,Miami Dolphins,24,0,0,1,0,1,0,0,0,0,0,0,0,-3,45,2019-12-21T09:43:15.253Z,cmaronchick-gmail,5,oddsshark
+1110348,2019,16,Cincinnati Bengals,27,Miami Dolphins,31,0,0,1,0,1,0,0,0,1,0,0,0,-4,58,2019-12-21T09:48:30.674Z,cmaronchick-hotmail,6,CBSPetePrisco
+1110308,2019,16,Oakland Raiders,20,Los Angeles Chargers,30,0,0,0,0,0,0,0,0,0,0,0,0,-10,50,2019-12-21T09:46:47.075Z,cmaronchick-hotmail,0,CBSPetePrisco
+1110368,2019,16,Dallas Cowboys,23,Philadelphia Eagles,27,0,0,1,0,1,0,0,0,0,0,0,0,-4,50,2019-12-21T09:44:35.493Z,cmaronchick-gmail,4,oddsshark
+1110368,2019,16,Dallas Cowboys,20,Philadelphia Eagles,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2019-12-21T09:49:48.319Z,cmaronchick-hotmail,6,CBSPetePrisco
+1110363,2019,16,Arizona Cardinals,16,Seattle Seahawks,34,0,0,0,0,0,0,0,0,1,0,0,0,-18,50,2019-12-21T09:44:30.173Z,cmaronchick-gmail,2,oddsshark
+1110363,2019,16,Arizona Cardinals,20,Seattle Seahawks,27,0,0,0,0,1,0,0,0,1,0,0,0,-7,47,2019-12-21T09:49:20.754Z,cmaronchick-hotmail,4,CBSPetePrisco
+1110303,2019,16,Detroit Lions,20,Denver Broncos,24,0,0,1,0,0,0,0,0,1,0,0,0,-4,44,2019-12-21T01:10:44.085Z,Facebook_10208710241577136,5,PaulCullin
+1110303,2019,16,Detroit Lions,15,Denver Broncos,28,0,0,1,0,1,0,0,0,1,0,0,0,-13,43,2019-12-21T09:44:19.012Z,cmaronchick-gmail,6,oddsshark
+1110303,2019,16,Detroit Lions,13,Denver Broncos,28,0,0,1,0,1,0,0,0,1,0,0,0,-15,41,2019-12-21T09:46:18.073Z,cmaronchick-hotmail,6,CBSPetePrisco
+1110373,2019,16,Kansas City Chiefs,27,Chicago Bears,20,0,0,1,0,1,0,0,0,0,0,0,0,7,47,2019-12-21T01:11:52.745Z,Facebook_10208710241577136,4,PaulCullin
+1110373,2019,16,Kansas City Chiefs,22,Chicago Bears,21,0,0,1,0,0,0,0,0,1,0,0,0,1,43,2019-12-21T09:44:40.272Z,cmaronchick-gmail,4,oddsshark
+1110373,2019,16,Kansas City Chiefs,31,Chicago Bears,17,0,0,1,0,1,0,0,0,0,0,0,0,14,48,2019-12-21T09:49:29.814Z,cmaronchick-hotmail,4,CBSPetePrisco
+1110378,2019,16,Green Bay Packers,13,Minnesota Vikings,31,0,0,0,0,0,0,0,0,1,0,0,0,-18,44,2019-12-21T09:44:53.672Z,cmaronchick-gmail,2,oddsshark
+1110378,2019,16,Green Bay Packers,29,Minnesota Vikings,28,0,0,1,0,1,0,0,0,0,0,0,0,1,57,2019-12-21T09:49:36.053Z,cmaronchick-hotmail,4,CBSPetePrisco
