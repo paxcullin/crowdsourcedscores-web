@@ -708,6 +708,19 @@
         <pubDate>Tue, 7 Jan 2020 19:00:00 GMT</pubDate>
         <itunes:duration>35:51</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Divisional Round Recap - Episode 22</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris enjoy some Barrel Hitch Bourbon while looking back at the Divisional Round games and reviewing the crowd wisdom's performance during the second week of the NFL postseason.</description>
+        <itunes:subtitle>Paul and Chris enjoy some Barrel Hitch Bourbon while looking back at the Divisional Round games and reviewing the crowd wisdom's performance during the second week of the NFL postseason.</itunes:subtitle>
+        <itunes:episode>50</itunes:episode>
+        <itunes:summary>Paul and Chris enjoy some Barrel Hitch Bourbon while looking back at the Divisional Round games and reviewing the crowd wisdom's performance during the second week of the NFL postseason.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode22.mp3" length="58:14" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode22.mp3</guid>
+        <pubDate>Thu, 16 Jan 2020 23:00:00 GMT</pubDate>
+        <itunes:duration>58:14</itunes:duration>
+      </item>
     
   </channel>
   </rss>
