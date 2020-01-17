@@ -1,5 +1,6 @@
 gameId
 year
+season
 gameWeek
 awayTeam.fullName
 awayTeam.score
