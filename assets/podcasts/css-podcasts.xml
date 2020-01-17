@@ -682,6 +682,32 @@
         <pubDate>Fri, 27 Dec 2019 23:00:00 GMT</pubDate>
         <itunes:duration>1:10:44</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Week 17 Recap - Episode 20</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris cover a wild finale to the regular season and announce the season-long winners for the first annual Stakehouse Sports NFL Season.</description>
+        <itunes:subtitle>Paul and Chris cover a wild finale to the regular season and announce the season-long winners for the first annual Stakehouse Sports NFL Season.</itunes:subtitle>
+        <itunes:episode>48</itunes:episode>
+        <itunes:summary>Paul and Chris cover a wild finale to the regular season and announce the season-long winners for the first annual Stakehouse Sports NFL Season.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode20.mp3" length="41:55" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode20.mp3</guid>
+        <pubDate>Tue, 7 Jan 2020 18:00:00 GMT</pubDate>
+        <itunes:duration>41:55</itunes:duration>
+      </item>
+      <item>
+        <title>2019 Season - Wild Card Weekend Recap - Episode 21</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>The 2020 NFL Postseason got off to a fantastic start with 4 riveting games. Paul and Chris cover the games and the crowd performance after the first week while enjoying some Woodinville Whiskey Straight Bourbon.</description>
+        <itunes:subtitle>The 2020 NFL Postseason got off to a fantastic start with 4 riveting games. Paul and Chris cover the games and the crowd performance after the first week while enjoying some Woodinville Whiskey Straight Bourbon.</itunes:subtitle>
+        <itunes:episode>49</itunes:episode>
+        <itunes:summary>The 2020 NFL Postseason got off to a fantastic start with 4 riveting games. Paul and Chris cover the games and the crowd performance after the first week while enjoying some Woodinville Whiskey Straight Bourbon.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode21.mp3" length="35:51" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode21.mp3</guid>
+        <pubDate>Tue, 7 Jan 2020 19:00:00 GMT</pubDate>
+        <itunes:duration>35:51</itunes:duration>
+      </item>
     
   </channel>
   </rss>
