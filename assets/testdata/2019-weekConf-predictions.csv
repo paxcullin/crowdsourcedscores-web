@@ -1,0 +1,35 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+1234560,2019,post,3,Tennessee Titans,21,Kansas City Chiefs,31,2,2,1,0,1,0,2,2,0,0,2,-2,-10,52,2020-01-13T20:08:07.636Z,chrisl777,4,chrisl777
+1234565,2019,post,3,Green Bay Packers,14,San Francisco 49ers,21,2,2,1,0,0,0,2,-2,0,0,2,-2,-7,35,2020-01-13T20:08:22.477Z,chrisl777,2,chrisl777
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,51,2020-01-16T04:11:58.767Z,cmaronchick,3,cmaronchick
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,27,0,3,1,0,1,0,0,0,0,0,3,-3,-10,44,2020-01-17T17:09:06.204Z,cmaronchick,4,cmaronchick
+1234560,2019,post,3,Tennessee Titans,29,Kansas City Chiefs,23,3,3,0,0,0,0,3,-3,0,0,3,-3,6,52,2020-01-19T19:52:07.417Z,psmeyerlaw,0,psmeyerlaw
+1234565,2019,post,3,Green Bay Packers,38,San Francisco 49ers,23,2,2,0,0,0,0,2,-2,1,0,2,2,15,61,2020-01-19T19:52:33.152Z,psmeyerlaw,2,psmeyerlaw
+1234560,2019,post,3,Tennessee Titans,18,Kansas City Chiefs,26,2,0,1,0,1,0,2,2,0,0,0,0,-8,44,2020-01-14T07:18:37.567Z,Facebook_10156852744608694,4,BryanCasey
+1234565,2019,post,3,Green Bay Packers,22,San Francisco 49ers,20,1,0,0,0,0,0,1,-1,0,0,0,0,2,42,2020-01-14T07:19:02.946Z,Facebook_10156852744608694,0,BryanCasey
+1234565,2019,post,3,Green Bay Packers,20,San Francisco 49ers,24,3,3,1,0,0,0,3,-3,0,0,3,-3,-4,44,2020-01-19T19:58:43.776Z,Facebook_10208710241577136,3,PaulCullin
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,2,0,1,0,0,0,2,-2,0,0,0,0,-3,51,2020-01-17T18:59:12.650Z,rosstuckerNFL,3,rosstuckerNFL
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,20,2,0,1,0,0,0,2,-2,0,0,0,0,-3,37,2020-01-17T18:57:55.709Z,rosstuckerNFL,2,rosstuckerNFL
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,32,1,1,1,0,1,0,1,1,1,0,1,1,-8,56,2020-01-17T17:36:48.461Z,Facebook_10210894378652618,7,MichaelRaymond
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,31,0,0,1,0,1,0,0,0,1,0,0,0,-14,48,2020-01-17T17:37:09.962Z,Facebook_10210894378652618,6,MichaelRaymond
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,34,0,0,1,0,0,0,0,0,1,0,0,0,-7,61,2020-01-17T23:34:58.903Z,vinnieiyer,4,vinnieiyer
+1234565,2019,post,3,Green Bay Packers,24,San Francisco 49ers,42,0,0,1,0,1,0,0,0,1,0,0,0,-18,66,2020-01-17T23:35:08.380Z,vinnieiyer,6,vinnieiyer
+1234560,2019,post,3,Tennessee Titans,30,Kansas City Chiefs,28,0,0,0,0,0,0,0,0,1,0,0,0,2,58,2020-01-17T23:35:59.903Z,yardbarker,2,yardbarker
+1234565,2019,post,3,Green Bay Packers,28,San Francisco 49ers,27,0,0,0,0,0,0,0,0,1,0,0,0,1,55,2020-01-17T23:36:07.788Z,yardbarker,2,yardbarker
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,37,0,0,1,0,1,0,0,0,1,0,0,0,-10,64,2020-01-17T23:40:18.028Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1234565,2019,post,3,Green Bay Packers,26,San Francisco 49ers,30,0,0,1,0,0,0,0,0,1,0,0,0,-4,56,2020-01-17T23:40:24.568Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1234565,2019,post,3,Green Bay Packers,15,San Francisco 49ers,28,0,0,1,0,1,0,0,0,0,0,0,0,-13,43,2020-01-17T23:41:16.407Z,cmaronchick-gmail,4,oddsshark
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,28,3,3,1,0,0,0,3,-3,0,0,3,-3,-4,52,2020-01-18T03:54:13.468Z,Facebook_10154773754448953,3,BryanCole
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,28,3,3,1,0,1,0,3,3,0,0,3,-3,-11,45,2020-01-18T03:54:34.004Z,Facebook_10154773754448953,4,BryanCole
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,51,2020-01-18T10:01:05.344Z,ausame,3,ausame
+1234565,2019,post,3,Green Bay Packers,22,San Francisco 49ers,23,3,3,1,0,0,0,3,-3,0,0,3,-3,-1,45,2020-01-18T10:01:10.585Z,ausame,2,ausame
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,35,0,0,1,0,1,0,0,0,1,0,0,0,-8,62,2020-01-18T14:11:41.587Z,SteveHusker,7,SteveHusker
+1234565,2019,post,3,Green Bay Packers,14,San Francisco 49ers,24,0,0,1,0,1,0,0,0,1,0,0,0,-10,38,2020-01-18T14:12:57.014Z,SteveHusker,6,SteveHusker
+1234560,2019,post,3,Tennessee Titans,20,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,0,0,0,0,-11,51,2020-01-19T17:44:28.281Z,bridger,5,bridger
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,23,0,0,1,0,0,0,0,0,0,0,0,0,-6,40,2020-01-19T17:45:03.026Z,bridger,2,bridger
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,33,0,3,1,0,1,0,0,0,1,0,3,3,-9,57,2020-01-19T19:59:03.758Z,Facebook_10208710241577136,7,PaulCullin
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,34,0,0,1,0,1,0,0,0,1,0,0,0,-10,58,2020-01-19T18:31:15.392Z,Facebook_10154523075462819,7,JordanPeterson
+1234565,2019,post,3,Green Bay Packers,24,San Francisco 49ers,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2020-01-19T18:31:56.813Z,Facebook_10154523075462819,6,JordanPeterson
+1234560,2019,post,3,Tennessee Titans,30,Kansas City Chiefs,20,0,0,0,0,0,0,0,0,0,0,0,0,10,50,2020-01-17T23:37:36.304Z,cmaronchick-hotmail,0,CBSPetePrisco
+1234560,2019,post,3,Tennessee Titans,18,Kansas City Chiefs,32,0,0,1,0,1,0,0,0,0,0,0,0,-14,50,2020-01-17T23:41:05.476Z,cmaronchick-gmail,4,oddsshark
+1234565,2019,post,3,Green Bay Packers,27,San Francisco 49ers,26,0,0,0,0,0,0,0,0,1,0,0,0,1,53,2020-01-17T23:38:00.345Z,cmaronchick-hotmail,2,CBSPetePrisco
