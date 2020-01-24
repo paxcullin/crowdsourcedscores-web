@@ -721,6 +721,19 @@
         <pubDate>Thu, 16 Jan 2020 23:00:00 GMT</pubDate>
         <itunes:duration>58:14</itunes:duration>
       </item>
+      <item>
+        <title>2019 Season - Conference Championship Recap - Episode 23</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris take a moment to smell the roses, Four Roses whiskey that is, while recapping the dominant victories by the Chiefs and 49ers in the Conference Championships, and praise the crowd for a solid performance heading into the big game.</description>
+        <itunes:subtitle>Paul and Chris take a moment to smell the roses, Four Roses whiskey that is, while recapping the dominant victories by the Chiefs and 49ers in the Conference Championships, and praise the crowd for a solid performance heading into the big game.</itunes:subtitle>
+        <itunes:episode>51</itunes:episode>
+        <itunes:summary>Paul and Chris take a moment to smell the roses, Four Roses whiskey that is, while recapping the dominant victories by the Chiefs and 49ers in the Conference Championships, and praise the crowd for a solid performance heading into the big game.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode23.mp3" length="42:43" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode23.mp3</guid>
+        <pubDate>Thu, 23 Jan 2020 23:00:00 GMT</pubDate>
+        <itunes:duration>42:43</itunes:duration>
+      </item>
     
   </channel>
   </rss>
