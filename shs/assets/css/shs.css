@@ -49,6 +49,13 @@
             .compareDiv div {
                 margin: 0 10px;
             }
+
+            .playButtons {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
         }
 
         @media(max-width: 900px) {
@@ -56,6 +63,13 @@
                 display: flex;
                 flex-direction: column;
                 margin: 0 10%;
+            }
+            
+            .playButtons {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
             }
         } 
         .compareTableRow {
@@ -82,13 +96,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-        }
-
-        .playButtons {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center;
         }
         .playButton {
             display: flex;
