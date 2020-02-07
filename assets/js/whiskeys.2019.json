@@ -1,0 +1,34 @@
+{
+    "1": {
+        "week": 1,
+        "episode": 5,
+        "distiller": "Eagle Rare",
+        "bottle": "10 year Kentucky Straight Bourbon",
+        "ratings": {
+            "1": {
+                "rater": "Paul",
+                "stars": 4
+            },
+            "2": {
+                "rater": "Chris",
+                "stars": 4
+            }
+        }
+    },
+    "2": {
+        "week": 2,
+        "episode": 6,
+        "distiller": "Eagle Rare",
+        "bottle": "10 year Kentucky Straight Bourbon",
+        "ratings": {
+            "1": {
+                "rater": "Paul",
+                "stars": 4
+            },
+            "2": {
+                "rater": "Chris",
+                "stars": 4
+            }
+        }
+    }
+}
