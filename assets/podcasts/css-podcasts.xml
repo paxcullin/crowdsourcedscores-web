@@ -734,7 +734,6 @@
         <pubDate>Thu, 23 Jan 2020 23:00:00 GMT</pubDate>
         <itunes:duration>42:43</itunes:duration>
       </item>
-   
       <item>
         <title>2019 Season - Regular Season Recap Extravaganza - Episode 24</title>
         <itunes:author>Stakehouse Sports</itunes:author>
@@ -747,6 +746,19 @@
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode24.mp3</guid>
         <pubDate>Thu, 30 Jan 2020 23:00:00 GMT</pubDate>
         <itunes:duration>49:57</itunes:duration>
-      </item> 
+      </item>
+      <item>
+        <title>2019 Season - Game 267 - Episode 25</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris toast the end of an exciting season and riveting finale with some fine Johnnie Walker Blue and they say goodbye until next season.</description>
+        <itunes:subtitle>Paul and Chris toast the end of an exciting season and riveting finale with some fine Johnnie Walker Blue and they say goodbye until next season.</itunes:subtitle>
+        <itunes:episode>53</itunes:episode>
+        <itunes:summary>Paul and Chris toast the end of an exciting season and riveting finale with some fine Johnnie Walker Blue and they say goodbye until next season.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode25.mp3" length="37:47" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode25.mp3</guid>
+        <pubDate>Thu, 06 Feb 2020 23:00:00 GMT</pubDate>
+        <itunes:duration>37:47</itunes:duration>
+      </item>  
   </channel>
   </rss>
