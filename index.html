@@ -953,7 +953,7 @@
                 $prediction.find('.home-team-prediction input').val(homeTeamPredictionValue);
             })
             
-            if (gameId === 267) {
+            if ((gameId === 267) || ($prediction.attr('data-game-season') === "post" && parseInt($prediction.attr('data-game-week')) === 4)) {
                 if (parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val())) {                
                     prediction.awayTeam.periods = {
                         q1: parseInt($prediction.find('#' + gameId + '-away-team-q1-prediction').val()),

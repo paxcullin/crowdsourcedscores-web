@@ -1,0 +1,180 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+1232775,2019,post,1,Buffalo Bills,17,Houston Texans,20,3,0,1,0,1,0,3,3,1,0,0,0,-3,37,2020-01-03T02:29:46.466Z,cmaronchick,7,cmaronchick
+1232780,2019,post,1,Tennessee Titans,17,New England Patriots,28,3,3,0,0,0,0,3,-3,0,0,3,-3,-11,45,2020-01-03T05:41:43.383Z,cmaronchick,0,cmaronchick
+1232785,2019,post,1,Minnesota Vikings,14,New Orleans Saints,34,3,3,0,0,0,0,3,-3,1,0,3,3,-20,48,2020-01-05T08:36:49.368Z,cmaronchick,2,cmaronchick
+1232790,2019,post,1,Seattle Seahawks,24,Philadelphia Eagles,21,3,3,1,0,1,0,3,3,0,0,3,-3,3,45,2020-01-05T16:48:52.664Z,cmaronchick,4,cmaronchick
+1232775,2019,post,1,Buffalo Bills,20,Houston Texans,17,2,0,0,0,0,0,2,-2,1,0,0,0,3,37,2020-01-04T03:22:40.462Z,rosstuckerNFL,2,rosstuckerNFL
+1232780,2019,post,1,Tennessee Titans,20,New England Patriots,23,2,0,0,0,1,0,2,2,1,0,0,0,-3,43,2020-01-04T03:24:55.303Z,rosstuckerNFL,5,rosstuckerNFL
+1232785,2019,post,1,Minnesota Vikings,20,New Orleans Saints,27,1,0,0,0,1,0,1,1,1,0,0,0,-7,47,2020-01-04T03:25:31.661Z,rosstuckerNFL,4,rosstuckerNFL
+1232790,2019,post,1,Seattle Seahawks,20,Philadelphia Eagles,23,1,0,0,0,0,0,1,-1,1,0,0,0,-3,43,2020-01-04T03:28:41.521Z,rosstuckerNFL,2,rosstuckerNFL
+1232775,2019,post,1,Buffalo Bills,24,Houston Texans,28,3,1,1,0,1,0,3,3,0,0,1,-1,-4,52,2020-01-04T21:20:49.377Z,Facebook_10210894378652618,4,MichaelRaymond
+1232780,2019,post,1,Tennessee Titans,21,New England Patriots,28,2,2,0,0,0,0,2,-2,0,0,2,-2,-7,49,2020-01-04T21:20:59.637Z,Facebook_10210894378652618,0,MichaelRaymond
+1232785,2019,post,1,Minnesota Vikings,20,New Orleans Saints,27,1,0,0,0,1,0,1,1,1,0,0,0,-7,47,2020-01-04T21:19:52.018Z,Facebook_10210894378652618,4,MichaelRaymond
+1232790,2019,post,1,Seattle Seahawks,26,Philadelphia Eagles,23,1,2,1,0,1,0,1,1,0,0,2,-2,3,49,2020-01-04T21:20:10.357Z,Facebook_10210894378652618,4,MichaelRaymond
+1232780,2019,post,1,Tennessee Titans,24,New England Patriots,27,3,0,0,0,1,0,3,3,0,0,0,0,-3,51,2020-01-03T19:11:50.010Z,Facebook_10208710241577136,2,PaulCullin
+1232785,2019,post,1,Minnesota Vikings,24,New Orleans Saints,30,3,0,0,0,1,0,3,3,0,0,0,0,-6,54,2020-01-03T23:47:06.752Z,Facebook_10208710241577136,2,PaulCullin
+1232790,2019,post,1,Seattle Seahawks,24,Philadelphia Eagles,17,3,0,1,0,1,0,3,3,1,0,0,0,7,41,2020-01-05T21:17:33.353Z,Facebook_10208710241577136,6,PaulCullin
+1232775,2019,post,1,Buffalo Bills,17,Houston Texans,23,0,0,1,0,1,0,0,0,1,0,0,0,-6,40,2020-01-04T10:09:34.572Z,ausame,6,ausame
+1232780,2019,post,1,Tennessee Titans,20,New England Patriots,23,0,0,0,0,0,0,0,0,1,0,0,0,-3,43,2020-01-04T10:22:42.724Z,ausame,3,ausame
+1232785,2019,post,1,Minnesota Vikings,23,New Orleans Saints,27,3,3,0,0,1,0,3,3,0,0,3,-3,-4,50,2020-01-05T01:25:39.602Z,ausame,2,ausame
+1232790,2019,post,1,Seattle Seahawks,21,Philadelphia Eagles,23,3,3,0,0,0,0,3,-3,1,0,3,3,-2,44,2020-01-05T01:25:15.103Z,ausame,2,ausame
+1232780,2019,post,1,Tennessee Titans,24,New England Patriots,23,0,0,1,0,1,0,0,0,0,0,0,0,1,47,2020-01-04T14:48:07.192Z,cmaronchick-gmail,4,oddsshark
+1232790,2019,post,1,Seattle Seahawks,17,Philadelphia Eagles,31,0,0,0,0,0,0,0,0,0,0,0,0,-14,48,2020-01-04T14:48:22.312Z,cmaronchick-gmail,1,oddsshark
+1232790,2019,post,1,Seattle Seahawks,24,Philadelphia Eagles,23,0,0,1,0,0,0,0,0,0,0,0,0,1,47,2020-01-04T14:49:54.213Z,yardbarker,2,yardbarker
+1232785,2019,post,1,Minnesota Vikings,24,New Orleans Saints,38,0,0,0,0,0,0,0,0,0,0,0,0,-14,62,2020-01-04T14:50:04.292Z,yardbarker,0,yardbarker
+1232780,2019,post,1,Tennessee Titans,27,New England Patriots,24,0,0,1,0,1,0,0,0,0,0,0,0,3,51,2020-01-04T14:50:12.692Z,yardbarker,4,yardbarker
+1232775,2019,post,1,Buffalo Bills,20,Houston Texans,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2020-01-04T14:50:23.434Z,yardbarker,2,yardbarker
+1232775,2019,post,1,Buffalo Bills,24,Houston Texans,28,0,0,1,0,1,0,0,0,0,0,0,0,-4,52,2020-01-04T14:51:16.515Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1232780,2019,post,1,Tennessee Titans,30,New England Patriots,27,0,0,1,0,1,0,0,0,0,0,0,0,3,57,2020-01-04T14:51:25.313Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1232785,2019,post,1,Minnesota Vikings,27,New Orleans Saints,36,0,0,0,0,0,0,0,0,0,0,0,0,-9,63,2020-01-04T14:51:33.794Z,cmaronchick-yahoo,0,greggrosenthalNFL
+1232790,2019,post,1,Seattle Seahawks,23,Philadelphia Eagles,21,0,0,1,0,1,0,0,0,1,0,0,0,2,44,2020-01-04T14:51:42.090Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1232780,2019,post,1,Tennessee Titans,23,New England Patriots,27,0,0,0,0,1,0,0,0,0,0,0,0,-4,50,2020-01-04T14:53:05.015Z,vinnieiyer,2,vinnieiyer
+1232785,2019,post,1,Minnesota Vikings,17,New Orleans Saints,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2020-01-04T14:54:33.415Z,vinnieiyer,2,vinnieiyer
+1232790,2019,post,1,Seattle Seahawks,20,Philadelphia Eagles,17,0,0,1,0,1,0,0,0,1,0,0,0,3,37,2020-01-04T14:54:42.613Z,vinnieiyer,6,vinnieiyer
+1232775,2019,post,1,Buffalo Bills,24,Houston Texans,17,0,0,0,0,0,0,0,0,1,0,0,0,7,41,2020-01-04T14:54:52.728Z,vinnieiyer,3,vinnieiyer
+1232775,2019,post,1,Buffalo Bills,21,Houston Texans,24,0,0,1,0,1,0,0,0,0,0,0,0,-3,45,2020-01-04T19:55:33.109Z,Facebook_10211102991118165,5,NickJohn
+1232780,2019,post,1,Tennessee Titans,17,New England Patriots,20,3,0,0,0,1,0,3,3,1,0,0,0,-3,37,2020-01-04T19:56:50.989Z,Facebook_10211102991118165,4,NickJohn
+1232790,2019,post,1,Seattle Seahawks,20,Philadelphia Eagles,24,1,2,0,0,0,0,1,-1,1,0,2,2,-4,44,2020-01-05T20:13:31.595Z,Facebook_10211102991118165,2,NickJohn
+1232785,2019,post,1,Minnesota Vikings,24,New Orleans Saints,32,0,0,0,0,0,0,0,0,0,0,0,0,-8,56,2020-01-04T19:58:51.588Z,Facebook_10211102991118165,0,NickJohn
+1232775,2019,post,1,Buffalo Bills,24,Houston Texans,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2020-01-04T20:17:04.769Z,Facebook_10154523075462819,7,JordanPeterson
+1232780,2019,post,1,Tennessee Titans,17,New England Patriots,21,0,0,0,0,0,0,0,0,1,0,0,0,-4,38,2020-01-04T20:17:49.369Z,Facebook_10154523075462819,2,JordanPeterson
+1232785,2019,post,1,Minnesota Vikings,24,New Orleans Saints,31,0,0,0,0,0,0,0,0,1,0,0,0,-7,55,2020-01-04T20:18:12.107Z,Facebook_10154523075462819,2,JordanPeterson
+1232790,2019,post,1,Seattle Seahawks,21,Philadelphia Eagles,20,0,0,1,0,1,0,0,0,1,0,0,0,1,41,2020-01-04T20:18:56.768Z,Facebook_10154523075462819,6,JordanPeterson
+1232775,2019,post,1,Buffalo Bills,14,Houston Texans,19,0,0,1,0,1,0,0,0,1,0,0,0,-5,33,2020-01-04T21:00:32.041Z,Facebook_10101027129855723,6,AlexMurrey
+1232780,2019,post,1,Tennessee Titans,21,New England Patriots,24,0,0,0,0,1,0,0,0,0,0,0,0,-3,45,2020-01-04T21:00:59.402Z,Facebook_10101027129855723,2,AlexMurrey
+1232785,2019,post,1,Minnesota Vikings,30,New Orleans Saints,35,0,0,0,0,1,0,0,0,0,0,0,0,-5,65,2020-01-04T21:01:16.159Z,Facebook_10101027129855723,2,AlexMurrey
+1232790,2019,post,1,Seattle Seahawks,17,Philadelphia Eagles,10,0,0,1,0,1,0,0,0,1,0,0,0,7,27,2020-01-04T21:01:28.327Z,Facebook_10101027129855723,7,AlexMurrey
+1232775,2019,post,1,Buffalo Bills,27,Houston Texans,17,2,2,0,0,0,0,2,-2,0,0,2,-2,10,44,2020-01-04T21:26:15.978Z,chrisl777,0,ChrisLivdahl
+1232780,2019,post,1,Tennessee Titans,14,New England Patriots,31,3,1,0,0,0,0,3,-3,0,0,1,-1,-17,45,2020-01-04T21:46:23.865Z,chrisl777,0,chrisl777
+1232775,2019,post,1,Buffalo Bills,23,Houston Texans,17,3,3,0,0,0,0,3,-3,1,0,3,3,6,40,2020-01-04T21:27:54.673Z,Facebook_2328097410559627,2,GusDawson
+1232785,2019,post,1,Minnesota Vikings,20,New Orleans Saints,21,3,1,0,0,1,0,3,3,1,0,1,1,-1,41,2020-01-04T21:46:36.489Z,chrisl777,4,chrisl777
+1232780,2019,post,1,Tennessee Titans,28,New England Patriots,33,3,3,0,0,0,0,3,-3,1,0,3,3,-5,61,2020-01-04T21:27:57.107Z,Facebook_2328097410559627,2,GusDawson
+1232790,2019,post,1,Seattle Seahawks,23,Philadelphia Eagles,17,3,1,1,0,1,0,3,3,1,0,1,1,6,40,2020-01-04T21:47:00.064Z,chrisl777,6,chrisl777
+1232775,2019,post,1,Buffalo Bills,20,Houston Texans,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2020-01-03T19:12:58.148Z,Facebook_10208710241577136,7,PaulCullin
+1232775,2019,post,1,Buffalo Bills,10,Houston Texans,18,3,2,1,0,1,0,3,3,1,0,2,2,-8,28,2020-01-04T04:23:47.992Z,Facebook_10154993923975769,6,Wifey
+1232775,2019,post,1,Buffalo Bills,21,Houston Texans,23,0,0,1,0,0,0,0,0,0,0,0,0,-2,44,2020-01-04T14:47:58.555Z,cmaronchick-gmail,2,oddsshark
+1232775,2019,post,1,Buffalo Bills,20,Houston Texans,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2020-01-04T14:48:49.033Z,cmaronchick-hotmail,2,CBSPetePrisco
+1232780,2019,post,1,Tennessee Titans,28,New England Patriots,31,3,1,0,0,0,0,3,-3,1,0,1,1,-3,59,2020-01-04T04:24:03.132Z,Facebook_10154993923975769,2,Wifey
+1232780,2019,post,1,Tennessee Titans,19,New England Patriots,27,0,0,0,0,0,0,0,0,0,0,0,0,-8,46,2020-01-04T14:48:58.373Z,cmaronchick-hotmail,0,CBSPetePrisco
+1232785,2019,post,1,Minnesota Vikings,27,New Orleans Saints,30,0,0,0,0,1,0,0,0,0,0,0,0,-3,57,2020-01-03T05:01:36.381Z,Facebook_10154773754448953,2,BryanCole
+1232790,2019,post,1,Seattle Seahawks,28,Philadelphia Eagles,21,0,0,1,0,1,0,0,0,0,0,0,0,7,49,2020-01-03T05:01:36.381Z,Facebook_10154773754448953,4,BryanCole
+1232790,2019,post,1,Seattle Seahawks,26,Philadelphia Eagles,21,0,0,1,0,1,0,0,0,0,0,0,0,5,47,2020-01-05T18:42:24.179Z,bridger,4,bridger
+1232785,2019,post,1,Minnesota Vikings,12,New Orleans Saints,18,1,3,0,0,0,0,1,-1,1,0,3,3,-6,30,2020-01-04T04:24:17.371Z,Facebook_10154993923975769,2,Wifey
+1232785,2019,post,1,Minnesota Vikings,14,New Orleans Saints,33,0,0,0,0,0,0,0,0,1,0,0,0,-19,47,2020-01-04T14:48:13.532Z,cmaronchick-gmail,2,oddsshark
+1232785,2019,post,1,Minnesota Vikings,23,New Orleans Saints,33,0,0,0,0,0,0,0,0,0,0,0,0,-10,56,2020-01-04T14:49:05.292Z,cmaronchick-hotmail,0,CBSPetePrisco
+1232790,2019,post,1,Seattle Seahawks,27,Philadelphia Eagles,23,3,3,1,0,1,0,3,3,1,0,3,3,4,50,2020-01-04T04:25:52.372Z,Facebook_10154993923975769,6,Wifey
+1232790,2019,post,1,Seattle Seahawks,26,Philadelphia Eagles,20,0,0,1,0,1,0,0,0,0,0,0,0,6,46,2020-01-04T14:49:11.372Z,cmaronchick-hotmail,4,CBSPetePrisco
+1233884,2019,post,2,Minnesota Vikings,24,San Francisco 49ers,27,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,51,2020-01-11T05:14:14.032Z,cmaronchick,3,cmaronchick
+1233822,2019,post,2,Tennessee Titans,13,Baltimore Ravens,27,0,3,0,0,0,0,0,0,1,0,3,3,-14,40,2020-01-06T15:12:13.121Z,cmaronchick,3,cmaronchick
+1233827,2019,post,2,Houston Texans,27,Kansas City Chiefs,30,3,3,1,0,0,0,3,-3,1,0,3,3,-3,57,2020-01-06T15:12:33.150Z,cmaronchick,4,cmaronchick
+1233884,2019,post,2,Minnesota Vikings,20,San Francisco 49ers,27,1,2,1,0,1,0,1,1,0,0,2,-2,-7,47,2020-01-06T15:30:48.204Z,Facebook_10210894378652618,5,MichaelRaymond
+1233822,2019,post,2,Tennessee Titans,20,Baltimore Ravens,28,1,0,0,0,1,0,1,1,0,0,0,0,-8,48,2020-01-06T15:31:37.325Z,Facebook_10210894378652618,2,MichaelRaymond
+1233827,2019,post,2,Houston Texans,17,Kansas City Chiefs,28,0,0,1,0,1,0,0,0,0,0,0,0,-11,45,2020-01-06T15:31:53.443Z,Facebook_10210894378652618,4,MichaelRaymond
+1233912,2019,post,2,Seattle Seahawks,17,Green Bay Packers,24,0,0,1,0,1,0,0,0,0,0,0,0,-7,41,2020-01-12T21:19:28.742Z,Facebook_10208710241577136,4,PaulCullin
+1233827,2019,post,2,Houston Texans,24,Kansas City Chiefs,30,3,0,1,0,0,0,3,-3,1,0,0,0,-6,54,2020-01-09T02:48:33.121Z,Facebook_10208710241577136,4,PaulCullin
+1233822,2019,post,2,Tennessee Titans,20,Baltimore Ravens,24,3,0,0,0,1,0,3,3,1,0,0,0,-4,44,2020-01-06T16:40:05.535Z,Facebook_10208710241577136,4,PaulCullin
+1233884,2019,post,2,Minnesota Vikings,19,San Francisco 49ers,24,3,3,1,0,0,0,3,-3,1,0,3,3,-5,43,2020-01-10T23:32:33.268Z,Facebook_10208710241577136,4,PaulCullin
+1233912,2019,post,2,Seattle Seahawks,23,Green Bay Packers,20,3,3,0,0,0,0,3,-3,0,0,3,-3,3,43,2020-01-11T05:13:47.032Z,cmaronchick,1,cmaronchick
+1233884,2019,post,2,Minnesota Vikings,24,San Francisco 49ers,20,3,3,0,0,0,0,3,-3,1,0,3,3,4,44,2020-01-07T04:22:52.423Z,Facebook_10154773754448953,2,BryanCole
+1233822,2019,post,2,Tennessee Titans,20,Baltimore Ravens,34,3,3,0,0,0,0,3,-3,0,0,3,-3,-14,54,2020-01-07T04:23:16.781Z,Facebook_10154773754448953,0,BryanCole
+1233827,2019,post,2,Houston Texans,20,Kansas City Chiefs,31,3,0,1,0,1,0,3,3,1,0,0,0,-11,51,2020-01-07T04:24:08.721Z,Facebook_10154773754448953,6,BryanCole
+1233912,2019,post,2,Seattle Seahawks,27,Green Bay Packers,24,3,3,0,0,0,0,3,-3,1,0,3,3,3,51,2020-01-07T04:24:31.061Z,Facebook_10154773754448953,3,BryanCole
+1233912,2019,post,2,Seattle Seahawks,17,Green Bay Packers,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2020-01-08T21:10:36.187Z,Facebook_10210894378652618,2,MichaelRaymond
+1233884,2019,post,2,Minnesota Vikings,23,San Francisco 49ers,24,2,0,1,0,0,0,2,-2,0,0,0,0,-1,47,2020-01-11T00:27:25.393Z,rosstuckerNFL,2,rosstuckerNFL
+1233822,2019,post,2,Tennessee Titans,16,Baltimore Ravens,23,1,2,0,0,1,0,1,1,1,0,2,2,-7,39,2020-01-11T00:53:58.665Z,rosstuckerNFL,4,rosstuckerNFL
+1233827,2019,post,2,Houston Texans,14,Kansas City Chiefs,31,1,0,1,0,1,0,1,1,0,0,0,0,-17,45,2020-01-11T00:58:39.546Z,rosstuckerNFL,4,rosstuckerNFL
+1233884,2019,post,2,Minnesota Vikings,17,San Francisco 49ers,21,3,1,1,0,0,0,3,-3,1,0,1,1,-4,38,2020-01-09T23:23:56.841Z,chrisl777,4,chrisl777
+1233822,2019,post,2,Tennessee Titans,10,Baltimore Ravens,27,3,2,0,0,0,0,3,-3,1,0,2,2,-17,37,2020-01-09T23:24:17.845Z,chrisl777,2,chrisl777
+1233827,2019,post,2,Houston Texans,20,Kansas City Chiefs,21,1,3,1,0,0,0,1,-1,0,0,3,-3,-1,41,2020-01-09T23:24:35.042Z,chrisl777,2,chrisl777
+1233912,2019,post,2,Seattle Seahawks,17,Green Bay Packers,27,2,2,1,0,1,0,2,2,0,0,2,-2,-10,44,2020-01-09T23:25:16.543Z,chrisl777,4,chrisl777
+1233884,2019,post,2,Minnesota Vikings,27,San Francisco 49ers,24,0,0,0,0,0,0,0,0,0,0,0,0,3,51,2020-01-10T00:20:00.560Z,blair.neumann,0,blair.neumann
+1233822,2019,post,2,Tennessee Titans,17,Baltimore Ravens,34,0,0,0,0,0,0,0,0,0,0,0,0,-17,51,2020-01-10T00:20:16.600Z,blair.neumann,0,blair.neumann
+1233827,2019,post,2,Houston Texans,24,Kansas City Chiefs,28,0,0,1,0,0,0,0,0,1,0,0,0,-4,52,2020-01-10T00:20:39.838Z,blair.neumann,4,blair.neumann
+1233912,2019,post,2,Seattle Seahawks,22,Green Bay Packers,17,0,0,0,0,0,0,0,0,0,0,0,0,5,39,2020-01-10T00:20:53.298Z,blair.neumann,0,blair.neumann
+1233884,2019,post,2,Minnesota Vikings,18,San Francisco 49ers,30,2,2,1,0,1,0,2,2,0,0,2,-2,-12,48,2020-01-10T17:24:14.934Z,psmeyerlaw,4,psmeyerlaw
+1233822,2019,post,2,Tennessee Titans,14,Baltimore Ravens,32,3,3,0,0,0,0,3,-3,1,0,3,3,-18,46,2020-01-10T17:24:33.974Z,psmeyerlaw,2,psmeyerlaw
+1233827,2019,post,2,Houston Texans,22,Kansas City Chiefs,23,1,1,1,0,0,0,1,-1,0,0,1,-1,-1,45,2020-01-10T17:24:52.992Z,psmeyerlaw,2,psmeyerlaw
+1233912,2019,post,2,Seattle Seahawks,24,Green Bay Packers,22,1,1,0,0,0,0,1,-1,0,0,1,-1,2,46,2020-01-10T17:25:12.872Z,psmeyerlaw,0,psmeyerlaw
+1233912,2019,post,2,Seattle Seahawks,17,Green Bay Packers,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2020-01-11T01:01:56.487Z,rosstuckerNFL,2,rosstuckerNFL
+1233884,2019,post,2,Minnesota Vikings,20,San Francisco 49ers,26,0,0,1,0,1,0,0,0,1,0,0,0,-6,46,2020-01-11T05:15:18.631Z,Facebook_10154523075462819,6,JordanPeterson
+1233822,2019,post,2,Tennessee Titans,17,Baltimore Ravens,28,0,0,0,0,0,0,0,0,1,0,0,0,-11,45,2020-01-11T05:15:54.951Z,Facebook_10154523075462819,2,JordanPeterson
+1233827,2019,post,2,Houston Texans,17,Kansas City Chiefs,27,0,0,1,0,1,0,0,0,1,0,0,0,-10,44,2020-01-11T05:16:19.831Z,Facebook_10154523075462819,6,JordanPeterson
+1233912,2019,post,2,Seattle Seahawks,20,Green Bay Packers,19,0,0,0,0,0,0,0,0,1,0,0,0,1,39,2020-01-11T05:16:45.072Z,Facebook_10154523075462819,2,JordanPeterson
+1233884,2019,post,2,Minnesota Vikings,23,San Francisco 49ers,21,3,3,0,0,0,0,3,-3,1,0,3,3,2,44,2020-01-11T11:42:19.460Z,ausame,2,ausame
+1233822,2019,post,2,Tennessee Titans,23,Baltimore Ravens,21,3,3,1,0,1,0,3,3,1,0,3,3,2,44,2020-01-11T11:42:46.599Z,ausame,6,ausame
+1233827,2019,post,2,Houston Texans,24,Kansas City Chiefs,28,3,3,1,0,0,0,3,-3,1,0,3,3,-4,52,2020-01-12T12:16:05.131Z,ausame,4,ausame
+1233912,2019,post,2,Seattle Seahawks,24,Green Bay Packers,27,3,3,1,0,0,0,3,-3,1,0,3,3,-3,51,2020-01-11T11:43:29.698Z,ausame,5,ausame
+1233912,2019,post,2,Seattle Seahawks,21,Green Bay Packers,24,0,0,1,0,1,0,0,0,1,0,0,0,-3,45,2020-01-11T16:42:46.912Z,Facebook_2709767899114711,6,SethProkasky
+1233827,2019,post,2,Houston Texans,28,Kansas City Chiefs,35,0,0,1,0,1,0,0,0,1,0,0,0,-7,63,2020-01-11T16:42:59.132Z,Facebook_2709767899114711,6,SethProkasky
+1233822,2019,post,2,Tennessee Titans,24,Baltimore Ravens,27,0,0,0,0,0,0,0,0,1,0,0,0,-3,51,2020-01-11T16:43:57.470Z,Facebook_2709767899114711,2,SethProkasky
+1233884,2019,post,2,Minnesota Vikings,22,San Francisco 49ers,16,0,0,0,0,0,0,0,0,1,0,0,0,6,38,2020-01-11T16:44:24.851Z,Facebook_2709767899114711,2,SethProkasky
+1233884,2019,post,2,Minnesota Vikings,20,San Francisco 49ers,28,0,0,1,0,1,0,0,0,0,0,0,0,-8,48,2020-01-11T18:58:01.882Z,vinnieiyer,4,vinnieiyer
+1233822,2019,post,2,Tennessee Titans,17,Baltimore Ravens,30,0,0,0,0,0,0,0,0,0,0,0,0,-13,47,2020-01-11T18:58:07.881Z,vinnieiyer,0,vinnieiyer
+1233827,2019,post,2,Houston Texans,14,Kansas City Chiefs,27,0,0,1,0,1,0,0,0,0,0,0,0,-13,41,2020-01-11T18:58:16.942Z,vinnieiyer,4,vinnieiyer
+1233912,2019,post,2,Seattle Seahawks,27,Green Bay Packers,30,0,0,1,0,0,0,0,0,1,0,0,0,-3,57,2020-01-11T18:58:24.081Z,vinnieiyer,4,vinnieiyer
+1233884,2019,post,2,Minnesota Vikings,27,San Francisco 49ers,24,0,0,0,0,0,0,0,0,0,0,0,0,3,51,2020-01-11T19:03:13.906Z,yardbarker,0,yardbarker
+1233822,2019,post,2,Tennessee Titans,30,Baltimore Ravens,26,0,0,1,0,1,0,0,0,0,0,0,0,4,56,2020-01-11T19:03:26.446Z,yardbarker,4,yardbarker
+1233827,2019,post,2,Houston Texans,23,Kansas City Chiefs,30,0,0,1,0,0,0,0,0,1,0,0,0,-7,53,2020-01-11T19:03:39.703Z,yardbarker,4,yardbarker
+1233912,2019,post,2,Seattle Seahawks,16,Green Bay Packers,24,0,0,1,0,1,0,0,0,0,0,0,0,-8,40,2020-01-11T19:03:46.324Z,yardbarker,4,yardbarker
+1233884,2019,post,2,Minnesota Vikings,30,San Francisco 49ers,27,0,0,0,0,0,0,0,0,0,0,0,0,3,57,2020-01-11T19:05:08.786Z,cmaronchick-yahoo,1,greggrosenthalNFL
+1233822,2019,post,2,Tennessee Titans,27,Baltimore Ravens,35,0,0,0,0,1,0,0,0,0,0,0,0,-8,62,2020-01-11T19:05:19.063Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1233827,2019,post,2,Houston Texans,27,Kansas City Chiefs,37,0,0,1,0,1,0,0,0,1,0,0,0,-10,64,2020-01-11T19:05:25.123Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1233912,2019,post,2,Seattle Seahawks,20,Green Bay Packers,23,0,0,1,0,0,0,0,0,0,0,0,0,-3,43,2020-01-11T19:05:32.764Z,cmaronchick-yahoo,2,greggrosenthalNFL
+1233912,2019,post,2,Seattle Seahawks,15,Green Bay Packers,28,0,0,1,0,1,0,0,0,0,0,0,0,-13,43,2020-01-11T19:06:33.826Z,cmaronchick-gmail,5,oddsshark
+1233884,2019,post,2,Minnesota Vikings,21,San Francisco 49ers,24,0,0,1,0,0,0,0,0,0,0,0,0,-3,45,2020-01-11T19:19:42.912Z,Facebook_10211102991118165,2,NickJohn
+1233822,2019,post,2,Tennessee Titans,18,Baltimore Ravens,27,3,3,0,0,1,0,3,3,1,0,3,3,-9,45,2020-01-12T01:09:32.283Z,Facebook_10211102991118165,4,NickJohn
+1233884,2019,post,2,Minnesota Vikings,23,San Francisco 49ers,28,3,2,1,0,0,0,3,-3,0,0,2,-2,-5,51,2020-01-11T05:58:18.609Z,Facebook_10154993923975769,2,Wifey
+1233884,2019,post,2,Minnesota Vikings,16,San Francisco 49ers,29,0,0,1,0,1,0,0,0,0,0,0,0,-13,45,2020-01-11T19:06:13.865Z,cmaronchick-gmail,4,oddsshark
+1233884,2019,post,2,Minnesota Vikings,20,San Francisco 49ers,16,0,0,0,0,0,0,0,0,1,0,0,0,4,36,2020-01-11T19:07:33.084Z,cmaronchick-hotmail,2,CBSPetePrisco
+1233822,2019,post,2,Tennessee Titans,14,Baltimore Ravens,18,1,3,0,0,1,0,1,1,1,0,3,3,-4,32,2020-01-11T05:58:42.589Z,Facebook_10154993923975769,4,Wifey
+1233822,2019,post,2,Tennessee Titans,12,Baltimore Ravens,34,0,0,0,0,0,0,0,0,1,0,0,0,-22,46,2020-01-11T19:06:21.924Z,cmaronchick-gmail,2,oddsshark
+1233822,2019,post,2,Tennessee Titans,17,Baltimore Ravens,21,0,0,0,0,1,0,0,0,1,0,0,0,-4,38,2020-01-11T19:07:25.825Z,cmaronchick-hotmail,4,CBSPetePrisco
+1233827,2019,post,2,Houston Texans,14,Kansas City Chiefs,28,1,1,1,0,1,0,1,1,0,0,1,-1,-14,42,2020-01-11T05:59:07.148Z,Facebook_10154993923975769,4,Wifey
+1233827,2019,post,2,Houston Texans,12,Kansas City Chiefs,37,0,0,1,0,1,0,0,0,0,0,0,0,-25,49,2020-01-11T19:06:27.265Z,cmaronchick-gmail,4,oddsshark
+1233827,2019,post,2,Houston Texans,23,Kansas City Chiefs,33,0,0,1,0,1,0,0,0,1,0,0,0,-10,56,2020-01-11T19:07:50.006Z,cmaronchick-hotmail,6,CBSPetePrisco
+1233912,2019,post,2,Seattle Seahawks,15,Green Bay Packers,12,3,3,0,0,0,0,3,-3,0,0,3,-3,3,27,2020-01-11T05:59:39.109Z,Facebook_10154993923975769,0,Wifey
+1233912,2019,post,2,Seattle Seahawks,17,Green Bay Packers,24,0,0,1,0,1,0,0,0,0,0,0,0,-7,41,2020-01-11T19:07:54.984Z,cmaronchick-hotmail,4,CBSPetePrisco
+1234560,2019,post,3,Tennessee Titans,21,Kansas City Chiefs,31,2,2,1,0,1,0,2,2,0,0,2,-2,-10,52,2020-01-13T20:08:07.636Z,chrisl777,4,chrisl777
+1234565,2019,post,3,Green Bay Packers,14,San Francisco 49ers,21,2,2,1,0,0,0,2,-2,0,0,2,-2,-7,35,2020-01-13T20:08:22.477Z,chrisl777,2,chrisl777
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,51,2020-01-16T04:11:58.767Z,cmaronchick,3,cmaronchick
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,27,0,3,1,0,1,0,0,0,0,0,3,-3,-10,44,2020-01-17T17:09:06.204Z,cmaronchick,4,cmaronchick
+1234560,2019,post,3,Tennessee Titans,29,Kansas City Chiefs,23,3,3,0,0,0,0,3,-3,0,0,3,-3,6,52,2020-01-19T19:52:07.417Z,psmeyerlaw,0,psmeyerlaw
+1234565,2019,post,3,Green Bay Packers,38,San Francisco 49ers,23,2,2,0,0,0,0,2,-2,1,0,2,2,15,61,2020-01-19T19:52:33.152Z,psmeyerlaw,2,psmeyerlaw
+1234560,2019,post,3,Tennessee Titans,18,Kansas City Chiefs,26,2,0,1,0,1,0,2,2,0,0,0,0,-8,44,2020-01-14T07:18:37.567Z,Facebook_10156852744608694,4,BryanCasey
+1234565,2019,post,3,Green Bay Packers,22,San Francisco 49ers,20,1,0,0,0,0,0,1,-1,0,0,0,0,2,42,2020-01-14T07:19:02.946Z,Facebook_10156852744608694,0,BryanCasey
+1234565,2019,post,3,Green Bay Packers,20,San Francisco 49ers,24,3,3,1,0,0,0,3,-3,0,0,3,-3,-4,44,2020-01-19T19:58:43.776Z,Facebook_10208710241577136,3,PaulCullin
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,2,0,1,0,0,0,2,-2,0,0,0,0,-3,51,2020-01-17T18:59:12.650Z,rosstuckerNFL,3,rosstuckerNFL
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,20,2,0,1,0,0,0,2,-2,0,0,0,0,-3,37,2020-01-17T18:57:55.709Z,rosstuckerNFL,2,rosstuckerNFL
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,32,1,1,1,0,1,0,1,1,1,0,1,1,-8,56,2020-01-17T17:36:48.461Z,Facebook_10210894378652618,7,MichaelRaymond
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,31,0,0,1,0,1,0,0,0,1,0,0,0,-14,48,2020-01-17T17:37:09.962Z,Facebook_10210894378652618,6,MichaelRaymond
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,34,0,0,1,0,0,0,0,0,1,0,0,0,-7,61,2020-01-17T23:34:58.903Z,vinnieiyer,4,vinnieiyer
+1234565,2019,post,3,Green Bay Packers,24,San Francisco 49ers,42,0,0,1,0,1,0,0,0,1,0,0,0,-18,66,2020-01-17T23:35:08.380Z,vinnieiyer,6,vinnieiyer
+1234560,2019,post,3,Tennessee Titans,30,Kansas City Chiefs,28,0,0,0,0,0,0,0,0,1,0,0,0,2,58,2020-01-17T23:35:59.903Z,yardbarker,2,yardbarker
+1234565,2019,post,3,Green Bay Packers,28,San Francisco 49ers,27,0,0,0,0,0,0,0,0,1,0,0,0,1,55,2020-01-17T23:36:07.788Z,yardbarker,2,yardbarker
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,37,0,0,1,0,1,0,0,0,1,0,0,0,-10,64,2020-01-17T23:40:18.028Z,cmaronchick-yahoo,6,greggrosenthalNFL
+1234565,2019,post,3,Green Bay Packers,26,San Francisco 49ers,30,0,0,1,0,0,0,0,0,1,0,0,0,-4,56,2020-01-17T23:40:24.568Z,cmaronchick-yahoo,4,greggrosenthalNFL
+1234565,2019,post,3,Green Bay Packers,15,San Francisco 49ers,28,0,0,1,0,1,0,0,0,0,0,0,0,-13,43,2020-01-17T23:41:16.407Z,cmaronchick-gmail,4,oddsshark
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,28,3,3,1,0,0,0,3,-3,0,0,3,-3,-4,52,2020-01-18T03:54:13.468Z,Facebook_10154773754448953,3,BryanCole
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,28,3,3,1,0,1,0,3,3,0,0,3,-3,-11,45,2020-01-18T03:54:34.004Z,Facebook_10154773754448953,4,BryanCole
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,27,3,3,1,0,0,0,3,-3,0,0,3,-3,-3,51,2020-01-18T10:01:05.344Z,ausame,3,ausame
+1234565,2019,post,3,Green Bay Packers,22,San Francisco 49ers,23,3,3,1,0,0,0,3,-3,0,0,3,-3,-1,45,2020-01-18T10:01:10.585Z,ausame,2,ausame
+1234560,2019,post,3,Tennessee Titans,27,Kansas City Chiefs,35,0,0,1,0,1,0,0,0,1,0,0,0,-8,62,2020-01-18T14:11:41.587Z,SteveHusker,7,SteveHusker
+1234565,2019,post,3,Green Bay Packers,14,San Francisco 49ers,24,0,0,1,0,1,0,0,0,1,0,0,0,-10,38,2020-01-18T14:12:57.014Z,SteveHusker,6,SteveHusker
+1234560,2019,post,3,Tennessee Titans,20,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,0,0,0,0,-11,51,2020-01-19T17:44:28.281Z,bridger,5,bridger
+1234565,2019,post,3,Green Bay Packers,17,San Francisco 49ers,23,0,0,1,0,0,0,0,0,0,0,0,0,-6,40,2020-01-19T17:45:03.026Z,bridger,2,bridger
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,33,0,3,1,0,1,0,0,0,1,0,3,3,-9,57,2020-01-19T19:59:03.758Z,Facebook_10208710241577136,7,PaulCullin
+1234560,2019,post,3,Tennessee Titans,24,Kansas City Chiefs,34,0,0,1,0,1,0,0,0,1,0,0,0,-10,58,2020-01-19T18:31:15.392Z,Facebook_10154523075462819,7,JordanPeterson
+1234565,2019,post,3,Green Bay Packers,24,San Francisco 49ers,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2020-01-19T18:31:56.813Z,Facebook_10154523075462819,6,JordanPeterson
+1234560,2019,post,3,Tennessee Titans,30,Kansas City Chiefs,20,0,0,0,0,0,0,0,0,0,0,0,0,10,50,2020-01-17T23:37:36.304Z,cmaronchick-hotmail,0,CBSPetePrisco
+1234560,2019,post,3,Tennessee Titans,18,Kansas City Chiefs,32,0,0,1,0,1,0,0,0,0,0,0,0,-14,50,2020-01-17T23:41:05.476Z,cmaronchick-gmail,4,oddsshark
+1234565,2019,post,3,Green Bay Packers,27,San Francisco 49ers,26,0,0,0,0,0,0,0,0,1,0,0,0,1,53,2020-01-17T23:38:00.345Z,cmaronchick-hotmail,2,CBSPetePrisco
+1235067,2019,post,4,San Francisco 49ers,23,Kansas City Chiefs,20,3,3,0,0,0,0,3,-3,1,0,3,3,3,43,2020-02-02T21:04:04.597Z,cmaronchick,4,cmaronchick
+1235067,2019,post,4,San Francisco 49ers,31,Kansas City Chiefs,21,2,1,0,0,0,0,2,-2,1,0,1,1,10,52,2020-01-21T20:57:55.968Z,chrisl777,2,chrisl777
+1235067,2019,post,4,San Francisco 49ers,36,Kansas City Chiefs,33,3,3,0,0,0,0,3,-3,0,0,3,-3,3,69,2020-01-29T22:21:11.221Z,ausame,1,ausame
+1235067,2019,post,4,San Francisco 49ers,28,Kansas City Chiefs,24,3,0,0,0,0,0,3,-3,1,0,0,0,4,52,2020-02-02T22:24:09.998Z,Facebook_10208710241577136,3,PaulCullin
+1235067,2019,post,4,San Francisco 49ers,28,Kansas City Chiefs,34,2,2,1,0,1,0,2,2,0,0,2,-2,-6,62,2020-01-31T21:42:34.841Z,Facebook_10210894378652618,5,MichaelRaymond
+1235067,2019,post,4,San Francisco 49ers,38,Kansas City Chiefs,35,1,1,0,0,0,0,1,-1,0,0,1,-1,3,73,2020-02-01T00:27:33.572Z,rosstuckerNFL,0,rosstuckerNFL
+1235067,2019,post,4,San Francisco 49ers,28,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,1,0,0,0,-3,59,2020-02-02T03:00:08.600Z,Facebook_10154523075462819,7,JordanPeterson
+1235067,2019,post,4,San Francisco 49ers,28,Kansas City Chiefs,35,3,3,1,0,1,0,3,3,0,0,3,-3,-7,63,2020-02-02T17:21:25.426Z,Facebook_10154773754448953,6,BryanCole
+1235067,2019,post,4,San Francisco 49ers,19,Kansas City Chiefs,30,0,0,1,0,1,0,0,0,1,0,0,0,-11,49,2020-01-23T17:39:21.429Z,cmaronchick-gmail,7,oddsshark
+1235067,2019,post,4,San Francisco 49ers,28,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,0,0,0,0,-3,59,2020-02-02T21:57:05.120Z,Facebook_10155298489409129,5,ChrisAronchick
