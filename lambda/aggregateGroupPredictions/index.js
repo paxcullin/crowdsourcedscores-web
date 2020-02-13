@@ -5,230 +5,256 @@ var assert = require("assert"),
     Promise = require("bluebird"),
     mongo = Promise.promisifyAll(require("mongodb"));
 
+    const AWS = require('aws-sdk');
+    const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+
 const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
-(function() {
-  /**
-   * Decimal adjustment of a number.
-   *
-   * @param {String}  type  The type of adjustment.
-   * @param {Number}  value The number.
-   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
-   * @returns {Number} The adjusted value.
-   */
-  function decimalAdjust(type, value, exp) {
-    // If the exp is undefined or zero...
-    if (typeof exp === 'undefined' || +exp === 0) {
-      return Math[type](value);
-    }
-    value = +value;
-    exp = +exp;
-    // If the value is not a number or the exp is not an integer...
-    if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
-      return NaN;
-    }
-    // Shift
-    value = value.toString().split('e');
-    value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-    // Shift back
-    value = value.toString().split('e');
-    return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
-  }
+function calculatePercentage(totalCorrect, totalPushes, totalGames) {
+    var percentage = totalCorrect / (totalGames - totalPushes);
+    return percentage;
+}
 
-  // Decimal round
-  if (!Math.round10) {
-    Math.round10 = function(value, exp) {
-      return decimalAdjust('round', value, exp);
-    };
-  }
-  // Decimal floor
-  if (!Math.floor10) {
-    Math.floor10 = function(value, exp) {
-      return decimalAdjust('floor', value, exp);
-    };
-  }
-  // Decimal ceil
-  if (!Math.ceil10) {
-    Math.ceil10 = function(value, exp) {
-      return decimalAdjust('ceil', value, exp);
-    };
-  }
-})();
-
-exports.handler = (event, context) => {
+exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-
+    const sport = event.sport,
+        year = event.year,
+        season = event.season,
+        week = event.week;
     mongo.connect(MONGO_URL, function (err, db) {
-        
-        assert.equal(null, err);
-
         if (err) {
-            return context.done("connect error: " + err, null);
+            console.log(err);
+            return context.fail(err, null);
         }
-        db.collection('groups').find({year: 2018},{_id:false}).toArray(function(err, groups) {
+        var updateOverall = {};
+        var queryPromises = [];
+        var groupsCollection = db.collection('groups');
+        //var predictionCollection = db.collection()
+        groupsCollection.find({"year":2019, sport: sport}).toArray(function (err, groups) {
+            
             var groupsLength = groups.length;
+            assert.equal(err, null);
             if (err) {
-                console.log("err: ", err);
-                context.done("groups err: ", groups, null);
+                console.log(err);
+                return context.fail(err, null);
             }
             
-            var predictionsUpdated = 0;
-            _.each(groups, function(group) {
+            _.each(groups, function (group) {
                 
                 var aggOpts = [
                     {
-                        $unwind: "$groups"
+                        $unwind: "$predictions"
                     },
                     {
-                        $match: { 
-                            "groups.groupId": group.groupId
+                        $match: {
+                            "groupId": group.groupId
                         }
                     },
                     {
                         $group: {
-                            _id: {groupId: "$groups.groupId", gameId: "$gameId", year: "$year", gameWeek: "$gameWeek"},
-                            awayAvg: {$avg: "$awayTeam.score"},
-                            homeAvg: {$avg: "$homeTeam.score"},
-                            totalAvg: {$avg: "$total"},
-                            spreadAvg: {$avg: "$spread"}
+                            _id: { groupId: "$groupId", gameWeek: "$predictions.gameWeek", "season": "$predictions.season" }, /*, gameId: "$predictions.gameId" */
+                            suCorrect: {$sum: "$predictions.results.winner.correct"},
+                            suPush: {$sum: "$predictions.results.winner.push"},
+                            atsCorrect: {$sum: "$predictions.results.spread.correct"},
+                            atsPush: {$sum: "$predictions.results.spread.push"},
+                            totalCorrect: {$sum: "$predictions.results.total.correct"},
+                            totalPush: {$sum: "$predictions.results.total.push"},
+                            predictionScore: {$sum: "$predictions.results.predictionScore"},
+                            totalPredictions: {$sum: 1}
                         }
                     }
-                    
                 ];
-                //Get Today's Date to set criteria
-                var startDate = new Date(); // this is the starting date that looks like ISODate("2014-10-03T04:00:00.188Z")
-        
-                startDate.setSeconds(0);
-                startDate.setHours(0);
-                startDate.setMinutes(0);
                 
-                var dateMidnight = new Date(startDate);
-                dateMidnight.setHours(23);
-                dateMidnight.setMinutes(59);
-                dateMidnight.setSeconds(59);
-                //console.log("aggOpts: ", aggOpts)
-                db.collection('predictions').aggregate(aggOpts).toArray(function (err, results) {
                     
-                    assert.equal(err, null);
+                //console.log("aggOpts: ", aggOpts);
+                groupsCollection.aggregate(aggOpts).toArray(function (err, results) {
                     if (err) {
-                        console.log(err);
-                        return context.fail("aggregate err: " + err, null);
+                        context.done("agg err: ", err);
                     }
-                    
-        
-                    var queryPromises = [];
-                    var resultsLength = results.length;
-                    if (results.length === 0) {
+                    console.log("results: ", results.length);
+                    if (resultsArrayLength === 0) {
                         groupsLength--;
                     }
-                    results.sort(function(a,b) {
-                        if (a.gameId > b.gameId) { return 1; }
-                        if (a.gameId < b.gameId) { return -1; }
-                        return 0;
-                    })
-                    _.each(results, function (result) {
-                        //console.log("result: ", result)
-                        // criteria updated to update crowd predictions only when games are in the future
-                        //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
+                    let seasonResults = results.filter(result => result._id.season === season)
+                    var resultsArrayLength = seasonResults.length;
+                    console.log({results: seasonResults.length});
+                    _.each(seasonResults, function(result) {
+                        
+                        console.log("result: ", JSON.stringify(result));
                         var criteria = {
-                            groupId: group.groupId,
+                            groupId: result._id.groupId,
+                            sport: group.sport,
                             year: group.year,
-                            sport: group.sport
+                            [`results.${sport}.${year}.${season}.weekly`]: {
+                                $elemMatch: { gameWeek: result._id.gameWeek }
+                            }
                         };
-                        // ,
-                        //     predictions: { $elemMatch: { gameId: result._id.gameId, year: result._id.year } }
-                        //console.log("criteria: ", criteria)
-                        var awayAvg = Math.round10(result.awayAvg, -2)
-                        var homeAvg = Math.round10(result.homeAvg, -2)
-                        var totalAvg = Math.round10(result.totalAvg, -2)
-                        var spreadAvg = Math.round10(result.spreadAvg, -2)
-                        var crowdResult = {};
-                        //var predictionIndex = group.predictions.findIndex(o => o.gameId === result._id.gameId);
+                        
                         var update = {
-                            $pull: {
-                                    predictions: {
-                                        gameId: result._id.gameId,
-                                        year: result._id.year,
-                                        gameWeek: result._id.gameWeek
-                                    }
+                            $set: {
+                                [`results.${sport}.${year}.${season}.weekly.$`]: {
+                                    gameWeek: result._id.gameWeek,
+                                    season: season,
+                                    winner: {
+                                        correct: result.suCorrect,
+                                        push: result.suPush
+                                    },
+                                    spread: {
+                                        correct: result.atsCorrect,
+                                        push: result.atsPush
+                                    },
+                                    total: {
+                                        correct: result.totalCorrect,
+                                        push: result.totalPush
+                                    },
+                                    predictionScore: result.predictionScore,
+                                    totalPredictions: result.totalPredictions
+                                }
                             }
                         }
-                        // ,
-                        //                 "predictions.$.awayTeam": { score: awayAvg},
-                        //                 "predictions.$.homeTeam": { score: homeAvg},
-                        //                 "predictions.$.total": totalAvg,
-                        //                 "predictions.$.spread": spreadAvg
+                        var arrayFilter = {
+                            arrayFilters: [ { "element.gameWeek": result._id.gameWeek } ]
+                        }
                         
-                        //var queryPromise = 
-                        db.collection('groups').update(criteria, update)
+                        // console.log("criteria: ", criteria);
+                        // console.log("update: ", update);
+                        groupsCollection.updateOne(criteria, update)
                         .then(function (updateResult) {
-                            var updateRespObj = JSON.parse(updateResult);
-                            console.log('updateResult: ', updateResult.result);
-                            // if (updateRespObj.nModified === 1) {
-                            //     predictionsUpdated++;
-                            //     var message = `{ groupId: ${group.groupId}, gameId: ${result._id.gameId}, year: ${result._id.year}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg}, predictionsUpdated: ${predictionsUpdated} }`
-                            //     console.log("predictionUpdated! ", message)
-                            //     //console.log('Updated crowd predictions', message);
-                            //     resultsLength--;
-                            //     console.log('resultsLength: ', resultsLength)
-                            //     if (resultsLength === 0) {
-                            //         groupsLength--;
-                            //         console.log("groupsLength: ", groupsLength)
-                            //         if (groupsLength === 0) {
-                            //             context.done(null, groups.length + " groups updated")
-                            //         }
-                            //     }
-                            //     return Promise.resolve(updateResult);
-                            // } else {
-                                    
-                            // }
-                            var pushCriteria = {
-                                        groupId: group.groupId,
-                                        year: group.year,
-                                        sport: group.sport
-                                    };
+                            var respObj = JSON.parse(updateResult)
+                            //console.log("updateResult: ", respObj)
                             
-                                    var pushUpdate = {
-                                        $push: {
-                                            predictions: {
-                                                gameId: result._id.gameId,
-                                                year: result._id.year,
-                                                gameWeek: result._id.gameWeek,
-                                                awayTeam: { score: awayAvg},
-                                                homeTeam: { score: homeAvg},
-                                                total: totalAvg,
-                                                spread: spreadAvg
-                                            }
+                            var message = `{ update: ${JSON.stringify(updateResult)} }`
+                            //console.log("updateResult.nModified: ", respObj.nModified)
+                            if (respObj && respObj.nModified === 1) {
+                                message = updateResult.nModified;
+                                resultsArrayLength--;
+                                console.log({resultsArrayLength})
+                                if (resultsArrayLength === 0) {
+                                    groupsLength--;
+                                    if (groupsLength === 0) {
+                                        
+                                      var calculateIndividualCrowdPerformanceOverallParams = {
+                                          FunctionName: 'calculateIndividualCrowdPerformaceOverall', // the lambda function we are going to invoke
+                                          InvocationType: 'Event',
+                                          LogType: 'None',
+                                          Payload: `{ "message": "calculateIndividualCrowdPerformance completed", "sport": "${sport}", "season": "${season}", "year": ${year}}`
+                                        };
+                                      // 
+                                        lambda.invoke(calculateIndividualCrowdPerformanceOverallParams, function(err, data) {
+                                          if (err) {
+                                            console.log("calculateIndividualCrowdPerformanceOverall err: ", err);
+                                          } else {
+                                            console.log('calculateIndividualCrowdPerformanceOverall response: ', data.Payload);
+                                            
+                                            
+                                                return context.done(null, "Crowds updated");
+                                          }
+                                        })
+                                    }
+                                }
+                                
+                            } else if (respObj.n === 0 && respObj.nModified === 0) {
+                                
+                                var addToSetCriteria = {
+                                    groupId: result._id.groupId,
+                                    sport: group.sport,
+                                    year: group.year
+                                }
+                                
+                                var addToSetUpdate = {
+                                    $push: {
+                                        [`results.${sport}.${year}.${season}.weekly`]: {
+                                            gameWeek: result._id.gameWeek,
+                                            winner: {
+                                                correct: result.suCorrect,
+                                                push: result.suPush
+                                            },
+                                            spread: {
+                                                correct: result.atsCorrect,
+                                                push: result.atsPush
+                                            },
+                                            total: {
+                                                correct: result.totalCorrect,
+                                                push: result.totalPush
+                                            },
+                                            predictionScore: result.predictionScore,
+                                            totalPredictions: result.totalPredictions
                                         }
                                     }
-                                    db.collection('groups').update(pushCriteria, pushUpdate)
-                                    .then(function(updateResult2) {
-                                        console.log("prediction added! ", updateResult2.result);
-                                        
-                                        resultsLength--;
-                                        console.log('resultsLength: ', resultsLength)
-                                        if (resultsLength === 0) {
-                                            groupsLength--;
-                                            console.log("groupsLength: ", groupsLength)
-                                            if (groupsLength === 0) {
-                                                context.done(null, groups.length + " groups updated")
-                                            }
-                                        }
-                                        return Promise.resolve(updateResult2);
-                                    });
-                        });
+                                }
                             
+                                groupsCollection.updateOne(addToSetCriteria, addToSetUpdate)
+                                .then(function(addToSetResponse) {
+                                    //var respObj = JSON.parse(addToSetResponse)
+                                    console.log("addToSet Reponse: ", addToSetResponse);
+                                    
+                                            //console.log("result updated: ", respObj.nModified);
+                                            resultsArrayLength--;
+                                            console.log({resultsArrayLength});
+                                            if (resultsArrayLength === 0) {
+                                                groupsLength--;
+                                                if (groupsLength === 0) {
+                                        
+                                      var calculateIndividualCrowdPerformanceOverallParams = {
+                                          FunctionName: 'calculateIndividualCrowdPerformaceOverall', // the lambda function we are going to invoke
+                                          InvocationType: 'Event',
+                                          LogType: 'None',
+                                          Payload: `{ "message": "calculateIndividualCrowdPerformance completed", "sport": "${sport}", "season": "${season}", "year": ${year}}`
+                                        };
+                                      // 
+                                        lambda.invoke(calculateIndividualCrowdPerformanceOverallParams, function(err, data) {
+                                          if (err) {
+                                            console.log("calculateIndividualCrowdPerformanceOverall err: ", err);
+                                          } else {
+                                            console.log('calculateIndividualCrowdPerformanceOverall response: ', data.Payload);
+                                            
+                                            
+                                                return context.done(null, "Crowds updated");
+                                          }
+                                        })
+                                                }
+                                            }
+                                            return Promise.resolve(updateResult);
+                                })
+                                .catch(function(addToSetReject) {
+                                    console.log("addToSetReject: ", addToSetReject)
+                                });// close addToSet function
+                            } else {
+                                console.log("no update required for ", group.groupName, " gameWeek ", result._id.gameWeek);
+                                resultsArrayLength--;
+                                console.log({resultsArrayLength})
+                                if (resultsArrayLength === 0) {
+                                    groupsLength--;
+                                    if (groupsLength === 0) {
+                                      // 
+                                      var calculateIndividualCrowdPerformanceOverallParams = {
+                                          FunctionName: 'calculateIndividualCrowdPerformaceOverall', // the lambda function we are going to invoke
+                                          InvocationType: 'Event',
+                                          LogType: 'None',
+                                          Payload: `{ "message": "calculateIndividualCrowdPerformance completed", "sport": "${sport}", "season": "${season}", "year": ${year}}`
+                                        };
+                                        lambda.invoke(calculateIndividualCrowdPerformanceOverallParams, function(err, data) {
+                                          if (err) {
+                                            console.log("calculateIndividualCrowdPerformanceOverall err: ", err);
+                                          } else {
+                                            console.log('calculateIndividualCrowdPerformanceOverall response: ', data.Payload);
+                                            
+                                            
+                                                return context.done(null, "Crowds updated");
+                                          }
+                                        })
+                                    }
+                                }
                                 
-                        //queryPromises.push(Promise.resolve(queryPromise));
-                    }); // ends _.each aggregate result
-                            console.log("queryPromises: ", queryPromises.length, " for group ", group.groupName)
-                        // Promise.all(queryPromises).then(function(response) {
-                        //     // var message = `{ gameId: ${result._id}, year: ${_.year}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg} }`
-                        //     return context.done(null, "groups updated: ", response);
-                        // });
-                }); // close aggregate results function
-                
-            }); // close _.each group function
-        }); // close _.each group
+                            }
+                        })
+                        .catch(function(reject) {
+                            console.log("reject: ", reject)
+                        });
+                    }); // close _.each result loop
+                }); // close aggregate function
+            }); // end _.each
+            
+        })
     });
 };
