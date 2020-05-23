@@ -114,8 +114,17 @@ function getTotalResult(game, gameOdds, gamePrediction) {
 
 
 exports.handler = (event, context) => {
-    // console.log('Received event:', JSON.stringify(event, null, 2));
-
+    console.log('Received event:', JSON.stringify(event, null, 2));
+    console.log(`event.Records: ${event.Records}`);
+    console.log(`event.Records[0]: ${event.Records[0]}`)
+    const record = event.Records[0]
+    const gameId = record.Sns.MessageAttributes.gameId ? parseInt(record.Sns.MessageAttributes.gameId.Value) : null,
+        year = parseInt(record.Sns.MessageAttributes.year.Value),
+        season = record.Sns.MessageAttributes.season.Value,
+        gameWeek = record.Sns.MessageAttributes.gameWeek ? parseInt(record.Sns.MessageAttributes.gameWeek.Value) : null,
+        sport = record.Sns.MessageAttributes.sport.Value;
+    
+    
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
         if(err) {
@@ -154,7 +163,15 @@ exports.handler = (event, context) => {
         var totalCorrect = 0;
         var predictionScore = 0;
         var collection = db.collection('games');
-        collection.find({year:2018, results: {$exists: true}}, {_id: false}).toArray(function(err, games) {
+        console.log({year:year, season: season, gameWeek: gameWeek, gameId: gameId})
+        let criteria = {year:year, season: season, results: {$exists: true}}
+        if (gameWeek) {
+            criteria.gameWeek = gameWeek
+        }
+        if (gameId) {
+            criteria.gameId = gameId
+        }
+        collection.find(criteria, {_id: false}).toArray(function(err, games) {
             assert.equal(err, null);
             if(err) {
                 context.done(err, null);
@@ -164,15 +181,18 @@ exports.handler = (event, context) => {
                 if (a.gameId < b.gameId) return -1
             })
             // Get Groups
-            db.collection('groups').find({year:2018, sport: "nfl", results: { $exists: true } }).toArray(function (err, groups) {
+            db.collection('groups').find({year:2019, sport: sport }).toArray(function (err, groups) {
                 // console.log("predictions.length: ", predictions);
                 assert.equal(err, null);
                 if (err) {
                     context.fail(err, null);
                 }
+                if (!groups || groups.length === 0) {
+                    context.done(null, { message: 'FAIL', message: 'No groups found'})
+                }
                 var queryPromises = [];
                 var groupsLength = groups.length;
-                groups.forEach(function(groupInfo) {
+                groups.forEach(function(groupInfo, index) {
                     
                     //console.log("groupInfo.predictions: ", groupInfo.predictions)
                     //console.log("groupInfo.predictions.length: ", groupInfo.predictions.length)
@@ -186,7 +206,7 @@ exports.handler = (event, context) => {
                             });
                             var game = gamePredictionFilter[0];
                             
-                            //console.log("game: ", game);
+                            // console.log("game: ", game);
                             // console.log("game.results:", game.results);
                             // console.log("game.startDateTime: ", game.startDateTime);
                             if(game && Date.parse(game.startDateTime) < Date.now()) {
@@ -219,6 +239,7 @@ exports.handler = (event, context) => {
                                         sport: groupInfo.sport,
                                         predictions: { $elemMatch: { gameId: prediction.gameId, year: prediction.year } }
                                     };
+                                    console.log({criteria: JSON.stringify(criteria)})
                                     //var existingObjQuery = {groupId: groupInfo.groupId, sport: groupInfo.sport, year: groupInfo.year};
                                     //var gameIndex = groupInfo.predictions.findIndex(o => o.gameId === prediction.gameId);
                                     
@@ -239,8 +260,7 @@ exports.handler = (event, context) => {
                                     //update prediction with results for userId and gameId combo
                                     //console.log("update: ", JSON.stringify(update))
                                     //updatePrediction(criteria, update);
-                                    var queryPromise = db.collection('groups').updateOne(criteria, update);
-                                    queryPromises.push(Promise.resolve(queryPromise));
+                                    queryPromises.push(db.collection('groups').updateOne(criteria, update));
                     
                             } else {
                                 // console.log("No matched prediction");
@@ -250,15 +270,18 @@ exports.handler = (event, context) => {
                     } else {
                         //console.log("no predictions for ", groupInfo.groupName)
                     }
-                    groupsLength--;
-                    if (groupsLength === 0) {
-                        Promise.all(queryPromises).then(function(response) {
+                    console.log({index, groupsLength: groups.length})
+                    if (index === (groups.length - 1)) {
+                        console.log({queryPromises: Promise.all(queryPromises)})
+                        Promise.all(queryPromises)
+                        .then((response) => {
+                            console.log({promiseResponse: response})
                         // var message = `{ gameId: ${result._id}, year: ${_.year}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg} }`
                             var calculateIndividualCrowdPerformanceParams = {
                                   FunctionName: 'calculateIndividualCrowdPerformance', // the lambda function we are going to invoke
                                   InvocationType: 'Event',
                                   LogType: 'None',
-                                  Payload: '{ "message": "calculateGroupPerformace completed", "sport": "nfl", "year": 2018}'
+                                  Payload: `{ "message": "calculateGroupPerformance completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameId": ${gameId}, "gameWeek": ${gameWeek}}`
                                 };
                               // 
                             lambda.invoke(calculateIndividualCrowdPerformanceParams, function(err, data) {
@@ -271,6 +294,9 @@ exports.handler = (event, context) => {
                                 context.done(null, "groups updated: ", response);
                               }
                             });
+                        }).catch(promiseRejection => {
+                            console.log({promiseRejection})
+                            context.fail(promiseRejection, null)
                         });
                     }
                 });

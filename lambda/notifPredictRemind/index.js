@@ -20,7 +20,7 @@ const AWS = require('aws-sdk'),
     //     /* more items */
     // ]
     },
-    lambda = new AWS.Lambda();;
+    lambda = new AWS.Lambda();
 var optInUsers = [];
 
 let resolves = 1;
@@ -110,12 +110,12 @@ exports.handler = (event, context, callback) => {
                         console.error(`Push token ${pushToken} is not a valid Expo push token`);
                         continue;
                     }
-        
+                    
                     // Construct a message (see https://docs.expo.io/versions/latest/guides/push-notifications.html)
                     messages.push({
                         to: pushToken,
                         sound: 'default',
-                        body: `Week ${gameWeek.week} kicks off tonight at 8:20 pm ET when the Bucs square off against the Panthers. This is your friendly reminder to have your prediction and stakes completed before kickoff!`,
+                        body: `The big game is just days away! We added quarter-by-quarter predictions so that you can earn bonus points and take home the weekly title.`,
                         data: { withSome: 'data' },
                     })
                 }

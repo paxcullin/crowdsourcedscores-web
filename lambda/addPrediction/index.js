@@ -22,7 +22,7 @@ const requestSchema = {
                 "code": {"type": "string"},
                 "fullName": {"type": "string"},
                 "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 50}
+                "score": {"type": "integer", "minimum": 0, "maximum": 99}
             },
             "required": ["code", "fullName", "shortName", "score"]
         },
@@ -32,7 +32,35 @@ const requestSchema = {
                 "code": {"type": "string"},
                 "fullName": {"type": "string"},
                 "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 50}
+                "score": {"type": "integer", "minimum": 0, "maximum": 99}
+            },
+            "required": ["code", "fullName", "shortName", "score"]
+        }
+    },
+    "required": ["gameId", "awayTeam", "homeTeam"]
+};
+const requestSchemaNCAAM = {
+    "type": "object",
+    "properties": {
+        "gameId": {"type": "integer"},
+        "year": {"type": "integer"},
+        "awayTeam": {
+            "type": "object",
+            "properties": {
+                "code": {"type": "string"},
+                "fullName": {"type": "string"},
+                "shortName": {"type": "string"},
+                "score": {"type": "integer", "minimum": 0, "maximum": 150}
+            },
+            "required": ["code", "fullName", "shortName", "score"]
+        },
+        "homeTeam": {
+            "type": "object",
+            "properties": {
+                "code": {"type": "string"},
+                "fullName": {"type": "string"},
+                "shortName": {"type": "string"},
+                "score": {"type": "integer", "minimum": 0, "maximum": 150}
             },
             "required": ["code", "fullName", "shortName", "score"]
         }
@@ -144,14 +172,18 @@ function createTopic(topicName, cb) {
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-
     var result = {
         message: '',
         succeeded: true
     };
 
     var prediction = event;
-    var validateRequest = validate(prediction, requestSchema);
+    
+    if (!prediction.userId || prediction.userId === "") {
+        context.done(null, { succeeded: false})
+    }
+    var validateRequest;
+    (event.sport !== 'ncaam') ? validateRequest = validate(prediction, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
     if (validateRequest.errors && validateRequest.errors.length > 0) {
         result.message = 'Invalid request error(s)';
         result.errors = [];
@@ -166,8 +198,7 @@ exports.handler = (event, context) => {
     // prediction.spread = diff < 0 ? -1 * (diff) : diff;
     prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
     prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
-    prediction.submitted = new Date().toISOString();
-    prediction.year = 2018;
+    prediction.submitted = new Date();
 
     mongo.connect(MONGO_URL, function (err, db) {
         assert.equal(null, err);
@@ -177,11 +208,22 @@ exports.handler = (event, context) => {
         }
 
         // first make sure the prediction is not too late
-        // deadline is 1hr prior to kickoff
-        const msHour = 3600000;
+        // deadline is 5 min prior to kickoff
+        const msHour = 300000;
         
-
-        db.collection('games').findOne({"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year), "gameWeek": parseInt(prediction.gameWeek)}, {_id: false}, function (err, game) {
+        const { gameId, year, gameWeek, season } = prediction
+        
+        var gamesCollection = 'games';
+        var gamesQuery = {"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year), "gameWeek": parseInt(prediction.gameWeek)};
+        if (prediction.sport === 'ncaaf') {
+            gamesCollection = 'games-ncaaf';
+        } else if (prediction.sport === 'ncaam') {
+            gamesCollection = 'games-ncaam';
+            gamesQuery = {"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year)};
+        }
+        console.log('gamesQuery: ', gamesQuery)
+        db.collection(gamesCollection).findOne(gamesQuery, {_id: false}, function (err, game) {
+            
             assert.equal(err, null);
             if (err) {
                 context.fail(err, null);
@@ -203,7 +245,7 @@ exports.handler = (event, context) => {
 
             var existingObjQuery = {userId: prediction.userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
             
-            //get user groups
+            //get user groups in order to add groups to predictions for scoring
             
             db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1}).toArray(function(err, groups) {
                 console.log("user groups: ", groups)
@@ -217,7 +259,14 @@ exports.handler = (event, context) => {
             
                 // update existing if prediction exists for userId and gameId combo
                 // else treat as new prediction and add to collection
-                db.collection('predictions').update(existingObjQuery, prediction, {upsert: true}, function (err, dbRes) {
+                
+                var predictionCollection = 'predictions';
+                if (prediction.sport === 'ncaaf') {
+                    predictionCollection = 'predictions-ncaaf';
+                } else if (prediction.sport === 'ncaam') {
+                    predictionCollection = 'predictions-ncaam';
+                }
+                db.collection(predictionCollection).update(existingObjQuery, prediction, {upsert: true}, function (err, dbRes) {
                     var respObj = JSON.parse(dbRes);
     
                     assert.equal(err, null);
@@ -228,44 +277,85 @@ exports.handler = (event, context) => {
                         result.succeeded = false;
                         return context.fail(JSON.stringify(result));
                     }
-    
-                    result.data = prediction;
+                    
+                    
+                    
+                    result.game = game;
+                    if (game.weather) {
+                        result.game.weather.temp = Math.round((game.weather.temp * 1.8) - 459.67);
+                    }
+                    result.prediction = prediction;
                     if (respObj.upserted) {
                         result.updated = false;
                     } else {
                         result.updated = true;
                     }
+                    result.succeeded = true;
                     result.message = 'Prediction saved';
+                    console.log('result: ', result);
     
-                    // var lambdaParams = {
-                    //     FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
-                    //     InvocationType: 'RequestResponse',
-                    //     LogType: 'Tail',
-                    //     Payload: '{ "username": "' + event.userId + '", ' + prediction + '}'
-                    //   };
+                    var lambdaParams = {
+                        FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
+                        InvocationType: 'RequestResponse',
+                        LogType: 'Tail',
+                        Payload: '{ "username": "' + event.userId + '", ' + prediction + '}'
+                      };
                     
-                    //   lambda.invoke(lambdaParams, function(err, data) {
-                    //     if (err) {
-                    //       context.fail(err);
-                    //     } else {
-                    //       context.succeed('Lambda_B said '+ data.Payload);
-                    //     }
-                    //   })
-                    db.collection('predictions').find({userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek}, {_id:false}).toArray(function(err, predictions) {
+                      lambda.invoke(lambdaParams, function(err, data) {
+                        if (err) {
+                          context.fail(err);
+                        } else {
+                          context.succeed('Lambda_B said '+ data.Payload);
+                        }
+                      })
+                    var predictionsQuery = {userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
+                    if (prediction.sport === 'ncaam') {
+                        predictionsQuery = {userId: prediction.userId, year: prediction.year}
+                    }
+                    db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray(function(err, predictions) {
                         if (err) {
                             return context.done(null, result);
                         }
                         
                         result.predictionsSubmitted = predictions.length;
+                        let starsSubmitted = 0;
+                        predictions.forEach((prediction, index) => {
+                            if (prediction.stars && ((prediction.stars.spread > 0) || (prediction.stars.total > 0))) {
+                                starsSubmitted++;
+                                console.log(`prediction.stars: ${JSON.stringify(prediction.stars)}, ${starsSubmitted}`)
+                            }
+                        })
+                        result.predictionsSubmittedStars = starsSubmitted;
+                        if (prediction.collegeBowlPremium !== '1' && prediction.sport === 'ncaaf') {
+                            result.crowd = null;
+                        }
                         
                         
-                        // create/get topic
+                        // kick off new aggregation calculation
                         
                         var sns = new AWS.SNS();
                         var params = {
-                            Message: "Prediction submitted by " + event.userId, 
+                            Message: "Prediction for game " + prediction.gameId + " submitted by " + event.userId, 
                             Subject: "Prediction Submitted",
-                            TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted"
+                            TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
+                            MessageAttributes: { 
+                                gameId: {
+                                    DataType: "Number",
+                                    StringValue: game.gameId.toString()
+                                },
+                                gameWeek: {
+                                    DataType: "Number",
+                                    StringValue: game.gameWeek.toString()
+                                },
+                                year: {
+                                    DataType: "Number",
+                                    StringValue: game.year.toString()
+                                },
+                                sport: {
+                                    DataType: "String",
+                                    StringValue: game.sport
+                                }
+                            },
                         };
                         console.log("SNS Publishing")
                         sns.publish(params, function(err, response) {
@@ -281,7 +371,7 @@ exports.handler = (event, context) => {
                                 FunctionName: 'group-joinGroup', // the lambda function we are going to invoke
                                 InvocationType: 'Event',
                                 LogType: 'None',
-                                Payload: '{ "username": "' + event.userId + '", "preferred_username": "' + event.preferred_username + '", "userFullName": "' + event.firstName + ' ' + event.lastName + '", "sport": "nfl", "year": "' + prediction.year + '", "groupId": 0}'
+                                Payload: `{ "username": "${event.userId}", "preferred_username": "${event.preferred_username}", "userFullName": "${event.firstName} ${event.lastName}", "sport": "${event.sport}", "year": "${event.year}", "groupId": 0}`
                               };
                             
                               lambda.invoke(lambdaParams, function(err, data) {
