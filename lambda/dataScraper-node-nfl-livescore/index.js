@@ -4,7 +4,7 @@ const Table = require('cli-table')
 const mongo = require('mongodb').MongoClient
 const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
 
-const AWS = require('aws-sdk');    
+const AWS = require('../dataScraper-node-nba-livescore/node_modules/aws-sdk');    
 const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
 const sns = new AWS.SNS();
 
