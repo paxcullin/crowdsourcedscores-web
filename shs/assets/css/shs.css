@@ -20,17 +20,23 @@
         a {
             color: #fff;
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .titleRow {
             width: 100%;
-            margin: 15px auto;
+            margin: 15px 10%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: row;
+            flex-direction: column;
         }
         .titleImage {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             background-color: #fff;
             opacity: 0.85;
@@ -42,9 +48,13 @@
         }
         .titleImage img {
             width: 240px;
+            height: 240px;
         }
         .titleImage h1 {
             color: #231f20;
+        }
+        .titleImage div {
+            margin: 0 10px;
         }
         .calltoaction {
             display: flex;
@@ -52,8 +62,18 @@
             justify-content: center;
             align-items: center;
         }
+        .storeButtons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         .headline {
             font-size: 1.5em;
+            color: #231f20;
+        }
+        .headline p {
+            color: #231f20;
         }
         .bold-text {
             font-weight: 600;
@@ -193,8 +213,12 @@
                 align-items: center;
             }
             .titleRow img {
-                max-width: 80%;
+                width: 125px;
+                height: 125px;
                 height: auto;
+            }
+            .titleImage {
+                flex-direction: column;
             }
             .row {
                 display: flex;
