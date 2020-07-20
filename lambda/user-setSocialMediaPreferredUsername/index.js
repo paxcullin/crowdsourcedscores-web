@@ -3,7 +3,7 @@ const AWS = require('aws-sdk'),
   client = new cognitoidentityserviceprovider({ apiVersion: '2016-04-19', region: 'us-west-2' }),
   mongo = require("mongodb").MongoClient,
   assert = require("assert"),
-  MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
+  MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
 
 
 exports.handler = function (event, context, callback) {

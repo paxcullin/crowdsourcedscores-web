@@ -9,7 +9,7 @@ const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 const EMAIL = process.env.email;
 const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
 
-const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775';
+const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775';
 const requestSchema = {
     "type": "object",
     "properties": {

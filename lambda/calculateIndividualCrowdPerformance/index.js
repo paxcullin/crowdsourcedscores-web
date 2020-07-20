@@ -5,7 +5,7 @@ var assert = require("assert"),
     Promise = require("bluebird"),
     mongo = Promise.promisifyAll(require("mongodb"));
 
-const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
+const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
 
 function calculatePercentage(totalCorrect, totalPushes, totalGames) {
     var percentage = totalCorrect / (totalGames - totalPushes);

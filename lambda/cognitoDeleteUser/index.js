@@ -3,7 +3,7 @@ const aws = require('aws-sdk'),
         client = new CognitoIdentityServiceProvider({ apiVersion: '2016-04-19', region: 'us-west-2' }),
         mongo = require("mongodb").MongoClient,
         assert = require("assert");
-const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
+const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
 
 //var provider = new client.AWSCognitoIdentityProviderClient();
 //provider.adminDeleteUser(req); 

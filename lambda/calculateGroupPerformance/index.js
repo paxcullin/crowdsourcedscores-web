@@ -6,7 +6,7 @@ var mongo = require("mongodb").MongoClient,
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 
-const MONGO_URL = 'mongodb://pcsm-user:*dZ2HaWN@ds011775.mlab.com:11775/pcsm';
+const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
 
 // console.log('Loading function');
 function getWinnerLoser(game, gamePrediction) {
