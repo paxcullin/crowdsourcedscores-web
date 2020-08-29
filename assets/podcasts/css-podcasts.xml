@@ -759,6 +759,19 @@
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2019-episode25.mp3</guid>
         <pubDate>Thu, 06 Feb 2020 23:00:00 GMT</pubDate>
         <itunes:duration>37:47</itunes:duration>
+      </item>
+      <item>
+        <title>2020 Season - Welcome Back! - Episode 0</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris return from the break and talk about all the COVID effects they foresee. Who has a leg up and who will be a step behind? Also, we enjoy some Fremont Mischief Distillery Rye Whiskey.</description>
+        <itunes:subtitle>Paul and Chris return from the break and talk about all the COVID effects they foresee. Who has a leg up and who will be a step behind? Also, we enjoy some Fremont Mischief Distillery Rye Whiskey.</itunes:subtitle>
+        <itunes:episode>54</itunes:episode>
+        <itunes:summary>Paul and Chris return from the break and talk about all the COVID effects they foresee. Who has a leg up and who will be a step behind? Also, we enjoy some Fremont Mischief Distillery Rye Whiskey.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode0.mp3" length="1:03::19" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode0.mp3</guid>
+        <pubDate>Sat, 22 Aug 2020 23:00:00 GMT</pubDate>
+        <itunes:duration>1:03:19</itunes:duration>
       </item>  
   </channel>
   </rss>

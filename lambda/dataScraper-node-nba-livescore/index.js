@@ -127,61 +127,52 @@ dates.forEach((date, dateIndex) => {
         },
         json: true
     }
+    const oddsSharkOptions = {
+        url: `https://io.oddsshark.com/scores/nba/${date[0]+date[1]+date[2]+date[3]}-${date[4]+date[5]}-${date[6]+date[7]}`,
+        headers: {
+            'Referer': 'https://www.oddsshark.com/nba/scores'
+        },
+        json: true
+    }
     gameObjectsArray = []
     rp(options)
         .then(async (scoresJSON) => {
             //console.log('games :', games);
             if (scoresJSON.events && scoresJSON.events.length > 0) {
-                let games = scoresJSON.events;
-                await parseGames(games)
-                if (gameObjectsArray.length > 0) {
-                    // mongo.connect(MONGO_URL, (err, client) => {
-                    //     assert.equal(err, null)
+                rp(oddsSharkOptions)
+                .then(oddssharkJSON => {
+                    console.log('oddssharkJSON', oddssharkJSON)
+                    let games = scoresJSON.events;
+                    parseGames(games)
+                    if (gameObjectsArray.length > 0) {
+                        // mongo.connect(MONGO_URL, (err, client) => {
+                        //     assert.equal(err, null)
 
-                    //     const db = client.db('pcsm')
-                    //     const collection = db.collection('games-nba')
+                        //     const db = client.db('pcsm')
+                        //     const collection = db.collection('games-nba')
 
-                        gameObjectsArray.forEach((game, gameIndex) => {
-                                const gameQuery = {
-                                    gameId: game.gameId,
-                                    year: game.year
-                                }
-                                let payload = {
-                                    TableName: TableName,
-                                    Item: {
-                                        ...game
-                                    }
-                                    
-                                };
-                                db.get({
-                                    TableName: TableName,
-                                    Key: {
-                                        gameId: game.gameId
-                                    }
-                                }, (err, data) => {
-                                    if (err) {
-                                        queryPromises.push(db.put(payload, function(err,data) {
-                                            if (err) {
-                                                callback(err, null)
-                                            }
-                                            if (data) {
-                                                console.log({ successfulPush: data })
-                                            }
-                                        }))
-                                    }
-                                    if (data) {
-                                        queryPromises.push(db.update(payload, function(err,data) {
-                                            if (err) {
-                                                callback(err, null)
-                                            }
-                                            if (data) {
-                                                console.log({ successfulPush: data })
-                                            }
-                                        }))
-                                    }
-                                })
+                            gameObjectsArray.forEach((game, gameIndex) => {
 
-                                const readDataCallback = (data) => {
+                                    games.map(game => {
+                                        let gameOdds = oddssharkJSON.filter(odds => game.awayTeam.code === odds.away_abbreviation && game.homeTeam.code === odds.home_abbreviation)
+                                        if (gameOdds.length > 0) {
+                                            game.odds = {
+                                                spread: parseFloat(gameOdds[0].home_spread),
+                                                total: parseFloat(gameOdds[0].total)
+                                            }
+                                        }
+                                    })
+                                    const gameQuery = {
+                                        gameId: game.gameId,
+                                        year: game.year
+                                    }
+                                    let payload = {
+                                        TableName: TableName,
+                                        Item: {
+                                            ...game
+                                        }
+                                        
+                                    };
                                     db.get({
                                         TableName: TableName,
                                         Key: {
@@ -189,27 +180,57 @@ dates.forEach((date, dateIndex) => {
                                         }
                                     }, (err, data) => {
                                         if (err) {
-                                            callback(err, null)
+                                            queryPromises.push(db.put(payload, function(err,data) {
+                                                if (err) {
+                                                    callback(err, null)
+                                                }
+                                                if (data) {
+                                                    console.log({ successfulPush: data })
+                                                }
+                                            }))
                                         }
                                         if (data) {
-                                            callback(null, data.Item.username)
+                                            queryPromises.push(db.update(payload, function(err,data) {
+                                                if (err) {
+                                                    callback(err, null)
+                                                }
+                                                if (data) {
+                                                    console.log({ successfulPush: data })
+                                                }
+                                            }))
                                         }
                                     })
-                                }
 
-                                
-                                if (date === (dates.length-1) && gameIndex === (games.length -1)) {
+                                    const readDataCallback = (data) => {
+                                        db.get({
+                                            TableName: TableName,
+                                            Key: {
+                                                gameId: game.gameId
+                                            }
+                                        }, (err, data) => {
+                                            if (err) {
+                                                callback(err, null)
+                                            }
+                                            if (data) {
+                                                callback(null, data.Item.username)
+                                            }
+                                        })
+                                    }
 
-                                    Promise.all(queryPromises)
-                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                                        .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                     
-                                }
-                        })
-                    //})
-                } else {
-                    return;
-                }
+                                    if (date === (dates.length-1) && gameIndex === (games.length -1)) {
+
+                                        Promise.all(queryPromises)
+                                            .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                            .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                        
+                                    }
+                            })
+                        //})
+                    } else {
+                        return;
+                    }
+                })
             } else {
                 return;
             }
