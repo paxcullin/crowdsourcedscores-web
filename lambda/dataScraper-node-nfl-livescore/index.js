@@ -1,76 +1,121 @@
 const rp = require('request-promise')
-const cheerio = require('cheerio')
-const Table = require('cli-table')
-const mongo = require('mongodb').MongoClient
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+const AWS = require('aws-sdk');
 
-const AWS = require('../dataScraper-node-nba-livescore/node_modules/aws-sdk');    
-const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
-const sns = new AWS.SNS();
+const db = new AWS.DynamoDB.DocumentClient({region: 'us-west-2'});
+// console.log(db)
+const TableName = 'games-nfl';
+
+const generateRandomString = function(length) {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  
+    for (var i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+};
+// const sns = new AWS.SNS();
 
 const assert = require('assert')
 
-let games = []
-let urls = [
-    `https://feeds.nfl.com/feeds-rs/scores.json`]
-    
-/*
-`https://io.oddsshark.com/scores/football/nfl/2019/3`,
-`https://io.oddsshark.com/scores/football/nfl/2019/4`,
-`https://io.oddsshark.com/scores/football/nfl/2019/5`,
-`https://io.oddsshark.com/scores/football/nfl/2019/6`,
-`https://io.oddsshark.com/scores/football/nfl/2019/7`,
-`https://io.oddsshark.com/scores/football/nfl/2019/8`,
-`https://io.oddsshark.com/scores/football/nfl/2019/9`,
-`https://io.oddsshark.com/scores/football/nfl/2019/10`,
-`https://io.oddsshark.com/scores/football/nfl/2019/11`,
-`https://io.oddsshark.com/scores/football/nfl/2019/12`,
-`https://io.oddsshark.com/scores/football/nfl/2019/13`,
-`https://io.oddsshark.com/scores/football/nfl/2019/14`,
-`https://io.oddsshark.com/scores/football/nfl/2019/15`,
-`https://io.oddsshark.com/scores/football/nfl/2019/16`,
-`https://io.oddsshark.com/scores/football/nfl/2019/17`*/
 
-exports.handler = (event, context) => {
-    console.log('Received event :', JSON.stringify(event, null, 2));
+exports.handler = (event, context, callback) => {
+    // console.log('Received event :', JSON.stringify(event, null, 2));
 
 var gameObjectsArray = [];
 var queryPromises = [];
-
+const months = [
+    '09',
+    '10',
+    '11',
+    '12'
+]
+//https://nfl.cheapdatafeeds.com/api/json/scores/v1/football/nfl?month=09&year=2020&seasonType=Regular&api-key=fc0a9ea1a8e4738bb912beb77adcbe90
 function parseGames(games) {
-    games.forEach((game, index) => {
-        var gameObj = {
-            gameId: parseInt(game.event_id),
-            startDateTime: new Date(new Date(game.event_date).getTime() + (4*60*60*1000)),
-            location: game.stadium,
+    Object.keys(games).forEach((gameKey, index) => {
+        const game = games[gameKey]
+
+        // "id": "306304",
+        // "gameUID": "2283021",
+        // "sport": "Football",
+        // "league": "NFL",
+        // "startDate": "2020-09-11T00:20:00Z",
+        // "seasonYear": "2020-2021",
+        // "seasonType": "Regular",
+        // "seasonWeek": "1",
+        // "awayTeamAbb": "HOU",
+        // "awayTeamCity": "Houston",
+        // "awayTeamName": "Texans",
+        // "awayTeam": "Houston Texans",
+        // "homeTeamAbb": "KC",
+        // "homeTeamCity": "Kansas City",
+        // "homeTeamName": "Chiefs",
+        // "homeTeam": "Kansas City Chiefs",
+        // "venueName": "Arrowhead Stadium",
+        // "venueCity": "Kansas City, Missouri",
+        // "venueCountry": "United States",
+        // "venueRoof": "Open",
+        // "venueSurface": "Grass",
+        // "status": "Completed",
+        // "scoreAwayTotal": "20",
+        // "scoreHomeTotal": "34",
+        // "scoreAwayPeriod1": "7",
+        // "scoreAwayPeriod2": "0",
+        // "scoreAwayPeriod3": "0",
+        // "scoreAwayPeriod4": "13",
+        // "scoreHomePeriod1": "0",
+        // "scoreHomePeriod2": "17",
+        // "scoreHomePeriod3": "7",
+        // "scoreHomePeriod4": "10",
+        // "changedDate": "2020-09-11T05:04:01Z",
+        // "checkedDate": "2020-09-19T17:17:01Z"
+        const { 
+            gameUID,
+            startDate,
+            awayTeamAbb,
+            awayTeamCity,
+            awayTeamName,
+            awayTeam,
+            homeTeamAbb,
+            homeTeamCity,
+            homeTeamName,
+            homeTeam,
+            venueCity,
+            venueName,
+            seasonYear,
+            seasonType,
+            seasonWeek,
+            status,
+            scoreAwayTotal,
+            scoreHomeTotal
+        } = game
+        // console.log('new Date(new Date(startDate).getTime() + (4*60*60*1000)):', new Date(new Date(startDate).getTime() + (4*60*60*1000)))
+        let gameObj = {
+            gameId: parseInt(gameUID) ? parseInt(gameUID) : 99999,
+            awayhome: awayTeamAbb + homeTeamAbb,
+            startDateTime: startDate,
+            location: venueCity,
+            stadium: venueName,
+            sport: "nfl",
+            year: parseInt(seasonYear) ? parseInt(seasonYear) : 2020,
+            season: seasonType,
             awayTeam: {
-                fullName: game.away_name,
-                shortName: game.away_nick_name,
-                code: game.away_abbreviation
+                fullName: awayTeam,
+                shortName: awayTeamName,
+                code: awayTeamAbb
             },
             homeTeam: {
-                fullName: game.home_name,
-                shortName: game.home_nick_name,
-                code: game.home_abbreviation
+                fullName: homeTeam,
+                shortName: homeTeamName,
+                code: homeTeamAbb
             },
-            odds: (game.home_spread || game.total) ? {
-                spread: game.home_spread ? parseFloat(game.home_spread) : '',
-                total: game.total ? parseFloat(game.total) : '',
-                history: [{ date: new Date(), spread: parseInt(game.home_spread), total: parseInt(game.total)}]
-            } : {
-                spread: '',
-                total: ''
-            },
-            sport: 'nfl',
-
-            year: 2019,
-            status: 'notStarted',
-            gameWeek: parseInt(game.week) ? parseInt(game.week) : (game.week.indexOf('P') > -1) ? parseInt((game.week[1])) + 1 : game.week,
-            season: (game.week.indexOf('P') > -1) ? "pre" : (parseInt(game.week) < 18) ? "reg" : "post"
+            status: status
         };
-        if (game.away_score && game.home_score) {
-            let homeScore = parseInt(game.home_score)
-            let awayScore = parseInt(game.away_score)
+        // status: status
+        if (status !== 'Unplayed') {
+            let homeScore = parseInt(scoreHomeTotal) ? parseInt(scoreHomeTotal) : 0;
+            let awayScore = parseInt(scoreAwayTotal) ? parseInt(scoreAwayTotal) : 0;
+            gameObj.clock = "0:00";
             gameObj.results = {
                 awayTeam: {
                     score: awayScore
@@ -80,16 +125,16 @@ function parseGames(games) {
                 },
                 total: (homeScore + awayScore),
                 spread: (awayScore - homeScore),
-            }
-            if (game.status === 'FINAL') {
-                gameObj.status = 'final';
+            };
+            if (status === 'Completed') {
+                gameObj.status = "final";
              } else {
-                gameObj.status = 'inProgress'
+                gameObj.status = "inProgress";
              } 
         }
-        //console.log({gameObj});
-        gameObjectsArray.push(gameObj)
-    })
+        // console.log({gameObj});
+        gameObjectsArray.push(gameObj);
+    });
     
 }
 
@@ -100,132 +145,248 @@ function gameCannotBeUpdated(startDateTime) {
     var start = Date.parse(startDateTime);
     var cutoff = start - msHour;
 
-    return (now > cutoff)
+    return (now > cutoff);
 }
 
-urls.forEach((url, urlIndex) => {
+months.forEach((month, weekIndex) => {
+    //https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=20200731&tz=America%2FNew_York
     const options = {
-        url: url,
-        headers: {
-            'Referer': 'https://www.nfl.com/'
-        },
+        url: `https://nfl.cheapdatafeeds.com/api/json/scores/v1/football/nfl?month=${month}&year=2020&seasonType=Regular&api-key=fc0a9ea1a8e4738bb912beb77adcbe90`,
         json: true
-    }
-    gameObjectsArray = []
+    };
+    const pinnacleOptions = {
+        url: `https://pinnacle.cheapdatafeeds.com/api/json/odds-main/v2/football/nfl?api-key=fc0a9ea1a8e4738bb912beb77adcbe90`,
+        json: true
+    };
+    gameObjectsArray = [];
     rp(options)
-        .then(async (scoresJSON) => {
-            //console.log('games :', games);
-            if (scoresJSON.gameScores && scoresJSON.gameScores.length > 0) {
-                let games = scoresJSON.gameScores;
-                await parseGames(games)
-                if (gameObjectsArray.length > 0) {
-                    mongo.connect(MONGO_URL, (err, client) => {
-                        assert.equal(err, null)
-
-                        const db = client.db('pcsm')
-                        const collection = db.collection('games')
-                        gameObjectsArray.forEach((game, gameIndex) => {
-                                const gameQuery = {
-                                    gameId: game.gameId,
-                                    year: game.year
-                                }
-
-                                collection.findOne(gameQuery)
-                                .then(gameResult => {
-                                    //console.log('game :', gameResult);
-                                    var gameUpdate = {}
-                                    let upsert = true;
-                                    if (!gameResult) {
-                                        gameUpdate = {
-                                            $set: {
-                                                ...game
-                                            }
-                                        }
-                                    } else {
-                                        //update game score
-                                        if (game.status === "final" || gameCannotBeUpdated(game.startDateTime)) {
-                                            upsert = false;
-                                            gameUpdate = {
-                                                $set: {
-                                                    status: game.status,
-                                                    results: game.results
-                                                }
-                                            }
-                                        } else {
-                                            if (game.odds.total !== '' || game.odds.spread !== '') {
-                                                gameResult.odds['history'] ? gameResult.odds.history.push({date: new Date(), total: game.odds.total, spread: game.odds.spread}) : gameResult.odds['history'] = [{ date: new Date(), total: game.odds.total, spread: game.odds.spread }]
-                                            }
-                                            gameResult.odds.spread = game.odds.spread
-                                            gameResult.odds.total = game.odds.total
-                                            gameUpdate = {
-                                                $set: {
-                                                    startDateTime: game.startDateTime,
-                                                    odds: gameResult.odds
-                                                }
-                                            }
-                                        }
+        .then((scoresJSON) => {
+            // console.log('scoresJSON.games', scoresJSON.games);
+            if (scoresJSON.games && Object.keys(scoresJSON.games).length > 0) {
+                // console.log('scoresJSON: ', scoresJSON.games[0])
+                rp(pinnacleOptions)
+                .then(pinnacleJSON => {
+                    let pinnacleGames = {};
+                    Object.keys(pinnacleJSON.games).forEach(key => {
+                        const game = pinnacleJSON.games[key];
+                        pinnacleGames[game.gameUID] = {
+                            ...game
+                        };
+                    });
+                    let games = scoresJSON.games;
+                    parseGames(games);
+                    if (gameObjectsArray.length > 0) {
+                        // console.log('gameObjectsArray.length > 0', gameObjectsArray.length > 0)
+                        gameObjectsArray.map(game => {
+                            // console.log('game.gameUID', game.gameId)
+                            if (pinnacleGames[game.gameId]) {
+                                const pinnacleGame = pinnacleGames[game.gameId];
+                                const spread = pinnacleGame.gameSpreadHomeHandicap;
+                                const spreadHomePrice = parseInt(pinnacleGame.gameSpreadHomePrice) ? parseInt(pinnacleGame.gameSpreadHomePrice) : null
+                                const spreadAwayPrice = parseInt(pinnacleGame.gameSpreadAwayPrice) ? parseInt(pinnacleGame.gameSpreadAwayPrice) : null
+                                const total = parseInt(pinnacleGame.gameTotalPoints) ? parseInt(pinnacleGame.gameTotalPoints) : null;
+                                const totalOverPrice = pinnacleGame.gameTotalOverPrice;
+                                const totalUnderPrice = pinnacleGame.gameTotalUnderPrice;
+                                
+                                game.odds = {
+                                    spread,
+                                    total,
+                                    prices: {
+                                        spreadHomePrice,
+                                        spreadAwayPrice,
+                                        totalOverPrice,
+                                        totalUnderPrice
                                     }
-                                    //console.log('gameUpdate :', gameUpdate);
-                                    queryPromises.push(collection.updateOne({gameId: game.gameId,year: game.year}, gameUpdate, { upsert: upsert }))
-                                    //console.log({status: game.status, gameResultStatus: gameResult.status, gameResultCrowd: gameResult.crowd})
-                                    if (game.status === 'final' && (gameResult.status !== 'final' || (gameResult.crowd && !gameResult.crowd.results))) {
-                                        var params = {
-                                            Message: "Game " + game.gameId + " updated by OS feed",
-                                            MessageAttributes: { 
-                                                gameId: {
-                                                    DataType: "Number",
-                                                    StringValue: game.gameId.toString()
-                                                },
-                                                gameWeek: {
-                                                    DataType: "Number",
-                                                    StringValue: game.gameWeek.toString()
-                                                },
-                                                year: {
-                                                    DataType: "Number",
-                                                    StringValue: game.year.toString()
-                                                },
-                                                sport: {
-                                                    DataType: "String",
-                                                    StringValue: game.sport
-                                                },
-                                                season: {
-                                                    DataType: "String",
-                                                    StringValue: game.season
+                                };
+                                if (game.gameId === 3385650) {
+                                    console.log('game updated', game)
+                                }
+                            }
+                            return game;
+                        });
+                            gameObjectsArray.forEach((game, gameIndex) => {
+                                    let payload = {
+                                        TableName: TableName,
+                                        Item: {
+                                            ...game
+                                        }
+                                        
+                                    };
+                                    // console.log({payload});
+                                    db.get({
+                                        TableName: TableName,
+                                        Key: {
+                                            "gameId": game.gameId,
+                                            "awayhome": game.awayhome
+                                        }
+                                    }, (err, data) => {
+                                        // console.log({err, data, payload: payload.Item})
+                                        if (err || !data.Item) {
+                                            console.log('adding new game');
+                                            queryPromises.push(db.put(payload, function(err,data) {
+                                                if (err) {
+                                                    callback(err, null);
+                                                }
+                                                if (data) {
+                                                    console.log({ successfulPush: data });
+                                                }
+                                            }));
+                                            if (gameIndex === (gameObjectsArray.length -1)) {
+                                            console.log('queryPromises.length:', queryPromises.length)
+        
+                                                Promise.all(queryPromises)
+                                                    .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                    .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                                
+                                            }
+                                        }
+                                        if (data && data.Item) {
+                                            if (payload.Item.gameId === 3385650) {
+                                                console.log({Item: data.Item, payloadItem: payload.Item})
+                                            }
+                                            if (payload.Item.status === 'Unplayed' && payload.Item.odds) {
+                                                let odds = data.Item && data.Item.odds ? {...data.Item.odds} : payload.Item.odds ? payload.Item.odds : {};
+                                                if (payload.Item.odds) {
+                                                    odds = {
+                                                        ...odds,
+                                                        ...payload.Item.odds
+                                                    }
+                                                }
+                                                if (payload.Item.gameId === 3385650) {
+                                                    console.log({odds})
+                                                }
+                                                // console.log({gameId: game.gameId, awayhome: game.awayhome, payload: payload.Item})
+                                                if (odds.history) {
+                                                    console.log('history: ', odds.history)
+                                                    odds.history.push({
+                                                        date: Date.now(),
+                                                        ...payload.Item.odds
+                                                    });
+                                                    payload.Item.odds.history = odds.history;
+                                                } else {
+                                                    console.log('adding odds history')
+                                                    odds.history = [];
+                                                    odds.history.push({
+                                                        date: Date.now(),
+                                                        ...payload.Item.odds
+                                                    });
                                                 }
                                                 
-                                            },
-                                            Subject: "Game Update",
-                                            TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated"
-                                        };
-                                        console.log(`SNS Publishing: ${JSON.stringify(game)}`)
-                                        // add an SNS promise to kick off other actions related to a game going final
-                                        queryPromises.push(sns.publish(params, (err, response) => {
-                                            if (err) {
-                                                console.log("SNS error: " + err, null);
+                                                // console.log({payload: JSON.stringify(payload)})
+                                                const { gameId,
+                                                    awayhome,
+                                                    status,
+                                                    startDateTime,
+                                                    location,
+                                                    stadium,
+                                                    sport,
+                                                    year,
+                                                    season,
+                                                    homeTeam,
+                                                    awayTeam
+                                                } = payload.Item
+                                                /* 
+                                                    startDateTime: startDate,
+                                                    location: venueCity,
+                                                    stadium: venueName,
+                                                    sport: "nfl",
+                                                    year: parseInt(seasonYear),
+                                                    season: seasonType,
+                                                    awayTeam: {
+                                                        fullName: awayTeam,
+                                                        shortName: awayTeamName,
+                                                        code: awayTeamAbb
+                                                    },
+                                                    homeTeam: {
+                                                        fullName: homeTeam,
+                                                        shortName: homeTeamName,
+                                                        code: homeTeamAbb
+                                                    },*/
+                                                    console.log({odds})
+                                                payload.Item = {
+                                                    gameId,
+                                                    awayhome,
+                                                    status,
+                                                    startDateTime,
+                                                    location,
+                                                    stadium,
+                                                    sport,
+                                                    year,
+                                                    season,
+                                                    homeTeam: {...homeTeam},
+                                                    awayTeam: {...awayTeam},
+                                                    odds: {
+                                                        spread: odds.spread,
+                                                        total: odds.total,
+                                                        history: odds.history,
+                                                        prices: odds.prices
+                                                    }
+                                                }
+                                                console.log({payload})
+                                                queryPromises.push(db.put(payload).promise());
+                                                    // AttributeUpdates: {
+                                                    //     'odds': {
+                                                    //       Action: 'PUT',
+                                                    //       Value: payload.Item.odds /* "str" | 10 | true | false | null | [1, "a"] | {a: "b"} */
+                                                    //     },
+                                                    //     'startDateTime': {
+                                                    //       Action: 'PUT',
+                                                    //       Value: payload.Item.startDateTime /* "str" | 10 | true | false | null | [1, "a"] | {a: "b"} */
+                                                    //     }
+                                                    // }
+                                                    
+                                                if (gameIndex === (gameObjectsArray.length -1)) {
+                                                    console.log('queryPromises.length:', queryPromises.length)
+                                                    Promise.all(queryPromises)
+                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                                    
+                                                }
+                                            } else if (payload.Item.results) {
+                                                queryPromises.push(db.put(payload).promise());
+                                                if (gameIndex === (gameObjectsArray.length -1)) {
+                                                    console.log('queryPromises.length:', queryPromises.length)
+            
+                                                    Promise.all(queryPromises)
+                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                                    
+                                                }
+                                            } else {
+                                                // console.log({missingItem: payload.Item})
+                                                if (gameIndex === (gameObjectsArray.length -1)) {
+                                                    console.log('queryPromises.length:', queryPromises.length)
+            
+                                                    Promise.all(queryPromises)
+                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                                    
+                                                }
                                             }
-                                            console.log("SNS Publish complete: ", response);
-                                        }))
-                                    }
-                                    if (urlIndex === (urls.length-1) && gameIndex === (games.length -1)) {
+                                        }
+                                    })
 
-                                        
-                                        Promise.all(queryPromises)
-                                            .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                                            .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
-                                        
+                                    const readDataCallback = (data) => {
+                                        db.get({
+                                            TableName: TableName,
+                                            Key: {
+                                                gameId: game.gameId
+                                            }
+                                        }, (err, data) => {
+                                            if (err) {
+                                                callback(err, null)
+                                            }
+                                            if (data) {
+                                                callback(null, data.Item.username)
+                                            }
+                                        })
                                     }
-                                })
-                                .catch(gameReject => {
-                                    console.log('gameReject :', gameReject)
-                                    if (urlIndex === (urls.length -1) && gameIndex === (games.length -1)) {
-                                        context.done(null, { message: `${queryPromises.length} updated; ${games.length} total games`})
-                                    }
-                                })
-                        })
-                    })
-                } else {
-                    return;
-                }
+                            })
+                        //})
+                    } else {
+                        return;
+                    }
+                })
             } else {
                 return;
             }

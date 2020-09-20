@@ -773,5 +773,31 @@
         <pubDate>Sat, 22 Aug 2020 23:00:00 GMT</pubDate>
         <itunes:duration>1:03:19</itunes:duration>
       </item>  
+      <item>
+        <title>2020 - NFL Regular Season Preview - Episode 1</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris preview the NFL season by giving their predicted records division-by-division, and most importantly, explain why they'll almost certainly be wrong. They enjoy some 2Bar Whiskey along the way.</description>
+        <itunes:subtitle>Paul and Chris preview the NFL season by giving their predicted records division-by-division, and most importantly, explain why they'll almost certainly be wrong. They enjoy some 2Bar Whiskey along the way.</itunes:subtitle>
+        <itunes:episode>55</itunes:episode>
+        <itunes:summary>Paul and Chris preview the NFL season by giving their predicted records division-by-division, and most importantly, explain why they'll almost certainly be wrong. They enjoy some 2Bar Whiskey along the way.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode1.mp3" length="1:16:49" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode1.mp3</guid>
+        <pubDate>Thu, 10 Sep 2020 17:00:00 GMT</pubDate>
+        <itunes:duration>1:16:49</itunes:duration>
+      </item>
+      <item>
+        <title>2020 - Week 1 Recap - Episode 2</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris hit the old 2Bar whiskey and toast wins by both the Seahawks and Raiders. They also review the crowd wisdom's performance and deliver some wildly reactionary hot takes.</description>
+        <itunes:subtitle>Paul and Chris hit the old 2Bar whiskey and toast wins by both the Seahawks and Raiders. They also review the crowd wisdom's performance and deliver some wildly reactionary hot takes.</itunes:subtitle>
+        <itunes:episode>56</itunes:episode>
+        <itunes:summary>Paul and Chris hit the old 2Bar whiskey and toast wins by both the Seahawks and Raiders. They also review the crowd wisdom's performance and deliver some wildly reactionary hot takes.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode2.mp3" length="1:04:38" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode2.mp3</guid>
+        <pubDate>Wed, 16 Sep 2020 17:00:00 GMT</pubDate>
+        <itunes:duration>1:04:38</itunes:duration>
+      </item>  
   </channel>
   </rss>

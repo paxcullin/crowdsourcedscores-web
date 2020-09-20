@@ -51,7 +51,6 @@ var queryPromises = [];
 function parseGames(games) {
     games.forEach((gameArray, index) => {
         let game = gameArray.competitions[0]
-        console.log('game', game)
         let teams = game.competitors;
         let homeTeamArray = teams.filter(team => team.homeAway === "home")
         let awayTeamArray = teams.filter(team => team.homeAway === "away")
@@ -60,7 +59,6 @@ function parseGames(games) {
         }
         let homeTeam = homeTeamArray[0]
         let awayTeam = awayTeamArray[0]
-        console.log('homeTeam', homeTeam)
         var gameObj = {
             gameId: parseInt(game.id),
             startDateTime: `${new Date(new Date(game.date).getTime() + (4*60*60*1000))}`,
@@ -102,7 +100,6 @@ function parseGames(games) {
                 gameObj.status = 'inProgress'
              } 
         }
-        console.log({gameObj});
         gameObjectsArray.push(gameObj)
     })
     
@@ -128,7 +125,7 @@ dates.forEach((date, dateIndex) => {
         json: true
     }
     const oddsSharkOptions = {
-        url: `https://io.oddsshark.com/scores/nba/${date[0]+date[1]+date[2]+date[3]}-${date[4]+date[5]}-${date[6]+date[7]}`,
+        url: `https://io.oddsshark.com/scores/nba/${date.toString().substring(0,4)}-${date.toString().substring(4,6)}-${date.toString().substring(6)}`,
         headers: {
             'Referer': 'https://www.oddsshark.com/nba/scores'
         },
@@ -137,31 +134,23 @@ dates.forEach((date, dateIndex) => {
     gameObjectsArray = []
     rp(options)
         .then(async (scoresJSON) => {
-            //console.log('games :', games);
             if (scoresJSON.events && scoresJSON.events.length > 0) {
                 rp(oddsSharkOptions)
                 .then(oddssharkJSON => {
-                    console.log('oddssharkJSON', oddssharkJSON)
                     let games = scoresJSON.events;
                     parseGames(games)
                     if (gameObjectsArray.length > 0) {
-                        // mongo.connect(MONGO_URL, (err, client) => {
-                        //     assert.equal(err, null)
-
-                        //     const db = client.db('pcsm')
-                        //     const collection = db.collection('games-nba')
 
                             gameObjectsArray.forEach((game, gameIndex) => {
-
-                                    games.map(game => {
-                                        let gameOdds = oddssharkJSON.filter(odds => game.awayTeam.code === odds.away_abbreviation && game.homeTeam.code === odds.home_abbreviation)
-                                        if (gameOdds.length > 0) {
-                                            game.odds = {
-                                                spread: parseFloat(gameOdds[0].home_spread),
-                                                total: parseFloat(gameOdds[0].total)
-                                            }
+                                    let gameOdds = oddssharkJSON.filter(odds => {
+                                        return game.awayTeam.shortName === odds.away_nick_name && game.homeTeam.shortName === odds.home_nick_name
+                                        })
+                                    if (gameOdds.length > 0) {
+                                        game.odds = {
+                                            spread: parseFloat(gameOdds[0].home_spread),
+                                            total: parseFloat(gameOdds[0].total)
                                         }
-                                    })
+                                    }
                                     const gameQuery = {
                                         gameId: game.gameId,
                                         year: game.year
@@ -173,12 +162,14 @@ dates.forEach((date, dateIndex) => {
                                         }
                                         
                                     };
+                                    console.log({game: game.gameId})
                                     db.get({
                                         TableName: TableName,
                                         Key: {
-                                            gameId: game.gameId
+                                            "gameId": game.gameId
                                         }
                                     }, (err, data) => {
+                                        console.log({err, data})
                                         if (err) {
                                             queryPromises.push(db.put(payload, function(err,data) {
                                                 if (err) {
@@ -190,14 +181,51 @@ dates.forEach((date, dateIndex) => {
                                             }))
                                         }
                                         if (data) {
-                                            queryPromises.push(db.update(payload, function(err,data) {
-                                                if (err) {
-                                                    callback(err, null)
+                                            if (payload.Item.status !== 'notStarted') {
+                                                let odds = {...data.Item.odds}
+                                                if (odds.history) {
+                                                    odds.history.push({
+                                                        date: Date.now(),
+                                                        ...payload.Item.odds
+                                                    })
+                                                    payload.Item.odds.history = odds.history
+                                                } else {
+                                                    payload.Item.odds.history = []
+                                                    payload.Item.odds.history.push({
+                                                        date: Date.now(),
+                                                        ...payload.Item.odds
+                                                    })
                                                 }
-                                                if (data) {
-                                                    console.log({ successfulPush: data })
-                                                }
-                                            }))
+                                                queryPromises.push(db.put(payload, function(err,data) {
+                                                    if (err) {
+                                                        callback(err, null)
+                                                    }
+                                                    if (data) {
+                                                        console.log({ successfulUpdate: data })
+                                                    }
+                                                }))
+                                            } else {
+                                                queryPromises.push(db.update({
+                                                    TableName: TableName,
+                                                    Key: {
+                                                        "gameId": game.gameId
+                                                    },
+                                                    AttributeUpdates: {
+                                                        'results': {
+                                                          Action: 'PUT',
+                                                          Value: payload.Item.results /* "str" | 10 | true | false | null | [1, "a"] | {a: "b"} */
+                                                        }
+                                                    }
+                                                }, function(err,data) {
+                                                    if (err) {
+                                                        callback(err, null)
+                                                    }
+                                                    if (data) {
+                                                        console.log({ successfulUpdate: data })
+                                                    }
+                                                }))
+                                                
+                                            }
                                         }
                                     })
 
