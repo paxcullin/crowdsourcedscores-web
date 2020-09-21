@@ -20,7 +20,7 @@ const assert = require('assert')
 
 
 exports.handler = (event, context, callback) => {
-    // console.log('Received event :', JSON.stringify(event, null, 2));
+    console.log('Received event :', JSON.stringify(event, null, 2));
 
 var gameObjectsArray = [];
 var queryPromises = [];
@@ -87,13 +87,15 @@ function parseGames(games) {
             seasonWeek,
             status,
             scoreAwayTotal,
-            scoreHomeTotal
+            scoreHomeTotal,
+            currentPeriod,
+            currentPeriodTimeRemaining
         } = game
         // console.log('new Date(new Date(startDate).getTime() + (4*60*60*1000)):', new Date(new Date(startDate).getTime() + (4*60*60*1000)))
         let gameObj = {
             gameId: parseInt(gameUID) ? parseInt(gameUID) : 99999,
             awayhome: awayTeamAbb + homeTeamAbb,
-            startDateTime: startDate,
+            startDateTime: new Date(new Date(startDate).getTime() + (4*60*60*1000)) ? new Date(new Date(startDate).getTime() + (4*60*60*1000)) : startDate,
             location: venueCity,
             stadium: venueName,
             sport: "nfl",
@@ -115,7 +117,6 @@ function parseGames(games) {
         if (status !== 'Unplayed') {
             let homeScore = parseInt(scoreHomeTotal) ? parseInt(scoreHomeTotal) : 0;
             let awayScore = parseInt(scoreAwayTotal) ? parseInt(scoreAwayTotal) : 0;
-            gameObj.clock = "0:00";
             gameObj.results = {
                 awayTeam: {
                     score: awayScore
@@ -125,6 +126,8 @@ function parseGames(games) {
                 },
                 total: (homeScore + awayScore),
                 spread: (awayScore - homeScore),
+                currentPeriod,
+                currentPeriodTimeRemaining
             };
             if (status === 'Completed') {
                 gameObj.status = "final";
@@ -198,9 +201,6 @@ months.forEach((month, weekIndex) => {
                                         totalUnderPrice
                                     }
                                 };
-                                if (game.gameId === 3385650) {
-                                    console.log('game updated', game)
-                                }
                             }
                             return game;
                         });
@@ -222,28 +222,26 @@ months.forEach((month, weekIndex) => {
                                     }, (err, data) => {
                                         // console.log({err, data, payload: payload.Item})
                                         if (err || !data.Item) {
-                                            console.log('adding new game');
+                                            // console.log('adding new game');
                                             queryPromises.push(db.put(payload, function(err,data) {
                                                 if (err) {
                                                     callback(err, null);
                                                 }
                                                 if (data) {
-                                                    console.log({ successfulPush: data });
+                                                    // console.log({ successfulPush: data });
                                                 }
                                             }));
                                             if (gameIndex === (gameObjectsArray.length -1)) {
-                                            console.log('queryPromises.length:', queryPromises.length)
+                                            // console.log('queryPromises.length:', queryPromises.length)
         
                                                 Promise.all(queryPromises)
-                                                    .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                    .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                                     .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                                 
                                             }
                                         }
                                         if (data && data.Item) {
-                                            if (payload.Item.gameId === 3385650) {
-                                                console.log({Item: data.Item, payloadItem: payload.Item})
-                                            }
+                                            
                                             if (payload.Item.status === 'Unplayed' && payload.Item.odds) {
                                                 let odds = data.Item && data.Item.odds ? {...data.Item.odds} : payload.Item.odds ? payload.Item.odds : {};
                                                 if (payload.Item.odds) {
@@ -252,19 +250,14 @@ months.forEach((month, weekIndex) => {
                                                         ...payload.Item.odds
                                                     }
                                                 }
-                                                if (payload.Item.gameId === 3385650) {
-                                                    console.log({odds})
-                                                }
                                                 // console.log({gameId: game.gameId, awayhome: game.awayhome, payload: payload.Item})
                                                 if (odds.history) {
-                                                    console.log('history: ', odds.history)
                                                     odds.history.push({
                                                         date: Date.now(),
                                                         ...payload.Item.odds
                                                     });
                                                     payload.Item.odds.history = odds.history;
                                                 } else {
-                                                    console.log('adding odds history')
                                                     odds.history = [];
                                                     odds.history.push({
                                                         date: Date.now(),
@@ -302,7 +295,6 @@ months.forEach((month, weekIndex) => {
                                                         shortName: homeTeamName,
                                                         code: homeTeamAbb
                                                     },*/
-                                                    console.log({odds})
                                                 payload.Item = {
                                                     gameId,
                                                     awayhome,
@@ -322,7 +314,6 @@ months.forEach((month, weekIndex) => {
                                                         prices: odds.prices
                                                     }
                                                 }
-                                                console.log({payload})
                                                 queryPromises.push(db.put(payload).promise());
                                                     // AttributeUpdates: {
                                                     //     'odds': {
@@ -336,29 +327,29 @@ months.forEach((month, weekIndex) => {
                                                     // }
                                                     
                                                 if (gameIndex === (gameObjectsArray.length -1)) {
-                                                    console.log('queryPromises.length:', queryPromises.length)
+                                                    // console.log('queryPromises.length:', queryPromises.length)
                                                     Promise.all(queryPromises)
-                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                                         .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                                     
                                                 }
                                             } else if (payload.Item.results) {
                                                 queryPromises.push(db.put(payload).promise());
                                                 if (gameIndex === (gameObjectsArray.length -1)) {
-                                                    console.log('queryPromises.length:', queryPromises.length)
+                                                    // console.log('queryPromises.length:', queryPromises.length)
             
                                                     Promise.all(queryPromises)
-                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                                         .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                                     
                                                 }
                                             } else {
                                                 // console.log({missingItem: payload.Item})
                                                 if (gameIndex === (gameObjectsArray.length -1)) {
-                                                    console.log('queryPromises.length:', queryPromises.length)
+                                                    // console.log('queryPromises.length:', queryPromises.length)
             
                                                     Promise.all(queryPromises)
-                                                        .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                                        .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
                                                         .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                                     
                                                 }
