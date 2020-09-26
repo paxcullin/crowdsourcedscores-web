@@ -799,5 +799,18 @@
         <pubDate>Wed, 16 Sep 2020 17:00:00 GMT</pubDate>
         <itunes:duration>1:04:38</itunes:duration>
       </item>  
+      <item>
+        <title>2020 - Week 2 Recap - Episode 3</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris enjoys some Grandpa's Rye from Bad Dog Distillery as he flies solo and covers an incredible performance from the crowd in Week 2 and an even better performance from the overall winner.</description>
+        <itunes:subtitle>Chris enjoys some Grandpa's Rye from Bad Dog Distillery as he flies solo and covers an incredible performance from the crowd in Week 2 and an even better performance from the overall winner.</itunes:subtitle>
+        <itunes:episode>57</itunes:episode>
+        <itunes:summary>Chris enjoys some Grandpa's Rye from Bad Dog Distillery as he flies solo and covers an incredible performance from the crowd in Week 2 and an even better performance from the overall winner.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode3.mp3" length="34:41" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode3.mp3</guid>
+        <pubDate>Fri, 25 Sep 2020 23:00:00 GMT</pubDate>
+        <itunes:duration>34:41</itunes:duration>
+      </item>  
   </channel>
   </rss>
