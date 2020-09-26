@@ -1,0 +1,1 @@
+  create-function --function-name datascraper-node-nfl-livescore --runtime nodejs12.x  --role arn:aws:iam::198282214908:role/APIGatewayLambdaExecRole --handler index.handler --zip-file Archive.zip
