@@ -1591,7 +1591,9 @@
         var gameWeekData = {};
         var extendedProfileData = {};
         $(document).ready(function () {
-            
+            setTimeout(() => {
+                window.location = 'https://app.stakehousesports.com'
+            }, 5000)
             if (cognitoUser) {
                 showLogoutButton();
                 getExtendedProfile();
@@ -2039,6 +2041,11 @@
                         <div><a onclick="trackOutboundLink('https://www.stitcher.com/s?fid=162919&refid=stpr'); return false;" target="_blank" href="https://www.stitcher.com/s?fid=162919&refid=stpr"><img src="https://secureimg.stitcher.com/promo.assets/badges/Stitcher_Listen_Badge_Color_Light_BG.png" width="125" height="37" alt="Listen to the Crowd Wisdom Sports Podcast on Stitcher"></a></div>
                         <div><a onclick="trackOutboundLink('https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16'); return false;" href='https://playmusic.app.goo.gl/?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;apn=com.google.android.music&amp;link=https://play.google.com/music/m/Ikd4ilzctaypo3idfl2admka4ve?t%3DThe_Crowd_Wisdom_Sports_Podcast%26pcampaignid%3DMKT-na-all-co-pr-mu-pod-16' rel='nofollow'><img width='125px' alt='Listen on Google Play Music' src='https://play.google.com/intl/en_us/badges-music/images/badges/en_badge_web_music.png'/></a></div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="display: flex; justify-content: center; align-items: center;">
+                    <h1>Get the up-to-date experience at <a href="https://app.stakehousesports.com" style="color: #3d5a80">Stakehouse Sports</a>. Now forwarding ...</h1>
                 </div>
             </div>
             <div id="sportSpecificNavRow"></div>

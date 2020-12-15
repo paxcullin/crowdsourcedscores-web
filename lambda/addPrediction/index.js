@@ -6,12 +6,12 @@ var mongo = require("mongodb").MongoClient,
 const AWS = require('aws-sdk');    
 const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 
-const config = require('./config')
+const {config} = require("./config");
 
 const EMAIL = process.env.email;
 const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
 
-const MONGO_URL = `mongodb://${config.username}:${config.username}@ds011775.mlab.com:11775/pcsm`;
+const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
     "type": "object",
     "properties": {
@@ -213,15 +213,15 @@ exports.handler = (event, context) => {
         // deadline is 5 min prior to kickoff
         const msHour = 300000;
         
-        const { gameId, year, gameWeek, season } = prediction
+        const { gameId, year, sport, gameWeek, season } = prediction
         
         var gamesCollection = 'games';
-        var gamesQuery = {"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year), "gameWeek": parseInt(prediction.gameWeek)};
-        if (prediction.sport === 'ncaaf') {
+        var gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year), "gameWeek": parseInt(gameWeek)};
+        if (sport === 'ncaaf') {
             gamesCollection = 'games-ncaaf';
-        } else if (prediction.sport === 'ncaam') {
+        } else if (sport === 'ncaam') {
             gamesCollection = 'games-ncaam';
-            gamesQuery = {"gameId": parseInt(prediction.gameId), "year": parseInt(prediction.year)};
+            gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
         }
         console.log('gamesQuery: ', gamesQuery)
         db.collection(gamesCollection).findOne(gamesQuery, {_id: false}, function (err, game) {
@@ -256,7 +256,9 @@ exports.handler = (event, context) => {
                 }
                 if (groups[0]) {
                     prediction.groups = groups[0].groups;
+                    prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
                     console.log("prediction.groups: ", prediction.groups)
+                    
                 }
             
                 // update existing if prediction exists for userId and gameId combo
@@ -295,17 +297,20 @@ exports.handler = (event, context) => {
                     result.succeeded = true;
                     result.message = 'Prediction saved';
                     console.log('result: ', result);
+                    console.log('prediction: ', prediction);
     
                     var lambdaParams = {
                         FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
                         InvocationType: 'RequestResponse',
                         LogType: 'Tail',
-                        Payload: '{ "username": "' + event.userId + '", ' + prediction + '}'
+                        Payload: '{ "username": "' + event.userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
                       };
                     
                       lambda.invoke(lambdaParams, function(err, data) {
+                          console.log('err', err);
+                          console.log('data', data);
                         if (err) {
-                          context.fail(err);
+                          context.fail('addToGroupError', err);
                         } else {
                           context.succeed('Lambda_B said '+ data.Payload);
                         }
@@ -368,22 +373,6 @@ exports.handler = (event, context) => {
                             context.done (null, result)
                             });
                           
-                        console.log("calling joinGroup")
-                            var lambdaParams = {
-                                FunctionName: 'group-joinGroup', // the lambda function we are going to invoke
-                                InvocationType: 'Event',
-                                LogType: 'None',
-                                Payload: `{ "username": "${event.userId}", "preferred_username": "${event.preferred_username}", "userFullName": "${event.firstName} ${event.lastName}", "sport": "${event.sport}", "year": "${event.year}", "groupId": 0}`
-                              };
-                            
-                              lambda.invoke(lambdaParams, function(err, data) {
-                                if (err) {
-                                  console.log("group-joinGroup call err: ", err);
-                                } else {
-                                  console.log("group-joinGroup call data: ", data);
-                                }
-                              })
-                        //return context.done(null, result);
                         
                     })
                     
