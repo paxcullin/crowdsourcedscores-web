@@ -9,7 +9,9 @@ const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 const EMAIL = process.env.email;
 const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+const config = require('config')
+
+const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
     "type": "object",
     "properties": {
@@ -19,24 +21,21 @@ const requestSchema = {
         "status": {"type": "string"},
         "startDateTime": {"type": "integer"},
         "sport": {"type": "string"},
+        "season": {"type": "string"},
         "awayTeam": {
             "type": "object",
             "properties": {
-                "score": {"type": "integer", "minimum": 0, "maximum": 50}
+                "score": {"type": "integer"}
             }
         },
         "homeTeam": {
             "type": "object",
             "properties": {
-                "score": {"type": "integer", "minimum": 0, "maximum": 50}
+                "score": {"type": "integer"}
             }
         },
         "odds": {
-            "type": "object",
-            "properties": {
-                "spread": {"type": "number"},
-                "total": {"type": "number"}
-            }
+            "type": "object"
         }
     }
 };
@@ -172,12 +171,14 @@ exports.handler = (event, context) => {
         game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
     }
 
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         assert.equal(null, err);
 
         if (err) {
             return context.done(err, null);
         }
+
+        const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
         // deadline is 1hr prior to kickoff
@@ -190,20 +191,16 @@ exports.handler = (event, context) => {
         var startDateTime = new Date(game.startDateTime)
         
         var gameUpdate = {};
-        console.log("now: ", now, " kickoff: ", kickoff);
-        console.log((now < kickoff))
-        if (now < kickoff) {
+        if (game.status === "notStarted") {
             gameUpdate = {
                 $set: {
                     startDateTime: startDateTime,
                     status: game.status,
-                    odds: {
-                        spread: game.odds.spread,
-                        total: game.odds.total
-                    }
+                    "odds.spread": game.odds.spread,
+                    "odds.total": game.odds.total
                 }
             }
-        } else if (game.results) {
+        } else if (game.results && game.results.awayTeam.score !== -1) {
             gameUpdate = {
                 $set : {
                     startDateTime: startDateTime,
@@ -224,11 +221,14 @@ exports.handler = (event, context) => {
             context.done(null, "No update");
         }
         console.log("gameUpdate: ", gameUpdate)
+        var dbName = 'games';
+        if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
+        if (game.sport === 'ncaam') dbName = 'games-ncaam';
         //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
-        db.collection('games').updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, gameUpdate)
+        db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate)
         .then(function (gameObj) {
             if (game.status === "final") {
-                console.log("gameObj: ", gameObj)
+                //console.log("gameObj: ", gameObj)
                 var sns = new AWS.SNS();
                 var params = {
                     Message: "Game " + game.gameId + " updated by " + event.userId,
@@ -248,6 +248,10 @@ exports.handler = (event, context) => {
                         sport: {
                             DataType: "String",
                             StringValue: game.sport
+                        },
+                        season: {
+                            DataType: "String",
+                            StringValue: game.season
                         }
                         
                     },
@@ -256,14 +260,29 @@ exports.handler = (event, context) => {
                 };
                 console.log("SNS Publishing")
                 sns.publish(params, function(err, response) {
-                    if (err) {
-                        context.done("SNS error: " + err, null);
-                    }
-                    console.log("SNS Publish complete: ", response);
-                    context.done (null, result)
-                    })
+                if (err) {
+                    context.done("SNS error: " + err, null);
+                }
+                console.log("SNS Publish complete: ", response);
+                context.done (null, result)
+                })
             } else {
-                context.done(null, {"message": "Received update: " + game})
+                var oddsHistoryUpdate = { 
+                    $push: {
+                        "odds.history": {
+                            spread: game.odds.spread,
+                            total: game.odds.total,
+                            date: Date.now()
+                        }
+                    }
+                }
+                console.log('oddsHistoryUpdate: ', oddsHistoryUpdate);
+                db.collection('games').update({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, oddsHistoryUpdate)
+                .then(function(updateOddsHistoryResponse) {
+                    console.log('update odds response: ', updateOddsHistoryResponse.result);
+                    context.done(null, {"message": "Received update: " + game})
+                })
+                .catch(function(updateOddsHistoryReject) { console.log('updateOddsHistoryReject: ', updateOddsHistoryReject); context.done(null, updateOddsHistoryReject) })
             }
         })
         .catch(function (findReject) {

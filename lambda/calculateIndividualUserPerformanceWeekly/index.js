@@ -1,19 +1,18 @@
 'use strict';
 
 var assert = require("assert"),
-    _ = require("lodash"),
-    Promise = require("bluebird"),
-    mongo = Promise.promisifyAll(require("mongodb"));
+    mongo = require("mongodb"),
+    {config} = require('config');
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 exports.handler = (event, context, callback) => {
     var updateOverall = {};
     var queryPromises = [];
     function callCalculateIndividualCrowdPerformanceOverall(resultsLength, sport, year, season, gameWeek) {
-        console.log({queryPromises})
+        //console.log({queryPromises})
         Promise.all(queryPromises).then((result) => {
             console.log('callCalculateIndividualCrowdPerformanceOverall called')
             var calculateIndividualUserPerformanceOverallParams = {
@@ -47,11 +46,12 @@ exports.handler = (event, context, callback) => {
         predictionsCollection = 'predictions-ncaam';
         year = 2019;
     }
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         if (err) {
             console.log(err);
             return context.fail(err, null);
         }
+        const db = client.db('pcsm');
         const extendedProfile = db.collection('profileExtended');
         var matchOpts = {
             $match: {
@@ -72,7 +72,7 @@ exports.handler = (event, context, callback) => {
                     $match: {
                         year: year,
                         results: { $exists: true },
-                        season: event.season
+                        //season: event.season
                     }
                 },
                 {
@@ -85,7 +85,7 @@ exports.handler = (event, context, callback) => {
                         atsPush: {$sum: "$results.spread.push"},
                         atsBullseyes: {$sum: "$results.spread.bullseyes"},
                         atsStarsWagered: {$sum: "$results.spread.stars.wagered"},
-                        atsStarsNet: {$sum: "$results.spread.stars.Net"},
+                        atsStarsNet: {$sum: "$results.spread.stars.net"},
                         totalCorrect: {$sum: "$results.total.correct"},
                         totalPush: {$sum: "$results.total.push"},
                         totalBullseyes: {$sum: "$results.total.bullseyes"},
@@ -106,15 +106,18 @@ exports.handler = (event, context, callback) => {
                     console.log(err);
                     return context.fail(err, null);
                 }
-                console.log({results})
-                _.each(results, function (result) {
+                //console.log({results})
+                results.forEach((result) => {
+                    console.log({result: JSON.stringify(result)})
                     var criteria = {
                         username: result._id.userId,
-                        "results.weekly": {
+                        [`results.${event.sport}.${year}.${result._id.season}.weekly`]: {
                             $elemMatch: { gameWeek: result._id.gameWeek } 
                         }
                         
                     }
+                    let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
+                    let starsNet = result.atsStarsNet + result.totalStarsNet;
                     var update = {
                         $set: {
                             [`results.${event.sport}.${year}.${result._id.season}.weekly.$.gameWeek`]: result._id.gameWeek,
@@ -143,9 +146,9 @@ exports.handler = (event, context, callback) => {
                             },
                             [`results.${event.sport}.${year}.${result._id.season}.weekly.$.predictionScore`]: result.predictionScore,
                             [`results.${event.sport}.${year}.${result._id.season}.weekly.$.stars`]: {
-                                wagered: result.atsStarsWagered + result.totalStarsWagered,
-                                net: result.atsStarsNet + result.totalStarsNet,
-                                roi: (result.atsStarsNet + result.totalStarsNet)/(result.atsStarsWagered + result.totalStarsWagered)
+                                wagered: starsWagered,
+                                net: starsNet,
+                                roi: starsNet/starsWagered
                             },
                             [`results.${event.sport}.${year}.${result._id.season}.weekly.$.totalPredictions`]: result.totalPredictions
                         }
@@ -214,7 +217,7 @@ exports.handler = (event, context, callback) => {
                     extendedProfile.updateOne(criteria, update)
                         .then(function(updateResponse) {
                             var respObj = JSON.parse(updateResponse)
-                            console.log( { respObj })
+                            //console.log( { respObj })
                             if (respObj.n === 1 && respObj.nModified === 1) {
                                 resultsArrayLength--;
                                 if (resultsArrayLength === 0) {
@@ -260,9 +263,9 @@ exports.handler = (event, context, callback) => {
                                             },
                                             predictionScore: result.predictionScore,
                                             stars: {
-                                                wagered: result.atsStarsWagered + result.totalStarsWagered,
-                                                net: result.atsStarsNet + result.totalStarsNet,
-                                                roi: (result.atsStarsNet + result.totalStarsNet)/(result.atsStarsWagered + result.totalStarsWagered)
+                                                wagered: starsWagered,
+                                                net: starsNet,
+                                                roi: starsNet/starsWagered
                                             },
                                             totalPredictions: result.totalPredictions
                                         }
@@ -350,7 +353,7 @@ exports.handler = (event, context, callback) => {
                         })
                         
                         
-                }); // end _.each aggregate result
+                }); // end results.forEach aggregate result
                     let filteredResults = results.filter((result) => {
                         return (result._id.gameWeek === event.gameWeek && result._id.season === event.season)
                     })
@@ -359,8 +362,10 @@ exports.handler = (event, context, callback) => {
                         let returnValue = (a.predictionScore > b.predictionScore) ? -1 : 1;
                         return returnValue
                     })
-                    //console.log({ filteredResults })
+                    // console.log({ filteredResults })
                     filteredResults.forEach(result => {
+                        let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
+                        let starsNet = result.atsStarsNet + result.totalStarsNet;
                         let user = { 
                             username: result._id.userId,
                             winner: {
@@ -378,12 +383,17 @@ exports.handler = (event, context, callback) => {
                                 push: result.totalPush,
                                 bullseyes: result.totalBullseyes
                             },
+                            stars: {
+                                wagered: starsWagered,
+                                net: starsNet,
+                                roi: starsNet/starsWagered
+                            },
                             predictionScore: result.predictionScore,
                             totalPredictions: result.totalPredictions
                         }
                         weeklyUserArray.push(user)
                     })
-                    console.log({ weeklyUserArray })
+                    // console.log({ weeklyUserArray: JSON.stringify(weeklyUserArray) })
                     if (weeklyUserArray.length > 0) {
                         let leaderboardCriteria = {
                           year: year,

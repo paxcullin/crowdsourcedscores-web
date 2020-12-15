@@ -1,0 +1,141 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+1254255,2020,reg,3,Miami Dolphins,17,Jacksonville Jaguars,27,3,0,0,0,0,0,3,-3,1,0,0,0,-10,44,2020-09-22T15:13:55.983Z,cmaronchick,3,cmaronchick
+1254255,2020,reg,3,Miami Dolphins,21,Jacksonville Jaguars,24,0,0,0,0,0,0,0,0,1,0,0,0,-3,45,2020-09-22T02:52:48.481Z,Facebook_10210894378652618,2,MichaelRaymond
+1254265,2020,reg,3,Las Vegas Raiders,24,New England Patriots,35,2,0,1,0,1,0,2,2,1,0,0,0,-11,59,2020-09-22T02:53:20.488Z,Facebook_10210894378652618,6,MichaelRaymond
+1254260,2020,reg,3,Tennessee Titans,20,Minnesota Vikings,24,0,0,0,0,1,0,0,0,0,0,0,0,-4,44,2020-09-22T02:53:55.084Z,Facebook_10210894378652618,2,MichaelRaymond
+1254270,2020,reg,3,Chicago Bears,20,Atlanta Falcons,27,0,0,0,0,0,0,0,0,1,0,0,0,-7,47,2020-09-22T02:54:13.502Z,Facebook_10210894378652618,2,MichaelRaymond
+1254280,2020,reg,3,San Francisco 49ers,27,New York Giants,24,0,2,1,0,0,0,0,0,1,0,2,2,3,51,2020-09-22T02:54:42.810Z,Facebook_10210894378652618,4,MichaelRaymond
+1254290,2020,reg,3,Washington Football Team,28,Cleveland Browns,21,0,0,0,0,0,0,0,0,1,0,0,0,7,49,2020-09-22T02:55:01.398Z,Facebook_10210894378652618,2,MichaelRaymond
+1254310,2020,reg,3,Detroit Lions,20,Arizona Cardinals,24,1,0,0,0,1,0,1,1,1,0,0,0,-4,44,2020-09-22T02:56:16.258Z,Facebook_10210894378652618,4,MichaelRaymond
+1254315,2020,reg,3,Dallas Cowboys,30,Seattle Seahawks,32,0,0,1,0,0,0,0,0,1,0,0,0,-2,62,2020-09-23T14:17:06.506Z,Facebook_10210894378652618,4,MichaelRaymond
+1254260,2020,reg,3,Tennessee Titans,21,Minnesota Vikings,24,0,3,0,0,1,0,0,0,0,0,3,-3,-3,45,2020-09-27T16:20:08.473Z,cmaronchick,2,cmaronchick
+1254265,2020,reg,3,Las Vegas Raiders,23,New England Patriots,31,0,0,1,0,1,0,0,0,1,0,0,0,-8,54,2020-09-27T06:49:16.156Z,cmaronchick,6,cmaronchick
+1254270,2020,reg,3,Chicago Bears,17,Atlanta Falcons,31,3,3,0,0,0,0,3,-3,1,0,3,3,-14,48,2020-09-27T16:20:43.547Z,cmaronchick,2,cmaronchick
+1254275,2020,reg,3,Cincinnati Bengals,27,Philadelphia Eagles,28,0,3,0,0,1,0,0,0,0,0,3,-3,-1,55,2020-09-22T23:25:00.379Z,cmaronchick,2,cmaronchick
+1254280,2020,reg,3,San Francisco 49ers,21,New York Giants,24,0,0,0,0,0,0,0,0,1,0,0,0,-3,45,2020-09-22T23:26:57.947Z,cmaronchick,3,cmaronchick
+1254285,2020,reg,3,Houston Texans,20,Pittsburgh Steelers,24,0,0,1,0,1,0,0,0,0,0,0,0,-4,44,2020-09-22T23:27:16.555Z,cmaronchick,4,cmaronchick
+1254290,2020,reg,3,Washington Football Team,17,Cleveland Browns,28,0,0,1,0,1,0,0,0,1,0,0,0,-11,45,2020-09-24T03:14:53.186Z,cmaronchick,6,cmaronchick
+1254295,2020,reg,3,Los Angeles Rams,23,Buffalo Bills,27,0,0,1,0,1,0,0,0,1,0,0,0,-4,50,2020-09-22T23:31:18.062Z,cmaronchick,6,cmaronchick
+1254300,2020,reg,3,Carolina Panthers,17,Los Angeles Chargers,20,0,0,0,0,1,0,0,0,1,0,0,0,-3,37,2020-09-22T23:31:41.977Z,cmaronchick,5,cmaronchick
+1254305,2020,reg,3,New York Jets,10,Indianapolis Colts,28,3,0,1,0,1,0,3,3,1,0,0,0,-18,38,2020-09-24T03:15:53.738Z,cmaronchick,6,cmaronchick
+1254310,2020,reg,3,Detroit Lions,20,Arizona Cardinals,31,0,0,0,0,0,0,0,0,1,0,0,0,-11,51,2020-09-22T23:32:24.103Z,cmaronchick,2,cmaronchick
+1254315,2020,reg,3,Dallas Cowboys,24,Seattle Seahawks,34,3,3,1,0,1,0,3,3,1,0,3,3,-10,58,2020-09-27T16:55:38.563Z,cmaronchick,6,cmaronchick
+1254320,2020,reg,3,Tampa Bay Buccaneers,34,Denver Broncos,17,3,3,1,0,1,0,3,3,0,0,3,-3,17,51,2020-09-27T16:56:23.522Z,cmaronchick,4,cmaronchick
+1254325,2020,reg,3,Green Bay Packers,27,New Orleans Saints,30,0,0,0,0,1,0,0,0,1,0,0,0,-3,57,2020-09-22T23:35:46.539Z,cmaronchick,5,cmaronchick
+1254330,2020,reg,3,Kansas City Chiefs,27,Baltimore Ravens,38,0,0,,,,,,,,,,,-11,65,2020-09-22T23:36:02.543Z,cmaronchick,,cmaronchick
+1254275,2020,reg,3,Cincinnati Bengals,20,Philadelphia Eagles,24,0,0,0,0,1,0,0,0,1,0,0,0,-4,44,2020-09-23T14:15:09.946Z,Facebook_10210894378652618,4,MichaelRaymond
+1254285,2020,reg,3,Houston Texans,25,Pittsburgh Steelers,21,0,0,0,0,0,0,0,0,1,0,0,0,4,46,2020-09-23T14:15:42.527Z,Facebook_10210894378652618,2,MichaelRaymond
+1254295,2020,reg,3,Los Angeles Rams,30,Buffalo Bills,24,0,0,0,0,0,0,0,0,1,0,0,0,6,54,2020-09-23T14:15:57.528Z,Facebook_10210894378652618,2,MichaelRaymond
+1254300,2020,reg,3,Carolina Panthers,27,Los Angeles Chargers,24,0,0,1,0,1,0,0,0,0,0,0,0,3,51,2020-09-23T14:16:13.512Z,Facebook_10210894378652618,4,MichaelRaymond
+1254305,2020,reg,3,New York Jets,20,Indianapolis Colts,24,0,0,1,0,0,0,0,0,0,0,0,0,-4,44,2020-09-23T14:16:44.332Z,Facebook_10210894378652618,2,MichaelRaymond
+1254320,2020,reg,3,Tampa Bay Buccaneers,24,Denver Broncos,20,0,0,1,0,0,0,0,0,0,0,0,0,4,44,2020-09-23T14:17:21.195Z,Facebook_10210894378652618,2,MichaelRaymond
+1254325,2020,reg,3,Green Bay Packers,24,New Orleans Saints,28,0,0,0,0,0,0,0,0,1,0,0,0,-4,52,2020-09-23T14:17:46.276Z,Facebook_10210894378652618,2,MichaelRaymond
+1254330,2020,reg,3,Kansas City Chiefs,35,Baltimore Ravens,20,3,2,,,,,,,,,,,15,55,2020-09-23T14:18:10.787Z,Facebook_10210894378652618,,MichaelRaymond
+1254255,2020,reg,3,Miami Dolphins,31,Jacksonville Jaguars,28,1,0,1,0,1,0,1,1,0,0,0,0,3,59,2020-09-24T20:29:44.801Z,rosstuckerNFL,5,rosstuckerNFL
+1254280,2020,reg,3,San Francisco 49ers,20,New York Giants,17,1,0,1,0,0,0,1,-1,0,0,0,0,3,37,2020-09-26T01:11:02.853Z,rosstuckerNFL,2,rosstuckerNFL
+1254290,2020,reg,3,Washington Football Team,17,Cleveland Browns,23,1,0,1,0,0,0,1,-1,0,0,0,0,-6,40,2020-09-26T01:12:59.086Z,rosstuckerNFL,2,rosstuckerNFL
+1254275,2020,reg,3,Cincinnati Bengals,23,Philadelphia Eagles,27,1,0,0,0,1,0,1,1,0,0,0,0,-4,50,2020-09-26T01:09:29.087Z,rosstuckerNFL,3,rosstuckerNFL
+1254270,2020,reg,3,Chicago Bears,17,Atlanta Falcons,24,0,2,0,0,0,0,0,0,0,0,2,-2,-7,41,2020-09-26T01:14:29.448Z,rosstuckerNFL,0,rosstuckerNFL
+1254300,2020,reg,3,Carolina Panthers,17,Los Angeles Chargers,23,2,0,0,0,1,0,2,2,1,0,0,0,-6,40,2020-09-26T01:16:08.181Z,rosstuckerNFL,4,rosstuckerNFL
+1254310,2020,reg,3,Detroit Lions,23,Arizona Cardinals,31,2,0,0,0,0,0,2,-2,1,0,0,0,-8,54,2020-09-26T01:19:48.657Z,rosstuckerNFL,2,rosstuckerNFL
+1254320,2020,reg,3,Tampa Bay Buccaneers,27,Denver Broncos,17,1,0,1,0,1,0,1,1,0,0,0,0,10,44,2020-09-26T01:18:50.582Z,rosstuckerNFL,4,rosstuckerNFL
+1254325,2020,reg,3,Green Bay Packers,21,New Orleans Saints,23,2,0,0,0,1,0,2,2,0,0,0,0,-2,44,2020-09-26T01:21:33.440Z,rosstuckerNFL,2,rosstuckerNFL
+1254255,2020,reg,3,Miami Dolphins,23,Jacksonville Jaguars,28,0,0,0,0,0,0,0,0,1,0,0,0,-5,51,2020-09-24T01:11:44.056Z,Jharris6181,2,Jharris6181
+1254255,2020,reg,3,Miami Dolphins,23,Jacksonville Jaguars,30,3,3,0,0,0,0,3,-3,0,0,3,-3,-7,53,2020-09-24T12:19:56.163Z,Facebook_2328097410559627,0,b
+1254260,2020,reg,3,Tennessee Titans,33,Minnesota Vikings,17,3,3,1,0,0,0,3,-3,1,0,3,3,16,50,2020-09-24T12:20:47.389Z,Facebook_2328097410559627,4,b
+1254265,2020,reg,3,Las Vegas Raiders,27,New England Patriots,23,3,3,0,0,0,0,3,-3,1,0,3,3,4,50,2020-09-24T12:21:16.344Z,Facebook_2328097410559627,2,b
+1254275,2020,reg,3,Cincinnati Bengals,13,Philadelphia Eagles,33,3,3,0,0,0,0,3,-3,1,0,3,3,-20,46,2020-09-24T12:22:30.465Z,Facebook_2328097410559627,3,b
+1254280,2020,reg,3,San Francisco 49ers,33,New York Giants,17,3,3,1,0,1,0,3,3,1,0,3,3,16,50,2020-09-24T12:22:55.861Z,Facebook_2328097410559627,6,b
+1254285,2020,reg,3,Houston Texans,7,Pittsburgh Steelers,31,3,3,1,0,1,0,3,3,0,0,3,-3,-24,38,2020-09-24T12:23:36.011Z,Facebook_2328097410559627,4,b
+1254290,2020,reg,3,Washington Football Team,30,Cleveland Browns,24,3,3,0,0,0,0,3,-3,1,0,3,3,6,54,2020-09-24T12:24:10.435Z,Facebook_2328097410559627,3,b
+1254295,2020,reg,3,Los Angeles Rams,27,Buffalo Bills,17,3,3,0,0,0,0,3,-3,0,0,3,-3,10,44,2020-09-24T12:24:33.987Z,Facebook_2328097410559627,0,b
+1254300,2020,reg,3,Carolina Panthers,10,Los Angeles Chargers,35,3,3,0,0,0,0,3,-3,0,0,3,-3,-25,45,2020-09-24T12:24:56.695Z,Facebook_2328097410559627,0,b
+1254305,2020,reg,3,New York Jets,17,Indianapolis Colts,26,3,3,1,0,0,0,3,-3,1,0,3,3,-9,43,2020-09-24T12:25:17.657Z,Facebook_2328097410559627,5,b
+1254310,2020,reg,3,Detroit Lions,13,Arizona Cardinals,36,3,3,0,0,0,0,3,-3,1,0,3,3,-23,49,2020-09-24T12:25:37.898Z,Facebook_2328097410559627,3,b
+1254315,2020,reg,3,Dallas Cowboys,30,Seattle Seahawks,24,3,3,0,0,0,0,3,-3,0,0,3,-3,6,54,2020-09-24T12:26:05.657Z,Facebook_2328097410559627,0,b
+1254320,2020,reg,3,Tampa Bay Buccaneers,20,Denver Broncos,24,3,3,0,0,0,0,3,-3,0,0,3,-3,-4,44,2020-09-24T12:26:26.918Z,Facebook_2328097410559627,0,b
+1254325,2020,reg,3,Green Bay Packers,28,New Orleans Saints,27,3,3,1,0,1,0,3,3,1,0,3,3,1,55,2020-09-24T12:29:21.924Z,Facebook_2328097410559627,6,b
+1254270,2020,reg,3,Chicago Bears,21,Atlanta Falcons,28,3,3,0,0,0,0,3,-3,1,0,3,3,-7,49,2020-09-24T12:28:56.758Z,Facebook_2328097410559627,2,b
+1254255,2020,reg,3,Miami Dolphins,17,Jacksonville Jaguars,24,3,3,0,0,0,0,3,-3,1,0,3,3,-7,41,2020-09-24T20:32:32.172Z,Facebook_10154773754448953,2,BryanCole
+1254260,2020,reg,3,Tennessee Titans,21,Minnesota Vikings,17,3,3,1,0,0,0,3,-3,0,0,3,-3,4,38,2020-09-24T20:33:44.719Z,Facebook_10154773754448953,2,BryanCole
+1254265,2020,reg,3,Las Vegas Raiders,24,New England Patriots,27,3,3,1,0,0,0,3,-3,1,0,3,3,-3,51,2020-09-24T20:35:28.292Z,Facebook_10154773754448953,4,BryanCole
+1254270,2020,reg,3,Chicago Bears,20,Atlanta Falcons,24,3,3,0,0,0,0,3,-3,0,0,3,-3,-4,44,2020-09-24T20:37:46.309Z,Facebook_10154773754448953,0,BryanCole
+1254275,2020,reg,3,Cincinnati Bengals,18,Philadelphia Eagles,21,3,3,0,0,1,0,3,3,1,0,3,3,-3,39,2020-09-24T20:38:48.961Z,Facebook_10154773754448953,4,BryanCole
+1254280,2020,reg,3,San Francisco 49ers,27,New York Giants,24,3,3,1,0,0,0,3,-3,1,0,3,3,3,51,2020-09-24T20:39:17.097Z,Facebook_10154773754448953,4,BryanCole
+1254285,2020,reg,3,Houston Texans,17,Pittsburgh Steelers,27,3,3,1,0,1,0,3,3,0,0,3,-3,-10,44,2020-09-24T20:41:04.278Z,Facebook_10154773754448953,4,BryanCole
+1254290,2020,reg,3,Washington Football Team,20,Cleveland Browns,24,3,3,1,0,0,0,3,-3,0,0,3,-3,-4,44,2020-09-24T20:42:09.939Z,Facebook_10154773754448953,3,BryanCole
+1254295,2020,reg,3,Los Angeles Rams,24,Buffalo Bills,27,3,3,1,0,1,0,3,3,1,0,3,3,-3,51,2020-09-24T20:42:47.537Z,Facebook_10154773754448953,7,BryanCole
+1254300,2020,reg,3,Carolina Panthers,20,Los Angeles Chargers,17,3,3,1,0,1,0,3,3,1,0,3,3,3,37,2020-09-24T20:43:29.552Z,Facebook_10154773754448953,7,BryanCole
+1254305,2020,reg,3,New York Jets,14,Indianapolis Colts,20,3,3,1,0,0,0,3,-3,1,0,3,3,-6,34,2020-09-24T20:44:19.099Z,Facebook_10154773754448953,4,BryanCole
+1254310,2020,reg,3,Detroit Lions,20,Arizona Cardinals,27,3,3,0,0,0,0,3,-3,1,0,3,3,-7,47,2020-09-24T20:45:37.673Z,Facebook_10154773754448953,2,BryanCole
+1254315,2020,reg,3,Dallas Cowboys,27,Seattle Seahawks,35,3,3,1,0,1,0,3,3,1,0,3,3,-8,62,2020-09-24T20:46:09.277Z,Facebook_10154773754448953,6,BryanCole
+1254320,2020,reg,3,Tampa Bay Buccaneers,24,Denver Broncos,20,3,3,1,0,0,0,3,-3,0,0,3,-3,4,44,2020-09-24T20:46:41.863Z,Facebook_10154773754448953,2,BryanCole
+1254255,2020,reg,3,Miami Dolphins,17,Jacksonville Jaguars,23,0,0,0,0,0,0,0,0,1,0,0,0,-6,40,2020-09-24T21:07:38.623Z,ausame,2,ausame
+1254260,2020,reg,3,Tennessee Titans,24,Minnesota Vikings,20,0,3,1,0,0,0,0,0,0,0,3,-3,4,44,2020-09-25T07:41:18.584Z,Facebook_10208710241577136,2,PaulCullin
+1254265,2020,reg,3,Las Vegas Raiders,24,New England Patriots,28,0,0,1,0,0,0,0,0,1,0,0,0,-4,52,2020-09-25T07:43:02.426Z,Facebook_10208710241577136,4,PaulCullin
+1254270,2020,reg,3,Chicago Bears,20,Atlanta Falcons,27,0,0,0,0,0,0,0,0,0,0,0,0,-7,47,2020-09-25T07:43:40.298Z,Facebook_10208710241577136,0,PaulCullin
+1254275,2020,reg,3,Cincinnati Bengals,24,Philadelphia Eagles,22,3,0,0,0,1,0,3,3,1,0,0,0,2,46,2020-09-25T07:44:06.704Z,Facebook_10208710241577136,5,PaulCullin
+1254280,2020,reg,3,San Francisco 49ers,24,New York Giants,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2020-09-27T08:58:41.758Z,Facebook_10208710241577136,6,PaulCullin
+1254285,2020,reg,3,Houston Texans,24,Pittsburgh Steelers,22,3,0,0,0,0,0,3,-3,1,0,0,0,2,46,2020-09-25T07:45:03.416Z,Facebook_10208710241577136,2,PaulCullin
+1254290,2020,reg,3,Washington Football Team,21,Cleveland Browns,27,0,0,1,0,0,0,0,0,1,0,0,0,-6,48,2020-09-25T07:45:44.914Z,Facebook_10208710241577136,4,PaulCullin
+1254295,2020,reg,3,Los Angeles Rams,24,Buffalo Bills,18,3,0,0,0,0,0,3,-3,0,0,0,0,6,42,2020-09-25T07:46:16.914Z,Facebook_10208710241577136,0,PaulCullin
+1254300,2020,reg,3,Carolina Panthers,20,Los Angeles Chargers,23,0,0,0,0,1,0,0,0,1,0,0,0,-3,43,2020-09-25T07:47:07.762Z,Facebook_10208710241577136,4,PaulCullin
+1254305,2020,reg,3,New York Jets,20,Indianapolis Colts,28,3,0,1,0,0,0,3,-3,0,0,0,0,-8,48,2020-09-25T07:47:38.711Z,Facebook_10208710241577136,2,PaulCullin
+1254310,2020,reg,3,Detroit Lions,27,Arizona Cardinals,23,2,0,1,0,1,0,2,2,1,0,0,0,4,50,2020-09-25T07:48:31.549Z,Facebook_10208710241577136,7,PaulCullin
+1254315,2020,reg,3,Dallas Cowboys,27,Seattle Seahawks,30,0,0,1,0,0,0,0,0,1,0,0,0,-3,57,2020-09-25T07:49:05.576Z,Facebook_10208710241577136,4,PaulCullin
+1254320,2020,reg,3,Tampa Bay Buccaneers,24,Denver Broncos,19,0,0,1,0,0,0,0,0,1,0,0,0,5,43,2020-09-25T07:49:53.744Z,Facebook_10208710241577136,4,PaulCullin
+1254325,2020,reg,3,Green Bay Packers,34,New Orleans Saints,27,3,0,1,0,1,0,3,3,1,0,0,0,7,61,2020-09-25T07:50:27.712Z,Facebook_10208710241577136,7,PaulCullin
+1254330,2020,reg,3,Kansas City Chiefs,30,Baltimore Ravens,24,0,0,,,,,,,,,,,6,54,2020-09-25T07:52:15.093Z,Facebook_10208710241577136,,PaulCullin
+1254285,2020,reg,3,Houston Texans,20,Pittsburgh Steelers,23,0,0,1,0,0,0,0,0,0,0,0,0,-3,43,2020-09-26T01:07:27.109Z,rosstuckerNFL,2,rosstuckerNFL
+1254265,2020,reg,3,Las Vegas Raiders,20,New England Patriots,27,0,0,1,0,1,0,0,0,0,0,0,0,-7,47,2020-09-26T01:11:35.595Z,rosstuckerNFL,5,rosstuckerNFL
+1254260,2020,reg,3,Tennessee Titans,21,Minnesota Vikings,23,0,0,0,0,1,0,0,0,0,0,0,0,-2,44,2020-09-26T21:41:06.202Z,rosstuckerNFL,2,rosstuckerNFL
+1254295,2020,reg,3,Los Angeles Rams,24,Buffalo Bills,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2020-09-26T01:13:49.151Z,rosstuckerNFL,7,rosstuckerNFL
+1254305,2020,reg,3,New York Jets,13,Indianapolis Colts,27,0,0,1,0,1,0,0,0,1,0,0,0,-14,40,2020-09-26T01:17:22.939Z,rosstuckerNFL,6,rosstuckerNFL
+1254315,2020,reg,3,Dallas Cowboys,35,Seattle Seahawks,38,0,0,1,0,0,0,0,0,1,0,0,0,-3,73,2020-09-26T01:18:43.328Z,rosstuckerNFL,5,rosstuckerNFL
+1254330,2020,reg,3,Kansas City Chiefs,23,Baltimore Ravens,27,0,0,,,,,,,,,,,-4,50,2020-09-26T01:22:15.936Z,rosstuckerNFL,,rosstuckerNFL
+1254260,2020,reg,3,Tennessee Titans,24,Minnesota Vikings,21,1,1,1,0,0,0,1,-1,0,0,1,-1,3,45,2020-09-27T01:03:30.679Z,Facebook_10154523075462819,2,JordanPeterson
+1254265,2020,reg,3,Las Vegas Raiders,20,New England Patriots,28,2,1,1,0,1,0,2,2,1,0,1,1,-8,48,2020-09-27T01:04:26.187Z,Facebook_10154523075462819,7,JordanPeterson
+1254270,2020,reg,3,Chicago Bears,23,Atlanta Falcons,31,1,3,0,0,0,0,1,-1,1,0,3,3,-8,54,2020-09-27T01:05:45.295Z,Facebook_10154523075462819,2,JordanPeterson
+1254275,2020,reg,3,Cincinnati Bengals,23,Philadelphia Eagles,24,1,1,0,0,1,0,1,1,1,0,1,1,-1,47,2020-09-27T01:08:32.380Z,Facebook_10154523075462819,5,JordanPeterson
+1254280,2020,reg,3,San Francisco 49ers,20,New York Giants,17,2,1,1,0,0,0,2,-2,0,0,1,-1,3,37,2020-09-27T01:10:03.520Z,Facebook_10154523075462819,2,JordanPeterson
+1254285,2020,reg,3,Houston Texans,17,Pittsburgh Steelers,24,3,1,1,0,1,0,3,3,0,0,1,-1,-7,41,2020-09-27T01:10:47.637Z,Facebook_10154523075462819,5,JordanPeterson
+1254290,2020,reg,3,Washington Football Team,24,Cleveland Browns,30,1,1,1,0,0,0,1,-1,1,0,1,1,-6,54,2020-09-27T01:13:56.503Z,Facebook_10154523075462819,5,JordanPeterson
+1254300,2020,reg,3,Carolina Panthers,20,Los Angeles Chargers,24,1,1,0,0,1,0,1,1,0,0,1,-1,-4,44,2020-09-27T01:17:18.047Z,Facebook_10154523075462819,2,JordanPeterson
+1254305,2020,reg,3,New York Jets,17,Indianapolis Colts,27,1,1,1,0,0,0,1,-1,0,0,1,-1,-10,44,2020-09-27T01:18:12.150Z,Facebook_10154523075462819,2,JordanPeterson
+1254310,2020,reg,3,Detroit Lions,24,Arizona Cardinals,30,2,1,0,0,0,0,2,-2,1,0,1,1,-6,54,2020-09-27T01:18:42.084Z,Facebook_10154523075462819,2,JordanPeterson
+1254315,2020,reg,3,Dallas Cowboys,24,Seattle Seahawks,31,2,1,1,0,1,0,2,2,0,0,1,-1,-7,55,2020-09-27T01:19:24.589Z,Facebook_10154523075462819,5,JordanPeterson
+1254320,2020,reg,3,Tampa Bay Buccaneers,27,Denver Broncos,20,1,2,1,0,1,0,1,1,0,0,2,-2,7,47,2020-09-27T01:21:20.896Z,Facebook_10154523075462819,4,JordanPeterson
+1254325,2020,reg,3,Green Bay Packers,30,New Orleans Saints,28,2,1,1,0,1,0,2,2,1,0,1,1,2,58,2020-09-27T01:22:00.182Z,Facebook_10154523075462819,6,JordanPeterson
+1254330,2020,reg,3,Kansas City Chiefs,30,Baltimore Ravens,31,1,1,,,,,,,,,,,-1,61,2020-09-27T01:23:38.160Z,Facebook_10154523075462819,,JordanPeterson
+1254265,2020,reg,3,Las Vegas Raiders,17,New England Patriots,26,0,0,1,0,1,0,0,0,0,0,0,0,-9,43,2020-09-27T09:47:39.844Z,ausame,4,ausame
+1254260,2020,reg,3,Tennessee Titans,24,Minnesota Vikings,21,2,0,1,0,0,0,2,-2,0,0,0,0,3,45,2020-09-27T10:02:04.942Z,ausame,2,ausame
+1254270,2020,reg,3,Chicago Bears,21,Atlanta Falcons,28,0,0,0,0,0,0,0,0,1,0,0,0,-7,49,2020-09-27T09:53:11.141Z,ausame,2,ausame
+1254275,2020,reg,3,Cincinnati Bengals,27,Philadelphia Eagles,24,3,0,0,0,1,0,3,3,0,0,0,0,3,51,2020-09-27T09:53:33.603Z,ausame,2,ausame
+1254280,2020,reg,3,San Francisco 49ers,23,New York Giants,17,0,1,1,0,1,0,0,0,0,0,1,-1,6,40,2020-09-27T09:54:09.277Z,ausame,4,ausame
+1254285,2020,reg,3,Houston Texans,24,Pittsburgh Steelers,27,2,2,1,0,0,0,2,-2,1,0,2,2,-3,51,2020-09-27T09:54:48.978Z,ausame,4,ausame
+1254290,2020,reg,3,Washington Football Team,22,Cleveland Browns,28,2,0,1,0,0,0,2,-2,1,0,0,0,-6,50,2020-09-27T09:55:57.160Z,ausame,4,ausame
+1254295,2020,reg,3,Los Angeles Rams,21,Buffalo Bills,24,2,0,1,0,1,0,2,2,0,0,0,0,-3,45,2020-09-27T09:56:32.669Z,ausame,5,ausame
+1254300,2020,reg,3,Carolina Panthers,19,Los Angeles Chargers,27,0,0,0,0,0,0,0,0,0,0,0,0,-8,46,2020-09-27T09:57:38.396Z,ausame,0,ausame
+1254305,2020,reg,3,New York Jets,16,Indianapolis Colts,27,1,0,1,0,0,0,1,-1,1,0,0,0,-11,43,2020-09-27T09:58:19.688Z,ausame,5,ausame
+1254310,2020,reg,3,Detroit Lions,23,Arizona Cardinals,28,0,0,0,0,1,0,0,0,1,0,0,0,-5,51,2020-09-27T09:58:40.383Z,ausame,4,ausame
+1254315,2020,reg,3,Dallas Cowboys,27,Seattle Seahawks,33,0,0,1,0,1,0,0,0,1,0,0,0,-6,60,2020-09-27T09:59:06.567Z,ausame,6,ausame
+1254320,2020,reg,3,Tampa Bay Buccaneers,24,Denver Broncos,17,0,0,1,0,1,0,0,0,1,0,0,0,7,41,2020-09-27T09:59:39.087Z,ausame,6,ausame
+1254325,2020,reg,3,Green Bay Packers,28,New Orleans Saints,27,3,0,1,0,1,0,3,3,1,0,0,0,1,55,2020-09-27T10:00:02.494Z,ausame,6,ausame
+1254330,2020,reg,3,Kansas City Chiefs,27,Baltimore Ravens,28,2,0,,,,,,,,,,,-1,55,2020-09-27T10:00:37.915Z,ausame,,ausame
+1254285,2020,reg,3,Houston Texans,21,Pittsburgh Steelers,24,0,0,1,0,1,0,0,0,1,0,0,0,-3,45,2020-09-27T16:04:43.317Z,Jharris6181,7,Jharris6181
+1254275,2020,reg,3,Cincinnati Bengals,24,Philadelphia Eagles,20,0,0,0,0,0,0,0,0,1,0,0,0,4,44,2020-09-27T16:04:49.050Z,Jharris6181,2,Jharris6181
+1254280,2020,reg,3,San Francisco 49ers,33,New York Giants,19,0,0,1,0,1,0,0,0,1,0,0,0,14,52,2020-09-27T16:04:55.723Z,Jharris6181,6,Jharris6181
+1254260,2020,reg,3,Tennessee Titans,35,Minnesota Vikings,32,0,0,1,0,1,0,0,0,1,0,0,0,3,67,2020-09-27T16:05:01.937Z,Jharris6181,6,Jharris6181
+1254265,2020,reg,3,Las Vegas Raiders,20,New England Patriots,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2020-09-27T16:05:07.993Z,Jharris6181,3,Jharris6181
+1254295,2020,reg,3,Los Angeles Rams,31,Buffalo Bills,37,0,0,1,0,1,0,0,0,1,0,0,0,-6,68,2020-09-27T16:05:13.780Z,Jharris6181,6,Jharris6181
+1254290,2020,reg,3,Washington Football Team,14,Cleveland Browns,21,0,0,1,0,1,0,0,0,1,0,0,0,-7,35,2020-09-27T16:05:18.854Z,Jharris6181,6,Jharris6181
+1254270,2020,reg,3,Chicago Bears,13,Atlanta Falcons,29,0,0,0,0,0,0,0,0,1,0,0,0,-16,42,2020-09-27T16:05:25.766Z,Jharris6181,2,Jharris6181
+1254305,2020,reg,3,New York Jets,7,Indianapolis Colts,28,0,0,1,0,1,0,0,0,1,0,0,0,-21,35,2020-09-27T16:05:35.360Z,Jharris6181,7,Jharris6181
+1254300,2020,reg,3,Carolina Panthers,17,Los Angeles Chargers,18,0,0,0,0,0,0,0,0,1,0,0,0,-1,35,2020-09-27T16:05:42.147Z,Jharris6181,2,Jharris6181
+1254320,2020,reg,3,Tampa Bay Buccaneers,35,Denver Broncos,28,0,0,1,0,1,0,0,0,1,0,0,0,7,63,2020-09-27T16:05:57.197Z,Jharris6181,6,Jharris6181
+1254315,2020,reg,3,Dallas Cowboys,31,Seattle Seahawks,35,0,0,1,0,1,0,0,0,1,0,0,0,-4,66,2020-09-27T16:06:05.889Z,Jharris6181,7,Jharris6181
+1254310,2020,reg,3,Detroit Lions,30,Arizona Cardinals,31,0,0,0,0,0,0,0,0,1,0,0,0,-1,61,2020-09-27T16:06:12.269Z,Jharris6181,2,Jharris6181
+1254325,2020,reg,3,Green Bay Packers,37,New Orleans Saints,38,0,0,0,0,0,0,0,0,1,0,0,0,-1,75,2020-09-27T16:06:19.386Z,Jharris6181,3,Jharris6181
+1254330,2020,reg,3,Kansas City Chiefs,39,Baltimore Ravens,32,0,0,,,,,,,,,,,7,71,2020-09-27T16:06:26.768Z,Jharris6181,,Jharris6181
+1254325,2020,reg,3,Green Bay Packers,30,New Orleans Saints,24,3,3,1,0,1,0,3,3,1,0,3,3,6,54,2020-09-27T16:32:13.120Z,Facebook_10154773754448953,6,BryanCole
+1254330,2020,reg,3,Kansas City Chiefs,28,Baltimore Ravens,27,3,3,,,,,,,,,,,1,55,2020-09-27T16:32:32.282Z,Facebook_10154773754448953,,BryanCole

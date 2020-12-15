@@ -1,15 +1,18 @@
-'use strict';
+    'use strict';
 
 var mongo = require("mongodb").MongoClient,
-    assert = require("assert");
+    assert = require("assert"),
+    {config} = require('config');
     
     var AWS = require('aws-sdk');
     var cognitoidentityserviceprovider = AWS.CognitoIdentityServiceProvider;
     var client = new cognitoidentityserviceprovider({ apiVersion: '2016-04-19', region: 'us-west-2' });
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 // console.log('Loading function');
+
+// Context must return an array
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
@@ -70,12 +73,12 @@ exports.handler = (event, context) => {
                 
                 if (leaderboardWeeklyArrayLength === 0 && leaderboardOverallArrayLength === 0) {
                     let leaderboardWeeklyStars = leaderboardWeeklyUsersMapped.filter(user => {
-                        if (user.stars && user.stars.roi) return user;
+                        if (user.stars && user.stars.roi !== null && user.stars.wagered > 0) return user;
                     })
                     let leaderboardOverallStars = leaderboardOverallUsersMapped.filter(user => {
-                        if (user.stars && user.stars.roi) return user;
+                        if (user.stars && user.stars.roi!==null && user.stars.wagered >= (leaderboard.gameWeek * 5)) return user;
                     })
-                    console.log({ leaderboardOverallStars: JSON.stringify(leaderboardOverallStars), leaderboardWeeklyStars: JSON.stringify(leaderboardWeeklyStars) })
+                    //console.log({ leaderboardOverallStars: JSON.stringify(leaderboardOverallStars), leaderboardWeeklyStars: JSON.stringify(leaderboardWeeklyStars) })
                     leaderboardWeeklyStars.sort((a,b) => {
                         return (a.stars.roi - b.stars.roi) * -1 || (a.stars.net - b.stars.net) * -1
                         
@@ -99,14 +102,11 @@ exports.handler = (event, context) => {
                         sport,
                         week
                     })
-                context.done(null, { 
-                    leaderboard: {
-                        year,
-                        season,
-                        sport,
-                        week
-                    }
+                context.done(null, {
+                        weekly: {},
+                        overall: {}
                 })
+                
             }
         })
         .catch(getLeaderboardError => console.log({getLeaderboardError}))

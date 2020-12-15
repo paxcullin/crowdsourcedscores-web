@@ -1,14 +1,13 @@
 'use strict';
 
 var assert = require("assert"),
-    _ = require("lodash"),
-    Promise = require("bluebird"),
-    mongo = Promise.promisifyAll(require("mongodb"));
+    mongo = require("mongodb").MongoClient,
+    {config} = require('config');
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
     
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 function calculatePercentage(totalCorrect, totalPushes, totalGames) {
     var percentage = totalCorrect / (totalGames - totalPushes);
@@ -98,7 +97,7 @@ function getSpread(game, gameOdds, gamePrediction) {
         bullseyes: 0,
         stars: {
             wagered: 0,
-            earned: 0
+            net: 0
         }
     }
     
@@ -111,7 +110,7 @@ function getSpread(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
-                earned: gamePrediction.stars ? gamePrediction.stars.spread : 0
+                net: gamePrediction.stars ? gamePrediction.stars.spread : 0
             }
         };
         gamePrediction.predictionScore += 2;
@@ -124,7 +123,7 @@ function getSpread(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
-                earned: gamePrediction.stars ? gamePrediction.stars.spread : 0
+                net: gamePrediction.stars ? gamePrediction.stars.spread : 0
             }
         };
         gamePrediction.predictionScore += 2;
@@ -135,8 +134,8 @@ function getSpread(game, gameOdds, gamePrediction) {
             push: 1,
             bullseyes: 0,
             stars: {
-                wagered: 0,
-                earned: 0
+                wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
+                net: 0
             }
         };
     } else {
@@ -147,7 +146,7 @@ function getSpread(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.spread : 0,
-                earned: 0
+                net: gamePrediction.stars ? (gamePrediction.stars.spread * -1) : 0
             }
         };
     }
@@ -165,7 +164,7 @@ function getTotalResult(game, gameOdds, gamePrediction) {
         bullseyes: 0,
         stars: {
             wagered: 0,
-            earned: 0
+            net: 0
         }
     };
     //predicted over
@@ -176,7 +175,7 @@ function getTotalResult(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
-                earned: gamePrediction.stars ? gamePrediction.stars.total : 0
+                net: gamePrediction.stars ? gamePrediction.stars.total : 0
             }   
         };
         gamePrediction.predictionScore += 2;
@@ -189,7 +188,7 @@ function getTotalResult(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
-                earned: gamePrediction.stars ? gamePrediction.stars.total : 0
+                net: gamePrediction.stars ? gamePrediction.stars.total : 0
             }
         };
         gamePrediction.predictionScore += 2;
@@ -200,8 +199,8 @@ function getTotalResult(game, gameOdds, gamePrediction) {
             push: 1,
             bullseyes: 0,
             stars: {
-                wagered: 0,
-                earned: 0
+                wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
+                net: 0
             }
         };
     } else {
@@ -212,7 +211,7 @@ function getTotalResult(game, gameOdds, gamePrediction) {
             bullseyes: 0,
             stars: {
                 wagered: gamePrediction.stars ? gamePrediction.stars.total : 0,
-                earned: 0
+                net: gamePrediction.stars ? (gamePrediction.stars.total * -1) : 0
             }
         };
     }
@@ -221,6 +220,7 @@ function getTotalResult(game, gameOdds, gamePrediction) {
         gamePrediction.predictionScore += 1;
         gamePrediction.results.total.bullseyes = 1;
     }
+    console.log({total})
     return gamePrediction;
 }
 
@@ -257,11 +257,13 @@ exports.handler = (event, context) => {
     }
     //console.log("gameQuery: ", gameQuery)
 
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         assert.equal(null, err);
         if(err) {
             context.done(err, null);
         }
+
+        const db = client.db('pcsm');
 
         //updates each prediction with results
         function updatePrediction(existingObjQuery, gamePrediction) {
@@ -357,11 +359,13 @@ exports.handler = (event, context) => {
                                 
                                 // predictionResultsObj = getWinnerLoser(gamePrediction.awayTeam.code, gamePrediction.homeTeam.code, predictionResultsScores)
                         gamePrediction.predictionScore = 0;
+                        const { odds } = gamePrediction && gamePrediction.odds ? gamePrediction : game
+                        console.log({ odds, gamePrediction: gamePrediction && gamePrediction.odds ? gamePrediction.odds : null, gameOdds: game.odds });
                         var straightUpResults = getWinnerLoser(game, gamePrediction);
-                        var spreadResult = getSpread(game, game.odds,gamePrediction);
-                        var totalResult = getTotalResult(game, game.odds,gamePrediction);
+                        var spreadResult = getSpread(game, odds,gamePrediction);
+                        var totalResult = getTotalResult(game, odds,gamePrediction);
                         var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, gameWeek: gamePrediction.gameWeek};
-                        //console.log("existingObjQuery: " + JSON.stringify(existingObjQuery));
+                        console.log("existingObjQuery: " + JSON.stringify(existingObjQuery));
                         //update prediction with results for userId and gameId combo
                         queryPromises.push(db.collection(predictionsCollection).update(existingObjQuery,
                             gamePrediction, {upsert: true}));
@@ -379,7 +383,7 @@ exports.handler = (event, context) => {
                                       if (err) {
                                         console.log("calculateIndividualUserPerformanceWeekly err: ", err);
                                       } else {
-                                        console.log('calculateIndividualUserPerformanceWeekly response: ', data.Payload);
+                                        console.log('calculateIndividualUserPerformanceWeekly1 response: ', data.Payload);
                                         
                                         
                                         context.done(null, games);
@@ -406,7 +410,7 @@ exports.handler = (event, context) => {
                       if (err) {
                         console.log("calculateIndividualUserPerformanceWeekly err: ", err);
                       } else {
-                        console.log('calculateIndividualUserPerformanceWeekly response: ', data.Payload);
+                        console.log('calculateIndividualUserPerformanceWeekly2 response: ', data.Payload);
                         
                         
                         context.done(null, games);

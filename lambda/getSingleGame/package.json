@@ -1,0 +1,16 @@
+{
+  "name": "get-games-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^3.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r getGames.zip ."
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,18 +1,15 @@
 {
-  "name": "aggregate-predictions-lambda",
+  "name": "calculate-individual-user-performance-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r aggregatePredictions.zip ."
+    "package": "zip -r calculateIndividualUserPerformance.zip ."
   },
-  "author": "Paul Cullin",
+  "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "lodash": "^4.16.6",
-    "mongo-round": "^1.0.0",
-    "mongodb": "^2.2.4"
+    "mongodb": "^3.0.5"
   }
 }
