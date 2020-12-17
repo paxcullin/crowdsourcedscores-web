@@ -3,7 +3,7 @@
 var mongo = require("mongodb").MongoClient,
     assert = require("assert");
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 console.log('Loading function');
 
@@ -14,14 +14,16 @@ function formatPercentage(number) {
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
+    const { year, season, sport, week } = event;
+    
 
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, (err, client) => {
         assert.equal(null, err);
         if (err) {
             context.done(err, null);
         }
         console.log("Connected succesfully to mongodb");
-
+        const db = client.db('pcsm');
         var collection = db.collection('leaderboards');
         var weeklyResultsArray = [
             ['Week', 'S/U', 'ATS', 'O/U', 'Total Games']];
@@ -31,7 +33,7 @@ exports.handler = (event, context) => {
             weekly: {},
             overall: {}
         }
-        let query = {"year": parseInt(event.year), "season": event.season, "gameWeek": {$lte: parseInt(event.week)}};
+        let query = {"year": parseInt(year), "season": season, "gameWeek": {$lte: parseInt(week)}, "season": season};
         query.season = event.season ? event.season : null;
         query.sport = event.sport ? event.sport : null;
         collection.find(query, {_id: false},{sort: {"gameWeek": 1}}).toArray(function (err, weeklyResults) {
@@ -48,7 +50,7 @@ exports.handler = (event, context) => {
                 var overallResultsArrayObject = [];
                 var weeklyResultObj = {};
                 
-                if (weeklyResult.weekly) {
+                if (weeklyResult.weekly && weeklyResult.weekly.crowd) {
                     weeklyResultsArrayObject.push(weeklyResult.gameWeek);
                     weeklyResultsArrayObject.push(weeklyResult.weekly.crowd.winner.correct);
                     weeklyResultsArrayObject.push(weeklyResult.weekly.crowd.spread.correct);
@@ -77,7 +79,9 @@ exports.handler = (event, context) => {
                         predictionScore: weeklyResult.weekly.crowd.predictionScore
                         
                     }
-                    weeklyResultsRecord = weeklyResultObj;
+                    if (weeklyResultObj.gameWeek === week) {
+                        weeklyResultsRecord = weeklyResultObj;
+                    }
                 
                     overallResultsArrayObject.push(weeklyResult.gameWeek);
                     overallResultsArrayObject.push(formatPercentage(weeklyResult.overall.crowd.winner.percentage));
