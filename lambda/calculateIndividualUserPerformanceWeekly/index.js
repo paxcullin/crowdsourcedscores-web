@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require("assert"),
-    mongo = require("mongodb"),
+    mongo = require("mongodb").MongoClient,
     {config} = require('config');
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
