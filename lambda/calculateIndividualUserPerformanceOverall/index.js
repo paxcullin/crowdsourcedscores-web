@@ -1,11 +1,10 @@
 'use strict';
 
 var assert = require("assert"),
-    _ = require("lodash"),
-    Promise = require("bluebird"),
-    mongo = Promise.promisifyAll(require("mongodb"));
+    {config} = require('config'),
+    mongo = require("mongodb").MongoClient;
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 function calculatePercentage(totalCorrect, totalPushes, totalGames) {
     var percentage = totalCorrect / (totalGames - totalPushes);
@@ -14,19 +13,18 @@ function calculatePercentage(totalCorrect, totalPushes, totalGames) {
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         if (err) {
             console.log(err);
             return context.fail(err, null);
         }
+        const db = client.db('pcsm');
         var updateOverall = {};
         var queryPromises = [];
         var extendedProfile = db.collection('profileExtended');
         
         // set defaults
-        var sport = event.sport ? event.sport : 'nfl';
-        var year = event.year ? event.year : 2018;
-        var season = event.season ? event.season : 'reg';
+        let { sport, year, season } = event;
         var gameWeekMatch = { $gt: 0, $lte: event.gameWeek };
         var predictionsCollection = 'predictions';
         var query = {}
@@ -95,9 +93,9 @@ exports.handler = (event, context, callback) => {
                 let starsNet = result.atsStarsNet + result.totalStarsNet;
                 var resultsObj = {};
                 var resultsObjKey = `results.${sport}.${result._id.year}.${season}.overall`;
-                if (season === 'reg' && sport !== 'ncaam') {
-                    resultsObjKey = "results.overall";
-                }
+                // if (season === 'reg' && sport !== 'ncaam') {
+                //     resultsObjKey = "results.overall";
+                // }
                 //console.log('resultsObjKey: ', resultsObjKey)
                 resultsObj[resultsObjKey] = {
                             winner: {
@@ -178,7 +176,8 @@ exports.handler = (event, context, callback) => {
                 let leaderboardCriteria = {
                   year: event.year,
                   gameWeek: event.gameWeek,
-                  season: season
+                  season: season,
+                  sport: sport
                 }
                 let leaderboardUpdate = {
                     $set: {

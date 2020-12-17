@@ -10,10 +10,6 @@
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "lodash": "^4.17.19",
-    "mongo-round": "^1.0.0",
-    "mongodb": "^3.1.13",
-    "mongodb-core": "^3.1.9"
+    "mongodb": "^3.0.5"
   }
 }
