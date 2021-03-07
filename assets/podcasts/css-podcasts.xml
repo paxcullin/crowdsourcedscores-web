@@ -864,5 +864,44 @@
         <pubDate>Sat, 24 Oct 2020 23:00:00 GMT</pubDate>
         <itunes:duration>47:24</itunes:duration>
       </item>
+      <item>
+        <title>2020 - Regular Season Recap - Episode 8</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris and Paul emerge from quarantine to review their regular season predictions and lay out what they think will happen during the Super Wild Card Weekend games.</description>
+        <itunes:subtitle>Chris and Paul emerge from quarantine to review their regular season predictions and lay out what they think will happen during the Super Wild Card Weekend games.</itunes:subtitle>
+        <itunes:episode>61</itunes:episode>
+        <itunes:summary>Chris and Paul emerge from quarantine to review their regular season predictions and lay out what they think will happen during the Super Wild Card Weekend games.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-week17.mp3" length="01:52:51" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-week17.mp3</guid>
+        <pubDate>Tue, 12 Jan 2021 12:00:00 GMT</pubDate>
+        <itunes:duration>1:52:51</itunes:duration>
+      </item>
+      <item>
+        <title>2020 - Bonus Episode Brian McFadden from Pigskin Party Postseason Interview</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris and is joined by Brian McFadden, the host of the Pigskin Party Podcast, for the second half of a home-and-home series. Brian and Chris talk Game 267 and look ahead to the 2021 season.</description>
+        <itunes:subtitle>Chris and is joined by Brian McFadden, the host of the Pigskin Party Podcast, for the second half of a home-and-home series. Brian and Chris talk Game 267 and look ahead to the 2021 season.</itunes:subtitle>
+        <itunes:episode>63</itunes:episode>
+        <itunes:summary>Chris and is joined by Brian McFadden, the host of the Pigskin Party Podcast, for the second half of a home-and-home series. Brian and Chris talk Game 267 and look ahead to the 2021 season.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode9-bonus.mp3" length="01:07:02" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode9-bonus.mp3</guid>
+        <pubDate>Mon, 15 Feb 2021 16:00:00 GMT</pubDate>
+        <itunes:duration>1:07:02</itunes:duration>
+      </item>
+      <item>
+        <title>2020 - Postseason Recap - Episode 9</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris and Paul reconvene for the final time (for now) to wrap up the NFL postseason. Paul is enjoying a pint from San Juan Island Brewing Co while Chris continues to enjoy his Backbeat Bourbon from 3 Howls Distillery. After they cover the postseason - and spend way too much time talking Tom Brady - they look ahead to the 2021 season in which, if nothing else, they hope COVID plays only a minor role if at all.</description>
+        <itunes:subtitle>Chris and Paul reconvene for the final time (for now) to wrap up the NFL postseason. Paul is enjoying a pint from San Juan Island Brewing Co while Chris continues to enjoy his Backbeat Bourbon from 3 Howls Distillery. After they cover the postseason - and spend way too much time talking Tom Brady - they look ahead to the 2021 season in which, if nothing else, they hope COVID plays only a minor role if at all.</itunes:subtitle>
+        <itunes:episode>62</itunes:episode>
+        <itunes:summary>Chris and Paul reconvene for the final time (for now) to wrap up the NFL postseason. Paul is enjoying a pint from San Juan Island Brewing Co while Chris continues to enjoy his Backbeat Bourbon from 3 Howls Distillery. After they cover the postseason - and spend way too much time talking Tom Brady - they look ahead to the 2021 season in which, if nothing else, they hope COVID plays only a minor role if at all.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode9.mp3" length="01:49:49" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2020-episode9.mp3</guid>
+        <pubDate>Mon, 15 Feb 2021 16:00:00 GMT</pubDate>
+        <itunes:duration>1:49:49</itunes:duration>
+      </item>
   </channel>
   </rss>
