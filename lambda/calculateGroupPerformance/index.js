@@ -125,11 +125,13 @@ exports.handler = (event, context) => {
         sport = record.Sns.MessageAttributes.sport.Value;
     
     
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         assert.equal(null, err);
         if(err) {
             context.done(err, null);
         }
+
+        const db = client.db('pcsm');
 
         //updates each prediction with results
         function updatePrediction(existingObjQuery, updatedGroup) {
