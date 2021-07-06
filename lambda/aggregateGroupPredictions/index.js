@@ -55,7 +55,10 @@ var assert = require("assert"),
   }
 })();
 
+
 exports.handler = (event, context) => {
+    
+    
     console.log('Received event:', JSON.stringify(event, null, 2));
     const messageAttributes = event.Records[0].Sns.MessageAttributes;
     let year = 2019,
@@ -91,7 +94,7 @@ exports.handler = (event, context) => {
         ${gameWeek},
         ${season}`)
     mongo.connect(MONGO_URL, function (err, dBase) {
-        
+        // console.log(dBase)
         const db = dBase.db('pcsm')
 
         assert.equal(null, err);
@@ -99,7 +102,7 @@ exports.handler = (event, context) => {
         if (err) {
             return context.done("connect error: " + err, null);
         }
-        db.collection('groups').find({year: 2019, public: { $ne: null }},{_id:false}).toArray(function(err, groups) {
+        db.collection('groups').find({year: 2020, public: { $ne: null }},{_id:false}).toArray(function(err, groups) {
             var groupsLength = groups.length;
             if (err) {
                 console.log("err: ", err)
@@ -113,19 +116,21 @@ exports.handler = (event, context) => {
             */
             var predictionsUpdated = 0
             groups.forEach((group) => {
-                
-                var aggOpts = [
+                // create users array to match predictions
+                let usersArray = [];
+                group.users.forEach(user => usersArray.push(user.preferred_username))
+                console.log('usersArray', usersArray)
+                let aggOpts = [
                     {
-                        $unwind: "$groups"
-                    },
-                    {
-                        $match: { 
-                            "groups.groupId": group.groupId
+                        $match: {
+                            "preferred_username": {"$in": usersArray},
+                            "year": 2020,
+                            "season": "post"
                         }
                     },
                     {
                         $group: {
-                            _id: {groupId: "$groups.groupId", gameId: "$gameId", year: "$year", season: "$season", gameWeek: "$gameWeek"},
+                            _id: {gameId: "$gameId", year: "$year", season: "$season", gameWeek: "$gameWeek"},
                             awayAvg: {$avg: "$awayTeam.score"},
                             homeAvg: {$avg: "$homeTeam.score"},
                             totalAvg: {$avg: "$total"},
@@ -135,12 +140,12 @@ exports.handler = (event, context) => {
                     
                 ]
                 
-                //console.log("aggOpts: ", aggOpts)
+                console.log("aggOpts: ", aggOpts)
                 db.collection('predictions').aggregate(aggOpts).toArray(function (err, results) {
-                    
-                    assert.equal(err, null);
+                    console.log('results.length', results.length)
                     if (err) {
                         console.log(err)
+                        assert.equal(err, null);
                         return context.fail("aggregate err: " + err, null);
                     }
                     
@@ -155,8 +160,8 @@ exports.handler = (event, context) => {
                         if (a.gameId < b.gameId) { return -1 };
                         return 0;
                     })
-                    _.each(results, function (result) {
-                        //console.log("result: ", result)
+                    results.forEach((result) => {
+                        console.log("groupId, result: ", group.groupId, result)
                         // criteria updated to update crowd predictions only when games are in the future
                         //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
                         var criteria = {
@@ -194,10 +199,10 @@ exports.handler = (event, context) => {
                         db.collection('groups').updateOne(criteria, update)
                         .then(response => {
                             let respObj = JSON.parse(response)
-                            console.log({respObj: JSON.stringify(respObj)})
+                            console.log({"respObj.result.n": respObj.result.n, "respObj.result.nModified":respObj.result.nModified })
                             if (respObj.result.n === 1 && respObj.result.nModified === 1) { // result updated
                                 resultsLength--;
-                                console.log({resultsLength})
+                                // console.log({resultsLength})
                                 if (resultsLength === 0) {
                                     groupsLength--;
                                     console.log("groupsLength: ", groupsLength)
@@ -229,7 +234,7 @@ exports.handler = (event, context) => {
                                 db.collection('groups').updateOne(criteria, update)
                                 .then(response => {
                                     resultsLength--;
-                                    console.log({199: resultsLength})
+                                    // console.log({199: resultsLength})
                                     if (resultsLength === 0) {
                                         groupsLength--;
                                         console.log("groupsLength: ", groupsLength)
@@ -241,7 +246,7 @@ exports.handler = (event, context) => {
                                 .catch(reject => {
                                     console.log({pushReject: JSON.stringify(reject)})
                                     resultsLength--;
-                                    console.log({211: resultsLength})
+                                    // console.log({211: resultsLength})
                                     if (resultsLength === 0) {
                                         groupsLength--;
                                         console.log("groupsLength: ", groupsLength)
@@ -253,7 +258,7 @@ exports.handler = (event, context) => {
                                 
                             } else { // no change
                                 resultsLength--;
-                                console.log({256: resultsLength})
+                                // console.log({256: resultsLength})
                                 if (resultsLength === 0) {
                                     groupsLength--;
                                     console.log("groupsLength: ", groupsLength)
