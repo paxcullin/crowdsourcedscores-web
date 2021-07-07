@@ -1,12 +1,13 @@
 'use strict';
 
 var mongo = require("mongodb").MongoClient,
-    assert = require("assert");
+    assert = require("assert"),
+    {config} = require("./config");
     
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 // console.log('Loading function');
 function getWinnerLoser(game, gamePrediction) {
@@ -125,13 +126,14 @@ exports.handler = (event, context) => {
         sport = record.Sns.MessageAttributes.sport.Value;
     
     
-    mongo.connect(MONGO_URL, function (err, client) {
+    mongo.connect(MONGO_URL, function (err, dbClient) {
+        
+        const db = dbClient.db('pcsm');
+        
         assert.equal(null, err);
         if(err) {
             context.done(err, null);
         }
-
-        const db = client.db('pcsm');
 
         //updates each prediction with results
         function updatePrediction(existingObjQuery, updatedGroup) {
@@ -183,7 +185,7 @@ exports.handler = (event, context) => {
                 if (a.gameId < b.gameId) return -1
             })
             // Get Groups
-            db.collection('groups').find({year:2019, sport: sport }).toArray(function (err, groups) {
+            db.collection('groups').find({year:year, sport: sport }).toArray(function (err, groups) {
                 // console.log("predictions.length: ", predictions);
                 assert.equal(err, null);
                 if (err) {
@@ -199,10 +201,9 @@ exports.handler = (event, context) => {
                     //console.log("groupInfo.predictions: ", groupInfo.predictions)
                     //console.log("groupInfo.predictions.length: ", groupInfo.predictions.length)
                     if (groupInfo.predictions && groupInfo.predictions.length > 0) {
-                        groupInfo.predictions.forEach(function(item, index) {
+                        groupInfo.predictions.forEach(function(prediction, index) {
                             
                             //console.log("item: ", item);
-                            var prediction = item;
                             var gamePredictionFilter = games.filter(function(game) {
                                 return game.gameId === prediction.gameId && game.year === prediction.year && game.results
                             });
