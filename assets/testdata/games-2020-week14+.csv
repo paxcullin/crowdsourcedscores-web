@@ -1,0 +1,49 @@
+gameId,year,season,gameWeek,awayTeam.fullName,homeTeam.fullName,odds.spread,odds.total,,crowd.awayTeam.score,crowd.homeTeam.score,crowd.spread,crowd.total,crowd.results.winner.correct,crowd.results.winner.push,crowd.results.spread.correct,crowd.results.spread.push,crowd.results.total.correct,crowd.results.total.push,crowd.results.predictionScore,results.awayTeam.score,results.homeTeam.score,results.total,results.spread,startDateTime
+1255155,2020,reg,15,New York Jets,Los Angeles Rams,-17,43.5,,17,27.6,-10.6,44.6,1,0,1,0,0,0,4,13,27,40,-14,2020-12-27T18:00:00.000Z
+1255205,2020,reg,15,San Francisco 49ers,Dallas Cowboys,3,45,,23.2,18.2,5,41.4,0,0,0,0,0,0,0,7,18,25,-11,2021-01-03T21:25:00.000Z
+1255170,2020,reg,15,Tampa Bay Buccaneers,Atlanta Falcons,6.5,49,,21.6,21.8,-0.2,43.4,1,0,0,0,1,0,4,26,56,82,-30,2021-01-03T18:00:00.000Z
+1255190,2020,reg,15,New England Patriots,Miami Dolphins,-1,41.5,,20.6,25.6,-5,46.2,1,0,0,1,1,0,4,16,19,35,-3,2020-12-27T21:05:00.000Z
+1255185,2020,reg,15,Jacksonville Jaguars,Baltimore Ravens,-13,48,,25.2,31.4,-6.2,56.6,1,0,1,0,0,0,4,14,17,31,-3,2020-12-27T18:00:00.000Z
+1255150,2020,reg,15,Houston Texans,Indianapolis Colts,-7,51,,19.6,22.6,-3,42.2,1,0,1,0,0,0,4,22,24,46,-2,2021-01-03T18:00:00.000Z
+1255200,2020,reg,15,Kansas City Chiefs,New Orleans Saints,3,52.5,,11.17,29.17,-18,40.33,0,0,0,0,1,0,2,23,20,43,3,2020-12-20T21:05:00.000Z
+1255165,2020,reg,15,Chicago Bears,Minnesota Vikings,-3,47,,23.14,23.43,-0.29,46.57,1,0,1,0,1,0,6,33,41,74,-8,2020-12-20T18:00:00.000Z
+1255180,2020,reg,15,Cleveland Browns,New York Giants,6.5,44,,25.43,21.57,3.86,47,1,0,1,0,0,0,4,31,27,58,4,2020-12-20T18:00:00.000Z
+1255195,2020,reg,15,Philadelphia Eagles,Arizona Cardinals,-6.5,49.5,,20.86,22,-1.14,42.86,1,0,1,0,0,0,5,12,22,34,-10,2020-12-20T18:00:00.000Z
+1255145,2020,reg,15,Carolina Panthers,Green Bay Packers,-8,51.5,,28.8,23.6,5.2,52.4,1,0,1,0,0,0,4,41,38,79,3,2021-01-03T21:25:00.000Z
+1255135,2020,reg,15,Los Angeles Chargers,Las Vegas Raiders,-3,53.5,,24.6,17.8,6.8,42.4,1,0,0,0,0,0,2,37,35,72,2,2021-01-03T18:00:00.000Z
+1255175,2020,reg,15,Seattle Seahawks,Washington Football Team,6.5,43.5,,24.4,20.4,4,44.8,0,0,0,0,0,0,0,17,37,54,-20,2020-12-27T21:25:00.000Z
+1255210,2020,reg,15,Pittsburgh Steelers,Cincinnati Bengals,14.5,40,,22.33,28.33,-6,50.67,1,0,0,0,0,0,2,33,52,85,-19,2020-12-25T21:30:00.000Z
+1255160,2020,reg,15,Detroit Lions,Tennessee Titans,-9.5,53,,16.57,28.86,-12.29,45.43,1,0,0,0,0,0,2,14,40,54,-26,2020-12-20T18:00:00.000Z
+1255140,2020,reg,15,Buffalo Bills,Denver Broncos,5.5,49,,20.43,27.29,-6.86,47.71,1,0,0,1,1,0,4,20,27,47,-7,2020-12-20T18:00:00.000Z
+1255265,2020,reg,16,New York Giants,Baltimore Ravens,-9.5,44,,30.2,25.8,4.4,56,1,0,1,0,1,0,6,35,16,51,19,2021-01-03T21:25:00.000Z
+1255230,2020,reg,16,Denver Broncos,Los Angeles Chargers,-3,48.5,,28,16.4,11.6,44.4,1,0,0,0,0,0,2,38,3,41,35,2021-01-03T18:00:00.000Z
+1255245,2020,reg,16,Atlanta Falcons,Kansas City Chiefs,-10.5,53,,28,23.33,4.67,51.33,1,0,0,1,0,0,2,32,29,61,3,2020-12-20T21:25:00.000Z
+1255280,2020,reg,16,Philadelphia Eagles,Dallas Cowboys,3,50,,24.2,20.2,4,44.4,0,0,0,0,1,0,2,24,28,52,-4,2020-12-27T18:00:00.000Z
+1255215,2020,reg,16,Minnesota Vikings,New Orleans Saints,-7,51,,22.8,24.2,-1.4,47,1,0,1,0,1,0,6,9,20,29,-11,2020-12-27T21:25:00.000Z
+1255260,2020,reg,16,Indianapolis Colts,Pittsburgh Steelers,-2,43,,13.4,24.6,-11.2,38,1,0,0,1,1,0,4,14,28,42,-14,2021-01-03T21:25:00.000Z
+1255275,2020,reg,16,Los Angeles Rams,Seattle Seahawks,-1,47.5,,21.29,23.29,-2,44.57,0,0,1,0,0,0,2,33,27,60,6,2020-12-20T18:00:00.000Z
+1255255,2020,reg,16,Carolina Panthers,Washington Football Team,-1,41.5,,20.4,26.6,-6.2,47,1,0,0,0,0,0,2,27,44,71,-17,2021-01-03T18:00:00.000Z
+1255225,2020,reg,16,Tampa Bay Buccaneers,Detroit Lions,9.5,54,,20.4,18.6,1.8,39,1,0,1,0,1,0,6,20,13,33,7,2020-12-27T21:05:00.000Z
+1255240,2020,reg,16,Cleveland Browns,New York Jets,7,44,,25.8,18.2,7.6,44,1,0,0,0,0,0,2,32,31,63,1,2021-01-03T21:25:00.000Z
+1255220,2020,reg,16,San Francisco 49ers,Arizona Cardinals,-5,48.5,,30,20.33,9.67,50.33,1,0,1,0,0,1,4,47,7,54,40,2020-12-26T18:00:00.000Z
+1255290,2020,reg,16,Buffalo Bills,New England Patriots,7,46,,22.67,18.5,4.17,41.17,1,0,0,0,1,0,4,20,6,26,14,2020-12-21T01:20:00.000Z
+1255250,2020,reg,16,Cincinnati Bengals,Houston Texans,-7,44.5,,19.67,24.83,-5.17,44.5,1,0,0,0,0,0,2,26,33,59,-7,2020-12-20T21:05:00.000Z
+1255285,2020,reg,16,Tennessee Titans,Green Bay Packers,-3,54,,14.2,20.4,-6.2,34.6,1,0,1,0,0,0,4,14,28,42,-14,2021-01-03T18:00:00.000Z
+1255235,2020,reg,16,Miami Dolphins,Las Vegas Raiders,3,48,,29.4,14.6,14.8,44,0,0,0,0,0,0,0,16,23,39,-7,2020-12-27T18:00:00.000Z
+1255270,2020,reg,16,Chicago Bears,Jacksonville Jaguars,8,47,,19.5,29.67,-10.17,49.17,1,0,0,1,1,0,4,16,24,40,-8,2020-12-20T01:15:00.000Z
+1255360,2020,reg,17,Arizona Cardinals,Los Angeles Rams,2.5,41,,22.2,19.4,2.8,41.6,1,0,0,0,1,0,4,20,14,34,6,2021-01-04T01:20:00.000Z
+1255320,2020,reg,17,Miami Dolphins,Buffalo Bills,-1.5,42,,18.5,25.25,-6.75,43.75,0,0,0,0,1,0,2,20,12,32,8,2020-12-26T21:30:00.000Z
+1255340,2020,reg,17,Pittsburgh Steelers,Cleveland Browns,-10,43.5,,29.4,17.4,12,46.8,1,0,1,0,1,0,6,38,9,47,29,2020-12-29T01:15:00.000Z
+1255300,2020,reg,17,Tennessee Titans,Houston Texans,7,56,,25.57,25.86,-0.29,51.43,0,0,1,0,0,0,2,30,27,57,3,2020-12-18T01:20:00.000Z
+1255315,2020,reg,17,Minnesota Vikings,Detroit Lions,4,54,,21.8,22.4,-0.6,44.2,0,0,0,0,1,0,2,38,21,59,17,2021-01-03T21:25:00.000Z
+1255295,2020,reg,17,Green Bay Packers,Chicago Bears,4,49.5,,22,18.57,3.43,40.57,1,0,1,0,1,0,6,20,15,35,5,2020-12-20T18:00:00.000Z
+1255335,2020,reg,17,Baltimore Ravens,Cincinnati Bengals,14,44,,27.8,20.8,7,48.6,1,0,0,0,1,0,4,26,23,49,3,2021-01-03T21:25:00.000Z
+1255330,2020,reg,17,Jacksonville Jaguars,Indianapolis Colts,-14,48.5,,26.83,12.33,14.5,39.17,0,0,1,0,0,0,2,17,27,44,-10,2020-12-22T01:15:00.000Z
+1255355,2020,reg,17,Atlanta Falcons,Tampa Bay Buccaneers,-6.5,50,,16.2,25.2,-9,41.4,0,0,0,0,0,0,0,37,31,68,6,2020-12-27T18:00:00.000Z
+1255370,2020,reg,17,Las Vegas Raiders,Denver Broncos,2.5,50.5,,25.8,27.4,-1.6,53.2,1,0,0,0,0,1,2,14,40,54,-26,2020-12-28T01:20:00.000Z
+1255310,2020,reg,17,New York Jets,New England Patriots,-3,39.5,,17.86,27.57,-9.71,45.43,1,0,1,0,0,0,4,25,46,71,-21,2020-12-20T18:00:00.000Z
+1255350,2020,reg,17,Washington Football Team,Philadelphia Eagles,3.5,44,,23.6,17.4,6.2,41,1,0,1,0,1,0,6,33,7,40,26,2021-01-03T21:25:00.000Z
+1255305,2020,reg,17,Los Angeles Chargers,Kansas City Chiefs,4.5,42.5,,26.4,23.4,3,49.8,1,0,0,0,1,0,4,26,25,51,1,2020-12-27T01:15:00.000Z
+1255365,2020,reg,17,Seattle Seahawks,San Francisco 49ers,7,46,,21,21.2,-0.2,42.2,1,0,1,0,1,0,6,19,23,42,-4,2021-01-03T18:00:00.000Z
+1255325,2020,reg,17,New Orleans Saints,Carolina Panthers,6,46.5,,27,19,8,46,1,0,1,0,0,0,5,48,19,67,29,2020-12-19T21:30:00.000Z
+1255345,2020,reg,17,Dallas Cowboys,New York Giants,1.5,44.5,,25.6,15,10.6,40.6,1,0,1,0,0,0,4,41,17,58,24,2020-12-27T18:00:00.000Z

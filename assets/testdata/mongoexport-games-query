@@ -1,5 +1,5 @@
 mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password=*dZ2HaWN --out=assets/testdata/2018-preseasonweek3-games.json --query='{"gameWeek":-2,"year":2018}'
 
-mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2020-\"week"\-predictions.csv --type=csv --query='{"gameWeek":1,"year":2020, season: "reg"}' --fieldFile=predictions-fieldsFile.txt
+mongoexport --host=pcsm-shard-00-02.lwx4u.mongodb.net --port=27017 --db=pcsm --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2020-\"week"\-predictions.csv --type=csv --query='{"gameWeek":1,"year":2020, season: "reg"}' --fieldFile=predictions-fieldsFile.txt
 
-mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password=*dZ2HaWN --out=2020-week1-games.csv --type=csv --query='{"gameWeek":{$gt: 0},"year":2020, season: "reg"}' --fieldFile=games-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=games --username=pcsm-user --password=*dZ2HaWN --out=2020-all-games-20210317.csv --type=csv --query='{"gameWeek":{"$gt":0},"year":2020,"season": "reg"}' --fieldFile=games-fieldsFile.txt
