@@ -1,11 +1,11 @@
-const rp = require('request-promise')
-const mongo = require('mongodb').MongoClient
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+const axios = require('axios');
+const mongo = require('mongodb').MongoClient;
+const {config} = require("./config");
+const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
-// const AWS = require('aws-sdk');    
-// const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
-// const sns = new AWS.SNS();
-
+const AWS = require('aws-sdk');
+const lambda = new AWS.Lambda();
+const event = {};
 const assert = require('assert')
 
 /*
@@ -18,105 +18,141 @@ api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&appid=${apikey}
 If it returns empty or null, set context.done
 
 */
-
+let queryPromises = [];
 exports.handler = (event, context, callback) => {
-
-    const event = {
-        sport: 'nfl',
-        year: 2019,
-        season: 'pre',
-        gameId: 1108878,
-        location: 'Canton,Ohio',
-        startDateTime: '2019-08-01 17:00:00.000'
-    }
+    const sport = "nfl"
+    // const gameWeek = await lambda.invoke({
+    //     FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+    //     InvocationType: 'RequestResponse',
+    //     LogType: 'Tail',
+    //     Payload: `{ "sport" : "${sport}" }`
+    //   }).promise();
+    //   console.log({gameWeek})
+    // const { year, season, week } = gameWeek.Payload
+    // FOR local testing only
+    // const { year, season, week } = {year: 2021, season: 'reg', week: 1};
     console.log('Received event :', JSON.stringify(event, null, 2));
-    const { sport, year, season, gameId, startDateTime } = event 
-    let { location } = event ? event : {
-        location: 'Canton,Ohio'
-    }
-
-    if (location === "New England") {
-        location = "Foxboro,MA"
-    }
-    if (location === "Minnesota") {
-        location = "Minneapolis,MN"
-    }
-    if (location === "Carolina") {
-        location = "Charlotte,NC"
-    }
-    if (location === "Tennessee") {
-        location = "Memphis,TN"
-    }
-    if (location === "Arizona") {
-        location = "Glendale,AZ"
-    }
-    console.log(`https://api.openweathermap.org/data/2.5/weather?q=${location},us&mode=json&appid=412faebda2879f5819c25e07febf9625`);
     
-    
-
-    const options = {
-        url: `https://api.openweathermap.org/data/2.5/weather?q=${location},us&mode=json&appid=412faebda2879f5819c25e07febf9625`
-    }
-    rp(options)
-    .then(async (weatherString) => {
-        if (!weatherString) context.done({ message: 'No weather provided'})
-        const weather = JSON.parse(weatherString)
-        if (!weather || !weather.weather || (weather && weather.weather && weather.weather.length === 0) || (weather && !weather.main)) {
-            context.done({ message: 'No weather provided'})
-        }
-        const gameQuery = {
-            sport,
-            year,
-            season,
-            gameId
-        };
-        mongo.connect(MONGO_URL, (err, client) => {
-            assert.equal(err, null)
-
-            const db = client.db('pcsm')
-            const collection = sport === 'nfl' ? db.collection('games') : sport === 'ncaaf' ? db.collection('games-ncaaf') : null
-            if (!collection) {
-                context.fail({ message: 'No sport provided'})
-            }
-            collection.findOne(gameQuery)
-            .then(gameResult => {
-                //console.log('game :', gameResult);
-                var gameUpdate = {}
-                let upsert = true;
-                if (!gameResult) {
-                    context.fail({message: 'No game returned'})
+    mongo.connect(MONGO_URL, (err, client) => {
+        const db = client.db('pcsm')
+        const collection = sport === 'nfl' ? db.collection('games') : sport === 'ncaaf' ? db.collection('games-ncaaf') : null
+        assert.equal(err, null)
+        console.log('collection', collection)
+        
+        lambda.invoke({
+            FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+            InvocationType: 'RequestResponse',
+            LogType: 'Tail',
+            Payload: `{ "sport" : "${sport}" }`
+        }).promise().then(gameWeek => {
+            console.log(`gameWeek`, gameWeek)
+            const { year, season, week } = gameWeek.Payload
+            const gameQuery = {
+                sport,
+                year,
+                season,
+                gameWeek: week
+            };
+            console.log({gameQuery});
+            collection.find(gameQuery).toArray((err, games) => {
+                if (games.length === 0) {
+                    return {message: 'no games returned'}
                 }
+                games.forEach((game, index) => {
+                    console.log(`game`, game)
+                    const {location, gameId} = game;
+                    console.log({game})
                 
-                //update game weather
-                gameUpdate = {
-                    $set: {
-                        weather: {
-                            ...weather.weather[0],
-                            ...weather.main
-                        }
+                    if (location === "New England") {
+                        location = "Foxboro,MA"
                     }
-                }
-
-                console.log('gameUpdate :', gameUpdate);
-                //queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: upsert }))
-                //console.log({status: game.status, gameResultStatus: gameResult.status, gameResultCrowd: gameResult.crowd})
-
+                    if (location === "Minnesota") {
+                        location = "Minneapolis,MN"
+                    }
+                    if (location === "Carolina") {
+                        location = "Charlotte,NC"
+                    }
+                    if (location === "Tennessee") {
+                        location = "Memphis,TN"
+                    }
+                    if (location === "Arizona") {
+                        location = "Glendale,AZ"
+                    }
+                    if (gameId === 1235067) {
+                        location = "Miami, FL"
+                    }
+                    console.log(`https://api.openweathermap.org/data/2.5/weather?q=${location},us&mode=json&appid=412faebda2879f5819c25e07febf9625`);
                     
-                    // Promise.all(queryPromises)
-                    //     .then(response => { console.log(`Promise response: ${response}`);  context.done(null, { message: `Response: ${queryPromises.length} updated`}) })
-                    //     .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated`})})
-                    return true
-            })
-            .catch(gameReject => {
-                console.log('gameReject :', gameReject)
-                if (urlIndex === (urls.length -1) && gameIndex === (games.length -1)) {
-                    context.done(null, { message: `${queryPromises.length} updated; ${games.length} total games`})
-                }
-            })
+                    
+                
+                    const options = {
+                        url: `http://api.openweathermap.org/data/2.5/forecast?q=${location},us&mode=json&appid=412faebda2879f5819c25e07febf9625`
+                    }
+                    axios.get(options.url)
+                    .then(weatherResponse => {
+                        const weather = weatherResponse.data
+                        
+                        console.log('weather: ', weather)
+                        if (!weather || !weather.list || (weather && weather.list && weather.list.length === 0)) {
+                            console.log(`No weather provided for ${gameId} ${location}`)
+                            return { message: 'No weather provided'}
+                        }
+            
+                        if (!collection) {
+                            return { message: 'No sport provided'}
+                        }
+                        
+                        collection.findOne(gameQuery)
+                        .then(gameResult => {
+                            //console.log('game :', gameResult);
+                            let gameUpdate = {}
+                            let weatherArray = weather.list.filter(weatherObj => {
+                                return new Date(weatherObj.dt_txt) <= gameResult.startDateTime
+                            })
+                            
+                            // console.log('weather: ', JSON.stringify(weatherArray))
+                            let upsert = true;
+                            if (!gameResult) {
+                                return {message: 'No game returned'}
+                            }
+                            
+                            
+                            //update game weather
+                            gameUpdate = {
+                                $set: {
+                                    weather: {
+                                        ...weatherArray[weatherArray.length -1].weather[0],
+                                        ...weatherArray[weatherArray.length -1].main
+                                    }
+                                }
+                            }
+            
+                            console.log('gameUpdate :', gameId, gameUpdate);
+                            queryPromises.push(collection.updateOne(gameQuery, gameUpdate, { upsert: upsert }))
+                            //console.log({status: game.status, gameResultStatus: gameResult.status, gameResultCrowd: gameResult.crowd})
+                            
+                                if (index === games.length -1) {
+                                    Promise.all(queryPromises)
+                                        .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  return { message: `Response: ${queryPromises.length} updated`} })
+                                        .catch(reject => { console.log(`Promise reject: ${JSON.stringify(reject)}`); return { message: `Reject: ${queryPromises.length} updated`}})
+                                    context.done(null,{queryPromises: queryPromises.length})
+                                }
+                        })
+                        .catch(gameReject => {
+                            console.log('gameReject :', gameReject)
+                            return { message: `${queryPromises.length} updated;`}
+                        })
+                    })
+                    .catch(rpError => {
+                        console.log('rpError :', rpError)
+                        return {rpError}
+                    })
+                })
             })
         })
-        .catch(rpError => {
-            console.log('rpError :', rpError)
-            context.done(rpError, null)
+        .catch(getGameWeekError => {
+            console.log(`getGameWeekError`, getGameWeekError)
+            context.fail({getGameWeekError}, null)
         })
+    })
 }
