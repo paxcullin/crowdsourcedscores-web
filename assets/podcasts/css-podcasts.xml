@@ -981,6 +981,32 @@
         <pubDate>Wed, 13 Oct 2021 23:00:00 GMT</pubDate>
         <itunes:duration>1:21:45</itunes:duration>
       </item>
+      <item>
+        <title>2021 - Week 6 Recap - Episode 7</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul and Chris discuss the authentic win records of the 2021 contenders and welcome a first-time weekly champion to the winner's circle.</description>
+        <itunes:subtitle>Paul and Chris discuss the authentic win records of the 2021 contenders and welcome a first-time weekly champion to the winner's circle.</itunes:subtitle>
+        <itunes:episode>69</itunes:episode>
+        <itunes:summary>Paul and Chris discuss the authentic win records of the 2021 contenders and welcome a first-time weekly champion to the winner's circle.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode7-week6.mp3" length="1:18:29" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode7-week6.mp3</guid>
+        <pubDate>Wed, 20 Oct 2021 23:00:00 GMT</pubDate>
+        <itunes:duration>1:18:29</itunes:duration>
+      </item>
+      <item>
+        <title>2021 - Week 7 Recap - Episode 8</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris is flying solo this week with Elk Rider from Heritage Distillery, and he covers two awful barrel wagers, a good supercontest performance, and covers all the games and the crowd's prediction performance. Plus, he welcomes a brand new winner to the Weekly Winner's circle!</description>
+        <itunes:subtitle>Chris is flying solo this week with Elk Rider from Heritage Distillery, and he covers two awful barrel wagers, a good supercontest performance, and covers all the games and the crowd's prediction performance. Plus, he welcomes a brand new winner to the Weekly Winner's circle!</itunes:subtitle>
+        <itunes:episode>70</itunes:episode>
+        <itunes:summary>Chris is flying solo this week with Elk Rider from Heritage Distillery, and he covers two awful barrel wagers, a good supercontest performance, and covers all the games and the crowd's prediction performance. Plus, he welcomes a brand new winner to the Weekly Winner's circle!</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode8-week7.mp3" length="40:06" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode8-week7.mp3</guid>
+        <pubDate>Wed, 27 Oct 2021 23:00:00 GMT</pubDate>
+        <itunes:duration>40:06</itunes:duration>
+      </item>
       
   </channel>
   </rss>
