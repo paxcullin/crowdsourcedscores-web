@@ -1,0 +1,59 @@
+{
+    "gameId": 4407270,
+    "season": "reg",
+    "year": 2021,
+    "gameWeek": 4,
+    "weekName": "Week 4",
+    "status": "in-progress",
+    "sport": "nfl",
+    "location": "Atlanta, USA",
+    "startDateTime": "datetime.datetime(2021, 10, 3, 10, 0, tzinfo=datetime.timezone(datetime.timedelta(days=-1, seconds=61200)))",
+    "awayTeam": {
+        "participantId": 1537,
+        "code": "WAS",
+        "shortName": "Football Team",
+        "fullName": "Washington Football Team"
+    },
+    "homeTeam": {
+        "participantId": 1546,
+        "code": "ATL",
+        "shortName": "Falcons",
+        "fullName": "Atlanta Falcons"
+    },
+    "results": {
+        "awayTeam": "",
+        "homeTeam": "",
+        "scores": [
+            {
+                "participant id": 1546,
+                "period": 3,
+                "points scored": 0
+            },
+            {
+                "participant id": 1537,
+                "period": 3,
+                "points scored": 6
+            },
+            {
+                "participant id": 1546,
+                "period": 2,
+                "points scored": 14
+            },
+            {
+                "participant id": 1537,
+                "period": 2,
+                "points scored": 13
+            },
+            {
+                "participant id": 1546,
+                "period": 1,
+                "points scored": 3
+            },
+            {
+                "participant id": 1537,
+                "period": 1,
+                "points scored": 0
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{"scores": 
+    [
+        {"participant id": 1529, "period": 4, "points scored": 6},
+        {"participant id": 1524, "period": 4, "points scored": 7},
+        {"participant id": 1529, "period": 3, "points scored": 7},
+        {"participant id": 1524, "period": 3, "points scored": 0},
+        {"participant id": 1529, "period": 2, "points scored": 7},
+        {"participant id": 1524, "period": 2, "points scored": 6},
+        {"participant id": 1529, "period": 1, "points scored": 3},
+        {"participant id": 1524, "period": 1, "points scored": 7}
+        ], "sport id": 4, "league id": 16, "season id": 29178, "event id": 4407042, "description": "Miami Dolphins@Jacksonville Jaguars", "location": "Atlanta", "country": "USA", "event status": "complete", "datetime": "2021-10-17T06:30:00-07:00", "stadium type": "retractable_dome", "participants": [{"participant id": 1524, "is home": false, "source": {"name": "Miami", "nickname": "Dolphins", "short name": "Miami", "abbreviation": "MIA", "location": "Miami"}}, {"participant id": 1529, "is home": true, "source": {"name": "Jacksonville", "nickname": "Jaguars", "short name": "Jacksonville", "abbreviation": "JAC", "location": "Jacksonville"}}], "event group": {"event group id": 15, "name": "REG Week 6", "alias": "Week 6"}}
