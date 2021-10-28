@@ -3,7 +3,9 @@
 
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
-    {config} = require('config');
+    {config} = require('config'),
+    AWS = require('aws-sdk'),
+    lambda = new AWS.Lambda();
 
     const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 

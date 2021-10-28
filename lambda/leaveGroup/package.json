@@ -9,7 +9,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r leaveGroups.zip ."
+    "package": "zip -r leaveGroup.zip .",
+    "upload": "aws lambda update-function-code --function-name group-leaveGroup --zip-file fileb://leaveGroup.zip --publish"
   },
   "author": "",
   "license": "ISC"
