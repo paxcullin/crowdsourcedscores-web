@@ -1,0 +1,17 @@
+{
+    "name": "calculate-leaders-lambda",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "package": "zip -r calculateLeaders.zip .",
+      "upload": "aws lambda update-function-code --function-name calculateLeaders --zip-file fileb://calculateLeaders.zip --publish"
+    },
+    "author": "Chris Aronchick",
+    "license": "ISC",
+    "dependencies": {
+      "mongodb": "^3.0.5"
+    }
+  }
+  
