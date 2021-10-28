@@ -1,0 +1,18 @@
+{
+    "name": "",
+    "version": "1notifications-update-weekly-results.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+      "mongodb": "^3.0.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "package": "zip -r notifications-update-weekly-results.zip .",
+      "upload": "aws lambda update-function-code --function-name notifications-update-weekly-results --zip-file fileb://notifications-update-weekly-results.zip --publish"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  

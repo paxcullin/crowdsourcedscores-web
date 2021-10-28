@@ -28,7 +28,7 @@
         }
         .titleRow {
             width: 100%;
-            margin: 85px 10%;
+            margin-top: 50px;
             margin-bottom: 0;
             display: flex;
             align-items: center;
@@ -96,7 +96,7 @@
             align-items: center;
             width: 100%;
             background-color: #fff;
-            margin: 10px;
+            margin: 10px 0;
 
         }
         h1 {
@@ -104,10 +104,23 @@
             color: #231f20;
         }
 
+        main {
+            margin-top: 115px;
+        }
+
+        section {
+            margin: 10px 0;
+            width: 100%;
+        }
+
         @media(max-width: 600px) {
-            .navbar > .link > a > .title {
+            .navbar > ul {
+                width: 100%;
+            }
+            .navbar > ul > li.link > a > .title {
                 display: none;
             }
+
         }
 
         @media(min-width: 768px) {
@@ -250,6 +263,13 @@
                 margin-left: 10px;
                 margin-right: 10px;
             }
+
+            .navbar > ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-content: center;
+            }
         }
         .navbar {
             display: flex;
@@ -263,12 +283,21 @@
             top: 0;
             z-index: 10;
         }
-        .navbar > .link {
+        .navbar > ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: center;
+        }
+        .navbar > ul > li {
+            list-style-type: none;
+        }
+        .navbar > ul > li.link {
             padding: 15px;
             color: #fff;
             background-color: rgb(255,255,255, 0.1);
         }
-        .navbar > .link > a {
+        .navbar > ul > li.link > a {
             text-decoration: none;
             font-weight: 800;
         }

@@ -202,12 +202,13 @@ exports.handler = (event, context) => {
     prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
     prediction.submitted = new Date();
 
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         assert.equal(null, err);
 
         if (err) {
             return context.done(err, null);
         }
+        const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
         // deadline is 5 min prior to kickoff
@@ -256,9 +257,10 @@ exports.handler = (event, context) => {
                 }
                 if (groups[0]) {
                     prediction.groups = groups[0].groups;
-                    prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
-                    console.log("prediction.groups: ", prediction.groups)
-                    
+                    if (prediction.groups && prediction.groups.length > 0) {
+                        prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
+                        console.log("prediction.groups: ", prediction.groups)
+                    }
                 }
             
                 // update existing if prediction exists for userId and gameId combo

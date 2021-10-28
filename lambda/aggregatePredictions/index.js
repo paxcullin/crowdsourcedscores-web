@@ -1,13 +1,13 @@
 'use strict';
 
 var assert = require("assert"),
-    mongo = require("mongodb").MongoClient,
-    config = require('config');
+    mongo = require("mongodb").MongoClient,                                                                                              
+    {config} = require("config");
     
     const AWS = require('aws-sdk');
     const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
-
-const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
+    
+    const MONGO_URL = `mongodb+srv://${config.config.username}:${config.config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 (function() {
   /**
@@ -156,7 +156,7 @@ exports.handler = (event, context) => {
               context.done(null, `No results found for ${matchOpts}`)
             }
             var queryPromises = [];
-            _.each(results, function (result) {
+            results.forEach((result) => {
                 console.log('result: ', result)
                 // criteria updated to update crowd predictions only when games are in the future
                 //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
@@ -206,13 +206,13 @@ exports.handler = (event, context) => {
                   }
                 }
                 //console.log("criteria:", criteria)
-                var queryPromise = db.collection(gamesCollection).updateAsync(criteria, update)
+                var queryPromise = db.collection(gamesCollection).updateOne(criteria, update)
                     .then(function (updateResult) {
                         var message = `{ gameId: ${result._id}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg} }`
                         console.log('Updated crowd predictions', message);
                         return Promise.resolve(updateResult);
                     });
-                queryPromises.push(Promise.resolve(queryPromise));
+                queryPromises.push(queryPromise);
             });
             
             Promise.all(queryPromises).then(function() {
