@@ -352,6 +352,7 @@ exports.handler = (event, context, callback) => {
                             let starsNet = result.atsStarsNet + result.totalStarsNet;
                             let user = { 
                                 username: result._id.userId,
+                                preferred_username: result._id.preferred_username,
                                 winner: {
                                     correct: result.suCorrect,
                                     push: result.suPush,
