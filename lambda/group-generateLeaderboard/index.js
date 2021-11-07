@@ -388,16 +388,24 @@ exports.handler = (event, context, callback) => {
                             }
                             let leaderboardUpdate = {
                                 $set: {
-                                    "leaderboard.weekly": {
-                                        [`${event.gameWeek}`]: {
-                                            users: weeklyUserArray
-                                        }
+                                    [`leaderboard.weekly.${event.gameWeek}`]: {
+                                        users: weeklyUserArray
                                     }
                                 }
                             }
                             // console.log({ leaderboardCriteria, leaderboardUpdate })
                             // console.log({filteredResults: JSON.stringify(filteredResults)});
                             queryPromises.push(db.collection('groups').update(groupCriteria, leaderboardUpdate, { upsert: true }))
+                            Promise.all(queryPromises)
+                            .then(resolve => {
+                                console.log('group weekly leaderboards updated; resolve: ', resolve);
+                                context.done(null, { status: 200, message: 'group weekly leaderboards updated'})
+                            })
+                            .catch(reject => {
+                                console.log('group weekly leaderboards updated; reject: ', reject); 
+                                context.done(null, { status: 500, message: 'group weekly leaderboards FAIL'})
+                            })
+                            
                         }
                 }); //end aggregate predictions function
               
