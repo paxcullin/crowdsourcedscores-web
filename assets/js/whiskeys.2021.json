@@ -1,6 +1,36 @@
 {
-    "columns": [],
+    "lastUpdatedDate": 1635956155199,
+    "columns": [{
+        "name": "Yr"
+    },{
+        "name": "Wk"
+    },{
+        "name": "Distiller"
+    },{
+        "name": "Bottle"
+    },{
+        "name": "Ratings"
+    },{
+        "name": "Ep"
+    }],
     "whiskeys": [{
+        "year": 2021,
+        "week": 8,
+        "episode": 8,
+        "distiller": "Woodinville Whiskey",
+        "bottle": "100% Rye Whiskey",
+        "ratings": {
+            "1": {
+                "rater": "Paul",
+                "stars": 4
+            },
+            "2": {
+                "rater": "Chris",
+                "stars": 4.5
+            }
+        },
+        "podcastLink": "https://blog.crowdsourcedscores.com/2021/11/02/2021-nfl-week-8-recap/"
+    },{
         "year": 2021,
         "week": 7,
         "episode": 7,
@@ -16,7 +46,7 @@
                 "stars": 5
             }
         },
-        "podcastLink": ""
+        "podcastLink": "https://blog.crowdsourcedscores.com/2021/10/31/2021-nfl-week-7-recap/"
     },
     {
         "year": 2021,
@@ -36,6 +66,7 @@
         }
     },
     {
+        "year": 2020,
         "week": 2,
         "episode": 4,
         "distiller": "Bad Dog Distillery",
@@ -52,6 +83,7 @@
         }
     },
     {
+        "year": 2020,
         "week": 0,
         "episode": 1,
         "distiller": "Fremont Mischief Distillery",
@@ -68,6 +100,7 @@
         }
     },
     {
+        "year": 2020,
         "week": 2,
         "episode": 6,
         "distiller": "Eagle Rare",
@@ -84,6 +117,7 @@
         }
     },
     {
+        "year": 2020,
         "week": 1,
         "episode": 5,
         "distiller": "Eagle Rare",

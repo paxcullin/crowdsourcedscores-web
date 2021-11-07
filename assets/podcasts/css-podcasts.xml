@@ -1007,6 +1007,19 @@
         <pubDate>Wed, 27 Oct 2021 23:00:00 GMT</pubDate>
         <itunes:duration>40:06</itunes:duration>
       </item>
+      <item>
+        <title>2021 - Week 8 Recap - Episode 9</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Paul is back and he's brought the whiskey this time. He and Chris toast another strong performance by the crowd while enjoying the Woodinville Whiskey 100% Rye Bourbon. We update the contending teams' authentic records to see who is still for real and who may only be pretending. Finally, we welcome back Mike for his second straight weekly championship.</description>
+        <itunes:subtitle>Paul is back and he's brought the whiskey this time. He and Chris toast another strong performance by the crowd while enjoying the Woodinville Whiskey 100% Rye Bourbon. We update the contending teams' authentic records to see who is still for real and who may only be pretending. Finally, we welcome back Mike for his second straight weekly championship.</itunes:subtitle>
+        <itunes:episode>71</itunes:episode>
+        <itunes:summary>Paul is back and he's brought the whiskey this time. He and Chris toast another strong performance by the crowd while enjoying the Woodinville Whiskey 100% Rye Bourbon. We update the contending teams' authentic records to see who is still for real and who may only be pretending. Finally, we welcome back Mike for his second straight weekly championship.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode9-week8.mp3" length="1:11:34" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode9-week8.mp3</guid>
+        <pubDate>Mon, 1 Nov 2021 23:00:00 GMT</pubDate>
+        <itunes:duration>1:11:34</itunes:duration>
+      </item>
       
   </channel>
   </rss>

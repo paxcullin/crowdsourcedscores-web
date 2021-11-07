@@ -1,0 +1,177 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+4407330,2021,reg,8,Green Bay Packers,24,Arizona Cardinals,34,0,0,0,0,0,0,0,0,0,0,0,0,-10,58,2021-10-26T03:18:35.539Z,cmaronchick,1,cmaronchick
+4407318,2021,reg,8,Pittsburgh Steelers,17,Cleveland Browns,27,3,0,0,0,0,0,3,-3,0,0,0,0,-10,44,2021-10-28T05:08:09.532Z,cmaronchick,0,cmaronchick
+4407329,2021,reg,8,L.A. Rams Rams,34,Houston Texans,10,0,0,1,0,1,0,0,0,0,0,0,0,24,44,2021-10-26T03:18:49.117Z,cmaronchick,4,cmaronchick
+4407316,2021,reg,8,Miami Dolphins,13,Buffalo Bills,34,3,0,1,0,1,0,3,3,1,0,0,0,-21,47,2021-10-28T05:05:15.432Z,cmaronchick,6,cmaronchick
+4407330,2021,reg,8,Green Bay Packers,20,Arizona Cardinals,24,1,0,0,0,1,0,1,1,1,0,0,0,-4,44,2021-10-26T20:10:47.136Z,rosstuckerNFL,4,rosstuckerNFL
+4407326,2021,reg,8,Philadelphia Eagles,17,Detroit Lions,20,2,0,0,0,0,0,2,-2,0,0,0,0,-3,37,2021-10-29T22:41:33.897Z,rosstuckerNFL,0,rosstuckerNFL
+4407318,2021,reg,8,Pittsburgh Steelers,17,Cleveland Browns,20,2,0,0,0,1,0,2,2,1,0,0,0,-3,37,2021-10-29T22:40:51.097Z,rosstuckerNFL,4,rosstuckerNFL
+4407328,2021,reg,8,San Francisco 49ers,23,Chicago Bears,16,1,0,1,0,1,0,1,1,0,0,0,0,7,39,2021-10-29T22:42:36.357Z,rosstuckerNFL,4,rosstuckerNFL
+4407321,2021,reg,8,Jacksonville Jaguars,20,Seattle Seahawks,21,0,0,1,0,0,0,0,0,1,0,0,0,-1,41,2021-10-29T22:46:07.262Z,rosstuckerNFL,4,rosstuckerNFL
+4407327,2021,reg,8,N.Y. Giants Giants,20,Kansas City Chiefs,27,1,0,1,0,1,0,1,1,1,0,0,0,-7,47,2021-11-01T15:24:14.659Z,rosstuckerNFL,6,rosstuckerNFL
+4407330,2021,reg,8,Green Bay Packers,23,Arizona Cardinals,30,3,3,0,0,0,0,3,-3,0,0,3,-3,-7,53,2021-10-28T16:22:20.485Z,cblakely11,0,cblakely11
+4407330,2021,reg,8,Green Bay Packers,23,Arizona Cardinals,27,3,0,0,0,1,0,3,3,1,0,0,0,-4,50,2021-10-27T16:35:41.435Z,Facebook_10208710241577136,4,PaulCullin
+4407330,2021,reg,8,Green Bay Packers,24,Arizona Cardinals,38,0,0,0,0,0,0,0,0,0,0,0,0,-14,62,2021-10-27T22:24:33.414Z,Google_117972668141862683838,1,MikePearce
+4407318,2021,reg,8,Pittsburgh Steelers,17,Cleveland Browns,20,0,0,0,0,1,0,0,0,1,0,0,0,-3,37,2021-10-27T22:24:59.713Z,Google_117972668141862683838,4,MikePearce
+4407329,2021,reg,8,L.A. Rams Rams,33,Houston Texans,17,0,0,1,0,1,0,0,0,1,0,0,0,16,50,2021-10-27T22:25:30.733Z,Google_117972668141862683838,7,MikePearce
+4407316,2021,reg,8,Miami Dolphins,17,Buffalo Bills,38,0,0,1,0,1,0,0,0,0,0,0,0,-21,55,2021-10-27T22:25:47.367Z,Google_117972668141862683838,4,MikePearce
+4407317,2021,reg,8,Carolina Panthers,24,Atlanta Falcons,28,0,0,0,0,0,0,0,0,0,0,0,0,-4,52,2021-10-27T22:26:04.812Z,Google_117972668141862683838,0,MikePearce
+4407326,2021,reg,8,Philadelphia Eagles,20,Detroit Lions,14,0,0,1,0,1,0,0,0,0,0,0,0,6,34,2021-10-27T22:26:33.037Z,Google_117972668141862683838,4,MikePearce
+4407328,2021,reg,8,San Francisco 49ers,31,Chicago Bears,21,0,0,1,0,1,0,0,0,1,0,0,0,10,52,2021-10-27T22:26:47.554Z,Google_117972668141862683838,6,MikePearce
+4407319,2021,reg,8,Cincinnati Bengals,27,N.Y. Jets Jets,17,0,0,0,0,1,0,0,0,1,0,0,0,10,44,2021-10-27T22:27:05.495Z,Google_117972668141862683838,4,MikePearce
+4407323,2021,reg,8,Tennessee Titans,34,Indianapolis Colts,30,0,0,1,0,1,0,0,0,1,0,0,0,4,64,2021-10-27T22:27:28.957Z,Google_117972668141862683838,7,MikePearce
+4407321,2021,reg,8,Jacksonville Jaguars,17,Seattle Seahawks,24,3,0,1,0,1,0,3,3,1,0,0,0,-7,41,2021-10-27T22:29:12.817Z,Google_117972668141862683838,6,MikePearce
+4407322,2021,reg,8,New England Patriots,20,L.A. Chargers Chargers,24,0,0,0,0,1,0,0,0,0,0,0,0,-4,44,2021-10-27T22:27:51.035Z,Google_117972668141862683838,3,MikePearce
+4407324,2021,reg,8,Tampa Bay Buccaneers,38,New Orleans Saints,28,0,0,0,0,0,0,0,0,1,0,0,0,10,66,2021-10-27T22:28:09.856Z,Google_117972668141862683838,2,MikePearce
+4407325,2021,reg,8,Washington Football Team,10,Denver Broncos,17,0,0,1,0,1,0,0,0,1,0,0,0,-7,27,2021-10-27T22:28:34.055Z,Google_117972668141862683838,10,MikePearce
+4407320,2021,reg,8,Dallas Cowboys,27,Minnesota Vikings,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2021-10-27T22:28:50.656Z,Google_117972668141862683838,6,MikePearce
+4407327,2021,reg,8,N.Y. Giants Giants,17,Kansas City Chiefs,34,0,0,1,0,0,0,0,0,1,0,0,0,-17,51,2021-10-27T22:29:02.377Z,Google_117972668141862683838,5,MikePearce
+4407330,2021,reg,8,Green Bay Packers,23,Arizona Cardinals,27,0,0,0,0,1,0,0,0,1,0,0,0,-4,50,2021-10-28T04:02:33.027Z,ausame,4,ausame
+4407317,2021,reg,8,Carolina Panthers,13,Atlanta Falcons,17,3,0,0,0,0,0,3,-3,1,0,0,0,-4,30,2021-10-30T22:21:51.359Z,cmaronchick,2,cmaronchick
+4407319,2021,reg,8,Cincinnati Bengals,24,N.Y. Jets Jets,10,3,0,0,0,0,0,3,-3,0,0,0,0,14,34,2021-10-28T05:08:28.932Z,cmaronchick,0,cmaronchick
+4407323,2021,reg,8,Tennessee Titans,27,Indianapolis Colts,24,0,0,1,0,1,0,0,0,0,0,0,0,3,51,2021-10-31T15:42:35.685Z,cmaronchick,5,cmaronchick
+4407330,2021,reg,8,Green Bay Packers,24,Arizona Cardinals,31,0,1,0,0,0,0,0,0,0,0,1,-1,-7,55,2021-10-28T08:58:49.825Z,vikingfan2869,1,vikingfan2869
+4407318,2021,reg,8,Pittsburgh Steelers,20,Cleveland Browns,16,1,0,1,0,1,0,1,1,1,0,0,0,4,36,2021-10-28T08:59:06.342Z,vikingfan2869,6,vikingfan2869
+4407329,2021,reg,8,L.A. Rams Rams,31,Houston Texans,17,0,0,1,0,0,0,0,0,0,0,0,0,14,48,2021-10-28T08:59:29.702Z,vikingfan2869,2,vikingfan2869
+4407316,2021,reg,8,Miami Dolphins,20,Buffalo Bills,35,0,0,1,0,1,0,0,0,0,0,0,0,-15,55,2021-10-28T08:59:43.983Z,vikingfan2869,5,vikingfan2869
+4407317,2021,reg,8,Carolina Panthers,20,Atlanta Falcons,23,0,1,0,0,0,0,0,0,1,0,1,1,-3,43,2021-10-28T08:59:57.042Z,vikingfan2869,2,vikingfan2869
+4407326,2021,reg,8,Philadelphia Eagles,24,Detroit Lions,20,0,0,1,0,1,0,0,0,0,0,0,0,4,44,2021-10-28T09:00:07.145Z,vikingfan2869,4,vikingfan2869
+4407328,2021,reg,8,San Francisco 49ers,20,Chicago Bears,13,0,1,1,0,1,0,0,0,0,0,1,-1,7,33,2021-10-28T09:02:23.443Z,vikingfan2869,4,vikingfan2869
+4407319,2021,reg,8,Cincinnati Bengals,27,N.Y. Jets Jets,20,0,0,0,0,1,0,0,0,1,0,0,0,7,47,2021-10-28T09:02:36.763Z,vikingfan2869,4,vikingfan2869
+4407323,2021,reg,8,Tennessee Titans,24,Indianapolis Colts,28,0,0,0,0,0,0,0,0,1,0,0,0,-4,52,2021-10-28T09:02:54.564Z,vikingfan2869,2,vikingfan2869
+4407321,2021,reg,8,Jacksonville Jaguars,23,Seattle Seahawks,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2021-10-28T09:03:14.003Z,vikingfan2869,2,vikingfan2869
+4407322,2021,reg,8,New England Patriots,23,L.A. Chargers Chargers,27,0,0,0,0,1,0,0,0,1,0,0,0,-4,50,2021-10-28T09:03:28.204Z,vikingfan2869,4,vikingfan2869
+4407324,2021,reg,8,Tampa Bay Buccaneers,30,New Orleans Saints,24,0,0,0,0,0,0,0,0,1,0,0,0,6,54,2021-10-28T09:03:40.624Z,vikingfan2869,2,vikingfan2869
+4407325,2021,reg,8,Washington Football Team,16,Denver Broncos,19,0,1,1,0,0,0,0,0,1,0,1,1,-3,35,2021-10-28T09:03:54.064Z,vikingfan2869,4,vikingfan2869
+4407320,2021,reg,8,Dallas Cowboys,31,Minnesota Vikings,34,2,1,0,0,0,0,2,-2,0,0,1,-1,-3,65,2021-10-28T09:04:05.823Z,vikingfan2869,0,vikingfan2869
+4407327,2021,reg,8,N.Y. Giants Giants,21,Kansas City Chiefs,31,0,0,1,0,0,0,0,0,1,0,0,0,-10,52,2021-10-28T09:04:19.184Z,vikingfan2869,4,vikingfan2869
+4407330,2021,reg,8,Green Bay Packers,27,Arizona Cardinals,32,3,3,0,0,1,0,3,3,0,0,3,-3,-5,59,2021-10-28T13:22:32.642Z,Facebook_10210894378652618,2,MichaelRaymond
+4407318,2021,reg,8,Pittsburgh Steelers,21,Cleveland Browns,24,3,3,0,0,1,0,3,3,0,0,3,-3,-3,45,2021-10-28T13:22:59.960Z,Facebook_10210894378652618,2,MichaelRaymond
+4407329,2021,reg,8,L.A. Rams Rams,28,Houston Texans,21,3,3,1,0,0,0,3,-3,1,0,3,3,7,49,2021-10-28T13:23:26.981Z,Facebook_10210894378652618,4,MichaelRaymond
+4407316,2021,reg,8,Miami Dolphins,17,Buffalo Bills,24,3,3,1,0,0,0,3,-3,1,0,3,3,-7,41,2021-10-28T13:23:42.821Z,Facebook_10210894378652618,4,MichaelRaymond
+4407317,2021,reg,8,Carolina Panthers,20,Atlanta Falcons,24,3,3,0,0,0,0,3,-3,1,0,3,3,-4,44,2021-10-28T13:23:57.680Z,Facebook_10210894378652618,2,MichaelRaymond
+4407326,2021,reg,8,Philadelphia Eagles,24,Detroit Lions,17,3,3,1,0,1,0,3,3,0,0,3,-3,7,41,2021-10-28T13:24:12.559Z,Facebook_10210894378652618,4,MichaelRaymond
+4407328,2021,reg,8,San Francisco 49ers,32,Chicago Bears,20,3,3,1,0,1,0,3,3,1,0,3,3,12,52,2021-10-28T13:24:27.660Z,Facebook_10210894378652618,6,MichaelRaymond
+4407319,2021,reg,8,Cincinnati Bengals,28,N.Y. Jets Jets,21,3,3,0,0,1,0,3,3,1,0,3,3,7,49,2021-10-28T13:24:42.161Z,Facebook_10210894378652618,4,MichaelRaymond
+4407323,2021,reg,8,Tennessee Titans,28,Indianapolis Colts,20,3,3,1,0,1,0,3,3,0,0,3,-3,8,48,2021-10-28T13:24:55.981Z,Facebook_10210894378652618,4,MichaelRaymond
+4407321,2021,reg,8,Jacksonville Jaguars,14,Seattle Seahawks,17,3,3,1,0,0,0,3,-3,1,0,3,3,-3,31,2021-10-28T13:25:23.962Z,Facebook_10210894378652618,4,MichaelRaymond
+4407322,2021,reg,8,New England Patriots,20,L.A. Chargers Chargers,24,3,3,0,0,1,0,3,3,0,0,3,-3,-4,44,2021-10-28T13:25:36.640Z,Facebook_10210894378652618,3,MichaelRaymond
+4407324,2021,reg,8,Tampa Bay Buccaneers,32,New Orleans Saints,20,3,3,0,0,0,0,3,-3,1,0,3,3,12,52,2021-10-28T13:25:49.881Z,Facebook_10210894378652618,2,MichaelRaymond
+4407325,2021,reg,8,Washington Football Team,20,Denver Broncos,24,3,3,1,0,1,0,3,3,0,0,3,-3,-4,44,2021-10-28T13:26:05.000Z,Facebook_10210894378652618,4,MichaelRaymond
+4407320,2021,reg,8,Dallas Cowboys,17,Minnesota Vikings,20,3,3,0,0,0,0,3,-3,1,0,3,3,-3,37,2021-10-28T13:26:23.120Z,Facebook_10210894378652618,2,MichaelRaymond
+4407327,2021,reg,8,N.Y. Giants Giants,17,Kansas City Chiefs,21,3,3,1,0,1,0,3,3,1,0,3,3,-4,38,2021-10-28T13:26:43.241Z,Facebook_10210894378652618,7,MichaelRaymond
+4407330,2021,reg,8,Green Bay Packers,27,Arizona Cardinals,30,3,3,0,0,1,0,3,3,0,0,3,-3,-3,57,2021-10-28T14:54:18.614Z,Facebook_10154773754448953,2,BryanCole
+4407321,2021,reg,8,Jacksonville Jaguars,17,Seattle Seahawks,23,0,0,1,0,1,0,0,0,1,0,0,0,-6,40,2021-10-28T22:40:44.480Z,cmaronchick,6,cmaronchick
+4407322,2021,reg,8,New England Patriots,24,L.A. Chargers Chargers,30,0,0,0,0,0,0,0,0,1,0,0,0,-6,54,2021-10-28T22:40:59.017Z,cmaronchick,2,cmaronchick
+4407324,2021,reg,8,Tampa Bay Buccaneers,31,New Orleans Saints,24,3,0,0,0,0,0,3,-3,1,0,0,0,7,55,2021-10-28T22:41:29.139Z,cmaronchick,2,cmaronchick
+4407325,2021,reg,8,Washington Football Team,16,Denver Broncos,27,1,3,1,0,1,0,1,1,1,0,3,3,-11,43,2021-10-28T22:41:54.766Z,cmaronchick,6,cmaronchick
+4407320,2021,reg,8,Dallas Cowboys,34,Minnesota Vikings,24,0,0,1,0,1,0,0,0,0,0,0,0,10,58,2021-10-28T22:42:23.658Z,cmaronchick,4,cmaronchick
+4407327,2021,reg,8,N.Y. Giants Giants,27,Kansas City Chiefs,35,3,3,1,0,1,0,3,3,0,0,3,-3,-8,62,2021-10-28T22:44:08.411Z,cmaronchick,4,cmaronchick
+4407330,2021,reg,8,Green Bay Packers,27,Arizona Cardinals,24,3,3,1,0,1,0,3,3,0,0,3,-3,3,51,2021-10-28T22:55:27.313Z,pigbenis1976,5,pigbenis1976
+4407318,2021,reg,8,Pittsburgh Steelers,21,Cleveland Browns,30,3,2,0,0,0,0,3,-3,0,0,2,-2,-9,51,2021-10-28T22:55:45.854Z,pigbenis1976,0,pigbenis1976
+4407329,2021,reg,8,L.A. Rams Rams,40,Houston Texans,13,3,1,1,0,1,0,3,3,1,0,1,1,27,53,2021-10-28T22:56:01.754Z,pigbenis1976,6,pigbenis1976
+4407316,2021,reg,8,Miami Dolphins,14,Buffalo Bills,38,3,2,1,0,1,0,3,3,0,0,2,-2,-24,52,2021-10-28T22:56:17.154Z,pigbenis1976,4,pigbenis1976
+4407317,2021,reg,8,Carolina Panthers,17,Atlanta Falcons,21,1,2,0,0,0,0,1,-1,1,0,2,2,-4,38,2021-10-28T22:56:41.234Z,pigbenis1976,2,pigbenis1976
+4407326,2021,reg,8,Philadelphia Eagles,24,Detroit Lions,21,2,2,1,0,0,0,2,-2,0,0,2,-2,3,45,2021-10-28T22:57:06.537Z,pigbenis1976,2,pigbenis1976
+4407328,2021,reg,8,San Francisco 49ers,17,Chicago Bears,20,2,3,0,0,0,0,2,-2,0,0,3,-3,-3,37,2021-10-28T22:57:21.921Z,pigbenis1976,0,pigbenis1976
+4407319,2021,reg,8,Cincinnati Bengals,35,N.Y. Jets Jets,17,3,1,0,0,0,0,3,-3,1,0,1,1,18,52,2021-10-28T22:57:35.415Z,pigbenis1976,2,pigbenis1976
+4407323,2021,reg,8,Tennessee Titans,35,Indianapolis Colts,31,3,3,1,0,1,0,3,3,1,0,3,3,4,66,2021-10-28T22:57:48.014Z,pigbenis1976,7,pigbenis1976
+4407321,2021,reg,8,Jacksonville Jaguars,20,Seattle Seahawks,27,2,0,1,0,1,0,2,2,0,0,0,0,-7,47,2021-10-28T22:58:03.975Z,pigbenis1976,4,pigbenis1976
+4407322,2021,reg,8,New England Patriots,17,L.A. Chargers Chargers,42,3,3,0,0,0,0,3,-3,1,0,3,3,-25,59,2021-10-28T22:58:15.015Z,pigbenis1976,2,pigbenis1976
+4407324,2021,reg,8,Tampa Bay Buccaneers,41,New Orleans Saints,28,3,3,0,0,0,0,3,-3,1,0,3,3,13,69,2021-10-28T22:58:28.695Z,pigbenis1976,2,pigbenis1976
+4407325,2021,reg,8,Washington Football Team,17,Denver Broncos,23,3,2,1,0,1,0,3,3,1,0,2,2,-6,40,2021-10-28T22:58:39.156Z,pigbenis1976,6,pigbenis1976
+4407320,2021,reg,8,Dallas Cowboys,35,Minnesota Vikings,27,3,3,1,0,1,0,3,3,0,0,3,-3,8,62,2021-10-28T22:58:53.749Z,pigbenis1976,4,pigbenis1976
+4407327,2021,reg,8,N.Y. Giants Giants,13,Kansas City Chiefs,31,3,0,1,0,0,0,3,-3,1,0,0,0,-18,44,2021-10-28T22:59:08.615Z,pigbenis1976,4,pigbenis1976
+4407317,2021,reg,8,Carolina Panthers,20,Atlanta Falcons,24,3,3,0,0,0,0,3,-3,1,0,3,3,-4,44,2021-10-29T17:00:55.561Z,cblakely11,2,cblakely11
+4407327,2021,reg,8,N.Y. Giants Giants,20,Kansas City Chiefs,27,3,3,1,0,1,0,3,3,1,0,3,3,-7,47,2021-10-29T17:00:19.100Z,cblakely11,6,cblakely11
+4407320,2021,reg,8,Dallas Cowboys,24,Minnesota Vikings,26,3,3,0,0,1,0,3,3,1,0,3,3,-2,50,2021-10-29T17:00:22.624Z,cblakely11,4,cblakely11
+4407325,2021,reg,8,Washington Football Team,20,Denver Broncos,19,3,3,0,0,0,0,3,-3,1,0,3,3,1,39,2021-10-29T17:00:25.720Z,cblakely11,2,cblakely11
+4407324,2021,reg,8,Tampa Bay Buccaneers,30,New Orleans Saints,21,3,3,0,0,0,0,3,-3,1,0,3,3,9,51,2021-10-29T17:00:28.780Z,cblakely11,2,cblakely11
+4407322,2021,reg,8,New England Patriots,23,L.A. Chargers Chargers,21,3,3,1,0,1,0,3,3,0,0,3,-3,2,44,2021-10-29T17:00:32.480Z,cblakely11,4,cblakely11
+4407321,2021,reg,8,Jacksonville Jaguars,17,Seattle Seahawks,18,3,3,1,0,0,0,3,-3,1,0,3,3,-1,35,2021-10-29T17:00:36.520Z,cblakely11,4,cblakely11
+4407323,2021,reg,8,Tennessee Titans,31,Indianapolis Colts,24,3,3,1,0,1,0,3,3,1,0,3,3,7,55,2021-10-29T17:00:40.480Z,cblakely11,6,cblakely11
+4407319,2021,reg,8,Cincinnati Bengals,30,N.Y. Jets Jets,20,3,3,0,0,1,0,3,3,1,0,3,3,10,50,2021-10-29T17:00:43.780Z,cblakely11,4,cblakely11
+4407328,2021,reg,8,San Francisco 49ers,20,Chicago Bears,19,3,3,1,0,0,0,3,-3,0,0,3,-3,1,39,2021-10-29T17:00:47.541Z,cblakely11,2,cblakely11
+4407326,2021,reg,8,Philadelphia Eagles,21,Detroit Lions,24,3,3,0,0,0,0,3,-3,0,0,3,-3,-3,45,2021-10-29T17:00:51.180Z,cblakely11,0,cblakely11
+4407316,2021,reg,8,Miami Dolphins,17,Buffalo Bills,40,3,3,1,0,1,0,3,3,0,0,3,-3,-23,57,2021-10-29T17:00:59.480Z,cblakely11,4,cblakely11
+4407329,2021,reg,8,L.A. Rams Rams,34,Houston Texans,10,3,3,1,0,1,0,3,3,0,0,3,-3,24,44,2021-10-29T17:01:04.241Z,cblakely11,4,cblakely11
+4407318,2021,reg,8,Pittsburgh Steelers,27,Cleveland Browns,20,3,3,1,0,1,0,3,3,0,0,3,-3,7,47,2021-10-29T17:01:09.000Z,cblakely11,4,cblakely11
+4407319,2021,reg,8,Cincinnati Bengals,27,N.Y. Jets Jets,13,0,0,0,0,0,0,0,0,0,0,0,0,14,40,2021-10-29T22:38:56.855Z,rosstuckerNFL,0,rosstuckerNFL
+4407323,2021,reg,8,Tennessee Titans,23,Indianapolis Colts,24,0,0,0,0,1,0,0,0,0,0,0,0,-1,47,2021-10-29T22:39:02.972Z,rosstuckerNFL,2,rosstuckerNFL
+4407329,2021,reg,8,L.A. Rams Rams,31,Houston Texans,17,0,0,1,0,0,0,0,0,1,0,0,0,14,48,2021-10-29T22:39:43.417Z,rosstuckerNFL,4,rosstuckerNFL
+4407317,2021,reg,8,Carolina Panthers,20,Atlanta Falcons,24,0,0,0,0,0,0,0,0,1,0,0,0,-4,44,2021-10-29T22:43:22.379Z,rosstuckerNFL,2,rosstuckerNFL
+4407316,2021,reg,8,Miami Dolphins,23,Buffalo Bills,31,0,0,1,0,0,0,0,0,0,0,0,0,-8,54,2021-10-29T22:44:17.378Z,rosstuckerNFL,2,rosstuckerNFL
+4407322,2021,reg,8,New England Patriots,24,L.A. Chargers Chargers,27,0,0,0,0,1,0,0,0,1,0,0,0,-3,51,2021-10-29T22:45:05.700Z,rosstuckerNFL,5,rosstuckerNFL
+4407325,2021,reg,8,Washington Football Team,23,Denver Broncos,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2021-10-29T22:46:26.541Z,rosstuckerNFL,2,rosstuckerNFL
+4407324,2021,reg,8,Tampa Bay Buccaneers,17,New Orleans Saints,16,0,0,0,0,1,0,0,0,0,0,0,0,1,33,2021-10-29T22:47:02.461Z,rosstuckerNFL,2,rosstuckerNFL
+4407320,2021,reg,8,Dallas Cowboys,17,Minnesota Vikings,24,0,0,0,0,0,0,0,0,1,0,0,0,-7,41,2021-10-29T22:47:55.321Z,rosstuckerNFL,2,rosstuckerNFL
+4407316,2021,reg,8,Miami Dolphins,13,Buffalo Bills,31,0,3,1,0,1,0,0,0,1,0,3,3,-18,44,2021-10-30T05:47:31.701Z,ausame,6,ausame
+4407317,2021,reg,8,Carolina Panthers,23,Atlanta Falcons,27,3,3,0,0,0,0,3,-3,0,0,3,-3,-4,50,2021-10-30T06:50:59.285Z,ausame,0,ausame
+4407318,2021,reg,8,Pittsburgh Steelers,20,Cleveland Browns,23,3,3,0,0,1,0,3,3,0,0,3,-3,-3,43,2021-10-30T06:35:05.619Z,ausame,2,ausame
+4407319,2021,reg,8,Cincinnati Bengals,23,N.Y. Jets Jets,16,3,3,0,0,1,0,3,3,0,0,3,-3,7,39,2021-10-30T06:37:05.917Z,ausame,2,ausame
+4407323,2021,reg,8,Tennessee Titans,23,Indianapolis Colts,21,3,3,1,0,1,0,3,3,0,0,3,-3,2,44,2021-10-30T06:38:41.459Z,ausame,4,ausame
+4407326,2021,reg,8,Philadelphia Eagles,21,Detroit Lions,23,3,3,0,0,0,0,3,-3,0,0,3,-3,-2,44,2021-10-30T06:40:10.020Z,ausame,0,ausame
+4407328,2021,reg,8,San Francisco 49ers,21,Chicago Bears,19,3,3,1,0,0,0,3,-3,1,0,3,3,2,40,2021-10-30T06:51:16.525Z,ausame,4,ausame
+4407329,2021,reg,8,L.A. Rams Rams,31,Houston Texans,10,3,3,1,0,1,0,3,3,0,0,3,-3,21,41,2021-10-30T06:42:25.259Z,ausame,4,ausame
+4407321,2021,reg,8,Jacksonville Jaguars,21,Seattle Seahawks,17,3,0,0,0,0,0,3,-3,1,0,0,0,4,38,2021-10-30T06:43:32.140Z,ausame,3,ausame
+4407322,2021,reg,8,New England Patriots,23,L.A. Chargers Chargers,27,3,3,0,0,1,0,3,3,1,0,3,3,-4,50,2021-10-30T06:44:27.641Z,ausame,4,ausame
+4407324,2021,reg,8,Tampa Bay Buccaneers,24,New Orleans Saints,23,3,3,0,0,1,0,3,3,0,0,3,-3,1,47,2021-10-30T06:45:39.042Z,ausame,2,ausame
+4407325,2021,reg,8,Washington Football Team,17,Denver Broncos,14,3,3,0,0,0,0,3,-3,1,0,3,3,3,31,2021-10-30T06:46:35.182Z,ausame,2,ausame
+4407320,2021,reg,8,Dallas Cowboys,19,Minnesota Vikings,24,3,3,0,0,0,0,3,-3,1,0,3,3,-5,43,2021-10-30T22:34:23.171Z,ausame,2,ausame
+4407327,2021,reg,8,N.Y. Giants Giants,23,Kansas City Chiefs,27,3,3,1,0,1,0,3,3,1,0,3,3,-4,50,2021-11-01T10:53:33.818Z,ausame,6,ausame
+4407318,2021,reg,8,Pittsburgh Steelers,23,Cleveland Browns,20,3,3,1,0,1,0,3,3,0,0,3,-3,3,43,2021-10-30T06:56:37.207Z,bodysurfoceanside,4,bodysurfoceanside
+4407329,2021,reg,8,L.A. Rams Rams,44,Houston Texans,3,3,3,1,0,1,0,3,3,1,0,3,3,41,47,2021-10-30T06:56:54.189Z,bodysurfoceanside,6,bodysurfoceanside
+4407316,2021,reg,8,Miami Dolphins,6,Buffalo Bills,34,3,3,1,0,1,0,3,3,1,0,3,3,-28,40,2021-10-30T06:57:11.488Z,bodysurfoceanside,6,bodysurfoceanside
+4407317,2021,reg,8,Carolina Panthers,14,Atlanta Falcons,33,3,3,0,0,0,0,3,-3,0,0,3,-3,-19,47,2021-10-30T06:57:37.888Z,bodysurfoceanside,0,bodysurfoceanside
+4407326,2021,reg,8,Philadelphia Eagles,26,Detroit Lions,20,3,3,1,0,1,0,3,3,0,0,3,-3,6,46,2021-10-30T06:57:53.508Z,bodysurfoceanside,4,bodysurfoceanside
+4407328,2021,reg,8,San Francisco 49ers,17,Chicago Bears,24,3,3,0,0,0,0,3,-3,1,0,3,3,-7,41,2021-10-30T06:58:18.489Z,bodysurfoceanside,2,bodysurfoceanside
+4407319,2021,reg,8,Cincinnati Bengals,45,N.Y. Jets Jets,3,3,3,0,0,0,0,3,-3,1,0,3,3,42,48,2021-10-30T06:58:39.108Z,bodysurfoceanside,2,bodysurfoceanside
+4407323,2021,reg,8,Tennessee Titans,21,Indianapolis Colts,27,3,3,0,0,0,0,3,-3,0,0,3,-3,-6,48,2021-10-30T06:59:03.049Z,bodysurfoceanside,0,bodysurfoceanside
+4407321,2021,reg,8,Jacksonville Jaguars,20,Seattle Seahawks,23,3,3,1,0,0,0,3,-3,1,0,3,3,-3,43,2021-10-30T06:59:21.508Z,bodysurfoceanside,4,bodysurfoceanside
+4407322,2021,reg,8,New England Patriots,32,L.A. Chargers Chargers,23,3,3,1,0,1,0,3,3,1,0,3,3,9,55,2021-10-30T06:59:39.309Z,bodysurfoceanside,6,bodysurfoceanside
+4407324,2021,reg,8,Tampa Bay Buccaneers,23,New Orleans Saints,16,3,3,0,0,0,0,3,-3,0,0,3,-3,7,39,2021-10-30T06:59:55.309Z,bodysurfoceanside,0,bodysurfoceanside
+4407325,2021,reg,8,Washington Football Team,21,Denver Broncos,27,3,3,1,0,1,0,3,3,0,0,3,-3,-6,48,2021-10-30T07:00:13.372Z,bodysurfoceanside,4,bodysurfoceanside
+4407320,2021,reg,8,Dallas Cowboys,32,Minnesota Vikings,20,3,3,1,0,1,0,3,3,0,0,3,-3,12,52,2021-10-30T07:00:27.550Z,bodysurfoceanside,4,bodysurfoceanside
+4407327,2021,reg,8,N.Y. Giants Giants,14,Kansas City Chiefs,35,3,3,1,0,0,0,3,-3,1,0,3,3,-21,49,2021-10-30T07:01:39.650Z,bodysurfoceanside,4,bodysurfoceanside
+4407318,2021,reg,8,Pittsburgh Steelers,20,Cleveland Browns,24,3,3,0,0,0,0,3,-3,0,0,3,-3,-4,44,2021-10-31T06:00:45.723Z,Facebook_10154773754448953,0,BryanCole
+4407329,2021,reg,8,L.A. Rams Rams,27,Houston Texans,14,3,3,1,0,0,0,3,-3,0,0,3,-3,13,41,2021-10-31T06:01:16.461Z,Facebook_10154773754448953,2,BryanCole
+4407316,2021,reg,8,Miami Dolphins,13,Buffalo Bills,28,3,3,1,0,1,0,3,3,1,0,3,3,-15,41,2021-10-31T06:04:21.362Z,Facebook_10154773754448953,7,BryanCole
+4407317,2021,reg,8,Carolina Panthers,14,Atlanta Falcons,20,3,3,0,0,0,0,3,-3,1,0,3,3,-6,34,2021-10-31T06:02:38.621Z,Facebook_10154773754448953,2,BryanCole
+4407326,2021,reg,8,Philadelphia Eagles,21,Detroit Lions,17,3,3,1,0,1,0,3,3,0,0,3,-3,4,38,2021-10-31T06:02:58.522Z,Facebook_10154773754448953,4,BryanCole
+4407328,2021,reg,8,San Francisco 49ers,24,Chicago Bears,17,3,3,1,0,1,0,3,3,1,0,3,3,7,41,2021-10-31T06:03:12.204Z,Facebook_10154773754448953,6,BryanCole
+4407319,2021,reg,8,Cincinnati Bengals,27,N.Y. Jets Jets,14,3,3,0,0,0,0,3,-3,0,0,3,-3,13,41,2021-10-31T06:03:25.222Z,Facebook_10154773754448953,0,BryanCole
+4407323,2021,reg,8,Tennessee Titans,24,Indianapolis Colts,21,3,3,1,0,1,0,3,3,0,0,3,-3,3,45,2021-10-31T06:03:43.421Z,Facebook_10154773754448953,5,BryanCole
+4407321,2021,reg,8,Jacksonville Jaguars,18,Seattle Seahawks,24,3,3,1,0,1,0,3,3,1,0,3,3,-6,42,2021-10-31T06:03:54.664Z,Facebook_10154773754448953,6,BryanCole
+4407322,2021,reg,8,New England Patriots,24,L.A. Chargers Chargers,20,3,3,1,0,1,0,3,3,0,0,3,-3,4,44,2021-10-31T06:04:57.841Z,Facebook_10154773754448953,4,BryanCole
+4407324,2021,reg,8,Tampa Bay Buccaneers,27,New Orleans Saints,17,3,3,0,0,0,0,3,-3,0,0,3,-3,10,44,2021-10-31T06:05:15.062Z,Facebook_10154773754448953,1,BryanCole
+4407325,2021,reg,8,Washington Football Team,20,Denver Broncos,24,3,3,1,0,1,0,3,3,1,0,3,3,-4,44,2021-10-31T06:05:25.961Z,Facebook_10154773754448953,6,BryanCole
+4407320,2021,reg,8,Dallas Cowboys,28,Minnesota Vikings,30,3,3,0,0,1,0,3,3,0,0,3,-3,-2,58,2021-10-31T06:05:54.681Z,Facebook_10154773754448953,2,BryanCole
+4407327,2021,reg,8,N.Y. Giants Giants,17,Kansas City Chiefs,28,3,3,1,0,0,0,3,-3,1,0,3,3,-11,45,2021-10-31T06:06:06.584Z,Facebook_10154773754448953,5,BryanCole
+4407318,2021,reg,8,Pittsburgh Steelers,18,Cleveland Browns,22,0,0,0,0,0,0,0,0,1,0,0,0,-4,40,2021-10-31T07:32:18.903Z,Facebook_10208710241577136,2,PaulCullin
+4407329,2021,reg,8,L.A. Rams Rams,35,Houston Texans,10,3,3,1,0,1,0,3,3,0,0,3,-3,25,45,2021-10-31T07:32:52.143Z,Facebook_10208710241577136,4,PaulCullin
+4407316,2021,reg,8,Miami Dolphins,20,Buffalo Bills,30,0,0,1,0,0,0,0,0,0,0,0,0,-10,50,2021-10-31T07:33:08.483Z,Facebook_10208710241577136,2,PaulCullin
+4407317,2021,reg,8,Carolina Panthers,19,Atlanta Falcons,20,0,0,0,0,1,0,0,0,1,0,0,0,-1,39,2021-10-31T07:33:34.622Z,Facebook_10208710241577136,5,PaulCullin
+4407326,2021,reg,8,Philadelphia Eagles,23,Detroit Lions,17,3,3,1,0,1,0,3,3,0,0,3,-3,6,40,2021-10-31T07:40:21.847Z,Facebook_10208710241577136,4,PaulCullin
+4407328,2021,reg,8,San Francisco 49ers,23,Chicago Bears,17,3,3,1,0,1,0,3,3,1,0,3,3,6,40,2021-10-31T07:41:06.966Z,Facebook_10208710241577136,6,PaulCullin
+4407319,2021,reg,8,Cincinnati Bengals,31,N.Y. Jets Jets,17,3,3,0,0,0,0,3,-3,1,0,3,3,14,48,2021-10-31T07:41:37.376Z,Facebook_10208710241577136,3,PaulCullin
+4407323,2021,reg,8,Tennessee Titans,27,Indianapolis Colts,23,3,3,1,0,1,0,3,3,0,0,3,-3,4,50,2021-10-31T07:42:21.777Z,Facebook_10208710241577136,4,PaulCullin
+4407321,2021,reg,8,Jacksonville Jaguars,17,Seattle Seahawks,24,3,3,1,0,1,0,3,3,1,0,3,3,-7,41,2021-10-31T07:42:57.886Z,Facebook_10208710241577136,6,PaulCullin
+4407322,2021,reg,8,New England Patriots,19,L.A. Chargers Chargers,24,3,0,0,0,0,0,3,-3,0,0,0,0,-5,43,2021-10-31T07:43:34.347Z,Facebook_10208710241577136,1,PaulCullin
+4407324,2021,reg,8,Tampa Bay Buccaneers,28,New Orleans Saints,23,3,3,0,0,0,0,3,-3,1,0,3,3,5,51,2021-10-31T07:44:10.087Z,Facebook_10208710241577136,2,PaulCullin
+4407325,2021,reg,8,Washington Football Team,18,Denver Broncos,20,0,0,1,0,0,0,0,0,1,0,0,0,-2,38,2021-10-31T07:45:04.867Z,Facebook_10208710241577136,4,PaulCullin
+4407327,2021,reg,8,N.Y. Giants Giants,24,Kansas City Chiefs,31,3,3,1,0,1,0,3,3,0,0,3,-3,-7,55,2021-11-01T16:29:37.684Z,Facebook_10208710241577136,4,PaulCullin
+4407320,2021,reg,8,Dallas Cowboys,23,Minnesota Vikings,27,3,3,0,0,0,0,3,-3,1,0,3,3,-4,50,2021-10-31T22:53:15.615Z,Facebook_10208710241577136,2,PaulCullin
+4407316,2021,reg,8,Miami Dolphins,17,Buffalo Bills,33,0,0,1,0,1,0,0,0,0,0,0,0,-16,50,2021-10-31T14:10:26.197Z,SkepticalPessimist,4,SkepticalPessimist
+4407317,2021,reg,8,Carolina Panthers,20,Atlanta Falcons,24,0,0,0,0,0,0,0,0,1,0,0,0,-4,44,2021-10-31T14:11:17.355Z,SkepticalPessimist,2,SkepticalPessimist
+4407318,2021,reg,8,Pittsburgh Steelers,20,Cleveland Browns,23,0,0,0,0,1,0,0,0,0,0,0,0,-3,43,2021-10-31T14:12:12.514Z,SkepticalPessimist,2,SkepticalPessimist
+4407319,2021,reg,8,Cincinnati Bengals,27,N.Y. Jets Jets,17,0,0,0,0,1,0,0,0,1,0,0,0,10,44,2021-10-31T14:14:42.875Z,SkepticalPessimist,4,SkepticalPessimist
+4407323,2021,reg,8,Tennessee Titans,26,Indianapolis Colts,29,0,0,0,0,0,0,0,0,1,0,0,0,-3,55,2021-10-31T14:18:09.676Z,SkepticalPessimist,2,SkepticalPessimist
+4407326,2021,reg,8,Philadelphia Eagles,25,Detroit Lions,23,0,0,1,0,0,0,0,0,0,0,0,0,2,48,2021-10-31T14:19:02.837Z,SkepticalPessimist,2,SkepticalPessimist
+4407328,2021,reg,8,San Francisco 49ers,23,Chicago Bears,20,0,0,1,0,0,0,0,0,1,0,0,0,3,43,2021-10-31T14:19:42.877Z,SkepticalPessimist,4,SkepticalPessimist
+4407329,2021,reg,8,L.A. Rams Rams,31,Houston Texans,18,0,0,1,0,1,0,0,0,1,0,0,0,13,49,2021-10-31T14:20:51.398Z,SkepticalPessimist,6,SkepticalPessimist
+4407321,2021,reg,8,Jacksonville Jaguars,21,Seattle Seahawks,27,0,0,1,0,1,0,0,0,0,0,0,0,-6,48,2021-10-31T14:21:23.159Z,SkepticalPessimist,4,SkepticalPessimist
+4407322,2021,reg,8,New England Patriots,23,L.A. Chargers Chargers,28,0,0,0,0,0,0,0,0,1,0,0,0,-5,51,2021-10-31T14:22:23.377Z,SkepticalPessimist,3,SkepticalPessimist
+4407324,2021,reg,8,Tampa Bay Buccaneers,27,New Orleans Saints,23,0,0,0,0,1,0,0,0,1,0,0,0,4,50,2021-10-31T14:22:43.418Z,SkepticalPessimist,5,SkepticalPessimist
+4407325,2021,reg,8,Washington Football Team,17,Denver Broncos,21,0,0,1,0,1,0,0,0,1,0,0,0,-4,38,2021-10-31T14:23:04.457Z,SkepticalPessimist,6,SkepticalPessimist
+4407320,2021,reg,8,Dallas Cowboys,32,Minnesota Vikings,28,0,0,1,0,1,0,0,0,0,0,0,0,4,60,2021-10-31T14:23:28.336Z,SkepticalPessimist,5,SkepticalPessimist
+4407327,2021,reg,8,N.Y. Giants Giants,24,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,0,0,0,0,-7,55,2021-10-31T14:24:47.238Z,SkepticalPessimist,4,SkepticalPessimist
