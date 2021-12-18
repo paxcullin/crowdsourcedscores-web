@@ -12,11 +12,11 @@ collection = db['games']
 
 today = str(date.today())
 startDate = datetime.strptime(today, '%Y-%m-%d')
-endDate = datetime.strptime('2021-11-01', '%Y-%m-%d')
-w1 = datetime.strptime('2021-09-12', '%Y-%m-%d')
+endDate = datetime.strptime('2022-11-01', '%Y-%m-%d')
+w1 = datetime.strptime('2022-12-31', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
-nfl = NFL()
+nfl = NCAAF()
 # print(nfl.sport_config())
 sb = Sportsbook()
 # print(sb.sportsbook_config())
@@ -36,7 +36,7 @@ print('gameListLength:', len(e.list()))
 if len(e.list()) > 0:
     count = 0
     for event in e.list():
-        print('game: ', event)
+        print('game: ', event["description"], event["datetime"])
         try:
             homeId = ''
             gameOdds = {
@@ -154,7 +154,7 @@ if len(e.list()) > 0:
             else:
                 print(gameObject["gameId"])
         except TypeError:
-            print(TypeError, event)
+            print(TypeError, TypeError.with_traceback())
         except ValueError:
             print(ValueError, event)
 
