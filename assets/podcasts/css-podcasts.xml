@@ -1032,6 +1032,19 @@
         <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode10-week9.mp3</guid>
         <pubDate>Thu, 11 Nov 2021 23:00:00 GMT</pubDate>
         <itunes:duration>1:21:46</itunes:duration>
-      </item>      
+      </item>
+      <item>
+        <title>2021 - Week 10 Recap - Episode 11</title>
+        <itunes:author>Stakehouse Sports</itunes:author>
+        <description>Chris rides alone with the Elk Rider Whiskey as he covers a rough week for the crowd as the enter the second half of the season.</description>
+        <itunes:subtitle>Chris rides alone with the Elk Rider Whiskey as he covers a rough week for the crowd as the enter the second half of the season.</itunes:subtitle>
+        <itunes:episode>73</itunes:episode>
+        <itunes:summary>Chris rides alone with the Elk Rider Whiskey as he covers a rough week for the crowd as the enter the second half of the season.</itunes:summary>
+        <itunes:image href="https://s3-us-west-2.amazonaws.com/stakehousesports.com/assets/img/shs-icon-1600x_edited.jpg" />
+        <enclosure url="https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode11-week10.mp3" length="29:24" type="audio/mpeg"/>
+        <guid>https://dts.podtrac.com/redirect.mp3/s3-us-west-2.amazonaws.com/crowdsourcedscores.com/assets/podcasts/shs-2021-episode11-week10.mp3</guid>
+        <pubDate>Fri, 19 Nov 2021 23:00:00 GMT</pubDate>
+        <itunes:duration>29:24</itunes:duration>
+      </item>
   </channel>
   </rss>

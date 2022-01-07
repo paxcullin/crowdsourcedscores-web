@@ -2,6 +2,6 @@ mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games -
 
 mongoexport --host=pcsm-shard-00-02.lwx4u.mongodb.net --port=27017 --db=pcsm --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2020-\"week"\-predictions.csv --type=csv --query='{"gameWeek":1,"year":2020, season: "reg"}' --fieldFile=predictions-fieldsFile.txt
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=games --username=pcsm-user --password=*dZ2HaWN --out=2021-games-week10.csv --type=csv --query='{"gameWeek": 10,"year":2021,"season": "reg"}' --fieldFile=games-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=games --username=pcsm-user --password=*dZ2HaWN --out=2021-games-week17.csv --type=csv --query='{"gameWeek": 17,"year":2021,"season": "reg"}' --fieldFile=games-fieldsFile.txt
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2021-predictions-week10.csv --type=csv --query='{"gameWeek": 10,"year":2021,"season": "reg"}' --fieldFile=predictions-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2021-predictions-week17.csv --type=csv --query='{"gameWeek": 17,"year":2021,"season": "reg"}' --fieldFile=predictions-fieldsFile.txt
