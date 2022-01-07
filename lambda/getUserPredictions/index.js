@@ -22,7 +22,7 @@ exports.handler = (event, context) => {
         if (!year || !week || !userId) { 
             context.done(null, { message: 'No user provided'})
         }
-        collection.find({"year": year,"gameWeek":  week, "userId": userId, "results": { "$exists": true } }, {_id: false}).toArray(function(err, docs) {
+        collection.find({"year": year,"gameWeek":  week, "preferred_username": userId, "results": { "$exists": true } }, {_id: false}).toArray(function(err, docs) {
             assert.equal(err, null);
             if(err) {
                 context.done(err, null);
