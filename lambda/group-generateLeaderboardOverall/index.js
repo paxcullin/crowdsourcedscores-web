@@ -66,7 +66,7 @@ exports.handler = (event, context, callback) => {
                 $match: {
                     year: eventYear,
                     season: eventSeason,
-                    gameWeek: { $lte: eventGameWeek },
+                    gameWeek: eventGameWeek,
                     results: { $exists: true },
                 }
             }
@@ -75,7 +75,7 @@ exports.handler = (event, context, callback) => {
                     $match: {
                         year: eventYear,
                         season: eventSeason,
-                        gameWeek: {$lte: eventGameWeek},
+                        gameWeek: eventGameWeek,
                         results: { $exists: true }
                     }
                 }
@@ -88,7 +88,7 @@ exports.handler = (event, context, callback) => {
                     matchOpts,
                     {
                         $group: {
-                            _id: {userId: "$userId", preferred_username: "$preferred_username", season: "$season", groupId: '$groups.groupId'},
+                            _id: {userId: "$userId", preferred_username: "$preferred_username", gameWeek: "$gameWeek", season: "$season", groupId: '$groups.groupId'},
                             suCorrect: {$sum: "$results.winner.correct"},
                             suPush: {$sum: "$results.winner.push"},
                             suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -145,10 +145,10 @@ exports.handler = (event, context, callback) => {
                             filteredResults = filteredResults.sort((a, b) => {
                                 return (a.predictionScore > b.predictionScore) ? -1 : 1;
                             })
-                            console.log('filteredResults: ', filteredResults.length)
+                            console.log(filteredResults.length)
                             let resultsLength = filteredResults.length;
                             filteredResults.forEach((result, index) => {
-                                console.log(`result`, result)
+                                // console.log(`result`, result)
                                 let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
                                 let starsNet = result.atsStarsNet + result.totalStarsNet;
                                 let user = { 
@@ -190,7 +190,7 @@ exports.handler = (event, context, callback) => {
                                 }
                                 let leaderboardUpdate = {
                                     $set: {
-                                        [`leaderboard.overall.${eventGameWeek}`]: {
+                                        [`leaderboard.weekly.${eventGameWeek}`]: {
                                             users: weeklyUserArray
                                         }
                                     }
