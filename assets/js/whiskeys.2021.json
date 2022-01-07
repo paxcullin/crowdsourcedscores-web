@@ -1,5 +1,5 @@
 {
-    "lastUpdatedDate": 1635956155199,
+    "lastUpdatedDate": 1637396099647,
     "columns": [{
         "name": "Yr"
     },{
@@ -14,6 +14,23 @@
         "name": "Ep"
     }],
     "whiskeys": [{
+        "year": 2021,
+        "week": 9,
+        "episode": 9,
+        "distiller": "Oola Distillery",
+        "bottle": "Waitsburg Whiskey",
+        "ratings": {
+            "1": {
+                "rater": "Paul",
+                "stars": 4.5
+            },
+            "2": {
+                "rater": "Chris",
+                "stars": 5
+            }
+        },
+        "podcastLink": "https://blog.crowdsourcedscores.com/2021/11/13/2021-nfl-week-9-recap/"
+    },{
         "year": 2021,
         "week": 8,
         "episode": 8,

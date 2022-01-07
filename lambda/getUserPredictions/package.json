@@ -1,0 +1,17 @@
+{
+  "name": "get-user-predictions-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^4.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r getUserPredictions.zip .",
+    "upload": "aws lambda update-function-code --function-name getUserPredictions --zip-file fileb://getUserPredictions.zip --publish"
+  },
+  "author": "",
+  "license": "ISC"
+}
