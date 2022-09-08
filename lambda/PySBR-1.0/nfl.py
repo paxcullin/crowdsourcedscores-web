@@ -12,7 +12,7 @@ collection = db['games']
 
 today = str(date.today())
 startDate = datetime.strptime(today, '%Y-%m-%d')
-endDate = datetime.strptime('2022-02-14', '%Y-%m-%d')
+endDate = datetime.strptime('2022-09-07', '%Y-%m-%d')
 w1 = datetime.strptime('2021-09-12', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
@@ -22,9 +22,9 @@ sb = Sportsbook()
 # print(sb.sportsbook_config())
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # e2 = EventsByDate(nfl.league_id, w1)
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
+spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
+totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
+moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 # print('totals', len(totals.list()))
@@ -36,7 +36,7 @@ print('gameListLength:', len(e.list()))
 if len(e.list()) > 0:
     count = 0
     for event in e.list():
-        print('game: ', event)
+        # print('game: ', event)
         if event["event group"] != None:
             try:
                 homeId = ''
@@ -55,7 +55,6 @@ if len(e.list()) > 0:
                 #     print('no game result for ', event['event id'])
                 gameObject = {
                         "gameId": event['event id'],
-                        "season": "reg",
                         "year": 2021,
                         "gameWeek": event['event group']['event group id'] -9,
                         "weekName": event['event group']['alias'],
@@ -64,7 +63,15 @@ if len(e.list()) > 0:
                         "location": event['location'] + ", " + event["country"],
                         "startDateTime": datetime.strptime(event["datetime"], '%Y-%m-%dT%H:%M:%S%z')
                     }
-
+                
+                if gameObject["startDateTime"] < datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    gameObject["season"] = "pre"
+                    print('pre', event)
+                elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    gameObject["season"] = "post"
+                else:
+                    gameObject["season"] = "reg"
+                print('gameObject: ', gameObject)
                 for team in event['participants']:
                     teamObject = {
                             "participantId": team["participant id"],

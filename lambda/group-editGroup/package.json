@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^2.1.18"
+    "mongodb": "^4.9.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r group-editGroup.zip ."
+    "package": "zip -r group-editGroup.zip .",
+    "upload": "aws lambda update-function-code --function-name group-editGroup --zip-file fileb://group-editGroup.zip --publish"
   },
   "author": "",
   "license": "ISC"
