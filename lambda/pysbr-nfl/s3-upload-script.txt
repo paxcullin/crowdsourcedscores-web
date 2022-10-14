@@ -1,0 +1,1 @@
+aws s3 cp pysbr-nfl.zip s3://shs-lambda-functions/pysbr/
