@@ -12,7 +12,7 @@ collection = db['games']
 
 today = str(date.today())
 startDate = datetime.strptime(today, '%Y-%m-%d')
-endDate = datetime.strptime('2022-09-07', '%Y-%m-%d')
+endDate = datetime.strptime('2022-09-16', '%Y-%m-%d')
 w1 = datetime.strptime('2021-09-12', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
@@ -21,6 +21,7 @@ nfl = NFL()
 sb = Sportsbook()
 # print(sb.sportsbook_config())
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
+print('games length: ', len(e.ids()))
 # e2 = EventsByDate(nfl.league_id, w1)
 spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
 totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
@@ -31,12 +32,11 @@ moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('5Dimes'
 
 
 # print(cl.list()[0])
-print('gameListLength:', len(e.list()))
+# print('gameListLength:', len(e.list()))
 # print(e2.list())
 if len(e.list()) > 0:
     count = 0
     for event in e.list():
-        # print('game: ', event)
         if event["event group"] != None:
             try:
                 homeId = ''
@@ -94,15 +94,14 @@ if len(e.list()) > 0:
                         # print(homeId)
                         for spread in spreads.list():
                             # print('spread', spread)
-                            if (spread['event id'] == 4407295):
-                                print('spread', spread)
                             # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
                             if (spread['event id'] == gameObject['gameId'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
                                 print("gameId and spread: ", gameObject['gameId'], spread['american odds'])
                                 gameOdds['spread'] = spread['spread / total']
                                 gameOdds['spreadOdds'] = spread['american odds']
                                 gameObject['odds']['spread'] = spread['spread / total']
-
+                            else:
+                                print('no spread for 4720244', spread['event id'], gameObject['gameId'], spread['participant id'], gameObject["homeTeam"]["participantId"])
                         # if line['event id'] == event['event id']:
                         #     print(line, event['event id'])
                     # print(len(totals.list()))
