@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+*
+!lambda_function.py
+!Pipfile
+!s3-upload-script.txt
+!.gitignore
