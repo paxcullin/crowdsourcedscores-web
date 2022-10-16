@@ -1,21 +1,24 @@
 'use strict';
 
 var mongo = require("mongodb").MongoClient,
-    assert = require("assert");
+    assert = require("assert"),
+    {config} = require('config');
 
-const MONGO_URL = 'mongodb://${username}:${password}@ds011775.mlab.com:11775/pcsm';
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 // console.log('Loading function');
 
 exports.handler = (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
+    const { groupId, owner, year, sport } = event
 
-    mongo.connect(MONGO_URL, function (err, db) {
+    mongo.connect(MONGO_URL, function (err, client) {
         
         assert.equal(null, err);
         if(err) {
             context.done(err, null);
         }
+        const db = client.db('pcsm');
         
         var result = {
             message: '',
@@ -27,7 +30,7 @@ exports.handler = (event, context) => {
         var groupInfo = event;
         groupInfo.users = [groupInfo.owner]
         var existingObjQuery = {owner: groupInfo.username, groupName: groupInfo.crowdName, sport: groupInfo.sport, year: groupInfo.year, users: [{"username": groupInfo.owner}]};
-        collection.find({groupId: {$gt: 0}}, {_id: false}).toArray(function(err, groups) {
+        collection.find({groupId: groupId}, {_id: false}).toArray(function(err, groups) {
             console.log("groups: ", groups);
             var message = "";
             if (err) {
