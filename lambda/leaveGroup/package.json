@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^2.1.18"
+    "mongodb": "^4.10.0"
   },
   "devDependencies": {},
   "scripts": {
