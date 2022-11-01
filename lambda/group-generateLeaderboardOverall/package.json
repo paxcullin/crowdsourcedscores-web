@@ -5,5 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "mongodb": "^4.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r Archive.zip .",
+    "upload": "aws lambda update-function-code --function-name group-generateLeaderboardOverall --zip-file fileb://Archive.zip --publish"
   }
 }

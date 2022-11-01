@@ -137,7 +137,8 @@ exports.handler = (event, context, callback) => {
                         groups.forEach(group => {
                             const { groupId } = group
                             let filteredResults = [];
-                            let weeklyUserArray = [];
+                            let weeklyUserArray = [],
+                            weeklyUserStarsArray = [];
                             filteredResults = results.filter((result) => {
                                 return (result._id.groupId === groupId)
                             })
@@ -177,7 +178,8 @@ exports.handler = (event, context, callback) => {
                                     predictionScore: result.predictionScore,
                                     totalPredictions: result.totalPredictions
                                 }
-                                weeklyUserArray.push(user)
+                                weeklyUserArray.push(user);
+                                weeklyUserStarsArray.push(user);
                                 resultsLength--;
                             })
                             console.log({ weeklyUserArray: weeklyUserArray })
@@ -191,7 +193,8 @@ exports.handler = (event, context, callback) => {
                                 let leaderboardUpdate = {
                                     $set: {
                                         [`leaderboard.weekly.${eventGameWeek}`]: {
-                                            users: weeklyUserArray
+                                            users: weeklyUserArray,
+                                            userStars: weeklyUserStarsArray
                                         }
                                     }
                                 }
