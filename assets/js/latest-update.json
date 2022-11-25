@@ -1,6 +1,10 @@
 {
-  "heading": "New for 4.0.31", 
-  "list": [{ "text": "You can now view other users' predictions.",
+  "heading": "New for 4.0.34", 
+  "list": [{ "text": "Added Clock and Quarter info to games for in-game updates."
+          }
+          ,{ "text": "Fixed the Odds Changed Modal."
+          },
+          { "text": "You can now view other users' predictions.",
             "link": "Leaderboard"
           },
             { 
