@@ -12,7 +12,7 @@ collection = db['games']
 
 today = str(date.today())
 startDate = datetime.strptime(today, '%Y-%m-%d')
-endDate = datetime.strptime('2022-09-16', '%Y-%m-%d')
+endDate = datetime.strptime('2022-11-16', '%Y-%m-%d')
 w1 = datetime.strptime('2021-09-12', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
@@ -23,9 +23,9 @@ sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 print('games length: ', len(e.ids()))
 # e2 = EventsByDate(nfl.league_id, w1)
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('5Dimes')[0])
+spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
+moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 # print('totals', len(totals.list()))
@@ -93,7 +93,7 @@ if len(e.list()) > 0:
                     if len(spreads.list()) > 0:
                         # print(homeId)
                         for spread in spreads.list():
-                            # print('spread', spread)
+                            print('spread', spread)
                             # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
                             if (spread['event id'] == gameObject['gameId'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
                                 print("gameId and spread: ", gameObject['gameId'], spread['american odds'])
@@ -108,7 +108,7 @@ if len(e.list()) > 0:
                     if len(totals.list()) > 0:
                         # print(homeId)
                         for total in totals.list():
-                            # print(total)
+                            print('total', total)
                             if (total['event id'] == gameObject['gameId']):
                                 gameOdds['total'] = total['spread / total']
                                 gameObject['totalOdds'] = total['american odds']
