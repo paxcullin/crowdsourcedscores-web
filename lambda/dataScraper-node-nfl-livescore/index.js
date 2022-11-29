@@ -138,9 +138,11 @@ exports.handler = async (event, context, callback) => {
                     period: status.period,
                     clock: status.displayClock
                 };
-                if (parseInt(status.type) === 2) {
+                const statusId = parseInt(status.type.id)
+                // console.log('status', statusId)
+                if (parseInt(statusId) === 2) {
                     gameObj.status = "inProgress";
-                } else if (parseInt(status.type) === 3) {
+                } else if (parseInt(statusId) === 3) {
                     gameObj.status = "final"
                 } else {
                     gameObj.status = "scheduled";
@@ -187,13 +189,15 @@ exports.handler = async (event, context, callback) => {
                         let gameIndex = 0;
                         for (game of gameObjectsArray) {
                             // const game = gameObjectsArray[gameIndex];
-                            const filter = {"awayTeam.code": game.awayTeam.code, "homeTeam.code": game.homeTeam.code, year: game.year, season: game.season }
+                            // find game and update if the status, clock, and period are not equal to the up-to-date values
+                            const filter = {"awayTeam.code": game.awayTeam.code, "homeTeam.code": game.homeTeam.code, year: game.year, season: game.season}
                             // console.log('filter', filter)
                             try {
                                 let mongoGame = await collection.findOne(filter)
                                 // console.log('mongoGame', mongoGame)
                                 if (!mongoGame) {
-                                    console.log('missing game: ', filter)
+                                    console.log('missing game: ', filter);
+                                    continue;
                                 }
                                 const { gameId, year, season, sport } = mongoGame
                                 const mongoGameWeek = mongoGame.gameWeek
@@ -210,9 +214,9 @@ exports.handler = async (event, context, callback) => {
                                         "results.spread": (game.results.awayTeam.score - game.results.homeTeam.score)
                                     }
                                 };
-                                // console.log({payload});
-                                // console.log('adding new game');
-                                if (game.status === "inProgess" || game.status === "final") {
+                                // only updating if the game has changed from what's in Mongo
+                                // if mongogame doesn't have results
+                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
                                     queryPromises.push(collection.updateOne({ gameId: gameId }, update));
                                     if (game.status === "final") {
                                         params = {
@@ -235,6 +239,10 @@ exports.handler = async (event, context, callback) => {
                                                 sport: {
                                                     DataType: "String",
                                                     StringValue: sport
+                                                },
+                                                season: {
+                                                    DataType: "String",
+                                                    StringValue: season
                                                 }
                                             }
                                         }
@@ -245,13 +253,19 @@ exports.handler = async (event, context, callback) => {
                                             console.log("SNS Publish complete: ", response);
                                         })
                                     }
-                                }
+                                } 
+                                // for troubleshooting when the games aren't updating
+                                // else {
+                                //     if (game.results && mongoGame.results) {
+                                //         console.log('mongoGame.awayTeam.code, mongoGame.homeTeam.code, ', mongoGame.awayTeam.code, mongoGame.homeTeam.code, mongoGame.gameId, game.status, mongoGame.status, game.results.period, mongoGame.results.period, game.results.clock, mongoGame.results.clock,' unchanged')
+                                //     }
+                                // }
                             } catch (mongoGameError) {
                                 console.log('mongoGameError', mongoGameError)
                             }
                             gameIndex++;
                             if (gameIndex === (gameObjectsArray.length -1)) {
-                                console.log('done');
+                                // console.log('done');
                                 
                             // console.log('queryPromises.length:', queryPromises.length)
 
