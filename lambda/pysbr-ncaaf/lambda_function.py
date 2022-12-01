@@ -2,6 +2,9 @@ from pysbr import *
 from pysbr.config.config import Config
 from datetime import datetime, date, timedelta
 from pymongo import MongoClient
+import boto3
+
+sns = boto3.client('sns')
 
 
 client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
@@ -10,7 +13,7 @@ collection = db['games-ncaaf']
 
 yesterday = str((date.today() - timedelta(days=3)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2022-01-10', '%Y-%m-%d')
+endDate = datetime.strptime('2023-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
@@ -18,10 +21,13 @@ sb = Sportsbook()
 e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
 spreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
 totals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
-bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
-fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
+moneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
+bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
+bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
+bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
+fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 print('totals', len(totals.list()))
@@ -72,7 +78,7 @@ def lambda_handler(event, context):
                             "gameWeek": event['event group']['event group id'] -9,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
-                            "sport": "nfl",
+                            "sport": "ncaaf",
                             "location": event['location'] + ", " + event["country"],
                             "startDateTime": datetime.strptime(event["datetime"], '%Y-%m-%dT%H:%M:%S%z')
                         }
@@ -252,7 +258,7 @@ def lambda_handler(event, context):
 
                         
                         # print(hasattr(gameObject, "results"))
-                        if gameObject["status"] == "final" and gameResult["status"] != "final":
+                        if (gameObject is not None and gameObject["status"] == "final") and (gameResult is None or gameResult["status"] != "final"):
                             print("SNS Publishing", str(gameObject["gameId"]))
                             sns.publish(
                                 TopicArn="arn:aws:sns:us-west-2:198282214908:gameUpdated",

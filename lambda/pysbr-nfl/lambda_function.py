@@ -31,11 +31,7 @@ fivedimesspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('
 fivedimesbookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
-# print('totals', len(totals.list()))
-def lambda_handler(event, context):
-    return {
-        'message': 'Schedule updated'
-    }
+
 
 def lambda_handler2(event, context):
     print('event: ', event, 'context: ', context)
