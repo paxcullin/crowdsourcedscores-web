@@ -30,10 +30,10 @@ fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.
 fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
-print('totals', len(totals.list()))
 
 def lambda_handler(event, context):
     print('event: ', event, 'context: ', context)
+    print('totals', len(totals.list()))
     if len(e.list()) > 0:
         try:
             for event in e.list():
@@ -89,10 +89,7 @@ def lambda_handler(event, context):
                                 "shortName": team["source"]["nickname"],
                                 "fullName": team["source"]["name"] + " " + team["source"]["nickname"]
                             }
-                        if team["source"]["abbreviation"] == "LA":
-                            teamObject["code"] = "LAR"
-                        else:
-                            teamObject["code"] = team["source"]["abbreviation"]
+                        teamObject["code"] = team["source"]["abbreviation"]
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
@@ -107,7 +104,7 @@ def lambda_handler(event, context):
                             gameObject["gameWeek"] = gameObject["gameWeek"] + 8
                             print('pre', gameObject, event)
                         gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    elif gameObject["startDateTime"] > datetime.strptime('2022-12-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
@@ -123,9 +120,8 @@ def lambda_handler(event, context):
                     else:
                         print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
                     
-                    if gameObject["gameWeek"] == 33546 or gameObject["gameWeek"] == 33564:
-                        gameObject["gameWeek"] = 18
-                        gameObject["weekName"] = "Week 18"
+                    if gameObject["weekName"] == "Bowls":
+                        gameObject["gameWeek"] = 1
                     for team in event['participants']:
                         teamObject = {
                                 "participantId": team["participant id"],
