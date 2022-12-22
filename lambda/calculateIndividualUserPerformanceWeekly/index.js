@@ -77,7 +77,7 @@ exports.handler = (event, context, callback) => {
                 },
                 {
                     $group: {
-                        _id: {userId: "$userId", gameWeek: "$gameWeek", season: "$season"},
+                        _id: {userId: "$userId", gameWeek: "$gameWeek", season: "$season", preferred_username: "$preferred_username"},
                         suCorrect: {$sum: "$results.winner.correct"},
                         suPush: {$sum: "$results.winner.push"},
                         suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -153,64 +153,64 @@ exports.handler = (event, context, callback) => {
                             [`results.${event.sport}.${year}.${result._id.season}.weekly.$.totalPredictions`]: result.totalPredictions
                         }
                     }
-                    if (event.sport === 'ncaaf') {
+                    // if (event.sport === 'ncaaf') {
                         
-                        criteria = {
-                            username: result._id.userId,
-                            ["results.ncaaf.2018.weekly"]: {
-                                $elemMatch: { gameWeek: result._id.gameWeek } 
-                            }
+                    //     criteria = {
+                    //         username: result._id.userId,
+                    //         ["results.ncaaf.2018.weekly"]: {
+                    //             $elemMatch: { gameWeek: result._id.gameWeek } 
+                    //         }
                             
-                        }
-                        update = {
-                            $set: {
-                                "results.ncaaf.2018.weekly.$.gameWeek": result._id.gameWeek,
-                                "results.ncaaf.2018.weekly.$.winner": {
-                                    correct: result.suCorrect,
-                                    push: result.suPush
-                                },
-                                "results.ncaaf.2018.weekly.$.spread": {
-                                    correct: result.atsCorrect,
-                                    push: result.atsPush
-                                },
-                                "results.ncaaf.2018.weekly.$.total": {
-                                    correct: result.totalCorrect,
-                                    push: result.totalPush
-                                },
-                                "results.ncaaf.2018.weekly.$.predictionScore": result.predictionScore,
-                                "results.ncaaf.2018.weekly.$.totalPredictions": result.totalPredictions
-                            }
-                        }
-                    } else if (event.sport === 'ncaam') {
-                        criteria = {
-                            username: result._id.userId
-                        }
-                        const criteriaWeekMatchKey = "results." + event.sport + "." + year + ".weekly"
-                        criteria[criteriaWeekMatchKey] = {
-                            $elemMatch: { gameWeek: result._id.gameWeek } 
-                        }
-                        var updateObject = {};
-                        updateObjectWeeklyKey = `results.${event.sport}.${year}.weekly`;
+                    //     }
+                    //     update = {
+                    //         $set: {
+                    //             "results.ncaaf.2018.weekly.$.gameWeek": result._id.gameWeek,
+                    //             "results.ncaaf.2018.weekly.$.winner": {
+                    //                 correct: result.suCorrect,
+                    //                 push: result.suPush
+                    //             },
+                    //             "results.ncaaf.2018.weekly.$.spread": {
+                    //                 correct: result.atsCorrect,
+                    //                 push: result.atsPush
+                    //             },
+                    //             "results.ncaaf.2018.weekly.$.total": {
+                    //                 correct: result.totalCorrect,
+                    //                 push: result.totalPush
+                    //             },
+                    //             "results.ncaaf.2018.weekly.$.predictionScore": result.predictionScore,
+                    //             "results.ncaaf.2018.weekly.$.totalPredictions": result.totalPredictions
+                    //         }
+                    //     }
+                    // } else if (event.sport === 'ncaam') {
+                    //     criteria = {
+                    //         username: result._id.userId
+                    //     }
+                    //     const criteriaWeekMatchKey = "results." + event.sport + "." + year + ".weekly"
+                    //     criteria[criteriaWeekMatchKey] = {
+                    //         $elemMatch: { gameWeek: result._id.gameWeek } 
+                    //     }
+                    //     var updateObject = {};
+                    //     updateObjectWeeklyKey = `results.${event.sport}.${year}.weekly`;
                         
-                        updateObject[updateObjectWeeklyKey + '.$.gameWeek'] = result._id.gameWeek;
-                        updateObject[updateObjectWeeklyKey + '.$.winner'] = {
-                                correct: result.suCorrect,
-                                push: result.suPush
-                            };
-                        updateObject[updateObjectWeeklyKey + '.$.spread']= {
-                                correct: result.atsCorrect,
-                                push: result.atsPush
-                            };
-                        updateObject[updateObjectWeeklyKey + '.$.total'] = {
-                                correct: result.totalCorrect,
-                                push: result.totalPush
-                            }
-                        updateObject[updateObjectWeeklyKey + '.$.predictionScore'] = result.predictionScore,
-                        updateObject[updateObjectWeeklyKey + '.$.totalPredictions'] = result.totalPredictions
-                        update = {
-                            $set: updateObject
-                        }
-                    }
+                    //     updateObject[updateObjectWeeklyKey + '.$.gameWeek'] = result._id.gameWeek;
+                    //     updateObject[updateObjectWeeklyKey + '.$.winner'] = {
+                    //             correct: result.suCorrect,
+                    //             push: result.suPush
+                    //         };
+                    //     updateObject[updateObjectWeeklyKey + '.$.spread']= {
+                    //             correct: result.atsCorrect,
+                    //             push: result.atsPush
+                    //         };
+                    //     updateObject[updateObjectWeeklyKey + '.$.total'] = {
+                    //             correct: result.totalCorrect,
+                    //             push: result.totalPush
+                    //         }
+                    //     updateObject[updateObjectWeeklyKey + '.$.predictionScore'] = result.predictionScore,
+                    //     updateObject[updateObjectWeeklyKey + '.$.totalPredictions'] = result.totalPredictions
+                    //     update = {
+                    //         $set: updateObject
+                    //     }
+                    // }
                     // console.log('criteria: ', criteria)
                     // console.log("update: ", JSON.stringify(update))
                     
@@ -368,6 +368,7 @@ exports.handler = (event, context, callback) => {
                         let starsNet = result.atsStarsNet + result.totalStarsNet;
                         let user = { 
                             username: result._id.userId,
+                            preferred_username: result._id.preferred_username ? result._id.preferred_username : '',
                             winner: {
                                 correct: result.suCorrect,
                                 push: result.suPush,

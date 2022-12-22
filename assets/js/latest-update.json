@@ -1,0 +1,18 @@
+{
+  "heading": "New for 4.0.34", 
+  "list": [{ "text": "Added Clock and Quarter info to games for in-game updates."
+          }
+          ,{ "text": "Fixed the Odds Changed Modal."
+          },
+          { "text": "You can now view other users' predictions.",
+            "link": "Leaderboard"
+          },
+            { 
+              "text": "You can see all of your stakes wagers in one place.",
+              "link": "StakeSlip"
+            },
+            {
+              "text": "Other bug fixes."
+            }
+          ]
+}

@@ -58,11 +58,12 @@ exports.handler = async (event, context, callback) => {
         let getGameWeekResponse = await lambda.invoke(getGameWeekParams).promise()
         let getGameWeekData = JSON.parse(getGameWeekResponse.Payload)
             console.log({getGameWeekData});
-            const { sport, season, year, week} = getGameWeekData
-        getWeeklyResultsParams.Payload = JSON.stringify({ message: "getting weekly results for notifications", sport: getGameWeekData.sport,
-            season: "post", //getGameWeekData.season,
-            year: 2020, //getGameWeekData.year,
-            week: 4 // getGameWeekData.week})
+            const { sport, season, year} = getGameWeekData
+            const week = event.gameWeek ? event.gameWeek : getGameWeekData.week -1;
+        getWeeklyResultsParams.Payload = JSON.stringify({ message: "getting weekly results for notifications", sport,
+            season,
+            year,
+            week
         })
         console.log(getWeeklyResultsParams)
         let getWeeklyResults = await lambda.invoke(getWeeklyResultsParams).promise();
@@ -87,7 +88,7 @@ exports.handler = async (event, context, callback) => {
                 weeklyUserScoreResults.sort((a,b) => b.predictionScore - a.predictionScore)
                 let filteredWeeklyUserScoreResults = weeklyUserScoreResults.filter((a, index) => index < 3)
                 console.log(`filteredWeeklyUserScoreResults`, filteredWeeklyUserScoreResults);
-                let top3usernames = filteredWeeklyUserScoreResults.reduce(user => {
+                let top3usernames = filteredWeeklyUserScoreResults.map(user => {
                     return user.username                    
                 })
                 console.log(`top3usernames`, top3usernames)
@@ -98,25 +99,42 @@ exports.handler = async (event, context, callback) => {
                     if (index < 3) {
                         let filter = {
                             username: user.username,
-                            "notifications.$.season": season,
-                            "notifications.$.sport": sport,
-                            "notifications.$.gameWeek": week,
-                            "notifications.$.year": year,
-                            "notifications.$.type": "weeklyScoreResults"
+                            notifications: {
+                                $elemMatch: { 
+                                    season: season,
+                                    sport: sport,
+                                    gameWeek: week,
+                                    year: year,
+                                    type: "weeklyScoreResults"
+                                    
+                                }
+                            }
                         }
                     
                         let notificaton = {
-                            $setOnInsert: {
+                            $addToSet: {
+                                notifications: {
+                                    id: notificationId,
+                                    gameWeek: week,
+                                    season: season,
+                                    sport: sport,
+                                    year: year,
+                                    type: "weeklyScoreResults",
+                                    read: false,
+                                    message: `Congrats! You took ${ordinal_suffix_of(index+1)} place in Week ${week} with a score of ${user.predictionScore}.`
+                                }
+                            }
+                        };
+                        /*
                                 [`notifications.$.gameWeek`]: week,
                                 [`notifications.$.season`]: season,
                                 [`notifications.$.sport`]: sport,
                                 [`notifications.$.year`]: year,
                                 [`notifications.$.type`]: "weeklyScoreResults",
                                 [`notifications.$.message`]: `Congrats! You took ${ordinal_suffix_of(index+1)} place in Week ${getGameWeekData.week} with a score of ${user.predictionScore}.`
-                            }
-                        };
+                                */
                         // console.log(payload)
-                        queryPromises.push(collection.findOneAndUpdate(filter, notificaton, { upsert: true }));
+                        queryPromises.push(collection.updateOne({username: user.username}, notificaton, { upsert: true }));
                     }
                 })
                 if (weeklyUserStarsResults && weeklyUserStarsResults.length > 0) {
@@ -126,25 +144,33 @@ exports.handler = async (event, context, callback) => {
                         if (index < 3) {
                             let filter = {
                                 username: user.username,
-                                "notifications.$.season": season,
-                                "notifications.$.sport": sport,
-                                "notifications.$.gameWeek": week,
-                                "notifications.$.year": year,
-                                "notifications.$.type": "weeklyStarResults"
+                                notifications: {
+                                    $elemMatch: {
+                                        type: "weeklyStarResults",
+                                        season: season,
+                                        sport: sport,
+                                        gameWeek: week,
+                                        year: year
+                                    }
+                                }
                             }
                         
                             let notification = {
-                                    $setOnInsert: {
-                                        [`notifications.$.gameWeek`]: week,
-                                        [`notifications.$.season`]: season,
-                                        [`notifications.$.sport`]: sport,
-                                        [`notifications.$.year`]: year,
-                                        [`notifications.$.type`]: "weeklyStarResults",
-                                        [`notifications.$.message`]: `Congrats! You took ${ordinal_suffix_of(index+1)} place in Week ${getGameWeekData.week-1} with ${user.stars.net} net stars (${Math.round(user.stars.roi * 100)}% ROI).`
+                                    $addToSet: {
+                                        notifications: {
+                                            id: notificationId,
+                                            gameWeek: week,
+                                            season: season,
+                                            sport: sport,
+                                            year: year,
+                                            type: "weeklyStarResults",
+                                            read: false,
+                                            message: `Congrats! You took ${ordinal_suffix_of(index+1)} place in Week ${week-1} with ${user.stars.net} net stars (${Math.round(user.stars.roi * 100)}% ROI).`
+                                        }
                                     }
                             };
-                            // console.log(payload)
-                            queryPromises.push(collection.findOneAndUpdate(filter, notification, { upsert: true }));
+                            console.log('filter', filter)
+                            queryPromises.push(collection.updateOne({username: user.username}, notification, { upsert: true }));
                         }
                     })
                 } else {
@@ -155,7 +181,7 @@ exports.handler = async (event, context, callback) => {
                 let response = await Promise.all(queryPromises)
                     console.log({response})
                     //context.done(null, promiseResults)
-                    callback(null, response)
+                    context.done(null, response)
 
                 
             // })

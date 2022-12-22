@@ -1,7 +1,6 @@
 from pysbr import *
 from pysbr.config.config import Config
-from datetime import datetime, timedelta
-from datetime import date
+from datetime import datetime, date, timedelta
 from pymongo import MongoClient
 import boto3
 
@@ -10,34 +9,35 @@ sns = boto3.client('sns')
 
 client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
 db = client['pcsm']
-collection = db['games']
+collection = db['games-ncaaf']
 
-today = str(date.today())
-yesterday = str((date.today() - timedelta(days=1)))
+yesterday = str((date.today() - timedelta(days=3)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2023-02-14', '%Y-%m-%d')
+endDate = datetime.strptime('2023-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
-nfl = NFL()
+ncaaf = NCAAF()
 sb = Sportsbook()
-e = EventsByDateRange(nfl.league_id, startDate,endDate)
-# print('games length: ', len(e.ids()))
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
-bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
-fivedimesspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
-fivedimesbookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
+e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
+spreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+totals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
+moneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
+bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
+bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
+bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
+fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 
-
-def lambda_handler2(event, context):
+def lambda_handler(event, context):
     print('event: ', event, 'context: ', context)
+    print('totals', len(totals.list()))
     if len(e.list()) > 0:
         try:
             for event in e.list():
+                # print('event: ', event)
                 if event["event group"] != None:
                     homeId = ''
                     awayId = ''
@@ -79,7 +79,7 @@ def lambda_handler2(event, context):
                             "gameWeek": event['event group']['event group id'] -9,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
-                            "sport": "nfl",
+                            "sport": "ncaaf",
                             "location": event['location'] + ", " + event["country"],
                             "startDateTime": datetime.strptime(event["datetime"], '%Y-%m-%dT%H:%M:%S%z')
                         }
@@ -90,10 +90,7 @@ def lambda_handler2(event, context):
                                 "shortName": team["source"]["nickname"],
                                 "fullName": team["source"]["name"] + " " + team["source"]["nickname"]
                             }
-                        if team["source"]["abbreviation"] == "LA":
-                            teamObject["code"] = "LAR"
-                        else:
-                            teamObject["code"] = team["source"]["abbreviation"]
+                        teamObject["code"] = team["source"]["abbreviation"]
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
@@ -108,7 +105,7 @@ def lambda_handler2(event, context):
                             gameObject["gameWeek"] = gameObject["gameWeek"] + 8
                             print('pre', gameObject, event)
                         gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    elif gameObject["startDateTime"] > datetime.strptime('2022-12-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
@@ -124,9 +121,8 @@ def lambda_handler2(event, context):
                     else:
                         print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
                     
-                    if gameObject["gameWeek"] == 33546 or gameObject["gameWeek"] == 33564:
-                        gameObject["gameWeek"] = 18
-                        gameObject["weekName"] = "Week 18"
+                    if gameObject["weekName"] == "Bowls":
+                        gameObject["gameWeek"] = 1
                     for team in event['participants']:
                         teamObject = {
                                 "participantId": team["participant id"],
@@ -250,7 +246,7 @@ def lambda_handler2(event, context):
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
                         collection.update_one({
-                            "gameId": gameObject["gameId"]
+                            "gameId": event['event id']
                             },
                             {
                                 "$set": gameObject
@@ -259,7 +255,7 @@ def lambda_handler2(event, context):
 
                         
                         # print(hasattr(gameObject, "results"))
-                        if gameObject["status"] == "final" and gameResult["status"] != "final":
+                        if (gameObject is not None and gameObject["status"] == "final") and (gameResult is None or gameResult["status"] != "final"):
                             print("SNS Publishing", str(gameObject["gameId"]))
                             sns.publish(
                                 TopicArn="arn:aws:sns:us-west-2:198282214908:gameUpdated",
@@ -394,9 +390,9 @@ def lambda_handler2(event, context):
         'message': 'Schedule updated'
     }
 
-    
 
 
-    # print(cl.dataframe(e)[cols])
-    # for event in e.list():
-    #     print(event)
+
+# print(cl.dataframe(e)[cols])
+# for event in e.list():
+#     print(event)
