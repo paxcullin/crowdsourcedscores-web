@@ -1,0 +1,71 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+4720360,2022,reg,10,Cleveland Browns,24,Miami Dolphins,27,2,0,1,0,0,0,2,-2,1,0,0,0,-3,51,2022-11-11T23:39:54.530Z,rosstuckerNFL,4,rosstuckerNFL
+4720362,2022,reg,10,Detroit Lions,28,Chicago Bears,31,0,2,0,0,0,0,0,0,1,0,2,2,-3,59,2022-11-11T23:37:56.189Z,rosstuckerNFL,2,rosstuckerNFL
+4720359,2022,reg,10,Denver Broncos,16,Tennessee Titans,21,2,0,1,0,1,0,2,2,1,0,0,0,-5,37,2022-11-11T23:42:05.390Z,rosstuckerNFL,6,rosstuckerNFL
+4720366,2022,reg,10,Indianapolis Colts,13,Las Vegas Raiders,23,2,0,0,0,0,0,2,-2,0,0,0,0,-10,36,2022-11-11T23:43:00.611Z,rosstuckerNFL,0,rosstuckerNFL
+4719572,2022,reg,10,Dallas Cowboys,23,Green Bay Packers,17,2,0,0,0,0,0,2,-2,0,0,0,0,6,40,2022-11-11T23:43:35.930Z,rosstuckerNFL,0,rosstuckerNFL
+4720369,2022,reg,10,Washington Commanders,13,Philadelphia Eagles,24,0,0,0,0,0,0,0,0,0,0,0,0,-11,37,2022-11-11T23:46:00.752Z,rosstuckerNFL,0,rosstuckerNFL
+4720358,2022,reg,10,Atlanta Falcons,21,Carolina Panthers,19,0,0,0,0,1,0,0,0,1,0,0,0,2,40,2022-11-10T23:15:07.157Z,ausame,5,ausame
+4720358,2022,reg,10,Atlanta Falcons,27,Carolina Panthers,17,0,3,0,0,0,0,0,0,0,0,3,-3,10,44,2022-11-10T22:31:47.061Z,cmaronchick,0,cmaronchick
+4716619,2022,reg,10,Seattle Seahawks,23,Tampa Bay Buccaneers,13,3,0,0,0,0,0,3,-3,1,0,0,0,10,36,2022-11-10T22:33:22.632Z,cmaronchick,2,cmaronchick
+4642818,2022,reg,10,Jacksonville Jaguars,16,Kansas City Chiefs,31,3,0,1,0,1,0,3,3,1,0,0,0,-15,47,2022-11-10T17:17:19.293Z,cmaronchick,6,cmaronchick
+4642816,2022,reg,10,Minnesota Vikings,13,Buffalo Bills,20,3,0,0,0,0,0,3,-3,0,0,0,0,-7,33,2022-11-13T00:00:01.408Z,cmaronchick,0,cmaronchick
+4642817,2022,reg,10,Houston Texans,13,N.Y. Giants Giants,24,3,0,1,0,1,0,3,3,1,0,0,0,-11,37,2022-11-10T22:35:33.585Z,cmaronchick,7,cmaronchick
+4720358,2022,reg,10,Atlanta Falcons,24,Carolina Panthers,17,3,0,0,0,0,0,3,-3,1,0,0,0,7,41,2022-11-10T23:43:00.411Z,Facebook_10208710241577136,2,PaulCullin
+4716619,2022,reg,10,Seattle Seahawks,24,Tampa Bay Buccaneers,27,0,0,1,0,1,0,0,0,0,0,0,0,-3,51,2022-11-10T23:43:48.948Z,Facebook_10208710241577136,4,PaulCullin
+4720362,2022,reg,10,Detroit Lions,17,Chicago Bears,20,0,3,0,0,0,0,0,0,0,0,3,-3,-3,37,2022-11-10T23:48:09.570Z,Facebook_10208710241577136,0,PaulCullin
+4720360,2022,reg,10,Cleveland Browns,17,Miami Dolphins,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2022-11-11T18:18:16.388Z,cmaronchick,5,cmaronchick
+4720362,2022,reg,10,Detroit Lions,23,Chicago Bears,27,0,0,0,0,0,0,0,0,1,0,0,0,-4,50,2022-11-11T18:18:24.448Z,cmaronchick,2,cmaronchick
+4720359,2022,reg,10,Denver Broncos,16,Tennessee Titans,24,0,0,1,0,1,0,0,0,0,0,0,0,-8,40,2022-11-11T18:18:10.468Z,cmaronchick,4,cmaronchick
+4720361,2022,reg,10,New Orleans Saints,20,Pittsburgh Steelers,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2022-11-11T18:18:20.808Z,cmaronchick,2,cmaronchick
+4720366,2022,reg,10,Indianapolis Colts,21,Las Vegas Raiders,20,0,0,1,0,1,0,0,0,0,0,0,0,1,41,2022-11-11T18:18:28.491Z,cmaronchick,5,cmaronchick
+4720367,2022,reg,10,Arizona Cardinals,24,L.A. Rams Rams,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2022-11-11T18:17:56.830Z,cmaronchick,7,cmaronchick
+4719572,2022,reg,10,Dallas Cowboys,27,Green Bay Packers,20,0,0,0,0,0,0,0,0,1,0,0,0,7,47,2022-11-11T18:18:34.629Z,cmaronchick,2,cmaronchick
+4642816,2022,reg,10,Minnesota Vikings,23,Buffalo Bills,19,3,0,1,0,1,0,3,3,0,0,0,0,4,42,2022-11-10T23:45:03.686Z,Facebook_10208710241577136,4,PaulCullin
+4642817,2022,reg,10,Houston Texans,20,N.Y. Giants Giants,24,0,0,1,0,0,0,0,0,0,0,0,0,-4,44,2022-11-10T23:45:35.546Z,Facebook_10208710241577136,3,PaulCullin
+4642818,2022,reg,10,Jacksonville Jaguars,20,Kansas City Chiefs,28,0,0,1,0,0,1,0,0,1,0,0,0,-8,48,2022-11-10T23:46:13.908Z,Facebook_10208710241577136,4,PaulCullin
+4720359,2022,reg,10,Denver Broncos,20,Tennessee Titans,23,0,3,1,0,1,0,0,0,0,0,3,-3,-3,43,2022-11-10T23:46:34.667Z,Facebook_10208710241577136,4,PaulCullin
+4720360,2022,reg,10,Cleveland Browns,21,Miami Dolphins,27,0,0,1,0,1,0,0,0,0,0,0,0,-6,48,2022-11-10T23:47:12.968Z,Facebook_10208710241577136,4,PaulCullin
+4720361,2022,reg,10,New Orleans Saints,27,Pittsburgh Steelers,20,3,3,0,0,0,0,3,-3,0,0,3,-3,7,47,2022-11-10T23:47:39.090Z,Facebook_10208710241577136,1,PaulCullin
+4720366,2022,reg,10,Indianapolis Colts,20,Las Vegas Raiders,19,3,3,1,0,1,0,3,3,0,0,3,-3,1,39,2022-11-10T23:48:40.128Z,Facebook_10208710241577136,4,PaulCullin
+4719572,2022,reg,10,Dallas Cowboys,24,Green Bay Packers,20,3,0,0,0,1,0,3,3,1,0,0,0,4,44,2022-11-10T23:49:05.048Z,Facebook_10208710241577136,4,PaulCullin
+4720367,2022,reg,10,Arizona Cardinals,24,L.A. Rams Rams,19,3,0,1,0,1,0,3,3,1,0,0,0,5,43,2022-11-10T23:49:37.469Z,Facebook_10208710241577136,6,PaulCullin
+4720368,2022,reg,10,L.A. Chargers Chargers,23,San Francisco 49ers,27,3,0,1,0,1,0,3,3,0,0,0,0,-4,50,2022-11-10T23:50:10.049Z,Facebook_10208710241577136,4,PaulCullin
+4720369,2022,reg,10,Washington Commanders,21,Philadelphia Eagles,18,3,0,1,0,1,0,3,3,0,0,0,0,3,39,2022-11-10T23:50:41.151Z,Facebook_10208710241577136,4,PaulCullin
+4720358,2022,reg,10,Atlanta Falcons,24,Carolina Panthers,31,3,3,1,0,1,0,3,3,0,0,3,-3,-7,55,2022-11-11T00:49:49.933Z,Facebook_2328097410559627,4,bodysurf
+4720358,2022,reg,10,Atlanta Falcons,24,Carolina Panthers,20,,,0,0,0,0,0,0,0,0,0,0,4,44,2022-11-08T22:25:32.605Z,rosstuckerNFL,0,rosstuckerNFL
+4720368,2022,reg,10,L.A. Chargers Chargers,27,San Francisco 49ers,24,3,0,0,0,1,0,3,3,0,0,0,0,3,51,2022-11-11T02:20:56.717Z,cmaronchick,2,cmaronchick
+4720369,2022,reg,10,Washington Commanders,13,Philadelphia Eagles,27,3,0,0,0,0,0,3,-3,0,0,0,0,-14,40,2022-11-14T19:28:26.140Z,cmaronchick,0,cmaronchick
+4716619,2022,reg,10,Seattle Seahawks,27,Tampa Bay Buccaneers,21,3,3,0,0,0,0,3,-3,0,0,3,-3,6,48,2022-11-11T05:01:31.931Z,Facebook_10154773754448953,1,BryanCole
+4716619,2022,reg,10,Seattle Seahawks,23,Tampa Bay Buccaneers,17,0,0,0,0,0,0,0,0,1,0,0,0,6,40,2022-11-11T23:35:09.569Z,rosstuckerNFL,2,rosstuckerNFL
+4642816,2022,reg,10,Minnesota Vikings,20,Buffalo Bills,23,0,0,0,0,1,0,0,0,1,0,0,0,-3,43,2022-11-11T23:37:11.350Z,rosstuckerNFL,4,rosstuckerNFL
+4642818,2022,reg,10,Jacksonville Jaguars,24,Kansas City Chiefs,27,0,0,1,0,0,1,0,0,1,0,0,0,-3,51,2022-11-11T23:38:13.057Z,rosstuckerNFL,5,rosstuckerNFL
+4642817,2022,reg,10,Houston Texans,17,N.Y. Giants Giants,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2022-11-11T23:40:41.830Z,rosstuckerNFL,4,rosstuckerNFL
+4720361,2022,reg,10,New Orleans Saints,17,Pittsburgh Steelers,20,0,0,1,0,1,0,0,0,1,0,0,0,-3,37,2022-11-11T23:41:22.711Z,rosstuckerNFL,7,rosstuckerNFL
+4720367,2022,reg,10,Arizona Cardinals,17,L.A. Rams Rams,16,0,0,1,0,1,0,0,0,0,0,0,0,1,33,2022-11-11T23:44:15.050Z,rosstuckerNFL,4,rosstuckerNFL
+4720368,2022,reg,10,L.A. Chargers Chargers,17,San Francisco 49ers,27,0,0,1,0,0,0,0,0,1,0,0,0,-10,44,2022-11-11T23:45:11.691Z,rosstuckerNFL,4,rosstuckerNFL
+4720362,2022,reg,10,Detroit Lions,17,Chicago Bears,21,0,3,0,0,0,0,0,0,0,0,3,-3,-4,38,2022-11-12T06:11:11.931Z,ausame,0,ausame
+4719572,2022,reg,10,Dallas Cowboys,27,Green Bay Packers,20,0,0,0,0,0,0,0,0,1,0,0,0,7,47,2022-11-12T06:36:13.657Z,ausame,2,ausame
+4720360,2022,reg,10,Cleveland Browns,21,Miami Dolphins,24,2,2,1,0,0,0,2,-2,0,0,2,-2,-3,45,2022-11-12T06:18:39.885Z,ausame,2,ausame
+4720361,2022,reg,10,New Orleans Saints,19,Pittsburgh Steelers,23,3,3,1,0,1,0,3,3,0,0,3,-3,-4,42,2022-11-12T06:36:43.956Z,ausame,4,ausame
+4642818,2022,reg,10,Jacksonville Jaguars,19,Kansas City Chiefs,27,2,2,1,0,0,1,2,0,1,0,2,2,-8,46,2022-11-12T06:22:17.422Z,ausame,5,ausame
+4720368,2022,reg,10,L.A. Chargers Chargers,17,San Francisco 49ers,27,2,2,1,0,0,0,2,-2,1,0,2,2,-10,44,2022-11-12T06:24:35.653Z,ausame,4,ausame
+4716619,2022,reg,10,Seattle Seahawks,20,Tampa Bay Buccaneers,23,3,3,1,0,1,0,3,3,1,0,3,3,-3,43,2022-11-12T06:25:56.354Z,ausame,6,ausame
+4642816,2022,reg,10,Minnesota Vikings,23,Buffalo Bills,24,3,3,0,0,1,0,3,3,1,0,3,3,-1,47,2022-11-13T08:36:07.884Z,ausame,4,ausame
+4642817,2022,reg,10,Houston Texans,17,N.Y. Giants Giants,24,3,2,1,0,1,0,3,3,1,0,2,2,-7,41,2022-11-12T06:28:31.012Z,ausame,7,ausame
+4720359,2022,reg,10,Denver Broncos,17,Tennessee Titans,21,0,0,1,0,1,0,0,0,1,0,0,0,-4,38,2022-11-12T06:31:12.233Z,ausame,6,ausame
+4720366,2022,reg,10,Indianapolis Colts,21,Las Vegas Raiders,23,2,2,0,0,1,0,2,2,1,0,2,2,-2,44,2022-11-12T06:32:34.533Z,ausame,4,ausame
+4720367,2022,reg,10,Arizona Cardinals,23,L.A. Rams Rams,21,2,3,1,0,1,0,2,2,1,0,3,3,2,44,2022-11-12T06:34:03.495Z,ausame,7,ausame
+4720369,2022,reg,10,Washington Commanders,17,Philadelphia Eagles,27,3,3,0,0,1,0,3,3,1,0,3,3,-10,44,2022-11-12T06:35:05.395Z,ausame,4,ausame
+4642817,2022,reg,10,Houston Texans,20,N.Y. Giants Giants,21,3,3,1,0,0,0,3,-3,1,0,3,3,-1,41,2022-11-12T21:02:05.732Z,Facebook_10154773754448953,4,BryanCole
+4642816,2022,reg,10,Minnesota Vikings,17,Buffalo Bills,27,3,3,0,0,0,0,3,-3,1,0,3,3,-10,44,2022-11-12T21:02:19.832Z,Facebook_10154773754448953,2,BryanCole
+4642818,2022,reg,10,Jacksonville Jaguars,17,Kansas City Chiefs,30,3,3,1,0,0,1,3,0,1,0,3,3,-13,47,2022-11-12T21:02:33.652Z,Facebook_10154773754448953,5,BryanCole
+4720360,2022,reg,10,Cleveland Browns,17,Miami Dolphins,24,3,3,1,0,1,0,3,3,0,0,3,-3,-7,41,2022-11-12T21:02:49.873Z,Facebook_10154773754448953,5,BryanCole
+4720362,2022,reg,10,Detroit Lions,20,Chicago Bears,23,3,3,0,0,0,0,3,-3,0,0,3,-3,-3,43,2022-11-12T21:03:26.673Z,Facebook_10154773754448953,0,BryanCole
+4720359,2022,reg,10,Denver Broncos,13,Tennessee Titans,17,3,3,1,0,1,0,3,3,1,0,3,3,-4,30,2022-11-12T21:03:41.852Z,Facebook_10154773754448953,7,BryanCole
+4720361,2022,reg,10,New Orleans Saints,24,Pittsburgh Steelers,14,3,3,0,0,0,0,3,-3,1,0,3,3,10,38,2022-11-12T21:03:56.632Z,Facebook_10154773754448953,2,BryanCole
+4720366,2022,reg,10,Indianapolis Colts,14,Las Vegas Raiders,20,3,3,0,0,0,0,3,-3,0,0,3,-3,-6,34,2022-11-13T16:21:09.719Z,Facebook_10154773754448953,1,BryanCole
+4720367,2022,reg,10,Arizona Cardinals,20,L.A. Rams Rams,23,3,3,0,0,0,0,3,-3,1,0,3,3,-3,43,2022-11-13T16:21:34.702Z,Facebook_10154773754448953,2,BryanCole
+4719572,2022,reg,10,Dallas Cowboys,24,Green Bay Packers,17,3,3,0,0,0,0,3,-3,0,0,3,-3,7,41,2022-11-12T21:04:32.233Z,Facebook_10154773754448953,0,BryanCole
+4720368,2022,reg,10,L.A. Chargers Chargers,13,San Francisco 49ers,23,3,3,1,0,0,0,3,-3,1,0,3,3,-10,36,2022-11-12T21:04:57.695Z,Facebook_10154773754448953,4,BryanCole
+4720369,2022,reg,10,Washington Commanders,14,Philadelphia Eagles,24,3,3,0,0,1,0,3,3,0,0,3,-3,-10,38,2022-11-12T21:05:16.774Z,Facebook_10154773754448953,2,BryanCole
