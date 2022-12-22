@@ -37,6 +37,7 @@ def lambda_handler(event, context):
     if len(e.list()) > 0:
         try:
             for event in e.list():
+                # print('event: ', event)
                 if event["event group"] != None:
                     homeId = ''
                     awayId = ''
