@@ -166,7 +166,7 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2022&seasontype=2&week=${gameWeek ? gameWeek : 11}`
+    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2022&seasontype=3&week=${gameWeek ? gameWeek : 11}`
     const options = {
         Method: 'GET'
     };

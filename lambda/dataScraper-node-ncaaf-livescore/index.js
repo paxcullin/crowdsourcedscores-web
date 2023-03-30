@@ -1,11 +1,11 @@
 var  mongo = require("mongodb").MongoClient,
 assert = require("assert"),
-// AWS = require('aws-sdk'),
+AWS = require('aws-sdk'),
 {config} = require('./config');
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
-// const lambda = new AWS.Lambda()
+const lambda = new AWS.Lambda()
 
 const teamsMap = {
     UAB: "UAB",
@@ -124,9 +124,8 @@ let gameWeek = 1;
 //             });
 // })();
 
-// exports.handler = async (event, context, callback) => {
-(async function getGames() {
-    // console.log('Received event :', JSON.stringify(event, null, 2));
+exports.handler = async (event, context, callback) => {
+    console.log('Received event :', JSON.stringify(event, null, 2));
     const client = await mongo.connect(MONGO_URL)
     const db = client.db('pcsm');
     const collection = db.collection('games-ncaaf')
@@ -153,10 +152,10 @@ let gameWeek = 1;
                 date,
                 status,
                 competitions,
-                watchListen
+                watchListen,
+                lnescrs
             } = game
             
-            const { displayClock, period, type } = status
             // if (!competitions || !(competitions.length > 0)) {
             //     return;
             // }
@@ -180,12 +179,6 @@ let gameWeek = 1;
                         }
                         homeTeam.score = parseInt(competitor.score)
                 //         console.log('homeTeam.linescores', competitor.linescores)
-                        if (competitor.linescores && competitor.linescores.length > 0) {
-                            homeTeam.periods = {};
-                            competitor.linescores.forEach((linescore, index) => {
-                                homeTeam.periods[`q${index+1}`] = linescore.value
-                            })
-                        }
                     } else {
                         // awayTeamCode = competitor.abbrev !== 'WSH' && competitor.abbrev !== "JAX" ? competitor.abbrev : competitor.abbrev === 'WSH' ? 'WAS' : competitor.abbrev === 'JAX' ? 'JAC' : null
                         awayTeamCode = teamsMap[competitor.abbrev] ? teamsMap[competitor.abbrev] : competitor.abbrev
@@ -193,14 +186,19 @@ let gameWeek = 1;
                             return;
                         }
                         awayTeam.score = parseInt(competitor.score)
-                        if (competitor.linescores && competitor.linescores.length > 0) {
-                            awayTeam.periods = {};
-                            competitor.linescores.forEach((linescore, index) => {
-                                awayTeam.periods[`q${index+1}`] = linescore.value
-                            })
-                        }
                     }
                 })
+                if (lnescrs && lnescrs.awy && lnescrs.hme) {
+                    homeTeam.periods = {};
+                    awayTeam.periods = {};
+                    lnescrs.hme.forEach((homeQScore, index) => {
+                            homeTeam.periods[`q${index+1}`] = homeQScore
+                    })
+                    lnescrs.awy.forEach((awayQScore, index) => {
+                        awayTeam.periods[`q${index+1}`] = awayQScore
+                    })
+                }
+                
     //         // console.log('new Date(new Date(startDate).getTime() + (4*60*60*1000)):', new Date(new Date(startDate).getTime() + (4*60*60*1000)))
             const season = watchListen && watchListen.lg ? {
                 year: watchListen.lg.season.year,
@@ -212,35 +210,33 @@ let gameWeek = 1;
             let gameObj = {
                 espnID: id,
                 startDateTime: date,
-                sport: "nfl",
+                sport: "ncaaf",
                 year: season.year ? season.year : 2022,
                 season: season.type === 1 ? 'pre' : (season.type === 3 ? 'post' : 'reg'),
-                status: status,
                 homeTeam: { code: homeTeamCode},
                 awayTeam: { code: awayTeamCode}
             };
             // status type 1 = scheduled - no update needed
-            if (type !== 1) {
+            const statusId = parseInt(status.id)
+            if (statusId !== 1) {
                 gameObj.results = {
                     awayTeam,
                     homeTeam,
                     total: (homeTeam.score + awayTeam.score),
                     spread: (awayTeam.score - homeTeam.score),
-                    period: status.period,
-                    clock: status.displayClock
+                    detail: status.detail
                 };
-                const statusId = parseInt(status.id)
                 // console.log('status', statusId)
-                if (parseInt(statusId) === 2) {
+                if (statusId === 2) {
                     gameObj.status = "inProgress";
-                } else if (parseInt(statusId) === 3) {
+                } else if (statusId === 3) {
                     gameObj.status = "final"
                 } else {
                     gameObj.status = "scheduled";
                 } 
+                gameObjectsArray.push(gameObj);
             }
             // console.log({gameObj});
-            gameObjectsArray.push(gameObj);
         });
         
     }
@@ -292,6 +288,7 @@ let gameWeek = 1;
                                     continue;
                                 }
                                 console.log('found game: ', filter)
+                                console.log('game', game)
                                 const { gameId, year, season, sport } = mongoGame
                                 const mongoGameWeek = mongoGame.gameWeek
                                 let update = {
@@ -309,7 +306,7 @@ let gameWeek = 1;
                                 };
                                 // only updating if the game has changed from what's in Mongo
                                 // if mongogame doesn't have results
-                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
+                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.spread !== mongoGame.results.spread)))) {
                                     queryPromises.push(collection.updateOne({ gameId: gameId }, update));
                                     if (game.status === "final") {
                                         params = {
@@ -357,38 +354,37 @@ let gameWeek = 1;
                                 console.log('mongoGameError', mongoGameError)
                             }
                             gameIndex++;
-                            // if (gameIndex === (gameObjectsArray.length -1)) {
-                            //     // console.log('done');
+                            if (gameIndex === (gameObjectsArray.length -1)) {
+                                // console.log('done');
                                 
-                            // // console.log('queryPromises.length:', queryPromises.length)
+                            // console.log('queryPromises.length:', queryPromises.length)
 
-                            //     Promise.all(queryPromises)
-                            //         .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                            //         .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                Promise.all(queryPromises)
+                                    .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                    .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                 
-                            // }
+                            }
                         
-                            // // console.log({missingItem: payload.Item})
-                            // if (gameIndex === (gameObjectsArray.length -1)) {
-                            //     // console.log('queryPromises.length:', queryPromises.length)
+                            // console.log({missingItem: payload.Item})
+                            if (gameIndex === (gameObjectsArray.length -1)) {
+                                // console.log('queryPromises.length:', queryPromises.length)
 
-                            //     Promise.all(queryPromises)
-                            //         .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                            //         .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
+                                Promise.all(queryPromises)
+                                    .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
+                                    .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
                                 
-                            // }
+                            }
                         }
                 } else {
-                    // context.done(null, { status: 200, message: 'No games returned'});
+                    context.done(null, { status: 200, message: 'No games returned'});
                 }
             } else {
                 console.log('no events data')
-                return
-                // context.done(null, { status: 200, message: 'No games returned'});
+                context.done(null, { status: 200, message: 'No games returned'});
             }
     } catch(rpError) {
             console.log('rpError', rpError)
-            // context.fail({ rpError: JSON.stringify(rpError) }, null)
+            context.fail({ rpError: JSON.stringify(rpError) }, null)
     }
 
-})()
+}
