@@ -7,6 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import csv
 
 
 
@@ -31,9 +32,24 @@ WebDriverWait(driver, 30).until(
 )
 
 odds = driver.find_elements(By.XPATH, '//*[@id="mainContainer"]/div/div[6]/div[1]/table/tbody/tr')
+scrapedOdds = []
 for teamOdds in odds:
     cols = teamOdds.find_elements(By.TAG_NAME, 'td')
-    print(len(cols))
+    if len(cols) == 4:
+        teamName = cols[0].text
+        teamTotal = cols[1].text
+        teamOverJuice = cols[2].text
+        teamUnderJuice = cols[3].text
+        #check for '+' and convert to straight number
+        if teamOverJuice.find('+') > -1:
+            teamOverJuice = teamOverJuice[1:]
+        if teamUnderJuice.find('+') > -1:
+            teamUnderJuice = teamUnderJuice[1:]
+        scrapedOdds.append([teamName, float(teamTotal), int(teamOverJuice), int(teamUnderJuice)])
+
+print(scrapedOdds)
+
+
 
 
     
