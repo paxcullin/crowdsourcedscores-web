@@ -30,10 +30,13 @@ WebDriverWait(driver, 30).until(
     )
 )
 
-odds = driver.find_element(By.CLASS_NAME, tableClass)
-print(odds.text)
+odds = driver.find_elements(By.XPATH, '//*[@id="mainContainer"]/div/div[6]/div[1]/table/tbody/tr')
+for teamOdds in odds:
+    cols = teamOdds.find_elements(By.TAG_NAME, 'td')
+    print(len(cols))
 
-# print(odds.text)
+
+    
 # first10 = odds[:10] # Keep only the first 10 anchors
 # for anchor in first10:
 #     print(anchor.text) # Display the innerText of each anchor
