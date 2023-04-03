@@ -21,16 +21,16 @@ option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-sh-usage')
 # Replace YOUR-PATH-TO-CHROMEDRIVER with your chromedriver location
 
-
-page = driver.get('https://www.legalsportsreport.com/odds/nfl/win-totals/') # Getting page HTML through request
+tableClass = 'Covers-CoversArticles-AdminArticleTable'
+page = driver.get('https://www.covers.com/nfl/nfl-odds-win-totals') # Getting page HTML through request
 WebDriverWait(driver, 30).until(
     EC.element_to_be_clickable(
-        (By.CLASS_NAME, 'metabet-futures-board-lines-over-under'), #Element filtration
+        (By.CLASS_NAME, tableClass), #Element filtration
         #The expected text for text_to_be_present
     )
 )
 
-odds = driver.find_element(By.CLASS_NAME, 'metabet-futures-board-lines-over-under')
+odds = driver.find_element(By.CLASS_NAME, tableClass)
 print(odds.text)
 
 # print(odds.text)
