@@ -27,8 +27,8 @@ option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-sh-usage')
 # Replace YOUR-PATH-TO-CHROMEDRIVER with your chromedriver location
 
-tableClass = 'Covers-CoversArticles-AdminArticleTable'
-page = driver.get('https://www.covers.com/nfl/nfl-odds-win-totals') # Getting page HTML through request
+tableClass = 'sportsbook-event-accordion__wrapper'
+page = driver.get('https://sportsbook.draftkings.com/leagues/football/nfl?category=team-futures&subcategory=regular-season-wins') # Getting page HTML through request
 WebDriverWait(driver, 30).until(
     EC.element_to_be_clickable(
         (By.CLASS_NAME, tableClass), #Element filtration
@@ -197,10 +197,10 @@ teams = {
         "fullName": "Washington Commanders"
         }
 }
-
-odds = driver.find_elements(By.XPATH, '//*[@id="mainContainer"]/div/div[6]/div[1]/table/tbody/tr')
+oddsTable = driver.find_elements(By.CLASS_NAME, "sportsbook-event-accordion__wrapper")
 scrapedOdds = []
-for teamOdds in odds:
+print('oddsTable:', len(oddsTable))
+for teamOdds in oddsTable:
     cols = teamOdds.find_elements(By.TAG_NAME, 'td')
     if len(cols) == 4:
         teamName = cols[0].text
@@ -223,29 +223,30 @@ for teamOdds in odds:
         print(teams[teamName])
         if teams[teamName]:
             teamObject = teams[teamName]
-            collection.update_one({
-                "fullName": teamObject["fullName"],
-                "year": year,
-                "sport": sport,
-                "season": season
-                },
-                {
-                    "$set": {
-                        "code": teamObject["code"],
-                        "shortName": teamObject["shortName"],
-                        "fullName": teamObject["fullName"],
-                        "year": year,
-                        "sport": sport,
-                        "season": season,
-                        "wins": float(teamTotal),
-                        "overOdds": int(teamOverJuice),
-                        "underOdds": int(teamUnderJuice)
-                    }
-                },
-                upsert=True)
+            print('here: ', teams[teamName])
+            # collection.update_one({
+            #     "fullName": teamObject["fullName"],
+            #     "year": year,
+            #     "sport": sport,
+            #     "season": season
+            #     },
+            #     {
+            #         "$set": {
+            #             "code": teamObject["code"],
+            #             "shortName": teamObject["shortName"],
+            #             "fullName": teamObject["fullName"],
+            #             "year": year,
+            #             "sport": sport,
+            #             "season": season,
+            #             "wins": float(teamTotal),
+            #             "overOdds": int(teamOverJuice),
+            #             "underOdds": int(teamUnderJuice)
+            #         }
+            #     },
+            #     upsert=True)
         scrapedOdds.append({"team": teamName, "wins": float(teamTotal), "overOdds": int(teamOverJuice), "underOdds": int(teamUnderJuice)})
 
-print(scrapedOdds)
+print('scrapedOdds:', scrapedOdds)
 
 
 
@@ -254,3 +255,6 @@ print(scrapedOdds)
 # first10 = odds[:10] # Keep only the first 10 anchors
 # for anchor in first10:
 #     print(anchor.text) # Display the innerText of each anchor
+
+#mybookie
+# <a class="nav-link sub-items-menu__body__item__link" href="javascript:void(0)" data-league_id="15565" data-category="Regular Season Wins" data-parent-category="NFL" data-breadcrumb="13_962">Regular Season Wins</a>
