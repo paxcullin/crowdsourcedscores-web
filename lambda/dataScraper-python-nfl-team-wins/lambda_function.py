@@ -228,10 +228,8 @@ for teamOdds in oddsTable:
         "overOdds": int(teamOverJuice),
         "underOdds": int(teamUnderJuice)
     }
-    print(teams[teamName], winObject)
     if teams[teamName]:
         teamObject = teams[teamName]
-        print('here: ', teams[teamName])
         collection.update_one({
             "fullName": teamObject["fullName"],
             "year": year,
