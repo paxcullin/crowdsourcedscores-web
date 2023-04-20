@@ -1,5 +1,6 @@
 import requests
 import time
+import numbers
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -37,161 +38,161 @@ WebDriverWait(driver, 30).until(
 )
 
 teams = {
-    'Arizona Cardinals': {
+    'ARI Cardinals': {
         "code": 'ARI',
         "shortName": "Cardinals",
         "fullName": "Arizona Cardinals"
     },
-    'Atlanta Falcons': {
+    'ATL Falcons': {
         "code": 'ATL',
         "shortName": "Falcons",
         "fullName": "Atlanta Falcons"},
-    'Baltimore Ravens': {
+    'BAL Ravens': {
         "code": "BAL",
         "shortName": "Ravens",
         "fullName": "Baltimore Ravens"
         },
-    'Buffalo Bills': {
+    'BUF Bills': {
         "code": "BUF",
         "shortName": "Bills",
         "fullName": "Buffalo Bills"
         },
-    'Carolina Panthers': {
+    'CAR Panthers': {
         "code": "CAR",
         "shortName": "Panthers",
         "fullName": "Carolina Panthers"
         },
-    'Chicago Bears': {
+    'CHI Bears': {
         "code": "CHI",
         "shortName": "Bears",
         "fullName": "Chicago Bears"
         }, 
-    'Cincinnati Bengals':{
+    'CIN Bengals':{
         "code": "CIN",
         "shortName": "Bengals",
         "fullName": "Cincinnati Bengals"
     }, 
-    'Cleveland Browns': {
+    'CLE Browns': {
         "code": "CLE",
         "shortName": "Browns",
         "fullName": "Cleveland Browns"
     }, 
-    'Dallas Cowboys': {
+    'DAL Cowboys': {
         "code": "DAL",
         "shortName": "Cowboys",
         "fullName": "Dallas Cowboys"
         }, 
-    'Denver Broncos': {
+    'DEN Broncos': {
         "code": "DEN",
         "shortName": "Broncos",
         "fullName": "Denver Broncos"
         }, 
-    'Detroit Lions':{
+    'DET Lions':{
         "code": "DET",
         "shortName": "Lions",
         "fullName": "Detroit Lions"
         },
-    'Green Bay Packers': {
+    'GB Packers': {
         "code": "GB",
         "shortName": "Packers",
         "fullName": "Green Bay Packers"
         }, 
-    'Houston Texans': {
+    'HOU Texans': {
         "code": "HOU",
         "shortName": "Texans",
         "fullName": "Houston Texans"
         }, 
-    'Indianapolis Colts': {
+    'IND Colts': {
         "code": "IND",
         "shortName": "Colts",
         "fullName": "Indianapolis Colts"
         }, 
-    'Jacksonville Jaguars': {
+    'JAX Jaguars': {
         "code": "JAC",
         "shortName": "Jaguars",
         "fullName": "Jacksonville Jaguars"
         }, 
-    'Kansas City Chiefs': {
+    'KC Chiefs': {
         "code": "KC",
         "shortName": "Chiefs",
         "fullName": "Kansas City Chiefs"
         }, 
-    'Los Angeles Chargers': {
+    'LA Chargers': {
         "code": "LAC",
         "shortName": "Chargers",
         "fullName": "Los Angeles Chargers"
         }, 
-    'Los Angeles Rams': {
+    'LA Rams': {
         "code": "LAR",
         "shortName": "Rams",
         "fullName": "Los Angeles Rams"
         }, 
-    'Las Vegas Raiders': {
+    'LV Raiders': {
         "code": "LV",
         "shortName": "Raiders",
         "fullName": "Las Vegas Raiders"
         }, 
-    'Miami Dolphins': {
+    'MIA Dolphins': {
         "code": "MIA",
         "shortName": "Dolphins",
         "fullName": "Miami Dolphins"
         }, 
-    'Minnesota Vikings': {
+    'MIN Vikings': {
         "code": "MIN",
         "shortName": "Vikings",
         "fullName": "Miami Vikings"
         }, 
-    'New England Patriots': {
+    'NE Patriots': {
         "code": "NE",
         "shortName": "Patriots",
         "fullName": "New England Patriots"
         }, 
-    'New Orleans Saints': {
+    'NO Saints': {
         "code": "NO",
         "shortName": "Saints",
         "fullName": "New Orleans Saints"
         }, 
-    'New York Giants': {
+    'NY Giants': {
         "code": "NYG",
         "shortName": "Giants",
         "fullName": "New York Giants"
         }, 
-    'New York Jets': {
+    'NY Jets': {
         "code": "NYJ",
         "shortName": "Jets",
         "fullName": "New York Jets"
         }, 
-    'Philadelphia Eagles': {
+    'PHI Eagles': {
         "code": "PHI",
         "shortName": "Eagles",
         "fullName": "Philadelphia Eagles"
         }, 
-    'Pittsburgh Steelers': {
+    'PIT Steelers': {
         "code": "PIT",
         "shortName": "Steelers",
         "fullName": "Pittsburgh Steelers"
         }, 
-    'San Francisco 49ers': {
+    'SF 49ers': {
         "code": "SF",
         "shortName": "49ers",
         "fullName": "San Francisco 49ers"
         }, 
-    'Seattle Seahawks': {
+    'SEA Seahawks': {
         "code": "SEA",
         "shortName": "Seahawks",
         "fullName": "Seattle Seahawks"
         }, 
-    'Tampa Bay Buccaneers': {
+    'TB Buccaneers': {
         "code": "TB",
         "shortName": "Buccaneers",
         "fullName": "Tampa Bay Buccaneers"
         }, 
-    'Tennessee Titans': {
+    'TEN Titans': {
         "code": "TEN",
         "shortName": "Titans",
         "fullName": "Tennessee Titans"
         },
-    'Washington Commanders': {
+    'WAS Commanders': {
         "code": "WAS",
         "shortName": "Commanders",
         "fullName": "Washington Commanders"
@@ -201,50 +202,57 @@ oddsTable = driver.find_elements(By.CLASS_NAME, "sportsbook-event-accordion__wra
 scrapedOdds = []
 print('oddsTable:', len(oddsTable))
 for teamOdds in oddsTable:
-    cols = teamOdds.find_elements(By.TAG_NAME, 'td')
-    if len(cols) == 4:
-        teamName = cols[0].text
-        teamTotal = cols[1].text
-        teamOverJuice = cols[2].text
-        teamUnderJuice = cols[3].text
-        year = 2023
-        sport = 'nfl'
-        season = 'reg'
-        #check for '+' and convert to straight number
-        if teamOverJuice.find('+') > -1:
-            teamOverJuice = teamOverJuice[1:]
-        if teamUnderJuice.find('+') > -1:
-            teamUnderJuice = teamUnderJuice[1:]
-        winObject = {
-            "wins": float(teamTotal),
-            "overOdds": int(teamOverJuice),
-            "underOdds": int(teamUnderJuice)
-        }
-        print(teams[teamName])
-        if teams[teamName]:
-            teamObject = teams[teamName]
-            print('here: ', teams[teamName])
-            # collection.update_one({
-            #     "fullName": teamObject["fullName"],
-            #     "year": year,
-            #     "sport": sport,
-            #     "season": season
-            #     },
-            #     {
-            #         "$set": {
-            #             "code": teamObject["code"],
-            #             "shortName": teamObject["shortName"],
-            #             "fullName": teamObject["fullName"],
-            #             "year": year,
-            #             "sport": sport,
-            #             "season": season,
-            #             "wins": float(teamTotal),
-            #             "overOdds": int(teamOverJuice),
-            #             "underOdds": int(teamUnderJuice)
-            #         }
-            #     },
-            #     upsert=True)
-        scrapedOdds.append({"team": teamName, "wins": float(teamTotal), "overOdds": int(teamOverJuice), "underOdds": int(teamUnderJuice)})
+    teamName = teamOdds.find_element(By.TAG_NAME, 'p').text.replace(" Regular Season Wins", "")
+    teamTotal = teamOdds.find_element(By.CLASS_NAME, 'sportsbook-outcome-cell__line').text
+    teamJuiceSpans = teamOdds.find_elements(By.CLASS_NAME, 'sportsbook-odds') 
+    teamOverJuiceString = teamJuiceSpans[0].text
+    print('teamOverJuiceString: ', teamOverJuiceString)
+    teamOverJuice = teamOverJuiceString.strip("\'")
+    print('teamOverJuice: ', teamOverJuice)
+    teamUnderJuice = teamJuiceSpans[1].text
+    print('teamUnderJuice: ', teamUnderJuice)
+    year = 2023
+    sport = 'nfl'
+    season = 'reg'
+    #check for '+' and convert to straight number
+    if teamOverJuice.find('+') > -1:
+        teamOverJuice = teamOverJuice[1:]
+    else:
+        teamOverJuice = int(teamOverJuice[1:])*-1
+    if teamUnderJuice.find('+') > -1:
+        teamUnderJuice = teamUnderJuice[1:]
+    else:
+        teamUnderJuice = int(teamUnderJuice[1:])*-1
+    winObject = {
+        "wins": float(teamTotal),
+        "overOdds": int(teamOverJuice),
+        "underOdds": int(teamUnderJuice)
+    }
+    print(teams[teamName], winObject)
+    if teams[teamName]:
+        teamObject = teams[teamName]
+        print('here: ', teams[teamName])
+        collection.update_one({
+            "fullName": teamObject["fullName"],
+            "year": year,
+            "sport": sport,
+            "season": season
+            },
+            {
+                "$set": {
+                    "code": teamObject["code"],
+                    "shortName": teamObject["shortName"],
+                    "fullName": teamObject["fullName"],
+                    "year": year,
+                    "sport": sport,
+                    "season": season,
+                    "wins": float(teamTotal),
+                    "overOdds": int(teamOverJuice),
+                    "underOdds": int(teamUnderJuice)
+                }
+            },
+            upsert=True)
+    scrapedOdds.append({"team": teamObject["fullName"], "wins": float(teamTotal), "overOdds": int(teamOverJuice), "underOdds": int(teamUnderJuice)})
 
 print('scrapedOdds:', scrapedOdds)
 
