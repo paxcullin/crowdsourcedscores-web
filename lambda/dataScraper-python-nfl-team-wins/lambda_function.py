@@ -1,5 +1,5 @@
 import requests
-import time
+from datetime import datetime, date, timedelta
 import numbers
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -230,12 +230,27 @@ for teamOdds in oddsTable:
     }
     if teams[teamName]:
         teamObject = teams[teamName]
-        collection.update_one({
+        teamQuery = {
             "fullName": teamObject["fullName"],
             "year": year,
             "sport": sport,
             "season": season
-            },
+            }
+        
+        # get the existing odds to build the odds history
+        teamOddsResult = collection.find_one(teamQuery)
+        oddsHistory = []
+        if (teamOddsResult):
+            if teamOddsResult.get('history', None) is not None:
+                oddsHistory = teamOddsResult["history"]
+        
+        oddsHistory.append({
+            "date": datetime.now(),
+            "wins": float(teamTotal),
+            "overOdds": int(teamOverJuice),
+            "underOdds": int(teamUnderJuice)
+        })
+        collection.update_one(teamQuery,
             {
                 "$set": {
                     "code": teamObject["code"],
@@ -244,9 +259,11 @@ for teamOdds in oddsTable:
                     "year": year,
                     "sport": sport,
                     "season": season,
+                    "updated": datetime.now(),
                     "wins": float(teamTotal),
                     "overOdds": int(teamOverJuice),
-                    "underOdds": int(teamUnderJuice)
+                    "underOdds": int(teamUnderJuice),
+                    "history": oddsHistory
                 }
             },
             upsert=True)
