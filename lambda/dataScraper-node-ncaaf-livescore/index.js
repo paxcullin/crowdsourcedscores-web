@@ -1,11 +1,95 @@
 var  mongo = require("mongodb").MongoClient,
 assert = require("assert"),
 AWS = require('aws-sdk'),
-{config} = require('config');
+{config} = require('./config');
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 const lambda = new AWS.Lambda()
+
+const teamsMap = {
+    UAB: "UAB",
+    "M-OH": "MOH",
+    BAY: 'BAY',
+    AFA: 'AF',
+    UTSA: "UTSA",
+    TROY: "TRY",
+    ORST: "ORS",
+    FLA: "FLA",
+    WSU: "WST",
+    FRES: "FRE",
+    RICE: "RICE",
+    USM: "USM",
+    SMU: "SMU",
+    BYU: "BYU",
+    UNT: "NTX",
+    BOIS: "BOISE",
+    MRSH: "MSH",
+    CONN: "UCONN",
+    EMU: "EMC",
+    SJSU: "SJS",
+    TOL: "TOL",
+    LIB: "LIB",
+    WKU: "WKY",
+    USA: "SAB",
+    UL: "ULL",
+    HOU: "HOU",
+    WAKE: "WF",
+    MIZ: "MIZ",
+    MTSU: "MTS",
+    SDSU: "SDSU",
+    NMSU: "NMS",
+    BGSU: "BGN",
+    GASO: "GSO",
+    BUF: "BUF",
+    MEM: "MEM",
+    USU: "UTS",
+    CCU: "CC",
+    ECU: "ECU",
+    WISC: "WIS",
+    OKST: "OKS",
+    UCF: "UCF",
+    DUKE: "DUK",
+    KU: "KAN",
+    ARK: "ARK",
+    ORE: "ORE",
+    UNC: "NC",
+    TTU: "TT",
+    MISS: "MIS",
+    SYR: "SYR",
+    MINN: "MIN",
+    OU: "OKL",
+    FSU: "FSU",
+    TEX: "TEX",
+    WASH: "WAS",
+    MD: "MAR",
+    NCST: "NCST",
+    PITT: "PIT",
+    UCLA: "UCLA",
+    ND: "ND",
+    SC: "SC",
+    OHIO: "OHI",
+    WYO: "WYO",
+    TENN: "TEN",
+    CLEM: "CLE",
+    ALA: "BAMA",
+    KSU: "KST",
+    IOWA: "IOW",
+    UK: "KEN",
+    TCU: "TCU",
+    MICH: "MICH",
+    OSU: "OSU",
+    UGA: "UGA",
+    MSST: "MSST",
+    ILL: "ILL",
+    TULN: "TUL",
+    USC: "USC",
+    LSU: "LSU",
+    PUR: "PUR",
+    PSU: "PSU",
+    UTAH: "UTH",
+
+}
 
 const generateRandomString = function(length) {
     let text = '';
@@ -16,7 +100,7 @@ const generateRandomString = function(length) {
     }
     return text;
 };
-const sns = new AWS.SNS();
+// const sns = new AWS.SNS();
 
 const axios = require("axios");
 
@@ -44,17 +128,17 @@ exports.handler = async (event, context, callback) => {
     console.log('Received event :', JSON.stringify(event, null, 2));
     const client = await mongo.connect(MONGO_URL)
     const db = client.db('pcsm');
-    const collection = db.collection('games')
+    const collection = db.collection('games-ncaaf')
     
     //get current game week from getGameWeek 
-    let gameWeekResponse = await lambda.invoke({
-        FunctionName: 'getGameWeek', // the lambda function we are going to invoke
-        InvocationType: 'RequestResponse',
-        LogType: 'None',
-        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2022, "season": "reg"}`
-    }).promise()
-    const gameWeekResponseJSON = JSON.parse(gameWeekResponse.Payload);
-    gameWeek = gameWeekResponseJSON.week;
+    // let gameWeekResponse = await lambda.invoke({
+    //     FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+    //     InvocationType: 'RequestResponse',
+    //     LogType: 'None',
+    //     Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2022, "season": "reg"}`
+    // }).promise()
+    // const gameWeekResponseJSON = JSON.parse(gameWeekResponse.Payload);
+    // gameWeek = gameWeekResponseJSON.week;
     
     var gameObjectsArray = [];
     var queryPromises = [];
@@ -66,20 +150,20 @@ exports.handler = async (event, context, callback) => {
             const { 
                 id,
                 date,
-                season,
                 status,
-                competitions
+                competitions,
+                watchListen,
+                lnescrs
             } = game
             
-            const { displayClock, period, type } = status
-            if (!competitions || !(competitions.length > 0)) {
-                return;
-            }
-            const competition = competitions[0]
-            if (!competition) {
-                return;
-            }
-            const {competitors} = competition
+            // if (!competitions || !(competitions.length > 0)) {
+            //     return;
+            // }
+            // const competition = competitions[0]
+            // if (!competition) {
+            //     return;
+            // }
+            const {competitors} = game
             // console.log('competitors', competitors)
             if (!competitors || !(competitors.length > 0)) {
                 return
@@ -87,69 +171,72 @@ exports.handler = async (event, context, callback) => {
                 let results = {}, homeTeam = {}, homeTeamCode, awayTeam = {}, awayTeamCode;
                 competitors.forEach(competitor => {
                     // console.log('competitor', competitor)
-                    if (!competitor.team) {
-                        return;
-                    }
-                    if (competitor.homeAway === 'home') {
-                        homeTeamCode = competitor.team.abbreviation !== 'WSH' && competitor.team.abbreviation !== "JAX" ? competitor.team.abbreviation : competitor.team.abbreviation === 'WSH' ? 'WAS' : competitor.team.abbreviation === 'JAX' ? 'JAC' : null
+                    if (competitor.isHome === true) {
+                        // homeTeamCode = competitor.abbrev !== 'WSH' && competitor.abbrev !== "JAX" ? competitor.abbrev : competitor.abbrev === 'WSH' ? 'WAS' : competitor.abbrev === 'JAX' ? 'JAC' : null
+                        homeTeamCode = teamsMap[competitor.abbrev] ? teamsMap[competitor.abbrev] : competitor.abbrev
                         if (!homeTeamCode) {
                             return;
                         }
                         homeTeam.score = parseInt(competitor.score)
                 //         console.log('homeTeam.linescores', competitor.linescores)
-                        if (competitor.linescores && competitor.linescores.length > 0) {
-                            homeTeam.periods = {};
-                            competitor.linescores.forEach((linescore, index) => {
-                                homeTeam.periods[`q${index+1}`] = linescore.value
-                            })
-                        }
                     } else {
-                        awayTeamCode = competitor.team.abbreviation !== 'WSH' && competitor.team.abbreviation !== "JAX" ? competitor.team.abbreviation : competitor.team.abbreviation === 'WSH' ? 'WAS' : competitor.team.abbreviation === 'JAX' ? 'JAC' : null
+                        // awayTeamCode = competitor.abbrev !== 'WSH' && competitor.abbrev !== "JAX" ? competitor.abbrev : competitor.abbrev === 'WSH' ? 'WAS' : competitor.abbrev === 'JAX' ? 'JAC' : null
+                        awayTeamCode = teamsMap[competitor.abbrev] ? teamsMap[competitor.abbrev] : competitor.abbrev
                         if (!awayTeamCode) {
                             return;
                         }
                         awayTeam.score = parseInt(competitor.score)
-                        if (competitor.linescores && competitor.linescores.length > 0) {
-                            awayTeam.periods = {};
-                            competitor.linescores.forEach((linescore, index) => {
-                                awayTeam.periods[`q${index+1}`] = linescore.value
-                            })
-                        }
                     }
                 })
+                if (lnescrs && lnescrs.awy && lnescrs.hme) {
+                    homeTeam.periods = {};
+                    awayTeam.periods = {};
+                    lnescrs.hme.forEach((homeQScore, index) => {
+                            homeTeam.periods[`q${index+1}`] = homeQScore
+                    })
+                    lnescrs.awy.forEach((awayQScore, index) => {
+                        awayTeam.periods[`q${index+1}`] = awayQScore
+                    })
+                }
+                
     //         // console.log('new Date(new Date(startDate).getTime() + (4*60*60*1000)):', new Date(new Date(startDate).getTime() + (4*60*60*1000)))
+            const season = watchListen && watchListen.lg ? {
+                year: watchListen.lg.season.year,
+                type: watchListen.lg.season.type.type
+            } : {
+                year: 2022,
+                type: 3
+            }
             let gameObj = {
                 espnID: id,
                 startDateTime: date,
-                sport: "nfl",
-                year: parseInt(season.year) ? parseInt(season.year) : 2020,
+                sport: "ncaaf",
+                year: season.year ? season.year : 2022,
                 season: season.type === 1 ? 'pre' : (season.type === 3 ? 'post' : 'reg'),
-                status: status,
                 homeTeam: { code: homeTeamCode},
                 awayTeam: { code: awayTeamCode}
             };
             // status type 1 = scheduled - no update needed
-            if (type !== 1) {
+            const statusId = parseInt(status.id)
+            if (statusId !== 1) {
                 gameObj.results = {
                     awayTeam,
                     homeTeam,
                     total: (homeTeam.score + awayTeam.score),
                     spread: (awayTeam.score - homeTeam.score),
-                    period: status.period,
-                    clock: status.displayClock
+                    detail: status.detail
                 };
-                const statusId = parseInt(status.type.id)
                 // console.log('status', statusId)
-                if (parseInt(statusId) === 2) {
+                if (statusId === 2) {
                     gameObj.status = "inProgress";
-                } else if (parseInt(statusId) === 3) {
+                } else if (statusId === 3) {
                     gameObj.status = "final"
                 } else {
                     gameObj.status = "scheduled";
                 } 
+                gameObjectsArray.push(gameObj);
             }
             // console.log({gameObj});
-            gameObjectsArray.push(gameObj);
         });
         
     }
@@ -166,7 +253,7 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2022&seasontype=3&week=${gameWeek ? gameWeek : 11}`
+    const URL = `https://www.espn.com/college-football/scoreboard/_/week/1/year/2022/seasontype/3?_xhr=pageContent`
     const options = {
         Method: 'GET'
     };
@@ -176,12 +263,13 @@ exports.handler = async (event, context, callback) => {
             if (!response) {
                 context.done(null, { status: 200, message: 'No URL response'});
             }
-            console.log('response', response.data)
+            // console.log('response', response.data)
             const scoresJSON = response.data;
 
-            if (scoresJSON && scoresJSON.events && scoresJSON.events.length > 0) {
+            if (scoresJSON && scoresJSON.scoreboard && scoresJSON.scoreboard.evts && scoresJSON.scoreboard.evts.length > 0) {
                 // console.log('scoresJSON: ', scoresJSON.games[0])
-                let games = scoresJSON.events;
+                let games = scoresJSON.scoreboard.evts;
+                // console.log('games', games)
                 parseGames(games);
                 console.log('gameObjectsArray.length', gameObjectsArray.length)
                 if (gameObjectsArray.length > 0) {
@@ -199,6 +287,8 @@ exports.handler = async (event, context, callback) => {
                                     console.log('missing game: ', filter);
                                     continue;
                                 }
+                                console.log('found game: ', filter)
+                                console.log('game', game)
                                 const { gameId, year, season, sport } = mongoGame
                                 const mongoGameWeek = mongoGame.gameWeek
                                 let update = {
@@ -216,7 +306,7 @@ exports.handler = async (event, context, callback) => {
                                 };
                                 // only updating if the game has changed from what's in Mongo
                                 // if mongogame doesn't have results
-                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
+                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.spread !== mongoGame.results.spread)))) {
                                     queryPromises.push(collection.updateOne({ gameId: gameId }, update));
                                     if (game.status === "final") {
                                         params = {
@@ -246,12 +336,12 @@ exports.handler = async (event, context, callback) => {
                                                 }
                                             }
                                         }
-                                        sns.publish(params, function(err, response) {
-                                            if (err) {
-                                                context.done("SNS error: " + err, null);
-                                            }
-                                            console.log("SNS Publish complete: ", response);
-                                        })
+                                        // sns.publish(params, function(err, response) {
+                                        //     if (err) {
+                                        //         context.done("SNS error: " + err, null);
+                                        //     }
+                                        //     console.log("SNS Publish complete: ", response);
+                                        // })
                                     }
                                 } 
                                 // for troubleshooting when the games aren't updating
@@ -289,6 +379,7 @@ exports.handler = async (event, context, callback) => {
                     context.done(null, { status: 200, message: 'No games returned'});
                 }
             } else {
+                console.log('no events data')
                 context.done(null, { status: 200, message: 'No games returned'});
             }
     } catch(rpError) {

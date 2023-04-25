@@ -110,6 +110,7 @@ def lambda_handler2(event, context):
                         gameObject["season"] = "pre"
                     elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
+                        gameObject["gameWeek"] = gameObject["gameWeek"] - 18
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"

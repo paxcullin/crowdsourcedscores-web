@@ -12,7 +12,7 @@ collection = db['games']
 
 today = str(date.today())
 startDate = datetime.strptime(today, '%Y-%m-%d')
-endDate = datetime.strptime('2022-11-16', '%Y-%m-%d')
+endDate = datetime.strptime('2023-02-16', '%Y-%m-%d')
 w1 = datetime.strptime('2021-09-12', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
@@ -46,7 +46,7 @@ if len(e.list()) > 0:
                     "total": ''
                 }
                 # try:
-                    # print(event)
+                print(event)
                 gameResult = collection.find_one({"gameId": event['event id']})
                 # print('gameWeek:',event['event group']['event group id'])
                 # if (gameResult):
