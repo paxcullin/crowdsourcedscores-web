@@ -16,3 +16,7 @@ node_modules/*
 *outfile
 *yarn-error.log
 package-lock.json
+*venv/
+lambda/dataScraper-python-nfl-team-wins/chromedriver
+lambda/dataScraper-python-nfl-team-wins/headless-chromium
+*.pyc
