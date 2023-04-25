@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongodb": "^5.3.0"
+  },
+  "scripts":{
+    "test": "aws lambda invoke --function-name getTeamWins --payload '{ \"sport\": \"nfl\", \"season\": \"reg\", \"year\": 2023 }' --cli-binary-format raw-in-base64-out response.json"
+  }
+}
