@@ -22,18 +22,19 @@ nfl = NFL()
 sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('5Dimes')[0])
-bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
-bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
+spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
+moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
+bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
+bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
 fivedimesspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
 fivedimesbookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
-# print('totals', len(totals.list()))
 
-def lambda_handler(event, context):
+
+def lambda_handler2(event, context):
+    print('event: ', event, 'context: ', context)
     if len(e.list()) > 0:
         try:
             for event in e.list():
@@ -72,15 +73,8 @@ def lambda_handler(event, context):
                     }
                     # try:
                         # print(event)
-                    gameResult = collection.find_one({"gameId": event['event id']})
-                    if (gameResult and gameResult['gameWeek'] == 1):
-                        print('gameResult', gameResult)
-                        if (hasattr(gameResult,'odds')):
-                            print('gameResult[\'odds\']', gameResult['odds']['spread'])
-                    elif (event["event id"] == 4720244):
-                        print('no game result for ', event)
+
                     gameObject = {
-                            "gameId": event['event id'],
                             "year": 2022,
                             "gameWeek": event['event group']['event group id'] -9,
                             "weekName": event['event group']['alias'],
@@ -89,6 +83,26 @@ def lambda_handler(event, context):
                             "location": event['location'] + ", " + event["country"],
                             "startDateTime": datetime.strptime(event["datetime"], '%Y-%m-%dT%H:%M:%S%z')
                         }
+                    for team in event['participants']:
+                        teamObject = {
+                                "participantId": team["participant id"],
+                                "code": "",
+                                "shortName": team["source"]["nickname"],
+                                "fullName": team["source"]["name"] + " " + team["source"]["nickname"]
+                            }
+                        if team["source"]["abbreviation"] == "LA":
+                            teamObject["code"] = "LAR"
+                        else:
+                            teamObject["code"] = team["source"]["abbreviation"]
+                        if team['is home'] == True:
+                            gameObject["homeTeam"] = teamObject
+                            homeId = team['participant id']
+                        else:
+                            gameObject["awayTeam"] = teamObject
+                            awayId = team['participant id']
+                            
+                    
+                    
                     if gameObject["startDateTime"] < datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         if gameObject["gameWeek"] < 0:
                             gameObject["gameWeek"] = gameObject["gameWeek"] + 8
@@ -96,10 +110,21 @@ def lambda_handler(event, context):
                         gameObject["season"] = "pre"
                     elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
+                        gameObject["gameWeek"] = gameObject["gameWeek"] - 18
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"
+                    # find the game in Mongo
+                    gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
 
+                    gameObject["gameId"] = event['event id']
+                    if (gameResult):
+                        gameObject["gameId"] = gameResult["gameId"]
+                        if (hasattr(gameResult,'odds')):
+                            print('gameResult[\'odds\']', gameResult['odds']['spread'])
+                    else:
+                        print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
+                    
                     if gameObject["gameWeek"] == 33546 or gameObject["gameWeek"] == 33564:
                         gameObject["gameWeek"] = 18
                         gameObject["weekName"] = "Week 18"
@@ -226,7 +251,7 @@ def lambda_handler(event, context):
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
                         collection.update_one({
-                            "gameId": event['event id']
+                            "gameId": gameObject["gameId"]
                             },
                             {
                                 "$set": gameObject
@@ -276,7 +301,7 @@ def lambda_handler(event, context):
                             # print(homeId)
                             for spread in spreads.list():
                                 # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
-                                if (spread['event id'] == gameObject['gameId'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
+                                if (spread['event id'] == event['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
                                     # print(spread)
                                     gameOdds['spread'] = spread['spread / total']
                                     gameOdds['spreadOdds'] = spread['american odds']
@@ -300,7 +325,7 @@ def lambda_handler(event, context):
                             # print(homeId)
                             for total in totals.list():
                                 # print(total)
-                                if (total['event id'] == gameObject['gameId']):
+                                if (total['event id'] == event['event id']):
                                     gameOdds['total'] = total['spread / total']
                                     gameOdds['totalOdds'] = total['american odds']
                                     gameObject['odds']['total'] = total['spread / total']
@@ -309,7 +334,7 @@ def lambda_handler(event, context):
                             # print(homeId)
                             for ml in moneylines.list():
                                 # print(total)
-                                if (ml['event id'] == gameObject['gameId']):
+                                if (ml['event id'] == event['event id']):
                                     if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
                                         gameOdds['homeML'] = {
                                             "decimal": ml['decimal odds'],
@@ -355,7 +380,7 @@ def lambda_handler(event, context):
                         if (gameObject["status"] == "scheduled"):
                             # print(gameObject)
                             collection.update_one({
-                                "gameId": event['event id']
+                                "gameId": gameObject['gameId']
                                 },
                                 {
                                     "$set": gameObject

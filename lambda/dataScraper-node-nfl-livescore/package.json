@@ -4,12 +4,14 @@
   "description": "",
   "main": "dataScraper-node.js",
   "dependencies": {
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "axios": "^1.1.3",
+    "mongodb": "^4.12.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "upload": "aws lambda update-function-code --function-name datascraper-node-nfl-livescore --zip-file fileb://Archive.zip --publish",
+    "test": "aws lambda invoke --function-name datascraper-node-nfl-livescore response.json"
   },
   "author": "",
   "license": "ISC"

@@ -1,1 +1,4 @@
+cd package && zip -r ../pysbr-nfl.zip . && cd .. && zip -r pysbr-nfl.zip pysbr/ && zip pysbr-nfl.zip lambda_function.py
+
 aws s3 cp pysbr-nfl.zip s3://shs-lambda-functions/pysbr/
+

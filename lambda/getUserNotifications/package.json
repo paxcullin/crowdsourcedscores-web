@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongodb": "^4.11.0"
+  },
+  "scripts": {
+    "upload": "aws lambda update-function-code --function-name getUserNotifications --zip-file fileb://Archive.zip --publish"
+  }
+}

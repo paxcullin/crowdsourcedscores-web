@@ -1,0 +1,15 @@
+{
+  "heading": "New for 4.1.11", 
+  "list": [{ "text": "We added a new notification option! Get a push notification whenever the odds change for one of your predictions.",
+            "link": "Profile"
+          }
+          ,
+            { 
+              "text": "Fixed a crash bug related to the Stake Slip.",
+              "link": "StakeSlip"
+            },
+            {
+              "text": "Other bug fixes."
+            }
+          ]
+}
