@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "zip -r notificationMarkAsRead.zip .",
+    "upload": "aws lambda update-function-code --function-name notificationMarkAsRead --zip-file fileb://notificationMarkAsRead.zip --publish"
+  },
+  "dependencies": {
+    "mongodb": "^4.11.0"
+  }
+}
