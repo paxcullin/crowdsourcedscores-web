@@ -195,6 +195,10 @@ exports.handler = (event, context, callback) => {
                                         [`leaderboard.overall.${eventGameWeek}`]: {
                                             users: weeklyUserArray,
                                             userStars: weeklyUserStarsArray
+                                        },
+                                        [`leaderboard.overall.current`]: {
+                                            users: weeklyUserArray,
+                                            userStars: weeklyUserStarsArray
                                         }
                                     }
                                 }
