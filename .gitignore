@@ -13,3 +13,6 @@ node_modules/*
 */.idea/*
 *Archive.zip
 *yarn.lock
+*outfile
+*yarn-error.log
+package-lock.json
