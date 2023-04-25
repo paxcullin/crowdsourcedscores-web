@@ -1,7 +1,6 @@
 import requests
 from datetime import datetime, date, timedelta
 import numbers
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -28,6 +27,8 @@ option.add_argument('--no-sandbox')
 option.add_argument('--disable-dev-sh-usage')
 # Replace YOUR-PATH-TO-CHROMEDRIVER with your chromedriver location
 
+
+# def lambda_handler(event, context):
 tableClass = 'sportsbook-event-accordion__wrapper'
 page = driver.get('https://sportsbook.draftkings.com/leagues/football/nfl?category=team-futures&subcategory=regular-season-wins') # Getting page HTML through request
 WebDriverWait(driver, 30).until(
@@ -270,6 +271,9 @@ for teamOdds in oddsTable:
     scrapedOdds.append({"team": teamObject["fullName"], "wins": float(teamTotal), "overOdds": int(teamOverJuice), "underOdds": int(teamUnderJuice)})
 
 print('scrapedOdds:', scrapedOdds)
+    # return {
+    #     'message': 'Win Totals Odds Updated'
+    # }
 
 
 
