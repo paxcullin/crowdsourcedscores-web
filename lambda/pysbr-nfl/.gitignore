@@ -4,3 +4,4 @@
 !Pipfile
 !s3-upload-script.txt
 !.gitignore
+!*query.py
