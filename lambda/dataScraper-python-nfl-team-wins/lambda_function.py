@@ -141,7 +141,7 @@ teams = {
     'MIN Vikings': {
         "code": "MIN",
         "shortName": "Vikings",
-        "fullName": "Miami Vikings"
+        "fullName": "Minnesota Vikings"
         }, 
     'NE Patriots': {
         "code": "NE",
@@ -203,7 +203,7 @@ oddsTable = driver.find_elements(By.CLASS_NAME, "sportsbook-event-accordion__wra
 scrapedOdds = []
 print('oddsTable:', len(oddsTable))
 for teamOdds in oddsTable:
-    teamName = teamOdds.find_element(By.TAG_NAME, 'p').text.replace(" Regular Season Wins", "")
+    teamName = teamOdds.find_element(By.TAG_NAME, 'a').text.replace(" 2023/24", "")
     teamTotal = teamOdds.find_element(By.CLASS_NAME, 'sportsbook-outcome-cell__line').text
     teamJuiceSpans = teamOdds.find_elements(By.CLASS_NAME, 'sportsbook-odds') 
     teamOverJuiceString = teamJuiceSpans[0].text
