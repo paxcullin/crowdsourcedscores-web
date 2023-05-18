@@ -141,7 +141,7 @@ teams = {
     'MIN Vikings': {
         "code": "MIN",
         "shortName": "Vikings",
-        "fullName": "Miami Vikings"
+        "fullName": "Minnesota Vikings"
         }, 
     'NE Patriots': {
         "code": "NE",
