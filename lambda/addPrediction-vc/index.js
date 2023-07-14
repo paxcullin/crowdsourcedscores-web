@@ -1,15 +1,18 @@
 'use strict';
-
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const AWSConfig = { region: "us-west-2" };
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
     validate = require("jsonschema").validate;
-const AWS = require('aws-sdk');    
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+// const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+const lambda = new LambdaClient(AWSConfig);
+
 
 const {config} = require("./config");
 
-const EMAIL = process.env.email;
-const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
+// const { SNSClient, SubscribeCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+const SNS = new SNSClient(AWSConfig);
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
@@ -175,6 +178,7 @@ function createTopic(topicName, cb) {
 /* 
 The function creates a session with Mongo in order to ensure that the prediction is submitted
 and the currency is deducted 
+it checks the user's current virtual currency balance to ensure there is enough to cover
 It then returnns the total currency wagered for the given week for the user's 
 stake slip
 */
@@ -187,9 +191,9 @@ exports.handler = async (event, context) => {
             succeeded: true
         };
 
-        var prediction = event;
+        var {prediction, wager, userId } = event;
         
-        if (!prediction.userId || prediction.userId === "") {
+        if (!userId || userId === "") {
             context.done(null, { succeeded: false})
         }
         var validateRequest;
@@ -204,18 +208,12 @@ exports.handler = async (event, context) => {
             return context.fail(JSON.stringify(result));
         }
 
-        var diff = prediction.awayTeam.score - prediction.homeTeam.score;
-        // prediction.spread = diff < 0 ? -1 * (diff) : diff;
         prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
         prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
         prediction.submitted = new Date();
 
         const client = await mongo.connect(MONGO_URL);
-            assert.equal(null, err);
 
-            if (err) {
-                return context.done(err, null);
-            }
             const db = client.db('pcsm');
             const session = client.startSession();
 
@@ -242,13 +240,12 @@ exports.handler = async (event, context) => {
                     gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
                 }
                 console.log('gamesQuery: ', gamesQuery)
+
+                // check for game start time to ensure the prediction is 5 minutes before kickoff
                 const game = await db.collection(gamesCollection).findOne(gamesQuery, {_id: false, session})
-                    
-                    assert.equal(err, null);
-                    if (err) {
-                        context.fail(err, null);
+                    if (!game) {
+                        throw new Error('Something went wrong. Please try again.')
                     }
-                    
                     var now = new Date();
                     var kickoff = Date.parse(game.startDateTime);
                     var cutoff = kickoff - msHour;
@@ -260,18 +257,15 @@ exports.handler = async (event, context) => {
                     if (now > cutoff) {
                         result.message = "The cutoff for predicting this game has passed.";
                         result.succeeded = false;
-                        return context.done(JSON.stringify(result));
+                        return context.done(null, {status: 200, message: JSON.stringify(result)});
                     }
-
-                    var existingObjQuery = {userId: prediction.userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
+                // end kickoff time check
+                
+                var existingObjQuery = {userId: userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
                     
                     //get user groups in order to add groups to predictions for scoring
                     
-                    const groups = await db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1, session}).toArray();
-                        console.log("user groups: ", groups)
-                        if (err) {
-                            return false;
-                        }
+                    const groups = await db.collection('profileExtended').find({username: userId},{_id:false, groups: 1, session}).toArray();
                         if (groups[0]) {
                             prediction.groups = groups[0].groups;
                             if (prediction.groups && prediction.groups.length > 0) {
@@ -289,20 +283,17 @@ exports.handler = async (event, context) => {
                         } else if (prediction.sport === 'ncaam') {
                             predictionCollection = 'predictions-ncaam';
                         }
+                        
+                        // Insert or Update the user's prediction to the prediction collection
                         const dbRes = await db.collection(predictionCollection).update(existingObjQuery, prediction, {upsert: true, session});
-                            var respObj = JSON.parse(dbRes);
+                        var respObj = JSON.parse(dbRes);
             
-                            assert.equal(err, null);
-                            assert.equal(respObj.ok, 1);
-            
-                            if (err) {
-                                result.message = err;
-                                result.succeeded = false;
-                                return context.fail(JSON.stringify(result));
-                            }
+                        assert.equal(respObj.ok, 1);
                             
                             
                             // return prediction update results to the client
+                            // along with the game details
+
                             result.game = game;
                             result.prediction = prediction;
                             if (respObj.upserted) {
@@ -319,10 +310,10 @@ exports.handler = async (event, context) => {
                                 FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
                                 InvocationType: 'RequestResponse',
                                 LogType: 'Tail',
-                                Payload: '{ "username": "' + event.userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
+                                Payload: '{ "username": "' + userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
                             };
                             
-                            lambda.invoke(lambdaParams, function(err, data) {
+                            const command = new InvokeCommand(lambdaParams, function(err, data) {
                                 console.log('err', err);
                                 console.log('data', data);
                                 if (err) {
@@ -331,9 +322,76 @@ exports.handler = async (event, context) => {
                                 context.succeed('Lambda_B said '+ data.Payload);
                                 }
                             })
-                            const profileUpdate = db.collection('profileExtended').updateOne()
+                            const lambdaresponse = await lambda.send(command)
+
+                            /* record the wager
+                            Each prediction will include an array of up to 3 wagers
+                            {
+                                userId: 'cmaronchick',
+                                gameId: prediction.gameId,
+                                sport,
+                                season,
+                                gameWeek,
+                                year, 
+                                calendarWeek: new Date.getWeek(),
+                                calendarYear: new Date.getYear(),
+                                prediction: {
+                                    awayTeam: {
+                                        score: 24
+                                    },
+                                    homeTeam: {
+                                        score: 27
+                                    },
+                                    odds: {
+                                        spread: -3.5,
+                                        total: 47
+                                    }
+                                },
+                                wager: {
+                                    currency: 100,
+                                    wagerType: 'moneyline' | 'spread' | 'total',
+                                    odds: -110,
+                                    result: 0 = push, 1 = win, -1 = lose 
+                                }
+                                submitted: new Date.now()
+                            }
+                            */
+                            const addWager = await db.collection('wagers').insertOne({
+                                userId,
+                                prediction: {
+                                    awayTeam: {
+                                        score: prediction.awayTeam.score
+                                    },
+                                    homeTeam: {
+                                        score: prediction.homeTeam.score
+                                    },
+                                    odds: {
+                                        spread: prediction.odds.spread,
+                                        total: prediction.odds.total
+                                    },
+                                    gameId,
+                                    year,
+                                    sport,
+                                    gameWeek,
+                                    season
+                                },
+                                wager
+                            })
+                            // update user's VC balance
+                            if (wager) {
+                                const profileUpdate = await db.collection('profileExtended').updateOne({ userId }, { currency: { "$dec": wager.currency }, "$push": {
+                                    "wagers.history": {
+                                        gameId,
+                                        year,
+                                        sport,
+                                        gameWeek,
+                                        season,
+                                        ...wager
+                                    }
+                                }})
+                            }
                             // get total currency bet for a given week
-                            var predictionsQuery = {userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
+                            var predictionsQuery = {userId: userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
                             const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false, session}).toArray();
                                 if (err) {
                                     return context.done(null, result);
@@ -366,7 +424,7 @@ exports.handler = async (event, context) => {
                                 
                                 var sns = new AWS.SNS();
                                 var params = {
-                                    Message: "Prediction for game " + prediction.gameId + " submitted by " + event.userId, 
+                                    Message: "Prediction for game " + prediction.gameId + " submitted by " + userId, 
                                     Subject: "Prediction Submitted",
                                     TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
                                     MessageAttributes: { 
@@ -389,7 +447,7 @@ exports.handler = async (event, context) => {
                                     },
                                 };
                                 console.log("SNS Publishing")
-                                sns.publish(params, function(err, response) {
+                                PublishCommand(params, function(err, response) {
                                     if (err) {
                                         context.done("SNS error: " + err, null);
                                     }

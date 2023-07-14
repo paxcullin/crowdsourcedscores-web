@@ -1,0 +1,31 @@
+{
+    "userId": "hi-css",
+    "prediction": {
+      "gameId": 4700925,
+      "sport": "nfl",
+      "season": "pre",
+      "gameWeek": 20153,
+      "year": 2023,
+      "awayTeam": {
+          "code": "NYJ",
+          "shortName": "Jets",
+          "fullName": "N.Y. Jets",
+          "score": 24
+      },
+      "homeTeam": {
+          "code": "CLE",
+          "shortName": "Browns",
+          "fullName": "Cleveland Browns",
+          "score": 27
+      },
+      "odds": {
+        "spread": -3.5,
+        "total": 47
+      }
+    },
+    "wager": {
+      "currency": 100,
+      "wagerType": "spread",
+      "odds": -110
+    }
+  }

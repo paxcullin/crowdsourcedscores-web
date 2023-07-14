@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r addPrediction.zip ."
+    "test": "aws lambda invoke --function-name addPrediction-vc prediction.json",
+    "package": "zip -r addPrediction-vc.zip .",
+    "upload": "aws lambda update-function-code --function-name addPrediction-vc --zip-file fileb://addPrediction-vc.zip --publish"
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-lambda": "^3.370.0",
+    "@aws-sdk/client-sns": "^3.370.0",
     "jsonschema": "^1.1.0",
     "mongodb": "^3.6.3"
   }
