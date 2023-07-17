@@ -223,7 +223,7 @@ exports.handler = async (event, context) => {
                 readPreference: 'primary'
             };
             try {
-                session.startTransaction(transactionOptions);
+                const transactionResults = await session.withTransaction(async () => { 
                 
             // first make sure the prediction is not too late
             // deadline is 5 min prior to kickoff
@@ -242,7 +242,8 @@ exports.handler = async (event, context) => {
                 console.log('gamesQuery: ', gamesQuery)
 
                 // check for game start time to ensure the prediction is 5 minutes before kickoff
-                const game = await db.collection(gamesCollection).findOne(gamesQuery, {_id: false, session})
+                const game = await db.collection(gamesCollection).findOne(gamesQuery, { session })
+                console.log('game', game)
                     if (!game) {
                         throw new Error('Something went wrong. Please try again.')
                     }
@@ -261,13 +262,13 @@ exports.handler = async (event, context) => {
                     }
                 // end kickoff time check
                 
-                var existingObjQuery = {userId: userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
+                var existingObjQuery = {userId: userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year), sport: sport, season: season};
                     
                     //get user groups in order to add groups to predictions for scoring
                     
-                    const groups = await db.collection('profileExtended').find({username: userId},{_id:false, groups: 1, session}).toArray();
-                        if (groups[0]) {
-                            prediction.groups = groups[0].groups;
+                    const userProfile = await db.collection('profileExtended').findOne({username: userId},{_id:false, groups: 1, session});
+                        if (userProfile) {
+                            prediction.groups = userProfile.groups;
                             if (prediction.groups && prediction.groups.length > 0) {
                                 prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
                                 console.log("prediction.groups: ", prediction.groups)
@@ -285,9 +286,12 @@ exports.handler = async (event, context) => {
                         }
                         
                         // Insert or Update the user's prediction to the prediction collection
-                        const dbRes = await db.collection(predictionCollection).update(existingObjQuery, prediction, {upsert: true, session});
+                        console.log('predictionCollection: ', predictionCollection)
+                        console.log('existingObjQuery: ', existingObjQuery)
+                        console.log('prediction: ', prediction)
+                        const dbRes = await db.collection(predictionCollection).updateOne(existingObjQuery, {"$set": prediction}, {upsert: true, session});
                         var respObj = JSON.parse(dbRes);
-            
+                        console.log('respObj', respObj)
                         assert.equal(respObj.ok, 1);
                             
                             
@@ -375,11 +379,13 @@ exports.handler = async (event, context) => {
                                     gameWeek,
                                     season
                                 },
-                                wager
+                                wager,
+                                submitted: prediction.submitted
                             })
+                            console.log('addWager', addWager)
                             // update user's VC balance
                             if (wager) {
-                                const profileUpdate = await db.collection('profileExtended').updateOne({ userId }, { currency: { "$dec": wager.currency }, "$push": {
+                                const profileUpdate = await db.collection('profileExtended').updateOne({ username: userId }, { $inc: { currency: wager.currency * -1 }, $addToSet: {
                                     "wagers.history": {
                                         gameId,
                                         year,
@@ -388,14 +394,19 @@ exports.handler = async (event, context) => {
                                         season,
                                         ...wager
                                     }
-                                }})
+                                }}, {session})
+                                if (profileUpdate.modifiedCount === 0) {
+                                    session.abortSession()
+                                    console.error("the user's profile was not updated. Aborting session.");
+                                }
                             }
                             // get total currency bet for a given week
                             var predictionsQuery = {userId: userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
-                            const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false, session}).toArray();
-                                if (err) {
-                                    return context.done(null, result);
-                                }
+                            const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
+                            console.log('predictions', predictions)
+                                // if (err) {
+                                //     return context.done(null, result);
+                                // }
                                 
                                 result.predictionsSubmitted = predictions.length;
                                 let currencyWagered = 0;
@@ -411,10 +422,10 @@ exports.handler = async (event, context) => {
                                         if (currency.moneyline && currency.moneyline.currencyWagered > 0) {
                                             currencyWagered += currency.moneyline.currencyWagered
                                         }
-                                        console.log(`prediction.stars: ${JSON.stringify(prediction.stars)}, ${starsSubmitted}`)
+                                        console.log(`currencyWagered: ${currencyWagered}`)
                                     }
                                 })
-                                result.predictionsSubmittedStars = starsSubmitted;
+                                result.currencyWagered = currencyWagered;
                                 if (prediction.collegeBowlPremium !== '1' && prediction.sport === 'ncaaf') {
                                     result.crowd = null;
                                 }
@@ -422,7 +433,6 @@ exports.handler = async (event, context) => {
                                 
                                 // kick off new aggregation calculation
                                 
-                                var sns = new AWS.SNS();
                                 var params = {
                                     Message: "Prediction for game " + prediction.gameId + " submitted by " + userId, 
                                     Subject: "Prediction Submitted",
@@ -447,17 +457,24 @@ exports.handler = async (event, context) => {
                                     },
                                 };
                                 console.log("SNS Publishing")
-                                PublishCommand(params, function(err, response) {
+                                const SNSPublishCommand = new PublishCommand(params, function(err, response) {
                                     if (err) {
                                         context.done("SNS error: " + err, null);
                                     }
                                     console.log("SNS Publish complete: ", response);
                                     context.done (null, result)
                                     });
+
+                                const SNSResponse = await SNS.send(SNSPublishCommand)
                            
-                        
+            },transactionOptions);            
             } catch (transactionError) {
                 console.log('transactionError', transactionError);
+            } finally {
+
+                await session.endSession();
+                await client.close();
+                context.done(null, { status: 200, message: 'Wagers and Predictions submitted'})
             }
     } catch (addPredictionError) {
         context.fail({status: 500, message: addPredictionError}, null);

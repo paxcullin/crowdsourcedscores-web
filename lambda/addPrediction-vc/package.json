@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "aws lambda invoke --function-name addPrediction-vc prediction.json",
+    "test": "aws lambda invoke --function-name addPrediction-vc --cli-binary-format raw-in-base64-out --payload file://test-prediction.json prediction.json",
     "package": "zip -r addPrediction-vc.zip .",
     "upload": "aws lambda update-function-code --function-name addPrediction-vc --zip-file fileb://addPrediction-vc.zip --publish"
   },
