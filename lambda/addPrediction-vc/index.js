@@ -271,7 +271,6 @@ exports.handler = async (event, context) => {
                             prediction.groups = userProfile.groups;
                             if (prediction.groups && prediction.groups.length > 0) {
                                 prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
-                                console.log("prediction.groups: ", prediction.groups)
                             }
                         }
                     
@@ -286,12 +285,8 @@ exports.handler = async (event, context) => {
                         }
                         
                         // Insert or Update the user's prediction to the prediction collection
-                        console.log('predictionCollection: ', predictionCollection)
-                        console.log('existingObjQuery: ', existingObjQuery)
-                        console.log('prediction: ', prediction)
                         const dbRes = await db.collection(predictionCollection).updateOne(existingObjQuery, {"$set": prediction}, {upsert: true, session});
                         var respObj = JSON.parse(dbRes);
-                        console.log('respObj', respObj)
                         assert.equal(respObj.ok, 1);
                             
                             
@@ -307,8 +302,6 @@ exports.handler = async (event, context) => {
                             }
                             result.succeeded = true;
                             result.message = 'Prediction saved';
-                            console.log('result: ', result);
-                            console.log('prediction: ', prediction);
             
                             var lambdaParams = {
                                 FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
@@ -362,6 +355,11 @@ exports.handler = async (event, context) => {
                             */
                             const addWager = await db.collection('wagers').insertOne({
                                 userId,
+                                gameId,
+                                year,
+                                sport,
+                                gameWeek,
+                                season,
                                 prediction: {
                                     awayTeam: {
                                         score: prediction.awayTeam.score
@@ -372,17 +370,11 @@ exports.handler = async (event, context) => {
                                     odds: {
                                         spread: prediction.odds.spread,
                                         total: prediction.odds.total
-                                    },
-                                    gameId,
-                                    year,
-                                    sport,
-                                    gameWeek,
-                                    season
+                                    }
                                 },
                                 wager,
                                 submitted: prediction.submitted
-                            })
-                            console.log('addWager', addWager)
+                            }, {session})
                             // update user's VC balance
                             if (wager) {
                                 const profileUpdate = await db.collection('profileExtended').updateOne({ username: userId }, { $inc: { currency: wager.currency * -1 }, $addToSet: {
@@ -403,7 +395,7 @@ exports.handler = async (event, context) => {
                             // get total currency bet for a given week
                             var predictionsQuery = {userId: userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
                             const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
-                            console.log('predictions', predictions)
+                            
                                 // if (err) {
                                 //     return context.done(null, result);
                                 // }
@@ -474,7 +466,8 @@ exports.handler = async (event, context) => {
 
                 await session.endSession();
                 await client.close();
-                context.done(null, { status: 200, message: 'Wagers and Predictions submitted'})
+                console.log(`Wagers and Predictions submitted; ${result}`);
+                context.done(null, { status: 200, message: `Wagers and Predictions submitted; ${result}`})
             }
     } catch (addPredictionError) {
         context.fail({status: 500, message: addPredictionError}, null);
