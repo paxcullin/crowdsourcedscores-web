@@ -1,0 +1,9 @@
+code
+fullName
+year
+season
+sport
+wins
+overOdds
+underOdds
+history
