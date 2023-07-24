@@ -20,6 +20,7 @@ exports.handler = async (event, context, callback) => {
         context.done(null, { status: 200, message: `The balance of ${userId} was updated successfully. ${currencyAmount}`})
     } catch (addCurrencyError) {
         console.log('addCurrencyError', addCurrencyError)
+        context.fail({status: 500, message: `Error: ${addCurrencyError}`})
     }
 
     // Lambda Code Here
