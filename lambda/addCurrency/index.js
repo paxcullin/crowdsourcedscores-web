@@ -12,6 +12,9 @@ exports.handler = async (event, context, callback) => {
     if (!userId) {
         context.fail({status: 500, message: 'No user ID provided'})
     }
+    if (!currencyAmount) {
+        context.fail({status: 500, message: 'No currency amount provided.'})
+    }
     try {
         const client = await mongo.connect(MONGO_URL);
         const db = client.db('pcsm');
