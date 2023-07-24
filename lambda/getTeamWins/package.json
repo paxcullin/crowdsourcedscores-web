@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mongodb": "^5.3.0"
+  },
+  "scripts":{
+    "test": "aws lambda invoke --function-name getTeamWins --payload '{ \"sport\": \"nfl\", \"season\": \"reg\", \"year\": 2023 }' --cli-binary-format raw-in-base64-out response.json",
+    "build": "rm Archive.zip && zip -r Archive.zip .",
+    "upload": "aws lambda update-function-code --function-name getTeamWins --zip-file fileb://Archive.zip --publish"
+  }
+}

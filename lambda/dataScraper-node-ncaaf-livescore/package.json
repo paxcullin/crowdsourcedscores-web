@@ -1,0 +1,19 @@
+{
+  "name": "datascraper-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dataScraper-node.js",
+  "dependencies": {
+    "aws-sdk": "^2.1282.0",
+    "axios": "^1.1.3",
+    "mongodb": "^4.12.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "upload": "aws lambda update-function-code --function-name dataScraper-node-ncaaf --zip-file fileb://Archive.zip --publish",
+    "test": "aws lambda invoke --function-name datascraper-node-ncaaf response.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

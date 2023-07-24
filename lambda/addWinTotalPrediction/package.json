@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mongodb": "^5.3.0"
+  },
+  "scripts":{
+    "test": "aws lambda invoke --function-name addWinTotalPrediction --payload '{ \"sport\": \"nfl\", \"season\": \"reg\", \"year\": 2023, \"userId\": \"cmaronchick\", \"season\": \"reg\", \"year\": 2023, \"sport\": \"nfl\", \"teamCode\": \"SEA\", \"predictedWins\": 11, \"oddsWins\": 9.5, \"odds\": -110 }' --cli-binary-format raw-in-base64-out response.json",
+    "build": "rm Archive.zip && zip -r Archive.zip .",
+    "upload": "aws lambda update-function-code --function-name addWinTotalPrediction --zip-file fileb://Archive.zip --publish"
+  }
+}

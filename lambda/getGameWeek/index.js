@@ -15,24 +15,72 @@ exports.handler = (event, context, callback) => {
         }],
         nfl: [{
                 season: 'pre',
-                startDate: new Date('2021-03-01')
+                startDate: new Date('2022-03-01')
             },
             {
             season: 'reg',
-            startDate: new Date('2021-07-01')
+            startDate: new Date('2022-09-01')
         },
         {
             season: 'post',
-            startDate: new Date('2022-01-10')
+            startDate: new Date('2023-01-10')
         }]
     }
     const seasonDates = {
         nfl: {
+            2022: {
+                pre: {
+                    start: new Date('2022-06-01'),
+                    weeks: [
+                        {weekName: 'HOF'},
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3}
+                        
+                        ]
+                },
+                reg: {
+                    start: new Date('2022-09-01'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16},
+                        {weekName: 17},
+                        {weekName: 18}
+                        ]
+                },
+                post: {
+                    start: new Date('2023-01-10'),
+                    weeks: [
+                        {weekName: 'WC'},
+                        {weekName: 'DIV'},
+                        {weekName: 'CONF'},
+                        {weekName: 'SB'}
+                        ]
+                }
+            },
             2021: {
                 pre: {
                     start: new Date('2021-06-01'),
                     weeks: [
-                        {weekName: 1}
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5}
                         ]
                 },
                 reg: {
@@ -54,11 +102,12 @@ exports.handler = (event, context, callback) => {
                         {weekName: 14},
                         {weekName: 15},
                         {weekName: 16},
-                        {weekName: 17}
+                        {weekName: 17},
+                        {weekName: 18}
                         ]
                 },
                 post: {
-                    start: new Date('2022-01-10'),
+                    start: new Date('2022-01-12'),
                     weeks: [
                         {weekName: 'WC'},
                         {weekName: 'DIV'},
@@ -181,6 +230,33 @@ exports.handler = (event, context, callback) => {
                     start: new Date('2019-11-14'),
                     weeks: [{weekName: 'Bowls'}]
                 }
+            },
+            2022: {
+                reg: {
+                    start: new Date('2019-08-26'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16},
+                        ]
+                },
+                post: {
+                    start: new Date('2022-11-10'),
+                    weeks: [{weekName: 'Bowls'}]
+                }
             }
         },
         ncaam: {
@@ -204,8 +280,11 @@ exports.handler = (event, context, callback) => {
     var sport = (event.sport) ? event.sport : (event.params && event.params.path && event.params.path.sport) ? event.params.path.sport : 'nfl'
     
     const now = Date.now();
-    const nowYear = (new Date(now).getFullYear());
+    let nowYear = (new Date(now).getFullYear());
     var year = new Date(now).getFullYear();
+    if (nowYear === 2023) {
+        nowYear--;
+    }
     console.log({nowYear, year})
     var seasonStartDate = new Date();
     var season = 'reg';
@@ -226,8 +305,8 @@ exports.handler = (event, context, callback) => {
         console.log({season})
     if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
-                    Date.UTC(2019, 11, 14),  // 2019 Postseason Week 1
-                    Date.UTC(2020, 7, 24),  // 2019 Postseason Week 3
+                    Date.UTC(2022, 11, 14),  // 2019 Postseason Week 1
+                    Date.UTC(2023, 7, 24),  // 2019 Postseason Week 3
                     
                     ]
             : [
@@ -290,50 +369,49 @@ exports.handler = (event, context, callback) => {
             case 'pre':
                 // code
                 weekStartDates = [
-                    Date.UTC(2019, 0, 21),  // super bowl week
-                    Date.UTC(2019, 7, 5),  // 2019 Preseason Week 1
-                    Date.UTC(2019, 7, 12),  // 2019 Preseason Week 2
-                    Date.UTC(2019, 7, 19),  // 2019 Preseason Week 3
-                    Date.UTC(2019, 7, 27),  // 2019 Preseason Week 4
+                    Date.UTC(2022, 1, 21),  // super bowl week
+                    Date.UTC(2022, 7, 11),  // 2019 Preseason Week 1
+                    Date.UTC(2022, 7, 17),  // 2019 Preseason Week 2
+                    Date.UTC(2022, 7, 25)  // 2019 Preseason Week 3
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2021, 6, 2),  // 2020 Week 1
-                    Date.UTC(2021, 8, 14),  // 2020 Week 2
-                    Date.UTC(2021, 8, 21),  // 2020 Week 3
-                    Date.UTC(2021, 8, 28),  // 2020 Week 4
-                    Date.UTC(2021, 9, 5),  // 2020 Week 5
-                    Date.UTC(2021, 9, 12),  // 2020 Week 6
-                    Date.UTC(2021, 9, 19),  // 2020 Week 7
-                    Date.UTC(2021, 9, 26),  // 2020 Week 8
-                    Date.UTC(2021, 10, 2),  // 2020 Week 9
-                    Date.UTC(2021, 10, 9),  // 2020 Week 10
-                    Date.UTC(2021, 10, 16),  // 2020 Week 11
-                    Date.UTC(2021, 10, 23),  // 2020 Week 12
-                    Date.UTC(2021, 10, 30),  // 2020 Week 13
-                    Date.UTC(2021, 11, 7),  // 2020 Week 14
-                    Date.UTC(2021, 11, 14),  // 2020 Week 15
-                    Date.UTC(2021, 11, 21),  // 2020 Week 16
-                    Date.UTC(2021, 11, 28),  // 2020 Week 17
-                    Date.UTC(2022, 0, 4),  // 2020 Week 18
-                    Date.UTC(2021, 0, 10),  // 2020 Week 17
+                    Date.UTC(2022, 8, 2),  // 2020 Week 1
+                    Date.UTC(2022, 8, 14),  // 2020 Week 2
+                    Date.UTC(2022, 8, 21),  // 2020 Week 3
+                    Date.UTC(2022, 8, 28),  // 2020 Week 4
+                    Date.UTC(2022, 9, 5),  // 2020 Week 5
+                    Date.UTC(2022, 9, 12),  // 2020 Week 6
+                    Date.UTC(2022, 9, 19),  // 2020 Week 7
+                    Date.UTC(2022, 9, 26),  // 2020 Week 8
+                    Date.UTC(2022, 10, 2),  // 2020 Week 9
+                    Date.UTC(2022, 10, 9),  // 2020 Week 10
+                    Date.UTC(2022, 10, 16),  // 2020 Week 11
+                    Date.UTC(2022, 10, 23),  // 2020 Week 12
+                    Date.UTC(2022, 10, 30),  // 2020 Week 13
+                    Date.UTC(2022, 11, 7),  // 2020 Week 14
+                    Date.UTC(2022, 11, 14),  // 2020 Week 15
+                    Date.UTC(2022, 11, 21),  // 2020 Week 16
+                    Date.UTC(2022, 11, 28),  // 2020 Week 17
+                    Date.UTC(2023, 0, 4),  // 2020 Week 18
+                    Date.UTC(2023, 0, 11),  // 2021 Week 19
                     ];
                     break;
             case 'post':
                 weekStartDates = [
-                    Date.UTC(2022, 0, 11),  // 2020 Postseason Week 1
-                    Date.UTC(2022, 0, 18),  // 2020 Postseason Week 2
-                    Date.UTC(2022, 0, 25),  // 2020 Postseason Week 3
-                    Date.UTC(2022, 1, 1),  // 2020 Postseason Week 4
-                    Date.UTC(2022, 1, 8),  // 2020 Week 21 - SB
+                    Date.UTC(2023, 0, 12),  // 2020 Postseason Week 1
+                    Date.UTC(2023, 0, 18),  // 2020 Postseason Week 2
+                    Date.UTC(2023, 0, 25),  // 2020 Postseason Week 3
+                    Date.UTC(2023, 1, 1),  // 2020 Postseason Week 4
+                    Date.UTC(2023, 7, 1),  // 2022-2023 Season
                     ];
                     break;
             default:
                 weekStartDates = [
                     Date.UTC(2019, 8, 2),  // 2019 Week 1
                     Date.UTC(2019, 8, 11),  // 2019 Week 2
-                    Date.UTC(2019, 8, 18),  // 2019 Week 3
+                    Date.UTC(2019, 8, 17),  // 2019 Week 3
                     Date.UTC(2019, 8, 25),  // 2019 Week 4
                     Date.UTC(2019, 9, 2),  // 2019 Week 5
                     Date.UTC(2019, 9, 9),  // 2019 Week 6
@@ -432,8 +510,9 @@ exports.handler = (event, context, callback) => {
     var result = {
         sport: sport,
         week: week,
-        year: year,
+        year: nowYear,
         season: season,
+        nfl: { week: week }
     }
     result.weeks = seasonDates[sport][nowYear][season].weeks
     result.season = season;

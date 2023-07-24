@@ -390,6 +390,7 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==8.9.0"
+
         },
         "ipython-genutils": {
             "hashes": [
@@ -1071,6 +1072,7 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.12.1"
+
         }
     },
     "develop": {

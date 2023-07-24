@@ -15,7 +15,7 @@ collection = db['games']
 today = str(date.today())
 yesterday = str((date.today() - timedelta(days=1)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2023-02-14', '%Y-%m-%d')
+endDate = datetime.strptime('2024-02-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
@@ -75,7 +75,7 @@ def lambda_handler2(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2022,
+                            "year": 2023,
                             "gameWeek": event['event group']['event group id'] -9,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
@@ -103,13 +103,14 @@ def lambda_handler2(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] < datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] < datetime.strptime('2023-09-07T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         if gameObject["gameWeek"] < 0:
                             gameObject["gameWeek"] = gameObject["gameWeek"] + 8
                             print('pre', gameObject, event)
                         gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2023-01-09T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    elif gameObject["startDateTime"] > datetime.strptime('2024-01-12T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
+                        gameObject["gameWeek"] = gameObject["gameWeek"] - 18
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"

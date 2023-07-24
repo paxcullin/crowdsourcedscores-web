@@ -45,8 +45,12 @@ exports.handler = (event, context) => {
                     weekly: weeklyResultFilteredArray ? weeklyResultFilteredArray[0] : null
                 }
             }
-            if (!extendedProfile.results.weekly) {
-                extendedProfile.results.weekly = null
+            if (!extendedProfile.results || (extendedProfile.results && !extendedProfile.results.weekly)) {
+                extendedProfile.results = {
+                    ...extendedProfile.results,
+                    weekly: null
+
+                }
             }
             context.done(null, extendedProfile);
         })
