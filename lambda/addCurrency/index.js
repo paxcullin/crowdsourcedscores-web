@@ -7,26 +7,24 @@ const {config} = require("./config");
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
     
 exports.handler = async (event, context, callback) => {
-    console.log(JSON.stringify(`Event: event`))
-    const { userId, currencyAmount } = event
-    if (!userId) {
+    console.log(`Event: ${JSON.stringify(event)}`)
+    const { username , currencyAmount, currencyMultiplier } = event
+    if (!username) {
+        console.log('No user ID provided')
         context.fail({status: 500, message: 'No user ID provided'})
     }
-    if (!currencyAmount) {
-        context.fail({status: 500, message: 'No currency amount provided.'})
+    if (!currencyAmount || !currencyMultiplier) {
+        console.log('No Currency Amount')
+        context.fail({status: 500, message: 'No currency amount or multiplier provided'})
     }
     try {
         const client = await mongo.connect(MONGO_URL);
         const db = client.db('pcsm');
         const collection = db.collection('profileExtended');
-        collection.updateOne({ username: userId }, { $inc: { currency: currencyAmount }})
-        context.done(null, { status: 200, message: `The balance of ${userId} was updated successfully. ${currencyAmount}`})
+        collection.updateOne({ username: username }, { $inc: { currency: currencyAmount * currencyMultiplier }})
+        context.done(null, { status: 200, message: `The balance of ${username} was updated successfully. ${currencyAmount * currencyMultiplier}`})
     } catch (addCurrencyError) {
         console.log('addCurrencyError', addCurrencyError)
-        context.fail({status: 500, message: `Error: ${addCurrencyError}`})
+        context.fail({status: 500, message: `Error: ${JSON.stringify(addCurrencyError)}`})
     }
-
-    // Lambda Code Here
-    // context.succeed('Success!')
-    // context.fail('Failed!')
 }
