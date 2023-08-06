@@ -112,6 +112,7 @@ exports.handler = async (event, context) => {
                     game.weather = gameWeather
                     // console.log({weather: game.weather.temp})
                 }
+                game.matchup = `${game.awayTeam.code}-${game.homeTeam.code}`
         })
         
         if (event.sport === 'ncaam') {
