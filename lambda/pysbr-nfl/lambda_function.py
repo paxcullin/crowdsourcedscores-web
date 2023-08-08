@@ -28,7 +28,8 @@ moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacl
 bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
 bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
 fivedimesspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('5Dimes')[0])
-fivedimesbookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
+fivedimestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('5Dimes')[0])
+
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 
@@ -105,7 +106,7 @@ def lambda_handler2(event, context):
                     
                     if gameObject["startDateTime"] < datetime.strptime('2023-09-07T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         if gameObject["gameWeek"] < 0:
-                            gameObject["gameWeek"] = gameObject["gameWeek"] + 8
+                            gameObject["gameWeek"] = gameObject["gameWeek"] + 9
                             print('pre', gameObject, event)
                         if gameObject["gameWeek"] == 20153:
                             gameObject["gameWeek"] = 1
