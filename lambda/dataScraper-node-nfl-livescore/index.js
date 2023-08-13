@@ -1,11 +1,13 @@
 var  mongo = require("mongodb").MongoClient,
 assert = require("assert"),
-AWS = require('aws-sdk'),
 {config} = require('config');
 
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const lambda = new LambdaClient({region: 'us-west-2'});
+const SNS = new SNSClient({region: 'us-west-2'});
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
-const lambda = new AWS.Lambda()
 
 const generateRandomString = function(length) {
     let text = '';
@@ -16,7 +18,6 @@ const generateRandomString = function(length) {
     }
     return text;
 };
-const sns = new AWS.SNS();
 
 const axios = require("axios");
 
@@ -45,16 +46,22 @@ exports.handler = async (event, context, callback) => {
     const client = await mongo.connect(MONGO_URL)
     const db = client.db('pcsm');
     const collection = db.collection('games')
-    
     //get current game week from getGameWeek 
-    let gameWeekResponse = await lambda.invoke({
+    let gameWeekCommand = new InvokeCommand({
         FunctionName: 'getGameWeek', // the lambda function we are going to invoke
         InvocationType: 'RequestResponse',
         LogType: 'None',
         Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2022, "season": "reg"}`
-    }).promise()
-    const gameWeekResponseJSON = JSON.parse(gameWeekResponse.Payload);
+    }, function(err, data) {
+        console.log('err', err);
+        console.log('data', data);
+    })
+    const gameWeekResponse = await lambda.send(gameWeekCommand);
+    const asciiDecoder = new TextDecoder('ascii')
+    const gameWeekResponseJSON = JSON.parse(asciiDecoder.decode(gameWeekResponse.Payload));
+    // console.log('gameWeekResponseJSON', gameWeekResponseJSON);
     gameWeek = gameWeekResponseJSON.week;
+    // console.log('gameWeek', gameWeek);
     
     var gameObjectsArray = [];
     var queryPromises = [];
@@ -166,7 +173,8 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2022&seasontype=3&week=${gameWeek ? gameWeek : 11}`
+    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2023&seasontype=1&week=${gameWeek ? gameWeek : 11}`
+    // console.log('URL', URL);
     const options = {
         Method: 'GET'
     };
@@ -176,14 +184,14 @@ exports.handler = async (event, context, callback) => {
             if (!response) {
                 context.done(null, { status: 200, message: 'No URL response'});
             }
-            console.log('response', response.data)
+            // console.log('response', response.data)
             const scoresJSON = response.data;
 
             if (scoresJSON && scoresJSON.events && scoresJSON.events.length > 0) {
                 // console.log('scoresJSON: ', scoresJSON.games[0])
                 let games = scoresJSON.events;
                 parseGames(games);
-                console.log('gameObjectsArray.length', gameObjectsArray.length)
+                // console.log('gameObjectsArray.length', gameObjectsArray.length)
                 if (gameObjectsArray.length > 0) {
                     // console.log('gameObjectsArray.length > 0', gameObjectsArray.length > 0)
                         let gameIndex = 0;
@@ -216,8 +224,10 @@ exports.handler = async (event, context, callback) => {
                                 };
                                 // only updating if the game has changed from what's in Mongo
                                 // if mongogame doesn't have results
-                                if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
-                                    queryPromises.push(collection.updateOne({ gameId: gameId }, update));
+                                if (((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) || (game.status === "final" && mongoGame.crowd && !mongoGame.crowd.results)) {
+                                    if (mongoGame.status !== "final") {
+                                        queryPromises.push(collection.updateOne({ gameId: gameId }, update));
+                                    }
                                     if (game.status === "final") {
                                         params = {
                                             Message: "Game " + gameId + " updated", 
@@ -246,12 +256,15 @@ exports.handler = async (event, context, callback) => {
                                                 }
                                             }
                                         }
-                                        sns.publish(params, function(err, response) {
+                                        const SNSPublishCommand = new PublishCommand(params, function(err, response) {
                                             if (err) {
                                                 context.done("SNS error: " + err, null);
                                             }
                                             console.log("SNS Publish complete: ", response);
                                         })
+                                        const SNSResponse = await SNS.send(SNSPublishCommand);
+                                        console.log('SNSResponse', SNSResponse);
+                                        
                                     }
                                 } 
                                 // for troubleshooting when the games aren't updating
