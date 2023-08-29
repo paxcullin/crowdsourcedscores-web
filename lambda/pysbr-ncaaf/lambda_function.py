@@ -13,7 +13,7 @@ collection = db['games-ncaaf']
 
 yesterday = str((date.today() - timedelta(days=3)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2023-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
@@ -75,7 +75,7 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2022,
+                            "year": 2023,
                             "gameWeek": event['event group']['event group id'] -9,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
