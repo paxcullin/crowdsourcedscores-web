@@ -401,23 +401,22 @@ exports.handler = (event, context, callback) => {
                 // Date.UTC(2018, 11, 12), // Bowls
                 // Date.UTC(2019, 8, 1), // Bowls
                 Date.UTC(2023, 7, 19),  // 2019 Week 1
-                Date.UTC(2023, 7, 29),  // 2023 Week 2
-                Date.UTC(2023, 8, 5),  // 2023 Week 3
-                Date.UTC(2023, 8, 12),  // 2023 Week 4
-                Date.UTC(2023, 8, 19),  // 2023 Week 5
-                Date.UTC(2023, 8, 26),  // 2023 Week 6
-                Date.UTC(2023, 9, 3),  // 2023 Week 7
-                Date.UTC(2023, 9, 10),  // 2023 Week 8
-                Date.UTC(2023, 9, 17),  // 2023 Week 9
-                Date.UTC(2023, 9, 24),  // 2023 Week 10
-                Date.UTC(2023, 9, 31),  // 2023 Week 11
-                Date.UTC(2023, 10, 7),  // 2023 Week 12
-                Date.UTC(2023, 10, 14),  // 2023 Week 13
-                Date.UTC(2023, 10, 21),  // 2023 Week 14
-                Date.UTC(2023, 10, 28),  // 2023 Week 15
-                Date.UTC(2023, 11, 5),  // 2023 Week 16
-                Date.UTC(2023, 11, 12),  // 2023 Week 17
-                Date.UTC(2020, 7, 25),  // 2023 Week 18
+                Date.UTC(2023, 8, 5),  // 2023 Week 2
+                Date.UTC(2023, 8, 12),  // 2023 Week 3
+                Date.UTC(2023, 8, 19),  // 2023 Week 4
+                Date.UTC(2023, 8, 26),  // 2023 Week 5
+                Date.UTC(2023, 9, 3),  // 2023 Week 6
+                Date.UTC(2023, 9, 10),  // 2023 Week 7
+                Date.UTC(2023, 9, 17),  // 2023 Week 8
+                Date.UTC(2023, 9, 24),  // 2023 Week 9
+                Date.UTC(2023, 9, 31),  // 2023 Week 10
+                Date.UTC(2023, 10, 7),  // 2023 Week 11
+                Date.UTC(2023, 10, 14),  // 2023 Week 12
+                Date.UTC(2023, 10, 21),  // 2023 Week 13
+                Date.UTC(2023, 10, 28),  // 2023 Week 14
+                Date.UTC(2023, 11, 5),  // 2023 Week 15
+                Date.UTC(2023, 11, 12),  // 2023 Week 16
+                Date.UTC(2020, 7, 25),  // 2023 Week 17
             ]
     } else if (sport === 'ncaam') {
         weekStartDates = [
