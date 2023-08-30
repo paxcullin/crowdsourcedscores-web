@@ -11,7 +11,7 @@ client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config
 db = client['pcsm']
 collection = db['games-ncaaf']
 
-yesterday = str((date.today() - timedelta(days=3)))
+yesterday = str((date.today() - timedelta(days=13)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
 endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
@@ -76,7 +76,7 @@ def lambda_handler(event, context):
 
                     gameObject = {
                             "year": 2023,
-                            "gameWeek": event['event group']['event group id'] -9,
+                            "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
                             "sport": "ncaaf",
@@ -100,12 +100,7 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] < datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
-                        if gameObject["gameWeek"] < 0:
-                            gameObject["gameWeek"] = gameObject["gameWeek"] + 8
-                            print('pre', gameObject, event)
-                        gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2022-12-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2023-11-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
@@ -116,10 +111,10 @@ def lambda_handler(event, context):
                     gameObject["gameId"] = event['event id']
                     if (gameResult):
                         gameObject["gameId"] = gameResult["gameId"]
-                        if (hasattr(gameResult,'odds')):
-                            print('gameResult[\'odds\']', gameResult['odds']['spread'])
-                    else:
-                        print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
+                        # if (hasattr(gameResult,'odds')):
+                        #     print('gameResult[\'odds\']', gameResult['odds']['spread'])
+                    # else:
+                    #     print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
                     
                     if gameObject["weekName"] == "Bowls":
                         gameObject["gameWeek"] = 1
