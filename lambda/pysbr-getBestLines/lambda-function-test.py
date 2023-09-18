@@ -26,21 +26,66 @@ nfl = NFL()
 
 
 # def lambda_handler(e, context):
-e = EventsByDateRange(nfl.league_id, startDate,endDate)
-print('event: ', e.ids())
-bl = BestLines([4700676],nfl.market_ids('pointspread'))
+# e = EventsByDateRange(nfl.league_id, startDate,endDate)
+gameid = 4700690
 try:
-    print('bl: ', bl)
-    for line in bl.list():
-        print('line: ', line)
-        sb = Sportsbooks(line['sportsbook id'])
-        print('sb:', len(sb.list()))
-        # print('sb: ', sb["name"], sb["id"])
+    if gameid is None:
+        print('no game id')
+    blspread = BestLines([gameid],nfl.market_ids('pointspread'))
+    bltotal = BestLines([gameid],nfl.market_ids('totals'))
+    blmoneyline = BestLines([gameid],nfl.market_ids('money-line'))
+
+    lines = []
+    # print('bl: ', bl)
+    if len(blspread.list()) > 0:
+        for line in blspread.list():
+            line['type'] = 'spread'
+            sb = Sportsbooks(line['sportsbook id'])
+            print('4: ', sb, type(sb) is set)
+            print('spread sb:', line['sportsbook id'], len(sb.list()))
+            if len(sb.list()) > 0:
+                for book in sb.list():
+                    line['sportsbook'] = {
+                        'name': book['name'],
+                        'id': book['sportsbook id']
+                    }
+            
+            lines.append(line)
+    if len(bltotal.list()) > 0:
+        for line in bltotal.list():
+            line['type'] = 'total'
+            sb = Sportsbooks(line['sportsbook id'])
+            print('1: ', type(sb) is list)
+            print('2: ', type(sb) is dict)
+            print('3: ', type(sb) is tuple)
+            print('total sb:', line['sportsbook id'], len(sb.list()))
+            if len(sb.list()) > 0:
+                for book in sb.list():
+                    line['sportsbook'] = {
+                        'name': book['name'],
+                        'id': book['sportsbook id']
+                    }
+            lines.append(line)
+
+    if len(blmoneyline.list()) > 0:
+        for line in blmoneyline.list():
+            line['type'] = 'ml'
+            sb = Sportsbooks(line['sportsbook id'])
+            print('ml sb:', line['sportsbook id'], len(sb.list()))
+            if len(sb.list()) > 0:
+                for book in sb.list():
+                    line['sportsbook'] = {
+                        'name': book['name'],
+                        'id': book['sportsbook id']
+                    }
+            lines.append(line)
+    print (lines)
 except TypeError as error:
     print(TypeError) 
     print(repr(error))
-except ValueError:
+except ValueError as error:
     print(ValueError)
+    print(repr(error))
     # return {
     #     'message': 'lines update'
     # }

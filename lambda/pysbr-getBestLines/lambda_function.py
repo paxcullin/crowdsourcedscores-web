@@ -27,22 +27,72 @@ nfl = NFL()
 
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
-    bl = BestLines(e['eventId'],nfl.market_ids('pointspread'))
-    # print('bl: ', bl)
-    if len(bl.list()) > 0:
-        try:
-            for line in bl.list():
-                print('line: ', line)
+    try:
+        gameid = e['gameId']
+        if gameid is None:
+            print('no game id')
+            return {
+                'statusCode': 400,
+                'body': 'no game id'
+            }
+        blspread = BestLines([gameid],nfl.market_ids('pointspread'))
+        bltotal = BestLines([gameid],nfl.market_ids('totals'))
+        blmoneyline = BestLines([gameid],nfl.market_ids('money-line'))
+
+        lines = {
+            "spread": None,
+            "total": None,
+            "ml": None
+        }
+        # print('bl: ', bl)
+        if len(blspread.list()) > 0:
+            for line in blspread.list():
+                line['type'] = 'spread'
                 sb = Sportsbooks(line['sportsbook id'])
-                print('sb:', len(sb.list()))
-                # print('sb: ', sb["name"], sb["id"])
-        except TypeError as error:
-            print(TypeError, line) 
-            print(repr(error))
-        except ValueError:
-            print(ValueError)
+                print('spread sb:', line['sportsbook id'], len(sb.list()))
+                if sb != None and len(sb.list()) > 0:
+                    for book in sb.list():
+                        line['sportsbook'] = {
+                            'name': book['name'],
+                            'id': book['sportsbook id']
+                        }
+                    if lines['spread'] is None:
+                        lines['spread'] = line
+        if len(bltotal.list()) > 0:
+            for line in bltotal.list():
+                line['type'] = 'total'
+                sb = Sportsbooks(line['sportsbook id'])
+                print('total sb:', line['sportsbook id'], len(sb.list()))
+                if sb != None and len(sb.list()) > 0:
+                    for book in sb.list():
+                        line['sportsbook'] = {
+                            'name': book['name'],
+                            'id': book['sportsbook id']
+                        }
+                    if lines['total'] is None:
+                        lines['total'] = line
+
+        if len(blmoneyline.list()) > 0:
+            for line in blmoneyline.list():
+                line['type'] = 'ml'
+                sb = Sportsbooks(line['sportsbook id'])
+                print('ml sb:', line['sportsbook id'], len(sb.list()))
+                if sb != None and len(sb.list()) > 0:
+                    for book in sb.list():
+                        line['sportsbook'] = {
+                            'name': book['name'],
+                            'id': book['sportsbook id']
+                        }
+                    if lines['ml'] is None:
+                        lines['ml'] = line
+        print ('lines: ', lines)
+    except TypeError as error:
+        print(TypeError) 
+        print(repr(error))
+    except ValueError:
+        print(ValueError)
     return {
-        'message': 'lines update'
+        "lines": lines 
     }
 
     
