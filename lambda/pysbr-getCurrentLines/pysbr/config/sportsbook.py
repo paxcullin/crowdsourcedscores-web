@@ -166,10 +166,10 @@ class Sportsbook(Config):
                 If a provided search term string cannot be matched with a sportsbook.
         """
         terms = utils.make_list(terms)
-        sysids = []
+        sysids = {}
         for t in terms:
             if isinstance(t, int):
-                sysids.append(t)
+                sysids[t] = t
             else:
                 old_t = t
                 try:
@@ -177,9 +177,10 @@ class Sportsbook(Config):
                 except AttributeError:
                     raise TypeError("Search terms must be ints or strings.")
                 try:
-                    id = [v[t] for k, v in self._sportsbook_sys_ids.items() if t in v][0]
-                    sysids.append(id)
+                    id = [v[t] for k, v in self._sportsbook_ids.items() if t in v][0]
+                    sbid = [v[t] for k, v in self._sportsbook_sys_ids.items() if t in v][0]
+                    sysids[id] = sbid
                 except IndexError:
                     raise ValueError(f"Could not find sportsbook {old_t}.")
-        print('sysids: ', sysids)
-        return list(OrderedDict.fromkeys(sysids))
+        # print('sysids: ', sysids)
+        return sysids

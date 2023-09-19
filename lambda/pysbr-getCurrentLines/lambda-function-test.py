@@ -42,7 +42,7 @@ try:
         print('no game id')
     sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
     sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
-    print('sbids: ', sbids)
+    print('sbsysids: ', sbsysids)
     clspread = CurrentLines([gameid],nfl.market_ids('pointspread'),sbids)
     cltotal = CurrentLines([gameid],nfl.market_ids('totals'),sbids)
     clmoneyline = CurrentLines([gameid],nfl.market_ids('money-line'),sbids)
@@ -59,17 +59,17 @@ try:
             print('line: ', line)
             bookid = line['sportsbook id']
             sysid = None
-            if (bookid == 20):
-                sysid = 238
-            if (bookid == 3):
-                sysid = 19
-            if (bookid == 10):
-                sysid = 93
-            if (bookid == 8):
-                sysid = 1096
-            if (bookid == 9):
-                sysid = 999996
-            sb = Sportsbooks(sysid)
+            # if (bookid == 20):
+            #     sysid = 238
+            # if (bookid == 3):
+            #     sysid = 19
+            # if (bookid == 10):
+            #     sysid = 93
+            # if (bookid == 8):
+            #     sysid = 1096
+            # if (bookid == 9):
+            #     sysid = 999996
+            sb = Sportsbooks(sbsysids[bookid])
             print('spread sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
@@ -81,7 +81,9 @@ try:
     if len(cltotal.list()) > 0:
         for line in cltotal.list():
             line['type'] = 'total'
-            sb = Sportsbooks(line['sportsbook id'])
+            # sb = Sportsbooks(line['sportsbook id'])
+
+            sb = Sportsbooks(sbsysids[bookid])
             print('total sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
@@ -94,7 +96,9 @@ try:
     if len(clmoneyline.list()) > 0:
         for line in clmoneyline.list():
             line['type'] = 'ml'
-            sb = Sportsbooks(line['sportsbook id'])
+            # sb = Sportsbooks(line['sportsbook id'])
+
+            sb = Sportsbooks(sbsysids[bookid])
             print('ml sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
