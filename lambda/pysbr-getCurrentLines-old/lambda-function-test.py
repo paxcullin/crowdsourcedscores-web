@@ -20,7 +20,6 @@ cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'a
 
 nfl = NFL()
 
-sportsbook = Sportsbook()
 
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
@@ -32,9 +31,9 @@ gameid = 4700690
 try:
     if gameid is None:
         print('no game id')
-    blspread = BestLines([gameid],nfl.market_ids('pointspread'))
-    bltotal = BestLines([gameid],nfl.market_ids('totals'))
-    blmoneyline = BestLines([gameid],nfl.market_ids('money-line'))
+    blspread = CurrentLines([gameid],nfl.market_ids('pointspread'))
+    bltotal = CurrentLines([gameid],nfl.market_ids('totals'))
+    blmoneyline = CurrentLines([gameid],nfl.market_ids('money-line'))
 
     lines = []
     # print('bl: ', bl)
@@ -42,8 +41,6 @@ try:
         for line in blspread.list():
             line['type'] = 'spread'
             sb = Sportsbooks(line['sportsbook id'])
-            print('spreadline: ', line)
-            print('spread sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
                     line['sportsbook'] = {
@@ -51,35 +48,30 @@ try:
                         'id': book['sportsbook id']
                     }
             
-            lines.append(line)
+                lines.append(line)
     if len(bltotal.list()) > 0:
         for line in bltotal.list():
             line['type'] = 'total'
-            
             sb = Sportsbooks(line['sportsbook id'])
-            print('totalline: ', line)
-            print('total sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
                     line['sportsbook'] = {
                         'name': book['name'],
                         'id': book['sportsbook id']
                     }
-            lines.append(line)
+                lines.append(line)
 
     if len(blmoneyline.list()) > 0:
         for line in blmoneyline.list():
             line['type'] = 'ml'
-            sb1 = Sportsbooks(line['sportsbook id'])
-            print('mlline: ', line)
-            print('ml sb:', line['sportsbook id'], len(sb.list()))
+            sb = Sportsbooks(line['sportsbook id'])
             if len(sb.list()) > 0:
                 for book in sb.list():
                     line['sportsbook'] = {
                         'name': book['name'],
                         'id': book['sportsbook id']
                     }
-            lines.append(line)
+                lines.append(line)
     print (lines)
 except TypeError as error:
     print(TypeError) 
