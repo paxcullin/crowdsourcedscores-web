@@ -11,7 +11,7 @@ gql==2.0.0
 graphql-core==2.3.2
 idna==2.10
 jmespath==1.0.1
-numpy==1.20.1
+numpy==1.22.0
 pandas==1.2.3
 pathlib==1.0.1
 platformdirs==2.2.0
