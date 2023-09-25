@@ -1,11 +1,14 @@
-var  mongo = require("mongodb").MongoClient,
-assert = require("assert"),
-AWS = require('aws-sdk'),
-{config} = require('config');
+var  mongo = require("mongodb").MongoClient;
+assert = require("assert");
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const {config} = require('config');
+const AWSConfig = { region: "us-west-2" };
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
-const lambda = new AWS.Lambda()
+const lambda = new LambdaClient(AWSConfig);
+const sns = new SNSClient(AWSConfig);
 
 const generateRandomString = function(length) {
     let text = '';
@@ -16,7 +19,6 @@ const generateRandomString = function(length) {
     }
     return text;
 };
-const sns = new AWS.SNS();
 
 const axios = require("axios");
 
@@ -47,14 +49,39 @@ exports.handler = async (event, context, callback) => {
     const collection = db.collection('games')
     
     //get current game week from getGameWeek 
-    let gameWeekResponse = await lambda.invoke({
+    const lambdaParams = {
         FunctionName: 'getGameWeek', // the lambda function we are going to invoke
         InvocationType: 'RequestResponse',
         LogType: 'None',
-        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2022, "season": "reg"}`
-    }).promise()
-    const gameWeekResponseJSON = JSON.parse(gameWeekResponse.Payload);
+        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
+    }
+    const command = new InvokeCommand(lambdaParams, function(err, data) {
+        console.log('err', err);
+        console.log('data', data);
+        if (err) {
+        context.fail('addToGroupError', err);
+        } else {
+        context.succeed('Lambda_B said '+ data.Payload);
+        }
+    })
+    const payload = `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
+    const getGameWeek = async (funcName, payload) => {
+        const command = new InvokeCommand({
+        FunctionName: funcName,
+        Payload: JSON.stringify(payload),
+        LogType: 'Tail',
+        });
+    
+        const { Payload, LogResult } = await lambda.send(command);
+        const result = Buffer.from(Payload).toString();
+        const logs = Buffer.from(LogResult, "base64").toString();
+        return { logs, result };
+    };
+    const gameWeekResponse = await getGameWeek("getGameWeek", payload);
+    const gameWeekResponseJSON = JSON.parse(gameWeekResponse.result);
+    // console.log('gameWeekResponse: ', gameWeekResponseJSON);
     gameWeek = gameWeekResponseJSON.week;
+    const { year, season } = gameWeekResponseJSON;
     
     var gameObjectsArray = [];
     var queryPromises = [];
@@ -166,7 +193,8 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=2022&seasontype=3&week=${gameWeek ? gameWeek : 11}`
+    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=${year ? year : 2023}&seasontype=${season === "post" ? 3 : 2}&week=${gameWeek ? gameWeek : 11}`
+    console.log('URL', URL);
     const options = {
         Method: 'GET'
     };
@@ -176,7 +204,7 @@ exports.handler = async (event, context, callback) => {
             if (!response) {
                 context.done(null, { status: 200, message: 'No URL response'});
             }
-            console.log('response', response.data)
+            // console.log('response', response.data)
             const scoresJSON = response.data;
 
             if (scoresJSON && scoresJSON.events && scoresJSON.events.length > 0) {
@@ -218,42 +246,46 @@ exports.handler = async (event, context, callback) => {
                                 // if mongogame doesn't have results
                                 if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
                                     queryPromises.push(collection.updateOne({ gameId: gameId }, update));
-                                    if (game.status === "final") {
-                                        params = {
-                                            Message: "Game " + gameId + " updated", 
-                                            Subject: "Game Updated",
-                                            TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated",
-                                            MessageAttributes: { 
-                                                gameId: {
-                                                    DataType: "Number",
-                                                    StringValue: gameId.toString()
-                                                },
-                                                gameWeek: {
-                                                    DataType: "Number",
-                                                    StringValue: mongoGameWeek.toString()
-                                                },
-                                                year: {
-                                                    DataType: "Number",
-                                                    StringValue: year.toString()
-                                                },
-                                                sport: {
-                                                    DataType: "String",
-                                                    StringValue: sport
-                                                },
-                                                season: {
-                                                    DataType: "String",
-                                                    StringValue: season
-                                                }
+                                } 
+                                if (game.status === "final") {
+                                    params = {
+                                        Message: "Game " + gameId + " updated", 
+                                        Subject: "Game Updated",
+                                        TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated",
+                                        MessageAttributes: { 
+                                            gameId: {
+                                                DataType: "Number",
+                                                StringValue: gameId.toString()
+                                            },
+                                            gameWeek: {
+                                                DataType: "Number",
+                                                StringValue: mongoGameWeek.toString()
+                                            },
+                                            year: {
+                                                DataType: "Number",
+                                                StringValue: year.toString()
+                                            },
+                                            sport: {
+                                                DataType: "String",
+                                                StringValue: sport
+                                            },
+                                            season: {
+                                                DataType: "String",
+                                                StringValue: season
                                             }
                                         }
-                                        sns.publish(params, function(err, response) {
-                                            if (err) {
-                                                context.done("SNS error: " + err, null);
-                                            }
-                                            console.log("SNS Publish complete: ", response);
-                                        })
                                     }
-                                } 
+                                    console.log("SNS Publishing")
+                                    const SNSPublishCommand = new PublishCommand(params, function(err, response) {
+                                        if (err) {
+                                            context.done("SNS error: " + err, null);
+                                        }
+                                        console.log("SNS Publish complete: ", response);
+                                        context.done (null, result)
+                                        });
+    
+                                    const SNSResponse = await sns.send(SNSPublishCommand)
+                                }
                                 // for troubleshooting when the games aren't updating
                                 // else {
                                 //     if (game.results && mongoGame.results) {
