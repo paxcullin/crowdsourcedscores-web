@@ -41,7 +41,10 @@ try:
     if gameid is None:
         print('no game id')
     sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+    print ('sbids: ', sbids)
     sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+    sbsysid2 = sblib.sysids(20)
+    print('sbsysid2: ', sbsysid2)
     print('sbsysids: ', sbsysids)
     clspread = CurrentLines([gameid],nfl.market_ids('pointspread'),sbids)
     cltotal = CurrentLines([gameid],nfl.market_ids('totals'),sbids)
@@ -56,7 +59,7 @@ try:
     if len(clspread.list()) > 0:
         for line in clspread.list():
             line['type'] = 'spread'
-            print('line: ', line)
+            # print('line: ', line)
             bookid = line['sportsbook id']
             sysid = None
             # if (bookid == 20):
