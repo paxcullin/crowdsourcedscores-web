@@ -83,8 +83,9 @@ exports.handler = async (event, context, callback) => {
     gameWeek = gameWeekResponseJSON.week;
     const { year, season } = gameWeekResponseJSON;
     
-    var gameObjectsArray = [];
-    var queryPromises = [];
+    let gameObjectsArray = [];
+    let games = [];
+    let queryPromises = [];
     // // https://nfl.cheapdatafeeds.com/api/json/scores/v1/football/nfl?month=09&year=2020&seasonType=Regular&api-key=fc0a9ea1a8e4738bb912beb77adcbe90
     function parseGames(games) {
         
@@ -198,7 +199,6 @@ exports.handler = async (event, context, callback) => {
     const options = {
         Method: 'GET'
     };
-    gameObjectsArray = [];
     try {
         const response = await axios.get(URL, {})
             if (!response) {
@@ -212,21 +212,31 @@ exports.handler = async (event, context, callback) => {
                 let games = scoresJSON.events;
                 parseGames(games);
                 console.log('gameObjectsArray.length', gameObjectsArray.length)
-                if (gameObjectsArray.length > 0) {
+                let mongoGames = await collection.find({year: year, season: season, gameWeek: gameWeek}).toArray();
+                console.log('mongoGames.length', mongoGames.length)
+                if (gameObjectsArray.length > 0 && mongoGames && mongoGames.length > 0) {
+
                     // console.log('gameObjectsArray.length > 0', gameObjectsArray.length > 0)
                         let gameIndex = 0;
                         for (game of gameObjectsArray) {
                             // const game = gameObjectsArray[gameIndex];
                             // find game and update if the status, clock, and period are not equal to the up-to-date values
                             const filter = {"awayTeam.code": game.awayTeam.code, "homeTeam.code": game.homeTeam.code, year: game.year, season: game.season}
-                            // console.log('filter', filter)
+                            console.log('filter', filter)
                             try {
-                                let mongoGame = await collection.findOne(filter)
+                                let mongoGameFilter = mongoGames.filter((g, index) => {
+                                    // console.log('g, game: ', g, game)
+                                    return g.awayTeam.code === game.awayTeam.code && g.homeTeam.code === game.homeTeam.code
+                                })
+                                // console.log('mongoGameFilter', mongoGameFilter)
                                 // console.log('mongoGame', mongoGame)
-                                if (!mongoGame) {
+                                if (mongoGameFilter.length === 0) {
                                     console.log('missing game: ', filter);
                                     continue;
                                 }
+
+                                const mongoGame = mongoGameFilter[0];
+                                // console.log('mongoGame', mongoGame)
                                 const { gameId, year, season, sport } = mongoGame
                                 const mongoGameWeek = mongoGame.gameWeek
                                 let update = {
@@ -245,9 +255,8 @@ exports.handler = async (event, context, callback) => {
                                 // only updating if the game has changed from what's in Mongo
                                 // if mongogame doesn't have results
                                 if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
-                                    queryPromises.push(collection.updateOne({ gameId: gameId }, update));
-                                } 
-                                if (game.status === "final") {
+                                    queryPromises.push({updateOne: { filter: { gameId: gameId }, update } });
+
                                     params = {
                                         Message: "Game " + gameId + " updated", 
                                         Subject: "Game Updated",
@@ -300,22 +309,17 @@ exports.handler = async (event, context, callback) => {
                                 // console.log('done');
                                 
                             // console.log('queryPromises.length:', queryPromises.length)
+                            // console.log('queryPromises', queryPromises);
+                                if (queryPromises.length > 0) {
+                                    const bulkWriteResponse = await collection.bulkWrite(queryPromises);
+                                    console.log('bulkWriteResponse', bulkWriteResponse);
+                                    context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`});
+                                } else {
+                                    context.done(null, { message: `Response: No update - ${queryPromises.length}; ${games.length} total games`});
+                                }
 
-                                Promise.all(queryPromises)
-                                    .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                                    .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
-                                
                             }
                         
-                            // console.log({missingItem: payload.Item})
-                            if (gameIndex === (gameObjectsArray.length -1)) {
-                                // console.log('queryPromises.length:', queryPromises.length)
-
-                                Promise.all(queryPromises)
-                                    .then(response => { console.log(`Promise response: ${JSON.stringify(response)}`);  context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`}) })
-                                    .catch(reject => { console.log(`Promise reject: ${reject}`); context.done(null, { message: `Reject: ${queryPromises.length} updated; ${games.length} total games`})})
-                                
-                            }
                         }
                 } else {
                     context.done(null, { status: 200, message: 'No games returned'});
@@ -325,7 +329,7 @@ exports.handler = async (event, context, callback) => {
             }
     } catch(rpError) {
             console.log('rpError', rpError)
-            context.fail({ rpError: JSON.stringify(rpError) }, null)
+            context.fail({ message: `Reject: ${queryPromises.length} updated; ${games.length} total games`}, null)
     }
 
 }
