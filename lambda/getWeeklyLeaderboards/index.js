@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
         
         
         const leaderboard = await leaderboardsCollection.findOne({ sport: sport, year: year, gameWeek: week, season: season })
-        console.log({ leaderboard })
+        // console.log({ leaderboard })
         if (leaderboard && leaderboard.weekly && leaderboard.weekly.users && leaderboard.overall && leaderboard.overall.users) {
             var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
             var leaderboardWeeklyUsers = leaderboard.weekly.users;
@@ -89,7 +89,7 @@ exports.handler = async (event, context) => {
                 leaderboard.overall.users = leaderboardOverallUsersMapped
                 leaderboard.weekly.usersStars = leaderboardWeeklyStars
                 leaderboard.overall.usersStars = leaderboardOverallStars
-                console.log({ Leaderboard: JSON.stringify(leaderboard)})
+                // console.log({ Leaderboard: JSON.stringify(leaderboard)})
                 context.done(null, leaderboard)
             }
         } else {
@@ -107,6 +107,9 @@ exports.handler = async (event, context) => {
         }
     } catch (err) {
         console.log('getWeeklyLeaderboard err:', err)
-        context.fail({ status: 500, message: `Error: ${JSON.stringify(err)}` })
+        context.fail({ status: 500, message: `Error: ${JSON.stringify(err)}`,
+            weekly: {},
+            overall: {}
+        })
     }
 }
