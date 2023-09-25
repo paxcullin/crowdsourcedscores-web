@@ -5,6 +5,10 @@ const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modu
 const {config} = require('config');
 const AWSConfig = { region: "us-west-2" };
 
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const lambda = new LambdaClient({region: 'us-west-2'});
+const SNS = new SNSClient({region: 'us-west-2'});
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 const lambda = new LambdaClient(AWSConfig);
@@ -47,8 +51,8 @@ exports.handler = async (event, context, callback) => {
     const client = await mongo.connect(MONGO_URL)
     const db = client.db('pcsm');
     const collection = db.collection('games')
-    
     //get current game week from getGameWeek 
+
     const lambdaParams = {
         FunctionName: 'getGameWeek', // the lambda function we are going to invoke
         InvocationType: 'RequestResponse',
@@ -211,7 +215,7 @@ exports.handler = async (event, context, callback) => {
                 // console.log('scoresJSON: ', scoresJSON.games[0])
                 let games = scoresJSON.events;
                 parseGames(games);
-                console.log('gameObjectsArray.length', gameObjectsArray.length)
+                // console.log('gameObjectsArray.length', gameObjectsArray.length)
                 if (gameObjectsArray.length > 0) {
                     // console.log('gameObjectsArray.length > 0', gameObjectsArray.length > 0)
                         let gameIndex = 0;
@@ -244,6 +248,7 @@ exports.handler = async (event, context, callback) => {
                                 };
                                 // only updating if the game has changed from what's in Mongo
                                 // if mongogame doesn't have results
+                              
                                 if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
                                     queryPromises.push(collection.updateOne({ gameId: gameId }, update));
                                 } 
