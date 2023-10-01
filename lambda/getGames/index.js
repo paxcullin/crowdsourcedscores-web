@@ -57,13 +57,13 @@ exports.handler = async (event, context) => {
             "year": parseInt(event.year),
             "gameWeek": parseInt(event.gameWeek),
             "season": season,
-            "sport": event.sport,
-            "$or": [
-                {'homeTeam.rank': {$gt: 0}},
-                {'awayTeam.rank': {$gt: 0}}
-            ]
+            "sport": event.sport
         }
     }
+    // "$or": [
+    //     {'homeTeam.rank': {$gt: 0}},
+    //     {'awayTeam.rank': {$gt: 0}}
+    // ]
     // need to come back and clean this up
     event.season ? gamesQuery.season = event.season : null;
     if (event.sport === 'ncaam') {

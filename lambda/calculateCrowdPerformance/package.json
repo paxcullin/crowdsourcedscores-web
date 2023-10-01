@@ -1,15 +1,17 @@
 {
-  "name": "aggregate-predictions-lambda",
+  "name": "calculateCrowdPerformance",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r aggregatePredictions.zip ."
+    "package": "zip -r calculateCrowdPerformance.zip .",
+    "upload": "aws lambda update-function-code --function-name calculateCrowdPerformance --zip-file fileb://calculateCrowdPerformance.zip --publish",
+    "test": "aws lambda invoke --function-name calculateCrowdPerformance response.json"
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-lambda": "^3.388.0",
     "mongodb": "^3.0.5"
   }
 }
