@@ -256,44 +256,45 @@ exports.handler = async (event, context, callback) => {
                                 // if mongogame doesn't have results
                                 if ((game.status === "inProgress" || game.status === "final") && ((game.status !== mongoGame.status || (game.results && !mongoGame.results)) || (game.results && mongoGame.results && (game.results.period !== mongoGame.results.period && game.results.clock !== mongoGame.results.clock)))) {
                                     queryPromises.push({updateOne: { filter: { gameId: gameId }, update } });
-
-                                    params = {
-                                        Message: "Game " + gameId + " updated", 
-                                        Subject: "Game Updated",
-                                        TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated",
-                                        MessageAttributes: { 
-                                            gameId: {
-                                                DataType: "Number",
-                                                StringValue: gameId.toString()
-                                            },
-                                            gameWeek: {
-                                                DataType: "Number",
-                                                StringValue: mongoGameWeek.toString()
-                                            },
-                                            year: {
-                                                DataType: "Number",
-                                                StringValue: year.toString()
-                                            },
-                                            sport: {
-                                                DataType: "String",
-                                                StringValue: sport
-                                            },
-                                            season: {
-                                                DataType: "String",
-                                                StringValue: season
+                                    if (game.status === "final") {
+                                        params = {
+                                            Message: "Game " + gameId + " updated", 
+                                            Subject: "Game Updated",
+                                            TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated",
+                                            MessageAttributes: { 
+                                                gameId: {
+                                                    DataType: "Number",
+                                                    StringValue: gameId.toString()
+                                                },
+                                                gameWeek: {
+                                                    DataType: "Number",
+                                                    StringValue: mongoGameWeek.toString()
+                                                },
+                                                year: {
+                                                    DataType: "Number",
+                                                    StringValue: year.toString()
+                                                },
+                                                sport: {
+                                                    DataType: "String",
+                                                    StringValue: sport
+                                                },
+                                                season: {
+                                                    DataType: "String",
+                                                    StringValue: season
+                                                }
                                             }
                                         }
+                                        console.log("SNS Publishing")
+                                        const SNSPublishCommand = new PublishCommand(params, function(err, response) {
+                                            if (err) {
+                                                context.done("SNS error: " + err, null);
+                                            }
+                                            console.log("SNS Publish complete: ", response);
+                                            context.done (null, result)
+                                            });
+        
+                                        const SNSResponse = await sns.send(SNSPublishCommand)
                                     }
-                                    console.log("SNS Publishing")
-                                    const SNSPublishCommand = new PublishCommand(params, function(err, response) {
-                                        if (err) {
-                                            context.done("SNS error: " + err, null);
-                                        }
-                                        console.log("SNS Publish complete: ", response);
-                                        context.done (null, result)
-                                        });
-    
-                                    const SNSResponse = await sns.send(SNSPublishCommand)
                                 }
                                 // for troubleshooting when the games aren't updating
                                 // else {
