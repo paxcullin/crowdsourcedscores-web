@@ -19,6 +19,7 @@ endDate = datetime.strptime('2024-02-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
+sblib = Sportsbook()
 
 
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
@@ -27,70 +28,94 @@ nfl = NFL()
 
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
+    books = {
+        'Pinnacle': 238,
+        '5Dimes': 19,
+        'Bookmaker': 93,
+        'BetOnline': 1096,
+        'Bovada': 999996
+    }
+    gameid = e['gameid']
     try:
-        gameid = e['gameId']
         if gameid is None:
             print('no game id')
-            return {
-                'statusCode': 400,
-                'body': 'no game id'
-            }
-        blspread = BestLines([gameid],nfl.market_ids('pointspread'))
-        bltotal = BestLines([gameid],nfl.market_ids('totals'))
-        blmoneyline = BestLines([gameid],nfl.market_ids('money-line'))
+        sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+        print ('sbids: ', sbids)
+        sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+        sbsysid2 = sblib.sysids(20)
+        print('sbsysid2: ', sbsysid2)
+        print('sbsysids: ', sbsysids)
+        clspread = CurrentLines([gameid],nfl.market_ids('pointspread'),sbids)
+        cltotal = CurrentLines([gameid],nfl.market_ids('totals'),sbids)
+        clmoneyline = CurrentLines([gameid],nfl.market_ids('money-line'),sbids)
 
         lines = {
-            "spread": None,
-            "total": None,
-            "ml": None
+            'spread': [],
+            'total': [],
+            'moneyline': []
         }
         # print('bl: ', bl)
-        if len(blspread.list()) > 0:
-            for line in blspread.list():
+        if len(clspread.list()) > 0:
+            for line in clspread.list():
                 line['type'] = 'spread'
-                sb = Sportsbooks(line['sportsbook id'])
+                # print('line: ', line)
+                bookid = line['sportsbook id']
+                sysid = None
+                # if (bookid == 20):
+                #     sysid = 238
+                # if (bookid == 3):
+                #     sysid = 19
+                # if (bookid == 10):
+                #     sysid = 93
+                # if (bookid == 8):
+                #     sysid = 1096
+                # if (bookid == 9):
+                #     sysid = 999996
+                sb = Sportsbooks(sbsysids[bookid])
                 print('spread sb:', line['sportsbook id'], len(sb.list()))
-                if sb != None and len(sb.list()) > 0:
+                if len(sb.list()) > 0:
                     for book in sb.list():
                         line['sportsbook'] = {
                             'name': book['name'],
                             'id': book['sportsbook id']
                         }
-                    if lines['spread'] is None:
-                        lines['spread'] = line
-        if len(bltotal.list()) > 0:
-            for line in bltotal.list():
+                    lines['spread'].append(line)
+        if len(cltotal.list()) > 0:
+            for line in cltotal.list():
                 line['type'] = 'total'
-                sb = Sportsbooks(line['sportsbook id'])
-                print('total sb:', line['sportsbook id'], len(sb.list()))
-                if sb != None and len(sb.list()) > 0:
-                    for book in sb.list():
-                        line['sportsbook'] = {
-                            'name': book['name'],
-                            'id': book['sportsbook id']
-                        }
-                    if lines['total'] is None:
-                        lines['total'] = line
+                # sb = Sportsbooks(line['sportsbook id'])
 
-        if len(blmoneyline.list()) > 0:
-            for line in blmoneyline.list():
-                line['type'] = 'ml'
-                sb = Sportsbooks(line['sportsbook id'])
-                print('ml sb:', line['sportsbook id'], len(sb.list()))
-                if sb != None and len(sb.list()) > 0:
+                sb = Sportsbooks(sbsysids[bookid])
+                print('total sb:', line['sportsbook id'], len(sb.list()))
+                if len(sb.list()) > 0:
                     for book in sb.list():
                         line['sportsbook'] = {
                             'name': book['name'],
                             'id': book['sportsbook id']
                         }
-                    if lines['ml'] is None:
-                        lines['ml'] = line
-        print ('lines: ', lines)
+                    lines['total'].append(line)
+
+        if len(clmoneyline.list()) > 0:
+            for line in clmoneyline.list():
+                line['type'] = 'ml'
+                # sb = Sportsbooks(line['sportsbook id'])
+
+                sb = Sportsbooks(sbsysids[bookid])
+                print('ml sb:', line['sportsbook id'], len(sb.list()))
+                if len(sb.list()) > 0:
+                    for book in sb.list():
+                        line['sportsbook'] = {
+                            'name': book['name'],
+                            'id': book['sportsbook id']
+                        }
+                    lines['moneyline'].append(line)
+        print (lines)
     except TypeError as error:
         print(TypeError) 
         print(repr(error))
-    except ValueError:
+    except ValueError as error:
         print(ValueError)
+        print(repr(error))
     return {
         "lines": lines 
     }
