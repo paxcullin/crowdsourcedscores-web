@@ -29,13 +29,13 @@ sblib = Sportsbook()
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
     books = {
-        'Pinnacle': 238,
-        '5Dimes': 19,
-        'Bookmaker': 93,
-        'BetOnline': 1096,
-        'Bovada': 999996
+        20: 'Pinnacle',
+        3: '5Dimes',
+        16: 'Bookmaker',
+        8: 'BetOnline',
+        9: 'Bovada'
     }
-    gameid = e['gameid']
+    gameid = e['gameId']
     try:
         if gameid is None:
             print('no game id')
@@ -58,8 +58,8 @@ def lambda_handler(e, context):
         if len(clspread.list()) > 0:
             for line in clspread.list():
                 line['type'] = 'spread'
-                # print('line: ', line)
-                bookid = line['sportsbook id']
+                print('line: ', line['sportsbook id'])
+                line['name'] = books[line['sportsbook id']]
                 sysid = None
                 # if (bookid == 20):
                 #     sysid = 238
@@ -71,44 +71,22 @@ def lambda_handler(e, context):
                 #     sysid = 1096
                 # if (bookid == 9):
                 #     sysid = 999996
-                sb = Sportsbooks(sbsysids[bookid])
-                print('spread sb:', line['sportsbook id'], len(sb.list()))
-                if len(sb.list()) > 0:
-                    for book in sb.list():
-                        line['sportsbook'] = {
-                            'name': book['name'],
-                            'id': book['sportsbook id']
-                        }
-                    lines['spread'].append(line)
+                # sb = Sportsbooks(sbsysids[bookid])
+                lines['spread'].append(line)
         if len(cltotal.list()) > 0:
             for line in cltotal.list():
                 line['type'] = 'total'
-                # sb = Sportsbooks(line['sportsbook id'])
-
-                sb = Sportsbooks(sbsysids[bookid])
-                print('total sb:', line['sportsbook id'], len(sb.list()))
-                if len(sb.list()) > 0:
-                    for book in sb.list():
-                        line['sportsbook'] = {
-                            'name': book['name'],
-                            'id': book['sportsbook id']
-                        }
-                    lines['total'].append(line)
+                # sb = Sportsbooks(line['sportsbook id'])                
+                line['name'] = books[line['sportsbook id']]
+                lines['total'].append(line)
 
         if len(clmoneyline.list()) > 0:
             for line in clmoneyline.list():
                 line['type'] = 'ml'
                 # sb = Sportsbooks(line['sportsbook id'])
 
-                sb = Sportsbooks(sbsysids[bookid])
-                print('ml sb:', line['sportsbook id'], len(sb.list()))
-                if len(sb.list()) > 0:
-                    for book in sb.list():
-                        line['sportsbook'] = {
-                            'name': book['name'],
-                            'id': book['sportsbook id']
-                        }
-                    lines['moneyline'].append(line)
+                line['name'] = books[line['sportsbook id']]
+                lines['moneyline'].append(line)
         print (lines)
     except TypeError as error:
         print(TypeError) 
