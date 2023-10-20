@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+*
+!lambda-function-test.py
+!lambda_function.py
+!Pipfile
+!s3-upload-script.txt
+!.gitignore
+!*query.py
