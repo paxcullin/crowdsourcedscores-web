@@ -1,0 +1,45 @@
+{
+    "games": [
+        {
+            "_id": "64960837ed832768d54cabd4",
+            "gameId": 4700925,
+            "awayTeam": {
+                "participantId": 1523,
+                "code": "NYJ",
+                "shortName": "Jets",
+                "fullName": "N.Y. Jets Jets"
+            },
+            "gameWeek": 1,
+            "homeTeam": {
+                "participantId": 1520,
+                "code": "CLE",
+                "shortName": "Browns",
+                "fullName": "Cleveland Browns"
+            },
+            "location": "Canton, USA",
+            "odds": {
+                "spread": "",
+                "spreadOdds": "",
+                "total": "",
+                "totalOdds": "",
+                "history": []
+            },
+            "season": "pre",
+            "sport": "nfl",
+            "startDateTime": "2023-08-04T00:00:00.000Z",
+            "status": "scheduled",
+            "weekName": "Hall of Fame",
+            "year": 2023,
+            "crowd": {
+                "awayTeam": {
+                    "score": 24
+                },
+                "homeTeam": {
+                    "score": 27
+                },
+                "total": 51,
+                "spread": -3
+            }
+        }
+    ]
+}

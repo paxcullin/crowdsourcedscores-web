@@ -15,19 +15,64 @@ exports.handler = (event, context, callback) => {
         }],
         nfl: [{
                 season: 'pre',
-                startDate: new Date('2022-03-01')
+                startDate: new Date('2023-03-01')
             },
             {
             season: 'reg',
-            startDate: new Date('2022-09-01')
-        },
-        {
-            season: 'post',
-            startDate: new Date('2023-01-10')
-        }]
+            startDate: new Date('2023-08-29')
+            },
+            {
+                season: 'post',
+                startDate: new Date('2024-01-10')
+            }
+        ]
     }
     const seasonDates = {
         nfl: {
+            2023: {
+                pre: {
+                    start: new Date('2023-07-01'),
+                    weeks: [
+                        {weekName: 'HOF'},
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3}
+                        
+                        ]
+                },
+                reg: {
+                    start: new Date('2023-08-29'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16},
+                        {weekName: 17},
+                        {weekName: 18}
+                        ]
+                },
+                post: {
+                    start: new Date('2024-01-10'),
+                    weeks: [
+                        {weekName: 'WC'},
+                        {weekName: 'DIV'},
+                        {weekName: 'CONF'},
+                        {weekName: 'SB'}
+                        ]
+                }
+            },
             2022: {
                 pre: {
                     start: new Date('2022-06-01'),
@@ -184,7 +229,8 @@ exports.handler = (event, context, callback) => {
                         {weekName: 14},
                         {weekName: 15},
                         {weekName: 16},
-                        {weekName: 17}
+                        {weekName: 17},
+                        {weekName: 18}
                         ]
                 },
                 post: {
@@ -257,6 +303,33 @@ exports.handler = (event, context, callback) => {
                     start: new Date('2022-11-10'),
                     weeks: [{weekName: 'Bowls'}]
                 }
+            },
+            2023: {
+                reg: {
+                    start: new Date('2023-08-19'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16},
+                        ]
+                },
+                post: {
+                    start: new Date('2023-11-10'),
+                    weeks: [{weekName: 'Bowls'}]
+                }
             }
         },
         ncaam: {
@@ -282,7 +355,7 @@ exports.handler = (event, context, callback) => {
     const now = Date.now();
     let nowYear = (new Date(now).getFullYear());
     var year = new Date(now).getFullYear();
-    if (nowYear === 2023) {
+    if (nowYear === 2024) {
         nowYear--;
     }
     console.log({nowYear, year})
@@ -305,7 +378,7 @@ exports.handler = (event, context, callback) => {
         console.log({season})
     if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
-                    Date.UTC(2022, 11, 14),  // 2019 Postseason Week 1
+                    Date.UTC(2023, 11, 14),  // 2019 Postseason Week 1
                     Date.UTC(2023, 7, 24),  // 2019 Postseason Week 3
                     
                     ]
@@ -327,24 +400,23 @@ exports.handler = (event, context, callback) => {
                 // Date.UTC(2018, 11, 5), // week 14
                 // Date.UTC(2018, 11, 12), // Bowls
                 // Date.UTC(2019, 8, 1), // Bowls
-                Date.UTC(2019, 7, 26),  // 2019 Week 1
-                Date.UTC(2019, 8, 1),  // 2019 Week 2
-                Date.UTC(2019, 8, 9),  // 2019 Week 3
-                Date.UTC(2019, 8, 16),  // 2019 Week 4
-                Date.UTC(2019, 8, 23),  // 2019 Week 5
-                Date.UTC(2019, 8, 30),  // 2019 Week 6
-                Date.UTC(2019, 9, 7),  // 2019 Week 7
-                Date.UTC(2019, 9, 15),  // 2019 Week 8
-                Date.UTC(2019, 9, 22),  // 2019 Week 9
-                Date.UTC(2019, 9, 29),  // 2019 Week 10
-                Date.UTC(2019, 10, 5),  // 2019 Week 11
-                Date.UTC(2019, 10, 12),  // 2019 Week 12
-                Date.UTC(2019, 10, 19),  // 2019 Week 13
-                Date.UTC(2019, 10, 26),  // 2019 Week 14
-                Date.UTC(2019, 11, 3),  // 2019 Week 15
-                Date.UTC(2019, 11, 10),  // 2019 Week 16
-                Date.UTC(2019, 11, 17),  // 2019 Week 17
-                Date.UTC(2020, 7, 25),  // 2019 Week 17
+                Date.UTC(2023, 7, 19),  // 2019 Week 1
+                Date.UTC(2023, 8, 5),  // 2023 Week 2
+                Date.UTC(2023, 8, 12),  // 2023 Week 3
+                Date.UTC(2023, 8, 19),  // 2023 Week 4
+                Date.UTC(2023, 8, 26),  // 2023 Week 5
+                Date.UTC(2023, 9, 3),  // 2023 Week 6
+                Date.UTC(2023, 9, 10),  // 2023 Week 7
+                Date.UTC(2023, 9, 17),  // 2023 Week 8
+                Date.UTC(2023, 9, 24),  // 2023 Week 9
+                Date.UTC(2023, 9, 31),  // 2023 Week 10
+                Date.UTC(2023, 10, 7),  // 2023 Week 11
+                Date.UTC(2023, 10, 14),  // 2023 Week 12
+                Date.UTC(2023, 10, 21),  // 2023 Week 13
+                Date.UTC(2023, 10, 28),  // 2023 Week 14
+                Date.UTC(2023, 11, 5),  // 2023 Week 15
+                Date.UTC(2023, 11, 12),  // 2023 Week 16
+                Date.UTC(2020, 7, 25),  // 2023 Week 17
             ]
     } else if (sport === 'ncaam') {
         weekStartDates = [
@@ -377,34 +449,33 @@ exports.handler = (event, context, callback) => {
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2022, 8, 2),  // 2020 Week 1
-                    Date.UTC(2022, 8, 14),  // 2020 Week 2
-                    Date.UTC(2022, 8, 21),  // 2020 Week 3
-                    Date.UTC(2022, 8, 28),  // 2020 Week 4
-                    Date.UTC(2022, 9, 5),  // 2020 Week 5
-                    Date.UTC(2022, 9, 12),  // 2020 Week 6
-                    Date.UTC(2022, 9, 19),  // 2020 Week 7
-                    Date.UTC(2022, 9, 26),  // 2020 Week 8
-                    Date.UTC(2022, 10, 2),  // 2020 Week 9
-                    Date.UTC(2022, 10, 9),  // 2020 Week 10
-                    Date.UTC(2022, 10, 16),  // 2020 Week 11
-                    Date.UTC(2022, 10, 23),  // 2020 Week 12
-                    Date.UTC(2022, 10, 30),  // 2020 Week 13
-                    Date.UTC(2022, 11, 7),  // 2020 Week 14
-                    Date.UTC(2022, 11, 14),  // 2020 Week 15
-                    Date.UTC(2022, 11, 21),  // 2020 Week 16
-                    Date.UTC(2022, 11, 28),  // 2020 Week 17
-                    Date.UTC(2023, 0, 4),  // 2020 Week 18
-                    Date.UTC(2023, 0, 11),  // 2021 Week 19
+                    Date.UTC(2023, 7, 29),  // 2020 Week 1
+                    Date.UTC(2023, 8, 13),  // 2020 Week 2
+                    Date.UTC(2023, 8, 20),  // 2020 Week 3
+                    Date.UTC(2023, 8, 27),  // 2020 Week 4
+                    Date.UTC(2023, 9, 4),  // 2020 Week 5
+                    Date.UTC(2023, 9, 11),  // 2020 Week 6
+                    Date.UTC(2023, 9, 18),  // 2020 Week 7
+                    Date.UTC(2023, 9, 25),  // 2020 Week 8
+                    Date.UTC(2023, 10, 1),  // 2020 Week 9
+                    Date.UTC(2023, 10, 8),  // 2020 Week 10
+                    Date.UTC(2023, 10, 15),  // 2020 Week 11
+                    Date.UTC(2023, 10, 22),  // 2020 Week 12
+                    Date.UTC(2023, 10, 29),  // 2020 Week 13
+                    Date.UTC(2023, 11, 6),  // 2020 Week 14
+                    Date.UTC(2023, 11, 13),  // 2020 Week 15
+                    Date.UTC(2023, 11, 20),  // 2020 Week 16
+                    Date.UTC(2023, 11, 27),  // 2020 Week 17
+                    Date.UTC(2024, 0, 3),  // 2020 Week 18
                     ];
                     break;
             case 'post':
                 weekStartDates = [
-                    Date.UTC(2023, 0, 12),  // 2020 Postseason Week 1
-                    Date.UTC(2023, 0, 18),  // 2020 Postseason Week 2
-                    Date.UTC(2023, 0, 25),  // 2020 Postseason Week 3
-                    Date.UTC(2023, 1, 1),  // 2020 Postseason Week 4
-                    Date.UTC(2023, 7, 1),  // 2022-2023 Season
+                    Date.UTC(2024, 0, 10),  // 2020 Postseason Week 1
+                    Date.UTC(2024, 0, 17),  // 2020 Postseason Week 2
+                    Date.UTC(2024, 0, 24),  // 2020 Postseason Week 3
+                    Date.UTC(2024, 0, 31),  // 2020 Postseason Week 4
+                    Date.UTC(2024, 7, 1),  // 2022-2023 Season
                     ];
                     break;
             default:

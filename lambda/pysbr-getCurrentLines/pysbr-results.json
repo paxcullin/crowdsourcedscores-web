@@ -1,0 +1,39 @@
+{
+    "scores": [
+        {"participant id": 1519, "period": 4, "points scored": 3},
+        {"participant id": 1536, "period": 4, "points scored": 0}, 
+        {"participant id": 1519, "period": 3, "points scored": 14},
+        {"participant id": 1536, "period": 3, "points scored": 0},
+        {"participant id": 1536, "period": 2, "points scored": 6},
+        {"participant id": 1519, "period": 2, "points scored": 7},
+        {"participant id": 1536, "period": 1, "points scored": 10},
+        {"participant id": 1519, "period": 1, "points scored": 0}
+    ],
+        "sport id": 4,
+        "league id": 16,
+        "season id": 29178,
+        "event id": 4407479,
+        "description": "Pittsburgh Steelers@Philadelphia Eagles",
+        "location": "Philadelphia",
+        "country": "USA",
+        "event status": "complete",
+        "datetime": "2021-08-12T16:30:00-07:00",
+        "stadium type": "Undefined",
+        "participants": [
+            {
+                "participant id": 1519, "is home": False, 
+                "source": {
+                    "name": "Pittsburgh", "nickname": "Steelers", "short name": "Pittsburgh", "abbreviation": "PIT", "location": "Pittsburgh"
+                }
+            }, 
+            {
+                "participant id": 1536, "is home": True, 
+                "source": {
+                    "name": "Philadelphia", "nickname": "Eagles", "short name": "Philadelphia", "abbreviation": "PHI", "location": "Philadelphia"
+                }
+            }
+        ],
+        "event group": {
+            "event group id": 2, "name": "PRE Week 1", "alias": "Pre Week 1"
+        }
+}
