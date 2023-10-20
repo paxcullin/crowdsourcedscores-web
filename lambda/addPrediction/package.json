@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r addPrediction.zip ."
+    "package": "zip -r addPrediction.zip .",
+    "test": "aws lambda invoke --function-name addPrediction --cli-binary-format raw-in-base64-out --payload file://test-prediction.json prediction.json",
+    "upload": "aws lambda update-function-code --function-name addPrediction --zip-file fileb://addPrediction.zip --publish"
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
     "jsonschema": "^1.1.0",
-    "mongodb": "^3.6.3"
+    "mongodb": "^5.7.0"
   }
 }

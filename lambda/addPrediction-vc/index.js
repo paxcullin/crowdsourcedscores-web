@@ -21,53 +21,64 @@ const requestSchema = {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
         "gameWeek": {"type":"integer"},
-        "awayTeam": {
+        "prediction": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                "awayTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "homeTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                }
             },
-            "required": ["code", "fullName", "shortName", "score"]
-        },
-        "homeTeam": {
-            "type": "object",
-            "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+            "required": ["awayTeam", "homeTeam"]
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 const requestSchemaNCAAM = {
     "type": "object",
     "properties": {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
-        "awayTeam": {
+        "prediction": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 150}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
-        },
-        "homeTeam": {
-            "type": "object",
-            "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 150}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+                "awayTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 150}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "homeTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 150}
+                    },
+                "required": ["code", "fullName", "shortName", "score"]
+                }
+            }
         }
     },
     "required": ["gameId", "awayTeam", "homeTeam"]
@@ -191,13 +202,13 @@ exports.handler = async (event, context) => {
             succeeded: true
         };
 
-        var {prediction, wager, userId } = event;
+        var {prediction, wager, userId, preferred_username, gameId, year, sport, gameWeek, season } = event;
         
         if (!userId || userId === "") {
-            context.done(null, { succeeded: false})
+            context.done(null, { userId, succeeded: false})
         }
         var validateRequest;
-        (event.sport !== 'ncaam') ? validateRequest = validate(prediction, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
+        (event.sport !== 'ncaam') ? validateRequest = validate(event, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
         if (validateRequest.errors && validateRequest.errors.length > 0) {
             result.message = 'Invalid request error(s)';
             result.errors = [];
@@ -207,7 +218,8 @@ exports.handler = async (event, context) => {
             }
             return context.fail(JSON.stringify(result));
         }
-
+        prediction.gameWeek = gameWeek;
+        prediction.preferred_username = preferred_username;
         prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
         prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
         prediction.submitted = new Date();
@@ -228,8 +240,7 @@ exports.handler = async (event, context) => {
             // first make sure the prediction is not too late
             // deadline is 5 min prior to kickoff
                 const msHour = 300000;
-                
-                const { gameId, year, sport, gameWeek, season } = prediction
+                console.log('gameId', gameId)
                 
                 var gamesCollection = 'games';
                 var gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year), "gameWeek": parseInt(gameWeek)};
@@ -262,7 +273,7 @@ exports.handler = async (event, context) => {
                     }
                 // end kickoff time check
                 
-                var existingObjQuery = {userId: userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year), sport: sport, season: season};
+                var existingObjQuery = {userId: userId, gameId: parseInt(gameId), year: parseInt(year), sport: sport, season: season};
                     
                     //get user groups in order to add groups to predictions for scoring
                     
@@ -377,19 +388,21 @@ exports.handler = async (event, context) => {
                             }, {session})
                             // update user's VC balance
                             if (wager) {
-                                const profileUpdate = await db.collection('profileExtended').updateOne({ username: userId }, { $inc: { currency: wager.currency * -1 }, $addToSet: {
-                                    "wagers.history": {
-                                        gameId,
-                                        year,
-                                        sport,
-                                        gameWeek,
-                                        season,
-                                        ...wager
+                                if (wager.currency <= userProfile.currency) {
+                                    const profileUpdate = await db.collection('profileExtended').updateOne({ username: userId }, { $inc: { currency: wager.currency * -1 }, $addToSet: {
+                                        "wagers.history": {
+                                            gameId,
+                                            year,
+                                            sport,
+                                            gameWeek,
+                                            season,
+                                            ...wager
+                                        }
+                                    }}, {session})
+                                    if (profileUpdate.modifiedCount === 0) {
+                                        session.abortSession()
+                                        console.error("the user's profile was not updated. Aborting session.");
                                     }
-                                }}, {session})
-                                if (profileUpdate.modifiedCount === 0) {
-                                    session.abortSession()
-                                    console.error("the user's profile was not updated. Aborting session.");
                                 }
                             }
                             // get total currency bet for a given week
@@ -426,7 +439,7 @@ exports.handler = async (event, context) => {
                                 // kick off new aggregation calculation
                                 
                                 var params = {
-                                    Message: "Prediction for game " + prediction.gameId + " submitted by " + userId, 
+                                    Message: "Prediction for game " + gameId + " submitted by " + userId, 
                                     Subject: "Prediction Submitted",
                                     TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
                                     MessageAttributes: { 
@@ -470,6 +483,7 @@ exports.handler = async (event, context) => {
                 context.done(null, { status: 200, message: `Wagers and Predictions submitted; ${result}`})
             }
     } catch (addPredictionError) {
+        console.log('addPredictionError', addPredictionError)
         context.fail({status: 500, message: addPredictionError}, null);
     }
 };
