@@ -25,5 +25,5 @@ requests==2.31.0
 Rx==1.6.1
 s3transfer==0.6.0
 six==1.15.0
-urllib3==1.26.17
+urllib3==1.26.18
 virtualenv==20.7.1
