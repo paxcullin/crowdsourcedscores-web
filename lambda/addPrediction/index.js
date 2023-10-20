@@ -258,9 +258,10 @@ exports.handler = (event, context) => {
                 if (groups[0]) {
                     prediction.groups = groups[0].groups;
                     if (prediction.groups && prediction.groups.length > 0) {
-                        prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
-                        console.log("prediction.groups: ", prediction.groups)
+                    prediction.groups = prediction.groups.filter(group => group.year === year && group.sport === sport)
+                    console.log("prediction.groups: ", prediction.groups)
                     }
+                    
                 }
             
                 // update existing if prediction exists for userId and gameId combo

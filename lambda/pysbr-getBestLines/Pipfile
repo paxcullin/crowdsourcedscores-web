@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+black = "*"
+pytest = "*"
+vcrpy = "*"
+pytest-cov = "*"
+tzlocal = "*"
+pytest-lazy-fixture = "*"
+pandasgui = "*"
+python-sbr = {editable = true, path = "."}
+sphinx = "*"
+sphinx-rtd-theme = "*"
+twine = "*"
+rope = "*"
+
+[packages]
+gql = "*"
+pytz = "*"
+pyyaml = "*"
+pandas = "*"
+jupyterlab = "*"
+fake-useragent = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

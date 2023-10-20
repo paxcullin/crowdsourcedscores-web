@@ -10,6 +10,7 @@
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.0.5"
+    "@aws-sdk/client-lambda": "^3.388.0",
+    "mongodb": "^3.6.10"
   }
 }
