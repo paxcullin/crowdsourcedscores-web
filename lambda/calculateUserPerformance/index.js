@@ -1,10 +1,11 @@
 'use strict';
 
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+
 var assert = require("assert"),
     mongo = require("mongodb").MongoClient,
-    {config} = require('config');
-    const AWS = require('aws-sdk');
-    const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+    {config} = require('config'),
+    lambda = new LambdaClient({region: 'us-west-2'});
     
 
     const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
@@ -225,43 +226,40 @@ function getTotalResult(game, gameOdds, gamePrediction) {
 }
 
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    var record = ""
-    if (event.Records) {
-        record = event.Records[0];
-    }
-    var eventGameId, eventGameWeek, eventSport, eventSeason, eventYear;
-    var gamesCollection = 'games';
-    var predictionsCollection = 'predictions';
-    var gameQuery = {year:2018, results: {$exists: true}}
-    var predictionQuery = { year: 2018, predictionScore: { $exists: false } };
-    if (record.Sns.MessageAttributes.userId) {
-        predictionQuery.userId = record.Sns.MessageAttributes.userId;
-    }
-    
-    if (record != "") {
-        eventGameId = parseInt(record.Sns.MessageAttributes.gameId.Value);
-        eventGameWeek = parseInt(record.Sns.MessageAttributes.gameWeek.Value);
-        eventSport = record.Sns.MessageAttributes.sport.Value;
-        eventSeason = record.Sns.MessageAttributes.season.Value;
-        eventYear = parseInt(record.Sns.MessageAttributes.year.Value);
-        if (eventSport === 'ncaaf') {
-            gamesCollection = 'games-ncaaf';
-            predictionsCollection = 'predictions-ncaaf';
-        } else if (eventSport === 'ncaam') {
-            gamesCollection = 'games-ncaam'
-            predictionsCollection = 'predictions-ncaam'
+    try {
+        var record = ""
+        if (event.Records) {
+            record = event.Records[0];
         }
-        gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, gameWeek: eventGameWeek, results: {$exists: true}}
-    }
-    //console.log("gameQuery: ", gameQuery)
+        var eventGameId, eventGameWeek, eventSport, eventSeason, eventYear;
+        var gamesCollection = 'games';
+        var predictionsCollection = 'predictions';
+        var gameQuery = {year:2018, results: {$exists: true}}
+        var predictionQuery = { year: 2018, predictionScore: { $exists: false } };
+        if (record.Sns.MessageAttributes.userId) {
+            predictionQuery.userId = record.Sns.MessageAttributes.userId;
+        }
+        
+        if (record != "") {
+            eventGameId = parseInt(record.Sns.MessageAttributes.gameId.Value);
+            eventGameWeek = parseInt(record.Sns.MessageAttributes.gameWeek.Value);
+            eventSport = record.Sns.MessageAttributes.sport.Value;
+            eventSeason = record.Sns.MessageAttributes.season.Value;
+            eventYear = parseInt(record.Sns.MessageAttributes.year.Value);
+            if (eventSport === 'ncaaf') {
+                gamesCollection = 'games-ncaaf';
+                predictionsCollection = 'predictions-ncaaf';
+            } else if (eventSport === 'ncaam') {
+                gamesCollection = 'games-ncaam'
+                predictionsCollection = 'predictions-ncaam'
+            }
+            gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, gameWeek: eventGameWeek, results: {$exists: true}}
+        }
+        //console.log("gameQuery: ", gameQuery)
 
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-        if(err) {
-            context.done(err, null);
-        }
+        const client = await mongo.connect(MONGO_URL);
 
         const db = client.db('pcsm');
 
@@ -298,126 +296,91 @@ exports.handler = (event, context) => {
         var predictionScore = 0;
         var collection = db.collection(gamesCollection);
         var queryPromises = [];
-        collection.find(gameQuery, {_id: false})
-        .toArray(function(err, games) {
-            assert.equal(err, null);
-            if(err) {
-                context.done(err, null);
+        const games = await collection.find(gameQuery, {_id: false}).toArray();
+        
+        games.forEach(async function(game, gameIndex) {
+            //console.log("game: ", game)
+            predictionQuery = {
+                year:game.year,
+                sport: game.sport,
+                gameId: game.gameId,
+                gameWeek: game.gameWeek
             }
-            games.forEach(function(game, gameIndex) {
-                //console.log("game: ", game)
-                predictionQuery = {
-                    year:game.year,
-                    sport: game.sport,
-                    gameId: game.gameId,
-                    gameWeek: game.gameWeek
-                }
-                //, predictionScore: {$exists: false}
-                //console.log("predictionQuery: ", predictionQuery)
-                //console.log('predictionsCollection: ', predictionsCollection)
-                db.collection(predictionsCollection).find(predictionQuery, {_id: false})
-                .toArray(function (err, predictions) {
-                    var predictionsArray = predictions.length;
-                    if (predictions.length === 0) {
-                        console.log("No predictions found for this predictionQuery: " + JSON.stringify(predictionQuery))
-                        context.done(null, {message: "No predictions found for this predictionQuery"})
-                    }
-                    //console.log("predictions.length: ", predictions);
-                    assert.equal(err, null);
-                    if (err) {
-                        context.fail(err, null);
-                    }
-                    
-                    predictions.forEach(function(gamePrediction, predictionIndex) {
-                        console.log("predictionIndex: ", predictionIndex)
-    
-                        // var gamePredictionFilter = predictions.filter(function(prediction) {
-                        //     return game.gameId === prediction.gameId && game.year === prediction.year && game.results
-                        // });
+            //, predictionScore: {$exists: false}
+            //console.log("predictionQuery: ", predictionQuery)
+            //console.log('predictionsCollection: ', predictionsCollection)
+            const predictions = await db.collection(predictionsCollection).find(predictionQuery, {_id: false}).toArray()
+            var predictionsArray = predictions.length;
+            if (predictions.length === 0) {
+                console.log("No predictions found for this predictionQuery: " + JSON.stringify(predictionQuery))
+                context.done(null, {message: "No predictions found for this predictionQuery"})
+            }
+            //console.log("predictions.length: ", predictions);
+            
+            predictions.forEach(function(gamePrediction, predictionIndex) {
+                console.log("predictionIndex: ", predictionIndex)
+
+                // var gamePredictionFilter = predictions.filter(function(prediction) {
+                //     return game.gameId === prediction.gameId && game.year === prediction.year && game.results
+                // });
+                
+                //console.log("gamePredictionFilter: ", gamePredictionFilter);
+                // console.log("game.results:", game.results);
+                // console.log("game.startDateTime: ", game.startDateTime);
+                // if(gamePredictionFilter.length > 0 && game.results && Date.parse(game.startDateTime) < Date.now()) {
+                //     for (var i=0;i < gamePredictionFilter.length; i++) {
+                //         var gamePrediction = gamePredictionFilter[i];
                         
-                        //console.log("gamePredictionFilter: ", gamePredictionFilter);
-                        // console.log("game.results:", game.results);
-                        // console.log("game.startDateTime: ", game.startDateTime);
-                        // if(gamePredictionFilter.length > 0 && game.results && Date.parse(game.startDateTime) < Date.now()) {
-                        //     for (var i=0;i < gamePredictionFilter.length; i++) {
-                        //         var gamePrediction = gamePredictionFilter[i];
-                                
-                                // console.log("gamePrediction: ",gamePrediction);
-                                // var gameResultsObj = {};
-                                // var gameSpreadResult, gameTotalOU;
-                                // gameResultsObj = getWinnerLoser(game.awayTeam.code, game.homeTeam.code, game.results);
-                                // //console.log("gameResultsObj: ", gameResultsObj);
-                                // var predictionResultsObj = {};
-                                // var predictionResultsScores = {
-                                //     awayTeam: {
-                                //         score: gamePrediction.awayTeam.score
-                                //     },
-                                //     homeTeam: {
-                                //         score: gamePrediction.homeTeam.score
-                                //     }
-                                // };
-                                
-                                // predictionResultsObj = getWinnerLoser(gamePrediction.awayTeam.code, gamePrediction.homeTeam.code, predictionResultsScores)
-                        gamePrediction.predictionScore = 0;
-                        const { odds } = gamePrediction && gamePrediction.odds ? gamePrediction : game
-                        console.log({ odds, gamePrediction: gamePrediction && gamePrediction.odds ? gamePrediction.odds : null, gameOdds: game.odds });
-                        var straightUpResults = getWinnerLoser(game, gamePrediction);
-                        var spreadResult = getSpread(game, odds,gamePrediction);
-                        var totalResult = getTotalResult(game, odds,gamePrediction);
-                        var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, gameWeek: gamePrediction.gameWeek};
-                        console.log("existingObjQuery: " + JSON.stringify(existingObjQuery));
-                        //update prediction with results for userId and gameId combo
-                        queryPromises.push(db.collection(predictionsCollection).update(existingObjQuery,
-                            gamePrediction, {upsert: true}));
-                        if (games.length === 1) {
-                            if ((predictionIndex+1) === predictions.length) {
-                                Promise.all(queryPromises)
-                                .then((response) => {
-                                  var calculateIndividualUserPerformanceWeeklyParams = {
-                                      FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
-                                      InvocationType: 'Event',
-                                      LogType: 'None',
-                                      Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": "${eventSeason}", "year": ${eventYear} }`
-                                    };
-                                    lambda.invoke(calculateIndividualUserPerformanceWeeklyParams, function(err, data) {
-                                      if (err) {
-                                        console.log("calculateIndividualUserPerformanceWeekly err: ", err);
-                                      } else {
-                                        console.log('calculateIndividualUserPerformanceWeekly1 response: ', data.Payload);
-                                        
-                                        
-                                        context.done(null, games);
-                                      }
-                                    })
-                                })
-                                .catch(err => {
-                                    console.log('Promises err: ', err);
-                                    context.done(err, null)
-                                });
-                            }
-                        }
-                    });
-                });
-                console.log("gameIndex: ", gameIndex)
-                if (games.length !== 1 && (gameIndex+1) === games.length) {
-                  var calculateIndividualUserPerformanceWeeklyParams = {
-                      FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
-                      InvocationType: 'Event',
-                      LogType: 'None',
-                      Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": ${eventSeason}, "year": ${eventYear} }`
-                    };
-                    lambda.invoke(calculateIndividualUserPerformanceWeeklyParams, function(err, data) {
-                      if (err) {
+                        // console.log("gamePrediction: ",gamePrediction);
+                        // var gameResultsObj = {};
+                        // var gameSpreadResult, gameTotalOU;
+                        // gameResultsObj = getWinnerLoser(game.awayTeam.code, game.homeTeam.code, game.results);
+                        // //console.log("gameResultsObj: ", gameResultsObj);
+                        // var predictionResultsObj = {};
+                        // var predictionResultsScores = {
+                        //     awayTeam: {
+                        //         score: gamePrediction.awayTeam.score
+                        //     },
+                        //     homeTeam: {
+                        //         score: gamePrediction.homeTeam.score
+                        //     }
+                        // };
+                        
+                        // predictionResultsObj = getWinnerLoser(gamePrediction.awayTeam.code, gamePrediction.homeTeam.code, predictionResultsScores)
+                gamePrediction.predictionScore = 0;
+                const { odds } = gamePrediction && gamePrediction.odds ? gamePrediction : game
+                console.log({ odds, gamePrediction: gamePrediction && gamePrediction.odds ? gamePrediction.odds : null, gameOdds: game.odds });
+                var straightUpResults = getWinnerLoser(game, gamePrediction);
+                var spreadResult = getSpread(game, odds,gamePrediction);
+                var totalResult = getTotalResult(game, odds,gamePrediction);
+                var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, gameWeek: gamePrediction.gameWeek};
+                console.log("existingObjQuery: " + JSON.stringify(existingObjQuery));
+                //update prediction with results for userId and gameId combo
+                queryPromises.push(db.collection(predictionsCollection).update(existingObjQuery,
+                    gamePrediction, {upsert: true}));
+            });
+            console.log("gameIndex: ", gameIndex)
+            if (games.length !== 1 && (gameIndex+1) === games.length) {
+                var calculateIndividualUserPerformanceWeeklyParams = new InvokeCommand({
+                    FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
+                    InvocationType: 'Event',
+                    LogType: 'None',
+                    Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": ${eventSeason}, "year": ${eventYear} }`
+                }, function(err, data) {
+                    if (err) {
                         console.log("calculateIndividualUserPerformanceWeekly err: ", err);
-                      } else {
+                    } else {
                         console.log('calculateIndividualUserPerformanceWeekly2 response: ', data.Payload);
                         
                         
                         context.done(null, games);
-                      }
-                    })
-                }
-            });
-        })
-    });
+                    }
+                    });
+                const lambdainvoke = await lambda.send(calculateIndividualUserPerformanceWeeklyParams)
+            }
+        });
+    } catch (err) {
+        console.log('error: ', err);
+        context.fail({message: err}, null);
+    }
 };

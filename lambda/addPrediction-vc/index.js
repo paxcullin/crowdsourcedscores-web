@@ -202,7 +202,7 @@ exports.handler = async (event, context) => {
             succeeded: true
         };
 
-        var {prediction, wager, userId, gameId, year, sport, gameWeek, season } = event;
+        var {prediction, wager, userId, preferred_username, gameId, year, sport, gameWeek, season } = event;
         
         if (!userId || userId === "") {
             context.done(null, { userId, succeeded: false})
@@ -218,7 +218,8 @@ exports.handler = async (event, context) => {
             }
             return context.fail(JSON.stringify(result));
         }
-
+        prediction.gameWeek = gameWeek;
+        prediction.preferred_username = preferred_username;
         prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
         prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
         prediction.submitted = new Date();
