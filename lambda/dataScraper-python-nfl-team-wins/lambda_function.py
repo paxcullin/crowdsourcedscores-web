@@ -204,7 +204,7 @@ scrapedOdds = []
 print('oddsTable:', len(oddsTable))
 for teamOdds in oddsTable:
     teamName = teamOdds.find_element(By.TAG_NAME, 'a').text.replace(" 2023/24", "")
-    teamTotal = teamOdds.find_element(By.CLASS_NAME, 'sportsbook-outcome-cell__line').text
+    teamTotal = teamOdds.find_element(By.CLASS_NAME, 'line-cell__line-curr').text
     teamJuiceSpans = teamOdds.find_elements(By.CLASS_NAME, 'sportsbook-odds') 
     teamOverJuiceString = teamJuiceSpans[0].text
     print('teamOverJuiceString: ', teamOverJuiceString)
@@ -224,6 +224,7 @@ for teamOdds in oddsTable:
         teamUnderJuice = teamUnderJuice[1:]
     else:
         teamUnderJuice = int(teamUnderJuice[1:])*-1
+    print('teamTotal: ', teamTotal)
     winObject = {
         "wins": float(teamTotal),
         "overOdds": int(teamOverJuice),
