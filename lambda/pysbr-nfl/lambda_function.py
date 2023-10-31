@@ -2,7 +2,7 @@ from pysbr import *
 from pysbr.config.config import Config
 from datetime import datetime, timedelta
 from datetime import date
-from pymongo import MongoClient
+from pymongo import MongoClient, UpdateOne
 import boto3
 
 sns = boto3.client('sns')
@@ -36,7 +36,9 @@ betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOn
 
 def lambda_handler2(ev, context):
     print('event: ', ev, 'context: ', context, 'len(e.list()): ', len(e.list()))
-    print(*e.list(), sep = ",")
+    # print(*e.list(), sep = ",")
+    writeOperations = []
+    gameids = []
     if len(e.list()) > 0:
         try:
             for game in e.list():
@@ -123,6 +125,7 @@ def lambda_handler2(ev, context):
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
 
                     gameObject["gameId"] = game['event id']
+                    gameids.append(game['event id'])
                     if (gameResult):
                         gameObject["gameId"] = gameResult["gameId"]
                         # if (hasattr(gameResult,'odds')):
@@ -255,13 +258,13 @@ def lambda_handler2(ev, context):
                         else:
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
-                        collection.update_one({
+                        writeOperations.append(UpdateOne({
                             "gameId": gameObject["gameId"]
                             },
                             {
                                 "$set": gameObject
                             },
-                            upsert=True)
+                            upsert=True))
 
                         
                         # print(hasattr(gameObject, "results"))
@@ -383,16 +386,26 @@ def lambda_handler2(ev, context):
                         if (gameOdds["spread"] != "" or gameOdds["total"] != ""):
                             gameObject['odds']['history'].append(gameOdds)
                         if (gameObject["status"] == "scheduled"):
-                            # print(gameObject)
-                            collection.update_one({
+                            #print(gameObject)
+                            writeOperations.append(UpdateOne({
                                 "gameId": gameObject['gameId']
                                 },
                                 {
                                     "$set": gameObject
                                 },
-                                upsert=True)
+                                upsert=True))
                 else:
                     print('no event group for', game)
+            if len(writeOperations) > 0:
+                writeResult = collection.bulk_write(writeOperations)
+                print('writeResult: ', writeResult)
+
+                lambda_client = boto3.client('lambda')
+                invoke_response = lambda_client.invoke(
+                    FunctionName="pysbr-nfl-getCurrentLines",
+                    Payload=",".join(str(x) for x in gameids)
+                )
+                print('invoke_response: ', invoke_response)
         except TypeError as error:
             print(TypeError, game) 
             print(repr(error))
