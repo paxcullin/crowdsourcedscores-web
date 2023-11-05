@@ -63,7 +63,7 @@ def get_lines(gameid):
 
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
-    gameids = e.get('gameids')
+    gameids = e
     if gameids is None or len(gameids) == 0:
         print('no game id')
         return {

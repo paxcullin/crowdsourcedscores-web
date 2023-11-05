@@ -3,7 +3,7 @@ from pysbr.config.config import Config
 from datetime import datetime, timedelta
 from datetime import date
 from pymongo import MongoClient, UpdateOne
-import boto3
+import boto3, json
 
 sns = boto3.client('sns')
 
@@ -32,6 +32,12 @@ betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOn
 
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
+lambda_client = boto3.client('lambda')
+gameWeekResponse = lambda_client.invoke(
+    FunctionName="getGameWeek"
+)
+gameWeek = json.load(gameWeekResponse.get('Payload'))
+print('gameWeek: ', gameWeek)
 
 
 def lambda_handler2(ev, context):
@@ -125,7 +131,8 @@ def lambda_handler2(ev, context):
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
 
                     gameObject["gameId"] = game['event id']
-                    gameids.append(game['event id'])
+                    if (gameWeek.get('week') == gameObject["gameWeek"]):
+                        gameids.append(game['event id'])
                     if (gameResult):
                         gameObject["gameId"] = gameResult["gameId"]
                         # if (hasattr(gameResult,'odds')):
@@ -399,13 +406,13 @@ def lambda_handler2(ev, context):
             if len(writeOperations) > 0:
                 writeResult = collection.bulk_write(writeOperations)
                 print('writeResult: ', writeResult)
+                payload="[" + ",".join(str(x) for x in gameids) + "]"
 
-                lambda_client = boto3.client('lambda')
-                invoke_response = lambda_client.invoke(
-                    FunctionName="pysbr-nfl-getCurrentLines",
-                    Payload=",".join(str(x) for x in gameids)
+                getCurrentLinesResponse = lambda_client.invoke(
+                    FunctionName="pysbr-getCurrentLines",
+                    Payload=payload
                 )
-                print('invoke_response: ', invoke_response)
+                print('getCurrentLinesResponse: ', getCurrentLinesResponse)
         except TypeError as error:
             print(TypeError, game) 
             print(repr(error))
