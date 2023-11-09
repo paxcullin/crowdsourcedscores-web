@@ -127,8 +127,8 @@ sportsbooks:
 
   - sbid: 1275
     paid: 16
-    nam: JustBet
-    alias: JustBet
+    nam: Bookmaker
+    alias: Bookmaker
 
   #   - sbid: 192
   #     paid: 43

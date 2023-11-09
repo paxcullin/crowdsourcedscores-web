@@ -28,7 +28,7 @@ sportsbook = Sportsbook()
 
 # def lambda_handler(e, context):
 # e = EventsByDateRange(nfl.league_id, startDate,endDate)
-gameid = 4700690
+gameid = 4700693
 try:
     if gameid is None:
         print('no game id')
@@ -41,11 +41,14 @@ try:
     if len(blspread.list()) > 0:
         for line in blspread.list():
             line['type'] = 'spread'
-            sb = Sportsbooks(line['sportsbook id'])
-            print('spreadline: ', line)
+            sbid = sportsbook.sysids(line['sportsbook id'])
+            sbtest = Sportsbooks(139)
+            print('sbid: ', sbid)
+            sb = Sportsbooks(sbid[line['sportsbook id']])
             print('spread sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
+                    print('book: ', book)
                     line['sportsbook'] = {
                         'name': book['name'],
                         'id': book['sportsbook id']
@@ -55,9 +58,9 @@ try:
     if len(bltotal.list()) > 0:
         for line in bltotal.list():
             line['type'] = 'total'
-            
-            sb = Sportsbooks(line['sportsbook id'])
-            print('totalline: ', line)
+            sbid = sportsbook.sysids(line['sportsbook id'])
+            print('sbid: ', sbid)
+            sb = Sportsbooks(sbid[line['sportsbook id']])
             print('total sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
@@ -70,8 +73,9 @@ try:
     if len(blmoneyline.list()) > 0:
         for line in blmoneyline.list():
             line['type'] = 'ml'
-            sb1 = Sportsbooks(line['sportsbook id'])
-            print('mlline: ', line)
+            sbid = sportsbook.sysids(line['sportsbook id'])
+            print('sbid: ', sbid)
+            sb = Sportsbooks(sbid[line['sportsbook id']])
             print('ml sb:', line['sportsbook id'], len(sb.list()))
             if len(sb.list()) > 0:
                 for book in sb.list():
