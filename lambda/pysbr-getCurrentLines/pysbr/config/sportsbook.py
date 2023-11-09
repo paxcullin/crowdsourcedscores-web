@@ -51,11 +51,14 @@ class Sportsbook(Config):
 
         s = self._sportsbooks["sportsbooks"]
         sportsbooks = {}
-        for k in ["name", "alias"]:
+        for k in ["name", "alias", "system sportsbook id"]:
             sportsbooks[k] = {}
             for x in s:
-                sportsbooks[k][x[k].lower()] = x["sportsbook id"]
-
+                if k == "system sportsbook id":
+                    sportsbooks[k][x["sportsbook id"]] = x["system sportsbook id"]
+                else:
+                    sportsbooks[k][x[k].lower()] = x["sportsbook id"]
+            print('sportsbooks: ', sportsbooks)
         return sportsbooks
 
     def _build_sportsbook_sys_ids(self) -> Dict[str, Dict[str, int]]:
@@ -169,7 +172,13 @@ class Sportsbook(Config):
         sysids = {}
         for t in terms:
             if isinstance(t, int):
-                sysids[t] = t
+                # sysids[t] = t
+                try:
+                    id = [v[t] for k, v in self._sportsbook_ids.items() if t in v][0]
+                    # sbid = [v[t] for k, v in self._sportsbook_sys_ids.items() if t in v][0]
+                    sysids[t] = id
+                except IndexError:
+                    raise ValueError(f"Could not find sportsbook {t}.")
             else:
                 old_t = t
                 try:

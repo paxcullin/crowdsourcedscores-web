@@ -19,6 +19,7 @@ endDate = datetime.strptime('2024-02-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
+sportsbook = Sportsbook()
 
 
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
@@ -48,7 +49,9 @@ def lambda_handler(e, context):
         if len(blspread.list()) > 0:
             for line in blspread.list():
                 line['type'] = 'spread'
-                sb = Sportsbooks(line['sportsbook id'])
+                sbid = sportsbook.sysids(line['sportsbook id'])
+                print('sbid: ', sbid)
+                sb = Sportsbooks(sbid[line['sportsbook id']])
                 print('spread sb:', line['sportsbook id'], len(sb.list()))
                 if sb != None and len(sb.list()) > 0:
                     for book in sb.list():
@@ -61,7 +64,9 @@ def lambda_handler(e, context):
         if len(bltotal.list()) > 0:
             for line in bltotal.list():
                 line['type'] = 'total'
-                sb = Sportsbooks(line['sportsbook id'])
+                sbid = sportsbook.sysids(line['sportsbook id'])
+                print('sbid: ', sbid)
+                sb = Sportsbooks(sbid[line['sportsbook id']])
                 print('total sb:', line['sportsbook id'], len(sb.list()))
                 if sb != None and len(sb.list()) > 0:
                     for book in sb.list():
@@ -75,7 +80,9 @@ def lambda_handler(e, context):
         if len(blmoneyline.list()) > 0:
             for line in blmoneyline.list():
                 line['type'] = 'ml'
-                sb = Sportsbooks(line['sportsbook id'])
+                sbid = sportsbook.sysids(line['sportsbook id'])
+                print('sbid: ', sbid)
+                sb = Sportsbooks(sbid[line['sportsbook id']])
                 print('ml sb:', line['sportsbook id'], len(sb.list()))
                 if sb != None and len(sb.list()) > 0:
                     for book in sb.list():
