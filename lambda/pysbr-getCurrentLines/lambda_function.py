@@ -56,6 +56,7 @@ def get_lines(gameid):
     if len(cltotal.list()) > 0:
         process_lines(cltotal.list(), 'total')
 
+
     if len(clmoneyline.list()) > 0:
         process_lines(clmoneyline.list(), 'moneyline')
 
