@@ -1,14 +1,13 @@
-from pysbr import *
+from pysbr import NFL, Sportsbook, CurrentLines
 from pysbr.config.config import Config
-from datetime import datetime, timedelta
-from datetime import date
-from pymongo import MongoClient
+from datetime import datetime, timedelta, date
+from pymongo import MongoClient, InsertOne, UpdateOne
 import boto3
 
 sns = boto3.client('sns')
 
-
-client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
+# Database connection
+client = MongoClient("mongodb+srv://" + str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
 db = client['pcsm']
 collection = db['games']
 
@@ -21,86 +20,71 @@ cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'a
 nfl = NFL()
 sblib = Sportsbook()
 
-
-# lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
-
-
-
-def lambda_handler(e, context):
-    print('event: ', e, 'context: ', context)
-    books = {
+def get_sportsbook_ids():
+    return {
         20: 'Pinnacle',
         3: '5Dimes',
         16: 'Bookmaker',
         8: 'BetOnline',
         9: 'Bovada'
     }
-    gameid = e['gameId']
-    try:
-        if gameid is None:
-            print('no game id')
-        sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
-        print ('sbids: ', sbids)
-        sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
-        sbsysid2 = sblib.sysids(20)
-        print('sbsysid2: ', sbsysid2)
-        print('sbsysids: ', sbsysids)
-        clspread = CurrentLines([gameid],nfl.market_ids('pointspread'),sbids)
-        cltotal = CurrentLines([gameid],nfl.market_ids('totals'),sbids)
-        clmoneyline = CurrentLines([gameid],nfl.market_ids('money-line'),sbids)
 
-        lines = {
-            'spread': [],
-            'total': [],
-            'moneyline': []
-        }
-        # print('bl: ', bl)
-        if len(clspread.list()) > 0:
-            for line in clspread.list():
-                line['type'] = 'spread'
-                print('line: ', line['sportsbook id'])
-                line['name'] = books[line['sportsbook id']]
-                sysid = None
-                # if (bookid == 20):
-                #     sysid = 238
-                # if (bookid == 3):
-                #     sysid = 19
-                # if (bookid == 10):
-                #     sysid = 93
-                # if (bookid == 8):
-                #     sysid = 1096
-                # if (bookid == 9):
-                #     sysid = 999996
-                # sb = Sportsbooks(sbsysids[bookid])
-                lines['spread'].append(line)
-        if len(cltotal.list()) > 0:
-            for line in cltotal.list():
-                line['type'] = 'total'
-                # sb = Sportsbooks(line['sportsbook id'])                
-                line['name'] = books[line['sportsbook id']]
-                lines['total'].append(line)
+def get_lines(gameid):
+    books = get_sportsbook_ids()
+    sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+    sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
 
-        if len(clmoneyline.list()) > 0:
-            for line in clmoneyline.list():
-                line['type'] = 'ml'
-                # sb = Sportsbooks(line['sportsbook id'])
+    clspread = CurrentLines([gameid], nfl.market_ids('pointspread'), sbids)
+    cltotal = CurrentLines([gameid], nfl.market_ids('totals'), sbids)
+    clmoneyline = CurrentLines([gameid], nfl.market_ids('money-line'), sbids)
 
-                line['name'] = books[line['sportsbook id']]
-                lines['moneyline'].append(line)
-        print (lines)
-    except TypeError as error:
-        print(TypeError) 
-        print(repr(error))
-    except ValueError as error:
-        print(ValueError)
-        print(repr(error))
-    return {
-        "lines": lines 
+    lines = {
+        'spread': [],
+        'total': [],
+        'moneyline': []
     }
 
-    
+    def process_lines(lines_list, line_type):
+        for line in lines_list:
+            line['type'] = line_type
+            line['name'] = books.get(line['sportsbook id'], 'Unknown')
+            lines[line_type].append(line)
+
+    if len(clspread.list()) > 0:
+        process_lines(clspread.list(), 'spread')
+
+    if len(cltotal.list()) > 0:
+        process_lines(cltotal.list(), 'total')
 
 
-    # print(cl.dataframe(e)[cols])
-    # for event in e.list():
-    #     print(event)
+    if len(clmoneyline.list()) > 0:
+        process_lines(clmoneyline.list(), 'moneyline')
+
+    return lines
+
+def lambda_handler(e, context):
+    print('event: ', e, 'context: ', context)
+    gameids = e
+    if gameids is None or len(gameids) == 0:
+        print('no game id')
+        return {
+            "lines": []
+        }
+    writeOperations = []
+    lines = []
+    for gameid in gameids: 
+        lines = get_lines(gameid)
+        writeOperations.append(UpdateOne(
+            {
+                'gameId': gameid
+            },
+            {
+                '$set': {
+                    'currentLines': lines
+                }
+            }
+        ))
+    collection.bulk_write(writeOperations)
+    return {
+        "lines": lines
+    }
