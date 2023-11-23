@@ -100,7 +100,7 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] > datetime.strptime('2023-11-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2023-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
