@@ -5,7 +5,6 @@ var mongo = require("mongodb").MongoClient,
     {username, password} = require('./config');
 
 
-const MongoClient = require('mongodb').MongoClient;
 const MONGO_URL = `mongodb+srv://${username}:${password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 // client.connect(err => {
 //   const collection = client.db("test").collection("devices");
