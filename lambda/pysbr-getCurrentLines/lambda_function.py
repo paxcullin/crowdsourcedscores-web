@@ -64,27 +64,42 @@ def get_lines(gameid):
 
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
-    gameids = e
+    gameids = e['gameIds']
+    sport = e['sport']
+    if (sport == 'ncaaf'):
+        collection = db['games-ncaaf']
     if gameids is None or len(gameids) == 0:
         print('no game id')
         return {
             "lines": []
         }
     writeOperations = []
-    lines = []
-    for gameid in gameids: 
+    for gameid in gameids:
+        lines = [] 
         lines = get_lines(gameid)
-        writeOperations.append(UpdateOne(
-            {
-                'gameId': gameid
-            },
-            {
-                '$set': {
-                    'currentLines': lines
+        print('lines: ', lines)
+        # writeOperations.append(UpdateOne(
+        #     {
+        #         'gameId': gameid
+        #     },
+        #     {
+        #         '$set': {
+        #             'currentLines': lines
+        #         }
+        #     }
+        # ))
+        if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
+            collection.update_one(
+                {
+                    'gameId': gameid
+                },
+                {
+                    '$set': {
+                        'currentLines': lines
+                    }
                 }
-            }
-        ))
-    collection.bulk_write(writeOperations)
+            )
+    # collection.bulk_write(writeOperations)
     return {
         "lines": lines
     }
