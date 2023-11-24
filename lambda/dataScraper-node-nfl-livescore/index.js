@@ -11,7 +11,6 @@ const lambda = new LambdaClient({region: 'us-west-2'});
 const SNS = new SNSClient({region: 'us-west-2'});
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
-const lambda = new LambdaClient(AWSConfig);
 const sns = new SNSClient(AWSConfig);
 
 const generateRandomString = function(length) {

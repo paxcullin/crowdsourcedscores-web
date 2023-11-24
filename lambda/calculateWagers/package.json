@@ -1,0 +1,17 @@
+{
+  "name": "calculateWagers",
+  "version": "1.0.0",
+  "description": "Calculates wagers for completed games and deductsor adds currency to the user's account",
+  "main": "index.js",
+  "repository": "https://www.github.com/paxcullin/crowdsourcedscores-web",
+  "author": "Chris Aronchick",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.2.0"
+  },
+  "scripts": {
+    "package": "zip -r calculateWagers.zip .",
+    "update": "zip -f calculateWagers.zip index.js",
+    "upload": "aws lambda update-function-code --function-name calculateWagers --zip-file fileb://calculateWagers.zip --publish"
+  }
+}

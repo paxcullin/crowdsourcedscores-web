@@ -69,12 +69,12 @@ exports.handler = async (event, context, callback) => {
                 context.fail({status: 500, message: "the user's profile was not updated. Aborting session."});
             } else {
                 session.commitTransaction();
-                context.done({status: 200, message: "Wager was successfully placed.", currencyBalance});
+                context.done(null, {status: 200, message: "Wager was successfully placed.", currencyBalance});
             }
         } else {
             session.abortTransaction()
             console.error("insufficient balance");
-            context.done({status: 200, message: "The user does not have enough currency to place this wager."});
+            context.done(null, {status: 200, message: "The user does not have enough currency to place this wager."});
         }
     } catch (err) {
         console.error(err);
