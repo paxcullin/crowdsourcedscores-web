@@ -8,26 +8,22 @@ var mongo = require("mongodb").MongoClient,
 
 // console.log('Loading function');
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-
-    mongo.connect(MONGO_URL, function (err, dbClient) {
-        assert.equal(null, err);
-        if(err) {
-            context.done(err, null);
-        }
+    try {
+        const dbClient = await mongo.connect(MONGO_URL);
         const db = dbClient.db('pcsm');
-        var collection = db.collection('predictions');
+        const collection = await db.collection('predictions');
         const { year, week, userId } = event
         if (!year || !week || !userId) { 
             context.done(null, { message: 'No user provided'})
         }
-        collection.find({"year": year,"gameWeek":  week, "preferred_username": userId, "results": { "$exists": true } }, {_id: false}).toArray(function(err, docs) {
-            assert.equal(err, null);
-            if(err) {
-                context.done(err, null);
-            }
-            context.done(null, docs);
-        });
-    });
+        const docs = await collection.find({"year": year,"gameWeek":  week, "preferred_username": userId, "results": { "$exists": true } }, {_id: false}).toArray();
+        context.done(null, docs);
+    } catch(err) {
+        assert.equal(null, err);
+        if(err) {
+            context.fail(err, null);
+        }
+    }
 };
