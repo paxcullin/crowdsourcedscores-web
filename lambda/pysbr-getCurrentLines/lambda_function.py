@@ -24,11 +24,20 @@ def get_sportsbook_ids():
     return {
         20: 'Pinnacle',
         3: '5Dimes',
-        16: 'Bookmaker',
+        10: 'Bookmaker',
         8: 'BetOnline',
         9: 'Bovada'
     }
-
+#{"data":{"sportsbook":{"sbid":93,"paid":10,"nam":"Bookmaker","iid":"5a7c720f731f32008e9e1fb2","pre":"http://www.bookmaker.eu/?","suf":"","afid":"5160f4dd-a4d6-4585-b9c1-b394e51ea223"}}}
+#bodog sbid: 5, paid: 9
+#pinnacle sbid: 238, paid: 20
+#5dimes sbid: 19, paid: 3
+#bet365: sbid: 43, paid: 5
+#bwin sbid: 44, paid: 47
+#betus sbid: 83, paid: 33
+#bookmaker sbid: 93, paid: 10
+#betcris sbid: 118, paid: 10
+#heritage sbid: 169, paid: 44
 def get_lines(gameid):
     books = get_sportsbook_ids()
     sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
