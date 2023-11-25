@@ -11,11 +11,11 @@ If only username, get all wagers for that user
 Optional: sport, year, season, gameweek
 */
 exports.handler = async (event, context, callback) => {
-    console.log(JSON.stringify(`Event: ${event}`))
+    console.log('Event: ', event)
 
-    const { username, sport, year, season, gameWeek, gameId } = event;
+    const { userId, sport, year, season, gameWeek, gameId } = event;
     let query = {
-        username
+        userId
     }
     try {
         const dbClient = await mongo.connect(MONGO_URL);
@@ -36,7 +36,9 @@ exports.handler = async (event, context, callback) => {
         if (gameId) {
             query.gameId = gameId
         }
+        console.log('query', query)
         const wagers = await collection.find(query).toArray();
+        console.log('wagers', wagers.length)
         context.done(null, { status: 200, wagers })
     } catch (err) {
         assert.equal(err);
