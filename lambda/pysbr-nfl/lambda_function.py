@@ -406,7 +406,7 @@ def lambda_handler2(ev, context):
             if len(writeOperations) > 0:
                 writeResult = collection.bulk_write(writeOperations)
                 print('writeResult: ', writeResult)
-                payload="{ sport: 'nfl', gameIds: [" + ",".join(str(x) for x in gameids) + "]}"
+                payload="{ \"sport\": \"nfl\", \"gameIds\": [" + ",".join(str(x) for x in gameids) + "]}"
 
                 getCurrentLinesResponse = lambda_client.invoke(
                     FunctionName="pysbr-getCurrentLines",

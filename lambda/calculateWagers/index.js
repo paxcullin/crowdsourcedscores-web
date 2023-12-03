@@ -6,6 +6,7 @@ const mongo = require("mongodb").MongoClient,
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 function evaluateMoneyline(awayTeam, homeTeam, odds) {
+    console.log('awayTeam, homeTeam', awayTeam, homeTeam)
     if (awayTeam.score > homeTeam.score) {
         return "away";
     } else {
@@ -14,6 +15,7 @@ function evaluateMoneyline(awayTeam, homeTeam, odds) {
 }
 
 function evaluateSpread(awayTeam, homeTeam, odds) {
+    console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
     if (awayTeam.score + odds.spread > homeTeam.score) {
         return "away";
     } else if (awayTeam.score + odds.spread < homeTeam.score) {
@@ -24,6 +26,7 @@ function evaluateSpread(awayTeam, homeTeam, odds) {
 }
 
 function evaluateTotal(awayTeam, homeTeam, odds) {
+    console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
     if (awayTeam.score + homeTeam.score > odds.total) {
         return "over";
     } else if (awayTeam.score + homeTeam.score < odds.total) {
@@ -46,11 +49,12 @@ function evaluateNet(odds, currency) {
 }
 
 exports.handler = async function (event, context, callback) {
-    console.log(JSON.stringify(`Event: event`))
+    console.log('Event:', JSON.stringify(event))
     try {
         const client = await mongo.connect(MONGO_URL);
         let predictionML, actualML, predictionSpread, actualSpread, predictionTotal, actualTotal;
-        const { gameId } = event
+        const { gameId } = event.Records[0].Sns.MessageAttributes;
+        const gameIdValue = parseInt(gameId.Value)
         
         /* Expected data
             gameId,
@@ -82,71 +86,74 @@ exports.handler = async function (event, context, callback) {
         const wagersCollection = db.collection("wagers");
         const gamesCollection = db.collection("games");
 
-        const game = await gamesCollection.findOne({ gameId: event.gameId });
+        const game = await gamesCollection.findOne({ gameId:gameIdValue, results: { $exists: true } });
         if (!game) {
-            console.log(`Game ${gameId} not found!`)
+            console.log(`Game ${gameIdValue} not found!`)
             context.fail('Game not found!')
         }
-        const wagers = await wagersCollection.find({ gameId: event.gameId }).toArray();
+        const wagers = await wagersCollection.find({ gameId: gameIdValue }).toArray();
 
         if (!wagers || wagers.length === 0) {
-            console.log(`No wagers found for game ${gameId}`)
+            console.log(`No wagers found for game ${gameIdValue}`)
             context.done('', 'No wagers found')
         }
         let wagerUpdates = [];
         wagers.forEach(wagerObj => {
 
-            console.log('wagerObj', wagerObj, wagerObj._id);
             const { prediction, wager } = wagerObj;
             let result = 0, net = 0;
             if (wager.wagerType === "moneyline") {
                 predictionML = evaluateMoneyline(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualML = evaluateMoneyline(game.awayTeam, game.homeTeam, prediction.odds);
-                if (predictionML === "push") {
+                actualML = evaluateMoneyline(game.results.awayTeam, game.results.homeTeam, prediction.odds);
+                console.log('predictionML, actualML', predictionML, actualML)
+                if (actualML === "push") {
                     result = 0;
                     net = wager.currency;
                 } else if (predictionML === actualML) {
                     result = 1
-                    evaluateNet(wager.odds, wager.currency)
+                    net = evaluateNet(wager.odds, wager.currency)
                 } else {
                     result = -1
                     net = 0;
                 }
-                wagerUpdates.push({updateOne: { filter: {_id: wagerObj._id }, update: {$set: { result, net }}}})
             }
             if (wager.wagerType === "spread") {
                 predictionSpread = evaluateSpread(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualSpread = evaluateSpread(game.awayTeam, game.homeTeam, prediction.odds);
-                if (predictionSpread === "push") {
+                actualSpread = evaluateSpread(game.results.awayTeam, game.results.homeTeam, prediction.odds);
+                console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
+                if (actualSpread === "push") {
                     result = 0
                     net = wager.currency;
                 } else if (predictionSpread === actualSpread) {
                     result = 1
-                    evaluateNet(wager.odds, wager.currency)
+                    net = evaluateNet(wager.odds, wager.currency)
                 } else {
                     result = -1
-                    net = wager.currency * -1;
+                    net = 0;
                 }
             }
             if (wager.wagerType === "total") {
                 predictionTotal = evaluateTotal(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualTotal = evaluateTotal(game.awayTeam, game.homeTeam, prediction.odds);
-                if (predictionTotal === "push") {
+                actualTotal = evaluateTotal(game.results.awayTeam, game.results.homeTeam, prediction.odds);
+                console.log('predictionTotal, actualTotal: ', predictionTotal, actualTotal)
+                if (actualTotal === "push") {
                     result = 0
                     net = wager.currency;
                 } else if (predictionTotal === actualTotal) {
                     result = 1
-                    evaluateNet(wager.odds, wager.currency)
+                    net = evaluateNet(wager.odds, wager.currency)
                 } else {
                     result = -1
-                    net = wager.currency * -1;
+                    net = 0;
                 }
             }
+            wagerUpdates.push({updateOne: { filter: {_id: wagerObj._id }, update: {$set: { result, net }}}})
             
         });
         
         wagersCollection.bulkWrite(wagerUpdates);
-        context.succeed(`Success! ${wagerUpdates.length} wagers updated!`)
+        console.log(`Success! ${wagerUpdates.length} wagers updated!`)
+        context.done(null, `Success! ${wagerUpdates.length} wagers updated!`)
     } catch (err) {
         console.error(err);
         context.fail(err);
