@@ -53,7 +53,8 @@ exports.handler = async function (event, context, callback) {
     try {
         const client = await mongo.connect(MONGO_URL);
         let predictionML, actualML, predictionSpread, actualSpread, predictionTotal, actualTotal;
-        const { gameId } = event.Records[0].Sns.MessageAttributes;
+        const { gameId, sport } = event.Records[0].Sns.MessageAttributes;
+        const sportValue = sport.Value;
         const gameIdValue = parseInt(gameId.Value)
         
         /* Expected data
@@ -84,7 +85,10 @@ exports.handler = async function (event, context, callback) {
 
         const db = client.db("pcsm");
         const wagersCollection = db.collection("wagers");
-        const gamesCollection = db.collection("games");
+        let gamesCollection = db.collection("games");
+        if (sportValue === "ncaaf") {
+            gamesCollection = db.collection("games-ncaaf");
+        }
 
         const game = await gamesCollection.findOne({ gameId:gameIdValue, results: { $exists: true } });
         if (!game) {
