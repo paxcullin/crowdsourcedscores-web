@@ -53,6 +53,7 @@ exports.handler = async (event, context, callback) => {
             console.log('submitWager', submitWager)
             const profileUpdate = await db.collection('profileExtended').updateOne({ username: userId }, { $inc: { currency: wager.currency * -1 }, $addToSet: {
                 "wagers.history": {
+                    wagerId: submitWager.insertedId,
                     gameId,
                     year,
                     sport,
