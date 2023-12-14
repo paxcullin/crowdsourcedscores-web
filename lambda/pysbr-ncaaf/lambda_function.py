@@ -1,19 +1,20 @@
 from pysbr import *
 from pysbr.config.config import Config
 from datetime import datetime, date, timedelta
-from pymongo import MongoClient
-import boto3
+from pymongo import MongoClient, UpdateOne
+import boto3, json
 
 sns = boto3.client('sns')
+
 
 
 client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
 db = client['pcsm']
 collection = db['games-ncaaf']
 
-yesterday = str((date.today() - timedelta(days=3)))
+yesterday = str((date.today() - timedelta(days=1)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2023-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
@@ -22,18 +23,28 @@ e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
 spreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
 totals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
 moneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
-bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
-bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
-fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
-fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
-fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
+# bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
+# bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
+# bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
+# fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+# fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+# fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 
+lambda_client = boto3.client('lambda')
+gameWeekResponse = lambda_client.invoke(
+    FunctionName="getGameWeek",
+    Payload=json.dumps({'sport': 'ncaaf'})
+)
+gameWeek = json.load(gameWeekResponse.get('Payload'))
+
 def lambda_handler(event, context):
     print('event: ', event, 'context: ', context)
-    print('totals', len(totals.list()))
+    print('length', len(e.list()))
+
+    writeOperations = []
+    gameids = []
     if len(e.list()) > 0:
         try:
             for event in e.list():
@@ -75,8 +86,8 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2022,
-                            "gameWeek": event['event group']['event group id'] -9,
+                            "year": 2023,
+                            "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
                             "sport": "ncaaf",
@@ -100,12 +111,7 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] < datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
-                        if gameObject["gameWeek"] < 0:
-                            gameObject["gameWeek"] = gameObject["gameWeek"] + 8
-                            print('pre', gameObject, event)
-                        gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2022-12-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2023-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
@@ -114,12 +120,14 @@ def lambda_handler(event, context):
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
 
                     gameObject["gameId"] = event['event id']
+                    if (gameWeek.get('week') == gameObject["gameWeek"]):
+                        gameids.append(event['event id'])
                     if (gameResult):
                         gameObject["gameId"] = gameResult["gameId"]
-                        if (hasattr(gameResult,'odds')):
-                            print('gameResult[\'odds\']', gameResult['odds']['spread'])
-                    else:
-                        print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
+                        # if (hasattr(gameResult,'odds')):
+                        #     print('gameResult[\'odds\']', gameResult['odds']['spread'])
+                    # else:
+                    #     print('no game result for ', gameObject["homeTeam"]["code"], gameObject["awayTeam"]["code"], gameObject["season"], gameObject["year"])
                     
                     if gameObject["weekName"] == "Bowls":
                         gameObject["gameWeek"] = 1
@@ -245,13 +253,13 @@ def lambda_handler(event, context):
                         else:
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
-                        collection.update_one({
-                            "gameId": event['event id']
-                            },
-                            {
-                                "$set": gameObject
-                            },
-                            upsert=True)
+                            writeOperations.append(UpdateOne({
+                                "gameId": gameObject["gameId"]
+                                },
+                                {
+                                    "$set": gameObject
+                                },
+                                upsert=True))
 
                         
                         # print(hasattr(gameObject, "results"))
@@ -374,13 +382,24 @@ def lambda_handler(event, context):
                             gameObject['odds']['history'].append(gameOdds)
                         if (gameObject["status"] == "scheduled"):
                             # print(gameObject)
-                            collection.update_one({
+                            writeOperations.append(UpdateOne({
                                 "gameId": gameObject['gameId']
                                 },
                                 {
                                     "$set": gameObject
                                 },
-                                upsert=True)
+                                upsert=True))
+            print('writeOperations: ', len(writeOperations))
+            if len(writeOperations) > 0:
+                writeResult = collection.bulk_write(writeOperations)
+                print('writeResult: ', writeResult)
+                payload="{ \"sport\": \"ncaaf\", \"gameIds\": [" + ",".join(str(x) for x in gameids) + "]}"
+
+                getCurrentLinesResponse = lambda_client.invoke(
+                    FunctionName="pysbr-getCurrentLines",
+                    Payload=payload
+                )
+                print('getCurrentLinesResponse: ', getCurrentLinesResponse)
         except TypeError as error:
             print(TypeError, event) 
             print(repr(error))
