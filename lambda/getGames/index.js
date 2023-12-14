@@ -28,7 +28,8 @@ exports.handler = async (event, context) => {
     var gamesCollectionName = 'games';
     var season = event.season ? event.season : 'reg';
     var gamesProjection = {
-        _id: false
+        _id: 0,
+        "odds.history": 0
     }
     var predictionsCollectionName = 'predictions';
     
@@ -78,7 +79,7 @@ exports.handler = async (event, context) => {
         gamesQuery.results= { $exists: true };
     }
     //console.log('gamesQuery: ', gamesQuery)
-    const gamesArray = await collection.find(gamesQuery, gamesProjection, {sort: {"startDateTime": 1 }}).toArray()
+    const gamesArray = await collection.find(gamesQuery, {sort: {"startDateTime": 1 }, projection: {"odds.history": 0, _id: 0}}).toArray()
         console.log('gamesArray.length: ', gamesArray.length)
         
         //check for games that have results
@@ -118,7 +119,7 @@ exports.handler = async (event, context) => {
             predictionsQuery = {
                 "year": parseInt(event.year),
                 "gameWeek": { $gt: 12 },
-                "preferred_usernames": { $in: preferred_usernames}
+                "preferred_username": { $in: preferred_username}
             }
         }
         if (event.compareUsername) {
@@ -127,7 +128,8 @@ exports.handler = async (event, context) => {
             predictionsQuery.results = { $exists: true }
         }
         if (!preferred_username) {
-            console.log('No username')
+            console.log('No username');
+            console.log('games', games);
             context.done(null, {games})
         }
         console.log("predictionsCollectionName: ", predictionsCollectionName)
