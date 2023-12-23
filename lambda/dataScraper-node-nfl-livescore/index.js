@@ -5,8 +5,6 @@ const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modu
 const {config} = require('config');
 const AWSConfig = { region: "us-west-2" };
 
-const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
-const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
 const lambda = new LambdaClient({region: 'us-west-2'});
 const SNS = new SNSClient({region: 'us-west-2'});
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
