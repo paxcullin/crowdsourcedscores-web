@@ -102,14 +102,14 @@ exports.handler = async (event, context, callback) => {
                     if (err) {
                         return context.fail('addToGroupError', err);
                     } else {
-                        return context.done(null, resultsLength + "Users updated");
+                        return context.done(null, results.length + "Users updated");
                     }
                 })
                 
                 const { Payload, LogResult } = await lambda.send(command);
                 console.log('Payload', Payload);
                 console.log('LogResult', LogResult);
-                context.done(null, resultsLength + "Users updated");
+                context.done(null, results.length + "Users updated");
         }
         
         function calculatePercentage(totalCorrect, totalPushes, totalGames) {
@@ -339,51 +339,6 @@ exports.handler = async (event, context, callback) => {
                                 currencyROI: parseFloat(((result.currencyNet - result.currencyWagered) / result.currencyWagered)*100).toFixed(2),
                                 totalWagers: result.totalWagers
                             }
-                        }
-                    }
-                    if (event.sport === 'ncaaf') {
-                        pushUpdate = { 
-                            $push: {
-                                [`results.ncaaf.${year}.weekly`]: {
-                                    gameWeek: result._id.gameWeek,
-                                    winner: {
-                                        correct: result.suCorrect,
-                                        push: result.suPush
-                                    },
-                                    spread: {
-                                        correct: result.atsCorrect,
-                                        push: result.atsPush
-                                    },
-                                    total: {
-                                        correct: result.totalCorrect,
-                                        push: result.totalPush
-                                    },
-                                    predictionScore: result.predictionScore,
-                                    totalPredictions: result.totalPredictions
-                                }
-                            }
-                        }
-                    } else if (event.sport === 'ncaam') {
-                        updateObject = {};
-                        updateObject[updateObjectWeeklyKey] = {
-                            gameWeek: result._id.gameWeek,
-                            winner: {
-                                correct: result.suCorrect,
-                                push: result.suPush
-                            },
-                            spread: {
-                                correct: result.atsCorrect,
-                                push: result.atsPush
-                            },
-                            total: {
-                                correct: result.totalCorrect,
-                                push: result.totalPush
-                            },
-                            predictionScore: result.predictionScore,
-                            totalPredictions: result.totalPredictions
-                        }
-                        pushUpdate = { 
-                            $push: updateObject
                         }
                     }
                     //console.log(`pushUpdate: ${JSON.stringify(pushUpdate)}`)
