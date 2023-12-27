@@ -12,7 +12,7 @@ client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config
 db = client['pcsm']
 collection = db['games-ncaaf']
 
-yesterday = str((date.today() - timedelta(days=1)))
+yesterday = str((date.today() - timedelta(days=5)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
 endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
@@ -120,8 +120,6 @@ def lambda_handler(event, context):
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
 
                     gameObject["gameId"] = event['event id']
-                    if (gameWeek.get('week') == gameObject["gameWeek"]):
-                        gameids.append(event['event id'])
                     if (gameResult):
                         gameObject["gameId"] = gameResult["gameId"]
                         # if (hasattr(gameResult,'odds')):
@@ -131,6 +129,8 @@ def lambda_handler(event, context):
                     
                     if gameObject["weekName"] == "Bowls":
                         gameObject["gameWeek"] = 1
+                    if (gameWeek.get('week') == gameObject["gameWeek"]):
+                        gameids.append(event['event id'])
                     for team in event['participants']:
                         teamObject = {
                                 "participantId": team["participant id"],
@@ -253,6 +253,11 @@ def lambda_handler(event, context):
                         else:
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
+
+                        
+                        # print(hasattr(gameObject, "results"))
+                        if (gameObject is not None and gameObject["status"] == "final") and (gameResult is None or gameResult["status"] != "final"):
+
                             writeOperations.append(UpdateOne({
                                 "gameId": gameObject["gameId"]
                                 },
@@ -260,10 +265,6 @@ def lambda_handler(event, context):
                                     "$set": gameObject
                                 },
                                 upsert=True))
-
-                        
-                        # print(hasattr(gameObject, "results"))
-                        if (gameObject is not None and gameObject["status"] == "final") and (gameResult is None or gameResult["status"] != "final"):
                             print("SNS Publishing", str(gameObject["gameId"]))
                             sns.publish(
                                 TopicArn="arn:aws:sns:us-west-2:198282214908:gameUpdated",
@@ -390,6 +391,7 @@ def lambda_handler(event, context):
                                 },
                                 upsert=True))
             print('writeOperations: ', len(writeOperations))
+            print('gameIds:', gameids)
             if len(writeOperations) > 0:
                 writeResult = collection.bulk_write(writeOperations)
                 print('writeResult: ', writeResult)
