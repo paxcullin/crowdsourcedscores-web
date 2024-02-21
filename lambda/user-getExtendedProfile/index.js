@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
         }
         console.log('extendedProfile', extendedProfile.currency);
         if (extendedProfile && (extendedProfile.currency === null || extendedProfile.currency === undefined))  {
-            let updatedProfile = await collection.updateOne({username: event.username}, {$set: {currency: 10000}})
+            let updatedProfile = await collection.updateOne({username: event.username}, {$set: {currency: 10000, currencyHistory: {history: [{amount: 10000, transactionType: "grant", type: 1, date: Date.now()}]}}})
             console.log('updatedProfile', updatedProfile)
             if (updatedProfile.modifiedCount === 1) {
                 extendedProfile.currency = 10000
