@@ -1,0 +1,14 @@
+{
+  "name": "addCurrency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "aws lambda invoke --function-name updateCurrency --cli-binary-format raw-in-base64-out --payload file://test-updatecurrency.json updateCurrencyResponse.json",
+    "package": "zip -r updateCurrency.zip .",
+    "upload": "aws lambda update-function-code --function-name updateCurrency --zip-file fileb://updateCurrency.zip --publish"
+  },
+  "dependencies": {
+    "mongodb": "^5.7.0"
+  }
+}

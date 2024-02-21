@@ -1,0 +1,10 @@
+username,currency,currencyHistory
+cmaronchick,74225,"{""history"":[{""transactionType"":""grant"",""type"":1,""amount"":100000,""date"":{""$date"":""2023-12-02T16:00:00.000Z""}}]}"
+Facebook_10155298489409129,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2023-12-31T00:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
+Facebook_10208710241577136,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T08:00:00.000Z""},""type"":1,""transactionType"":""grant""}]}"
+ausame,10125,"{""history"":[{""amount"":10000,""date"":{""$date"":""2023-12-31T00:00:00.000Z""},""transactionType"":""grant"",""type"":1},{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""gift"",""type"":1}]}"
+rosstuckerNFL,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
+SignInWithApple_000474.201e7309a112402d875cbdf0fce465e1.1424,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
+hi-css,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
+Vitoistheone,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
+SignInWithApple_000074.66d166c3812346cf93ac4b456f0cf178.0453,10000,"{""history"":[{""amount"":10000,""date"":{""$date"":""2024-02-02T16:00:00.000Z""},""transactionType"":""grant"",""type"":1}]}"
