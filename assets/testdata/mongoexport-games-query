@@ -8,6 +8,10 @@ mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --colle
 
 mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wintotals --username=pcsm-user --password=*dZ2HaWN --out=2023-win-totals.csv --type=csv --query='{"year":2023,"season": "reg", "sport": "nfl", }' --fieldFile=wintotals-fieldsFile.txt
 
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wagers --username=pcsm-user --password=*dZ2HaWN --out=2023-wagers.csv --type=csv --query='{"wager": {"$exists": true} }' --fields="userId,gameId,sport,year,season,gameWeek,result,wager.currency,wager.wagerType,wager.odds,net"
+
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=profileExtended --username=pcsm-user --password=*dZ2HaWN --out=2023-profiles-with-currency.csv --type=csv --query='{"currency": {"$exists": true} }' --fields="username,currency,currencyHistory"
+
 db.games.updateMany({year: 2022, season: "reg", gameWeek: 2}, {$pull: {"odds.history": { $and: [{spread: ""}, {total: ""}] } } })
 
 mongosh "mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm" --apiVersion 1 --username pcsm-user
