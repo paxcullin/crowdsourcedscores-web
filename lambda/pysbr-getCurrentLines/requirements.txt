@@ -9,7 +9,7 @@ fake-useragent==0.1.11
 filelock==3.0.12
 gql==2.0.0
 graphql-core==2.3.2
-idna==2.10
+idna==3.7
 jmespath==1.0.1
 numpy==1.22.0
 pandas==1.2.3
