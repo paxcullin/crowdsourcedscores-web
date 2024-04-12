@@ -4,7 +4,7 @@ botocore==1.29.6
 certifi==2023.7.22
 chardet==4.0.0
 distlib==0.3.2
-dnspython==2.1.0
+dnspython==2.6.1
 fake-useragent==0.1.11
 filelock==3.0.12
 gql==2.0.0
