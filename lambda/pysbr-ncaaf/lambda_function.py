@@ -14,7 +14,7 @@ collection = db['games-ncaaf']
 
 yesterday = str((date.today() - timedelta(days=5)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2025-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
@@ -86,7 +86,7 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2023,
+                            "year": 2024,
                             "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
@@ -111,10 +111,10 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] > datetime.strptime('2023-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2024-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
-                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
+                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2024-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"
                     # find the game in Mongo
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
