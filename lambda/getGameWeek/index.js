@@ -15,20 +15,64 @@ exports.handler = (event, context, callback) => {
         }],
         nfl: [{
                 season: 'pre',
-                startDate: new Date('2023-03-01')
+                startDate: new Date('2025-03-01')
             },
             {
             season: 'reg',
-            startDate: new Date('2023-08-29')
+            startDate: new Date('2024-03-01')
             },
             {
                 season: 'post',
-                startDate: new Date('2024-01-10')
+                startDate: new Date('2025-01-07')
             }
         ]
     }
     const seasonDates = {
         nfl: {
+            2024: {
+                pre: {
+                    start: new Date('2025-06-01'),
+                    weeks: [
+                        {weekName: 'HOF'},
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3}
+                        
+                        ]
+                },
+                reg: {
+                    start: new Date('2024-06-01'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16},
+                        {weekName: 17},
+                        {weekName: 18}
+                        ]
+                },
+                post: {
+                    start: new Date('2025-01-07'),
+                    weeks: [
+                        {weekName: 'WC'},
+                        {weekName: 'DIV'},
+                        {weekName: 'CONF'},
+                        {weekName: 'SB'}
+                        ]
+                }
+            },
             2023: {
                 pre: {
                     start: new Date('2023-07-01'),
@@ -355,7 +399,7 @@ exports.handler = (event, context, callback) => {
     const now = Date.now();
     let nowYear = (new Date(now).getFullYear());
     var year = new Date(now).getFullYear();
-    if (nowYear === 2024) {
+    if (nowYear === 2025) {
         nowYear--;
     }
     console.log({nowYear, year})
@@ -441,41 +485,41 @@ exports.handler = (event, context, callback) => {
             case 'pre':
                 // code
                 weekStartDates = [
-                    Date.UTC(2022, 1, 21),  // super bowl week
-                    Date.UTC(2022, 7, 11),  // 2019 Preseason Week 1
-                    Date.UTC(2022, 7, 17),  // 2019 Preseason Week 2
-                    Date.UTC(2022, 7, 25)  // 2019 Preseason Week 3
+                    Date.UTC(2024, 5, 1),  // super bowl week
+                    Date.UTC(2024, 7, 11),  // 2019 Preseason Week 1
+                    Date.UTC(2024, 7, 17),  // 2019 Preseason Week 2
+                    Date.UTC(2024, 7, 25)  // 2019 Preseason Week 3
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2023, 7, 29),  // 2020 Week 1
-                    Date.UTC(2023, 8, 13),  // 2020 Week 2
-                    Date.UTC(2023, 8, 20),  // 2020 Week 3
-                    Date.UTC(2023, 8, 27),  // 2020 Week 4
-                    Date.UTC(2023, 9, 4),  // 2020 Week 5
-                    Date.UTC(2023, 9, 11),  // 2020 Week 6
-                    Date.UTC(2023, 9, 18),  // 2020 Week 7
-                    Date.UTC(2023, 9, 25),  // 2020 Week 8
-                    Date.UTC(2023, 10, 1),  // 2020 Week 9
-                    Date.UTC(2023, 10, 8),  // 2020 Week 10
-                    Date.UTC(2023, 10, 15),  // 2020 Week 11
-                    Date.UTC(2023, 10, 22),  // 2020 Week 12
-                    Date.UTC(2023, 10, 29),  // 2020 Week 13
-                    Date.UTC(2023, 11, 6),  // 2020 Week 14
-                    Date.UTC(2023, 11, 13),  // 2020 Week 15
-                    Date.UTC(2023, 11, 20),  // 2020 Week 16
-                    Date.UTC(2023, 11, 27),  // 2020 Week 17
-                    Date.UTC(2024, 0, 3),  // 2020 Week 18
+                    Date.UTC(2024, 5, 1),  // 2020 Week 1
+                    Date.UTC(2024, 8, 11),  // 2020 Week 2
+                    Date.UTC(2024, 8, 18),  // 2020 Week 3
+                    Date.UTC(2024, 8, 25),  // 2020 Week 4
+                    Date.UTC(2024, 9, 2),  // 2020 Week 5
+                    Date.UTC(2024, 9, 9),  // 2020 Week 6
+                    Date.UTC(2024, 9, 16),  // 2020 Week 7
+                    Date.UTC(2024, 9, 23),  // 2020 Week 8
+                    Date.UTC(2024, 9, 30),  // 2020 Week 9
+                    Date.UTC(2024, 10, 6),  // 2020 Week 10
+                    Date.UTC(2024, 10, 13),  // 2020 Week 11
+                    Date.UTC(2024, 10, 20),  // 2020 Week 12
+                    Date.UTC(2024, 10, 27),  // 2020 Week 13
+                    Date.UTC(2024, 11, 4),  // 2020 Week 14
+                    Date.UTC(2024, 11, 11),  // 2020 Week 15
+                    Date.UTC(2024, 11, 18),  // 2020 Week 16
+                    Date.UTC(2024, 11, 25),  // 2020 Week 17
+                    Date.UTC(2025, 0, 1),  // 2020 Week 18
                     ];
                     break;
             case 'post':
                 weekStartDates = [
-                    Date.UTC(2024, 0, 10),  // 2020 Postseason Week 1
-                    Date.UTC(2024, 0, 17),  // 2020 Postseason Week 2
-                    Date.UTC(2024, 0, 24),  // 2020 Postseason Week 3
-                    Date.UTC(2024, 0, 31),  // 2020 Postseason Week 4
-                    Date.UTC(2024, 7, 1),  // 2022-2023 Season
+                    Date.UTC(2025, 0, 7),  // 2020 Postseason Week 1
+                    Date.UTC(2025, 0, 14),  // 2020 Postseason Week 2
+                    Date.UTC(2025, 0, 21),  // 2020 Postseason Week 3
+                    Date.UTC(2025, 0, 28),  // 2020 Postseason Week 4
+                    Date.UTC(2025, 5, 1),  // 2022-2023 Season
                     ];
                     break;
             default:
