@@ -16,52 +16,17 @@ Post an Update Many request to the database
 
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(`Event: ${event}`))
-    const { sport, year, season } = event;
-
-    let lastDate = null,
-    currentDate = null,
-    diffDays = null,
-    update = {},
-    teamGames = [],
-    updateMany = [];
+    const { sport, year, season, team } = event;
+    if (!sport || !year || !season) {
+        return { statusCode: 400, body: JSON.stringify(`Missing required parameters sport: ${sport}, year: ${year}, season: ${season}, team: ${team}`) }
+    }
+    let teamGames = [];
     try {
         const client = await mongo.connect(MONGO_URL, {useUnifiedTopology: true});
         const db = client.db('pcsm');
         const collection = db.collection('games');
-        const NFL_teams = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAC", "KC", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "LV", "PHI", "PIT", "LAC", "SEA", "SF", "LAR", "TB", "TEN", "WAS"];
-        const games = await collection.find({sport, year, season}).toArray();
-        const updatedGames = [];
-        for (let team of NFL_teams) {
-            lastDate = null;
-            currentDate = null;
-            diffDays = null;
-            teamGames = games.filter(game => game.awayTeam.code === team || game.homeTeam.code === team).sort((a,b) => a.startDateTime - b.startDateTime);
-            console.log('teamGames.length', teamGames.length)
-            for (let game of teamGames) {
-                update = {};
-                currentDate = new Date(game.startDateTime);
-                if (lastDate) {
-                    let diff = currentDate - lastDate;
-                    diffDays = Math.round(diff / (1000 * 60 * 60 * 24));
-                    console.log(`Team ${team} has a diff of ${diffDays} days between games on ${lastDate} and ${currentDate}`);
-                } else {
-                    console.log(`Team ${team} has no previous game date`);
-                    diffDays = -1;
-                }
-                
-                if (game.awayTeam.code === team) {
-                    update = {"awayTeam.daysBetweenGames": diffDays};
-                } else {
-                    update = {"homeTeam.daysBetweenGames": diffDays};
-                }
-                updateMany.push({updateOne: {filter: {gameId: game.gameId}, update: {$set: update}}});
-                lastDate = currentDate;
-            }
-        }
-
-        const bulkWriteResponse = await collection.bulkWrite(updateMany);
-        
-        console.log('bulkWriteResponse', JSON.stringify(bulkWriteResponse))
+        teamGames = await collection.find({sport, year, season, $or: [{"awayTeam.code": team}, {"homeTeam.code": team}]}).toArray();
+            
     } catch (err) {
         console.error(err);
 
@@ -72,6 +37,7 @@ exports.handler = async (event, context, callback) => {
     }
     return {
         statusCode: 200,
-        body: JSON.stringify(`${updateMany.length} games updated`),
+        body: JSON.stringify(`${teamGames.length} returned for ${team} in ${year} ${season}`),
+        teamGames
     }
 }
