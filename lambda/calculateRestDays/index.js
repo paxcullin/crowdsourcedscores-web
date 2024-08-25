@@ -17,6 +17,9 @@ Post an Update Many request to the database
 exports.handler = async (event, context, callback) => {
     console.log(JSON.stringify(`Event: ${event}`))
     const { sport, year, season } = event;
+    if (!sport || !year || !season) {
+        return { statusCode: 400, body: JSON.stringify(`Missing required parameters sport: ${sport}, year: ${year}, season: ${season}`) }
+    }
 
     let lastDate = null,
     currentDate = null,
@@ -30,6 +33,12 @@ exports.handler = async (event, context, callback) => {
         const collection = db.collection('games');
         const NFL_teams = ["ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN", "DET", "GB", "HOU", "IND", "JAC", "KC", "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "LV", "PHI", "PIT", "LAC", "SEA", "SF", "LAR", "TB", "TEN", "WAS"];
         const games = await collection.find({sport, year, season}).toArray();
+        if (!games || games.length === 0) {
+            return {
+                statusCode: 404,
+                body: JSON.stringify(`No games found for ${sport} ${year} ${season}`),
+            }
+        }
         const updatedGames = [];
         for (let team of NFL_teams) {
             lastDate = null;

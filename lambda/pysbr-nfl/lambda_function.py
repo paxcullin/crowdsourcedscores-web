@@ -158,12 +158,12 @@ def lambda_handler2(ev, context):
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
-                            if gameResult and gameResult["homeTeam"]["diffDays"] is not None:
+                            if gameResult and "diffDays" in gameResult["homeTeam"]:
                                 gameObject["homeTeam"]["daysBetweenGames"] = gameResult["homeTeam"]["daysBetweenGames"]
                         else:
                             gameObject["awayTeam"] = teamObject
                             awayId = team['participant id']
-                            if gameResult and gameResult["awayTeam"]["diffDays"] is not None:
+                            if gameResult and "diffDays" in gameResult["awayTeam"]:
                                 gameObject["awayTeam"]["daysBetweenGames"] = gameResult["awayTeam"]["daysBetweenGames"]
                     if (game["event status"] != "scheduled"):
                         # print(event)

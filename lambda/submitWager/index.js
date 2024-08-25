@@ -37,9 +37,15 @@ exports.handler = async (event, context, callback) => {
                 season,
                 prediction: {
                     awayTeam: {
+                        code: prediction.awayTeam.code,
+                        fullName: prediction.awayTeam.fullName,
+                        shortName : prediction.awayTeam.shortName,
                         score: prediction.awayTeam.score
                     },
                     homeTeam: {
+                        code: prediction.homeTeam.code,
+                        fullName: prediction.homeTeam.fullName,
+                        shortName : prediction.homeTeam.shortName,
                         score: prediction.homeTeam.score
                     },
                     odds: {
