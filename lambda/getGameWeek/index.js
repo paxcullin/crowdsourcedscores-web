@@ -15,11 +15,11 @@ exports.handler = (event, context, callback) => {
         }],
         nfl: [{
                 season: 'pre',
-                startDate: new Date('2025-03-01')
+                startDate: new Date('2024-03-01')
             },
             {
             season: 'reg',
-            startDate: new Date('2024-03-01')
+            startDate: new Date('2024-08-27')
             },
             {
                 season: 'post',
@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
         nfl: {
             2024: {
                 pre: {
-                    start: new Date('2025-06-01'),
+                    start: new Date('2024-06-01'),
                     weeks: [
                         {weekName: 'HOF'},
                         {weekName: 1},
@@ -41,7 +41,7 @@ exports.handler = (event, context, callback) => {
                         ]
                 },
                 reg: {
-                    start: new Date('2024-06-01'),
+                    start: new Date('2024-08-27'),
                     weeks: [
                         {weekName: 1},
                         {weekName: 2},
@@ -374,6 +374,33 @@ exports.handler = (event, context, callback) => {
                     start: new Date('2023-11-10'),
                     weeks: [{weekName: 'Bowls'}]
                 }
+            },
+            2024: {
+                reg: {
+                    start: new Date('2024-08-03'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16}
+                        ]
+                },
+                post: {
+                    start: new Date('2024-12-16'),
+                    weeks: [{weekName: 'Bowls'}]
+                }
             }
         },
         ncaam: {
@@ -444,23 +471,23 @@ exports.handler = (event, context, callback) => {
                 // Date.UTC(2018, 11, 5), // week 14
                 // Date.UTC(2018, 11, 12), // Bowls
                 // Date.UTC(2019, 8, 1), // Bowls
-                Date.UTC(2023, 7, 19),  // 2019 Week 1
-                Date.UTC(2023, 8, 5),  // 2023 Week 2
-                Date.UTC(2023, 8, 12),  // 2023 Week 3
-                Date.UTC(2023, 8, 19),  // 2023 Week 4
-                Date.UTC(2023, 8, 26),  // 2023 Week 5
-                Date.UTC(2023, 9, 3),  // 2023 Week 6
-                Date.UTC(2023, 9, 10),  // 2023 Week 7
-                Date.UTC(2023, 9, 17),  // 2023 Week 8
-                Date.UTC(2023, 9, 24),  // 2023 Week 9
-                Date.UTC(2023, 9, 31),  // 2023 Week 10
-                Date.UTC(2023, 10, 7),  // 2023 Week 11
-                Date.UTC(2023, 10, 14),  // 2023 Week 12
-                Date.UTC(2023, 10, 21),  // 2023 Week 13
-                Date.UTC(2023, 10, 28),  // 2023 Week 14
-                Date.UTC(2023, 11, 5),  // 2023 Week 15
-                Date.UTC(2023, 11, 12),  // 2023 Week 16
-                Date.UTC(2020, 7, 25),  // 2023 Week 17
+                Date.UTC(2024, 6, 19),  // 2019 Week 1
+                Date.UTC(2024, 8, 9),  // 2023 Week 2
+                Date.UTC(2024, 8, 16),  // 2024 Week 3
+                Date.UTC(2024, 8, 23),  // 2024 Week 4
+                Date.UTC(2024, 8, 30),  // 2024 Week 5
+                Date.UTC(2024, 9, 7),  // 2024 Week 6
+                Date.UTC(2024, 9, 14),  // 2024 Week 7
+                Date.UTC(2024, 9, 21),  // 2024 Week 8
+                Date.UTC(2024, 9, 28),  // 2024 Week 9
+                Date.UTC(2024, 10, 4),  // 2024 Week 10
+                Date.UTC(2024, 10, 11),  // 2024 Week 11
+                Date.UTC(2024, 10, 18),  // 2024 Week 12
+                Date.UTC(2024, 10, 25),  // 2024 Week 13
+                Date.UTC(2024, 11, 2),  // 2024 Week 14
+                Date.UTC(2024, 11, 9),  // 2024 Week 15
+                Date.UTC(2024, 11, 16),  // 2024 Week 16
+                Date.UTC(2025, 7, 25),  // 2024 Week 17
             ]
     } else if (sport === 'ncaam') {
         weekStartDates = [
@@ -486,14 +513,15 @@ exports.handler = (event, context, callback) => {
                 // code
                 weekStartDates = [
                     Date.UTC(2024, 5, 1),  // super bowl week
-                    Date.UTC(2024, 7, 11),  // 2019 Preseason Week 1
-                    Date.UTC(2024, 7, 17),  // 2019 Preseason Week 2
-                    Date.UTC(2024, 7, 25)  // 2019 Preseason Week 3
+                    Date.UTC(2024, 7, 3),  // 2019 Preseason Week 1
+                    Date.UTC(2024, 7, 13),  // 2019 Preseason Week 2
+                    Date.UTC(2024, 7, 20),  // 2019 Preseason Week 3
+                    Date.UTC(2024, 7, 26)  // 2019 Preseason Week 3
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2024, 5, 1),  // 2020 Week 1
+                    Date.UTC(2024, 7, 27),  // 2020 Week 1
                     Date.UTC(2024, 8, 11),  // 2020 Week 2
                     Date.UTC(2024, 8, 18),  // 2020 Week 3
                     Date.UTC(2024, 8, 25),  // 2020 Week 4
@@ -637,3 +665,5 @@ exports.handler = (event, context, callback) => {
     // console.log('remainingWeeks: ', remainingWeeks)
     callback(null, result);
 };
+
+//aws lambda update-function-code --function-name getGameWeek --zip-file fileb://Archive.zip --publish
