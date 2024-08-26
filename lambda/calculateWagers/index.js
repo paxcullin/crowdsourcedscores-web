@@ -99,8 +99,9 @@ exports.handler = async function (event, context, callback) {
 
         if (!wagers || wagers.length === 0) {
             console.log(`No wagers found for game ${gameIdValue}`)
-            context.done('', 'No wagers found')
+            return {message: 'No wagers found'}
         }
+        console.log('processing wagers');
         let wagerUpdates = [];
         let wagerIds = [];
         let profileUpdates = [];
@@ -160,7 +161,9 @@ exports.handler = async function (event, context, callback) {
             profileUpdates.push({updateOne: { filter: { username: wagerObj.userId, "wagers.history.$.gameId": wagerObj.gameId, "wagers.history.$.wagerType": wager.wagerType }, update: {$set: {"wagers.history.$.net": net, "wagers.history.$.result": result}}}})
             
         });
-        
+        if (wagerUpdates.length === 0) {
+            return {message: 'No messages to update'}
+        }
         let wagerUpdatesResult = await wagersCollection.bulkWrite(wagerUpdates);
         console.log('wagerUpdatesResult', wagerUpdatesResult.modifiedCount);
         // update profile
@@ -169,8 +172,9 @@ exports.handler = async function (event, context, callback) {
         let profileUpdatesResult = await profileCollection.bulkWrite(profileUpdates);
         console.log('profileUpdatesResult', profileUpdatesResult.modifiedCount);
         console.log(`Success! ${wagerUpdates.length} wagers updated!`)
-        context.done(null, `Success! ${wagerUpdates.length} wagers updated!`)
+        return { message: `Success! ${wagerUpdates.length} wagers updated!`}
     } catch (err) {
+        console.log('err', err)
         console.error(err);
         context.fail(err);
     }
