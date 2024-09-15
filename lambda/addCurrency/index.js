@@ -8,14 +8,14 @@ const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4
     
 exports.handler = async (event, context, callback) => {
     console.log(`Event: ${JSON.stringify(event)}`)
-    const { userId , currencyAmount, currencyMultiplier, currencySource, wagerId } = event
+    const { username , currencyAmount, currencyMultiplier, currencySource, wagerId } = event
     /* 
     Need to account for multiple currency sources
     Daily Login reward
     Wager win/push
     -- currency multiplier is te odds of the wager
     */
-    if (!userId) {
+    if (!username) {
         console.log('No user ID provided')
         context.fail({status: 500, message: 'No user ID provided'})
     }
@@ -33,6 +33,8 @@ exports.handler = async (event, context, callback) => {
         session.startTransaction();
         const db = client.db('pcsm');
         const collection = db.collection('profileExtended');
+        // let profile = await collection.findOne({ username: username }, { session });
+        // console.log('profile', profile);
         let pushUpdate = {
             currencyAmount: currencyAmount * currencyMultiplier,
             currencyMultiplier: currencyMultiplier,
@@ -43,14 +45,12 @@ exports.handler = async (event, context, callback) => {
         if (wagerId) {
             pushUpdate.wagerId = wagerId
         }
-
-        let profileUpdate = await collection.updateOne({ username: userId }, 
-            { $inc: { currency: currencyAmount * currencyMultiplier },
-            $push: {
+        let profileUpdate = await collection.updateOne({ username: username }, 
+            { "$inc": { "currency": currencyAmount * currencyMultiplier },
+            "$push": {
                 "currencyHistory.history": pushUpdate
             }}
-            , {session})
-        console.log('profileUpdate', profileUpdate)
+            , {"$project": { "currency": 1, "username": 1 }, new: true, session})
         if (profileUpdate.modifiedCount === 0) {
             console.log('No profile updated')
             session.abortTransaction();
@@ -67,7 +67,7 @@ exports.handler = async (event, context, callback) => {
             console.log('Profile updated')
             if (currencySource.type === 'wager') {
                 console.log(`Wager source ${currencySource._id}`)
-                let wagerUpdate = await db.collection('wagers').updateOne({ _id: ObjectId(currencySource._id), userId: userId }, {$set: {paid: true}}, {session})
+                let wagerUpdate = await db.collection('wagers').updateOne({ _id: `ObjectId(${currencySource._id})`, userId: username }, {$set: {paid: true}}, {session})
                 console.log('wagerUpdate', wagerUpdate)
                 if (wagerUpdate.modifiedCount === 0) {
                     console.log('No wager updated')
@@ -85,11 +85,17 @@ exports.handler = async (event, context, callback) => {
                     console.log('Wager updated')
                     session.commitTransaction();
                     session.endSession();
-                    context.done(null, { status: 200, message: `The balance of ${userId} was updated successfully. ${currencyAmount * currencyMultiplier}. Wager ${currencySource._id} updated successfully.`})
+                    context.done(null, { status: 200, message: `The balance of ${username} was updated successfully. ${currencyAmount * currencyMultiplier}. Wager ${currencySource._id} updated successfully.`, currencyAmount})
                 }
             }
+
+            session.commitTransaction();
+
+            let profile = await collection.findOne({ username }, { session });
+            console.log('profile', profile)
+            session.endSession();
+            context.done(null, { status: 200, message: `The balance of ${username} was updated successfully. ${currencyAmount * currencyMultiplier}`, currency: profile.currency, currencyHistory: profile.currencyHistory })
         }
-        // context.done(null, { status: 200, message: `The balance of ${userId} was updated successfully. ${currencyAmount * currencyMultiplier}`})
     } catch (addCurrencyError) {
         console.log('addCurrencyError', addCurrencyError)
         context.fail({status: 500, message: `Error: ${JSON.stringify(addCurrencyError)}`})
