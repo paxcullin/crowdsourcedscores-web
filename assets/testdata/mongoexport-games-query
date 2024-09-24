@@ -1,16 +1,16 @@
-mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password=*dZ2HaWN --out=assets/testdata/2018-preseasonweek3-games.json --query='{"gameWeek":-2,"year":2018}'
+mongoexport --host=ds011775.mlab.com --port=11775 --db=pcsm --collection=games --username=pcsm-user --password= --out=assets/testdata/2018-preseasonweek3-games.json --query='{"gameWeek":-2,"year":2018}'
 
-mongoexport --host=pcsm-shard-00-02.lwx4u.mongodb.net --port=27017 --db=pcsm --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2020-\"week"\-predictions.csv --type=csv --query='{"gameWeek":1,"year":2020, season: "reg"}' --fieldFile=predictions-fieldsFile.txt
+mongoexport --host=pcsm-shard-00-02.lwx4u.mongodb.net --port=27017 --db=pcsm --collection=predictions --username=pcsm-user --password= --out=2020-\"week"\-predictions.csv --type=csv --query='{"gameWeek":1,"year":2020, season: "reg"}' --fieldFile=predictions-fieldsFile.txt
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=games --username=pcsm-user --password=*dZ2HaWN --out=2022-games-week13.csv --type=csv --query='{"gameWeek": {"$in": [12, 13]},"year":2022,"season": "reg"}' --fieldFile=games-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=games --username=pcsm-user --password= --out=2022-games-week13.csv --type=csv --query='{"gameWeek": {"$in": [12, 13]},"year":2022,"season": "reg"}' --fieldFile=games-fieldsFile.txt
 "
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=predictions --username=pcsm-user --password=*dZ2HaWN --out=2022-predictions-week13.csv --type=csv --query='{"year":2022,"season": "reg", "gameWeek": {"$in": [12, 13]}}' --fieldFile=predictions-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=predictions --username=pcsm-user --password= --out=2022-predictions-week13.csv --type=csv --query='{"year":2022,"season": "reg", "gameWeek": {"$in": [12, 13]}}' --fieldFile=predictions-fieldsFile.txt
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wintotals --username=pcsm-user --password=*dZ2HaWN --out=2023-win-totals.csv --type=csv --query='{"year":2023,"season": "reg", "sport": "nfl", }' --fieldFile=wintotals-fieldsFile.txt
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wintotals --username=pcsm-user --password= --out=2023-win-totals.csv --type=csv --query='{"year":2023,"season": "reg", "sport": "nfl", }' --fieldFile=wintotals-fieldsFile.txt
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wagers --username=pcsm-user --password=*dZ2HaWN --out=2023-wagers.csv --type=csv --query='{"wager": {"$exists": true} }' --fields="userId,gameId,sport,year,season,gameWeek,result,wager.currency,wager.wagerType,wager.odds,net"
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=wagers --username=pcsm-user --password= --out=2023-wagers.csv --type=csv --query='{"wager": {"$exists": true} }' --fields="userId,gameId,sport,year,season,gameWeek,result,wager.currency,wager.wagerType,wager.odds,net"
 
-mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=profileExtended --username=pcsm-user --password=*dZ2HaWN --out=2023-profiles-with-currency.csv --type=csv --query='{"currency": {"$exists": true} }' --fields="username,currency,currencyHistory"
+mongoexport --uri=mongodb+srv://pcsm.lwx4u.mongodb.net/pcsm --port=27017 --collection=profileExtended --username=pcsm-user --password= --out=2023-profiles-with-currency.csv --type=csv --query='{"currency": {"$exists": true} }' --fields="username,currency,currencyHistory"
 
 db.games.updateMany({year: 2022, season: "reg", gameWeek: 2}, {$pull: {"odds.history": { $and: [{spread: ""}, {total: ""}] } } })
 
