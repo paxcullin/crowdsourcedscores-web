@@ -15,14 +15,35 @@ function evaluateMoneyline(awayTeam, homeTeam, odds) {
 }
 
 function evaluateSpread(awayTeam, homeTeam, odds) {
-    // console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
-    if (awayTeam.score + odds.spread > homeTeam.score) {
-        return "away";
-    } else if (awayTeam.score + odds.spread < homeTeam.score) {
-        return "home";
-    } else {
-        return "push";
+    console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds);
+    // odds.spread > 0 = away is favored
+    // odds = +3; Away 24, Home 17 + 3 (20) <-- Away
+    if (odds.spread > 0) {
+        // odds = +3; Away 24, Home 17 + 3 (20) <-- Away
+        if (awayTeam.score > homeTeam.score + odds.spread) {
+            return "away";
+        // odds = +3; Away 24, Home 22 + 3 (25) <-- 5
+        } else  if (awayTeam.score < homeTeam.score + odds.spread) {
+            return "home";
+        } else  if (awayTeam.score === homeTeam.score + odds.spread) {
+            return "push";
+        }
+    } else if (odds.spread < 0) {
+        if (awayTeam.score < homeTeam.score + odds.spread) {
+            return "home";
+        } else if (awayTeam.score > homeTeam.score + odds.spread) {
+            return "away";
+        } else if (awayTeam.score === homeTeam.score  + odds.spread) {
+            return "push";
+        }
     }
+    // if ((odds.spread > 0 && awayTeam.score + odds.spread > homeTeam.score) || (odds.spread < 0 && awayTeam.score > homeTeam.score + odds.spread)) {
+    //     return "away";
+    // } else if ((odds.spread > 0 && awayTeam.score + odds.spread < homeTeam.score) || (odds.spread < 0 && awayTeam.score < homeTeam.score + odds.spread)) {
+    //     return "home";
+    // } else {
+    //     return "push";
+    // }
 }
 
 function evaluateTotal(awayTeam, homeTeam, odds) {
@@ -56,7 +77,7 @@ exports.handler = async function (event, context, callback) {
         const { gameId, sport } = event.Records[0].Sns.MessageAttributes;
         const sportValue = sport.Value;
         const gameIdValue = parseInt(gameId.Value)
-        
+
         /* Expected data
             gameId,
             year,
@@ -69,7 +90,7 @@ exports.handler = async function (event, context, callback) {
             compare score to Prediction
             if awayTeam.score > homeTeam.score:
                 moneyline = awayteam
-            else 
+            else
                 moneyline = hometeam
 
             if awayTeam.score + odds.spread > homeTeam.score:
@@ -128,7 +149,7 @@ exports.handler = async function (event, context, callback) {
             if (wager.wagerType === "spread") {
                 predictionSpread = evaluateSpread(prediction.awayTeam, prediction.homeTeam, prediction.odds);
                 actualSpread = evaluateSpread(game.results.awayTeam, game.results.homeTeam, prediction.odds);
-                // console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
+                console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
                 if (actualSpread === "push") {
                     result = 0
                     net = wager.currency;
@@ -159,7 +180,7 @@ exports.handler = async function (event, context, callback) {
             // console.log('wagerUpdate', JSON.stringify({updateOne: { filter: { username: wagerObj.userId, "wagers.history.gameId": wagerObj.gameId, "wagers.history.wagerType": wager.wagerType }, update: {$set: {"wagers.history.$.net": net, "wagers.history.$.result": result}}}}))
             wagerUpdates.push({updateOne: { filter: {_id: wagerObj._id }, update: {$set: { result, net }}}})
             profileUpdates.push({updateOne: { filter: { username: wagerObj.userId, "wagers.history.$.gameId": wagerObj.gameId, "wagers.history.$.wagerType": wager.wagerType }, update: {$set: {"wagers.history.$.net": net, "wagers.history.$.result": result}}}})
-            
+
         });
         if (wagerUpdates.length === 0) {
             return {message: 'No messages to update'}

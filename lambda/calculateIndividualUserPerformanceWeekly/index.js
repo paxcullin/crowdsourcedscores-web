@@ -79,37 +79,38 @@ exports.handler = async (event, context, callback) => {
                 // console.log('weeklyUserArray', leaderboardCriteria, weeklyUserArray)
                 queryPromises.push(db.collection('leaderboards').updateOne(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
             }
-            //console.log({queryPromises})
-            let queryPromisesResult = await Promise.all(queryPromises);
-                console.log('callCalculateIndividualCrowdPerformanceOverall called')
-                var calculateIndividualUserPerformanceOverallParams = {
-                    FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
-                    InvocationType: 'Event',
-                    LogType: 'None',
-                    Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
-                };
+            console.log('queryPromises.length:', queryPromises.length);
+            console.log('callCalculateIndividualCrowdPerformanceOverall called')
+            var calculateIndividualUserPerformanceOverallParams = {
+                FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
+                InvocationType: 'Event',
+                LogType: 'None',
+                Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
+            };
 
-                const lambdaParams = {
-                    FunctionName: 'getGameWeek', // the lambda function we are going to invoke
-                    InvocationType: 'RequestResponse',
-                    LogType: 'None',
-                    Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
+            const lambdaParams = {
+                FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+                InvocationType: 'RequestResponse',
+                LogType: 'None',
+                Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
+            }
+
+            const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams, function(err, data) {
+                console.log('err', err);
+                console.log('data', data);
+                if (err) {
+                    return context.fail('addToGroupError', err);
+                } else {
+                    return context.done(null, results.length + "Users updated");
                 }
-
-                const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams, function(err, data) {
-                    console.log('err', err);
-                    console.log('data', data);
-                    if (err) {
-                        return context.fail('addToGroupError', err);
-                    } else {
-                        return context.done(null, results.length + "Users updated");
-                    }
-                })
-                
-                const { Payload, LogResult } = await lambda.send(command);
-                console.log('Payload', Payload);
-                console.log('LogResult', LogResult);
-                context.done(null, results.length + "Users updated");
+            })
+            
+            const { Payload, LogResult } = await lambda.send(command);
+            console.log('Payload', Payload);
+            console.log('LogResult', LogResult);
+            let queryPromisesResult = await Promise.all(queryPromises);
+            console.log('queryPromisesResult', queryPromisesResult);
+                return context.done(null, results.length + "Users updated");
         }
         
         function calculatePercentage(totalCorrect, totalPushes, totalGames) {

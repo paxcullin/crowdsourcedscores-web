@@ -1,0 +1,10 @@
+{
+  "name": "generateNFLschedulepicker",
+  "version": "1.0.0",
+  "description": "Generates the data for the NFL Schedule Picker",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  }
+}

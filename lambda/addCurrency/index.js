@@ -94,7 +94,7 @@ exports.handler = async (event, context, callback) => {
             let profile = await collection.findOne({ username }, { session });
             console.log('profile', profile)
             session.endSession();
-            context.done(null, { status: 200, message: `The balance of ${username} was updated successfully. ${currencyAmount * currencyMultiplier}`, currency: profile.currency, currencyHistory: profile.currencyHistory })
+            context.done(null, { status: 200, message: `The balance of ${username} was updated successfully. ${currencyAmount * currencyMultiplier}`, currency: profile.currency, currencyHistory: profile.currencyHistory.history.sort((a,b) => new Date(b.date) - new Date(a.date)) })
         }
     } catch (addCurrencyError) {
         console.log('addCurrencyError', addCurrencyError)

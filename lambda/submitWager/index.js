@@ -27,6 +27,12 @@ exports.handler = async (event, context, callback) => {
         const userProfile = await db.collection('profileExtended').findOne({ username: userId }, { session });
         let currencyBalance = userProfile.currency;
         console.log('currencyBalance', currencyBalance)
+        let wagerOdds = prediction.odds.spread;
+        if (prediction.odds.spread < 0 && ((prediction.awayTeam.score - prediction.homeTeam.score) > prediction.odds.spread)) {
+            // -4 / 17 - 20 = -3
+            // -4 / 17 - 24  -7
+            wagerOdds = Math.abs(prediction.odds.spread);
+        }
         if (wager.currency <= currencyBalance) {
             let submitWager = await db.collection('wagers').insertOne({
                 userId,
@@ -49,7 +55,7 @@ exports.handler = async (event, context, callback) => {
                         score: prediction.homeTeam.score
                     },
                     odds: {
-                        spread: prediction.odds.spread,
+                        spread: wagerOdds,
                         total: prediction.odds.total
                     }
                 },

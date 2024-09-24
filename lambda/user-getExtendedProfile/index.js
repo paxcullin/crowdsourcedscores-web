@@ -28,11 +28,25 @@ exports.handler = async (event, context) => {
         }
         console.log('extendedProfile', extendedProfile.currency);
         if (extendedProfile && (extendedProfile.currency === null || extendedProfile.currency === undefined))  {
+            // add currency for new user
             let updatedProfile = await collection.updateOne({username: event.username}, {$set: {currency: 10000, currencyHistory: {history: [{amount: 10000, transactionType: "grant", type: 1, date: Date.now()}]}}})
             console.log('updatedProfile', updatedProfile)
             if (updatedProfile.modifiedCount === 1) {
-                extendedProfile.currency = 10000
+                extendedProfile.currency = 10000,
+                extendedProfile.currencyHistory = {
+                    history: [{
+                        amount: 10000,
+                        transactionType: "grant",
+                        type: 1,
+                        date: Date.now()
+                    }]
+                }
             }
+        } else {
+            // sort currency transactions by date
+            extendedProfile.currencyHistory.history.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date)
+            })
         }
             // console.log("extendedProfile: ", JSON.stringify(extendedProfile))
             if (event.sport && event.year && event.season && event.week && extendedProfile.results && extendedProfile.results[event.sport] && extendedProfile.results[event.sport][event.year] && extendedProfile.results[event.sport][event.year][event.season]) {
