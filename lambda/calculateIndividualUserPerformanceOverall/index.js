@@ -59,7 +59,7 @@ exports.handler = async (event, context, callback) => {
                     {
                         $group: {
                             //_id: {userId: "$userId", year: "$year", season: "$season"},
-                            _id: {userId: "$userId", sport: "$sport", season: "$season", preferred_username: "$preferred_username"},
+                            _id: {userId: "$userId", sport: "$sport", year: "$year", season: "$season", preferred_username: "$preferred_username"},
                             suCorrect: {$sum: "$results.winner.correct"},
                             suPush: {$sum: "$results.winner.push"},
                             suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -89,7 +89,7 @@ exports.handler = async (event, context, callback) => {
                     },
                     {
                         $group: {
-                            _id: {userId: "$userId", sport: "$sport", season: "$season", preferred_username: "$preferred_username"},
+                            _id: {userId: "$userId", year: "$year", sport: "$sport", season: "$season", preferred_username: "$preferred_username"},
                             currencyWagered: {$sum: "$wager.currency"},
                             currencyNet: {$sum: "$net"},
                             wagersCorrect: {$sum: "$result"},
