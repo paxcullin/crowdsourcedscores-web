@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r aggregateGroupPredictions.zip ."
+    "test": "aws lambda invoke --function-name aggregatePredictions --cli-binary-format raw-in-base64-out --payload file://test-aggregation.json aggregation.json",
+    "package": "zip -r aggregateGroupPredictions.zip .",
+    "upload": "aws lambda update-function-code --function-name aggregatePredictions --zip-file fileb://aggregatePredictions.zip --publish"
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-lambda": "^3.658.0",
     "mongo-round": "^1.0.0",
-    "mongodb": "^3.6.10"
+    "mongodb": "^6.9.0"
   }
 }

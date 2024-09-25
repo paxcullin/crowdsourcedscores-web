@@ -1,0 +1,43 @@
+{
+    "Records": [
+      {
+        "EventSource": "aws:sns",
+        "EventVersion": "1.0",
+        "EventSubscriptionArn": "arn:aws:sns:us-west-2:198282214908:predictionSubmitted:7d39c44e-b812-48c9-92ae-c2a0f0b13d86",
+        "Sns": {
+          "Type": "Notification",
+          "MessageId": "9ac6de16-447a-5d8c-804c-8b1aff3ef807",
+          "TopicArn": "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
+          "Subject": "Prediction Submitted",
+          "Message": "Prediction for game 3103788 submitted by cmaronchick",
+          "Timestamp": "2019-03-20T22:04:52.707Z",
+          "SignatureVersion": "1",
+          "Signature": "FYyuHcothU7r4fpCSx+1avHWM436IHnFt3TTsBL27uB4d8L9Jh8/r8Bcv1PCejITiakoAg/BvGvMMxfP5e3OKMqXVuAhMLrs/vhmn4z4c2dnvvbPgkV9MkUKlEMFH1cMFqqdkwd/eXfQXCWSZTWBHK/C+DjwGVP5g8ryTUbDVhldIuhu6Z05BUHY/0Cs41NhHYkQpgjlWhfd/zjE+aQkJ59VUhnCmcAXeHbaUMV0txsZe6A+Cns5YT/gGNPF5IaZFqsEP82IdNSd32pZvPP6V2wFmUgA/kHtJjJcqTHCXGCdAZXU3N7sn7O/u0HkNhEzTVzh7xKwGuQ2C6kaBEsiFg==",
+          "SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-6aad65c2f9911b05cd53efda11f913f9.pem",
+          "UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:198282214908:predictionSubmitted:7d39c44e-b812-48c9-92ae-c2a0f0b13d86",
+          "MessageAttributes": {
+            "gameId": {
+              "Type": "String",
+              "Value": "4733245"
+            },
+            "year": {
+              "Type": "String",
+              "Value": "2024"
+            },
+            "gameWeek": {
+              "Type": "String",
+              "Value": "3"
+            },
+            "sport": {
+              "Type": "String",
+              "Value": "nfl"
+            },
+            "season": {
+              "Type": "String",
+              "Value": "reg"
+            }
+          }
+        }
+      }
+    ]
+  }
