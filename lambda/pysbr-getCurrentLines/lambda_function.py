@@ -101,7 +101,7 @@ def lambda_handler(e, context):
             #         }
             #     }
             # ))
-            if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
+            if (lines is not None and ("spread" in lines or "total" in lines or "moneyline" in lines)):
                 collection.update_one(
                     {
                         'gameId': gameid

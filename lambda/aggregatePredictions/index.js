@@ -156,10 +156,10 @@ exports.handler = async (event, context) => {
                 //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
                 var criteria = {gameId: result._id, year: year}; //,results: {$exists: false}
                 
-                var awayAvg = Math.round10(result.awayAvg, -2)
-                var homeAvg = Math.round10(result.homeAvg, -2)
-                var totalAvg = Math.round10(result.totalAvg, -2)
-                var spreadAvg = Math.round10(result.spreadAvg, -2)
+                var awayAvg = parseFloat(result.awayAvg.toFixed(2))
+                var homeAvg = parseFloat(result.homeAvg.toFixed(2))
+                var totalAvg = parseFloat(result.totalAvg.toFixed(2))
+                var spreadAvg = parseFloat(result.spreadAvg.toFixed(2))
                 var crowdResult = {};
                 var update = {
                     $set: {

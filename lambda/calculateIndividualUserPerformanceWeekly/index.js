@@ -80,34 +80,44 @@ exports.handler = async (event, context, callback) => {
                 queryPromises.push(db.collection('leaderboards').updateOne(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
             }
             console.log('queryPromises.length:', queryPromises.length);
-            console.log('callCalculateIndividualCrowdPerformanceOverall called')
             var calculateIndividualUserPerformanceOverallParams = {
                 FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
                 InvocationType: 'Event',
-                LogType: 'None',
+                LogType: 'Tail',
                 Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
             };
 
-            const lambdaParams = {
-                FunctionName: 'getGameWeek', // the lambda function we are going to invoke
-                InvocationType: 'RequestResponse',
-                LogType: 'None',
-                Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
-            }
-
-            const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams, function(err, data) {
-                console.log('err', err);
-                console.log('data', data);
+            var calculateIndividualUserPerformanceOverallParams = new InvokeCommand({
+                FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
+                InvocationType: 'Event',
+                LogType: 'Tail',
+                Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
+            }, function(err, data) {
                 if (err) {
-                    return context.fail('addToGroupError', err);
+                    console.log("calculateIndividualUserPerformanceOverallParams err: ", err);
                 } else {
-                    return context.done(null, results.length + "Users updated");
+                    console.log('calculateIndividualUserPerformanceOverallParams response: ', data.Payload);
+                    
+                    
+                    context.done(null, games);
                 }
-            })
-            
-            const { Payload, LogResult } = await lambda.send(command);
-            console.log('Payload', Payload);
-            console.log('LogResult', LogResult);
+                });
+            const lambdainvoke = await lambda.send(calculateIndividualUserPerformanceOverallParams)
+
+            // const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams)
+            //     , function(err, data) {
+            //     console.log('err', err);
+            //     console.log('data', data);
+            //     if (err) {
+            //         return context.fail('addToGroupError', err);
+            //     } else {
+            //         return context.done(null, results.length + "Users updated");
+            //     }
+            // })
+            // const invokeresponse = await lambda.send(command);
+            // console.log('Payload', Payload);
+            // console.log('LogResult', LogResult);
+            // console.log('invokeresponse', invokeresponse)
             let queryPromisesResult = await Promise.all(queryPromises);
             console.log('queryPromisesResult', queryPromisesResult);
                 return context.done(null, results.length + "Users updated");
@@ -287,7 +297,7 @@ exports.handler = async (event, context, callback) => {
                     // signifies that the user's weekly results were updated
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.gameWeek)
+                        await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.gameWeek)
                     }
                 } else if (updateResponse.acknowledged === true && updateResponse.modifiedCount === 0) {
                     // signifies that the user's weekly results were not updated
@@ -352,14 +362,14 @@ exports.handler = async (event, context, callback) => {
                         console.log(318, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                            await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
                         }
                     } else {
                         //console.log("no push update for ", result._id.userId)
                         console.log(324, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                            await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
                         }
                     }
                 } else {
@@ -367,7 +377,7 @@ exports.handler = async (event, context, callback) => {
                     console.log(331, { resultsArrayLength });
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                        await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
                     }
                 }
             }
