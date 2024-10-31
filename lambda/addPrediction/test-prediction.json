@@ -1,0 +1,31 @@
+{
+    "userId": "rosstuckerNFL",
+    "prediction": {
+      "gameId": 4733313,
+      "sport": "nfl",
+      "season": "reg",
+      "gameWeek": 9,
+      "year": 2024,
+      "awayTeam": {
+          "code": "HOU",
+          "shortName": "Jets",
+          "fullName": "N.Y. Jets",
+          "score": 20
+      },
+      "homeTeam": {
+          "code": "NYJ",
+          "shortName": "Jets",
+          "fullName": "N.Y. Jets",
+          "score": 17
+      },
+      "odds": {
+        "spread": 2,
+        "total": 42.5
+      }
+    },
+    "wager": {
+      "currency": 100,
+      "wagerType": "spread",
+      "odds": -110
+    }
+  }
