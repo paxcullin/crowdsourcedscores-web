@@ -77,14 +77,17 @@ exports.handler = async (event, context) => {
         
         const messageRecord = event.Records[0].Sns;
         const gameAttributes = messageRecord.MessageAttributes;
-        const year = parseInt(gameAttributes.year.Value);
-        const gameId = parseInt(gameAttributes.gameId.Value);
-        const gameWeek = parseInt(gameAttributes.gameWeek.Value);
+        const year = parseInt(gameAttributes.year.Value),
+        gameId = parseInt(gameAttributes.gameId.Value),
+        gameWeek = parseInt(gameAttributes.gameWeek.Value),
+        season = gameAttributes.season.Value;
+
         var matchOpts = {
           $match: {
             year: year,
             gameId: gameId,
-            gameWeek: gameWeek
+            gameWeek: gameWeek,
+            season: season
           }
         }
         var groupOpts = {

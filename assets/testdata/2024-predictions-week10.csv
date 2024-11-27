@@ -1,0 +1,932 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+4733292,2024,reg,7,Las Vegas Raiders,20,L.A. Rams Rams,27,0,0,1,0,0,0,0,0,0,0,0,0,-7,47,2024-10-14T16:02:45.507Z,cmaronchick,2,cmaronchick
+4733286,2024,reg,7,Seattle Seahawks,27,Atlanta Falcons,23,0,0,1,0,1,0,0,0,0,0,0,0,4,50,2024-10-14T16:04:31.547Z,cmaronchick,4,cmaronchick
+4733284,2024,reg,7,Denver Broncos,13,New Orleans Saints,20,0,0,0,0,0,0,0,0,0,0,0,0,-7,33,2024-10-17T14:15:11.520Z,cmaronchick,0,cmaronchick
+4733200,2024,reg,7,New England Patriots,13,Jacksonville Jaguars,27,0,0,1,0,1,0,0,0,0,0,0,0,-14,40,2024-10-15T12:58:05.501Z,cmaronchick,4,cmaronchick
+4733293,2024,reg,7,Carolina Panthers,20,Washington Commanders,31,0,0,1,0,1,0,0,0,1,0,0,0,-11,51,2024-10-15T12:58:34.862Z,cmaronchick,6,cmaronchick
+4733289,2024,reg,7,Detroit Lions,21,Minnesota Vikings,20,0,0,1,0,1,0,0,0,0,0,0,0,1,41,2024-10-17T14:41:45.988Z,cmaronchick,4,cmaronchick
+4733288,2024,reg,7,Cincinnati Bengals,27,Cleveland Browns,14,0,0,1,0,1,0,0,0,1,0,0,0,13,41,2024-10-15T14:29:18.378Z,cmaronchick,7,cmaronchick
+4733287,2024,reg,7,Houston Texans,27,Green Bay Packers,24,0,0,0,0,1,0,0,0,0,0,0,0,3,51,2024-10-15T14:30:07.753Z,cmaronchick,3,cmaronchick
+4733291,2024,reg,7,Tennessee Titans,16,Buffalo Bills,27,0,0,1,0,1,0,0,0,1,0,0,0,-11,43,2024-10-17T17:05:50.246Z,cmaronchick,6,cmaronchick
+4733285,2024,reg,7,Philadelphia Eagles,24,N.Y. Giants Giants,20,0,0,1,0,1,0,0,0,0,0,0,0,4,44,2024-10-17T17:06:09.285Z,cmaronchick,4,cmaronchick
+4733290,2024,reg,7,Miami Dolphins,13,Indianapolis Colts,24,0,0,1,0,1,0,0,0,1,0,0,0,-11,37,2024-10-15T14:32:32.581Z,cmaronchick,6,cmaronchick
+4733191,2024,reg,7,Kansas City Chiefs,30,San Francisco 49ers,27,0,0,1,0,1,0,0,0,0,0,0,0,3,57,2024-10-15T14:33:57.038Z,cmaronchick,4,cmaronchick
+4733294,2024,reg,7,N.Y. Jets Jets,17,Pittsburgh Steelers,20,0,0,1,0,1,0,0,0,1,0,0,0,-3,37,2024-10-15T14:34:35.527Z,cmaronchick,6,cmaronchick
+4733295,2024,reg,7,Baltimore Ravens,31,Tampa Bay Buccaneers,27,0,0,1,0,1,0,0,0,1,0,0,0,4,58,2024-10-15T14:35:46.869Z,cmaronchick,6,cmaronchick
+4733296,2024,reg,7,L.A. Chargers Chargers,17,Arizona Cardinals,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2024-10-15T14:36:44.842Z,cmaronchick,4,cmaronchick
+4733200,2024,reg,7,New England Patriots,20,Jacksonville Jaguars,24,0,0,1,0,0,0,0,0,1,0,0,0,-4,44,2024-10-18T19:01:20.662Z,rosstuckerNFL,4,rosstuckerNFL
+4733285,2024,reg,7,Philadelphia Eagles,20,N.Y. Giants Giants,18,0,0,1,0,0,0,0,0,1,0,0,0,2,38,2024-10-18T19:09:46.276Z,rosstuckerNFL,4,rosstuckerNFL
+4733293,2024,reg,7,Carolina Panthers,24,Washington Commanders,38,0,0,1,0,1,0,0,0,0,0,0,0,-14,62,2024-10-18T19:13:33.148Z,rosstuckerNFL,4,rosstuckerNFL
+4733295,2024,reg,7,Baltimore Ravens,31,Tampa Bay Buccaneers,28,0,0,1,0,0,0,0,0,1,0,0,0,3,59,2024-10-18T19:13:40.918Z,rosstuckerNFL,4,rosstuckerNFL
+4733284,2024,reg,7,Denver Broncos,23,New Orleans Saints,17,0,0,1,0,1,0,0,0,1,0,0,0,6,40,2024-10-17T08:51:09.111Z,ausame,6,ausame
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,17,0,0,1,0,1,0,0,0,0,0,0,0,3,37,2024-10-17T20:21:02.566Z,rosstuckerNFL,4,rosstuckerNFL
+4733200,2024,reg,7,New England Patriots,23,Jacksonville Jaguars,20,,,0,0,0,0,0,0,0,0,0,0,3,43,2024-11-07T11:39:48.000Z,TerrySullivan,0,TerrySullivan
+4733191,2024,reg,7,Kansas City Chiefs,21,San Francisco 49ers,24,,,0,0,0,0,0,0,1,0,0,0,-3,45,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733286,2024,reg,7,Seattle Seahawks,26,Atlanta Falcons,28,,,0,0,1,0,0,0,0,0,0,0,-2,54,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733287,2024,reg,7,Houston Texans,24,Green Bay Packers,28,,,1,0,0,0,0,0,0,0,0,0,-4,52,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733293,2024,reg,7,Carolina Panthers,20,Washington Commanders,33,,,1,0,1,0,0,0,0,0,0,0,-13,53,2024-11-07T11:39:48.000Z,TerrySullivan,4,TerrySullivan
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,17,,,1,0,1,0,0,0,0,0,0,0,3,37,2024-11-07T11:39:48.000Z,TerrySullivan,4,TerrySullivan
+4733288,2024,reg,7,Cincinnati Bengals,30,Cleveland Browns,20,,,1,0,1,0,0,0,0,0,0,0,10,50,2024-11-07T11:39:48.000Z,TerrySullivan,4,TerrySullivan
+4733290,2024,reg,7,Miami Dolphins,17,Indianapolis Colts,26,,,1,0,1,0,0,0,0,0,0,0,-9,43,2024-11-07T11:39:48.000Z,TerrySullivan,4,TerrySullivan
+4733289,2024,reg,7,Detroit Lions,27,Minnesota Vikings,24,,,1,0,1,0,0,0,1,0,0,0,3,51,2024-11-07T11:39:48.000Z,TerrySullivan,6,TerrySullivan
+4733285,2024,reg,7,Philadelphia Eagles,23,New York Giants,21,,,1,0,0,0,0,0,0,0,0,0,2,44,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733291,2024,reg,7,Tennessee Titans,17,Buffalo Bills,30,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-11-07T11:39:48.000Z,TerrySullivan,6,TerrySullivan
+4733292,2024,reg,7,Las Vegas Raiders,20,Los Angeles Rams,27,,,1,0,0,0,0,0,0,0,0,0,-7,47,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733294,2024,reg,7,New York Jets,20,Pittsburgh Steelers,24,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-11-07T11:39:48.000Z,TerrySullivan,6,TerrySullivan
+4733295,2024,reg,7,Baltimore Ravens,26,Tampa Bay Buccaneers,23,,,1,0,0,0,0,0,0,0,0,0,3,49,2024-11-07T11:39:48.000Z,TerrySullivan,2,TerrySullivan
+4733296,2024,reg,7,Los Angeles Chargers,24,Arizona Cardinals,20,,,0,0,0,0,0,0,0,0,0,0,4,44,2024-11-07T11:39:48.000Z,TerrySullivan,0,TerrySullivan
+4733284,2024,reg,7,Denver Broncos,16,New Orleans Saints,23,,,0,0,0,0,0,0,1,0,0,0,-7,39,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733200,2024,reg,7,New England Patriots,21,Jacksonville Jaguars,29,,,1,0,1,0,0,0,1,0,0,0,-8,50,2024-11-07T11:39:48.000Z,PetePrisco,6,PetePrisco
+4733286,2024,reg,7,Seattle Seahawks,30,Atlanta Falcons,34,,,0,0,0,0,0,0,0,0,0,0,-4,64,2024-11-07T11:39:48.000Z,PetePrisco,0,PetePrisco
+4733291,2024,reg,7,Tennessee Titans,17,Buffalo Bills,23,,,1,0,0,0,0,0,0,0,0,0,-6,40,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733288,2024,reg,7,Cincinnati Bengals,21,Cleveland Browns,17,,,1,0,0,0,0,0,1,0,0,0,4,38,2024-11-07T11:39:48.000Z,PetePrisco,5,PetePrisco
+4733287,2024,reg,7,Houston Texans,30,Green Bay Packers,34,,,1,0,0,0,0,0,0,0,0,0,-4,64,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733290,2024,reg,7,Miami Dolphins,17,Indianapolis Colts,21,,,1,0,1,0,0,0,1,0,0,0,-4,38,2024-11-07T11:39:48.000Z,PetePrisco,6,PetePrisco
+4733289,2024,reg,7,Detroit Lions,26,Minnesota Vikings,31,,,0,0,0,0,0,0,1,0,0,0,-5,57,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733285,2024,reg,7,Philadelphia Eagles,20,New York Giants,24,,,0,0,0,0,0,0,0,0,0,0,-4,44,2024-11-07T11:39:48.000Z,PetePrisco,0,PetePrisco
+4733293,2024,reg,7,Carolina Panthers,27,Washington Commanders,35,,,1,0,0,0,0,0,0,0,0,0,-8,62,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733292,2024,reg,7,Las Vegas Raiders,19,Los Angeles Rams,27,,,1,0,0,0,0,0,0,0,0,0,-8,46,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733191,2024,reg,7,Kansas City Chiefs,27,San Francisco 49ers,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:39:48.000Z,PetePrisco,4,PetePrisco
+4733294,2024,reg,7,New York Jets,23,Pittsburgh Steelers,17,,,0,0,0,0,0,0,1,0,0,0,6,40,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733295,2024,reg,7,Baltimore Ravens,31,Tampa Bay Buccaneers,34,,,0,0,0,0,0,0,1,0,0,0,-3,65,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733296,2024,reg,7,Los Angeles Chargers,27,Arizona Cardinals,14,,,0,0,0,0,0,0,1,0,0,0,13,41,2024-11-07T11:39:48.000Z,PetePrisco,2,PetePrisco
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,13,,,1,0,1,0,0,0,0,0,0,0,7,33,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733290,2024,reg,7,Miami Dolphins,23,Indianapolis Colts,20,,,0,0,0,0,0,0,0,0,0,0,3,43,2024-11-07T11:39:48.000Z,BleacherReport,0,BleacherReport
+4733200,2024,reg,7,New England Patriots,21,Jacksonville Jaguars,24,,,1,0,0,0,0,0,1,0,0,0,-3,45,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,26,,,1,0,0,0,0,0,0,0,0,0,-3,49,2024-11-07T11:39:48.000Z,BleacherReport,2,BleacherReport
+4733291,2024,reg,7,Tennessee Titans,14,Buffalo Bills,24,,,1,0,1,0,0,0,0,0,0,0,-10,38,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733289,2024,reg,7,Detroit Lions,30,Minnesota Vikings,28,,,1,0,1,0,0,0,1,0,0,0,2,58,2024-11-07T11:39:48.000Z,BleacherReport,7,BleacherReport
+4733285,2024,reg,7,Philadelphia Eagles,26,New York Giants,20,,,1,0,1,0,0,0,0,0,0,0,6,46,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733286,2024,reg,7,Seattle Seahawks,23,Atlanta Falcons,28,,,0,0,0,0,0,0,0,0,0,0,-5,51,2024-11-07T11:39:48.000Z,BleacherReport,0,BleacherReport
+4733288,2024,reg,7,Cincinnati Bengals,27,Cleveland Browns,17,,,1,0,1,0,0,0,0,0,0,0,10,44,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733293,2024,reg,7,Carolina Panthers,23,Washington Commanders,34,,,1,0,1,0,0,0,0,0,0,0,-11,57,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733292,2024,reg,7,Las Vegas Raiders,16,Los Angeles Rams,24,,,1,0,0,0,0,0,1,0,0,0,-8,40,2024-11-07T11:39:48.000Z,BleacherReport,4,BleacherReport
+4733191,2024,reg,7,Kansas City Chiefs,23,San Francisco 49ers,21,,,1,0,1,0,0,0,1,0,0,0,2,44,2024-11-07T11:39:48.000Z,BleacherReport,6,BleacherReport
+4733294,2024,reg,7,New York Jets,21,Pittsburgh Steelers,17,,,0,0,0,0,0,0,0,0,0,0,4,38,2024-11-07T11:39:48.000Z,BleacherReport,0,BleacherReport
+4733295,2024,reg,7,Baltimore Ravens,28,Tampa Bay Buccaneers,24,,,1,0,1,0,0,0,1,0,0,0,4,52,2024-11-07T11:39:48.000Z,BleacherReport,6,BleacherReport
+4733296,2024,reg,7,Los Angeles Chargers,23,Arizona Cardinals,20,,,0,0,0,0,0,0,1,0,0,0,3,43,2024-11-07T11:39:48.000Z,BleacherReport,2,BleacherReport
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,17,,,1,0,1,0,0,0,0,0,0,0,3,37,2024-11-07T11:39:48.000Z,BillBender,4,BillBender
+4733200,2024,reg,7,New England Patriots,19,Jacksonville Jaguars,24,,,1,0,0,0,0,0,0,0,0,0,-5,43,2024-11-07T11:39:48.000Z,BillBender,2,BillBender
+4733286,2024,reg,7,Seattle Seahawks,21,Atlanta Falcons,28,,,0,0,0,0,0,0,1,0,0,0,-7,49,2024-11-07T11:39:48.000Z,BillBender,2,BillBender
+4733291,2024,reg,7,Tennessee Titans,20,Buffalo Bills,31,,,1,0,1,0,0,0,1,0,0,0,-11,51,2024-11-07T11:39:48.000Z,BillBender,6,BillBender
+4733288,2024,reg,7,Cincinnati Bengals,25,Cleveland Browns,18,,,1,0,1,0,0,0,0,0,0,0,7,43,2024-11-07T11:39:48.000Z,BillBender,5,BillBender
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,24,,,1,0,1,0,0,0,1,0,0,0,-1,47,2024-11-07T11:39:48.000Z,BillBender,7,BillBender
+4733290,2024,reg,7,Miami Dolphins,21,Indianapolis Colts,24,,,1,0,0,0,0,0,0,0,0,0,-3,45,2024-11-07T11:39:48.000Z,BillBender,2,BillBender
+4733289,2024,reg,7,Detroit Lions,31,Minnesota Vikings,28,,,1,0,1,0,0,0,1,0,0,0,3,59,2024-11-07T11:39:48.000Z,BillBender,7,BillBender
+4733285,2024,reg,7,Philadelphia Eagles,24,New York Giants,14,,,1,0,1,0,0,0,1,0,0,0,10,38,2024-11-07T11:39:48.000Z,BillBender,6,BillBender
+4733292,2024,reg,7,Las Vegas Raiders,20,Los Angeles Rams,23,,,1,0,1,0,0,0,1,0,0,0,-3,43,2024-11-07T11:39:48.000Z,BillBender,6,BillBender
+4733293,2024,reg,7,Carolina Panthers,22,Washington Commanders,30,,,1,0,0,0,0,0,0,0,0,0,-8,52,2024-11-07T11:39:48.000Z,BillBender,2,BillBender
+4733191,2024,reg,7,Kansas City Chiefs,26,San Francisco 49ers,24,,,1,0,1,0,0,0,0,0,0,0,2,50,2024-11-07T11:39:48.000Z,BillBender,4,BillBender
+4733294,2024,reg,7,New York Jets,17,Pittsburgh Steelers,23,,,1,0,1,0,0,0,1,0,0,0,-6,40,2024-11-07T11:39:48.000Z,BillBender,6,BillBender
+4733295,2024,reg,7,Baltimore Ravens,33,Tampa Bay Buccaneers,26,,,1,0,1,0,0,0,1,0,0,0,7,59,2024-11-07T11:39:48.000Z,BillBender,6,BillBender
+4733296,2024,reg,7,Los Angeles Chargers,24,Arizona Cardinals,19,,,0,0,0,0,0,0,1,0,0,0,5,43,2024-11-07T11:39:48.000Z,BillBender,2,BillBender
+4733284,2024,reg,7,Denver Broncos,22,New Orleans Saints,23,,,0,0,0,0,0,0,1,0,0,0,-1,45,2024-11-07T11:39:48.000Z,DataSkrive,2,DataSkrive
+4733200,2024,reg,7,New England Patriots,21,Jacksonville Jaguars,22,,,1,0,0,0,0,0,0,0,0,0,-1,43,2024-11-07T11:39:48.000Z,DataSkrive,2,DataSkrive
+4733291,2024,reg,7,Tennessee Titans,16,Buffalo Bills,29,,,1,0,1,0,0,0,1,0,0,0,-13,45,2024-11-07T11:39:48.000Z,DataSkrive,6,DataSkrive
+4733288,2024,reg,7,Cincinnati Bengals,26,Cleveland Browns,19,,,1,0,1,0,0,0,0,0,0,0,7,45,2024-11-07T11:39:48.000Z,DataSkrive,5,DataSkrive
+4733289,2024,reg,7,Detroit Lions,17,Minnesota Vikings,28,,,0,0,0,0,0,0,0,0,0,0,-11,45,2024-11-07T11:39:48.000Z,DataSkrive,0,DataSkrive
+4733286,2024,reg,7,Seattle Seahawks,17,Atlanta Falcons,31,,,0,0,0,0,0,0,1,0,0,0,-14,48,2024-11-07T11:39:48.000Z,DataSkrive,3,DataSkrive
+4733285,2024,reg,7,Philadelphia Eagles,23,New York Giants,17,,,1,0,1,0,0,0,1,0,0,0,6,40,2024-11-07T11:39:48.000Z,DataSkrive,6,DataSkrive
+4733290,2024,reg,7,Miami Dolphins,10,Indianapolis Colts,30,,,1,0,1,0,0,0,1,0,0,0,-20,40,2024-11-07T11:39:48.000Z,DataSkrive,7,DataSkrive
+4733287,2024,reg,7,Houston Texans,20,Green Bay Packers,27,,,1,0,0,0,0,0,1,0,0,0,-7,47,2024-11-07T11:39:48.000Z,DataSkrive,4,DataSkrive
+4733292,2024,reg,7,Las Vegas Raiders,18,Los Angeles Rams,28,,,1,0,0,0,0,0,0,0,0,0,-10,46,2024-11-07T11:39:48.000Z,DataSkrive,2,DataSkrive
+4733293,2024,reg,7,Carolina Panthers,14,Washington Commanders,39,,,1,0,1,0,0,0,0,0,0,0,-25,53,2024-11-07T11:39:48.000Z,DataSkrive,4,DataSkrive
+4733191,2024,reg,7,Kansas City Chiefs,26,San Francisco 49ers,19,,,1,0,1,0,0,0,1,0,0,0,7,45,2024-11-07T11:39:48.000Z,DataSkrive,6,DataSkrive
+4733294,2024,reg,7,New York Jets,13,Pittsburgh Steelers,23,,,1,0,1,0,0,0,0,0,0,0,-10,36,2024-11-07T11:39:48.000Z,DataSkrive,4,DataSkrive
+4733295,2024,reg,7,Baltimore Ravens,21,Tampa Bay Buccaneers,32,,,0,0,0,0,0,0,1,0,0,0,-11,53,2024-11-07T11:39:48.000Z,DataSkrive,2,DataSkrive
+4733296,2024,reg,7,Los Angeles Chargers,22,Arizona Cardinals,18,,,0,0,0,0,0,0,1,0,0,0,4,40,2024-11-07T11:39:48.000Z,DataSkrive,2,DataSkrive
+4733284,2024,reg,7,Denver Broncos,17,New Orleans Saints,13,,,1,0,1,0,0,0,0,0,0,0,4,30,2024-11-07T11:39:48.000Z,MarcusMosher,4,MarcusMosher
+4733200,2024,reg,7,New England Patriots,19,Jacksonville Jaguars,23,,,1,0,0,0,0,0,0,0,0,0,-4,42,2024-11-07T11:39:48.000Z,MarcusMosher,2,MarcusMosher
+4733289,2024,reg,7,Detroit Lions,28,Minnesota Vikings,27,,,1,0,1,0,0,0,1,0,0,0,1,55,2024-11-07T11:39:48.000Z,MarcusMosher,6,MarcusMosher
+4733285,2024,reg,7,Philadelphia Eagles,23,New York Giants,16,,,1,0,1,0,0,0,1,0,0,0,7,39,2024-11-07T11:39:48.000Z,MarcusMosher,6,MarcusMosher
+4733291,2024,reg,7,Tennessee Titans,17,Buffalo Bills,26,,,1,0,1,0,0,0,1,0,0,0,-9,43,2024-11-07T11:39:48.000Z,MarcusMosher,6,MarcusMosher
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,27,,,1,0,0,0,0,0,0,0,0,0,-4,50,2024-11-07T11:39:48.000Z,MarcusMosher,2,MarcusMosher
+4733288,2024,reg,7,Cincinnati Bengals,20,Cleveland Browns,17,,,1,0,0,0,0,0,1,0,0,0,3,37,2024-11-07T11:39:48.000Z,MarcusMosher,4,MarcusMosher
+4733286,2024,reg,7,Seattle Seahawks,31,Atlanta Falcons,27,,,1,0,1,0,0,0,0,0,0,0,4,58,2024-11-07T11:39:48.000Z,MarcusMosher,4,MarcusMosher
+4733290,2024,reg,7,Miami Dolphins,20,Indianapolis Colts,16,,,0,0,0,0,0,0,1,0,0,0,4,36,2024-11-07T11:39:48.000Z,MarcusMosher,3,MarcusMosher
+4733292,2024,reg,7,Las Vegas Raiders,17,Los Angeles Rams,27,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-11-07T11:39:48.000Z,MarcusMosher,2,MarcusMosher
+4733293,2024,reg,7,Carolina Panthers,23,Washington Commanders,31,,,1,0,0,0,0,0,0,0,0,0,-8,54,2024-11-07T11:39:48.000Z,MarcusMosher,2,MarcusMosher
+4733191,2024,reg,7,Kansas City Chiefs,20,San Francisco 49ers,26,,,0,0,0,0,0,0,1,0,0,0,-6,46,2024-11-07T11:39:48.000Z,MarcusMosher,3,MarcusMosher
+4733294,2024,reg,7,New York Jets,16,Pittsburgh Steelers,20,,,1,0,1,0,0,0,0,0,0,0,-4,36,2024-11-07T11:39:48.000Z,MarcusMosher,4,MarcusMosher
+4733295,2024,reg,7,Baltimore Ravens,24,Tampa Bay Buccaneers,27,,,0,0,0,0,0,0,1,0,0,0,-3,51,2024-11-07T11:39:48.000Z,MarcusMosher,2,MarcusMosher
+4733296,2024,reg,7,Los Angeles Chargers,20,Arizona Cardinals,24,,,1,0,1,0,0,0,0,0,0,0,-4,44,2024-11-07T11:39:48.000Z,MarcusMosher,4,MarcusMosher
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,17,,,1,0,1,0,0,0,0,0,0,0,3,37,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733191,2024,reg,7,Kansas City Chiefs,24,San Francisco 49ers,23,,,1,0,1,0,0,0,1,0,0,0,1,47,2024-11-07T11:39:48.000Z,VinnieIyer,6,VinnieIyer
+4733291,2024,reg,7,Tennessee Titans,13,Buffalo Bills,33,,,1,0,1,0,0,0,1,0,0,0,-20,46,2024-11-07T11:39:48.000Z,VinnieIyer,6,VinnieIyer
+4733200,2024,reg,7,New England Patriots,27,Jacksonville Jaguars,24,,,0,0,0,0,0,0,1,0,0,0,3,51,2024-11-07T11:39:48.000Z,VinnieIyer,2,VinnieIyer
+4733286,2024,reg,7,Seattle Seahawks,27,Atlanta Falcons,30,,,0,0,0,0,0,0,0,0,0,0,-3,57,2024-11-07T11:39:48.000Z,VinnieIyer,0,VinnieIyer
+4733288,2024,reg,7,Cincinnati Bengals,27,Cleveland Browns,20,,,1,0,1,0,0,0,0,0,0,0,7,47,2024-11-07T11:39:48.000Z,VinnieIyer,5,VinnieIyer
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,30,,,1,0,0,0,0,0,0,0,0,0,-7,53,2024-11-07T11:39:48.000Z,VinnieIyer,2,VinnieIyer
+4733289,2024,reg,7,Detroit Lions,24,Minnesota Vikings,20,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733290,2024,reg,7,Miami Dolphins,20,Indianapolis Colts,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:39:48.000Z,VinnieIyer,2,VinnieIyer
+4733285,2024,reg,7,Philadelphia Eagles,24,New York Giants,17,,,1,0,1,0,0,0,1,0,0,0,7,41,2024-11-07T11:39:48.000Z,VinnieIyer,6,VinnieIyer
+4733292,2024,reg,7,Las Vegas Raiders,14,Los Angeles Rams,27,,,1,0,0,0,0,0,1,0,0,0,-13,41,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733293,2024,reg,7,Carolina Panthers,21,Washington Commanders,38,,,1,0,1,0,0,0,0,0,0,0,-17,59,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733294,2024,reg,7,New York Jets,17,Pittsburgh Steelers,20,,,1,0,1,0,0,0,0,0,0,0,-3,37,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733295,2024,reg,7,Baltimore Ravens,27,Tampa Bay Buccaneers,24,,,1,0,0,0,0,0,1,0,0,0,3,51,2024-11-07T11:39:48.000Z,VinnieIyer,4,VinnieIyer
+4733296,2024,reg,7,Los Angeles Chargers,24,Arizona Cardinals,17,,,0,0,0,0,0,0,1,0,0,0,7,41,2024-11-07T11:39:48.000Z,VinnieIyer,3,VinnieIyer
+4733284,2024,reg,7,Denver Broncos,20,New Orleans Saints,18,,,1,0,0,0,0,0,1,0,0,0,2,38,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733200,2024,reg,7,New England Patriots,18,Jacksonville Jaguars,24,,,1,0,1,0,0,0,0,0,0,0,-6,42,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733285,2024,reg,7,Philadelphia Eagles,23,New York Giants,19,,,1,0,1,0,0,0,0,0,0,0,4,42,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733286,2024,reg,7,Seattle Seahawks,24,Atlanta Falcons,26,,,0,0,1,0,0,0,1,0,0,0,-2,50,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733287,2024,reg,7,Houston Texans,22,Green Bay Packers,25,,,1,0,0,0,0,0,1,0,0,0,-3,47,2024-11-07T11:39:48.000Z,Dimers,5,Dimers
+4733288,2024,reg,7,Cincinnati Bengals,23,Cleveland Browns,18,,,1,0,0,0,0,0,1,0,0,0,5,41,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733289,2024,reg,7,Detroit Lions,25,Minnesota Vikings,26,,,0,0,1,0,0,0,1,0,0,0,-1,51,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733290,2024,reg,7,Miami Dolphins,20,Indianapolis Colts,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:39:48.000Z,Dimers,2,Dimers
+4733291,2024,reg,7,Tennessee Titans,16,Buffalo Bills,24,,,1,0,0,0,0,0,0,0,0,0,-8,40,2024-11-07T11:39:48.000Z,Dimers,2,Dimers
+4733292,2024,reg,7,Las Vegas Raiders,19,Los Angeles Rams,25,,,1,0,1,0,0,0,0,0,0,0,-6,44,2024-11-07T11:39:48.000Z,Dimers,4,Dimers
+4733293,2024,reg,7,Carolina Panthers,22,Washington Commanders,30,,,1,0,0,0,0,0,0,0,0,0,-8,52,2024-11-07T11:39:48.000Z,Dimers,2,Dimers
+4733191,2024,reg,7,Kansas City Chiefs,22,San Francisco 49ers,24,,,0,0,0,0,0,0,1,0,0,0,-2,46,2024-11-07T11:39:48.000Z,Dimers,3,Dimers
+4733294,2024,reg,7,New York Jets,20,Pittsburgh Steelers,18,,,0,0,0,0,0,0,0,0,0,0,2,38,2024-11-07T11:39:48.000Z,Dimers,0,Dimers
+4733295,2024,reg,7,Baltimore Ravens,26,Tampa Bay Buccaneers,23,,,1,0,0,0,0,0,0,0,0,0,3,49,2024-11-07T11:39:48.000Z,Dimers,2,Dimers
+4733284,2024,reg,7,Denver Broncos,17,New Orleans Saints,13,,,1,0,1,0,0,0,0,0,0,0,4,30,2024-11-07T11:39:48.000Z,LorenzoReyes,4,LorenzoReyes
+4733284,2024,reg,7,Denver Broncos,17,New Orleans Saints,20,,,0,0,0,0,0,0,0,0,0,0,-3,37,2024-11-07T11:39:48.000Z,TylerDragon,0,TylerDragon
+4733284,2024,reg,7,Denver Broncos,33,New Orleans Saints,32,,,1,0,0,0,0,0,1,0,0,0,1,65,2024-11-07T11:39:48.000Z,RichardMorin,5,RichardMorin
+4733284,2024,reg,7,Denver Broncos,22,New Orleans Saints,20,,,1,0,0,0,0,0,1,0,0,0,2,42,2024-11-07T11:39:48.000Z,JordanMendoza,4,JordanMendoza
+4733200,2024,reg,7,New England Patriots,13,Jacksonville Jaguars,23,,,1,0,1,0,0,0,0,0,0,0,-10,36,2024-11-07T11:39:48.000Z,LorenzoReyes,4,LorenzoReyes
+4733200,2024,reg,7,New England Patriots,17,Jacksonville Jaguars,21,,,1,0,0,0,0,0,0,0,0,0,-4,38,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733200,2024,reg,7,New England Patriots,21,Jacksonville Jaguars,24,,,1,0,0,0,0,0,1,0,0,0,-3,45,2024-11-07T11:39:48.000Z,RichardMorin,4,RichardMorin
+4733200,2024,reg,7,New England Patriots,13,Jacksonville Jaguars,23,,,1,0,1,0,0,0,0,0,0,0,-10,36,2024-11-07T11:39:48.000Z,JordanMendoza,4,JordanMendoza
+4733286,2024,reg,7,Seattle Seahawks,20,Atlanta Falcons,29,,,0,0,0,0,0,0,1,0,0,0,-9,49,2024-11-07T11:39:48.000Z,LorenzoReyes,2,LorenzoReyes
+4733286,2024,reg,7,Seattle Seahawks,25,Atlanta Falcons,26,,,0,0,1,0,0,0,0,0,0,0,-1,51,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733286,2024,reg,7,Seattle Seahawks,13,Atlanta Falcons,28,,,0,0,0,0,0,0,1,0,0,0,-15,41,2024-11-07T11:39:48.000Z,RichardMorin,2,RichardMorin
+4733286,2024,reg,7,Seattle Seahawks,22,Atlanta Falcons,26,,,0,0,0,0,0,0,1,0,0,0,-4,48,2024-11-07T11:39:48.000Z,JordanMendoza,3,JordanMendoza
+4733291,2024,reg,7,Tennessee Titans,14,Buffalo Bills,31,,,1,0,1,0,0,0,1,0,0,0,-17,45,2024-11-07T11:39:48.000Z,LorenzoReyes,6,LorenzoReyes
+4733291,2024,reg,7,Tennessee Titans,17,Buffalo Bills,30,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-11-07T11:39:48.000Z,TylerDragon,6,TylerDragon
+4733291,2024,reg,7,Tennessee Titans,16,Buffalo Bills,30,,,1,0,1,0,0,0,1,0,0,0,-14,46,2024-11-07T11:39:48.000Z,RichardMorin,6,RichardMorin
+4733291,2024,reg,7,Tennessee Titans,13,Buffalo Bills,31,,,1,0,1,0,0,0,1,0,0,0,-18,44,2024-11-07T11:39:48.000Z,JordanMendoza,7,JordanMendoza
+4733288,2024,reg,7,Cincinnati Bengals,23,Cleveland Browns,21,,,1,0,0,0,0,0,0,0,0,0,2,44,2024-11-07T11:39:48.000Z,LorenzoReyes,2,LorenzoReyes
+4733288,2024,reg,7,Cincinnati Bengals,24,Cleveland Browns,21,,,1,0,0,0,0,0,0,0,0,0,3,45,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733288,2024,reg,7,Cincinnati Bengals,21,Cleveland Browns,18,,,1,0,0,0,0,0,1,0,0,0,3,39,2024-11-07T11:39:48.000Z,RichardMorin,5,RichardMorin
+4733288,2024,reg,7,Cincinnati Bengals,23,Cleveland Browns,17,,,1,0,0,0,0,0,1,0,0,0,6,40,2024-11-07T11:39:48.000Z,JordanMendoza,4,JordanMendoza
+4733287,2024,reg,7,Houston Texans,17,Green Bay Packers,21,,,1,0,0,0,0,0,1,0,0,0,-4,38,2024-11-07T11:39:48.000Z,LorenzoReyes,4,LorenzoReyes
+4733287,2024,reg,7,Houston Texans,28,Green Bay Packers,27,,,0,0,1,0,0,0,0,0,0,0,1,55,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,26,,,1,0,0,0,0,0,0,0,0,0,-3,49,2024-11-07T11:39:48.000Z,RichardMorin,2,RichardMorin
+4733287,2024,reg,7,Houston Texans,27,Green Bay Packers,24,,,0,0,1,0,0,0,0,0,0,0,3,51,2024-11-07T11:39:48.000Z,JordanMendoza,3,JordanMendoza
+4733290,2024,reg,7,Miami Dolphins,16,Indianapolis Colts,22,,,1,0,1,0,0,0,1,0,0,0,-6,38,2024-11-07T11:39:48.000Z,LorenzoReyes,7,LorenzoReyes
+4733290,2024,reg,7,Miami Dolphins,20,Indianapolis Colts,21,,,1,0,0,0,0,0,1,0,0,0,-1,41,2024-11-07T11:39:48.000Z,TylerDragon,4,TylerDragon
+4733290,2024,reg,7,Miami Dolphins,13,Indianapolis Colts,18,,,1,0,1,0,0,0,1,0,0,0,-5,31,2024-11-07T11:39:48.000Z,RichardMorin,6,RichardMorin
+4733290,2024,reg,7,Miami Dolphins,16,Indianapolis Colts,13,,,0,0,0,0,0,0,1,0,0,0,3,29,2024-11-07T11:39:48.000Z,JordanMendoza,2,JordanMendoza
+4733289,2024,reg,7,Detroit Lions,26,Minnesota Vikings,23,,,1,0,1,0,0,0,0,0,0,0,3,49,2024-11-07T11:39:48.000Z,LorenzoReyes,4,LorenzoReyes
+4733289,2024,reg,7,Detroit Lions,28,Minnesota Vikings,24,,,1,0,1,0,0,0,1,0,0,0,4,52,2024-11-07T11:39:48.000Z,TylerDragon,6,TylerDragon
+4733289,2024,reg,7,Detroit Lions,31,Minnesota Vikings,25,,,1,0,1,0,0,0,1,0,0,0,6,56,2024-11-07T11:39:48.000Z,RichardMorin,7,RichardMorin
+4733289,2024,reg,7,Detroit Lions,29,Minnesota Vikings,27,,,1,0,1,0,0,0,1,0,0,0,2,56,2024-11-07T11:39:48.000Z,JordanMendoza,7,JordanMendoza
+4733285,2024,reg,7,Philadelphia Eagles,24,New York Giants,14,,,1,0,1,0,0,0,1,0,0,0,10,38,2024-11-07T11:39:48.000Z,LorenzoReyes,6,LorenzoReyes
+4733285,2024,reg,7,Philadelphia Eagles,24,New York Giants,18,,,1,0,1,0,0,0,0,0,0,0,6,42,2024-11-07T11:39:48.000Z,TylerDragon,4,TylerDragon
+4733292,2024,reg,7,Las Vegas Raiders,20,Los Angeles Rams,24,,,1,0,1,0,0,0,0,0,0,0,-4,44,2024-11-07T11:39:48.000Z,TylerDragon,4,TylerDragon
+4733285,2024,reg,7,Philadelphia Eagles,26,New York Giants,20,,,1,0,1,0,0,0,0,0,0,0,6,46,2024-11-07T11:39:48.000Z,JordanMendoza,4,JordanMendoza
+4733285,2024,reg,7,Philadelphia Eagles,30,New York Giants,12,,,1,0,1,0,0,0,0,0,0,0,18,42,2024-11-07T11:39:48.000Z,RichardMorin,4,RichardMorin
+4733292,2024,reg,7,Las Vegas Raiders,10,Los Angeles Rams,25,,,1,0,0,0,0,0,1,0,0,0,-15,35,2024-11-07T11:39:48.000Z,LorenzoReyes,5,LorenzoReyes
+4733292,2024,reg,7,Las Vegas Raiders,17,Los Angeles Rams,22,,,1,0,1,0,0,0,1,0,0,0,-5,39,2024-11-07T11:39:48.000Z,JordanMendoza,7,JordanMendoza
+4733292,2024,reg,7,Las Vegas Raiders,16,Los Angeles Rams,23,,,1,0,0,0,0,0,1,0,0,0,-7,39,2024-11-07T11:39:48.000Z,RichardMorin,4,RichardMorin
+4733293,2024,reg,7,Carolina Panthers,16,Washington Commanders,31,,,1,0,1,0,0,0,1,0,0,0,-15,47,2024-11-07T11:39:48.000Z,JordanMendoza,7,JordanMendoza
+4733293,2024,reg,7,Carolina Panthers,20,Washington Commanders,35,,,1,0,1,0,0,0,0,0,0,0,-15,55,2024-11-07T11:39:48.000Z,RichardMorin,4,RichardMorin
+4733293,2024,reg,7,Carolina Panthers,14,Washington Commanders,36,,,1,0,1,0,0,0,1,0,0,0,-22,50,2024-11-07T11:39:48.000Z,LorenzoReyes,6,LorenzoReyes
+4733293,2024,reg,7,Carolina Panthers,17,Washington Commanders,28,,,1,0,1,0,0,0,1,0,0,0,-11,45,2024-11-07T11:39:48.000Z,TylerDragon,6,TylerDragon
+4733191,2024,reg,7,Kansas City Chiefs,23,San Francisco 49ers,21,,,1,0,1,0,0,0,1,0,0,0,2,44,2024-11-07T11:39:48.000Z,LorenzoReyes,6,LorenzoReyes
+4733191,2024,reg,7,Kansas City Chiefs,23,San Francisco 49ers,20,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-11-07T11:39:48.000Z,TylerDragon,6,TylerDragon
+4733191,2024,reg,7,Kansas City Chiefs,25,San Francisco 49ers,27,,,0,0,0,0,0,0,0,0,0,0,-2,52,2024-11-07T11:39:48.000Z,RichardMorin,0,RichardMorin
+4733191,2024,reg,7,Kansas City Chiefs,21,San Francisco 49ers,23,,,0,0,0,0,0,0,1,0,0,0,-2,44,2024-11-07T11:39:48.000Z,JordanMendoza,2,JordanMendoza
+4733294,2024,reg,7,New York Jets,23,Pittsburgh Steelers,16,,,0,0,0,0,0,0,1,0,0,0,7,39,2024-11-07T11:39:48.000Z,LorenzoReyes,2,LorenzoReyes
+4733294,2024,reg,7,New York Jets,25,Pittsburgh Steelers,20,,,0,0,0,0,0,0,1,0,0,0,5,45,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733294,2024,reg,7,New York Jets,20,Pittsburgh Steelers,23,,,1,0,1,0,0,0,1,0,0,0,-3,43,2024-11-07T11:39:48.000Z,RichardMorin,6,RichardMorin
+4733294,2024,reg,7,New York Jets,20,Pittsburgh Steelers,18,,,0,0,0,0,0,0,0,0,0,0,2,38,2024-11-07T11:39:48.000Z,JordanMendoza,0,JordanMendoza
+4733295,2024,reg,7,Baltimore Ravens,29,Tampa Bay Buccaneers,20,,,1,0,1,0,0,0,0,0,0,0,9,49,2024-11-07T11:39:48.000Z,LorenzoReyes,4,LorenzoReyes
+4733295,2024,reg,7,Baltimore Ravens,26,Tampa Bay Buccaneers,20,,,1,0,1,0,0,0,0,0,0,0,6,46,2024-11-07T11:39:48.000Z,TylerDragon,4,TylerDragon
+4733295,2024,reg,7,Baltimore Ravens,33,Tampa Bay Buccaneers,24,,,1,0,1,0,0,0,1,0,0,0,9,57,2024-11-07T11:39:48.000Z,RichardMorin,6,RichardMorin
+4733295,2024,reg,7,Baltimore Ravens,23,Tampa Bay Buccaneers,24,,,0,0,0,0,0,0,0,0,0,0,-1,47,2024-11-07T11:39:48.000Z,JordanMendoza,0,JordanMendoza
+4733296,2024,reg,7,Los Angeles Chargers,29,Arizona Cardinals,13,,,0,0,0,0,0,0,1,0,0,0,16,42,2024-11-07T11:39:48.000Z,LorenzoReyes,2,LorenzoReyes
+4733296,2024,reg,7,Los Angeles Chargers,23,Arizona Cardinals,21,,,0,0,1,0,0,0,0,0,0,0,2,44,2024-11-07T11:39:48.000Z,TylerDragon,2,TylerDragon
+4733296,2024,reg,7,Los Angeles Chargers,24,Arizona Cardinals,28,,,1,0,1,0,0,0,0,0,0,0,-4,52,2024-11-07T11:39:48.000Z,RichardMorin,4,RichardMorin
+4733296,2024,reg,7,Los Angeles Chargers,20,Arizona Cardinals,16,,,0,0,0,0,0,0,1,0,0,0,4,36,2024-11-07T11:39:48.000Z,JordanMendoza,2,JordanMendoza
+4733284,2024,reg,7,Denver Broncos,30,New Orleans Saints,21,0,0,1,0,1,0,0,0,1,0,0,0,9,51,2024-10-17T21:08:05.840Z,bodysurfoceanside,6,bodysurfoceanside
+4733286,2024,reg,7,Seattle Seahawks,20,Atlanta Falcons,27,0,0,0,0,0,0,0,0,1,0,0,0,-7,47,2024-10-18T19:02:33.145Z,rosstuckerNFL,2,rosstuckerNFL
+4733291,2024,reg,7,Tennessee Titans,17,Buffalo Bills,24,0,0,1,0,0,0,0,0,1,0,0,0,-7,41,2024-10-18T19:03:45.073Z,rosstuckerNFL,4,rosstuckerNFL
+4733288,2024,reg,7,Cincinnati Bengals,23,Cleveland Browns,16,0,0,1,0,1,0,0,0,1,0,0,0,7,39,2024-10-18T19:05:11.642Z,rosstuckerNFL,7,rosstuckerNFL
+4733287,2024,reg,7,Houston Texans,24,Green Bay Packers,27,0,0,1,0,0,0,0,0,0,0,0,0,-3,51,2024-10-18T19:05:55.023Z,rosstuckerNFL,2,rosstuckerNFL
+4733290,2024,reg,7,Miami Dolphins,16,Indianapolis Colts,18,0,0,1,0,0,0,0,0,1,0,0,0,-2,34,2024-10-18T19:06:57.267Z,rosstuckerNFL,4,rosstuckerNFL
+4733289,2024,reg,7,Detroit Lions,23,Minnesota Vikings,24,0,0,0,0,1,0,0,0,0,0,0,0,-1,47,2024-10-18T19:07:54.940Z,rosstuckerNFL,2,rosstuckerNFL
+4733292,2024,reg,7,Las Vegas Raiders,20,L.A. Rams Rams,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2024-10-18T19:10:18.123Z,rosstuckerNFL,6,rosstuckerNFL
+4733191,2024,reg,7,Kansas City Chiefs,21,San Francisco 49ers,24,0,0,0,0,0,0,0,0,1,0,0,0,-3,45,2024-10-18T19:12:27.535Z,rosstuckerNFL,2,rosstuckerNFL
+4733294,2024,reg,7,N.Y. Jets Jets,23,Pittsburgh Steelers,17,0,0,0,0,0,0,0,0,1,0,0,0,6,40,2024-10-18T19:13:09.622Z,rosstuckerNFL,2,rosstuckerNFL
+4733296,2024,reg,7,L.A. Chargers Chargers,20,Arizona Cardinals,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2024-10-18T19:14:12.867Z,rosstuckerNFL,6,rosstuckerNFL
+4733200,2024,reg,7,New England Patriots,17,Jacksonville Jaguars,21,0,3,1,0,0,0,0,0,0,0,3,-3,-4,38,2024-10-20T07:30:18.156Z,ausame,2,ausame
+4733286,2024,reg,7,Seattle Seahawks,24,Atlanta Falcons,29,0,0,0,0,0,0,0,0,0,0,0,0,-5,53,2024-10-20T07:33:46.574Z,ausame,0,ausame
+4733291,2024,reg,7,Tennessee Titans,13,Buffalo Bills,31,0,3,1,0,1,0,0,0,1,0,3,3,-18,44,2024-10-20T07:35:58.374Z,ausame,7,ausame
+4733288,2024,reg,7,Cincinnati Bengals,21,Cleveland Browns,17,0,0,1,0,0,0,0,0,1,0,0,0,4,38,2024-10-20T07:39:14.913Z,ausame,5,ausame
+4733287,2024,reg,7,Houston Texans,23,Green Bay Packers,24,3,3,1,0,1,0,3,3,1,0,3,3,-1,47,2024-10-20T07:41:07.407Z,ausame,7,ausame
+4733290,2024,reg,7,Miami Dolphins,16,Indianapolis Colts,23,0,0,1,0,1,0,0,0,1,0,0,0,-7,39,2024-10-20T07:42:53.939Z,ausame,6,ausame
+4733289,2024,reg,7,Detroit Lions,21,Minnesota Vikings,23,0,3,0,0,1,0,0,0,0,0,3,-3,-2,44,2024-10-20T07:43:55.892Z,ausame,2,ausame
+4733285,2024,reg,7,Philadelphia Eagles,24,N.Y. Giants Giants,20,0,3,1,0,1,0,0,0,0,0,3,-3,4,44,2024-10-20T07:47:13.570Z,ausame,4,ausame
+4733292,2024,reg,7,Las Vegas Raiders,16,L.A. Rams Rams,24,0,0,1,0,0,0,0,0,1,0,0,0,-8,40,2024-10-20T07:49:11.289Z,ausame,4,ausame
+4733293,2024,reg,7,Carolina Panthers,13,Washington Commanders,24,0,3,1,0,1,0,0,0,1,0,3,3,-11,37,2024-10-20T07:50:20.769Z,ausame,6,ausame
+4733191,2024,reg,7,Kansas City Chiefs,24,San Francisco 49ers,23,3,3,1,0,1,0,3,3,1,0,3,3,1,47,2024-10-20T08:07:04.938Z,ausame,6,ausame
+4733294,2024,reg,7,N.Y. Jets Jets,21,Pittsburgh Steelers,19,0,3,0,0,0,0,0,0,1,0,3,3,2,40,2024-10-20T08:08:55.821Z,ausame,2,ausame
+4733295,2024,reg,7,Baltimore Ravens,27,Tampa Bay Buccaneers,24,3,3,1,0,0,0,3,-3,1,0,3,3,3,51,2024-10-20T08:10:00.009Z,ausame,4,ausame
+4733296,2024,reg,7,L.A. Chargers Chargers,19,Arizona Cardinals,21,3,3,1,0,1,0,3,3,1,0,3,3,-2,40,2024-10-20T08:11:09.606Z,ausame,7,ausame
+4733285,2024,reg,7,Philadelphia Eagles,24,N.Y. Giants Giants,20,0,0,1,0,1,0,0,0,0,0,0,0,4,44,2024-10-20T14:52:23.369Z,Google_113508854981481930771,4,JessieHarris
+4733286,2024,reg,7,Seattle Seahawks,17,Atlanta Falcons,25,0,0,0,0,0,0,0,0,1,0,0,0,-8,42,2024-10-20T14:52:37.426Z,Google_113508854981481930771,2,JessieHarris
+4733287,2024,reg,7,Houston Texans,31,Green Bay Packers,17,0,0,0,0,1,0,0,0,1,0,0,0,14,48,2024-10-20T14:52:49.828Z,Google_113508854981481930771,4,JessieHarris
+4733288,2024,reg,7,Cincinnati Bengals,20,Cleveland Browns,17,0,0,1,0,0,0,0,0,1,0,0,0,3,37,2024-10-20T14:53:00.921Z,Google_113508854981481930771,4,JessieHarris
+4733289,2024,reg,7,Detroit Lions,31,Minnesota Vikings,27,0,0,1,0,1,0,0,0,1,0,0,0,4,58,2024-10-20T14:53:12.324Z,Google_113508854981481930771,7,JessieHarris
+4733290,2024,reg,7,Miami Dolphins,17,Indianapolis Colts,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2024-10-20T14:53:21.516Z,Google_113508854981481930771,4,JessieHarris
+4733291,2024,reg,7,Tennessee Titans,13,Buffalo Bills,35,0,0,1,0,1,0,0,0,1,0,0,0,-22,48,2024-10-20T14:53:34.917Z,Google_113508854981481930771,6,JessieHarris
+4733292,2024,reg,7,Las Vegas Raiders,19,L.A. Rams Rams,22,0,0,1,0,1,0,0,0,1,0,0,0,-3,41,2024-10-20T14:53:45.026Z,Google_113508854981481930771,6,JessieHarris
+4733293,2024,reg,7,Carolina Panthers,23,Washington Commanders,35,0,0,1,0,1,0,0,0,0,0,0,0,-12,58,2024-10-20T14:53:58.207Z,Google_113508854981481930771,4,JessieHarris
+4733191,2024,reg,7,Kansas City Chiefs,31,San Francisco 49ers,35,0,0,0,0,0,0,0,0,0,0,0,0,-4,66,2024-10-20T14:54:09.117Z,Google_113508854981481930771,0,JessieHarris
+4733294,2024,reg,7,N.Y. Jets Jets,20,Pittsburgh Steelers,23,0,0,1,0,1,0,0,0,1,0,0,0,-3,43,2024-10-20T14:54:19.072Z,Google_113508854981481930771,6,JessieHarris
+4733295,2024,reg,7,Baltimore Ravens,35,Tampa Bay Buccaneers,37,0,0,0,0,0,0,0,0,1,0,0,0,-2,72,2024-10-20T14:54:31.205Z,Google_113508854981481930771,3,JessieHarris
+4733296,2024,reg,7,L.A. Chargers Chargers,27,Arizona Cardinals,24,0,0,0,0,0,0,0,0,0,0,0,0,3,51,2024-10-20T14:54:39.330Z,Google_113508854981481930771,0,JessieHarris
+4733297,2024,reg,8,Minnesota Vikings,27,L.A. Rams Rams,16,0,0,0,0,0,0,0,0,0,0,0,0,11,43,2024-10-22T15:30:36.327Z,cmaronchick,0,cmaronchick
+4733302,2024,reg,8,Atlanta Falcons,28,Tampa Bay Buccaneers,20,0,0,1,0,1,0,0,0,1,0,0,0,8,48,2024-10-24T19:13:56.366Z,cmaronchick,6,cmaronchick
+4733300,2024,reg,8,Green Bay Packers,28,Jacksonville Jaguars,20,0,0,1,0,0,0,0,0,0,0,0,0,8,48,2024-10-24T19:14:08.744Z,cmaronchick,2,cmaronchick
+4733306,2024,reg,8,New Orleans Saints,17,L.A. Chargers Chargers,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2024-10-24T19:14:19.289Z,cmaronchick,4,cmaronchick
+4733307,2024,reg,8,Buffalo Bills,24,Seattle Seahawks,27,0,0,0,0,0,0,0,0,0,0,0,0,-3,51,2024-10-24T19:14:21.751Z,cmaronchick,0,cmaronchick
+4733301,2024,reg,8,Tennessee Titans,20,Detroit Lions,31,0,0,1,0,0,0,0,0,1,0,0,0,-11,51,2024-10-25T19:21:16.389Z,rosstuckerNFL,4,rosstuckerNFL
+4733298,2024,reg,8,Baltimore Ravens,30,Cleveland Browns,23,0,0,0,0,1,0,0,0,1,0,0,0,7,53,2024-10-25T19:19:09.446Z,rosstuckerNFL,5,rosstuckerNFL
+4733305,2024,reg,8,Arizona Cardinals,21,Miami Dolphins,23,0,0,0,0,1,0,0,0,0,0,0,0,-2,44,2024-10-25T19:23:59.852Z,rosstuckerNFL,2,rosstuckerNFL
+4733305,2024,reg,8,Arizona Cardinals,20,Miami Dolphins,21,0,0,,,,,,,,,,,-1,41,2024-10-22T23:51:40.543Z,rosstuckerNFL,,rosstuckerNFL
+4733309,2024,reg,8,Kansas City Chiefs,23,Las Vegas Raiders,17,0,0,1,0,1,0,0,0,0,0,0,0,6,40,2024-10-25T19:33:04.075Z,rosstuckerNFL,4,rosstuckerNFL
+4733312,2024,reg,8,N.Y. Giants Giants,10,Pittsburgh Steelers,20,0,0,1,0,1,0,0,0,0,0,0,0,-10,30,2024-10-25T19:35:23.838Z,rosstuckerNFL,4,rosstuckerNFL
+4733297,2024,reg,8,Minnesota Vikings,27,L.A. Rams Rams,25,0,0,0,0,1,0,0,0,1,0,0,0,2,52,2024-10-24T19:05:34.319Z,rosstuckerNFL,4,rosstuckerNFL
+4733303,2024,reg,8,N.Y. Jets Jets,24,New England Patriots,17,0,0,0,0,1,0,0,0,0,0,0,0,7,41,2024-10-24T19:13:44.645Z,cmaronchick,2,cmaronchick
+4733299,2024,reg,8,Indianapolis Colts,17,Houston Texans,20,0,0,1,0,1,0,0,0,1,0,0,0,-3,37,2024-10-24T19:13:58.768Z,cmaronchick,7,cmaronchick
+4733305,2024,reg,8,Arizona Cardinals,17,Miami Dolphins,24,0,0,0,0,0,0,0,0,0,0,0,0,-7,41,2024-10-24T19:14:06.262Z,cmaronchick,0,cmaronchick
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,34,0,0,1,0,1,0,0,0,1,0,0,0,-17,51,2024-10-24T19:14:03.966Z,cmaronchick,6,cmaronchick
+4733308,2024,reg,8,Philadelphia Eagles,27,Cincinnati Bengals,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2024-10-24T19:14:12.824Z,cmaronchick,6,cmaronchick
+4733298,2024,reg,8,Baltimore Ravens,34,Cleveland Browns,14,0,0,0,0,0,0,0,0,1,0,0,0,20,48,2024-10-24T19:14:16.905Z,cmaronchick,2,cmaronchick
+4733309,2024,reg,8,Kansas City Chiefs,41,Las Vegas Raiders,14,0,0,1,0,0,0,0,0,1,0,0,0,27,55,2024-10-24T19:14:24.366Z,cmaronchick,4,cmaronchick
+4733310,2024,reg,8,Carolina Panthers,13,Denver Broncos,20,0,0,1,0,0,0,0,0,1,0,0,0,-7,33,2024-10-24T19:14:29.067Z,cmaronchick,4,cmaronchick
+4733304,2024,reg,8,Chicago Bears,24,Washington Commanders,27,0,0,1,0,1,0,0,0,0,0,0,0,-3,51,2024-10-24T19:14:31.171Z,cmaronchick,5,cmaronchick
+4733311,2024,reg,8,Dallas Cowboys,24,San Francisco 49ers,27,0,0,1,0,0,0,0,0,1,0,0,0,-3,51,2024-10-24T19:14:33.645Z,cmaronchick,5,cmaronchick
+4733312,2024,reg,8,N.Y. Giants Giants,13,Pittsburgh Steelers,24,0,0,1,0,1,0,0,0,1,0,0,0,-11,37,2024-10-24T19:14:35.395Z,cmaronchick,6,cmaronchick
+4733297,2024,reg,8,Minnesota Vikings,23,L.A. Rams Rams,21,0,0,0,0,1,0,0,0,0,0,0,0,2,44,2024-10-24T01:41:01.673Z,ausame,2,ausame
+4733297,2024,reg,8,Minnesota Vikings,27,Los Angeles Rams,20,,,0,0,0,0,0,0,0,0,0,0,7,47,2024-11-07T11:34:52.000Z,TerrySullivan,0,TerrySullivan
+4733302,2024,reg,8,Atlanta Falcons,24,Tampa Bay Buccaneers,20,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,TerrySullivan,4,TerrySullivan
+4733300,2024,reg,8,Green Bay Packers,30,Jacksonville Jaguars,23,,,1,0,0,0,0,0,1,0,0,0,7,53,2024-11-07T11:34:52.000Z,TerrySullivan,5,TerrySullivan
+4733303,2024,reg,8,New York Jets,27,New England Patriots,17,,,0,0,0,0,0,0,1,0,0,0,10,44,2024-11-07T11:34:53.000Z,TerrySullivan,2,TerrySullivan
+4733299,2024,reg,8,Indianapolis Colts,20,Houston Texans,30,,,1,0,0,0,0,0,0,0,0,0,-10,50,2024-11-07T11:34:52.000Z,TerrySullivan,3,TerrySullivan
+4733307,2024,reg,8,Buffalo Bills,24,Seattle Seahawks,27,,,0,0,0,0,0,0,0,0,0,0,-3,51,2024-11-07T11:34:52.000Z,TerrySullivan,0,TerrySullivan
+4733309,2024,reg,8,Kansas City Chiefs,28,Las Vegas Raiders,17,,,1,0,0,0,0,0,1,0,0,0,11,45,2024-11-07T11:34:52.000Z,TerrySullivan,4,TerrySullivan
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,30,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-11-07T11:34:53.000Z,TerrySullivan,6,TerrySullivan
+4733304,2024,reg,8,Chicago Bears,26,Washington Commanders,23,,,0,0,0,0,0,0,0,0,0,0,3,49,2024-11-07T11:34:52.000Z,TerrySullivan,0,TerrySullivan
+4733308,2024,reg,8,Philadelphia Eagles,23,Cincinnati Bengals,27,,,0,0,0,0,0,0,1,0,0,0,-4,50,2024-11-07T11:34:53.000Z,TerrySullivan,2,TerrySullivan
+4733305,2024,reg,8,Arizona Cardinals,21,Miami Dolphins,27,,,0,0,0,0,0,0,1,0,0,0,-6,48,2024-11-07T11:34:52.000Z,TerrySullivan,3,TerrySullivan
+4733310,2024,reg,8,Carolina Panthers,17,Denver Broncos,30,,,1,0,1,0,0,0,0,0,0,0,-13,47,2024-11-07T11:34:52.000Z,TerrySullivan,4,TerrySullivan
+4733306,2024,reg,8,New Orleans Saints,16,Los Angeles Chargers,24,,,1,0,1,0,0,0,1,0,0,0,-8,40,2024-11-07T11:34:52.000Z,TerrySullivan,6,TerrySullivan
+4733298,2024,reg,8,Baltimore Ravens,30,Cleveland Browns,20,,,0,0,0,0,0,0,1,0,0,0,10,50,2024-11-07T11:34:52.000Z,TerrySullivan,2,TerrySullivan
+4733298,2024,reg,8,Baltimore Ravens,31,Cleveland Browns,17,,,0,0,0,0,0,0,1,0,0,0,14,48,2024-11-07T11:34:52.000Z,PetePrisco,2,PetePrisco
+4733297,2024,reg,8,Minnesota Vikings,27,Los Angeles Rams,17,,,0,0,0,0,0,0,0,0,0,0,10,44,2024-11-07T11:34:52.000Z,PetePrisco,0,PetePrisco
+4733300,2024,reg,8,Green Bay Packers,31,Jacksonville Jaguars,23,,,1,0,0,0,0,0,1,0,0,0,8,54,2024-11-07T11:34:52.000Z,PetePrisco,4,PetePrisco
+4733299,2024,reg,8,Indianapolis Colts,20,Houston Texans,27,,,1,0,0,0,0,0,0,0,0,0,-7,47,2024-11-07T11:34:52.000Z,PetePrisco,3,PetePrisco
+4733312,2024,reg,8,New York Giants,17,Pittsburgh Steelers,26,,,1,0,1,0,0,0,1,0,0,0,-9,43,2024-11-07T11:34:53.000Z,TerrySullivan,7,TerrySullivan
+4733311,2024,reg,8,Dallas Cowboys,23,San Francisco 49ers,27,,,1,0,0,0,0,0,1,0,0,0,-4,50,2024-11-07T11:34:52.000Z,TerrySullivan,4,TerrySullivan
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,33,,,1,0,1,0,0,0,1,0,0,0,-16,50,2024-11-07T11:34:53.000Z,PetePrisco,6,PetePrisco
+4733305,2024,reg,8,Arizona Cardinals,15,Miami Dolphins,29,,,0,0,0,0,0,0,0,0,0,0,-14,44,2024-11-07T11:34:52.000Z,PetePrisco,0,PetePrisco
+4733303,2024,reg,8,New York Jets,31,New England Patriots,14,,,0,0,0,0,0,0,1,0,0,0,17,45,2024-11-07T11:34:53.000Z,PetePrisco,2,PetePrisco
+4733302,2024,reg,8,Atlanta Falcons,19,Tampa Bay Buccaneers,24,,,0,0,0,0,0,0,0,0,0,0,-5,43,2024-11-07T11:34:52.000Z,PetePrisco,0,PetePrisco
+4733308,2024,reg,8,Philadelphia Eagles,20,Cincinnati Bengals,30,,,0,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:34:53.000Z,PetePrisco,2,PetePrisco
+4733306,2024,reg,8,New Orleans Saints,10,Los Angeles Chargers,26,,,1,0,1,0,0,0,1,0,0,0,-16,36,2024-11-07T11:34:52.000Z,PetePrisco,7,PetePrisco
+4733307,2024,reg,8,Buffalo Bills,34,Seattle Seahawks,28,,,1,0,1,0,0,0,0,0,0,0,6,62,2024-11-07T11:34:52.000Z,PetePrisco,4,PetePrisco
+4733304,2024,reg,8,Chicago Bears,24,Washington Commanders,20,,,0,0,0,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,PetePrisco,0,PetePrisco
+4733310,2024,reg,8,Carolina Panthers,10,Denver Broncos,24,,,1,0,1,0,0,0,1,0,0,0,-14,34,2024-11-07T11:34:52.000Z,PetePrisco,7,PetePrisco
+4733309,2024,reg,8,Kansas City Chiefs,24,Las Vegas Raiders,10,,,1,0,0,0,0,0,0,0,0,0,14,34,2024-11-07T11:34:52.000Z,PetePrisco,2,PetePrisco
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:34:52.000Z,PetePrisco,2,PetePrisco
+4733312,2024,reg,8,New York Giants,13,Pittsburgh Steelers,27,,,1,0,1,0,0,0,1,0,0,0,-14,40,2024-11-07T11:34:53.000Z,PetePrisco,6,PetePrisco
+4733297,2024,reg,8,Minnesota Vikings,30,Los Angeles Rams,17,,,0,0,0,0,0,0,0,0,0,0,13,47,2024-11-07T11:34:52.000Z,BleacherReport,0,BleacherReport
+4733301,2024,reg,8,Tennessee Titans,13,Detroit Lions,27,,,1,0,1,0,0,0,0,0,0,0,-14,40,2024-11-07T11:34:53.000Z,BleacherReport,4,BleacherReport
+4733300,2024,reg,8,Green Bay Packers,34,Jacksonville Jaguars,20,,,1,0,0,0,0,0,1,0,0,0,14,54,2024-11-07T11:34:52.000Z,BleacherReport,4,BleacherReport
+4733298,2024,reg,8,Baltimore Ravens,26,Cleveland Browns,16,,,0,0,0,0,0,0,0,0,0,0,10,42,2024-11-07T11:34:52.000Z,BleacherReport,0,BleacherReport
+4733299,2024,reg,8,Indianapolis Colts,17,Houston Texans,24,,,1,0,0,0,0,0,1,0,0,0,-7,41,2024-11-07T11:34:52.000Z,BleacherReport,4,BleacherReport
+4733302,2024,reg,8,Atlanta Falcons,23,Tampa Bay Buccaneers,24,,,0,0,0,0,0,0,1,0,0,0,-1,47,2024-11-07T11:34:52.000Z,BleacherReport,2,BleacherReport
+4733306,2024,reg,8,New Orleans Saints,14,Los Angeles Chargers,24,,,1,0,1,0,0,0,1,0,0,0,-10,38,2024-11-07T11:34:52.000Z,BleacherReport,6,BleacherReport
+4733308,2024,reg,8,Philadelphia Eagles,31,Cincinnati Bengals,28,,,1,0,1,0,0,0,1,0,0,0,3,59,2024-11-07T11:34:53.000Z,BleacherReport,6,BleacherReport
+4733305,2024,reg,8,Arizona Cardinals,20,Miami Dolphins,30,,,0,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:34:52.000Z,BleacherReport,2,BleacherReport
+4733307,2024,reg,8,Buffalo Bills,27,Seattle Seahawks,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:34:52.000Z,BleacherReport,4,BleacherReport
+4733303,2024,reg,8,New York Jets,26,New England Patriots,17,,,0,0,0,0,0,0,1,0,0,0,9,43,2024-11-07T11:34:53.000Z,BleacherReport,2,BleacherReport
+4733309,2024,reg,8,Kansas City Chiefs,24,Las Vegas Raiders,13,,,1,0,0,0,0,0,0,0,0,0,11,37,2024-11-07T11:34:52.000Z,BleacherReport,2,BleacherReport
+4733310,2024,reg,8,Carolina Panthers,10,Denver Broncos,28,,,1,0,1,0,0,0,1,0,0,0,-18,38,2024-11-07T11:34:52.000Z,BleacherReport,7,BleacherReport
+4733304,2024,reg,8,Chicago Bears,27,Washington Commanders,17,,,0,0,0,0,0,0,0,0,0,0,10,44,2024-11-07T11:34:52.000Z,BleacherReport,0,BleacherReport
+4733297,2024,reg,8,Minnesota Vikings,28,Los Angeles Rams,18,,,0,0,0,0,0,0,0,0,0,0,10,46,2024-11-07T11:34:52.000Z,BillBender,0,BillBender
+4733311,2024,reg,8,Dallas Cowboys,23,San Francisco 49ers,26,,,1,0,0,0,0,0,1,0,0,0,-3,49,2024-11-07T11:34:52.000Z,BleacherReport,4,BleacherReport
+4733312,2024,reg,8,New York Giants,15,Pittsburgh Steelers,23,,,1,0,1,0,0,0,1,0,0,0,-8,38,2024-11-07T11:34:53.000Z,BleacherReport,7,BleacherReport
+4733298,2024,reg,8,Baltimore Ravens,26,Cleveland Browns,19,,,0,0,1,0,0,0,1,0,0,0,7,45,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733308,2024,reg,8,Philadelphia Eagles,31,Cincinnati Bengals,28,,,1,0,1,0,0,0,1,0,0,0,3,59,2024-11-07T11:34:53.000Z,BillBender,6,BillBender
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,31,,,1,0,1,0,0,0,1,0,0,0,-14,48,2024-11-07T11:34:53.000Z,BillBender,6,BillBender
+4733305,2024,reg,8,Arizona Cardinals,24,Miami Dolphins,27,,,0,0,0,0,0,0,1,0,0,0,-3,51,2024-11-07T11:34:52.000Z,BillBender,3,BillBender
+4733303,2024,reg,8,New York Jets,23,New England Patriots,13,,,0,0,0,0,0,0,0,0,0,0,10,36,2024-11-07T11:34:53.000Z,BillBender,0,BillBender
+4733302,2024,reg,8,Atlanta Falcons,27,Tampa Bay Buccaneers,31,,,0,0,0,0,0,0,1,0,0,0,-4,58,2024-11-07T11:34:52.000Z,BillBender,2,BillBender
+4733300,2024,reg,8,Green Bay Packers,30,Jacksonville Jaguars,18,,,1,0,0,0,0,0,0,0,0,0,12,48,2024-11-07T11:34:52.000Z,BillBender,3,BillBender
+4733299,2024,reg,8,Indianapolis Colts,17,Houston Texans,24,,,1,0,0,0,0,0,1,0,0,0,-7,41,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733306,2024,reg,8,New Orleans Saints,17,Los Angeles Chargers,22,,,1,0,0,0,0,0,1,0,0,0,-5,39,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733307,2024,reg,8,Buffalo Bills,28,Seattle Seahawks,21,,,1,0,1,0,0,0,0,0,0,0,7,49,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733309,2024,reg,8,Kansas City Chiefs,34,Las Vegas Raiders,18,,,1,0,0,0,0,0,1,0,0,0,16,52,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733310,2024,reg,8,Carolina Panthers,20,Denver Broncos,29,,,1,0,0,0,0,0,0,0,0,0,-9,49,2024-11-07T11:34:52.000Z,BillBender,2,BillBender
+4733304,2024,reg,8,Chicago Bears,20,Washington Commanders,27,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-11-07T11:34:52.000Z,BillBender,4,BillBender
+4733297,2024,reg,8,Minnesota Vikings,28,Los Angeles Rams,18,,,0,0,0,0,0,0,0,0,0,0,10,46,2024-11-07T11:34:52.000Z,DataSkrive,0,DataSkrive
+4733312,2024,reg,8,New York Giants,13,Pittsburgh Steelers,24,,,1,0,1,0,0,0,1,0,0,0,-11,37,2024-11-07T11:34:53.000Z,BillBender,6,BillBender
+4733311,2024,reg,8,Dallas Cowboys,24,San Francisco 49ers,26,,,1,0,0,0,0,0,1,0,0,0,-2,50,2024-11-07T11:34:52.000Z,BillBender,5,BillBender
+4733308,2024,reg,8,Philadelphia Eagles,25,Cincinnati Bengals,20,,,1,0,1,0,0,0,0,0,0,0,5,45,2024-11-07T11:34:53.000Z,DataSkrive,4,DataSkrive
+4733298,2024,reg,8,Baltimore Ravens,33,Cleveland Browns,15,,,0,0,0,0,0,0,1,0,0,0,18,48,2024-11-07T11:34:52.000Z,DataSkrive,2,DataSkrive
+4733305,2024,reg,8,Arizona Cardinals,26,Miami Dolphins,14,,,1,0,1,0,0,0,0,0,0,0,12,40,2024-11-07T11:34:52.000Z,DataSkrive,4,DataSkrive
+4733301,2024,reg,8,Tennessee Titans,12,Detroit Lions,34,,,1,0,1,0,0,0,1,0,0,0,-22,46,2024-11-07T11:34:53.000Z,DataSkrive,6,DataSkrive
+4733302,2024,reg,8,Atlanta Falcons,19,Tampa Bay Buccaneers,33,,,0,0,0,0,0,0,1,0,0,0,-14,52,2024-11-07T11:34:52.000Z,DataSkrive,2,DataSkrive
+4733300,2024,reg,8,Green Bay Packers,32,Jacksonville Jaguars,16,,,1,0,0,0,0,0,0,0,0,0,16,48,2024-11-07T11:34:52.000Z,DataSkrive,2,DataSkrive
+4733303,2024,reg,8,New York Jets,24,New England Patriots,15,,,0,0,0,0,0,0,0,0,0,0,9,39,2024-11-07T11:34:53.000Z,DataSkrive,0,DataSkrive
+4733299,2024,reg,8,Indianapolis Colts,19,Houston Texans,26,,,1,0,0,0,0,0,1,0,0,0,-7,45,2024-11-07T11:34:52.000Z,DataSkrive,4,DataSkrive
+4733307,2024,reg,8,Buffalo Bills,26,Seattle Seahawks,23,,,1,0,0,0,0,0,0,0,0,0,3,49,2024-11-07T11:34:52.000Z,DataSkrive,2,DataSkrive
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,29,,,1,0,1,0,0,0,1,0,0,0,-9,49,2024-11-07T11:34:52.000Z,DataSkrive,6,DataSkrive
+4733310,2024,reg,8,Carolina Panthers,7,Denver Broncos,36,,,1,0,1,0,0,0,0,0,0,0,-29,43,2024-11-07T11:34:52.000Z,DataSkrive,4,DataSkrive
+4733297,2024,reg,8,Minnesota Vikings,27,Los Angeles Rams,20,,,0,0,0,0,0,0,0,0,0,0,7,47,2024-11-07T11:34:52.000Z,MarcusMosher,0,MarcusMosher
+4733298,2024,reg,8,Baltimore Ravens,24,Cleveland Browns,16,,,0,0,1,0,0,0,0,0,0,0,8,40,2024-11-07T11:34:52.000Z,MarcusMosher,3,MarcusMosher
+4733304,2024,reg,8,Chicago Bears,19,Washington Commanders,28,,,1,0,1,0,0,0,0,0,0,0,-9,47,2024-11-07T11:34:52.000Z,DataSkrive,4,DataSkrive
+4733312,2024,reg,8,New York Giants,9,Pittsburgh Steelers,28,,,1,0,1,0,0,0,1,0,0,0,-19,37,2024-11-07T11:34:53.000Z,DataSkrive,6,DataSkrive
+4733306,2024,reg,8,New Orleans Saints,16,Los Angeles Chargers,26,,,1,0,1,0,0,0,0,0,0,0,-10,42,2024-11-07T11:34:52.000Z,DataSkrive,5,DataSkrive
+4733303,2024,reg,8,New York Jets,23,New England Patriots,14,,,0,0,0,0,0,0,0,0,0,0,9,37,2024-11-07T11:34:53.000Z,MarcusMosher,0,MarcusMosher
+4733309,2024,reg,8,Kansas City Chiefs,29,Las Vegas Raiders,13,,,1,0,0,0,0,0,1,0,0,0,16,42,2024-11-07T11:34:52.000Z,DataSkrive,4,DataSkrive
+4733302,2024,reg,8,Atlanta Falcons,30,Tampa Bay Buccaneers,23,,,1,0,1,0,0,0,1,0,0,0,7,53,2024-11-07T11:34:52.000Z,MarcusMosher,6,MarcusMosher
+4733299,2024,reg,8,Indianapolis Colts,19,Houston Texans,23,,,1,0,1,0,0,0,1,0,0,0,-4,42,2024-11-07T11:34:52.000Z,MarcusMosher,7,MarcusMosher
+4733300,2024,reg,8,Green Bay Packers,31,Jacksonville Jaguars,21,,,1,0,0,0,0,0,1,0,0,0,10,52,2024-11-07T11:34:52.000Z,MarcusMosher,4,MarcusMosher
+4733301,2024,reg,8,Tennessee Titans,14,Detroit Lions,28,,,1,0,1,0,0,0,0,0,0,0,-14,42,2024-11-07T11:34:53.000Z,MarcusMosher,5,MarcusMosher
+4733308,2024,reg,8,Philadelphia Eagles,27,Cincinnati Bengals,21,,,1,0,1,0,0,0,0,0,0,0,6,48,2024-11-07T11:34:53.000Z,MarcusMosher,4,MarcusMosher
+4733305,2024,reg,8,Arizona Cardinals,24,Miami Dolphins,21,,,1,0,1,0,0,0,0,0,0,0,3,45,2024-11-07T11:34:52.000Z,MarcusMosher,4,MarcusMosher
+4733307,2024,reg,8,Buffalo Bills,24,Seattle Seahawks,27,,,0,0,0,0,0,0,0,0,0,0,-3,51,2024-11-07T11:34:52.000Z,MarcusMosher,0,MarcusMosher
+4733306,2024,reg,8,New Orleans Saints,17,Los Angeles Chargers,20,,,1,0,0,0,0,0,1,0,0,0,-3,37,2024-11-07T11:34:52.000Z,MarcusMosher,4,MarcusMosher
+4733304,2024,reg,8,Chicago Bears,24,Washington Commanders,20,,,0,0,0,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,MarcusMosher,0,MarcusMosher
+4733309,2024,reg,8,Kansas City Chiefs,20,Las Vegas Raiders,13,,,1,0,1,0,0,0,0,0,0,0,7,33,2024-11-07T11:34:52.000Z,MarcusMosher,5,MarcusMosher
+4733310,2024,reg,8,Carolina Panthers,13,Denver Broncos,17,,,1,0,0,0,0,0,1,0,0,0,-4,30,2024-11-07T11:34:52.000Z,MarcusMosher,4,MarcusMosher
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,28,,,1,0,1,0,0,0,1,0,0,0,-8,48,2024-11-07T11:34:52.000Z,MarcusMosher,6,MarcusMosher
+4733312,2024,reg,8,New York Giants,6,Pittsburgh Steelers,24,,,1,0,1,0,0,0,0,0,0,0,-18,30,2024-11-07T11:34:53.000Z,MarcusMosher,4,MarcusMosher
+4733297,2024,reg,8,Minnesota Vikings,31,Los Angeles Rams,20,,,0,0,0,0,0,0,1,0,0,0,11,51,2024-11-07T11:34:52.000Z,Sportsnaut,2,Sportsnaut
+4733308,2024,reg,8,Philadelphia Eagles,27,Cincinnati Bengals,24,,,1,0,1,0,0,0,1,0,0,0,3,51,2024-11-07T11:34:53.000Z,Sportsnaut,6,Sportsnaut
+4733298,2024,reg,8,Baltimore Ravens,20,Cleveland Browns,6,,,0,0,0,0,0,0,0,0,0,0,14,26,2024-11-07T11:34:52.000Z,Sportsnaut,0,Sportsnaut
+4733301,2024,reg,8,Tennessee Titans,13,Detroit Lions,24,,,1,0,0,0,0,0,0,0,0,0,-11,37,2024-11-07T11:34:53.000Z,Sportsnaut,2,Sportsnaut
+4733305,2024,reg,8,Arizona Cardinals,21,Miami Dolphins,31,,,0,0,0,0,0,0,1,0,0,0,-10,52,2024-11-07T11:34:52.000Z,Sportsnaut,2,Sportsnaut
+4733303,2024,reg,8,New York Jets,27,New England Patriots,13,,,0,0,0,0,0,0,0,0,0,0,14,40,2024-11-07T11:34:53.000Z,Sportsnaut,0,Sportsnaut
+4733302,2024,reg,8,Atlanta Falcons,24,Tampa Bay Buccaneers,27,,,0,0,0,0,0,0,1,0,0,0,-3,51,2024-11-07T11:34:52.000Z,Sportsnaut,2,Sportsnaut
+4733300,2024,reg,8,Green Bay Packers,31,Jacksonville Jaguars,21,,,1,0,0,0,0,0,1,0,0,0,10,52,2024-11-07T11:34:52.000Z,Sportsnaut,4,Sportsnaut
+4733299,2024,reg,8,Indianapolis Colts,24,Houston Texans,34,,,1,0,0,0,0,0,0,0,0,0,-10,58,2024-11-07T11:34:52.000Z,Sportsnaut,2,Sportsnaut
+4733306,2024,reg,8,New Orleans Saints,13,Los Angeles Chargers,20,,,1,0,0,0,0,0,1,0,0,0,-7,33,2024-11-07T11:34:52.000Z,Sportsnaut,4,Sportsnaut
+4733307,2024,reg,8,Buffalo Bills,31,Seattle Seahawks,27,,,1,0,1,0,0,0,0,0,0,0,4,58,2024-11-07T11:34:52.000Z,Sportsnaut,5,Sportsnaut
+4733310,2024,reg,8,Carolina Panthers,6,Denver Broncos,17,,,1,0,1,0,0,0,1,0,0,0,-11,23,2024-11-07T11:34:52.000Z,Sportsnaut,6,Sportsnaut
+4733309,2024,reg,8,Kansas City Chiefs,20,Las Vegas Raiders,13,,,1,0,1,0,0,0,0,0,0,0,7,33,2024-11-07T11:34:52.000Z,Sportsnaut,5,Sportsnaut
+4733304,2024,reg,8,Chicago Bears,31,Washington Commanders,28,,,0,0,0,0,0,0,0,0,0,0,3,59,2024-11-07T11:34:52.000Z,Sportsnaut,0,Sportsnaut
+4733312,2024,reg,8,New York Giants,13,Pittsburgh Steelers,23,,,1,0,1,0,0,0,0,0,0,0,-10,36,2024-11-07T11:34:53.000Z,Sportsnaut,4,Sportsnaut
+4733297,2024,reg,8,Minnesota Vikings,24,Los Angeles Rams,20,,,0,0,0,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,VinnieIyer,0,VinnieIyer
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:34:52.000Z,VinnieIyer,2,VinnieIyer
+4733310,2024,reg,8,Carolina Panthers,13,Denver Broncos,31,,,1,0,1,0,0,0,0,0,0,0,-18,44,2024-11-07T11:34:52.000Z,VinnieIyer,4,VinnieIyer
+4733308,2024,reg,8,Philadelphia Eagles,27,Cincinnati Bengals,24,,,1,0,1,0,0,0,1,0,0,0,3,51,2024-11-07T11:34:53.000Z,VinnieIyer,6,VinnieIyer
+4733298,2024,reg,8,Baltimore Ravens,30,Cleveland Browns,10,,,0,0,0,0,0,0,0,0,0,0,20,40,2024-11-07T11:34:52.000Z,VinnieIyer,0,VinnieIyer
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,28,,,1,0,0,0,0,0,0,0,0,0,-11,45,2024-11-07T11:34:53.000Z,VinnieIyer,2,VinnieIyer
+4733305,2024,reg,8,Arizona Cardinals,20,Miami Dolphins,27,,,0,0,0,0,0,0,1,0,0,0,-7,47,2024-11-07T11:34:52.000Z,VinnieIyer,3,VinnieIyer
+4733303,2024,reg,8,New York Jets,24,New England Patriots,14,,,0,0,0,0,0,0,0,0,0,0,10,38,2024-11-07T11:34:53.000Z,VinnieIyer,0,VinnieIyer
+4733302,2024,reg,8,Atlanta Falcons,27,Tampa Bay Buccaneers,24,,,1,0,1,0,0,0,1,0,0,0,3,51,2024-11-07T11:34:52.000Z,VinnieIyer,6,VinnieIyer
+4733300,2024,reg,8,Green Bay Packers,24,Jacksonville Jaguars,20,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,VinnieIyer,4,VinnieIyer
+4733299,2024,reg,8,Indianapolis Colts,14,Houston Texans,24,,,1,0,0,0,0,0,1,0,0,0,-10,38,2024-11-07T11:34:52.000Z,VinnieIyer,4,VinnieIyer
+4733306,2024,reg,8,New Orleans Saints,10,Los Angeles Chargers,26,,,1,0,1,0,0,0,1,0,0,0,-16,36,2024-11-07T11:34:52.000Z,VinnieIyer,7,VinnieIyer
+4733307,2024,reg,8,Buffalo Bills,27,Seattle Seahawks,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:34:52.000Z,VinnieIyer,4,VinnieIyer
+4733309,2024,reg,8,Kansas City Chiefs,24,Las Vegas Raiders,10,,,1,0,0,0,0,0,0,0,0,0,14,34,2024-11-07T11:34:52.000Z,VinnieIyer,2,VinnieIyer
+4733304,2024,reg,8,Chicago Bears,23,Washington Commanders,26,,,1,0,1,0,0,0,0,0,0,0,-3,49,2024-11-07T11:34:52.000Z,VinnieIyer,5,VinnieIyer
+4733312,2024,reg,8,New York Giants,13,Pittsburgh Steelers,24,,,1,0,1,0,0,0,1,0,0,0,-11,37,2024-11-07T11:34:53.000Z,VinnieIyer,6,VinnieIyer
+4733297,2024,reg,8,Minnesota Vikings,25,Los Angeles Rams,22,,,0,0,0,0,0,0,0,0,0,0,3,47,2024-11-07T11:34:52.000Z,Dimers,0,Dimers
+4733298,2024,reg,8,Baltimore Ravens,26,Cleveland Browns,18,,,0,0,1,0,0,0,0,0,0,0,8,44,2024-11-07T11:34:52.000Z,Dimers,2,Dimers
+4733299,2024,reg,8,Indianapolis Colts,20,Houston Texans,25,,,1,0,0,0,0,0,1,0,0,0,-5,45,2024-11-07T11:34:52.000Z,Dimers,5,Dimers
+4733300,2024,reg,8,Green Bay Packers,26,Jacksonville Jaguars,23,,,1,0,1,0,0,0,0,0,0,0,3,49,2024-11-07T11:34:52.000Z,Dimers,5,Dimers
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,28,,,1,0,0,0,0,0,0,0,0,0,-11,45,2024-11-07T11:34:53.000Z,Dimers,2,Dimers
+4733302,2024,reg,8,Atlanta Falcons,24,Tampa Bay Buccaneers,22,,,1,0,0,0,0,0,1,0,0,0,2,46,2024-11-07T11:34:52.000Z,Dimers,4,Dimers
+4733303,2024,reg,8,New York Jets,24,New England Patriots,17,,,0,0,1,0,0,0,0,0,0,0,7,41,2024-11-07T11:34:53.000Z,Dimers,2,Dimers
+4733305,2024,reg,8,Arizona Cardinals,22,Miami Dolphins,25,,,0,0,0,0,0,0,1,0,0,0,-3,47,2024-11-07T11:34:52.000Z,Dimers,2,Dimers
+4733308,2024,reg,8,Philadelphia Eagles,23,Cincinnati Bengals,25,,,0,0,1,0,0,0,0,0,0,0,-2,48,2024-11-07T11:34:53.000Z,Dimers,2,Dimers
+4733306,2024,reg,8,New Orleans Saints,17,Los Angeles Chargers,24,,,1,0,0,0,0,0,0,0,0,0,-7,41,2024-11-07T11:34:53.000Z,Dimers,2,Dimers
+4733307,2024,reg,8,Buffalo Bills,25,Seattle Seahawks,22,,,1,0,0,0,0,0,0,0,0,0,3,47,2024-11-07T11:34:52.000Z,Dimers,2,Dimers
+4733304,2024,reg,8,Chicago Bears,23,Washington Commanders,21,,,0,0,1,0,0,0,0,0,0,0,2,44,2024-11-07T11:34:52.000Z,Dimers,2,Dimers
+4733309,2024,reg,8,Kansas City Chiefs,25,Las Vegas Raiders,16,,,1,0,1,0,0,0,0,0,0,0,9,41,2024-11-07T11:34:52.000Z,Dimers,4,Dimers
+4733310,2024,reg,8,Carolina Panthers,16,Denver Broncos,25,,,1,0,0,0,0,0,1,0,0,0,-9,41,2024-11-07T11:34:52.000Z,Dimers,4,Dimers
+4733311,2024,reg,8,Dallas Cowboys,21,San Francisco 49ers,25,,,1,0,0,0,0,0,0,0,0,0,-4,46,2024-11-07T11:34:52.000Z,Dimers,2,Dimers
+4733297,2024,reg,8,Minnesota Vikings,26,Los Angeles Rams,20,,,0,0,0,0,0,0,0,0,0,0,6,46,2024-11-07T11:34:52.000Z,TylerDragon,0,TylerDragon
+4733297,2024,reg,8,Minnesota Vikings,24,Los Angeles Rams,21,,,0,0,0,0,0,0,0,0,0,0,3,45,2024-11-07T11:34:52.000Z,RichardMorin,0,RichardMorin
+4733297,2024,reg,8,Minnesota Vikings,23,Los Angeles Rams,19,,,0,0,0,0,0,0,0,0,0,0,4,42,2024-11-07T11:34:52.000Z,JordanMendoza,0,JordanMendoza
+4733298,2024,reg,8,Baltimore Ravens,35,Cleveland Browns,13,,,0,0,0,0,0,0,1,0,0,0,22,48,2024-11-07T11:34:52.000Z,LorenzoReyes,2,LorenzoReyes
+4733298,2024,reg,8,Baltimore Ravens,31,Cleveland Browns,20,,,0,0,0,0,0,0,1,0,0,0,11,51,2024-11-07T11:34:52.000Z,TylerDragon,2,TylerDragon
+4733298,2024,reg,8,Baltimore Ravens,27,Cleveland Browns,14,,,0,0,0,0,0,0,0,0,0,0,13,41,2024-11-07T11:34:52.000Z,RichardMorin,0,RichardMorin
+4733298,2024,reg,8,Baltimore Ravens,31,Cleveland Browns,12,,,0,0,0,0,0,0,0,0,0,0,19,43,2024-11-07T11:34:52.000Z,JordanMendoza,0,JordanMendoza
+4733301,2024,reg,8,Tennessee Titans,14,Detroit Lions,41,,,1,0,1,0,0,0,1,0,0,0,-27,55,2024-11-07T11:34:53.000Z,LorenzoReyes,7,LorenzoReyes
+4733301,2024,reg,8,Tennessee Titans,17,Detroit Lions,30,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-11-07T11:34:53.000Z,TylerDragon,6,TylerDragon
+4733301,2024,reg,8,Tennessee Titans,12,Detroit Lions,35,,,1,0,1,0,0,0,1,0,0,0,-23,47,2024-11-07T11:34:53.000Z,RichardMorin,6,RichardMorin
+4733301,2024,reg,8,Tennessee Titans,13,Detroit Lions,34,,,1,0,1,0,0,0,1,0,0,0,-21,47,2024-11-07T11:34:53.000Z,JordanMendoza,6,JordanMendoza
+4733299,2024,reg,8,Indianapolis Colts,17,Houston Texans,27,,,1,0,0,0,0,0,1,0,0,0,-10,44,2024-11-07T11:34:52.000Z,LorenzoReyes,4,LorenzoReyes
+4733299,2024,reg,8,Indianapolis Colts,18,Houston Texans,26,,,1,0,0,0,0,0,1,0,0,0,-8,44,2024-11-07T11:34:52.000Z,TylerDragon,4,TylerDragon
+4733299,2024,reg,8,Indianapolis Colts,15,Houston Texans,30,,,1,0,0,0,0,0,1,0,0,0,-15,45,2024-11-07T11:34:52.000Z,RichardMorin,4,RichardMorin
+4733299,2024,reg,8,Indianapolis Colts,24,Houston Texans,27,,,1,0,1,0,0,0,0,0,0,0,-3,51,2024-11-07T11:34:52.000Z,JordanMendoza,5,JordanMendoza
+4733300,2024,reg,8,Green Bay Packers,30,Jacksonville Jaguars,13,,,1,0,0,0,0,0,0,0,0,0,17,43,2024-11-07T11:34:52.000Z,LorenzoReyes,3,LorenzoReyes
+4733300,2024,reg,8,Green Bay Packers,28,Jacksonville Jaguars,20,,,1,0,0,0,0,0,0,0,0,0,8,48,2024-11-07T11:34:52.000Z,TylerDragon,2,TylerDragon
+4733300,2024,reg,8,Green Bay Packers,17,Jacksonville Jaguars,20,,,0,0,1,0,0,0,0,0,0,0,-3,37,2024-11-07T11:34:52.000Z,RichardMorin,2,RichardMorin
+4733300,2024,reg,8,Green Bay Packers,27,Jacksonville Jaguars,25,,,1,0,1,0,0,0,1,0,0,0,2,52,2024-11-07T11:34:52.000Z,JordanMendoza,6,JordanMendoza
+4733305,2024,reg,8,Arizona Cardinals,24,Miami Dolphins,25,,,0,0,1,0,0,0,1,0,0,0,-1,49,2024-11-07T11:34:52.000Z,LorenzoReyes,4,LorenzoReyes
+4733305,2024,reg,8,Arizona Cardinals,20,Miami Dolphins,25,,,0,0,0,0,0,0,0,0,0,0,-5,45,2024-11-07T11:34:52.000Z,TylerDragon,0,TylerDragon
+4733305,2024,reg,8,Arizona Cardinals,16,Miami Dolphins,18,,,0,0,1,0,0,0,0,0,0,0,-2,34,2024-11-07T11:34:52.000Z,RichardMorin,2,RichardMorin
+4733305,2024,reg,8,Arizona Cardinals,18,Miami Dolphins,22,,,0,0,0,0,0,0,0,0,0,0,-4,40,2024-11-07T11:34:52.000Z,JordanMendoza,0,JordanMendoza
+4733303,2024,reg,8,New York Jets,23,New England Patriots,10,,,0,0,0,0,0,0,0,0,0,0,13,33,2024-11-07T11:34:53.000Z,LorenzoReyes,0,LorenzoReyes
+4733303,2024,reg,8,New York Jets,26,New England Patriots,17,,,0,0,0,0,0,0,1,0,0,0,9,43,2024-11-07T11:34:53.000Z,TylerDragon,2,TylerDragon
+4733303,2024,reg,8,New York Jets,24,New England Patriots,21,,,0,0,1,0,0,0,1,0,0,0,3,45,2024-11-07T11:34:53.000Z,RichardMorin,4,RichardMorin
+4733303,2024,reg,8,New York Jets,19,New England Patriots,13,,,0,0,1,0,0,0,0,0,0,0,6,32,2024-11-07T11:34:53.000Z,JordanMendoza,2,JordanMendoza
+4733302,2024,reg,8,Atlanta Falcons,25,Tampa Bay Buccaneers,14,,,1,0,1,0,0,0,0,0,0,0,11,39,2024-11-07T11:34:52.000Z,LorenzoReyes,4,LorenzoReyes
+4733302,2024,reg,8,Atlanta Falcons,27,Tampa Bay Buccaneers,22,,,1,0,1,0,0,0,1,0,0,0,5,49,2024-11-07T11:34:52.000Z,TylerDragon,7,TylerDragon
+4733302,2024,reg,8,Atlanta Falcons,22,Tampa Bay Buccaneers,28,,,0,0,0,0,0,0,1,0,0,0,-6,50,2024-11-07T11:34:52.000Z,RichardMorin,2,RichardMorin
+4733302,2024,reg,8,Atlanta Falcons,24,Tampa Bay Buccaneers,20,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-07T11:34:52.000Z,JordanMendoza,4,JordanMendoza
+4733308,2024,reg,8,Philadelphia Eagles,26,Cincinnati Bengals,20,,,1,0,1,0,0,0,0,0,0,0,6,46,2024-11-07T11:34:53.000Z,LorenzoReyes,4,LorenzoReyes
+4733308,2024,reg,8,Philadelphia Eagles,27,Cincinnati Bengals,26,,,1,0,1,0,0,0,1,0,0,0,1,53,2024-11-07T11:34:53.000Z,TylerDragon,6,TylerDragon
+4733308,2024,reg,8,Philadelphia Eagles,29,Cincinnati Bengals,22,,,1,0,1,0,0,0,1,0,0,0,7,51,2024-11-07T11:34:53.000Z,RichardMorin,6,RichardMorin
+4733308,2024,reg,8,Philadelphia Eagles,25,Cincinnati Bengals,27,,,0,0,1,0,0,0,1,0,0,0,-2,52,2024-11-07T11:34:53.000Z,JordanMendoza,4,JordanMendoza
+4733306,2024,reg,8,New Orleans Saints,10,Los Angeles Chargers,13,,,1,0,0,0,0,0,1,0,0,0,-3,23,2024-11-07T11:34:53.000Z,LorenzoReyes,4,LorenzoReyes
+4733306,2024,reg,8,New Orleans Saints,16,Los Angeles Chargers,20,,,1,0,0,0,0,0,1,0,0,0,-4,36,2024-11-07T11:34:53.000Z,TylerDragon,4,TylerDragon
+4733306,2024,reg,8,New Orleans Saints,15,Los Angeles Chargers,24,,,1,0,1,0,0,0,1,0,0,0,-9,39,2024-11-07T11:34:53.000Z,RichardMorin,6,RichardMorin
+4733306,2024,reg,8,New Orleans Saints,10,Los Angeles Chargers,17,,,1,0,0,0,0,0,1,0,0,0,-7,27,2024-11-07T11:34:53.000Z,JordanMendoza,4,JordanMendoza
+4733307,2024,reg,8,Buffalo Bills,26,Seattle Seahawks,19,,,1,0,1,0,0,0,1,0,0,0,7,45,2024-11-07T11:34:52.000Z,LorenzoReyes,6,LorenzoReyes
+4733307,2024,reg,8,Buffalo Bills,26,Seattle Seahawks,25,,,1,0,0,0,0,0,0,0,0,0,1,51,2024-11-07T11:34:52.000Z,TylerDragon,2,TylerDragon
+4733307,2024,reg,8,Buffalo Bills,28,Seattle Seahawks,20,,,1,0,1,0,0,0,0,0,0,0,8,48,2024-11-07T11:34:52.000Z,RichardMorin,4,RichardMorin
+4733307,2024,reg,8,Buffalo Bills,34,Seattle Seahawks,30,,,1,0,1,0,0,0,0,0,0,0,4,64,2024-11-07T11:34:52.000Z,JordanMendoza,4,JordanMendoza
+4733304,2024,reg,8,Chicago Bears,18,Washington Commanders,13,,,0,0,0,0,0,0,1,0,0,0,5,31,2024-11-07T11:34:52.000Z,LorenzoReyes,2,LorenzoReyes
+4733304,2024,reg,8,Chicago Bears,23,Washington Commanders,24,,,1,0,1,0,0,0,0,0,0,0,-1,47,2024-11-07T11:34:52.000Z,TylerDragon,4,TylerDragon
+4733304,2024,reg,8,Chicago Bears,32,Washington Commanders,12,,,0,0,0,0,0,0,0,0,0,0,20,44,2024-11-07T11:34:52.000Z,RichardMorin,0,RichardMorin
+4733304,2024,reg,8,Chicago Bears,23,Washington Commanders,22,,,0,0,1,0,0,0,0,0,0,0,1,45,2024-11-07T11:34:52.000Z,JordanMendoza,2,JordanMendoza
+4733310,2024,reg,8,Carolina Panthers,7,Denver Broncos,24,,,1,0,1,0,0,0,1,0,0,0,-17,31,2024-11-07T11:34:52.000Z,LorenzoReyes,6,LorenzoReyes
+4733310,2024,reg,8,Carolina Panthers,13,Denver Broncos,16,,,1,0,0,0,0,0,1,0,0,0,-3,29,2024-11-07T11:34:52.000Z,TylerDragon,4,TylerDragon
+4733310,2024,reg,8,Carolina Panthers,6,Denver Broncos,20,,,1,0,1,0,0,0,1,0,0,0,-14,26,2024-11-07T11:34:52.000Z,RichardMorin,7,RichardMorin
+4733310,2024,reg,8,Carolina Panthers,9,Denver Broncos,23,,,1,0,1,0,0,0,1,0,0,0,-14,32,2024-11-07T11:34:52.000Z,JordanMendoza,7,JordanMendoza
+4733309,2024,reg,8,Kansas City Chiefs,27,Las Vegas Raiders,13,,,1,0,0,0,0,0,0,0,0,0,14,40,2024-11-07T11:34:52.000Z,LorenzoReyes,3,LorenzoReyes
+4733309,2024,reg,8,Kansas City Chiefs,27,Las Vegas Raiders,16,,,1,0,0,0,0,0,1,0,0,0,11,43,2024-11-07T11:34:52.000Z,TylerDragon,5,TylerDragon
+4733309,2024,reg,8,Kansas City Chiefs,29,Las Vegas Raiders,18,,,1,0,0,0,0,0,1,0,0,0,11,47,2024-11-07T11:34:52.000Z,RichardMorin,5,RichardMorin
+4733309,2024,reg,8,Kansas City Chiefs,24,Las Vegas Raiders,12,,,1,0,0,0,0,0,0,0,0,0,12,36,2024-11-07T11:34:52.000Z,JordanMendoza,2,JordanMendoza
+4733311,2024,reg,8,Dallas Cowboys,21,San Francisco 49ers,20,,,0,0,0,0,0,0,0,0,0,0,1,41,2024-11-07T11:34:52.000Z,LorenzoReyes,0,LorenzoReyes
+4733311,2024,reg,8,Dallas Cowboys,21,San Francisco 49ers,23,,,1,0,0,0,0,0,0,0,0,0,-2,44,2024-11-07T11:34:52.000Z,TylerDragon,2,TylerDragon
+4733311,2024,reg,8,Dallas Cowboys,27,San Francisco 49ers,30,,,1,0,0,0,0,0,1,0,0,0,-3,57,2024-11-07T11:34:52.000Z,RichardMorin,5,RichardMorin
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,22,,,1,0,0,0,0,0,0,0,0,0,-2,42,2024-11-07T11:34:52.000Z,JordanMendoza,2,JordanMendoza
+4733312,2024,reg,8,New York Giants,7,Pittsburgh Steelers,25,,,1,0,1,0,0,0,0,0,0,0,-18,32,2024-11-07T11:34:53.000Z,LorenzoReyes,4,LorenzoReyes
+4733312,2024,reg,8,New York Giants,16,Pittsburgh Steelers,25,,,1,0,1,0,0,0,1,0,0,0,-9,41,2024-11-07T11:34:53.000Z,TylerDragon,6,TylerDragon
+4733312,2024,reg,8,New York Giants,14,Pittsburgh Steelers,24,,,1,0,1,0,0,0,1,0,0,0,-10,38,2024-11-07T11:34:53.000Z,RichardMorin,6,RichardMorin
+4733312,2024,reg,8,New York Giants,13,Pittsburgh Steelers,24,,,1,0,1,0,0,0,1,0,0,0,-11,37,2024-11-07T11:34:53.000Z,JordanMendoza,6,JordanMendoza
+4733299,2024,reg,8,Indianapolis Colts,17,Houston Texans,24,0,0,1,0,0,0,0,0,1,0,0,0,-7,41,2024-10-25T19:22:00.595Z,rosstuckerNFL,4,rosstuckerNFL
+4733300,2024,reg,8,Green Bay Packers,27,Jacksonville Jaguars,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2024-10-25T19:22:38.104Z,rosstuckerNFL,7,rosstuckerNFL
+4733303,2024,reg,8,N.Y. Jets Jets,31,New England Patriots,13,0,0,0,0,0,0,0,0,1,0,0,0,18,44,2024-10-25T19:24:57.853Z,rosstuckerNFL,2,rosstuckerNFL
+4733302,2024,reg,8,Atlanta Falcons,27,Tampa Bay Buccaneers,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2024-10-25T19:25:29.376Z,rosstuckerNFL,6,rosstuckerNFL
+4733308,2024,reg,8,Philadelphia Eagles,24,Cincinnati Bengals,23,0,0,1,0,1,0,0,0,0,0,0,0,1,47,2024-10-25T19:26:42.646Z,rosstuckerNFL,4,rosstuckerNFL
+4733306,2024,reg,8,New Orleans Saints,17,L.A. Chargers Chargers,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2024-10-25T19:28:24.153Z,rosstuckerNFL,4,rosstuckerNFL
+4733307,2024,reg,8,Buffalo Bills,27,Seattle Seahawks,26,0,0,1,0,0,0,0,0,0,0,0,0,1,53,2024-10-25T19:29:03.538Z,rosstuckerNFL,2,rosstuckerNFL
+4733304,2024,reg,8,Chicago Bears,23,Washington Commanders,20,0,0,0,0,0,0,0,0,1,0,0,0,3,43,2024-10-25T19:31:21.630Z,rosstuckerNFL,2,rosstuckerNFL
+4733310,2024,reg,8,Carolina Panthers,16,Denver Broncos,27,0,0,1,0,1,0,0,0,0,0,0,0,-11,43,2024-10-25T19:32:34.467Z,rosstuckerNFL,4,rosstuckerNFL
+4733311,2024,reg,8,Dallas Cowboys,23,San Francisco 49ers,25,0,0,1,0,0,0,0,0,1,0,0,0,-2,48,2024-10-25T19:34:03.565Z,rosstuckerNFL,4,rosstuckerNFL
+4733299,2024,reg,8,Indianapolis Colts,19,Houston Texans,24,0,0,1,0,0,0,0,0,1,0,0,0,-5,43,2024-10-27T08:43:20.338Z,ausame,5,ausame
+4733300,2024,reg,8,Green Bay Packers,27,Jacksonville Jaguars,21,0,0,1,0,0,0,0,0,0,0,0,0,6,48,2024-10-27T08:43:35.792Z,ausame,2,ausame
+4733301,2024,reg,8,Tennessee Titans,13,Detroit Lions,28,0,0,1,0,1,0,0,0,0,0,0,0,-15,41,2024-10-27T08:43:53.600Z,ausame,4,ausame
+4733302,2024,reg,8,Atlanta Falcons,23,Tampa Bay Buccaneers,20,0,0,1,0,1,0,0,0,0,0,0,0,3,43,2024-10-27T08:44:26.563Z,ausame,4,ausame
+4733303,2024,reg,8,N.Y. Jets Jets,24,New England Patriots,19,3,3,0,0,1,0,3,3,1,0,3,3,5,43,2024-10-27T08:44:44.631Z,ausame,4,ausame
+4733305,2024,reg,8,Arizona Cardinals,21,Miami Dolphins,24,3,0,0,0,1,0,3,3,0,0,0,0,-3,45,2024-10-27T08:45:13.677Z,ausame,2,ausame
+4733308,2024,reg,8,Philadelphia Eagles,23,Cincinnati Bengals,24,3,0,0,0,1,0,3,3,0,0,0,0,-1,47,2024-10-27T08:45:49.187Z,ausame,2,ausame
+4733298,2024,reg,8,Baltimore Ravens,26,Cleveland Browns,16,0,0,0,0,0,0,0,0,0,0,0,0,10,42,2024-10-27T08:46:27.360Z,ausame,0,ausame
+4733306,2024,reg,8,New Orleans Saints,13,L.A. Chargers Chargers,23,0,0,1,0,1,0,0,0,1,0,0,0,-10,36,2024-10-27T08:47:17.698Z,ausame,6,ausame
+4733307,2024,reg,8,Buffalo Bills,23,Seattle Seahawks,21,3,3,1,0,0,0,3,-3,1,0,3,3,2,44,2024-10-27T08:47:48.955Z,ausame,4,ausame
+4733304,2024,reg,8,Chicago Bears,21,Washington Commanders,23,3,3,1,0,1,0,3,3,0,0,3,-3,-2,44,2024-10-27T08:48:10.307Z,ausame,4,ausame
+4733310,2024,reg,8,Carolina Panthers,9,Denver Broncos,17,0,0,1,0,0,0,0,0,0,0,0,0,-8,26,2024-10-27T08:48:38.547Z,ausame,2,ausame
+4733309,2024,reg,8,Kansas City Chiefs,23,Las Vegas Raiders,16,3,0,1,0,1,0,3,3,0,0,0,0,7,39,2024-10-27T08:49:06.244Z,ausame,5,ausame
+4733311,2024,reg,8,Dallas Cowboys,20,San Francisco 49ers,26,0,3,1,0,1,0,0,0,0,0,3,-3,-6,46,2024-10-27T08:52:00.804Z,ausame,5,ausame
+4733312,2024,reg,8,N.Y. Giants Giants,17,Pittsburgh Steelers,21,3,3,1,0,0,0,3,-3,1,0,3,3,-4,38,2024-10-27T08:49:50.121Z,ausame,4,ausame
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,24,0,0,1,0,0,0,0,0,0,0,0,0,-4,44,2024-11-01T19:05:11.804Z,rosstuckerNFL,2,rosstuckerNFL
+4733321,2024,reg,9,Las Vegas Raiders,17,Cincinnati Bengals,24,0,0,1,0,0,0,0,0,0,0,0,0,-7,41,2024-11-01T19:08:25.433Z,rosstuckerNFL,2,rosstuckerNFL
+4733314,2024,reg,9,Washington Commanders,17,N.Y. Giants Giants,20,0,0,0,0,0,0,0,0,0,0,0,0,-3,37,2024-11-01T19:10:23.742Z,rosstuckerNFL,0,rosstuckerNFL
+4733320,2024,reg,9,New England Patriots,16,Tennessee Titans,17,0,0,1,0,1,0,0,0,1,0,0,0,-1,33,2024-11-01T19:12:30.206Z,rosstuckerNFL,6,rosstuckerNFL
+4733315,2024,reg,9,Indianapolis Colts,19,Minnesota Vikings,23,0,0,1,0,0,0,0,0,1,0,0,0,-4,42,2024-11-01T19:16:24.590Z,rosstuckerNFL,4,rosstuckerNFL
+4733313,2024,reg,9,Houston Texans,24,N.Y. Jets Jets,21,3,3,0,0,0,0,3,-3,0,0,3,-3,3,45,2024-10-30T03:41:36.422Z,ausame,1,ausame
+4733313,2024,reg,9,Houston Texans,20,N.Y. Jets Jets,24,0,0,1,0,1,0,0,0,0,0,0,0,-4,44,2024-10-31T20:02:41.136Z,cmaronchick,4,cmaronchick
+4733319,2024,reg,9,New Orleans Saints,27,Carolina Panthers,17,0,0,0,0,0,0,0,0,1,0,0,0,10,44,2024-10-30T04:02:28.410Z,cmaronchick,2,cmaronchick
+4733318,2024,reg,9,Dallas Cowboys,27,Atlanta Falcons,31,0,0,1,0,1,0,0,0,0,0,0,0,-4,58,2024-10-30T04:02:49.487Z,cmaronchick,4,cmaronchick
+4733314,2024,reg,9,Washington Commanders,23,N.Y. Giants Giants,20,0,0,1,0,0,0,0,0,0,0,0,0,3,43,2024-10-30T04:03:51.741Z,cmaronchick,2,cmaronchick
+4733316,2024,reg,9,L.A. Chargers Chargers,24,Cleveland Browns,17,0,0,1,0,1,0,0,0,1,0,0,0,7,41,2024-10-30T04:04:06.068Z,cmaronchick,6,cmaronchick
+4733320,2024,reg,9,New England Patriots,13,Tennessee Titans,17,0,0,1,0,0,0,0,0,1,0,0,0,-4,30,2024-11-03T03:53:26.300Z,cmaronchick,4,cmaronchick
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,28,0,0,1,0,0,0,0,0,1,0,0,0,-8,48,2024-10-30T04:05:01.547Z,cmaronchick,4,cmaronchick
+4733317,2024,reg,9,Miami Dolphins,24,Buffalo Bills,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2024-10-30T04:05:16.492Z,cmaronchick,7,cmaronchick
+4733321,2024,reg,9,Las Vegas Raiders,17,Cincinnati Bengals,28,0,0,1,0,1,0,0,0,0,0,0,0,-11,45,2024-10-30T04:06:08.156Z,cmaronchick,4,cmaronchick
+4733326,2024,reg,9,Jacksonville Jaguars,20,Philadelphia Eagles,27,0,0,1,0,1,0,0,0,1,0,0,0,-7,47,2024-10-30T04:06:33.180Z,cmaronchick,6,cmaronchick
+4733323,2024,reg,9,Chicago Bears,20,Arizona Cardinals,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2024-11-03T03:55:11.301Z,cmaronchick,2,cmaronchick
+4733325,2024,reg,9,L.A. Rams Rams,24,Seattle Seahawks,27,0,0,0,0,0,0,0,0,0,0,0,0,-3,51,2024-10-30T04:07:26.643Z,cmaronchick,0,cmaronchick
+4733324,2024,reg,9,Detroit Lions,31,Green Bay Packers,24,0,0,1,0,1,0,0,0,0,0,0,0,7,55,2024-10-30T04:07:49.027Z,cmaronchick,4,cmaronchick
+4733315,2024,reg,9,Indianapolis Colts,21,Minnesota Vikings,27,0,0,1,0,1,0,0,0,0,0,0,0,-6,48,2024-10-30T04:08:30.647Z,cmaronchick,4,cmaronchick
+4733327,2024,reg,9,Tampa Bay Buccaneers,24,Kansas City Chiefs,34,0,0,1,0,0,0,0,0,1,0,0,0,-10,58,2024-10-30T04:08:45.475Z,cmaronchick,5,cmaronchick
+4733327,2024,reg,9,Tampa Bay Buccaneers,20,Kansas City Chiefs,30,,,1,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:42.000Z,TerrySullivan,5,TerrySullivan
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,27,,,1,0,0,0,0,0,1,0,0,0,-7,47,2024-11-07T11:31:42.000Z,TerrySullivan,4,TerrySullivan
+4733316,2024,reg,9,Los Angeles Chargers,21,Cleveland Browns,23,,,0,0,0,0,0,0,0,0,0,0,-2,44,2024-11-07T11:31:42.000Z,TerrySullivan,0,TerrySullivan
+4733318,2024,reg,9,Dallas Cowboys,24,Atlanta Falcons,30,,,1,0,1,0,0,0,0,0,0,0,-6,54,2024-11-07T11:31:42.000Z,TerrySullivan,5,TerrySullivan
+4733314,2024,reg,9,Washington Commanders,27,New York Giants,17,,,1,0,1,0,0,0,0,0,0,0,10,44,2024-11-07T11:31:42.000Z,TerrySullivan,5,TerrySullivan
+4733313,2024,reg,9,Houston Texans,23,New York Jets,21,,,0,0,0,0,0,0,0,0,0,0,2,44,2024-11-07T11:31:42.000Z,TerrySullivan,1,TerrySullivan
+4733321,2024,reg,9,Las Vegas Raiders,17,Cincinnati Bengals,27,,,1,0,1,0,0,0,0,0,0,0,-10,44,2024-11-07T11:31:42.000Z,TerrySullivan,4,TerrySullivan
+4733317,2024,reg,9,Miami Dolphins,23,Buffalo Bills,30,,,1,0,0,0,0,0,1,0,0,0,-7,53,2024-11-07T11:31:42.000Z,TerrySullivan,5,TerrySullivan
+4733320,2024,reg,9,New England Patriots,17,Tennessee Titans,23,,,1,0,0,0,0,0,0,0,0,0,-6,40,2024-11-07T11:31:42.000Z,TerrySullivan,3,TerrySullivan
+4733319,2024,reg,9,New Orleans Saints,24,Carolina Panthers,14,,,0,0,0,0,0,0,0,0,0,0,10,38,2024-11-07T11:31:42.000Z,TerrySullivan,0,TerrySullivan
+4733323,2024,reg,9,Chicago Bears,21,Arizona Cardinals,24,,,1,0,1,0,0,0,0,0,0,0,-3,45,2024-11-07T11:31:42.000Z,TerrySullivan,4,TerrySullivan
+4733326,2024,reg,9,Jacksonville Jaguars,23,Philadelphia Eagles,33,,,1,0,0,0,0,0,1,0,0,0,-10,56,2024-11-07T11:31:42.000Z,TerrySullivan,5,TerrySullivan
+4733324,2024,reg,9,Detroit Lions,27,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:31:42.000Z,TerrySullivan,4,TerrySullivan
+4733325,2024,reg,9,Los Angeles Rams,27,Seattle Seahawks,24,,,1,0,1,0,0,0,0,0,0,0,3,51,2024-11-07T11:31:42.000Z,TerrySullivan,4,TerrySullivan
+4733315,2024,reg,9,Indianapolis Colts,23,Minnesota Vikings,27,,,1,0,0,0,0,0,0,0,0,0,-4,50,2024-11-07T11:31:42.000Z,TerrySullivan,2,TerrySullivan
+4733313,2024,reg,9,Houston Texans,23,New York Jets,31,,,1,0,1,0,0,0,0,0,0,0,-8,54,2024-11-07T11:31:42.000Z,PetePrisco,5,PetePrisco
+4733318,2024,reg,9,Dallas Cowboys,32,Atlanta Falcons,33,,,1,0,0,0,0,0,0,0,0,0,-1,65,2024-11-07T11:31:42.000Z,PetePrisco,2,PetePrisco
+4733322,2024,reg,9,Denver Broncos,17,Baltimore Ravens,27,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-11-07T11:31:42.000Z,PetePrisco,2,PetePrisco
+4733317,2024,reg,9,Miami Dolphins,23,Buffalo Bills,32,,,1,0,0,0,0,0,1,0,0,0,-9,55,2024-11-07T11:31:42.000Z,PetePrisco,4,PetePrisco
+4733319,2024,reg,9,New Orleans Saints,23,Carolina Panthers,13,,,0,0,0,0,0,0,0,0,0,0,10,36,2024-11-07T11:31:42.000Z,PetePrisco,0,PetePrisco
+4733321,2024,reg,9,Las Vegas Raiders,20,Cincinnati Bengals,30,,,1,0,1,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:42.000Z,PetePrisco,6,PetePrisco
+4733316,2024,reg,9,Los Angeles Chargers,21,Cleveland Browns,20,,,1,0,0,0,0,0,1,0,0,0,1,41,2024-11-07T11:31:42.000Z,PetePrisco,4,PetePrisco
+4733314,2024,reg,9,Washington Commanders,30,New York Giants,17,,,1,0,1,0,0,0,1,0,0,0,13,47,2024-11-07T11:31:42.000Z,PetePrisco,6,PetePrisco
+4733320,2024,reg,9,New England Patriots,16,Tennessee Titans,21,,,1,0,0,0,0,0,1,0,0,0,-5,37,2024-11-07T11:31:42.000Z,PetePrisco,5,PetePrisco
+4733323,2024,reg,9,Chicago Bears,17,Arizona Cardinals,24,,,1,0,1,0,0,0,1,0,0,0,-7,41,2024-11-07T11:31:42.000Z,PetePrisco,6,PetePrisco
+4733326,2024,reg,9,Jacksonville Jaguars,19,Philadelphia Eagles,33,,,1,0,0,0,0,0,1,0,0,0,-14,52,2024-11-07T11:31:42.000Z,PetePrisco,4,PetePrisco
+4733324,2024,reg,9,Detroit Lions,29,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,6,52,2024-11-07T11:31:42.000Z,PetePrisco,4,PetePrisco
+4733325,2024,reg,9,Los Angeles Rams,34,Seattle Seahawks,27,,,1,0,1,0,0,0,0,0,0,0,7,61,2024-11-07T11:31:42.000Z,PetePrisco,4,PetePrisco
+4733315,2024,reg,9,Indianapolis Colts,24,Minnesota Vikings,28,,,1,0,0,0,0,0,0,0,0,0,-4,52,2024-11-07T11:31:42.000Z,PetePrisco,2,PetePrisco
+4733327,2024,reg,9,Tampa Bay Buccaneers,17,Kansas City Chiefs,29,,,1,0,0,0,0,0,0,0,0,0,-12,46,2024-11-07T11:31:42.000Z,PetePrisco,2,PetePrisco
+4733313,2024,reg,9,Houston Texans,23,New York Jets,21,,,0,0,0,0,0,0,0,0,0,0,2,44,2024-11-07T11:31:42.000Z,BleacherReport,1,BleacherReport
+4733317,2024,reg,9,Miami Dolphins,20,Buffalo Bills,28,,,1,0,0,0,0,0,0,0,0,0,-8,48,2024-11-07T11:31:42.000Z,BleacherReport,2,BleacherReport
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,30,,,1,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733314,2024,reg,9,Washington Commanders,27,New York Giants,17,,,1,0,1,0,0,0,0,0,0,0,10,44,2024-11-07T11:31:42.000Z,BleacherReport,5,BleacherReport
+4733321,2024,reg,9,Las Vegas Raiders,20,Cincinnati Bengals,31,,,1,0,1,0,0,0,1,0,0,0,-11,51,2024-11-07T11:31:42.000Z,BleacherReport,6,BleacherReport
+4733320,2024,reg,9,New England Patriots,20,Tennessee Titans,17,,,0,0,1,0,0,0,1,0,0,0,3,37,2024-11-07T11:31:42.000Z,BleacherReport,5,BleacherReport
+4733319,2024,reg,9,New Orleans Saints,28,Carolina Panthers,16,,,0,0,0,0,0,0,1,0,0,0,12,44,2024-11-07T11:31:42.000Z,BleacherReport,2,BleacherReport
+4733316,2024,reg,9,Los Angeles Chargers,23,Cleveland Browns,20,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-11-07T11:31:42.000Z,BleacherReport,6,BleacherReport
+4733318,2024,reg,9,Dallas Cowboys,27,Atlanta Falcons,24,,,0,0,0,0,0,0,1,0,0,0,3,51,2024-11-07T11:31:42.000Z,BleacherReport,2,BleacherReport
+4733326,2024,reg,9,Jacksonville Jaguars,14,Philadelphia Eagles,35,,,1,0,0,0,0,0,1,0,0,0,-21,49,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733323,2024,reg,9,Chicago Bears,24,Arizona Cardinals,21,,,0,0,0,0,0,0,0,0,0,0,3,45,2024-11-07T11:31:42.000Z,BleacherReport,0,BleacherReport
+4733324,2024,reg,9,Detroit Lions,30,Green Bay Packers,24,,,1,0,1,0,0,0,0,0,0,0,6,54,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733325,2024,reg,9,Los Angeles Rams,31,Seattle Seahawks,23,,,1,0,1,0,0,0,0,0,0,0,8,54,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733315,2024,reg,9,Indianapolis Colts,24,Minnesota Vikings,30,,,1,0,1,0,0,0,0,0,0,0,-6,54,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733327,2024,reg,9,Tampa Bay Buccaneers,19,Kansas City Chiefs,24,,,1,0,1,0,0,0,0,0,0,0,-5,43,2024-11-07T11:31:42.000Z,BleacherReport,4,BleacherReport
+4733313,2024,reg,9,Houston Texans,24,New York Jets,17,,,0,0,0,0,0,0,1,0,0,0,7,41,2024-11-07T11:31:42.000Z,BillBender,2,BillBender
+4733318,2024,reg,9,Dallas Cowboys,34,Atlanta Falcons,31,,,0,0,0,0,0,0,0,0,0,0,3,65,2024-11-07T11:31:42.000Z,BillBender,0,BillBender
+4733317,2024,reg,9,Miami Dolphins,21,Buffalo Bills,31,,,1,0,0,0,0,0,1,0,0,0,-10,52,2024-11-07T11:31:42.000Z,BillBender,4,BillBender
+4733321,2024,reg,9,Las Vegas Raiders,24,Cincinnati Bengals,34,,,1,0,1,0,0,0,1,0,0,0,-10,58,2024-11-07T11:31:42.000Z,BillBender,7,BillBender
+4733316,2024,reg,9,Los Angeles Chargers,19,Cleveland Browns,16,,,1,0,1,0,0,0,1,0,0,0,3,35,2024-11-07T11:31:42.000Z,BillBender,6,BillBender
+4733320,2024,reg,9,New England Patriots,21,Tennessee Titans,20,,,0,0,1,0,0,0,0,0,0,0,1,41,2024-11-07T11:31:42.000Z,BillBender,3,BillBender
+4733314,2024,reg,9,Washington Commanders,24,New York Giants,20,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-07T11:31:42.000Z,BillBender,4,BillBender
+4733319,2024,reg,9,New Orleans Saints,23,Carolina Panthers,16,,,0,0,1,0,0,0,0,0,0,0,7,39,2024-11-07T11:31:42.000Z,BillBender,2,BillBender
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,28,,,1,0,0,0,0,0,1,0,0,0,-8,48,2024-11-07T11:31:42.000Z,BillBender,4,BillBender
+4733326,2024,reg,9,Jacksonville Jaguars,18,Philadelphia Eagles,33,,,1,0,0,0,0,0,1,0,0,0,-15,51,2024-11-07T11:31:42.000Z,BillBender,5,BillBender
+4733323,2024,reg,9,Chicago Bears,17,Arizona Cardinals,20,,,1,0,1,0,0,0,1,0,0,0,-3,37,2024-11-07T11:31:42.000Z,BillBender,6,BillBender
+4733325,2024,reg,9,Los Angeles Rams,28,Seattle Seahawks,26,,,1,0,1,0,0,0,0,0,0,0,2,54,2024-11-07T11:31:42.000Z,BillBender,4,BillBender
+4733324,2024,reg,9,Detroit Lions,31,Green Bay Packers,26,,,1,0,1,0,0,0,0,0,0,0,5,57,2024-11-07T11:31:42.000Z,BillBender,4,BillBender
+4733315,2024,reg,9,Indianapolis Colts,19,Minnesota Vikings,27,,,1,0,1,0,0,0,1,0,0,0,-8,46,2024-11-07T11:31:42.000Z,BillBender,7,BillBender
+4733327,2024,reg,9,Tampa Bay Buccaneers,23,Kansas City Chiefs,30,,,1,0,1,0,0,0,1,0,0,0,-7,53,2024-11-07T11:31:42.000Z,BillBender,7,BillBender
+4733313,2024,reg,9,Houston Texans,25,New York Jets,18,,,0,0,0,0,0,0,0,0,0,0,7,43,2024-11-07T11:31:42.000Z,DataSkrive,0,DataSkrive
+4733321,2024,reg,9,Las Vegas Raiders,21,Cincinnati Bengals,26,,,1,0,0,0,0,0,1,0,0,0,-5,47,2024-11-07T11:31:42.000Z,DataSkrive,4,DataSkrive
+4733316,2024,reg,9,Los Angeles Chargers,23,Cleveland Browns,13,,,1,0,1,0,0,0,1,0,0,0,10,36,2024-11-07T11:31:42.000Z,DataSkrive,6,DataSkrive
+4733317,2024,reg,9,Miami Dolphins,9,Buffalo Bills,33,,,1,0,0,0,0,0,0,0,0,0,-24,42,2024-11-07T11:31:42.000Z,DataSkrive,2,DataSkrive
+4733318,2024,reg,9,Dallas Cowboys,20,Atlanta Falcons,30,,,1,0,1,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:42.000Z,DataSkrive,6,DataSkrive
+4733314,2024,reg,9,Washington Commanders,28,New York Giants,16,,,1,0,1,0,0,0,0,0,0,0,12,44,2024-11-07T11:31:42.000Z,DataSkrive,4,DataSkrive
+4733319,2024,reg,9,New Orleans Saints,29,Carolina Panthers,20,,,0,0,0,0,0,0,1,0,0,0,9,49,2024-11-07T11:31:42.000Z,DataSkrive,2,DataSkrive
+4733322,2024,reg,9,Denver Broncos,22,Baltimore Ravens,25,,,1,0,0,0,0,0,1,0,0,0,-3,47,2024-11-07T11:31:42.000Z,DataSkrive,4,DataSkrive
+4733320,2024,reg,9,New England Patriots,18,Tennessee Titans,24,,,1,0,0,0,0,0,0,0,0,0,-6,42,2024-11-07T11:31:42.000Z,DataSkrive,2,DataSkrive
+4733323,2024,reg,9,Chicago Bears,20,Arizona Cardinals,24,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-11-07T11:31:42.000Z,DataSkrive,6,DataSkrive
+4733326,2024,reg,9,Jacksonville Jaguars,14,Philadelphia Eagles,33,,,1,0,0,0,0,0,1,0,0,0,-19,47,2024-11-07T11:31:42.000Z,DataSkrive,4,DataSkrive
+4733324,2024,reg,9,Detroit Lions,26,Green Bay Packers,25,,,1,0,0,0,0,0,0,0,0,0,1,51,2024-11-07T11:31:42.000Z,DataSkrive,2,DataSkrive
+4733325,2024,reg,9,Los Angeles Rams,24,Seattle Seahawks,23,,,1,0,0,0,0,0,1,0,0,0,1,47,2024-11-07T11:31:42.000Z,DataSkrive,4,DataSkrive
+4733315,2024,reg,9,Indianapolis Colts,16,Minnesota Vikings,29,,,1,0,1,0,0,0,1,0,0,0,-13,45,2024-11-07T11:31:42.000Z,DataSkrive,6,DataSkrive
+4733327,2024,reg,9,Tampa Bay Buccaneers,22,Kansas City Chiefs,27,,,1,0,1,0,0,0,1,0,0,0,-5,49,2024-11-07T11:31:42.000Z,DataSkrive,6,DataSkrive
+4733313,2024,reg,9,Houston Texans,20,New York Jets,16,,,0,0,0,0,0,0,1,0,0,0,4,36,2024-11-07T11:31:42.000Z,MarcusMosher,2,MarcusMosher
+4733314,2024,reg,9,Washington Commanders,30,New York Giants,17,,,1,0,1,0,0,0,1,0,0,0,13,47,2024-11-07T11:31:42.000Z,MarcusMosher,6,MarcusMosher
+4733317,2024,reg,9,Miami Dolphins,27,Buffalo Bills,30,,,1,0,1,0,0,0,1,0,0,0,-3,57,2024-11-07T11:31:43.000Z,MarcusMosher,10,MarcusMosher
+4733316,2024,reg,9,Los Angeles Chargers,20,Cleveland Browns,23,,,0,0,0,0,0,0,1,0,0,0,-3,43,2024-11-07T11:31:43.000Z,MarcusMosher,2,MarcusMosher
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:31:43.000Z,MarcusMosher,2,MarcusMosher
+4733321,2024,reg,9,Las Vegas Raiders,20,Cincinnati Bengals,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:31:43.000Z,MarcusMosher,2,MarcusMosher
+4733319,2024,reg,9,New Orleans Saints,24,Carolina Panthers,16,,,0,0,0,0,0,0,0,0,0,0,8,40,2024-11-07T11:31:43.000Z,MarcusMosher,0,MarcusMosher
+4733320,2024,reg,9,New England Patriots,20,Tennessee Titans,17,,,0,0,1,0,0,0,1,0,0,0,3,37,2024-11-07T11:31:43.000Z,MarcusMosher,5,MarcusMosher
+4733318,2024,reg,9,Dallas Cowboys,23,Atlanta Falcons,31,,,1,0,1,0,0,0,0,0,0,0,-8,54,2024-11-07T11:31:43.000Z,MarcusMosher,4,MarcusMosher
+4733323,2024,reg,9,Chicago Bears,26,Arizona Cardinals,24,,,0,0,0,0,0,0,0,0,0,0,2,50,2024-11-07T11:31:43.000Z,MarcusMosher,0,MarcusMosher
+4733326,2024,reg,9,Jacksonville Jaguars,17,Philadelphia Eagles,27,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-11-07T11:31:43.000Z,MarcusMosher,2,MarcusMosher
+4733324,2024,reg,9,Detroit Lions,27,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:31:43.000Z,MarcusMosher,4,MarcusMosher
+4733325,2024,reg,9,Los Angeles Rams,27,Seattle Seahawks,23,,,1,0,1,0,0,0,0,0,0,0,4,50,2024-11-07T11:31:43.000Z,MarcusMosher,4,MarcusMosher
+4733315,2024,reg,9,Indianapolis Colts,21,Minnesota Vikings,27,,,1,0,1,0,0,0,0,0,0,0,-6,48,2024-11-07T11:31:43.000Z,MarcusMosher,4,MarcusMosher
+4733327,2024,reg,9,Tampa Bay Buccaneers,20,Kansas City Chiefs,26,,,1,0,1,0,0,0,0,0,0,0,-6,46,2024-11-07T11:31:43.000Z,MarcusMosher,5,MarcusMosher
+4733313,2024,reg,9,Houston Texans,23,New York Jets,17,,,0,0,0,0,0,0,1,0,0,0,6,40,2024-11-07T11:31:43.000Z,Sportsnaut,2,Sportsnaut
+4733318,2024,reg,9,Dallas Cowboys,27,Atlanta Falcons,31,,,1,0,1,0,0,0,0,0,0,0,-4,58,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733317,2024,reg,9,Miami Dolphins,21,Buffalo Bills,31,,,1,0,0,0,0,0,1,0,0,0,-10,52,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733321,2024,reg,9,Las Vegas Raiders,21,Cincinnati Bengals,34,,,1,0,1,0,0,0,1,0,0,0,-13,55,2024-11-07T11:31:43.000Z,Sportsnaut,6,Sportsnaut
+4733320,2024,reg,9,New England Patriots,13,Tennessee Titans,17,,,1,0,0,0,0,0,1,0,0,0,-4,30,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733316,2024,reg,9,Los Angeles Chargers,17,Cleveland Browns,20,,,0,0,0,0,0,0,1,0,0,0,-3,37,2024-11-07T11:31:43.000Z,Sportsnaut,3,Sportsnaut
+4733314,2024,reg,9,Washington Commanders,31,New York Giants,20,,,1,0,1,0,0,0,1,0,0,0,11,51,2024-11-07T11:31:43.000Z,Sportsnaut,6,Sportsnaut
+4733319,2024,reg,9,New Orleans Saints,20,Carolina Panthers,14,,,0,0,1,0,0,0,0,0,0,0,6,34,2024-11-07T11:31:43.000Z,Sportsnaut,2,Sportsnaut
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,23,,,1,0,0,0,0,0,0,0,0,0,-3,43,2024-11-07T11:31:43.000Z,Sportsnaut,2,Sportsnaut
+4733326,2024,reg,9,Jacksonville Jaguars,24,Philadelphia Eagles,34,,,1,0,0,0,0,0,1,0,0,0,-10,58,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733323,2024,reg,9,Chicago Bears,24,Arizona Cardinals,17,,,0,0,0,0,0,0,1,0,0,0,7,41,2024-11-07T11:31:43.000Z,Sportsnaut,2,Sportsnaut
+4733324,2024,reg,9,Detroit Lions,30,Green Bay Packers,21,,,1,0,1,0,0,0,0,0,0,0,9,51,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733325,2024,reg,9,Los Angeles Rams,27,Seattle Seahawks,24,,,1,0,1,0,0,0,0,0,0,0,3,51,2024-11-07T11:31:43.000Z,Sportsnaut,4,Sportsnaut
+4733315,2024,reg,9,Indianapolis Colts,17,Minnesota Vikings,27,,,1,0,1,0,0,0,1,0,0,0,-10,44,2024-11-07T11:31:43.000Z,Sportsnaut,6,Sportsnaut
+4733327,2024,reg,9,Tampa Bay Buccaneers,14,Kansas City Chiefs,23,,,1,0,0,0,0,0,0,0,0,0,-9,37,2024-11-07T11:31:43.000Z,Sportsnaut,2,Sportsnaut
+4733313,2024,reg,9,Houston Texans,23,New York Jets,20,,,0,0,0,0,0,0,0,0,0,0,3,43,2024-11-07T11:31:43.000Z,VinnieIyer,0,VinnieIyer
+4733324,2024,reg,9,Detroit Lions,30,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,7,53,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733326,2024,reg,9,Jacksonville Jaguars,14,Philadelphia Eagles,34,,,1,0,0,0,0,0,1,0,0,0,-20,48,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733318,2024,reg,9,Dallas Cowboys,30,Atlanta Falcons,27,,,0,0,0,0,0,0,0,0,0,0,3,57,2024-11-07T11:31:43.000Z,VinnieIyer,1,VinnieIyer
+4733317,2024,reg,9,Miami Dolphins,21,Buffalo Bills,31,,,1,0,0,0,0,0,1,0,0,0,-10,52,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733316,2024,reg,9,Los Angeles Chargers,20,Cleveland Browns,13,,,1,0,1,0,0,0,1,0,0,0,7,33,2024-11-07T11:31:43.000Z,VinnieIyer,6,VinnieIyer
+4733320,2024,reg,9,New England Patriots,20,Tennessee Titans,17,,,0,0,1,0,0,0,1,0,0,0,3,37,2024-11-07T11:31:43.000Z,VinnieIyer,5,VinnieIyer
+4733314,2024,reg,9,Washington Commanders,23,New York Giants,16,,,1,0,1,0,0,0,0,0,0,0,7,39,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733319,2024,reg,9,New Orleans Saints,20,Carolina Panthers,17,,,0,0,1,0,0,0,0,0,0,0,3,37,2024-11-07T11:31:43.000Z,VinnieIyer,2,VinnieIyer
+4733322,2024,reg,9,Denver Broncos,23,Baltimore Ravens,26,,,1,0,0,0,0,0,1,0,0,0,-3,49,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733323,2024,reg,9,Chicago Bears,23,Arizona Cardinals,20,,,0,0,0,0,0,0,1,0,0,0,3,43,2024-11-07T11:31:43.000Z,VinnieIyer,2,VinnieIyer
+4733325,2024,reg,9,Los Angeles Rams,31,Seattle Seahawks,27,,,1,0,1,0,0,0,0,0,0,0,4,58,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733315,2024,reg,9,Indianapolis Colts,20,Minnesota Vikings,27,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-11-07T11:31:43.000Z,VinnieIyer,4,VinnieIyer
+4733327,2024,reg,9,Tampa Bay Buccaneers,10,Kansas City Chiefs,27,,,1,0,0,0,0,0,0,0,0,0,-17,37,2024-11-07T11:31:43.000Z,VinnieIyer,2,VinnieIyer
+4733313,2024,reg,9,Houston Texans,21,New York Jets,21,,,0,0,0,0,0,0,1,0,0,0,0,42,2024-11-07T11:31:43.000Z,Dimers,3,Dimers
+4733314,2024,reg,9,Washington Commanders,24,New York Giants,21,,,1,0,0,0,0,0,1,0,0,0,3,45,2024-11-07T11:31:43.000Z,Dimers,4,Dimers
+4733316,2024,reg,9,Los Angeles Chargers,22,Cleveland Browns,21,,,1,0,0,0,0,0,1,0,0,0,1,43,2024-11-07T11:31:43.000Z,Dimers,4,Dimers
+4733317,2024,reg,9,Miami Dolphins,21,Buffalo Bills,27,,,1,0,1,0,0,0,0,0,0,0,-6,48,2024-11-07T11:31:43.000Z,Dimers,4,Dimers
+4733318,2024,reg,9,Dallas Cowboys,24,Atlanta Falcons,27,,,1,0,0,0,0,0,1,0,0,0,-3,51,2024-11-07T11:31:43.000Z,Dimers,5,Dimers
+4733320,2024,reg,9,New England Patriots,18,Tennessee Titans,21,,,1,0,1,0,0,0,0,0,0,0,-3,39,2024-11-07T11:31:43.000Z,Dimers,5,Dimers
+4733321,2024,reg,9,Las Vegas Raiders,20,Cincinnati Bengals,26,,,1,0,0,0,0,0,0,0,0,0,-6,46,2024-11-07T11:31:43.000Z,Dimers,2,Dimers
+4733322,2024,reg,9,Denver Broncos,19,Baltimore Ravens,28,,,1,0,0,0,0,0,1,0,0,0,-9,47,2024-11-07T11:31:43.000Z,Dimers,4,Dimers
+4733319,2024,reg,9,New Orleans Saints,25,Carolina Panthers,18,,,0,0,1,0,0,0,0,0,0,0,7,43,2024-11-07T11:31:43.000Z,Dimers,2,Dimers
+4733323,2024,reg,9,Chicago Bears,22,Arizona Cardinals,23,,,1,0,0,0,0,0,0,0,0,0,-1,45,2024-11-07T11:31:43.000Z,Dimers,2,Dimers
+4733326,2024,reg,9,Jacksonville Jaguars,19,Philadelphia Eagles,26,,,1,0,1,0,0,0,0,0,0,0,-7,45,2024-11-07T11:31:43.000Z,Dimers,4,Dimers
+4733324,2024,reg,9,Detroit Lions,25,Green Bay Packers,24,,,1,0,0,0,0,0,0,0,0,0,1,49,2024-11-07T11:31:43.000Z,Dimers,2,Dimers
+4733325,2024,reg,9,Los Angeles Rams,24,Seattle Seahawks,22,,,1,0,1,0,0,0,1,0,0,0,2,46,2024-11-07T11:31:43.000Z,Dimers,7,Dimers
+4733315,2024,reg,9,Indianapolis Colts,21,Minnesota Vikings,26,,,1,0,0,0,0,0,0,0,0,0,-5,47,2024-11-07T11:31:43.000Z,Dimers,2,Dimers
+4733313,2024,reg,9,Houston Texans,21,New York Jets,17,,,0,0,0,0,0,0,1,0,0,0,4,38,2024-11-07T11:31:43.000Z,LorenzoReyes,2,LorenzoReyes
+4733313,2024,reg,9,Houston Texans,24,New York Jets,23,,,0,0,0,0,0,0,0,0,0,0,1,47,2024-11-07T11:31:43.000Z,TylerDragon,0,TylerDragon
+4733313,2024,reg,9,Houston Texans,21,New York Jets,16,,,0,0,0,0,0,0,1,0,0,0,5,37,2024-11-07T11:31:43.000Z,RichardMorin,2,RichardMorin
+4733313,2024,reg,9,Houston Texans,19,New York Jets,17,,,0,0,0,0,0,0,1,0,0,0,2,36,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733318,2024,reg,9,Dallas Cowboys,20,Atlanta Falcons,24,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-11-07T11:31:43.000Z,LorenzoReyes,6,LorenzoReyes
+4733318,2024,reg,9,Dallas Cowboys,21,Atlanta Falcons,26,,,1,0,1,0,0,0,1,0,0,0,-5,47,2024-11-07T11:31:43.000Z,TylerDragon,7,TylerDragon
+4733318,2024,reg,9,Dallas Cowboys,23,Atlanta Falcons,26,,,1,0,0,0,0,0,1,0,0,0,-3,49,2024-11-07T11:31:43.000Z,RichardMorin,4,RichardMorin
+4733318,2024,reg,9,Dallas Cowboys,23,Atlanta Falcons,28,,,1,0,1,0,0,0,1,0,0,0,-5,51,2024-11-07T11:31:43.000Z,JordanMendoza,6,JordanMendoza
+4733322,2024,reg,9,Denver Broncos,17,Baltimore Ravens,25,,,1,0,0,0,0,0,0,0,0,0,-8,42,2024-11-07T11:31:43.000Z,LorenzoReyes,2,LorenzoReyes
+4733322,2024,reg,9,Denver Broncos,20,Baltimore Ravens,30,,,1,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:43.000Z,TylerDragon,4,TylerDragon
+4733322,2024,reg,9,Denver Broncos,32,Baltimore Ravens,28,,,0,0,0,0,0,0,1,0,0,0,4,60,2024-11-07T11:31:43.000Z,RichardMorin,2,RichardMorin
+4733322,2024,reg,9,Denver Broncos,17,Baltimore Ravens,23,,,1,0,0,0,0,0,0,0,0,0,-6,40,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733317,2024,reg,9,Miami Dolphins,15,Buffalo Bills,34,,,1,0,0,0,0,0,0,0,0,0,-19,49,2024-11-07T11:31:43.000Z,LorenzoReyes,2,LorenzoReyes
+4733317,2024,reg,9,Miami Dolphins,24,Buffalo Bills,28,,,1,0,1,0,0,0,1,0,0,0,-4,52,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733317,2024,reg,9,Miami Dolphins,30,Buffalo Bills,25,,,0,0,1,0,0,0,1,0,0,0,5,55,2024-11-07T11:31:43.000Z,RichardMorin,4,RichardMorin
+4733317,2024,reg,9,Miami Dolphins,20,Buffalo Bills,27,,,1,0,0,0,0,0,0,0,0,0,-7,47,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733319,2024,reg,9,New Orleans Saints,27,Carolina Panthers,10,,,0,0,0,0,0,0,0,0,0,0,17,37,2024-11-07T11:31:43.000Z,LorenzoReyes,0,LorenzoReyes
+4733319,2024,reg,9,New Orleans Saints,25,Carolina Panthers,17,,,0,0,0,0,0,0,0,0,0,0,8,42,2024-11-07T11:31:43.000Z,TylerDragon,0,TylerDragon
+4733319,2024,reg,9,New Orleans Saints,14,Carolina Panthers,9,,,0,0,1,0,0,0,0,0,0,0,5,23,2024-11-07T11:31:43.000Z,RichardMorin,2,RichardMorin
+4733319,2024,reg,9,New Orleans Saints,22,Carolina Panthers,12,,,0,0,0,0,0,0,0,0,0,0,10,34,2024-11-07T11:31:43.000Z,JordanMendoza,1,JordanMendoza
+4733321,2024,reg,9,Las Vegas Raiders,19,Cincinnati Bengals,24,,,1,0,0,0,0,0,0,0,0,0,-5,43,2024-11-07T11:31:43.000Z,LorenzoReyes,2,LorenzoReyes
+4733321,2024,reg,9,Las Vegas Raiders,21,Cincinnati Bengals,30,,,1,0,1,0,0,0,1,0,0,0,-9,51,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733321,2024,reg,9,Las Vegas Raiders,20,Cincinnati Bengals,28,,,1,0,1,0,0,0,1,0,0,0,-8,48,2024-11-07T11:31:43.000Z,RichardMorin,6,RichardMorin
+4733321,2024,reg,9,Las Vegas Raiders,18,Cincinnati Bengals,25,,,1,0,0,0,0,0,0,0,0,0,-7,43,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733316,2024,reg,9,Los Angeles Chargers,18,Cleveland Browns,24,,,0,0,0,0,0,0,1,0,0,0,-6,42,2024-11-07T11:31:43.000Z,LorenzoReyes,2,LorenzoReyes
+4733316,2024,reg,9,Los Angeles Chargers,23,Cleveland Browns,20,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733316,2024,reg,9,Los Angeles Chargers,24,Cleveland Browns,26,,,0,0,0,0,0,0,0,0,0,0,-2,50,2024-11-07T11:31:43.000Z,RichardMorin,0,RichardMorin
+4733316,2024,reg,9,Los Angeles Chargers,20,Cleveland Browns,18,,,1,0,0,0,0,0,1,0,0,0,2,38,2024-11-07T11:31:43.000Z,JordanMendoza,4,JordanMendoza
+4733314,2024,reg,9,Washington Commanders,28,New York Giants,17,,,1,0,1,0,0,0,1,0,0,0,11,45,2024-11-07T11:31:43.000Z,LorenzoReyes,6,LorenzoReyes
+4733314,2024,reg,9,Washington Commanders,30,New York Giants,20,,,1,0,1,0,0,0,1,0,0,0,10,50,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733314,2024,reg,9,Washington Commanders,30,New York Giants,13,,,1,0,1,0,0,0,0,0,0,0,17,43,2024-11-07T11:31:43.000Z,RichardMorin,4,RichardMorin
+4733314,2024,reg,9,Washington Commanders,30,New York Giants,21,,,1,0,1,0,0,0,1,0,0,0,9,51,2024-11-07T11:31:43.000Z,JordanMendoza,6,JordanMendoza
+4733320,2024,reg,9,New England Patriots,17,Tennessee Titans,16,,,0,0,1,0,0,0,1,0,0,0,1,33,2024-11-07T11:31:43.000Z,LorenzoReyes,5,LorenzoReyes
+4733320,2024,reg,9,New England Patriots,17,Tennessee Titans,16,,,0,0,1,0,0,0,1,0,0,0,1,33,2024-11-07T11:31:43.000Z,TylerDragon,5,TylerDragon
+4733320,2024,reg,9,New England Patriots,17,Tennessee Titans,10,,,0,0,1,0,0,0,1,0,0,0,7,27,2024-11-07T11:31:43.000Z,RichardMorin,5,RichardMorin
+4733320,2024,reg,9,New England Patriots,13,Tennessee Titans,15,,,1,0,1,0,0,0,1,0,0,0,-2,28,2024-11-07T11:31:43.000Z,JordanMendoza,6,JordanMendoza
+4733323,2024,reg,9,Chicago Bears,20,Arizona Cardinals,25,,,1,0,1,0,0,0,0,0,0,0,-5,45,2024-11-07T11:31:43.000Z,LorenzoReyes,4,LorenzoReyes
+4733323,2024,reg,9,Chicago Bears,18,Arizona Cardinals,21,,,1,0,1,0,0,0,1,0,0,0,-3,39,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733323,2024,reg,9,Chicago Bears,35,Arizona Cardinals,26,,,0,0,0,0,0,0,0,0,0,0,9,61,2024-11-07T11:31:43.000Z,RichardMorin,0,RichardMorin
+4733323,2024,reg,9,Chicago Bears,23,Arizona Cardinals,21,,,0,0,0,0,0,0,1,0,0,0,2,44,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733326,2024,reg,9,Jacksonville Jaguars,19,Philadelphia Eagles,29,,,1,0,0,0,0,0,1,0,0,0,-10,48,2024-11-07T11:31:43.000Z,LorenzoReyes,4,LorenzoReyes
+4733326,2024,reg,9,Jacksonville Jaguars,20,Philadelphia Eagles,30,,,1,0,0,0,0,0,1,0,0,0,-10,50,2024-11-07T11:31:43.000Z,TylerDragon,4,TylerDragon
+4733326,2024,reg,9,Jacksonville Jaguars,23,Philadelphia Eagles,28,,,1,0,1,0,0,0,1,0,0,0,-5,51,2024-11-07T11:31:43.000Z,RichardMorin,10,RichardMorin
+4733326,2024,reg,9,Jacksonville Jaguars,24,Philadelphia Eagles,30,,,1,0,1,0,0,0,1,0,0,0,-6,54,2024-11-07T11:31:43.000Z,JordanMendoza,6,JordanMendoza
+4733324,2024,reg,9,Detroit Lions,31,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,8,54,2024-11-07T11:31:43.000Z,LorenzoReyes,4,LorenzoReyes
+4733324,2024,reg,9,Detroit Lions,27,Green Bay Packers,25,,,1,0,0,0,0,0,0,0,0,0,2,52,2024-11-07T11:31:43.000Z,TylerDragon,2,TylerDragon
+4733324,2024,reg,9,Detroit Lions,22,Green Bay Packers,26,,,0,0,0,0,0,0,1,0,0,0,-4,48,2024-11-07T11:31:43.000Z,RichardMorin,2,RichardMorin
+4733324,2024,reg,9,Detroit Lions,32,Green Bay Packers,30,,,1,0,0,0,0,0,0,0,0,0,2,62,2024-11-07T11:31:43.000Z,JordanMendoza,2,JordanMendoza
+4733325,2024,reg,9,Los Angeles Rams,26,Seattle Seahawks,20,,,1,0,1,0,0,0,1,0,0,0,6,46,2024-11-07T11:31:43.000Z,LorenzoReyes,10,LorenzoReyes
+4733325,2024,reg,9,Los Angeles Rams,24,Seattle Seahawks,21,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-11-07T11:31:43.000Z,TylerDragon,6,TylerDragon
+4733325,2024,reg,9,Los Angeles Rams,23,Seattle Seahawks,21,,,1,0,1,0,0,0,1,0,0,0,2,44,2024-11-07T11:31:43.000Z,RichardMorin,6,RichardMorin
+4733325,2024,reg,9,Los Angeles Rams,24,Seattle Seahawks,22,,,1,0,1,0,0,0,1,0,0,0,2,46,2024-11-07T11:31:43.000Z,JordanMendoza,7,JordanMendoza
+4733315,2024,reg,9,Indianapolis Colts,20,Minnesota Vikings,27,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-11-07T11:31:43.000Z,LorenzoReyes,4,LorenzoReyes
+4733315,2024,reg,9,Indianapolis Colts,20,Minnesota Vikings,28,,,1,0,1,0,0,0,0,0,0,0,-8,48,2024-11-07T11:31:43.000Z,TylerDragon,5,TylerDragon
+4733315,2024,reg,9,Indianapolis Colts,18,Minnesota Vikings,24,,,1,0,1,0,0,0,1,0,0,0,-6,42,2024-11-07T11:31:43.000Z,RichardMorin,6,RichardMorin
+4733315,2024,reg,9,Indianapolis Colts,23,Minnesota Vikings,29,,,1,0,1,0,0,0,0,0,0,0,-6,52,2024-11-07T11:31:43.000Z,JordanMendoza,4,JordanMendoza
+4733327,2024,reg,9,Tampa Bay Buccaneers,23,Kansas City Chiefs,30,,,1,0,1,0,0,0,1,0,0,0,-7,53,2024-11-07T11:31:43.000Z,LorenzoReyes,7,LorenzoReyes
+4733327,2024,reg,9,Tampa Bay Buccaneers,17,Kansas City Chiefs,24,,,1,0,1,0,0,0,0,0,0,0,-7,41,2024-11-07T11:31:43.000Z,TylerDragon,4,TylerDragon
+4733327,2024,reg,9,Tampa Bay Buccaneers,19,Kansas City Chiefs,31,,,1,0,0,0,0,0,1,0,0,0,-12,50,2024-11-07T11:31:43.000Z,RichardMorin,4,RichardMorin
+4733327,2024,reg,9,Tampa Bay Buccaneers,20,Kansas City Chiefs,25,,,1,0,1,0,0,0,0,0,0,0,-5,45,2024-11-07T11:31:43.000Z,JordanMendoza,4,JordanMendoza
+4733313,2024,reg,9,Houston Texans,20,New York Jets,23,,,1,0,1,0,0,0,0,0,0,0,-3,43,2024-11-07T11:31:43.000Z,JohnBreech,4,JohnBreech
+4733316,2024,reg,9,Los Angeles Chargers,17,Cleveland Browns,20,,,0,0,0,0,0,0,1,0,0,0,-3,37,2024-11-07T11:31:43.000Z,JohnBreech,3,JohnBreech
+4733322,2024,reg,9,Denver Broncos,16,Baltimore Ravens,24,,,1,0,0,0,0,0,0,0,0,0,-8,40,2024-11-07T11:31:43.000Z,JohnBreech,2,JohnBreech
+4733317,2024,reg,9,Miami Dolphins,27,Buffalo Bills,34,,,1,0,0,0,0,0,1,0,0,0,-7,61,2024-11-07T11:31:43.000Z,JohnBreech,5,JohnBreech
+4733324,2024,reg,9,Detroit Lions,30,Green Bay Packers,23,,,1,0,1,0,0,0,0,0,0,0,7,53,2024-11-07T11:31:43.000Z,JohnBreech,4,JohnBreech
+4733318,2024,reg,9,Dallas Cowboys,24,Atlanta Falcons,27,,,1,0,0,0,0,0,1,0,0,0,-3,51,2024-11-07T11:31:43.000Z,JohnBreech,5,JohnBreech
+4733321,2024,reg,9,Las Vegas Raiders,17,Cincinnati Bengals,24,,,1,0,0,0,0,0,0,0,0,0,-7,41,2024-11-07T11:31:43.000Z,JohnBreech,2,JohnBreech
+4733320,2024,reg,9,New England Patriots,16,Tennessee Titans,19,,,1,0,1,0,0,0,1,0,0,0,-3,35,2024-11-07T11:31:43.000Z,JohnBreech,7,JohnBreech
+4733314,2024,reg,9,Washington Commanders,31,New York Giants,16,,,1,0,1,0,0,0,1,0,0,0,15,47,2024-11-07T11:31:43.000Z,JohnBreech,6,JohnBreech
+4733319,2024,reg,9,New Orleans Saints,27,Carolina Panthers,17,,,0,0,0,0,0,0,1,0,0,0,10,44,2024-11-07T11:31:43.000Z,JohnBreech,2,JohnBreech
+4733325,2024,reg,9,Los Angeles Rams,30,Seattle Seahawks,23,,,1,0,1,0,0,0,0,0,0,0,7,53,2024-11-07T11:31:43.000Z,JohnBreech,4,JohnBreech
+4733323,2024,reg,9,Chicago Bears,19,Arizona Cardinals,22,,,1,0,1,0,0,0,1,0,0,0,-3,41,2024-11-07T11:31:43.000Z,JohnBreech,6,JohnBreech
+4733326,2024,reg,9,Jacksonville Jaguars,24,Philadelphia Eagles,34,,,1,0,0,0,0,0,1,0,0,0,-10,58,2024-11-07T11:31:43.000Z,JohnBreech,4,JohnBreech
+4733315,2024,reg,9,Indianapolis Colts,24,Minnesota Vikings,30,,,1,0,1,0,0,0,0,0,0,0,-6,54,2024-11-07T11:31:43.000Z,JohnBreech,4,JohnBreech
+4733327,2024,reg,9,Tampa Bay Buccaneers,20,Kansas City Chiefs,27,,,1,0,1,0,0,0,1,0,0,0,-7,47,2024-11-07T11:31:43.000Z,JohnBreech,6,JohnBreech
+4733313,2024,reg,9,Houston Texans,20,N.Y. Jets,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2024-10-31T21:10:14.456Z,rosstuckerNFL,2,rosstuckerNFL
+4733318,2024,reg,9,Dallas Cowboys,24,Atlanta Falcons,26,0,0,1,0,0,0,0,0,1,0,0,0,-2,50,2024-11-01T19:04:11.739Z,rosstuckerNFL,4,rosstuckerNFL
+4733317,2024,reg,9,Miami Dolphins,20,Buffalo Bills,24,0,0,1,0,1,0,0,0,0,0,0,0,-4,44,2024-11-01T19:06:37.640Z,rosstuckerNFL,4,rosstuckerNFL
+4733319,2024,reg,9,New Orleans Saints,27,Carolina Panthers,17,0,0,0,0,0,0,0,0,1,0,0,0,10,44,2024-11-01T19:07:34.839Z,rosstuckerNFL,2,rosstuckerNFL
+4733316,2024,reg,9,L.A. Chargers Chargers,24,Cleveland Browns,20,0,0,1,0,1,0,0,0,0,0,0,0,4,44,2024-11-01T19:09:36.724Z,rosstuckerNFL,4,rosstuckerNFL
+4733323,2024,reg,9,Chicago Bears,16,Arizona Cardinals,18,0,0,1,0,1,0,0,0,1,0,0,0,-2,34,2024-11-01T19:13:08.501Z,rosstuckerNFL,6,rosstuckerNFL
+4733326,2024,reg,9,Jacksonville Jaguars,17,Philadelphia Eagles,27,0,0,1,0,0,0,0,0,0,0,0,0,-10,44,2024-11-01T19:13:43.013Z,rosstuckerNFL,2,rosstuckerNFL
+4733324,2024,reg,9,Detroit Lions,24,Green Bay Packers,17,0,0,1,0,1,0,0,0,1,0,0,0,7,41,2024-11-01T19:14:27.081Z,rosstuckerNFL,7,rosstuckerNFL
+4733325,2024,reg,9,L.A. Rams Rams,31,Seattle Seahawks,29,0,0,1,0,1,0,0,0,0,0,0,0,2,60,2024-11-01T19:15:14.582Z,rosstuckerNFL,4,rosstuckerNFL
+4733327,2024,reg,9,Tampa Bay Buccaneers,24,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,1,0,0,0,-7,55,2024-11-01T19:17:15.590Z,rosstuckerNFL,7,rosstuckerNFL
+4733319,2024,reg,9,New Orleans Saints,23,Carolina Panthers,13,0,0,0,0,0,0,0,0,0,0,0,0,10,36,2024-11-03T11:22:57.129Z,ausame,0,ausame
+4733319,2024,reg,9,New Orleans Saints,23,Carolina Panthers,13,0,0,,,,,,,,,,,10,36,2024-11-03T11:22:52.602Z,ausame,,ausame
+4733316,2024,reg,9,L.A. Chargers Chargers,16,Cleveland Browns,18,0,0,0,0,0,0,0,0,1,0,0,0,-2,34,2024-11-03T11:23:58.389Z,ausame,2,ausame
+4733317,2024,reg,9,Miami Dolphins,27,Buffalo Bills,28,0,0,1,0,1,0,0,0,1,0,0,0,-1,55,2024-11-03T11:25:39.027Z,ausame,7,ausame
+4733321,2024,reg,9,Las Vegas Raiders,17,Cincinnati Bengals,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2024-11-03T11:26:23.245Z,ausame,4,ausame
+4733318,2024,reg,9,Dallas Cowboys,28,Atlanta Falcons,27,0,0,0,0,0,0,0,0,0,0,0,0,1,55,2024-11-03T11:26:45.659Z,ausame,1,ausame
+4733322,2024,reg,9,Denver Broncos,18,Baltimore Ravens,24,0,0,1,0,0,0,0,0,0,0,0,0,-6,42,2024-11-03T11:27:52.558Z,ausame,2,ausame
+4733314,2024,reg,9,Washington Commanders,23,N.Y. Giants Giants,17,0,0,1,0,1,0,0,0,0,0,0,0,6,40,2024-11-03T11:28:14.009Z,ausame,4,ausame
+4733323,2024,reg,9,Chicago Bears,21,Arizona Cardinals,23,0,0,1,0,1,0,0,0,1,0,0,0,-2,44,2024-11-03T11:28:36.129Z,ausame,6,ausame
+4733326,2024,reg,9,Jacksonville Jaguars,17,Philadelphia Eagles,27,0,0,1,0,0,0,0,0,0,0,0,0,-10,44,2024-11-03T11:29:04.164Z,ausame,2,ausame
+4733325,2024,reg,9,L.A. Rams Rams,26,Seattle Seahawks,23,0,0,1,0,1,0,0,0,0,0,0,0,3,49,2024-11-03T11:29:29.629Z,ausame,5,ausame
+4733324,2024,reg,9,Detroit Lions,33,Green Bay Packers,31,0,0,1,0,0,0,0,0,0,0,0,0,2,64,2024-11-03T11:29:58.226Z,ausame,2,ausame
+4733315,2024,reg,9,Indianapolis Colts,17,Minnesota Vikings,21,0,0,1,0,0,0,0,0,1,0,0,0,-4,38,2024-11-03T11:30:43.417Z,ausame,5,ausame
+4733327,2024,reg,9,Tampa Bay Buccaneers,21,Kansas City Chiefs,24,3,3,1,0,1,0,3,3,0,0,3,-3,-3,45,2024-11-05T00:22:39.788Z,ausame,4,ausame
+4733320,2024,reg,9,New England Patriots,20,Tennessee Titans,17,0,0,0,0,0,1,0,0,1,0,0,0,3,37,2024-11-03T11:31:55.581Z,ausame,3,ausame
+4733330,2024,reg,10,Atlanta Falcons,23,New Orleans Saints,21,0,0,,,,,,,,,,,2,44,2024-11-05T20:01:50.139Z,rosstuckerNFL,,rosstuckerNFL
+4733334,2024,reg,10,Minnesota Vikings,24,Jacksonville Jaguars,21,0,0,,,,,,,,,,,3,45,2024-11-05T20:05:41.957Z,rosstuckerNFL,,rosstuckerNFL
+4733331,2024,reg,10,Denver Broncos,20,Kansas City Chiefs,26,0,0,,,,,,,,,,,-6,46,2024-11-05T20:09:32.988Z,rosstuckerNFL,,rosstuckerNFL
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,21,0,0,,,,,,,,,,,6,48,2024-11-05T20:17:46.097Z,rosstuckerNFL,,rosstuckerNFL
+4733328,2024,reg,10,Cincinnati Bengals,24,Baltimore Ravens,27,0,0,,,,,,,,,,,-3,51,2024-11-06T21:02:19.296Z,cmaronchick,,cmaronchick
+4733201,2024,reg,10,N.Y. Giants Giants,20,Carolina Panthers,14,0,0,,,,,,,,,,,6,34,2024-11-07T18:34:21.779Z,cmaronchick,,cmaronchick
+4733335,2024,reg,10,New England Patriots,17,Chicago Bears,27,0,0,,,,,,,,,,,-10,44,2024-11-07T18:34:30.759Z,cmaronchick,,cmaronchick
+4733331,2024,reg,10,Denver Broncos,20,Kansas City Chiefs,27,0,0,,,,,,,,,,,-7,47,2024-11-07T18:34:42.558Z,cmaronchick,,cmaronchick
+4733334,2024,reg,10,Minnesota Vikings,30,Jacksonville Jaguars,20,0,0,,,,,,,,,,,10,50,2024-11-07T18:34:47.877Z,cmaronchick,,cmaronchick
+4733329,2024,reg,10,San Francisco 49ers,28,Tampa Bay Buccaneers,20,0,0,,,,,,,,,,,8,48,2024-11-07T18:34:53.541Z,cmaronchick,,cmaronchick
+4733330,2024,reg,10,Atlanta Falcons,24,New Orleans Saints,21,0,0,,,,,,,,,,,3,45,2024-11-07T18:35:18.387Z,cmaronchick,,cmaronchick
+4733333,2024,reg,10,Pittsburgh Steelers,20,Washington Commanders,17,0,0,,,,,,,,,,,3,37,2024-11-07T18:35:23.949Z,cmaronchick,,cmaronchick
+4733336,2024,reg,10,Tennessee Titans,13,L.A. Chargers Chargers,24,0,0,,,,,,,,,,,-11,37,2024-11-07T18:35:29.495Z,cmaronchick,,cmaronchick
+4733338,2024,reg,10,N.Y. Jets Jets,24,Arizona Cardinals,20,0,0,,,,,,,,,,,4,44,2024-11-07T18:35:35.071Z,cmaronchick,,cmaronchick
+4733337,2024,reg,10,Philadelphia Eagles,27,Dallas Cowboys,17,0,0,,,,,,,,,,,10,44,2024-11-07T18:35:40.072Z,cmaronchick,,cmaronchick
+4733339,2024,reg,10,Detroit Lions,31,Houston Texans,20,0,0,,,,,,,,,,,11,51,2024-11-07T18:35:45.100Z,cmaronchick,,cmaronchick
+4733340,2024,reg,10,Miami Dolphins,20,L.A. Rams Rams,24,0,0,,,,,,,,,,,-4,44,2024-11-07T18:35:50.463Z,cmaronchick,,cmaronchick
+4733332,2024,reg,10,Buffalo Bills,27,Indianapolis Colts,20,0,0,,,,,,,,,,,7,47,2024-11-07T18:34:36.937Z,cmaronchick,,cmaronchick
+4733328,2024,reg,10,Cincinnati Bengals,27,Baltimore Ravens,31,0,0,,,,,,,,,,,-4,58,2024-11-07T01:46:37.729Z,ausame,,ausame
+4733328,2024,reg,10,Cincinnati Bengals,35,Baltimore Ravens,38,0,0,,,,,,,,,,,-3,73,2024-11-07T18:10:03.665Z,rosstuckerNFL,,rosstuckerNFL
+4733328,2024,reg,10,Cincinnati Bengals,33,Baltimore Ravens,34,,,,,,,,,,,,,-1,67,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733201,2024,reg,10,New York Giants,21,Carolina Panthers,14,,,,,,,,,,,,,7,35,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733335,2024,reg,10,New England Patriots,16,Chicago Bears,27,,,,,,,,,,,,,-11,43,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733332,2024,reg,10,Buffalo Bills,30,Indianapolis Colts,17,,,,,,,,,,,,,13,47,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733334,2024,reg,10,Minnesota Vikings,31,Jacksonville Jaguars,23,,,,,,,,,,,,,8,54,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733331,2024,reg,10,Denver Broncos,17,Kansas City Chiefs,29,,,,,,,,,,,,,-12,46,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733330,2024,reg,10,Atlanta Falcons,30,New Orleans Saints,17,,,,,,,,,,,,,13,47,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733329,2024,reg,10,San Francisco 49ers,28,Tampa Bay Buccaneers,20,,,,,,,,,,,,,8,48,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733333,2024,reg,10,Pittsburgh Steelers,17,Washington Commanders,23,,,,,,,,,,,,,-6,40,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733336,2024,reg,10,Tennessee Titans,17,Los Angeles Chargers,28,,,,,,,,,,,,,-11,45,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733338,2024,reg,10,New York Jets,24,Arizona Cardinals,21,,,,,,,,,,,,,3,45,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733337,2024,reg,10,Philadelphia Eagles,24,Dallas Cowboys,21,,,,,,,,,,,,,3,45,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,28,,,,,,,,,,,,,-1,55,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733340,2024,reg,10,Miami Dolphins,23,Los Angeles Rams,31,,,,,,,,,,,,,-8,54,2024-11-07T11:05:33.000Z,PetePrisco,,PetePrisco
+4733328,2024,reg,10,Cincinnati Bengals,23,Baltimore Ravens,30,,,,,,,,,,,,,-7,53,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733201,2024,reg,10,New York Giants,24,Carolina Panthers,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733333,2024,reg,10,Pittsburgh Steelers,23,Washington Commanders,21,,,,,,,,,,,,,2,44,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733330,2024,reg,10,Atlanta Falcons,23,New Orleans Saints,20,,,,,,,,,,,,,3,43,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733335,2024,reg,10,New England Patriots,17,Chicago Bears,21,,,,,,,,,,,,,-4,38,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733331,2024,reg,10,Denver Broncos,17,Kansas City Chiefs,23,,,,,,,,,,,,,-6,40,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733332,2024,reg,10,Buffalo Bills,27,Indianapolis Colts,20,,,,,,,,,,,,,7,47,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733329,2024,reg,10,San Francisco 49ers,26,Tampa Bay Buccaneers,23,,,,,,,,,,,,,3,49,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733334,2024,reg,10,Minnesota Vikings,31,Jacksonville Jaguars,24,,,,,,,,,,,,,7,55,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733336,2024,reg,10,Tennessee Titans,13,Los Angeles Chargers,24,,,,,,,,,,,,,-11,37,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733337,2024,reg,10,Philadelphia Eagles,34,Dallas Cowboys,20,,,,,,,,,,,,,14,54,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733338,2024,reg,10,New York Jets,27,Arizona Cardinals,24,,,,,,,,,,,,,3,51,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733339,2024,reg,10,Detroit Lions,29,Houston Texans,24,,,,,,,,,,,,,5,53,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733340,2024,reg,10,Miami Dolphins,28,Los Angeles Rams,24,,,,,,,,,,,,,4,52,2024-11-07T11:05:33.000Z,BleacherReport,,BleacherReport
+4733328,2024,reg,10,Cincinnati Bengals,28,Baltimore Ravens,32,,,,,,,,,,,,,-4,60,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733201,2024,reg,10,New York Giants,22,Carolina Panthers,17,,,,,,,,,,,,,5,39,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733335,2024,reg,10,New England Patriots,16,Chicago Bears,21,,,,,,,,,,,,,-5,37,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733332,2024,reg,10,Buffalo Bills,30,Indianapolis Colts,20,,,,,,,,,,,,,10,50,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733331,2024,reg,10,Denver Broncos,17,Kansas City Chiefs,27,,,,,,,,,,,,,-10,44,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733330,2024,reg,10,Atlanta Falcons,31,New Orleans Saints,27,,,,,,,,,,,,,4,58,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733329,2024,reg,10,San Francisco 49ers,32,Tampa Bay Buccaneers,29,,,,,,,,,,,,,3,61,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733333,2024,reg,10,Pittsburgh Steelers,24,Washington Commanders,20,,,,,,,,,,,,,4,44,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733334,2024,reg,10,Minnesota Vikings,28,Jacksonville Jaguars,21,,,,,,,,,,,,,7,49,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733336,2024,reg,10,Tennessee Titans,13,Los Angeles Chargers,27,,,,,,,,,,,,,-14,40,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733337,2024,reg,10,Philadelphia Eagles,28,Dallas Cowboys,18,,,,,,,,,,,,,10,46,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733338,2024,reg,10,New York Jets,19,Arizona Cardinals,18,,,,,,,,,,,,,1,37,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733339,2024,reg,10,Detroit Lions,31,Houston Texans,20,,,,,,,,,,,,,11,51,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733340,2024,reg,10,Miami Dolphins,26,Los Angeles Rams,28,,,,,,,,,,,,,-2,54,2024-11-07T11:05:33.000Z,BillBender,,BillBender
+4733328,2024,reg,10,Cincinnati Bengals,20,Baltimore Ravens,34,,,,,,,,,,,,,-14,54,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733201,2024,reg,10,New York Giants,25,Carolina Panthers,18,,,,,,,,,,,,,7,43,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733332,2024,reg,10,Buffalo Bills,26,Indianapolis Colts,20,,,,,,,,,,,,,6,46,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733333,2024,reg,10,Pittsburgh Steelers,20,Washington Commanders,24,,,,,,,,,,,,,-4,44,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733329,2024,reg,10,San Francisco 49ers,21,Tampa Bay Buccaneers,31,,,,,,,,,,,,,-10,52,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733335,2024,reg,10,New England Patriots,13,Chicago Bears,27,,,,,,,,,,,,,-14,40,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733330,2024,reg,10,Atlanta Falcons,27,New Orleans Saints,22,,,,,,,,,,,,,5,49,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733334,2024,reg,10,Minnesota Vikings,31,Jacksonville Jaguars,16,,,,,,,,,,,,,15,47,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733331,2024,reg,10,Denver Broncos,16,Kansas City Chiefs,25,,,,,,,,,,,,,-9,41,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733336,2024,reg,10,Tennessee Titans,9,Los Angeles Chargers,29,,,,,,,,,,,,,-20,38,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733338,2024,reg,10,New York Jets,16,Arizona Cardinals,27,,,,,,,,,,,,,-11,43,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733337,2024,reg,10,Philadelphia Eagles,28,Dallas Cowboys,19,,,,,,,,,,,,,9,47,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733339,2024,reg,10,Detroit Lions,28,Houston Texans,20,,,,,,,,,,,,,8,48,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733340,2024,reg,10,Miami Dolphins,13,Los Angeles Rams,29,,,,,,,,,,,,,-16,42,2024-11-07T11:05:33.000Z,DataSkrive,,DataSkrive
+4733328,2024,reg,10,Cincinnati Bengals,27,Baltimore Ravens,31,,,,,,,,,,,,,-4,58,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733201,2024,reg,10,New York Giants,23,Carolina Panthers,17,,,,,,,,,,,,,6,40,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733331,2024,reg,10,Denver Broncos,16,Kansas City Chiefs,22,,,,,,,,,,,,,-6,38,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733330,2024,reg,10,Atlanta Falcons,28,New Orleans Saints,24,,,,,,,,,,,,,4,52,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733332,2024,reg,10,Buffalo Bills,24,Indianapolis Colts,27,,,,,,,,,,,,,-3,51,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733329,2024,reg,10,San Francisco 49ers,28,Tampa Bay Buccaneers,20,,,,,,,,,,,,,8,48,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733333,2024,reg,10,Pittsburgh Steelers,24,Washington Commanders,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733335,2024,reg,10,New England Patriots,16,Chicago Bears,21,,,,,,,,,,,,,-5,37,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733334,2024,reg,10,Minnesota Vikings,28,Jacksonville Jaguars,21,,,,,,,,,,,,,7,49,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733336,2024,reg,10,Tennessee Titans,13,Los Angeles Chargers,24,,,,,,,,,,,,,-11,37,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733337,2024,reg,10,Philadelphia Eagles,31,Dallas Cowboys,17,,,,,,,,,,,,,14,48,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733338,2024,reg,10,New York Jets,20,Arizona Cardinals,24,,,,,,,,,,,,,-4,44,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,20,,,,,,,,,,,,,7,47,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733340,2024,reg,10,Miami Dolphins,30,Los Angeles Rams,26,,,,,,,,,,,,,4,56,2024-11-07T11:05:33.000Z,MarcusMosher,,MarcusMosher
+4733328,2024,reg,10,Cincinnati Bengals,27,Baltimore Ravens,34,,,,,,,,,,,,,-7,61,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733201,2024,reg,10,New York Giants,28,Carolina Panthers,17,,,,,,,,,,,,,11,45,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733335,2024,reg,10,New England Patriots,20,Chicago Bears,28,,,,,,,,,,,,,-8,48,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733332,2024,reg,10,Buffalo Bills,31,Indianapolis Colts,21,,,,,,,,,,,,,10,52,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733331,2024,reg,10,Denver Broncos,16,Kansas City Chiefs,20,,,,,,,,,,,,,-4,36,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733330,2024,reg,10,Atlanta Falcons,28,New Orleans Saints,17,,,,,,,,,,,,,11,45,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733333,2024,reg,10,Pittsburgh Steelers,23,Washington Commanders,24,,,,,,,,,,,,,-1,47,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733334,2024,reg,10,Minnesota Vikings,31,Jacksonville Jaguars,21,,,,,,,,,,,,,10,52,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733336,2024,reg,10,Tennessee Titans,10,Los Angeles Chargers,17,,,,,,,,,,,,,-7,27,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733337,2024,reg,10,Philadelphia Eagles,23,Dallas Cowboys,10,,,,,,,,,,,,,13,33,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733338,2024,reg,10,New York Jets,28,Arizona Cardinals,23,,,,,,,,,,,,,5,51,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,17,,,,,,,,,,,,,10,44,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733340,2024,reg,10,Miami Dolphins,28,Los Angeles Rams,31,,,,,,,,,,,,,-3,59,2024-11-07T11:05:33.000Z,Sportsnaut,,Sportsnaut
+4733328,2024,reg,10,Cincinnati Bengals,24,Baltimore Ravens,27,,,,,,,,,,,,,-3,51,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733333,2024,reg,10,Pittsburgh Steelers,20,Washington Commanders,23,,,,,,,,,,,,,-3,43,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733336,2024,reg,10,Tennessee Titans,14,Los Angeles Chargers,34,,,,,,,,,,,,,-20,48,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733330,2024,reg,10,Atlanta Falcons,21,New Orleans Saints,24,,,,,,,,,,,,,-3,45,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733201,2024,reg,10,New York Giants,24,Carolina Panthers,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733332,2024,reg,10,Buffalo Bills,27,Indianapolis Colts,13,,,,,,,,,,,,,14,40,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733331,2024,reg,10,Denver Broncos,14,Kansas City Chiefs,30,,,,,,,,,,,,,-16,44,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733329,2024,reg,10,San Francisco 49ers,27,Tampa Bay Buccaneers,22,,,,,,,,,,,,,5,49,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733334,2024,reg,10,Minnesota Vikings,30,Jacksonville Jaguars,20,,,,,,,,,,,,,10,50,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733337,2024,reg,10,Philadelphia Eagles,24,Dallas Cowboys,23,,,,,,,,,,,,,1,47,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733338,2024,reg,10,New York Jets,27,Arizona Cardinals,17,,,,,,,,,,,,,10,44,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,20,,,,,,,,,,,,,7,47,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733340,2024,reg,10,Miami Dolphins,20,Los Angeles Rams,24,,,,,,,,,,,,,-4,44,2024-11-07T11:05:33.000Z,VinnieIyer,,VinnieIyer
+4733328,2024,reg,10,Cincinnati Bengals,23,Baltimore Ravens,30,,,,,,,,,,,,,-7,53,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733201,2024,reg,10,New York Giants,24,Carolina Panthers,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733329,2024,reg,10,San Francisco 49ers,27,Tampa Bay Buccaneers,23,,,,,,,,,,,,,4,50,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733330,2024,reg,10,Atlanta Falcons,25,New Orleans Saints,21,,,,,,,,,,,,,4,46,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733331,2024,reg,10,Denver Broncos,18,Kansas City Chiefs,25,,,,,,,,,,,,,-7,43,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733332,2024,reg,10,Buffalo Bills,25,Indianapolis Colts,21,,,,,,,,,,,,,4,46,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733333,2024,reg,10,Pittsburgh Steelers,21,Washington Commanders,25,,,,,,,,,,,,,-4,46,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733334,2024,reg,10,Minnesota Vikings,25,Jacksonville Jaguars,18,,,,,,,,,,,,,7,43,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733335,2024,reg,10,New England Patriots,17,Chicago Bears,22,,,,,,,,,,,,,-5,39,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733336,2024,reg,10,Tennessee Titans,16,Los Angeles Chargers,23,,,,,,,,,,,,,-7,39,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733337,2024,reg,10,Philadelphia Eagles,25,Dallas Cowboys,18,,,,,,,,,,,,,7,43,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733338,2024,reg,10,New York Jets,24,Arizona Cardinals,23,,,,,,,,,,,,,1,47,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733339,2024,reg,10,Detroit Lions,26,Houston Texans,23,,,,,,,,,,,,,3,49,2024-11-07T11:05:33.000Z,Dimers,,Dimers
+4733328,2024,reg,10,Cincinnati Bengals,24,Baltimore Ravens,26,,,,,,,,,,,,,-2,50,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733328,2024,reg,10,Cincinnati Bengals,24,Baltimore Ravens,26,,,,,,,,,,,,,-2,50,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733328,2024,reg,10,Cincinnati Bengals,23,Baltimore Ravens,30,,,,,,,,,,,,,-7,53,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733328,2024,reg,10,Cincinnati Bengals,29,Baltimore Ravens,27,,,,,,,,,,,,,2,56,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733201,2024,reg,10,New York Giants,19,Carolina Panthers,10,,,,,,,,,,,,,9,29,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733201,2024,reg,10,New York Giants,17,Carolina Panthers,16,,,,,,,,,,,,,1,33,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733201,2024,reg,10,New York Giants,7,Carolina Panthers,16,,,,,,,,,,,,,-9,23,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733201,2024,reg,10,New York Giants,17,Carolina Panthers,13,,,,,,,,,,,,,4,30,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733335,2024,reg,10,New England Patriots,14,Chicago Bears,17,,,,,,,,,,,,,-3,31,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733335,2024,reg,10,New England Patriots,17,Chicago Bears,21,,,,,,,,,,,,,-4,38,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733335,2024,reg,10,New England Patriots,20,Chicago Bears,26,,,,,,,,,,,,,-6,46,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733335,2024,reg,10,New England Patriots,10,Chicago Bears,22,,,,,,,,,,,,,-12,32,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733332,2024,reg,10,Buffalo Bills,28,Indianapolis Colts,17,,,,,,,,,,,,,11,45,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733332,2024,reg,10,Buffalo Bills,28,Indianapolis Colts,18,,,,,,,,,,,,,10,46,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733332,2024,reg,10,Buffalo Bills,33,Indianapolis Colts,10,,,,,,,,,,,,,23,43,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733332,2024,reg,10,Buffalo Bills,31,Indianapolis Colts,23,,,,,,,,,,,,,8,54,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733334,2024,reg,10,Minnesota Vikings,23,Jacksonville Jaguars,14,,,,,,,,,,,,,9,37,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733334,2024,reg,10,Minnesota Vikings,24,Jacksonville Jaguars,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733334,2024,reg,10,Minnesota Vikings,21,Jacksonville Jaguars,24,,,,,,,,,,,,,-3,45,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733334,2024,reg,10,Minnesota Vikings,24,Jacksonville Jaguars,22,,,,,,,,,,,,,2,46,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733331,2024,reg,10,Denver Broncos,20,Kansas City Chiefs,26,,,,,,,,,,,,,-6,46,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733331,2024,reg,10,Denver Broncos,16,Kansas City Chiefs,27,,,,,,,,,,,,,-11,43,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733331,2024,reg,10,Denver Broncos,13,Kansas City Chiefs,25,,,,,,,,,,,,,-12,38,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733331,2024,reg,10,Denver Broncos,19,Kansas City Chiefs,22,,,,,,,,,,,,,-3,41,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733330,2024,reg,10,Atlanta Falcons,27,New Orleans Saints,21,,,,,,,,,,,,,6,48,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733330,2024,reg,10,Atlanta Falcons,25,New Orleans Saints,20,,,,,,,,,,,,,5,45,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733330,2024,reg,10,Atlanta Falcons,24,New Orleans Saints,9,,,,,,,,,,,,,15,33,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733330,2024,reg,10,Atlanta Falcons,27,New Orleans Saints,20,,,,,,,,,,,,,7,47,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733329,2024,reg,10,San Francisco 49ers,28,Tampa Bay Buccaneers,20,,,,,,,,,,,,,8,48,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733329,2024,reg,10,San Francisco 49ers,25,Tampa Bay Buccaneers,21,,,,,,,,,,,,,4,46,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733329,2024,reg,10,San Francisco 49ers,28,Tampa Bay Buccaneers,27,,,,,,,,,,,,,1,55,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733329,2024,reg,10,San Francisco 49ers,23,Tampa Bay Buccaneers,16,,,,,,,,,,,,,7,39,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733333,2024,reg,10,Pittsburgh Steelers,24,Washington Commanders,17,,,,,,,,,,,,,7,41,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733333,2024,reg,10,Pittsburgh Steelers,21,Washington Commanders,23,,,,,,,,,,,,,-2,44,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733333,2024,reg,10,Pittsburgh Steelers,14,Washington Commanders,20,,,,,,,,,,,,,-6,34,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733333,2024,reg,10,Pittsburgh Steelers,17,Washington Commanders,20,,,,,,,,,,,,,-3,37,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733336,2024,reg,10,Tennessee Titans,7,Los Angeles Chargers,29,,,,,,,,,,,,,-22,36,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733336,2024,reg,10,Tennessee Titans,14,Los Angeles Chargers,23,,,,,,,,,,,,,-9,37,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733336,2024,reg,10,Tennessee Titans,17,Los Angeles Chargers,28,,,,,,,,,,,,,-11,45,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733336,2024,reg,10,Tennessee Titans,9,Los Angeles Chargers,22,,,,,,,,,,,,,-13,31,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733338,2024,reg,10,New York Jets,20,Arizona Cardinals,24,,,,,,,,,,,,,-4,44,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733338,2024,reg,10,New York Jets,24,Arizona Cardinals,20,,,,,,,,,,,,,4,44,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733338,2024,reg,10,New York Jets,21,Arizona Cardinals,27,,,,,,,,,,,,,-6,48,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733338,2024,reg,10,New York Jets,24,Arizona Cardinals,23,,,,,,,,,,,,,1,47,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733337,2024,reg,10,Philadelphia Eagles,34,Dallas Cowboys,13,,,,,,,,,,,,,21,47,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733337,2024,reg,10,Philadelphia Eagles,30,Dallas Cowboys,20,,,,,,,,,,,,,10,50,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733337,2024,reg,10,Philadelphia Eagles,26,Dallas Cowboys,30,,,,,,,,,,,,,-4,56,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733337,2024,reg,10,Philadelphia Eagles,31,Dallas Cowboys,17,,,,,,,,,,,,,14,48,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733339,2024,reg,10,Detroit Lions,31,Houston Texans,23,,,,,,,,,,,,,8,54,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733339,2024,reg,10,Detroit Lions,27,Houston Texans,21,,,,,,,,,,,,,6,48,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733339,2024,reg,10,Detroit Lions,31,Houston Texans,20,,,,,,,,,,,,,11,51,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733339,2024,reg,10,Detroit Lions,33,Houston Texans,29,,,,,,,,,,,,,4,62,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza
+4733340,2024,reg,10,Miami Dolphins,20,Los Angeles Rams,24,,,,,,,,,,,,,-4,44,2024-11-07T11:05:33.000Z,LorenzoReyes,,LorenzoReyes
+4733340,2024,reg,10,Miami Dolphins,22,Los Angeles Rams,24,,,,,,,,,,,,,-2,46,2024-11-07T11:05:33.000Z,TylerDragon,,TylerDragon
+4733340,2024,reg,10,Miami Dolphins,30,Los Angeles Rams,20,,,,,,,,,,,,,10,50,2024-11-07T11:05:33.000Z,RichardMorin,,RichardMorin
+4733340,2024,reg,10,Miami Dolphins,21,Los Angeles Rams,25,,,,,,,,,,,,,-4,46,2024-11-07T11:05:33.000Z,JordanMendoza,,JordanMendoza

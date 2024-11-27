@@ -76,6 +76,13 @@ def get_lines(gameid):
 def lambda_handler(e, context):
     print('event: ', e, 'context: ', context)
     gameids = e['gameIds']
+
+    awayTeamId = None
+    homeTeamId = None
+    if "awayTeamId" in e:
+        awayTeamId = e['awayTeamId']
+    if "homeTeamId" in e:
+        homeTeamId = e['homeTeamId']
     sport = e['sport']
     collection = db['games']
     if (sport == 'ncaaf'):
@@ -102,17 +109,52 @@ def lambda_handler(e, context):
             #     }
             # ))
             if (lines is not None and ("spread" in lines or "total" in lines or "moneyline" in lines)):
-                collection.update_one(
-                    {
-                        'gameId': gameid
-                    },
-                    {
+                updateObject = {}
+                pinnacleSpread = None
+                pinnacleTotal = None
+                updatedOddsObject = {}
+                if ("spread" in lines):
+                    for line in lines["spread"]:
+                        if (line["name"] == "Pinnacle" and line['participant id'] == homeTeamId):
+                            pinnacleSpread = line['spread / total']
+                            pinnacleSpreadOdds = line['american odds']
+                            break
+                if ("total" in lines):
+                    for line in lines["total"]:
+                        if (line["name"] == "Pinnacle"):
+                            pinnacleTotal = line['spread / total']
+                            pinnacleTotalOdds = line['american odds']
+                            break
+                if (pinnacleSpread is not None and pinnacleTotal is not None):
+                    updateObject = {
+                        '$set': {
+                            'currentLines': lines,
+                            'odds': {
+                                'spread': pinnacleSpread,
+                                'spreadOdds': pinnacleSpreadOdds,
+                                'total': pinnacleTotal,
+                                'totalOdds': pinnacleTotalOdds
+                            }
+                        }
+                    }
+                else:
+                    updateObject = {
                         '$set': {
                             'currentLines': lines
                         }
                     }
-                )
-    # collection.bulk_write(writeOperations)
+                writeOperations.append(UpdateOne(
+                    {
+                        'gameId': gameid
+                    }, updateObject
+                ))
+                # collection.update_one(
+                #     {
+                #         'gameId': gameid
+                #     }, updateObject
+                # )
+    print(writeOperations)
+    collection.bulk_write(writeOperations)
     return {
         "lines": lines
     }

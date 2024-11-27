@@ -19,6 +19,7 @@ exports.handler = async (event, context, callback) => {
             gameWeek,
             season,
             prediction,
+            odds,
             wager } = event;
 
         const db = client.db('pcsm');
@@ -60,6 +61,7 @@ exports.handler = async (event, context, callback) => {
                     }
                 },
                 wager,
+                odds,
                 submitted: new Date()
             }, {session});
             console.log('submitWager', submitWager)

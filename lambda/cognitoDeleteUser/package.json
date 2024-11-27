@@ -4,6 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "mongodb": "^3.3.2"
+    "mongodb": "^6.10.0"
+  },
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "aws lambda update-function-code --function-name cognitoDeleteUser --zip-file fileb://cognitoDeleteUser.zip --publish"
   }
 }

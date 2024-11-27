@@ -101,8 +101,15 @@ def lambda_handler2(ev, context):
                                 "shortName": team["source"]["nickname"],
                                 "fullName": team["source"]["name"] + " " + team["source"]["nickname"]
                             }
+                        if team["source"]["abbreviation"] == "NYG":
+                            teamObject["fullName"] = "N.Y. Giants"
+                        elif team["source"]["abbreviation"] == "NYJ":
+                            teamObject["fullName"] = "N.Y. Jets"
+                        elif team["source"]["abbreviation"] == "LAC":
+                            teamObject["fullName"] = "L.A. Chargers"
                         if team["source"]["abbreviation"] == "LA":
                             teamObject["code"] = "LAR"
+                            teamObject["fullName"] = "L.A. Rams"
                         else:
                             teamObject["code"] = team["source"]["abbreviation"]
                         if team['is home'] == True:
@@ -158,12 +165,12 @@ def lambda_handler2(ev, context):
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
-                            if gameResult and "diffDays" in gameResult["homeTeam"]:
+                            if gameResult and "daysBetweenGames" in gameResult["homeTeam"]:
                                 gameObject["homeTeam"]["daysBetweenGames"] = gameResult["homeTeam"]["daysBetweenGames"]
                         else:
                             gameObject["awayTeam"] = teamObject
                             awayId = team['participant id']
-                            if gameResult and "diffDays" in gameResult["awayTeam"]:
+                            if gameResult and "daysBetweenGames" in gameResult["awayTeam"]:
                                 gameObject["awayTeam"]["daysBetweenGames"] = gameResult["awayTeam"]["daysBetweenGames"]
                     if (game["event status"] != "scheduled"):
                         # print(event)

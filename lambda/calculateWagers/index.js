@@ -46,11 +46,11 @@ function evaluateSpread(awayTeam, homeTeam, odds) {
     // }
 }
 
-function evaluateTotal(awayTeam, homeTeam, odds) {
+function evaluateTotal(awayTeam, homeTeam, total) {
     // console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
-    if (awayTeam.score + homeTeam.score > odds.total) {
+    if (awayTeam.score + homeTeam.score > total) {
         return "over";
-    } else if (awayTeam.score + homeTeam.score < odds.total) {
+    } else if (awayTeam.score + homeTeam.score < total) {
         return "under";
     } else {
         return "push";
@@ -162,8 +162,8 @@ exports.handler = async function (event, context, callback) {
                 }
             }
             if (wager.wagerType === "total") {
-                predictionTotal = evaluateTotal(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualTotal = evaluateTotal(game.results.awayTeam, game.results.homeTeam, prediction.odds);
+                predictionTotal = evaluateTotal(prediction.awayTeam, prediction.homeTeam, wager.spreadTotal ? wager.spreadTotal : prediction.odds ? prediction.odds.total : game.odds.total);
+                actualTotal = evaluateTotal(game.results.awayTeam, game.results.homeTeam, wager.spreadTotal ? wager.spreadTotal : prediction.odds ? prediction.odds.total : game.odds.total);
                 console.log('predictionTotal, actualTotal: ', predictionTotal, actualTotal)
                 if (actualTotal === "push") {
                     result = 0

@@ -1,0 +1,1090 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+4733141,2024,reg,1,Baltimore Ravens,24,Kansas City Chiefs,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2024-06-15T04:13:37.747Z,cmaronchick,7,cmaronchick
+4733141,2024,reg,1,Baltimore Ravens,24,Kansas City Chiefs,27,0,0,,,,,,,,,,,-3,51,2024-06-15T04:13:40.116Z,cmaronchick,,cmaronchick
+4730734,2024,reg,1,Green Bay Packers,27,Philadelphia Eagles,30,0,0,1,0,1,0,0,0,1,0,0,0,-3,57,2024-08-27T03:33:41.671Z,cmaronchick,6,cmaronchick
+4733220,2024,reg,1,Tennessee Titans,17,Chicago Bears,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2024-08-31T04:56:19.829Z,cmaronchick,5,cmaronchick
+4733223,2024,reg,1,New England Patriots,10,Cincinnati Bengals,28,0,0,0,0,0,0,0,0,1,0,0,0,-18,38,2024-09-05T03:12:15.837Z,cmaronchick,2,cmaronchick
+4733222,2024,reg,1,Arizona Cardinals,17,Buffalo Bills,24,0,0,1,0,1,0,0,0,0,0,0,0,-7,41,2024-08-31T04:57:49.981Z,cmaronchick,4,cmaronchick
+4733225,2024,reg,1,Minnesota Vikings,19,N.Y. Giants Giants,16,0,0,1,0,1,0,0,0,1,0,0,0,3,35,2024-08-31T04:58:09.040Z,cmaronchick,6,cmaronchick
+4733224,2024,reg,1,Jacksonville Jaguars,24,Miami Dolphins,27,0,0,1,0,1,0,0,0,0,0,0,0,-3,51,2024-08-31T04:58:52.029Z,cmaronchick,5,cmaronchick
+4733219,2024,reg,1,Carolina Panthers,17,New Orleans Saints,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2024-08-31T04:59:55.370Z,cmaronchick,2,cmaronchick
+4733221,2024,reg,1,Houston Texans,31,Indianapolis Colts,27,0,0,1,0,0,0,0,0,1,0,0,0,4,58,2024-08-31T05:00:39.883Z,cmaronchick,5,cmaronchick
+4733226,2024,reg,1,Pittsburgh Steelers,16,Atlanta Falcons,24,0,0,0,0,0,0,0,0,1,0,0,0,-8,40,2024-09-06T04:18:13.825Z,cmaronchick,2,cmaronchick
+4733227,2024,reg,1,Denver Broncos,17,Seattle Seahawks,27,0,0,1,0,1,0,0,0,1,0,0,0,-10,44,2024-08-31T05:02:19.683Z,cmaronchick,6,cmaronchick
+4733228,2024,reg,1,Las Vegas Raiders,21,L.A. Chargers Chargers,27,0,0,1,0,1,0,0,0,0,0,0,0,-6,48,2024-09-04T02:09:51.775Z,cmaronchick,4,cmaronchick
+4733152,2024,reg,1,Dallas Cowboys,27,Cleveland Browns,13,0,0,1,0,1,0,0,0,0,0,0,0,14,40,2024-08-31T05:03:46.545Z,cmaronchick,4,cmaronchick
+4733230,2024,reg,1,L.A. Rams Rams,21,Detroit Lions,31,0,0,1,0,1,0,0,0,0,0,0,0,-10,52,2024-08-31T05:04:03.001Z,cmaronchick,4,cmaronchick
+4733153,2024,reg,1,N.Y. Jets Jets,24,San Francisco 49ers,27,0,0,1,0,0,0,0,0,1,0,0,0,-3,51,2024-09-09T18:24:09.874Z,cmaronchick,5,cmaronchick
+4733229,2024,reg,1,Washington Commanders,21,Tampa Bay Buccaneers,20,0,0,0,0,0,0,0,0,0,0,0,0,1,41,2024-08-31T05:04:25.285Z,cmaronchick,0,cmaronchick
+4733141,2024,reg,1,Baltimore Ravens,20,Kansas City Chiefs,23,0,0,1,0,1,0,0,0,0,0,0,0,-3,43,2024-08-31T21:24:17.528Z,Facebook_10208710241577136,5,PaulCullin
+4730734,2024,reg,1,Green Bay Packers,17,Philadelphia Eagles,20,0,0,1,0,1,0,0,0,0,0,0,0,-3,37,2024-08-31T21:25:01.908Z,Facebook_10208710241577136,4,PaulCullin
+4733220,2024,reg,1,Tennessee Titans,17,Chicago Bears,23,0,0,1,0,1,0,0,0,1,0,0,0,-6,40,2024-09-06T15:31:05.258Z,Facebook_10208710241577136,7,PaulCullin
+4733141,2024,reg,1,Baltimore Ravens,23,Kansas City Chiefs,24,0,0,1,0,0,0,0,0,1,0,0,0,-1,47,2024-09-05T06:00:35.396Z,ausame,5,ausame
+4730734,2024,reg,1,Green Bay Packers,21,Philadelphia Eagles,23,0,0,1,0,0,0,0,0,0,0,0,0,-2,44,2024-09-05T06:00:55.076Z,ausame,2,ausame
+4733141,2024,reg,1,Baltimore Ravens,17,Kansas City Chiefs,23,0,0,1,0,1,0,0,0,0,1,0,0,-6,40,2024-09-05T23:25:21.242Z,rosstuckerNFL,4,rosstuckerNFL
+4733226,2024,reg,1,Pittsburgh Steelers,17,Atlanta Falcons,19,0,2,0,0,1,0,0,0,1,0,2,2,-2,36,2024-09-05T23:26:23.562Z,rosstuckerNFL,4,rosstuckerNFL
+4733219,2024,reg,1,Carolina Panthers,16,New Orleans Saints,19,1,0,1,0,0,0,1,-1,0,0,0,0,-3,35,2024-09-06T17:59:02.038Z,rosstuckerNFL,2,rosstuckerNFL
+4733227,2024,reg,1,Denver Broncos,17,Seattle Seahawks,20,1,0,1,0,0,1,1,0,0,0,0,0,-3,37,2024-09-06T18:01:34.347Z,rosstuckerNFL,2,rosstuckerNFL
+4733230,2024,reg,1,L.A. Rams Rams,24,Detroit Lions,27,2,0,1,0,0,0,2,-2,1,0,0,0,-3,51,2024-09-05T23:28:16.700Z,rosstuckerNFL,4,rosstuckerNFL
+4733219,2024,reg,1,Carolina Panthers,19,New Orleans Saints,24,0,0,1,0,1,0,0,0,1,0,0,0,-5,43,2024-09-06T15:24:59.804Z,Facebook_10208710241577136,6,PaulCullin
+4733223,2024,reg,1,New England Patriots,10,Cincinnati Bengals,24,0,0,0,0,0,0,0,0,1,0,0,0,-14,34,2024-09-06T15:27:58.625Z,Facebook_10208710241577136,2,PaulCullin
+4733222,2024,reg,1,Arizona Cardinals,22,Buffalo Bills,30,0,0,1,0,0,1,0,0,1,0,0,0,-8,52,2024-09-06T15:28:37.865Z,Facebook_10208710241577136,4,PaulCullin
+4733221,2024,reg,1,Houston Texans,27,Indianapolis Colts,23,0,0,1,0,0,0,0,0,1,0,0,0,4,50,2024-09-06T15:29:01.364Z,Facebook_10208710241577136,4,PaulCullin
+4733224,2024,reg,1,Jacksonville Jaguars,23,Miami Dolphins,24,0,0,1,0,1,0,0,0,1,0,0,0,-1,47,2024-09-06T15:29:32.319Z,Facebook_10208710241577136,6,PaulCullin
+4733225,2024,reg,1,Minnesota Vikings,24,N.Y. Giants Giants,19,0,0,1,0,1,0,0,0,0,0,0,0,5,43,2024-09-06T15:30:36.080Z,Facebook_10208710241577136,4,PaulCullin
+4733228,2024,reg,1,Las Vegas Raiders,23,L.A. Chargers Chargers,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2024-09-06T15:32:08.889Z,Facebook_10208710241577136,2,PaulCullin
+4733227,2024,reg,1,Denver Broncos,17,Seattle Seahawks,20,0,0,1,0,0,1,0,0,0,0,0,0,-3,37,2024-09-06T15:33:37.601Z,Facebook_10208710241577136,2,PaulCullin
+4733229,2024,reg,1,Washington Commanders,13,Tampa Bay Buccaneers,23,0,0,1,0,1,0,0,0,0,0,0,0,-10,36,2024-09-06T15:35:00.016Z,Facebook_10208710241577136,4,PaulCullin
+4733230,2024,reg,1,L.A. Rams Rams,33,Detroit Lions,34,0,0,1,0,0,0,0,0,0,0,0,0,-1,67,2024-09-06T15:36:20.390Z,Facebook_10208710241577136,2,PaulCullin
+4733153,2024,reg,1,N.Y. Jets Jets,20,San Francisco 49ers,30,0,0,1,0,1,0,0,0,1,0,0,0,-10,50,2024-09-06T15:37:54.129Z,Facebook_10208710241577136,6,PaulCullin
+4733152,2024,reg,1,Dallas Cowboys,24,Cleveland Browns,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2024-09-06T15:38:04.104Z,Facebook_10208710241577136,6,PaulCullin
+4733226,2024,reg,1,Pittsburgh Steelers,22,Atlanta Falcons,18,0,0,1,0,1,0,0,0,1,0,0,0,4,40,2024-09-06T15:38:20.867Z,Facebook_10208710241577136,6,PaulCullin
+4730734,2024,reg,1,Green Bay Packers,23,Philadelphia Eagles,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2024-09-06T17:53:26.827Z,rosstuckerNFL,2,rosstuckerNFL
+4733222,2024,reg,1,Arizona Cardinals,23,Buffalo Bills,27,0,0,1,0,0,1,0,0,1,0,0,0,-4,50,2024-09-06T17:54:50.768Z,rosstuckerNFL,4,rosstuckerNFL
+4733220,2024,reg,1,Tennessee Titans,23,Chicago Bears,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2024-09-06T17:55:21.929Z,rosstuckerNFL,3,rosstuckerNFL
+4733223,2024,reg,1,New England Patriots,13,Cincinnati Bengals,24,0,0,0,0,0,0,0,0,1,0,0,0,-11,37,2024-09-06T17:56:42.988Z,rosstuckerNFL,2,rosstuckerNFL
+4733221,2024,reg,1,Houston Texans,27,Indianapolis Colts,24,0,0,1,0,0,0,0,0,1,0,0,0,3,51,2024-09-06T17:57:33.698Z,rosstuckerNFL,4,rosstuckerNFL
+4733224,2024,reg,1,Jacksonville Jaguars,30,Miami Dolphins,31,0,0,1,0,1,0,0,0,0,0,0,0,-1,61,2024-09-06T17:58:14.693Z,rosstuckerNFL,4,rosstuckerNFL
+4733225,2024,reg,1,Minnesota Vikings,16,N.Y. Giants Giants,21,0,0,0,0,0,0,0,0,1,0,0,0,-5,37,2024-09-06T18:00:00.580Z,rosstuckerNFL,2,rosstuckerNFL
+4733228,2024,reg,1,Las Vegas Raiders,16,L.A. Chargers Chargers,17,0,0,1,0,0,0,0,0,1,0,0,0,-1,33,2024-09-06T18:00:41.828Z,rosstuckerNFL,4,rosstuckerNFL
+4733152,2024,reg,1,Dallas Cowboys,17,Cleveland Browns,19,0,0,0,0,1,0,0,0,0,0,0,0,-2,36,2024-09-06T18:02:04.884Z,rosstuckerNFL,2,rosstuckerNFL
+4733229,2024,reg,1,Washington Commanders,24,Tampa Bay Buccaneers,28,0,0,1,0,1,0,0,0,1,0,0,0,-4,52,2024-09-06T18:02:40.005Z,rosstuckerNFL,6,rosstuckerNFL
+4733153,2024,reg,1,N.Y. Jets Jets,20,San Francisco 49ers,23,0,0,1,0,0,0,0,0,0,0,0,0,-3,43,2024-09-06T18:03:53.655Z,rosstuckerNFL,2,rosstuckerNFL
+4733223,2024,reg,1,New England Patriots,12,Cincinnati Bengals,5,0,0,1,0,1,0,0,0,1,0,0,0,7,17,2024-09-07T10:30:50.721Z,SignInWithApple_000194.585c6b13b5e64060b85bd503b31687fd.1026,6,AppleJohn123
+4733226,2024,reg,1,Pittsburgh Steelers,17,Atlanta Falcons,21,0,0,0,0,0,0,0,0,1,0,0,0,-4,38,2024-09-08T08:56:08.135Z,ausame,2,ausame
+4733222,2024,reg,1,Arizona Cardinals,21,Buffalo Bills,24,3,0,1,0,1,0,3,3,0,0,0,0,-3,45,2024-09-08T09:22:29.352Z,ausame,4,ausame
+4733220,2024,reg,1,Tennessee Titans,21,Chicago Bears,18,3,0,0,0,0,0,3,-3,1,0,0,0,3,39,2024-09-08T09:22:37.220Z,ausame,2,ausame
+4733223,2024,reg,1,New England Patriots,13,Cincinnati Bengals,31,0,0,0,0,0,0,0,0,0,0,0,0,-18,44,2024-09-08T08:58:47.714Z,ausame,0,ausame
+4733221,2024,reg,1,Houston Texans,23,Indianapolis Colts,24,3,0,0,0,1,0,3,3,0,0,0,0,-1,47,2024-09-08T09:22:25.387Z,ausame,2,ausame
+4733224,2024,reg,1,Jacksonville Jaguars,24,Miami Dolphins,31,0,0,1,0,0,0,0,0,0,0,0,0,-7,55,2024-09-08T09:00:04.732Z,ausame,2,ausame
+4733219,2024,reg,1,Carolina Panthers,21,New Orleans Saints,17,3,0,0,0,0,0,3,-3,0,0,0,0,4,38,2024-09-08T09:22:46.675Z,ausame,0,ausame
+4733225,2024,reg,1,Minnesota Vikings,21,N.Y. Giants Giants,17,0,0,1,0,1,0,0,0,1,0,0,0,4,38,2024-09-08T09:08:58.360Z,ausame,6,ausame
+4733228,2024,reg,1,Las Vegas Raiders,19,L.A. Chargers Chargers,20,0,0,1,0,0,0,0,0,1,0,0,0,-1,39,2024-09-08T09:21:48.680Z,ausame,4,ausame
+4733227,2024,reg,1,Denver Broncos,17,Seattle Seahawks,22,2,0,1,0,0,1,2,0,0,0,0,0,-5,39,2024-09-08T09:21:40.861Z,ausame,2,ausame
+4733152,2024,reg,1,Dallas Cowboys,23,Cleveland Browns,24,0,3,0,0,1,0,0,0,1,0,3,3,-1,47,2024-09-08T09:23:11.469Z,ausame,4,ausame
+4733229,2024,reg,1,Washington Commanders,23,Tampa Bay Buccaneers,24,0,3,1,0,0,0,0,0,1,0,3,3,-1,47,2024-09-08T09:23:37.929Z,ausame,4,ausame
+4733230,2024,reg,1,L.A. Rams Rams,24,Detroit Lions,27,3,0,1,0,0,0,3,-3,1,0,0,0,-3,51,2024-09-08T09:24:02.379Z,ausame,4,ausame
+4733153,2024,reg,1,N.Y. Jets Jets,21,San Francisco 49ers,23,3,0,1,0,0,0,3,-3,1,0,0,0,-2,44,2024-09-08T09:24:27.472Z,ausame,4,ausame
+4733156,2024,reg,2,Buffalo Bills,24,Miami Dolphins,21,0,0,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-12T14:38:49.221Z,cmaronchick,6,cmaronchick
+4733235,2024,reg,2,Indianapolis Colts,27,Green Bay Packers,20,0,0,0,0,0,0,0,0,0,0,0,0,7,47,2024-09-13T19:19:18.054Z,cmaronchick,0,cmaronchick
+4733239,2024,reg,2,N.Y. Jets Jets,27,Tennessee Titans,17,0,0,1,0,1,0,0,0,1,0,0,0,10,44,2024-09-11T15:31:46.430Z,cmaronchick,7,cmaronchick
+4733232,2024,reg,2,Las Vegas Raiders,17,Baltimore Ravens,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2024-09-10T04:07:27.051Z,cmaronchick,2,cmaronchick
+4733231,2024,reg,2,New Orleans Saints,13,Dallas Cowboys,27,0,0,0,0,0,0,0,0,0,0,0,0,-14,40,2024-09-13T19:16:30.735Z,cmaronchick,0,cmaronchick
+4733236,2024,reg,2,San Francisco 49ers,27,Minnesota Vikings,20,0,0,0,0,0,0,0,0,0,0,0,0,7,47,2024-09-13T18:57:11.721Z,cmaronchick,0,cmaronchick
+4733238,2024,reg,2,Seattle Seahawks,30,New England Patriots,10,0,0,1,0,0,1,0,0,1,0,0,0,20,40,2024-09-14T20:07:47.204Z,cmaronchick,4,cmaronchick
+4733233,2024,reg,2,N.Y. Giants Giants,14,Washington Commanders,20,0,0,1,0,1,0,0,0,1,0,0,0,-6,34,2024-09-13T19:17:23.588Z,cmaronchick,6,cmaronchick
+4733240,2024,reg,2,Tampa Bay Buccaneers,24,Detroit Lions,28,0,0,0,0,1,0,0,0,0,0,0,0,-4,52,2024-09-14T20:06:49.402Z,cmaronchick,2,cmaronchick
+4733234,2024,reg,2,L.A. Chargers Chargers,17,Carolina Panthers,14,0,0,1,0,0,0,0,0,1,0,0,0,3,31,2024-09-10T04:10:14.760Z,cmaronchick,4,cmaronchick
+4733237,2024,reg,2,Cleveland Browns,14,Jacksonville Jaguars,17,0,0,0,0,1,0,0,0,1,0,0,0,-3,31,2024-09-10T04:11:11.845Z,cmaronchick,5,cmaronchick
+4733241,2024,reg,2,L.A. Rams Rams,27,Arizona Cardinals,24,0,0,0,0,0,0,0,0,1,0,0,0,3,51,2024-09-13T19:20:05.185Z,cmaronchick,3,cmaronchick
+4733242,2024,reg,2,Pittsburgh Steelers,13,Denver Broncos,14,0,0,0,0,0,0,0,0,1,0,0,0,-1,27,2024-09-10T04:12:49.881Z,cmaronchick,3,cmaronchick
+4733154,2024,reg,2,Cincinnati Bengals,20,Kansas City Chiefs,31,0,0,1,0,0,0,0,0,1,0,0,0,-11,51,2024-09-13T19:20:31.293Z,cmaronchick,5,cmaronchick
+4733243,2024,reg,2,Chicago Bears,13,Houston Texans,31,0,0,1,0,0,1,0,0,1,0,0,0,-18,44,2024-09-13T19:21:17.437Z,cmaronchick,5,cmaronchick
+4733244,2024,reg,2,Atlanta Falcons,17,Philadelphia Eagles,34,0,0,0,0,0,0,0,0,0,0,0,0,-17,51,2024-09-16T15:19:38.207Z,cmaronchick,0,cmaronchick
+4733236,2024,reg,2,San Francisco 49ers,20,Minnesota Vikings,17,2,0,0,0,1,0,2,2,1,0,0,0,3,37,2024-09-14T03:10:18.626Z,rosstuckerNFL,4,rosstuckerNFL
+4733238,2024,reg,2,Seattle Seahawks,19,New England Patriots,16,1,2,1,0,1,0,1,1,0,0,2,-2,3,35,2024-09-14T03:10:58.443Z,rosstuckerNFL,5,rosstuckerNFL
+4733240,2024,reg,2,Tampa Bay Buccaneers,20,Detroit Lions,24,2,0,0,0,1,0,2,2,1,0,0,0,-4,44,2024-09-14T03:07:29.445Z,rosstuckerNFL,5,rosstuckerNFL
+4733237,2024,reg,2,Cleveland Browns,16,Jacksonville Jaguars,17,2,0,0,0,1,0,2,2,1,0,0,0,-1,33,2024-09-14T03:09:17.911Z,rosstuckerNFL,4,rosstuckerNFL
+4733239,2024,reg,2,N.Y. Jets Jets,20,Tennessee Titans,17,2,0,1,0,0,0,2,-2,0,1,0,0,3,37,2024-09-14T03:12:26.047Z,rosstuckerNFL,3,rosstuckerNFL
+4733154,2024,reg,2,Cincinnati Bengals,23,Kansas City Chiefs,26,2,0,1,0,1,0,2,2,1,0,0,0,-3,49,2024-09-14T03:15:28.163Z,rosstuckerNFL,7,rosstuckerNFL
+4733242,2024,reg,2,Pittsburgh Steelers,17,Denver Broncos,13,2,0,1,0,1,0,2,2,1,0,0,0,4,30,2024-09-14T03:14:34.135Z,rosstuckerNFL,6,rosstuckerNFL
+4733156,2024,reg,2,Buffalo Bills,27,Miami Dolphins,28,0,0,0,0,1,0,0,0,0,0,0,0,-1,55,2024-09-12T07:23:33.152Z,ausame,2,ausame
+4733156,2024,reg,2,Buffalo Bills,13,Miami Dolphins,24,0,0,0,0,0,0,0,0,1,0,0,0,-11,37,2024-09-12T16:44:36.502Z,bodysurfoceanside,2,bodysurfoceanside
+4733235,2024,reg,2,Indianapolis Colts,23,Green Bay Packers,20,0,0,0,0,1,0,0,0,0,0,0,0,3,43,2024-09-12T16:44:59.416Z,bodysurfoceanside,2,bodysurfoceanside
+4733239,2024,reg,2,N.Y. Jets Jets,17,Tennessee Titans,21,0,0,0,0,0,0,0,0,0,0,0,0,-4,38,2024-09-12T16:45:26.575Z,bodysurfoceanside,0,bodysurfoceanside
+4733232,2024,reg,2,Las Vegas Raiders,20,Baltimore Ravens,17,0,0,1,0,1,0,0,0,0,0,0,0,3,37,2024-09-12T16:45:49.251Z,bodysurfoceanside,5,bodysurfoceanside
+4733231,2024,reg,2,New Orleans Saints,23,Dallas Cowboys,17,0,0,1,0,1,0,0,0,0,0,0,0,6,40,2024-09-12T16:46:13.555Z,bodysurfoceanside,4,bodysurfoceanside
+4733236,2024,reg,2,San Francisco 49ers,13,Minnesota Vikings,27,0,0,1,0,1,0,0,0,1,0,0,0,-14,40,2024-09-12T16:46:40.126Z,bodysurfoceanside,7,bodysurfoceanside
+4733238,2024,reg,2,Seattle Seahawks,20,New England Patriots,17,0,0,1,0,1,0,0,0,0,0,0,0,3,37,2024-09-12T16:47:02.712Z,bodysurfoceanside,5,bodysurfoceanside
+4733233,2024,reg,2,N.Y. Giants Giants,13,Washington Commanders,17,0,0,1,0,1,0,0,0,1,0,0,0,-4,30,2024-09-12T16:47:48.326Z,bodysurfoceanside,6,bodysurfoceanside
+4733240,2024,reg,2,Tampa Bay Buccaneers,21,Detroit Lions,17,0,0,1,0,1,0,0,0,1,0,0,0,4,38,2024-09-12T16:48:35.739Z,bodysurfoceanside,7,bodysurfoceanside
+4733234,2024,reg,2,L.A. Chargers Chargers,27,Carolina Panthers,10,0,0,1,0,1,0,0,0,1,0,0,0,17,37,2024-09-12T16:50:01.159Z,bodysurfoceanside,6,bodysurfoceanside
+4733237,2024,reg,2,Cleveland Browns,14,Jacksonville Jaguars,36,0,0,0,0,0,0,0,0,0,0,0,0,-22,50,2024-09-12T16:50:27.313Z,bodysurfoceanside,0,bodysurfoceanside
+4733241,2024,reg,2,L.A. Rams Rams,27,Arizona Cardinals,13,0,0,0,0,0,0,0,0,0,0,0,0,14,40,2024-09-12T16:50:45.317Z,bodysurfoceanside,0,bodysurfoceanside
+4733242,2024,reg,2,Pittsburgh Steelers,7,Denver Broncos,28,0,0,0,0,0,0,0,0,1,0,0,0,-21,35,2024-09-12T16:51:04.459Z,bodysurfoceanside,2,bodysurfoceanside
+4733154,2024,reg,2,Cincinnati Bengals,17,Kansas City Chiefs,34,0,0,1,0,0,0,0,0,1,0,0,0,-17,51,2024-09-12T16:51:44.321Z,bodysurfoceanside,5,bodysurfoceanside
+4733243,2024,reg,2,Chicago Bears,17,Houston Texans,34,0,0,1,0,0,1,0,0,0,0,0,0,-17,51,2024-09-12T16:52:00.962Z,bodysurfoceanside,2,bodysurfoceanside
+4733243,2024,reg,2,Chicago Bears,17,Houston Texans,34,0,0,,,,,,,,,,,-17,51,2024-09-12T16:52:01.340Z,bodysurfoceanside,,bodysurfoceanside
+4733244,2024,reg,2,Atlanta Falcons,10,Philadelphia Eagles,23,0,0,0,0,0,0,0,0,1,0,0,0,-13,33,2024-09-12T16:52:14.600Z,bodysurfoceanside,2,bodysurfoceanside
+4733232,2024,reg,2,Las Vegas Raiders,13,Baltimore Ravens,24,0,0,0,0,0,0,0,0,0,0,0,0,-11,37,2024-09-14T03:05:18.279Z,rosstuckerNFL,0,rosstuckerNFL
+4733234,2024,reg,2,L.A. Chargers Chargers,27,Carolina Panthers,17,0,0,1,0,1,0,0,0,0,0,0,0,10,44,2024-09-14T03:05:58.382Z,rosstuckerNFL,4,rosstuckerNFL
+4733231,2024,reg,2,New Orleans Saints,17,Dallas Cowboys,22,0,0,0,0,1,0,0,0,0,0,0,0,-5,39,2024-09-14T03:06:51.866Z,rosstuckerNFL,2,rosstuckerNFL
+4733235,2024,reg,2,Indianapolis Colts,20,Green Bay Packers,13,0,0,0,0,0,0,0,0,1,0,0,0,7,33,2024-09-14T03:08:27.141Z,rosstuckerNFL,2,rosstuckerNFL
+4733233,2024,reg,2,N.Y. Giants Giants,20,Washington Commanders,22,0,0,1,0,1,0,0,0,1,0,0,0,-2,42,2024-09-14T03:13:19.210Z,rosstuckerNFL,6,rosstuckerNFL
+4733241,2024,reg,2,L.A. Rams Rams,20,Arizona Cardinals,24,0,0,1,0,1,0,0,0,0,0,0,0,-4,44,2024-09-14T03:13:48.414Z,rosstuckerNFL,4,rosstuckerNFL
+4733243,2024,reg,2,Chicago Bears,16,Houston Texans,24,0,0,1,0,0,0,0,0,1,0,0,0,-8,40,2024-09-14T03:16:21.401Z,rosstuckerNFL,4,rosstuckerNFL
+4733244,2024,reg,2,Atlanta Falcons,17,Philadelphia Eagles,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2024-09-14T03:17:17.011Z,rosstuckerNFL,2,rosstuckerNFL
+4733236,2024,reg,2,San Francisco 49ers,29,Minnesota Vikings,20,0,0,0,0,0,0,0,0,0,0,0,0,9,49,2024-09-15T02:36:49.121Z,Facebook_10208710241577136,0,PaulCullin
+4733240,2024,reg,2,Tampa Bay Buccaneers,28,Detroit Lions,31,0,0,0,0,1,0,0,0,0,0,0,0,-3,59,2024-09-15T02:37:19.441Z,Facebook_10208710241577136,2,PaulCullin
+4733231,2024,reg,2,New Orleans Saints,23,Dallas Cowboys,27,0,0,0,0,1,0,0,0,1,0,0,0,-4,50,2024-09-15T02:37:47.562Z,Facebook_10208710241577136,4,PaulCullin
+4733233,2024,reg,2,N.Y. Giants Giants,17,Washington Commanders,23,0,0,1,0,1,0,0,0,1,0,0,0,-6,40,2024-09-15T02:38:05.818Z,Facebook_10208710241577136,6,PaulCullin
+4733237,2024,reg,2,Cleveland Browns,23,Jacksonville Jaguars,19,0,0,1,0,1,0,0,0,0,0,0,0,4,42,2024-09-15T02:38:56.363Z,Facebook_10208710241577136,4,PaulCullin
+4733231,2024,reg,2,New Orleans Saints,17,Dallas Cowboys,24,0,0,0,0,0,0,0,0,0,0,0,0,-7,41,2024-09-15T09:23:51.224Z,ausame,0,ausame
+4733232,2024,reg,2,Las Vegas Raiders,17,Baltimore Ravens,27,0,3,0,0,0,0,0,0,1,0,3,3,-10,44,2024-09-15T09:26:53.868Z,ausame,2,ausame
+4733233,2024,reg,2,N.Y. Giants Giants,16,Washington Commanders,20,0,3,1,0,1,0,0,0,1,0,3,3,-4,36,2024-09-15T09:26:39.729Z,ausame,6,ausame
+4733234,2024,reg,2,L.A. Chargers Chargers,24,Carolina Panthers,13,0,0,1,0,1,0,0,0,1,0,0,0,11,37,2024-09-15T09:27:31.693Z,ausame,6,ausame
+4733235,2024,reg,2,Indianapolis Colts,23,Green Bay Packers,20,0,0,0,0,0,0,0,0,0,0,0,0,3,43,2024-09-15T09:29:57.964Z,ausame,0,ausame
+4733236,2024,reg,2,San Francisco 49ers,27,Minnesota Vikings,20,0,0,0,0,0,0,0,0,0,0,0,0,7,47,2024-09-15T09:30:24.079Z,ausame,0,ausame
+4733237,2024,reg,2,Cleveland Browns,17,Jacksonville Jaguars,21,0,0,0,0,0,0,0,0,1,0,0,0,-4,38,2024-09-15T09:30:47.816Z,ausame,2,ausame
+4733238,2024,reg,2,Seattle Seahawks,20,New England Patriots,21,3,0,0,0,0,1,3,0,1,0,0,0,-1,41,2024-09-15T09:31:24.603Z,ausame,2,ausame
+4733239,2024,reg,2,N.Y. Jets Jets,18,Tennessee Titans,21,3,0,0,0,0,0,3,-3,0,1,0,0,-3,39,2024-09-15T09:31:46.238Z,ausame,0,ausame
+4733241,2024,reg,2,L.A. Rams Rams,24,Arizona Cardinals,23,0,0,0,0,0,0,0,0,0,0,0,0,1,47,2024-09-15T09:32:13.932Z,ausame,0,ausame
+4733240,2024,reg,2,Tampa Bay Buccaneers,21,Detroit Lions,23,3,0,0,0,1,0,3,3,1,0,0,0,-2,44,2024-09-15T09:32:57.762Z,ausame,4,ausame
+4733242,2024,reg,2,Pittsburgh Steelers,17,Denver Broncos,19,3,0,0,0,0,0,3,-3,1,0,0,0,-2,36,2024-09-15T09:33:31.677Z,ausame,2,ausame
+4733154,2024,reg,2,Cincinnati Bengals,17,Kansas City Chiefs,28,0,0,1,0,0,0,0,0,0,0,0,0,-11,45,2024-09-15T09:33:55.692Z,ausame,2,ausame
+4733243,2024,reg,2,Chicago Bears,13,Houston Texans,24,0,0,1,0,0,0,0,0,1,0,0,0,-11,37,2024-09-15T09:34:17.528Z,ausame,5,ausame
+4733244,2024,reg,2,Atlanta Falcons,17,Philadelphia Eagles,24,0,0,0,0,0,0,0,0,1,0,0,0,-7,41,2024-09-16T10:03:41.603Z,ausame,2,ausame
+4733239,2024,reg,2,N.Y. Jets Jets,24,Tennessee Titans,18,0,0,1,0,1,0,0,0,0,1,0,0,6,42,2024-09-15T14:03:54.372Z,Facebook_10208710241577136,5,PaulCullin
+4733235,2024,reg,2,Indianapolis Colts,23,Green Bay Packers,19,0,0,0,0,0,0,0,0,0,0,0,0,4,42,2024-09-15T14:05:31.353Z,Facebook_10208710241577136,0,PaulCullin
+4733242,2024,reg,2,Pittsburgh Steelers,26,Denver Broncos,19,0,0,1,0,1,0,0,0,0,0,0,0,7,45,2024-09-15T14:07:34.313Z,Facebook_10208710241577136,5,PaulCullin
+4733154,2024,reg,2,Cincinnati Bengals,26,Kansas City Chiefs,30,0,0,1,0,1,0,0,0,1,0,0,0,-4,56,2024-09-15T14:08:18.176Z,Facebook_10208710241577136,6,PaulCullin
+4733243,2024,reg,2,Chicago Bears,23,Houston Texans,29,0,0,1,0,1,0,0,0,0,0,0,0,-6,52,2024-09-15T14:08:48.872Z,Facebook_10208710241577136,5,PaulCullin
+4733244,2024,reg,2,Atlanta Falcons,19,Philadelphia Eagles,29,0,0,0,0,0,0,0,0,0,0,0,0,-10,48,2024-09-15T14:09:06.901Z,Facebook_10208710241577136,0,PaulCullin
+4733244,2024,reg,2,Atlanta Falcons,2,Philadelphia Eagles,3,0,0,0,0,1,0,0,0,1,0,0,0,-1,5,2024-09-16T15:21:11.430Z,SignInWithApple_000798.97e0b9f0c4c845faa24811c5ae17d0f4.1518,4,AppleJohn1234567
+4733245,2024,reg,3,New England Patriots,17,N.Y. Jets Jets,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2024-09-17T01:29:22.434Z,cmaronchick,4,cmaronchick
+4733250,2024,reg,3,L.A. Chargers Chargers,20,Pittsburgh Steelers,17,0,0,0,0,0,0,0,0,0,0,0,0,3,37,2024-09-17T01:30:53.212Z,cmaronchick,0,cmaronchick
+4733248,2024,reg,3,Green Bay Packers,17,Tennessee Titans,14,0,0,1,0,1,0,0,0,0,0,0,0,3,31,2024-09-17T01:31:59.109Z,cmaronchick,5,cmaronchick
+4733246,2024,reg,3,Chicago Bears,13,Indianapolis Colts,24,0,0,1,0,1,0,0,0,1,0,0,0,-11,37,2024-09-17T01:48:50.637Z,cmaronchick,7,cmaronchick
+4733247,2024,reg,3,N.Y. Giants Giants,7,Cleveland Browns,20,0,0,0,0,0,0,0,0,1,0,0,0,-13,27,2024-09-17T01:49:47.756Z,cmaronchick,2,cmaronchick
+4733251,2024,reg,3,Houston Texans,21,Minnesota Vikings,27,0,0,1,0,1,0,0,0,0,0,0,0,-6,48,2024-09-17T01:50:09.812Z,cmaronchick,4,cmaronchick
+4733249,2024,reg,3,Philadelphia Eagles,24,New Orleans Saints,21,0,0,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-18T15:46:35.078Z,cmaronchick,7,cmaronchick
+4733252,2024,reg,3,Denver Broncos,13,Tampa Bay Buccaneers,19,0,0,0,0,1,0,0,0,1,0,0,0,-6,32,2024-09-17T03:40:42.655Z,cmaronchick,4,cmaronchick
+4733254,2024,reg,3,Miami Dolphins,17,Seattle Seahawks,27,0,0,1,0,1,0,0,0,0,0,0,0,-10,44,2024-09-17T03:42:16.207Z,cmaronchick,4,cmaronchick
+4733253,2024,reg,3,Carolina Panthers,21,Las Vegas Raiders,20,0,0,1,0,1,0,0,0,1,0,0,0,1,41,2024-09-17T03:42:33.787Z,cmaronchick,6,cmaronchick
+4733255,2024,reg,3,Detroit Lions,24,Arizona Cardinals,27,0,0,0,0,0,0,0,0,1,0,0,0,-3,51,2024-09-17T03:42:57.712Z,cmaronchick,2,cmaronchick
+4733257,2024,reg,3,Baltimore Ravens,27,Dallas Cowboys,21,0,0,1,0,1,0,0,0,0,0,0,0,6,48,2024-09-17T03:43:40.322Z,cmaronchick,4,cmaronchick
+4733256,2024,reg,3,San Francisco 49ers,27,L.A. Rams Rams,17,0,0,0,0,0,0,0,0,0,0,0,0,10,44,2024-09-17T03:43:52.688Z,cmaronchick,0,cmaronchick
+4733258,2024,reg,3,Kansas City Chiefs,30,Atlanta Falcons,24,0,0,1,0,1,0,0,0,0,0,0,0,6,54,2024-09-18T03:33:23.332Z,cmaronchick,4,cmaronchick
+4733259,2024,reg,3,Jacksonville Jaguars,20,Buffalo Bills,31,0,0,1,0,1,0,0,0,1,0,0,0,-11,51,2024-09-17T03:44:35.751Z,cmaronchick,6,cmaronchick
+4733260,2024,reg,3,Washington Commanders,13,Cincinnati Bengals,31,0,0,0,0,0,0,0,0,0,0,0,0,-18,44,2024-09-17T03:44:51.090Z,cmaronchick,0,cmaronchick
+4733245,2024,reg,3,New England Patriots,17,N.Y. Jets Jets,20,0,0,1,0,0,0,0,0,1,0,0,0,-3,37,2024-09-19T19:06:56.026Z,rosstuckerNFL,4,rosstuckerNFL
+4733253,2024,reg,3,Carolina Panthers,20,Las Vegas Raiders,24,2,0,0,0,1,0,2,2,1,0,0,0,-4,44,2024-09-22T01:00:03.643Z,rosstuckerNFL,4,rosstuckerNFL
+4733254,2024,reg,3,Miami Dolphins,18,Seattle Seahawks,20,0,2,1,0,0,0,0,0,1,0,2,2,-2,38,2024-09-22T01:00:57.493Z,rosstuckerNFL,4,rosstuckerNFL
+4733258,2024,reg,3,Kansas City Chiefs,24,Atlanta Falcons,23,2,0,1,0,0,0,2,-2,0,0,0,0,1,47,2024-09-22T01:03:42.445Z,rosstuckerNFL,2,rosstuckerNFL
+4733259,2024,reg,3,Jacksonville Jaguars,17,Buffalo Bills,20,2,0,1,0,0,0,2,-2,0,0,0,0,-3,37,2024-09-22T01:04:17.447Z,rosstuckerNFL,2,rosstuckerNFL
+4733245,2024,reg,3,New England Patriots,17,N.Y. Jets Jets,23,0,0,1,0,0,0,0,0,0,0,0,0,-6,40,2024-09-19T04:17:05.668Z,ausame,2,ausame
+4733251,2024,reg,3,Houston Texans,13,Minnesota Vikings,27,0,0,1,0,1,0,0,0,1,0,0,0,-14,40,2024-09-21T01:58:41.246Z,bodysurfoceanside,6,bodysurfoceanside
+4733250,2024,reg,3,L.A. Chargers Chargers,21,Pittsburgh Steelers,7,0,0,0,0,0,0,0,0,1,0,0,0,14,28,2024-09-21T01:59:09.246Z,bodysurfoceanside,2,bodysurfoceanside
+4733247,2024,reg,3,N.Y. Giants Giants,17,Cleveland Browns,23,0,0,0,0,1,0,0,0,0,0,0,0,-6,40,2024-09-21T01:59:33.469Z,bodysurfoceanside,2,bodysurfoceanside
+4733249,2024,reg,3,Philadelphia Eagles,10,New Orleans Saints,35,0,0,0,0,0,0,0,0,1,0,0,0,-25,45,2024-09-21T01:59:51.685Z,bodysurfoceanside,2,bodysurfoceanside
+4733252,2024,reg,3,Denver Broncos,21,Tampa Bay Buccaneers,15,0,0,1,0,1,0,0,0,1,0,0,0,6,36,2024-09-21T02:00:20.422Z,bodysurfoceanside,6,bodysurfoceanside
+4733248,2024,reg,3,Green Bay Packers,21,Tennessee Titans,18,0,0,1,0,1,0,0,0,1,0,0,0,3,39,2024-09-21T02:00:32.553Z,bodysurfoceanside,6,bodysurfoceanside
+4733246,2024,reg,3,Chicago Bears,24,Indianapolis Colts,15,0,0,0,0,0,0,0,0,1,0,0,0,9,39,2024-09-21T02:00:48.484Z,bodysurfoceanside,2,bodysurfoceanside
+4733253,2024,reg,3,Carolina Panthers,17,Las Vegas Raiders,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2024-09-21T02:01:06.963Z,bodysurfoceanside,2,bodysurfoceanside
+4733254,2024,reg,3,Miami Dolphins,14,Seattle Seahawks,27,0,0,1,0,1,0,0,0,0,0,0,0,-13,41,2024-09-21T02:01:32.583Z,bodysurfoceanside,4,bodysurfoceanside
+4733257,2024,reg,3,Baltimore Ravens,17,Dallas Cowboys,27,0,0,0,0,0,0,0,0,0,0,0,0,-10,44,2024-09-21T02:01:51.364Z,bodysurfoceanside,0,bodysurfoceanside
+4733255,2024,reg,3,Detroit Lions,24,Arizona Cardinals,17,0,0,1,0,1,0,0,0,1,0,0,0,7,41,2024-09-21T02:02:06.500Z,bodysurfoceanside,7,bodysurfoceanside
+4733256,2024,reg,3,San Francisco 49ers,28,L.A. Rams Rams,10,0,0,0,0,0,0,0,0,0,0,0,0,18,38,2024-09-21T02:02:18.899Z,bodysurfoceanside,0,bodysurfoceanside
+4733258,2024,reg,3,Kansas City Chiefs,27,Atlanta Falcons,14,0,0,1,0,1,0,0,0,1,0,0,0,13,41,2024-09-21T02:02:35.827Z,bodysurfoceanside,6,bodysurfoceanside
+4733259,2024,reg,3,Jacksonville Jaguars,20,Buffalo Bills,17,0,0,0,0,0,0,0,0,0,0,0,0,3,37,2024-09-21T02:02:52.958Z,bodysurfoceanside,0,bodysurfoceanside
+4733260,2024,reg,3,Washington Commanders,24,Cincinnati Bengals,13,0,0,1,0,1,0,0,0,0,0,0,0,11,37,2024-09-21T02:03:07.818Z,bodysurfoceanside,4,bodysurfoceanside
+4733247,2024,reg,3,N.Y. Giants Giants,16,Cleveland Browns,23,0,0,0,0,0,0,0,0,0,0,0,0,-7,39,2024-09-22T00:53:05.818Z,rosstuckerNFL,0,rosstuckerNFL
+4733246,2024,reg,3,Chicago Bears,16,Indianapolis Colts,18,0,0,1,0,1,0,0,0,1,0,0,0,-2,34,2024-09-22T00:58:08.114Z,rosstuckerNFL,7,rosstuckerNFL
+4733251,2024,reg,3,Houston Texans,23,Minnesota Vikings,20,0,0,0,0,0,0,0,0,1,0,0,0,3,43,2024-09-22T00:54:34.277Z,rosstuckerNFL,2,rosstuckerNFL
+4733249,2024,reg,3,Philadelphia Eagles,23,New Orleans Saints,27,0,0,0,0,0,0,0,0,0,0,0,0,-4,50,2024-09-22T00:55:34.093Z,rosstuckerNFL,0,rosstuckerNFL
+4733250,2024,reg,3,L.A. Chargers Chargers,19,Pittsburgh Steelers,16,0,0,0,0,0,0,0,0,0,0,0,0,3,35,2024-09-22T00:56:34.894Z,rosstuckerNFL,0,rosstuckerNFL
+4733252,2024,reg,3,Denver Broncos,13,Tampa Bay Buccaneers,20,0,0,0,0,0,0,0,0,1,0,0,0,-7,33,2024-09-22T00:58:35.387Z,rosstuckerNFL,3,rosstuckerNFL
+4733248,2024,reg,3,Green Bay Packers,16,Tennessee Titans,17,0,0,0,0,1,0,0,0,0,0,0,0,-1,33,2024-09-22T00:59:15.369Z,rosstuckerNFL,2,rosstuckerNFL
+4733255,2024,reg,3,Detroit Lions,24,Arizona Cardinals,27,0,0,0,0,0,0,0,0,1,0,0,0,-3,51,2024-09-22T01:01:26.971Z,rosstuckerNFL,2,rosstuckerNFL
+4733257,2024,reg,3,Baltimore Ravens,26,Dallas Cowboys,23,0,0,1,0,1,0,0,0,1,0,0,0,3,49,2024-09-22T01:02:00.355Z,rosstuckerNFL,7,rosstuckerNFL
+4733256,2024,reg,3,San Francisco 49ers,23,L.A. Rams Rams,16,0,0,0,0,0,0,0,0,0,0,0,0,7,39,2024-09-22T01:03:12.724Z,rosstuckerNFL,0,rosstuckerNFL
+4733260,2024,reg,3,Washington Commanders,17,Cincinnati Bengals,27,0,0,0,0,0,0,0,0,0,0,0,0,-10,44,2024-09-22T01:04:58.767Z,rosstuckerNFL,0,rosstuckerNFL
+4733246,2024,reg,3,Chicago Bears,20,Indianapolis Colts,23,0,3,1,0,1,0,0,0,1,0,3,3,-3,43,2024-09-22T10:32:01.148Z,ausame,6,ausame
+4733247,2024,reg,3,N.Y. Giants Giants,20,Cleveland Browns,23,0,0,0,0,1,0,0,0,0,0,0,0,-3,43,2024-09-22T10:29:55.523Z,ausame,2,ausame
+4733251,2024,reg,3,Houston Texans,23,Minnesota Vikings,20,0,0,0,0,0,0,0,0,1,0,0,0,3,43,2024-09-22T10:30:37.461Z,ausame,2,ausame
+4733249,2024,reg,3,Philadelphia Eagles,23,New Orleans Saints,24,3,0,0,0,1,0,3,3,1,0,0,0,-1,47,2024-09-22T10:31:51.882Z,ausame,4,ausame
+4733250,2024,reg,3,L.A. Chargers Chargers,17,Pittsburgh Steelers,19,3,0,1,0,0,0,3,-3,0,0,0,0,-2,36,2024-09-22T10:31:47.802Z,ausame,2,ausame
+4733252,2024,reg,3,Denver Broncos,20,Tampa Bay Buccaneers,23,0,3,0,0,1,0,0,0,0,0,3,-3,-3,43,2024-09-22T10:32:23.542Z,ausame,2,ausame
+4733248,2024,reg,3,Green Bay Packers,18,Tennessee Titans,20,0,0,0,0,1,0,0,0,1,0,0,0,-2,38,2024-09-22T10:32:52.727Z,ausame,4,ausame
+4733253,2024,reg,3,Carolina Panthers,17,Las Vegas Raiders,21,3,0,0,0,1,0,3,3,0,0,0,0,-4,38,2024-09-22T10:33:38.821Z,ausame,2,ausame
+4733254,2024,reg,3,Miami Dolphins,17,Seattle Seahawks,21,0,0,1,0,0,0,0,0,1,0,0,0,-4,38,2024-09-22T10:34:00.778Z,ausame,4,ausame
+4733255,2024,reg,3,Detroit Lions,23,Arizona Cardinals,24,3,0,0,0,0,0,3,-3,1,0,0,0,-1,47,2024-09-22T10:34:21.685Z,ausame,2,ausame
+4733257,2024,reg,3,Baltimore Ravens,17,Dallas Cowboys,21,0,0,0,0,0,0,0,0,0,0,0,0,-4,38,2024-09-22T10:34:44.546Z,ausame,0,ausame
+4733256,2024,reg,3,San Francisco 49ers,24,L.A. Rams Rams,16,0,0,0,0,0,0,0,0,0,0,0,0,8,40,2024-09-22T10:35:05.496Z,ausame,1,ausame
+4733258,2024,reg,3,Kansas City Chiefs,24,Atlanta Falcons,23,3,0,1,0,0,0,3,-3,0,0,0,0,1,47,2024-09-22T10:35:29.063Z,ausame,2,ausame
+4733259,2024,reg,3,Jacksonville Jaguars,20,Buffalo Bills,23,3,0,1,0,0,0,3,-3,0,0,0,0,-3,43,2024-09-22T10:35:49.025Z,ausame,2,ausame
+4733260,2024,reg,3,Washington Commanders,17,Cincinnati Bengals,24,3,0,0,0,1,0,3,3,0,0,0,0,-7,41,2024-09-22T10:36:25.541Z,ausame,2,ausame
+4733251,2024,reg,3,Houston Texans,24,Minnesota Vikings,20,0,0,0,0,0,0,0,0,1,0,0,0,4,44,2024-09-22T15:35:17.659Z,Facebook_10208710241577136,2,PaulCullin
+4733250,2024,reg,3,L.A. Chargers Chargers,20,Pittsburgh Steelers,16,0,0,0,0,0,0,0,0,0,0,0,0,4,36,2024-09-22T15:36:05.028Z,Facebook_10208710241577136,0,PaulCullin
+4733247,2024,reg,3,N.Y. Giants Giants,13,Cleveland Browns,27,0,0,0,0,0,0,0,0,0,0,0,0,-14,40,2024-09-22T15:36:49.331Z,Facebook_10208710241577136,0,PaulCullin
+4733249,2024,reg,3,Philadelphia Eagles,24,New Orleans Saints,27,0,0,0,0,0,0,0,0,0,0,0,0,-3,51,2024-09-22T15:37:54.857Z,Facebook_10208710241577136,0,PaulCullin
+4733252,2024,reg,3,Denver Broncos,16,Tampa Bay Buccaneers,23,0,0,0,0,0,0,0,0,1,0,0,0,-7,39,2024-09-22T15:38:31.241Z,Facebook_10208710241577136,2,PaulCullin
+4733248,2024,reg,3,Green Bay Packers,20,Tennessee Titans,17,0,0,1,0,1,0,0,0,0,0,0,0,3,37,2024-09-22T15:40:30.542Z,Facebook_10208710241577136,4,PaulCullin
+4733246,2024,reg,3,Chicago Bears,17,Indianapolis Colts,26,0,0,1,0,1,0,0,0,1,0,0,0,-9,43,2024-09-22T15:40:56.085Z,Facebook_10208710241577136,6,PaulCullin
+4733253,2024,reg,3,Carolina Panthers,15,Las Vegas Raiders,24,0,0,0,0,0,0,0,0,0,0,0,0,-9,39,2024-09-22T15:41:37.696Z,Facebook_10208710241577136,0,PaulCullin
+4733257,2024,reg,3,Baltimore Ravens,24,Dallas Cowboys,22,0,0,1,0,1,0,0,0,0,0,0,0,2,46,2024-09-22T15:43:37.987Z,Facebook_10208710241577136,4,PaulCullin
+4733255,2024,reg,3,Detroit Lions,31,Arizona Cardinals,27,0,0,1,0,1,0,0,0,0,0,0,0,4,58,2024-09-22T15:44:12.208Z,Facebook_10208710241577136,4,PaulCullin
+4733256,2024,reg,3,San Francisco 49ers,22,L.A. Rams Rams,26,0,0,1,0,1,0,0,0,1,0,0,0,-4,48,2024-09-22T15:44:43.018Z,Facebook_10208710241577136,6,PaulCullin
+4733258,2024,reg,3,Kansas City Chiefs,27,Atlanta Falcons,23,0,0,1,0,1,0,0,0,0,0,0,0,4,50,2024-09-22T15:46:35.593Z,Facebook_10208710241577136,4,PaulCullin
+4733259,2024,reg,3,Jacksonville Jaguars,18,Buffalo Bills,26,0,0,1,0,1,0,0,0,0,0,0,0,-8,44,2024-09-22T15:48:05.001Z,Facebook_10208710241577136,4,PaulCullin
+4733260,2024,reg,3,Washington Commanders,19,Cincinnati Bengals,26,0,0,0,0,1,0,0,0,0,0,0,0,-7,45,2024-09-22T15:48:49.668Z,Facebook_10208710241577136,2,PaulCullin
+4733246,2024,reg,3,Chicago Bears,17,Indianapolis Colts,24,0,0,1,0,1,0,0,0,1,0,0,0,-7,41,2024-09-22T16:37:45.760Z,Google_113508854981481930771,6,JessieHarris
+4733247,2024,reg,3,N.Y. Giants Giants,20,Cleveland Browns,31,0,0,0,0,0,0,0,0,0,0,0,0,-11,51,2024-09-22T16:37:55.940Z,Google_113508854981481930771,0,JessieHarris
+4733248,2024,reg,3,Green Bay Packers,10,Tennessee Titans,17,0,0,0,0,0,0,0,0,0,0,0,0,-7,27,2024-09-22T16:38:03.763Z,Google_113508854981481930771,0,JessieHarris
+4733249,2024,reg,3,Philadelphia Eagles,33,New Orleans Saints,40,0,0,0,0,0,0,0,0,0,0,0,0,-7,73,2024-09-22T16:38:11.179Z,Google_113508854981481930771,0,JessieHarris
+4733250,2024,reg,3,L.A. Chargers Chargers,19,Pittsburgh Steelers,20,0,0,1,0,0,0,0,0,0,0,0,0,-1,39,2024-09-22T16:38:19.899Z,Google_113508854981481930771,3,JessieHarris
+4733251,2024,reg,3,Houston Texans,27,Minnesota Vikings,24,0,0,0,0,0,0,0,0,0,0,0,0,3,51,2024-09-22T16:38:26.942Z,Google_113508854981481930771,0,JessieHarris
+4733252,2024,reg,3,Denver Broncos,17,Tampa Bay Buccaneers,25,0,0,0,0,0,0,0,0,0,0,0,0,-8,42,2024-09-22T16:38:35.768Z,Google_113508854981481930771,0,JessieHarris
+4733253,2024,reg,3,Carolina Panthers,20,Las Vegas Raiders,41,0,0,0,0,0,0,0,0,1,0,0,0,-21,61,2024-09-22T16:38:42.802Z,Google_113508854981481930771,2,JessieHarris
+4733254,2024,reg,3,Miami Dolphins,20,Seattle Seahawks,24,0,0,1,0,0,0,0,0,0,0,0,0,-4,44,2024-09-22T16:38:49.756Z,Google_113508854981481930771,3,JessieHarris
+4733255,2024,reg,3,Detroit Lions,31,Arizona Cardinals,21,0,0,1,0,1,0,0,0,0,0,0,0,10,52,2024-09-22T16:38:57.040Z,Google_113508854981481930771,4,JessieHarris
+4733256,2024,reg,3,San Francisco 49ers,20,L.A. Rams Rams,24,0,0,1,0,1,0,0,0,1,0,0,0,-4,44,2024-09-22T16:39:03.771Z,Google_113508854981481930771,6,JessieHarris
+4733257,2024,reg,3,Baltimore Ravens,34,Dallas Cowboys,37,0,0,0,0,0,0,0,0,1,0,0,0,-3,71,2024-09-22T16:39:11.137Z,Google_113508854981481930771,2,JessieHarris
+4733258,2024,reg,3,Kansas City Chiefs,30,Atlanta Falcons,24,0,0,1,0,1,0,0,0,0,0,0,0,6,54,2024-09-22T16:39:18.130Z,Google_113508854981481930771,4,JessieHarris
+4733259,2024,reg,3,Jacksonville Jaguars,20,Buffalo Bills,27,0,0,1,0,1,0,0,0,1,0,0,0,-7,47,2024-09-22T16:39:25.076Z,Google_113508854981481930771,6,JessieHarris
+4733260,2024,reg,3,Washington Commanders,21,Cincinnati Bengals,32,0,0,0,0,0,0,0,0,1,0,0,0,-11,53,2024-09-22T16:39:37.920Z,Google_113508854981481930771,2,JessieHarris
+4733257,2024,reg,3,,26,,27,,,0,0,0,0,0,0,1,0,0,0,1,53,2024-09-24,TerrySullivan,3,TerrySullivan
+4733261,2024,reg,4,Dallas Cowboys,27,N.Y. Giants Giants,14,0,0,1,0,0,1,0,0,1,0,0,0,13,41,2024-09-25T04:59:27.638Z,cmaronchick,4,cmaronchick
+4733266,2024,reg,4,L.A. Rams Rams,20,Chicago Bears,10,0,0,0,0,0,0,0,0,0,0,0,0,10,30,2024-09-24T16:00:45.768Z,cmaronchick,0,cmaronchick
+4733265,2024,reg,4,New Orleans Saints,24,Atlanta Falcons,27,0,0,1,0,1,0,0,0,1,0,0,0,-3,51,2024-09-25T05:00:00.298Z,cmaronchick,7,cmaronchick
+4733262,2024,reg,4,Pittsburgh Steelers,20,Indianapolis Colts,10,0,0,0,0,0,0,0,0,0,0,0,0,10,30,2024-09-24T19:22:59.242Z,cmaronchick,0,cmaronchick
+4733261,2024,reg,4,Dallas Cowboys,23,N.Y. Giants Giants,20,3,0,1,0,0,1,3,0,1,0,0,0,3,43,2024-09-25T00:25:10.496Z,ausame,4,ausame
+4733257,2024,reg,3,,27,,24,,,1,0,1,0,0,0,1,0,0,0,-3,51,2024-09-24,PetePrisco,7,PetePrisco
+4733257,2024,reg,3,,28,,30,,,0,0,0,0,0,0,1,0,0,0,2,58,2024-09-24,BleacherReport,3,BleacherReport
+4733257,2024,reg,3,,30,,24,,,1,0,1,0,0,0,1,0,0,0,-6,54,2024-09-24,BillBender,6,BillBender
+4733257,2024,reg,3,,27,,26,,,1,0,0,0,0,0,1,0,0,0,-1,53,2024-09-24,DataSkrive,5,DataSkrive
+4733257,2024,reg,3,,17,,20,,,0,0,0,0,0,0,0,0,0,0,3,37,2024-09-24,Sportsnaut,0,Sportsnaut
+4733257,2024,reg,3,,27,,20,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-09-24,VinnieIyer,4,VinnieIyer
+4733257,2024,reg,3,,24,,24,,,0,0,0,0,0,0,1,0,0,0,0,48,2024-09-24,Dimers,2,Dimers
+4733253,2024,reg,3,,16,,21,,,0,0,1,0,0,0,0,0,0,0,5,37,2024-09-24,TerrySullivan,2,TerrySullivan
+4733253,2024,reg,3,,10,,24,,,0,0,0,0,0,0,0,0,0,0,14,34,2024-09-24,PetePrisco,0,PetePrisco
+4733253,2024,reg,3,,20,,24,,,0,0,1,0,0,0,1,0,0,0,4,44,2024-09-24,BleacherReport,4,BleacherReport
+4733253,2024,reg,3,,14,,28,,,0,0,0,0,0,0,1,0,0,0,14,42,2024-09-24,BillBender,2,BillBender
+4733253,2024,reg,3,,13,,29,,,0,0,0,0,0,0,1,0,0,0,16,42,2024-09-24,DataSkrive,2,DataSkrive
+4733253,2024,reg,3,,6,,17,,,0,0,0,0,0,0,0,0,0,0,11,23,2024-09-24,Sportsnaut,0,Sportsnaut
+4733253,2024,reg,3,,20,,24,,,0,0,1,0,0,0,1,0,0,0,4,44,2024-09-24,VinnieIyer,4,VinnieIyer
+4733253,2024,reg,3,,18,,23,,,0,0,1,0,0,0,1,0,0,0,5,41,2024-09-24,Dimers,4,Dimers
+4733246,2024,reg,3,,21,,17,,,0,0,0,0,0,0,1,0,0,0,-4,38,2024-09-24,TerrySullivan,2,TerrySullivan
+4733246,2024,reg,3,,20,,23,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-09-24,PetePrisco,6,PetePrisco
+4733246,2024,reg,3,,23,,20,,,0,0,0,0,0,0,1,0,0,0,-3,43,2024-09-24,BleacherReport,2,BleacherReport
+4733246,2024,reg,3,,17,,20,,,1,0,1,0,0,0,1,0,0,0,3,37,2024-09-24,BillBender,7,BillBender
+4733246,2024,reg,3,,18,,21,,,1,0,1,0,0,0,1,0,0,0,3,39,2024-09-24,DataSkrive,7,DataSkrive
+4733246,2024,reg,3,,27,,17,,,0,0,0,0,0,0,0,0,0,0,-10,44,2024-09-24,Sportsnaut,0,Sportsnaut
+4733246,2024,reg,3,,24,,20,,,0,0,0,0,0,0,0,0,0,0,-4,44,2024-09-24,VinnieIyer,0,VinnieIyer
+4733246,2024,reg,3,,21,,22,,,1,0,0,0,0,0,1,0,0,0,1,43,2024-09-24,Dimers,4,Dimers
+4733252,2024,reg,3,,16,,28,,,0,0,0,0,0,0,0,0,0,0,12,44,2024-09-24,TerrySullivan,0,TerrySullivan
+4733252,2024,reg,3,,12,,22,,,0,0,0,0,0,0,1,0,0,0,10,34,2024-09-24,BleacherReport,2,BleacherReport
+4733252,2024,reg,3,,17,,27,,,0,0,0,0,0,0,0,0,0,0,10,44,2024-09-24,BillBender,0,BillBender
+4733252,2024,reg,3,,23,,17,,,1,0,1,0,0,0,1,0,0,0,-6,40,2024-09-24,DataSkrive,6,DataSkrive
+4733252,2024,reg,3,,17,,27,,,0,0,0,0,0,0,0,0,0,0,10,44,2024-09-24,Sportsnaut,0,Sportsnaut
+4733252,2024,reg,3,,10,,27,,,0,0,0,0,0,0,1,0,0,0,17,37,2024-09-24,VinnieIyer,2,VinnieIyer
+4733252,2024,reg,3,,18,,24,,,0,0,1,0,0,0,0,0,0,0,6,42,2024-09-24,Dimers,2,Dimers
+4733255,2024,reg,3,,24,,20,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-09-24,TerrySullivan,6,TerrySullivan
+4733255,2024,reg,3,,29,,31,,,0,0,0,0,0,0,0,0,0,0,2,60,2024-09-24,PetePrisco,0,PetePrisco
+4733255,2024,reg,3,,35,,31,,,1,0,1,0,0,0,0,0,0,0,-4,66,2024-09-24,BleacherReport,4,BleacherReport
+4733255,2024,reg,3,,23,,18,,,1,0,1,0,0,0,1,0,0,0,-5,41,2024-09-24,BillBender,6,BillBender
+4733255,2024,reg,3,,19,,29,,,0,0,0,0,0,0,1,0,0,0,10,48,2024-09-24,DataSkrive,2,DataSkrive
+4733255,2024,reg,3,,34,,31,,,1,0,0,0,0,0,0,0,0,0,-3,65,2024-09-24,Sportsnaut,2,Sportsnaut
+4733255,2024,reg,3,,30,,27,,,1,0,0,0,0,0,0,0,0,0,-3,57,2024-09-24,VinnieIyer,2,VinnieIyer
+4733255,2024,reg,3,,27,,25,,,1,0,0,0,0,0,0,0,0,0,-2,52,2024-09-24,Dimers,2,Dimers
+4733248,2024,reg,3,,20,,17,,,1,0,1,0,0,0,0,0,0,0,-3,37,2024-09-24,TerrySullivan,4,TerrySullivan
+4733248,2024,reg,3,,17,,21,,,0,0,0,0,0,0,1,0,0,0,4,38,2024-09-24,PetePrisco,2,PetePrisco
+4733248,2024,reg,3,,18,,16,,,1,0,1,0,0,0,0,0,0,0,-2,34,2024-09-24,BleacherReport,4,BleacherReport
+4733248,2024,reg,3,,21,,16,,,1,0,1,0,0,0,0,0,0,0,-5,37,2024-09-24,BillBender,4,BillBender
+4733248,2024,reg,3,,26,,17,,,1,0,1,0,0,0,1,0,0,0,-9,43,2024-09-24,DataSkrive,6,DataSkrive
+4733248,2024,reg,3,,17,,14,,,1,0,1,0,0,0,0,0,0,0,-3,31,2024-09-24,Sportsnaut,5,Sportsnaut
+4733248,2024,reg,3,,16,,17,,,0,0,1,0,0,0,0,0,0,0,1,33,2024-09-24,VinnieIyer,2,VinnieIyer
+4733248,2024,reg,3,,18,,21,,,0,0,0,0,0,0,1,0,0,0,3,39,2024-09-24,Dimers,2,Dimers
+4733251,2024,reg,3,,23,,20,,,0,0,0,0,0,0,1,0,0,0,-3,43,2024-09-24,TerrySullivan,2,TerrySullivan
+4733251,2024,reg,3,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-24,PetePrisco,6,PetePrisco
+4733251,2024,reg,3,,27,,21,,,0,0,0,0,0,0,0,0,0,0,-6,48,2024-09-24,BleacherReport,0,BleacherReport
+4733251,2024,reg,3,,24,,26,,,1,0,1,0,0,0,0,0,0,0,2,50,2024-09-24,BillBender,4,BillBender
+4733251,2024,reg,3,,18,,23,,,1,0,1,0,0,0,1,0,0,0,5,41,2024-09-24,DataSkrive,7,DataSkrive
+4733251,2024,reg,3,,23,,20,,,0,0,0,0,0,0,1,0,0,0,-3,43,2024-09-24,Sportsnaut,2,Sportsnaut
+4733251,2024,reg,3,,20,,17,,,0,0,0,0,0,0,1,0,0,0,-3,37,2024-09-24,VinnieIyer,2,VinnieIyer
+4733251,2024,reg,3,,24,,22,,,0,0,0,0,0,0,0,0,0,0,-2,46,2024-09-24,Dimers,0,Dimers
+4733259,2024,reg,3,,20,,30,,,1,0,1,0,0,0,1,0,0,0,10,50,2024-09-24,TerrySullivan,6,TerrySullivan
+4733259,2024,reg,3,,17,,28,,,1,0,1,0,0,0,0,0,0,0,11,45,2024-09-24,PetePrisco,4,PetePrisco
+4733259,2024,reg,3,,21,,30,,,1,0,1,0,0,0,1,0,0,0,9,51,2024-09-24,BleacherReport,6,BleacherReport
+4733259,2024,reg,3,,27,,30,,,1,0,0,0,0,0,1,0,0,0,3,57,2024-09-24,BillBender,5,BillBender
+4733259,2024,reg,3,,10,,33,,,1,0,1,0,0,0,0,0,0,0,23,43,2024-09-24,DataSkrive,5,DataSkrive
+4733259,2024,reg,3,,13,,24,,,1,0,1,0,0,0,0,0,0,0,11,37,2024-09-24,Sportsnaut,4,Sportsnaut
+4733259,2024,reg,3,,17,,24,,,1,0,1,0,0,0,0,0,0,0,7,41,2024-09-24,VinnieIyer,4,VinnieIyer
+4733259,2024,reg,3,,20,,25,,,1,0,1,0,0,0,0,0,0,0,5,45,2024-09-24,Dimers,4,Dimers
+4733258,2024,reg,3,,30,,24,,,1,0,1,0,0,0,0,0,0,0,-6,54,2024-09-24,TerrySullivan,4,TerrySullivan
+4733258,2024,reg,3,,32,,23,,,1,0,1,0,0,0,0,0,0,0,-9,55,2024-09-24,PetePrisco,4,PetePrisco
+4733258,2024,reg,3,,28,,24,,,1,0,1,0,0,0,0,0,0,0,-4,52,2024-09-24,BleacherReport,4,BleacherReport
+4733258,2024,reg,3,,28,,21,,,1,0,1,0,0,0,0,0,0,0,-7,49,2024-09-24,BillBender,4,BillBender
+4733258,2024,reg,3,,24,,18,,,1,0,1,0,0,0,1,0,0,0,-6,42,2024-09-24,DataSkrive,6,DataSkrive
+4733258,2024,reg,3,,27,,13,,,1,0,1,0,0,0,1,0,0,0,-14,40,2024-09-24,Sportsnaut,6,Sportsnaut
+4733258,2024,reg,3,,27,,24,,,1,0,0,0,0,0,0,0,0,0,-3,51,2024-09-24,VinnieIyer,2,VinnieIyer
+4733258,2024,reg,3,,25,,21,,,1,0,1,0,0,0,1,0,0,0,-4,46,2024-09-24,Dimers,6,Dimers
+4733250,2024,reg,3,,17,,20,,,1,0,1,0,0,0,0,0,0,0,3,37,2024-09-24,TerrySullivan,5,TerrySullivan
+4733250,2024,reg,3,,21,,17,,,0,0,0,0,0,0,0,0,0,0,-4,38,2024-09-24,PetePrisco,0,PetePrisco
+4733250,2024,reg,3,,17,,16,,,0,0,0,0,0,0,1,0,0,0,-1,33,2024-09-24,BleacherReport,2,BleacherReport
+4733250,2024,reg,3,,20,,19,,,0,0,0,0,0,0,0,0,0,0,-1,39,2024-09-24,BillBender,0,BillBender
+4733250,2024,reg,3,,13,,14,,,1,0,0,0,0,0,1,0,0,0,1,27,2024-09-24,DataSkrive,4,DataSkrive
+4733250,2024,reg,3,,13,,16,,,1,0,1,0,0,0,1,0,0,0,3,29,2024-09-24,Sportsnaut,6,Sportsnaut
+4733250,2024,reg,3,,20,,17,,,0,0,0,0,0,0,0,0,0,0,-3,37,2024-09-24,VinnieIyer,0,VinnieIyer
+4733250,2024,reg,3,,18,,19,,,1,0,0,0,0,0,0,0,0,0,1,37,2024-09-24,Dimers,2,Dimers
+4733254,2024,reg,3,,20,,27,,,1,0,1,0,0,0,0,0,0,0,7,47,2024-09-24,TerrySullivan,4,TerrySullivan
+4733254,2024,reg,3,,16,,31,,,1,0,1,0,0,0,0,0,0,0,15,47,2024-09-24,PetePrisco,4,PetePrisco
+4733254,2024,reg,3,,14,,26,,,1,0,1,0,0,0,1,0,0,0,12,40,2024-09-24,BleacherReport,6,BleacherReport
+4733254,2024,reg,3,,20,,24,,,1,0,0,0,0,0,0,0,0,0,4,44,2024-09-24,BillBender,3,BillBender
+4733254,2024,reg,3,,12,,30,,,1,0,1,0,0,0,0,0,0,0,18,42,2024-09-24,DataSkrive,4,DataSkrive
+4733254,2024,reg,3,,17,,24,,,1,0,1,0,0,0,0,0,0,0,7,41,2024-09-24,Sportsnaut,5,Sportsnaut
+4733254,2024,reg,3,,20,,24,,,1,0,0,0,0,0,0,0,0,0,4,44,2024-09-24,VinnieIyer,3,VinnieIyer
+4733254,2024,reg,3,,19,,23,,,1,0,0,0,0,0,0,0,0,0,4,42,2024-09-24,Dimers,2,Dimers
+4733252,2024,reg,3,,13,,26,,,0,0,0,0,0,0,1,0,0,0,13,39,2024-09-24,PetePrisco,2,PetePrisco
+4733245,2024,reg,3,,17,,27,,,1,0,1,0,0,0,0,0,0,0,10,44,2024-09-24,TerrySullivan,4,TerrySullivan
+4733245,2024,reg,3,,16,,20,,,1,0,0,0,0,0,1,0,0,0,4,36,2024-09-24,PetePrisco,4,PetePrisco
+4733245,2024,reg,3,,17,,21,,,1,0,0,0,0,0,0,0,0,0,4,38,2024-09-24,BleacherReport,2,BleacherReport
+4733245,2024,reg,3,,19,,24,,,1,0,0,0,0,0,0,0,0,0,5,43,2024-09-24,BillBender,3,BillBender
+4733245,2024,reg,3,,26,,14,,,0,0,0,0,0,0,0,0,0,0,-12,40,2024-09-24,DataSkrive,0,DataSkrive
+4733245,2024,reg,3,,13,,20,,,1,0,1,0,0,0,1,0,0,0,7,33,2024-09-24,Sportsnaut,6,Sportsnaut
+4733245,2024,reg,3,,13,,23,,,1,0,1,0,0,0,1,0,0,0,10,36,2024-09-24,VinnieIyer,6,VinnieIyer
+4733247,2024,reg,3,,13,,23,,,0,0,0,0,0,0,1,0,0,0,10,36,2024-09-24,TerrySullivan,3,TerrySullivan
+4733247,2024,reg,3,,10,,21,,,0,0,0,0,0,0,1,0,0,0,11,31,2024-09-24,PetePrisco,2,PetePrisco
+4733247,2024,reg,3,,14,,21,,,0,0,0,0,0,0,1,0,0,0,7,35,2024-09-24,BleacherReport,2,BleacherReport
+4733247,2024,reg,3,,13,,22,,,0,0,0,0,0,0,1,0,0,0,9,35,2024-09-24,BillBender,2,BillBender
+4733247,2024,reg,3,,11,,28,,,0,0,0,0,0,0,0,0,0,0,17,39,2024-09-24,DataSkrive,0,DataSkrive
+4733247,2024,reg,3,,6,,17,,,0,0,0,0,0,0,1,0,0,0,11,23,2024-09-24,Sportsnaut,2,Sportsnaut
+4733247,2024,reg,3,,14,,23,,,0,0,0,0,0,0,1,0,0,0,9,37,2024-09-24,VinnieIyer,2,VinnieIyer
+4733247,2024,reg,3,,17,,23,,,0,0,1,0,0,0,0,0,0,0,6,40,2024-09-24,Dimers,2,Dimers
+4733249,2024,reg,3,,27,,24,,,1,0,1,0,0,0,0,0,0,0,-3,51,2024-09-24,TerrySullivan,5,TerrySullivan
+4733249,2024,reg,3,,20,,27,,,0,0,0,0,0,0,1,0,0,0,7,47,2024-09-24,PetePrisco,2,PetePrisco
+4733249,2024,reg,3,,23,,28,,,0,0,0,0,0,0,0,0,0,0,5,51,2024-09-24,BleacherReport,0,BleacherReport
+4733249,2024,reg,3,,27,,21,,,1,0,1,0,0,0,1,0,0,0,-6,48,2024-09-24,BillBender,6,BillBender
+4733249,2024,reg,3,,17,,40,,,0,0,0,0,0,0,0,0,0,0,23,57,2024-09-24,DataSkrive,0,DataSkrive
+4733249,2024,reg,3,,24,,28,,,0,0,0,0,0,0,0,0,0,0,4,52,2024-09-24,Sportsnaut,0,Sportsnaut
+4733249,2024,reg,3,,27,,24,,,1,0,1,0,0,0,0,0,0,0,-3,51,2024-09-24,VinnieIyer,5,VinnieIyer
+4733249,2024,reg,3,,23,,26,,,0,0,0,0,0,0,1,0,0,0,3,49,2024-09-24,Dimers,2,Dimers
+4733256,2024,reg,3,,27,,17,,,0,0,0,0,0,0,1,0,0,0,-10,44,2024-09-24,TerrySullivan,2,TerrySullivan
+4733256,2024,reg,3,,27,,18,,,0,0,0,0,0,0,1,0,0,0,-9,45,2024-09-24,PetePrisco,2,PetePrisco
+4733256,2024,reg,3,,26,,21,,,0,0,1,0,0,0,1,0,0,0,-5,47,2024-09-24,BleacherReport,4,BleacherReport
+4733256,2024,reg,3,,26,,19,,,0,0,0,0,0,0,1,0,0,0,-7,45,2024-09-24,BillBender,2,BillBender
+4733256,2024,reg,3,,25,,22,,,0,0,1,0,0,0,1,0,0,0,-3,47,2024-09-24,DataSkrive,4,DataSkrive
+4733256,2024,reg,3,,31,,13,,,0,0,0,0,0,0,1,0,0,0,-18,44,2024-09-24,Sportsnaut,2,Sportsnaut
+4733256,2024,reg,3,,31,,20,,,0,0,0,0,0,0,1,0,0,0,-11,51,2024-09-24,VinnieIyer,3,VinnieIyer
+4733256,2024,reg,3,,25,,19,,,0,0,1,0,0,0,1,0,0,0,-6,44,2024-09-24,Dimers,4,Dimers
+4733260,2024,reg,3,,21,,30,,,0,0,0,0,0,0,1,0,0,0,9,51,2024-09-24,TerrySullivan,2,TerrySullivan
+4733260,2024,reg,3,,16,,29,,,0,0,0,0,0,0,0,0,0,0,13,45,2024-09-24,PetePrisco,0,PetePrisco
+4733260,2024,reg,3,,20,,34,,,0,0,0,0,0,0,1,0,0,0,14,54,2024-09-24,BleacherReport,2,BleacherReport
+4733260,2024,reg,3,,21,,31,,,0,0,0,0,0,0,1,0,0,0,10,52,2024-09-24,BillBender,2,BillBender
+4733260,2024,reg,3,,9,,34,,,0,0,0,0,0,0,0,0,0,0,25,43,2024-09-24,DataSkrive,0,DataSkrive
+4733260,2024,reg,3,,20,,27,,,0,0,1,0,0,0,1,0,0,0,7,47,2024-09-24,Sportsnaut,4,Sportsnaut
+4733260,2024,reg,3,,20,,27,,,0,0,1,0,0,0,1,0,0,0,7,47,2024-09-24,VinnieIyer,4,VinnieIyer
+4733260,2024,reg,3,,21,,27,,,0,0,1,0,0,0,1,0,0,0,6,48,2024-09-24,Dimers,4,Dimers
+4733263,2024,reg,4,Minnesota Vikings,27,Green Bay Packers,10,0,0,1,0,1,0,0,0,0,0,0,0,17,37,2024-09-25T05:00:24.387Z,cmaronchick,4,cmaronchick
+4733267,2024,reg,4,Philadelphia Eagles,27,Tampa Bay Buccaneers,24,0,0,0,0,0,0,0,0,1,0,0,0,3,51,2024-09-29T15:21:35.610Z,cmaronchick,2,cmaronchick
+4733269,2024,reg,4,Denver Broncos,13,N.Y. Jets Jets,27,0,0,0,0,0,0,0,0,0,0,0,0,-14,40,2024-09-25T05:01:00.902Z,cmaronchick,0,cmaronchick
+4733264,2024,reg,4,Jacksonville Jaguars,17,Houston Texans,27,0,0,1,0,0,0,0,0,1,0,0,0,-10,44,2024-09-27T15:22:27.212Z,cmaronchick,5,cmaronchick
+4733268,2024,reg,4,Cincinnati Bengals,31,Carolina Panthers,17,0,0,1,0,1,0,0,0,1,0,0,0,14,48,2024-09-27T15:23:08.172Z,cmaronchick,6,cmaronchick
+4733271,2024,reg,4,New England Patriots,13,San Francisco 49ers,30,0,0,1,0,1,0,0,0,1,0,0,0,-17,43,2024-09-25T05:02:00.352Z,cmaronchick,10,cmaronchick
+4733270,2024,reg,4,Washington Commanders,27,Arizona Cardinals,23,0,0,1,0,1,0,0,0,0,0,0,0,4,50,2024-09-25T05:02:22.782Z,cmaronchick,4,cmaronchick
+4733272,2024,reg,4,Cleveland Browns,21,Las Vegas Raiders,20,0,0,0,0,0,0,0,0,0,0,0,0,1,41,2024-09-26T14:01:08.776Z,cmaronchick,1,cmaronchick
+4733273,2024,reg,4,Kansas City Chiefs,34,L.A. Chargers Chargers,14,0,0,1,0,0,0,0,0,0,0,0,0,20,48,2024-09-25T05:03:00.797Z,cmaronchick,2,cmaronchick
+4733274,2024,reg,4,Buffalo Bills,27,Baltimore Ravens,24,0,0,0,0,0,0,0,0,0,0,0,0,3,51,2024-09-29T04:05:39.918Z,cmaronchick,0,cmaronchick
+4733275,2024,reg,4,Tennessee Titans,17,Miami Dolphins,14,0,0,1,0,1,0,0,0,0,0,0,0,3,31,2024-09-30T21:43:58.911Z,cmaronchick,4,cmaronchick
+4733276,2024,reg,4,Seattle Seahawks,27,Detroit Lions,24,0,0,0,0,0,0,0,0,1,0,0,0,3,51,2024-09-30T21:44:18.625Z,cmaronchick,2,cmaronchick
+4733266,2024,reg,4,L.A. Rams Rams,18,Chicago Bears,20,0,0,1,0,0,0,0,0,0,0,0,0,-2,38,2024-09-27T16:54:12.733Z,rosstuckerNFL,3,rosstuckerNFL
+4733268,2024,reg,4,Cincinnati Bengals,25,Carolina Panthers,22,0,0,1,0,0,0,0,0,1,0,0,0,3,47,2024-09-27T16:51:04.011Z,rosstuckerNFL,4,rosstuckerNFL
+4733270,2024,reg,4,Washington Commanders,21,Arizona Cardinals,24,0,0,0,0,1,0,0,0,0,0,0,0,-3,45,2024-09-26T04:14:59.798Z,rosstuckerNFL,2,rosstuckerNFL
+4733271,2024,reg,4,New England Patriots,14,San Francisco 49ers,24,0,0,1,0,0,0,0,0,0,0,0,0,-10,38,2024-09-27T17:00:51.137Z,rosstuckerNFL,2,rosstuckerNFL
+4733276,2024,reg,4,Seattle Seahawks,17,Detroit Lions,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2024-09-27T17:23:20.460Z,rosstuckerNFL,2,rosstuckerNFL
+4733274,2024,reg,4,,28,,26,,,0,0,0,0,0,0,0,0,0,0,-2,54,2024-09-26,TerrySullivan,0,TerrySullivan
+4733274,2024,reg,4,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-26,PetePrisco,7,PetePrisco
+4733274,2024,reg,4,,28,,24,,,0,0,0,0,0,0,0,0,0,0,-4,52,2024-09-26,BleacherReport,0,BleacherReport
+4733274,2024,reg,4,,28,,31,,,1,0,1,0,0,0,0,0,0,0,3,59,2024-09-26,BillBender,4,BillBender
+4733274,2024,reg,4,,25,,26,,,1,0,0,0,0,0,0,0,0,0,1,51,2024-09-26,DataSkrive,2,DataSkrive
+4733274,2024,reg,4,,28,,27,,,0,0,0,0,0,0,0,0,0,0,-1,55,2024-09-26,Sportsnaut,0,Sportsnaut
+4733274,2024,reg,4,,20,,23,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-09-26,VinnieIyer,6,VinnieIyer
+4733274,2024,reg,4,,22,,25,,,1,0,1,0,0,0,0,0,0,0,3,47,2024-09-26,Dimers,4,Dimers
+4733268,2024,reg,4,,27,,23,,,1,0,0,0,0,0,1,0,0,0,-4,50,2024-09-26,TerrySullivan,4,TerrySullivan
+4733268,2024,reg,4,,31,,25,,,1,0,1,0,0,0,1,0,0,0,-6,56,2024-09-26,PetePrisco,6,PetePrisco
+4733268,2024,reg,4,,31,,24,,,1,0,1,0,0,0,1,0,0,0,-7,55,2024-09-26,BleacherReport,7,BleacherReport
+4733268,2024,reg,4,,27,,13,,,1,0,1,0,0,0,0,0,0,0,-14,40,2024-09-26,BillBender,4,BillBender
+4733268,2024,reg,4,,24,,25,,,0,0,0,0,0,0,1,0,0,0,1,49,2024-09-26,DataSkrive,2,DataSkrive
+4733268,2024,reg,4,,34,,23,,,1,0,1,0,0,0,1,0,0,0,-11,57,2024-09-26,Sportsnaut,7,Sportsnaut
+4733268,2024,reg,4,,30,,20,,,1,0,1,0,0,0,1,0,0,0,-10,50,2024-09-26,VinnieIyer,7,VinnieIyer
+4733268,2024,reg,4,,25,,21,,,1,0,0,0,0,0,0,0,0,0,-4,46,2024-09-26,Dimers,2,Dimers
+4733272,2024,reg,4,,17,,21,,,1,0,1,0,0,0,0,0,0,0,4,38,2024-09-26,TerrySullivan,5,TerrySullivan
+4733272,2024,reg,4,,23,,17,,,0,0,0,0,0,0,0,0,0,0,-6,40,2024-09-26,PetePrisco,0,PetePrisco
+4733272,2024,reg,4,,16,,21,,,1,0,1,0,0,0,1,0,0,0,5,37,2024-09-26,BleacherReport,7,BleacherReport
+4733272,2024,reg,4,,19,,25,,,1,0,1,0,0,0,0,0,0,0,6,44,2024-09-26,BillBender,4,BillBender
+4733272,2024,reg,4,,18,,24,,,1,0,1,0,0,0,0,0,0,0,6,42,2024-09-26,DataSkrive,4,DataSkrive
+4733272,2024,reg,4,,13,,16,,,1,0,1,0,0,0,1,0,0,0,3,29,2024-09-26,Sportsnaut,6,Sportsnaut
+4733272,2024,reg,4,,17,,20,,,1,0,1,0,0,0,1,0,0,0,3,37,2024-09-26,VinnieIyer,7,VinnieIyer
+4733272,2024,reg,4,,18,,20,,,1,0,0,0,0,0,0,0,0,0,2,38,2024-09-26,Dimers,3,Dimers
+4733261,2024,reg,4,,27,,17,,,1,0,0,0,0,0,1,0,0,0,-10,44,2024-09-26,TerrySullivan,4,TerrySullivan
+4733261,2024,reg,4,,27,,19,,,1,0,0,0,0,0,0,0,0,0,-8,46,2024-09-26,PetePrisco,2,PetePrisco
+4733261,2024,reg,4,,31,,20,,,1,0,0,0,0,0,0,0,0,0,-11,51,2024-09-26,BleacherReport,2,BleacherReport
+4733261,2024,reg,4,,27,,17,,,1,0,0,0,0,0,1,0,0,0,-10,44,2024-09-26,BillBender,4,BillBender
+4733261,2024,reg,4,,23,,22,,,1,0,1,0,0,0,0,0,0,0,-1,45,2024-09-26,DataSkrive,4,DataSkrive
+4733261,2024,reg,4,,27,,13,,,1,0,0,0,0,0,1,0,0,0,-14,40,2024-09-26,Sportsnaut,4,Sportsnaut
+4733261,2024,reg,4,,23,,20,,,1,0,1,0,0,0,1,0,0,0,-3,43,2024-09-26,VinnieIyer,6,VinnieIyer
+4733261,2024,reg,4,,25,,20,,,1,0,1,0,0,0,0,0,0,0,-5,45,2024-09-26,Dimers,5,Dimers
+4733269,2024,reg,4,,16,,28,,,0,0,0,0,0,0,0,0,0,0,12,44,2024-09-26,TerrySullivan,0,TerrySullivan
+4733269,2024,reg,4,,17,,27,,,0,0,0,0,0,0,0,0,0,0,10,44,2024-09-26,PetePrisco,0,PetePrisco
+4733269,2024,reg,4,,15,,23,,,0,0,0,0,0,0,1,0,0,0,8,38,2024-09-26,BleacherReport,2,BleacherReport
+4733269,2024,reg,4,,17,,24,,,0,0,1,0,0,0,0,0,0,0,7,41,2024-09-26,BillBender,2,BillBender
+4733269,2024,reg,4,,19,,17,,,1,0,1,0,0,0,1,0,0,0,-2,36,2024-09-26,DataSkrive,6,DataSkrive
+4733269,2024,reg,4,,13,,17,,,0,0,1,0,0,0,1,0,0,0,4,30,2024-09-26,Sportsnaut,4,Sportsnaut
+4733269,2024,reg,4,,10,,27,,,0,0,0,0,0,0,1,0,0,0,17,37,2024-09-26,VinnieIyer,3,VinnieIyer
+4733269,2024,reg,4,,16,,24,,,0,0,0,0,0,0,0,0,0,0,8,40,2024-09-26,Dimers,0,Dimers
+4733264,2024,reg,4,,20,,28,,,1,0,0,0,0,0,0,0,0,0,8,48,2024-09-26,TerrySullivan,3,TerrySullivan
+4733264,2024,reg,4,,16,,30,,,1,0,0,0,0,0,0,0,0,0,14,46,2024-09-26,PetePrisco,2,PetePrisco
+4733264,2024,reg,4,,17,,30,,,1,0,0,0,0,0,0,0,0,0,13,47,2024-09-26,BleacherReport,2,BleacherReport
+4733264,2024,reg,4,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-09-26,BillBender,10,BillBender
+4733264,2024,reg,4,,17,,25,,,1,0,0,0,0,0,1,0,0,0,8,42,2024-09-26,DataSkrive,4,DataSkrive
+4733264,2024,reg,4,,17,,27,,,1,0,0,0,0,0,1,0,0,0,10,44,2024-09-26,Sportsnaut,5,Sportsnaut
+4733264,2024,reg,4,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-09-26,VinnieIyer,10,VinnieIyer
+4733264,2024,reg,4,,20,,26,,,1,0,0,0,0,0,0,0,0,0,6,46,2024-09-26,Dimers,3,Dimers
+4733273,2024,reg,4,,27,,17,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-09-26,TerrySullivan,2,TerrySullivan
+4733273,2024,reg,4,,23,,20,,,1,0,1,0,0,0,0,0,0,0,-3,43,2024-09-26,PetePrisco,4,PetePrisco
+4733273,2024,reg,4,,27,,17,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-09-26,BleacherReport,2,BleacherReport
+4733273,2024,reg,4,,24,,19,,,1,0,1,0,0,0,0,0,0,0,-5,43,2024-09-26,BillBender,4,BillBender
+4733273,2024,reg,4,,18,,20,,,0,0,1,0,0,0,1,0,0,0,2,38,2024-09-26,DataSkrive,4,DataSkrive
+4733273,2024,reg,4,,27,,21,,,1,0,1,0,0,0,0,0,0,0,-6,48,2024-09-26,Sportsnaut,4,Sportsnaut
+4733273,2024,reg,4,,23,,17,,,1,0,1,0,0,0,0,0,0,0,-6,40,2024-09-26,VinnieIyer,4,VinnieIyer
+4733273,2024,reg,4,,23,,17,,,1,0,1,0,0,0,0,0,0,0,-6,40,2024-09-26,Dimers,4,Dimers
+4733266,2024,reg,4,,23,,21,,,0,0,0,0,0,0,1,0,0,0,-2,44,2024-09-26,TerrySullivan,2,TerrySullivan
+4733266,2024,reg,4,,26,,20,,,0,0,0,0,0,0,1,0,0,0,-6,46,2024-09-26,PetePrisco,2,PetePrisco
+4733266,2024,reg,4,,17,,23,,,1,0,1,0,0,0,0,0,0,0,6,40,2024-09-26,BleacherReport,5,BleacherReport
+4733266,2024,reg,4,,20,,19,,,0,0,0,0,0,0,0,0,0,0,-1,39,2024-09-26,BillBender,0,BillBender
+4733266,2024,reg,4,,22,,21,,,0,0,0,0,0,0,1,0,0,0,-1,43,2024-09-26,DataSkrive,2,DataSkrive
+4733266,2024,reg,4,,20,,17,,,0,0,0,0,0,0,0,0,0,0,-3,37,2024-09-26,Sportsnaut,0,Sportsnaut
+4733266,2024,reg,4,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-09-26,VinnieIyer,7,VinnieIyer
+4733266,2024,reg,4,,19,,22,,,1,0,0,0,0,0,1,0,0,0,3,41,2024-09-26,Dimers,4,Dimers
+4733263,2024,reg,4,,20,,23,,,0,0,0,0,0,0,0,0,0,0,3,43,2024-09-26,TerrySullivan,0,TerrySullivan
+4733263,2024,reg,4,,17,,21,,,0,0,0,0,0,0,0,0,0,0,4,38,2024-09-26,PetePrisco,0,PetePrisco
+4733263,2024,reg,4,,24,,23,,,1,0,1,0,0,0,1,0,0,0,-1,47,2024-09-26,BleacherReport,6,BleacherReport
+4733263,2024,reg,4,,26,,28,,,0,0,1,0,0,0,1,0,0,0,2,54,2024-09-26,BillBender,4,BillBender
+4733263,2024,reg,4,,20,,21,,,0,0,1,0,0,0,0,0,0,0,1,41,2024-09-26,DataSkrive,2,DataSkrive
+4733263,2024,reg,4,,27,,24,,,1,0,1,0,0,0,1,0,0,0,-3,51,2024-09-26,Sportsnaut,6,Sportsnaut
+4733263,2024,reg,4,,17,,22,,,0,0,0,0,0,0,0,0,0,0,5,39,2024-09-26,VinnieIyer,0,VinnieIyer
+4733263,2024,reg,4,,21,,23,,,0,0,1,0,0,0,1,0,0,0,2,44,2024-09-26,Dimers,4,Dimers
+4733271,2024,reg,4,,16,,27,,,1,0,1,0,0,0,1,0,0,0,11,43,2024-09-26,TerrySullivan,7,TerrySullivan
+4733271,2024,reg,4,,7,,24,,,1,0,1,0,0,0,0,0,0,0,17,31,2024-09-26,PetePrisco,5,PetePrisco
+4733271,2024,reg,4,,16,,24,,,1,0,0,0,0,0,0,0,0,0,8,40,2024-09-26,BleacherReport,2,BleacherReport
+4733271,2024,reg,4,,17,,31,,,1,0,1,0,0,0,1,0,0,0,14,48,2024-09-26,BillBender,6,BillBender
+4733271,2024,reg,4,,15,,25,,,1,0,0,0,0,0,0,0,0,0,10,40,2024-09-26,DataSkrive,2,DataSkrive
+4733271,2024,reg,4,,6,,20,,,1,0,1,0,0,0,0,0,0,0,14,26,2024-09-26,Sportsnaut,4,Sportsnaut
+4733271,2024,reg,4,,10,,24,,,1,0,1,0,0,0,0,0,0,0,14,34,2024-09-26,VinnieIyer,4,VinnieIyer
+4733271,2024,reg,4,,15,,25,,,1,0,0,0,0,0,0,0,0,0,10,40,2024-09-26,Dimers,2,Dimers
+4733265,2024,reg,4,,23,,27,,,1,0,0,0,0,0,1,0,0,0,4,50,2024-09-26,TerrySullivan,5,TerrySullivan
+4733265,2024,reg,4,,20,,17,,,0,0,1,0,0,0,0,0,0,0,-3,37,2024-09-26,PetePrisco,2,PetePrisco
+4733265,2024,reg,4,,23,,20,,,0,0,1,0,0,0,1,0,0,0,-3,43,2024-09-26,BleacherReport,4,BleacherReport
+4733265,2024,reg,4,,21,,24,,,1,0,0,0,0,0,1,0,0,0,3,45,2024-09-26,BillBender,4,BillBender
+4733265,2024,reg,4,,22,,21,,,0,0,1,0,0,0,1,0,0,0,-1,43,2024-09-26,DataSkrive,4,DataSkrive
+4733265,2024,reg,4,,24,,27,,,1,0,0,0,0,0,1,0,0,0,3,51,2024-09-26,Sportsnaut,5,Sportsnaut
+4733265,2024,reg,4,,20,,27,,,1,0,0,0,0,0,1,0,0,0,7,47,2024-09-26,VinnieIyer,4,VinnieIyer
+4733265,2024,reg,4,,20,,22,,,1,0,1,0,0,0,1,0,0,0,2,42,2024-09-26,Dimers,7,Dimers
+4733267,2024,reg,4,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-26,TerrySullivan,6,TerrySullivan
+4733267,2024,reg,4,,23,,19,,,0,0,0,0,0,0,0,0,0,0,-4,42,2024-09-26,PetePrisco,0,PetePrisco
+4733267,2024,reg,4,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-09-26,BleacherReport,6,BleacherReport
+4733267,2024,reg,4,,31,,28,,,0,0,0,0,0,0,1,0,0,0,-3,59,2024-09-26,BillBender,2,BillBender
+4733267,2024,reg,4,,20,,23,,,1,0,1,0,0,0,0,0,0,0,3,43,2024-09-26,DataSkrive,4,DataSkrive
+4733267,2024,reg,4,,31,,21,,,0,0,0,0,0,0,1,0,0,0,-10,52,2024-09-26,Sportsnaut,2,Sportsnaut
+4733267,2024,reg,4,,24,,20,,,0,0,0,0,0,0,1,0,0,0,-4,44,2024-09-26,VinnieIyer,2,VinnieIyer
+4733267,2024,reg,4,,22,,20,,,0,0,1,0,0,0,0,0,0,0,-2,42,2024-09-26,Dimers,2,Dimers
+4733262,2024,reg,4,,23,,19,,,0,0,0,0,0,0,1,0,0,0,-4,42,2024-09-26,TerrySullivan,2,TerrySullivan
+4733262,2024,reg,4,,20,,16,,,0,0,0,0,0,0,0,0,0,0,-4,36,2024-09-26,PetePrisco,0,PetePrisco
+4733262,2024,reg,4,,20,,17,,,0,0,0,0,0,0,0,0,0,0,-3,37,2024-09-26,BleacherReport,0,BleacherReport
+4733262,2024,reg,4,,21,,17,,,0,0,0,0,0,0,0,0,0,0,-4,38,2024-09-26,BillBender,0,BillBender
+4733262,2024,reg,4,,19,,14,,,0,0,0,0,0,0,0,0,0,0,-5,33,2024-09-26,DataSkrive,0,DataSkrive
+4733262,2024,reg,4,,16,,10,,,0,0,0,0,0,0,0,0,0,0,-6,26,2024-09-26,Sportsnaut,0,Sportsnaut
+4733262,2024,reg,4,,23,,13,,,0,0,0,0,0,0,0,0,0,0,-10,36,2024-09-26,VinnieIyer,0,VinnieIyer
+4733262,2024,reg,4,,20,,19,,,0,0,1,0,0,0,0,0,0,0,-1,39,2024-09-26,Dimers,2,Dimers
+4733276,2024,reg,4,,21,,27,,,1,0,1,0,0,0,1,0,0,0,6,48,2024-09-26,TerrySullivan,6,TerrySullivan
+4733276,2024,reg,4,,20,,27,,,1,0,1,0,0,0,1,0,0,0,7,47,2024-09-26,PetePrisco,6,PetePrisco
+4733276,2024,reg,4,,21,,30,,,1,0,1,0,0,0,1,0,0,0,9,51,2024-09-26,BleacherReport,6,BleacherReport
+4733276,2024,reg,4,,21,,28,,,1,0,1,0,0,0,1,0,0,0,7,49,2024-09-26,BillBender,6,BillBender
+4733276,2024,reg,4,,18,,21,,,1,0,0,0,0,0,0,0,0,0,3,39,2024-09-26,DataSkrive,2,DataSkrive
+4733276,2024,reg,4,,21,,24,,,1,0,0,0,0,0,0,0,0,0,3,45,2024-09-26,Sportsnaut,2,Sportsnaut
+4733276,2024,reg,4,,27,,31,,,1,0,1,0,0,0,1,0,0,0,4,58,2024-09-26,VinnieIyer,6,VinnieIyer
+4733275,2024,reg,4,,14,,17,,,0,0,0,0,0,0,0,0,0,0,3,31,2024-09-26,TerrySullivan,0,TerrySullivan
+4733275,2024,reg,4,,25,,21,,,1,0,1,0,0,0,1,0,0,0,-4,46,2024-09-26,PetePrisco,6,PetePrisco
+4733275,2024,reg,4,,17,,20,,,0,0,0,0,0,0,1,0,0,0,3,37,2024-09-26,BleacherReport,2,BleacherReport
+4733275,2024,reg,4,,20,,23,,,0,0,0,0,0,0,1,0,0,0,3,43,2024-09-26,BillBender,3,BillBender
+4733275,2024,reg,4,,17,,22,,,0,0,0,0,0,0,1,0,0,0,5,39,2024-09-26,DataSkrive,2,DataSkrive
+4733275,2024,reg,4,,10,,13,,,0,0,0,0,0,0,0,0,0,0,3,23,2024-09-26,Sportsnaut,0,Sportsnaut
+4733275,2024,reg,4,,17,,24,,,0,0,0,0,0,0,1,0,0,0,7,41,2024-09-26,VinnieIyer,2,VinnieIyer
+4733275,2024,reg,4,,18,,19,,,0,0,0,0,0,0,1,0,0,0,1,37,2024-09-26,Dimers,2,Dimers
+4733270,2024,reg,4,,24,,27,,,0,0,1,0,0,0,1,0,0,0,3,51,2024-09-26,TerrySullivan,4,TerrySullivan
+4733270,2024,reg,4,,27,,33,,,0,0,0,0,0,0,1,0,0,0,6,60,2024-09-26,PetePrisco,2,PetePrisco
+4733270,2024,reg,4,,34,,31,,,1,0,1,0,0,0,1,0,0,0,-3,65,2024-09-26,BleacherReport,6,BleacherReport
+4733270,2024,reg,4,,25,,27,,,0,0,1,0,0,0,1,0,0,0,2,52,2024-09-26,BillBender,4,BillBender
+4733270,2024,reg,4,,22,,30,,,0,0,0,0,0,0,1,0,0,0,8,52,2024-09-26,DataSkrive,2,DataSkrive
+4733270,2024,reg,4,,21,,31,,,0,0,0,0,0,0,1,0,0,0,10,52,2024-09-26,Sportsnaut,2,Sportsnaut
+4733270,2024,reg,4,,27,,24,,,1,0,1,0,0,0,1,0,0,0,-3,51,2024-09-26,VinnieIyer,6,VinnieIyer
+4733270,2024,reg,4,,24,,27,,,0,0,1,0,0,0,1,0,0,0,3,51,2024-09-26,Dimers,4,Dimers
+4733261,2024,reg,4,Dallas Cowboys,17,N.Y. Giants Giants,23,0,0,0,0,1,0,0,0,1,0,0,0,-6,40,2024-09-26T19:30:32.522Z,bodysurfoceanside,4,bodysurfoceanside
+4733261,2024,reg,4,Dallas Cowboys,17,N.Y. Giants Giants,23,0,0,,,,,,,,,,,-6,40,2024-09-26T19:30:33.548Z,bodysurfoceanside,,bodysurfoceanside
+4733261,2024,reg,4,Dallas Cowboys,24,N.Y. Giants Giants,21,0,0,1,0,1,0,0,0,0,0,0,0,3,45,2024-09-26T22:50:55.859Z,rosstuckerNFL,4,rosstuckerNFL
+4733274,2024,reg,4,,26,,23,,,0,0,0,0,0,0,0,0,0,0,-3,49,2024-09-26,MarcusMosher,0,MarcusMosher
+4733274,2024,reg,4,,27,,21,,,0,0,0,0,0,0,0,0,0,0,-6,48,2024-09-26,LorenzoReyes,0,LorenzoReyes
+4733274,2024,reg,4,,22,,26,,,1,0,1,0,0,0,0,0,0,0,4,48,2024-09-26,TylerDragon,4,TylerDragon
+4733274,2024,reg,4,,22,,18,,,0,0,0,0,0,0,1,0,0,0,-4,40,2024-09-26,RichardMorin,2,RichardMorin
+4733274,2024,reg,4,,28,,29,,,1,0,0,0,0,0,0,0,0,0,1,57,2024-09-26,JordanMendoza,2,JordanMendoza
+4733268,2024,reg,4,,26,,23,,,1,0,0,0,0,0,1,0,0,0,-3,49,2024-09-26,MarcusMosher,4,MarcusMosher
+4733268,2024,reg,4,,23,,21,,,1,0,0,0,0,0,0,0,0,0,-2,44,2024-09-26,LorenzoReyes,2,LorenzoReyes
+4733268,2024,reg,4,,28,,20,,,1,0,1,0,0,0,1,0,0,0,-8,48,2024-09-26,TylerDragon,6,TylerDragon
+4733268,2024,reg,4,,23,,14,,,1,0,1,0,0,0,0,0,0,0,-9,37,2024-09-26,RichardMorin,4,RichardMorin
+4733268,2024,reg,4,,25,,23,,,1,0,0,0,0,0,1,0,0,0,-2,48,2024-09-26,JordanMendoza,4,JordanMendoza
+4733272,2024,reg,4,,13,,17,,,1,0,1,0,0,0,1,0,0,0,4,30,2024-09-26,MarcusMosher,7,MarcusMosher
+4733272,2024,reg,4,,14,,18,,,1,0,1,0,0,0,1,0,0,0,4,32,2024-09-26,LorenzoReyes,7,LorenzoReyes
+4733272,2024,reg,4,,22,,20,,,0,0,0,0,0,0,0,0,0,0,-2,42,2024-09-26,TylerDragon,1,TylerDragon
+4733272,2024,reg,4,,26,,20,,,0,0,0,0,0,0,0,0,0,0,-6,46,2024-09-26,RichardMorin,1,RichardMorin
+4733272,2024,reg,4,,24,,20,,,0,0,0,0,0,0,0,0,0,0,-4,44,2024-09-26,JordanMendoza,1,JordanMendoza
+4733261,2024,reg,4,,23,,20,,,1,0,1,0,0,0,1,0,0,0,-3,43,2024-09-26,MarcusMosher,6,MarcusMosher
+4733261,2024,reg,4,,21,,20,,,1,0,1,0,0,0,1,0,0,0,-1,41,2024-09-26,LorenzoReyes,6,LorenzoReyes
+4733261,2024,reg,4,,26,,17,,,1,0,0,0,0,0,1,0,0,0,-9,43,2024-09-26,TylerDragon,4,TylerDragon
+4733261,2024,reg,4,,35,,12,,,1,0,0,0,0,0,0,0,0,0,-23,47,2024-09-26,RichardMorin,2,RichardMorin
+4733261,2024,reg,4,,20,,16,,,1,0,1,0,0,0,1,0,0,0,-4,36,2024-09-26,JordanMendoza,7,JordanMendoza
+4733269,2024,reg,4,,13,,21,,,0,0,0,0,0,0,1,0,0,0,8,34,2024-09-26,MarcusMosher,2,MarcusMosher
+4733269,2024,reg,4,,20,,25,,,0,0,1,0,0,0,0,0,0,0,5,45,2024-09-26,LorenzoReyes,2,LorenzoReyes
+4733269,2024,reg,4,,14,,24,,,0,0,0,0,0,0,1,0,0,0,10,38,2024-09-26,TylerDragon,2,TylerDragon
+4733269,2024,reg,4,,22,,20,,,1,0,1,0,0,0,0,0,0,0,-2,42,2024-09-26,RichardMorin,4,RichardMorin
+4733269,2024,reg,4,,10,,21,,,0,0,0,0,0,0,1,0,0,0,11,31,2024-09-26,JordanMendoza,3,JordanMendoza
+4733264,2024,reg,4,,21,,26,,,1,0,1,0,0,0,0,0,0,0,5,47,2024-09-26,MarcusMosher,4,MarcusMosher
+4733264,2024,reg,4,,13,,27,,,1,0,0,0,0,0,1,0,0,0,14,40,2024-09-26,LorenzoReyes,4,LorenzoReyes
+4733264,2024,reg,4,,20,,28,,,1,0,0,0,0,0,0,0,0,0,8,48,2024-09-26,TylerDragon,3,TylerDragon
+4733264,2024,reg,4,,7,,35,,,1,0,0,0,0,0,1,0,0,0,28,42,2024-09-26,RichardMorin,4,RichardMorin
+4733264,2024,reg,4,,20,,23,,,1,0,1,0,0,0,1,0,0,0,3,43,2024-09-26,JordanMendoza,7,JordanMendoza
+4733273,2024,reg,4,,24,,13,,,1,0,0,0,0,0,1,0,0,0,-11,37,2024-09-26,MarcusMosher,4,MarcusMosher
+4733273,2024,reg,4,,23,,13,,,1,0,0,0,0,0,1,0,0,0,-10,36,2024-09-26,LorenzoReyes,4,LorenzoReyes
+4733273,2024,reg,4,,27,,17,,,1,0,0,0,0,0,0,0,0,0,-10,44,2024-09-26,TylerDragon,2,TylerDragon
+4733273,2024,reg,4,,27,,20,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-09-26,RichardMorin,5,RichardMorin
+4733273,2024,reg,4,,20,,10,,,1,0,0,0,0,0,1,0,0,0,-10,30,2024-09-26,JordanMendoza,5,JordanMendoza
+4733266,2024,reg,4,,17,,23,,,1,0,1,0,0,0,0,0,0,0,6,40,2024-09-26,MarcusMosher,5,MarcusMosher
+4733266,2024,reg,4,,19,,17,,,0,0,0,0,0,0,0,0,0,0,-2,36,2024-09-26,LorenzoReyes,0,LorenzoReyes
+4733266,2024,reg,4,,21,,17,,,0,0,0,0,0,0,0,0,0,0,-4,38,2024-09-26,TylerDragon,0,TylerDragon
+4733266,2024,reg,4,,16,,22,,,1,0,1,0,0,0,0,0,0,0,6,38,2024-09-26,RichardMorin,5,RichardMorin
+4733266,2024,reg,4,,19,,17,,,0,0,0,0,0,0,0,0,0,0,-2,36,2024-09-26,JordanMendoza,0,JordanMendoza
+4733263,2024,reg,4,,20,,24,,,0,0,0,0,0,0,1,0,0,0,4,44,2024-09-26,MarcusMosher,2,MarcusMosher
+4733263,2024,reg,4,,21,,26,,,0,0,0,0,0,0,1,0,0,0,5,47,2024-09-26,LorenzoReyes,2,LorenzoReyes
+4733263,2024,reg,4,,23,,24,,,0,0,1,0,0,0,1,0,0,0,1,47,2024-09-26,TylerDragon,4,TylerDragon
+4733263,2024,reg,4,,20,,24,,,0,0,0,0,0,0,1,0,0,0,4,44,2024-09-26,RichardMorin,2,RichardMorin
+4733263,2024,reg,4,,23,,20,,,1,0,1,0,0,0,0,0,0,0,-3,43,2024-09-26,JordanMendoza,4,JordanMendoza
+4733271,2024,reg,4,,10,,31,,,1,0,1,0,0,0,0,0,0,0,21,41,2024-09-26,MarcusMosher,4,MarcusMosher
+4733271,2024,reg,4,,17,,23,,,1,0,0,0,0,0,0,0,0,0,6,40,2024-09-26,LorenzoReyes,2,LorenzoReyes
+4733271,2024,reg,4,,17,,26,,,1,0,0,0,0,0,1,0,0,0,9,43,2024-09-26,TylerDragon,5,TylerDragon
+4733271,2024,reg,4,,21,,31,,,1,0,0,0,0,0,1,0,0,0,10,52,2024-09-26,RichardMorin,4,RichardMorin
+4733271,2024,reg,4,,9,,23,,,1,0,1,0,0,0,0,0,0,0,14,32,2024-09-26,JordanMendoza,4,JordanMendoza
+4733265,2024,reg,4,,18,,15,,,0,0,1,0,0,0,0,0,0,0,-3,33,2024-09-26,MarcusMosher,2,MarcusMosher
+4733265,2024,reg,4,,24,,20,,,0,0,1,0,0,0,1,0,0,0,-4,44,2024-09-26,LorenzoReyes,5,LorenzoReyes
+4733265,2024,reg,4,,21,,25,,,1,0,0,0,0,0,1,0,0,0,4,46,2024-09-26,TylerDragon,4,TylerDragon
+4733265,2024,reg,4,,27,,26,,,0,0,1,0,0,0,1,0,0,0,-1,53,2024-09-26,RichardMorin,5,RichardMorin
+4733265,2024,reg,4,,17,,16,,,0,0,1,0,0,0,0,0,0,0,-1,33,2024-09-26,JordanMendoza,2,JordanMendoza
+4733267,2024,reg,4,,24,,20,,,0,0,0,0,0,0,1,0,0,0,-4,44,2024-09-26,MarcusMosher,2,MarcusMosher
+4733267,2024,reg,4,,20,,16,,,0,0,0,0,0,0,0,0,0,0,-4,36,2024-09-26,LorenzoReyes,0,LorenzoReyes
+4733267,2024,reg,4,,26,,20,,,0,0,0,0,0,0,1,0,0,0,-6,46,2024-09-26,TylerDragon,2,TylerDragon
+4733267,2024,reg,4,,23,,28,,,1,0,1,0,0,0,1,0,0,0,5,51,2024-09-26,RichardMorin,6,RichardMorin
+4733267,2024,reg,4,,24,,26,,,1,0,1,0,0,0,1,0,0,0,2,50,2024-09-26,JordanMendoza,6,JordanMendoza
+4733262,2024,reg,4,,23,,13,,,0,0,0,0,0,0,0,0,0,0,-10,36,2024-09-26,MarcusMosher,0,MarcusMosher
+4733262,2024,reg,4,,17,,13,,,0,0,0,0,0,0,0,0,0,0,-4,30,2024-09-26,LorenzoReyes,0,LorenzoReyes
+4733262,2024,reg,4,,20,,16,,,0,0,0,0,0,0,0,0,0,0,-4,36,2024-09-26,TylerDragon,0,TylerDragon
+4733262,2024,reg,4,,18,,15,,,0,0,0,0,0,0,0,0,0,0,-3,33,2024-09-26,RichardMorin,0,RichardMorin
+4733262,2024,reg,4,,19,,13,,,0,0,0,0,0,0,0,0,0,0,-6,32,2024-09-26,JordanMendoza,0,JordanMendoza
+4733276,2024,reg,4,,27,,24,,,0,0,0,0,0,0,1,0,0,0,-3,51,2024-09-26,MarcusMosher,2,MarcusMosher
+4733276,2024,reg,4,,17,,23,,,1,0,1,0,0,0,0,0,0,0,6,40,2024-09-26,LorenzoReyes,4,LorenzoReyes
+4733276,2024,reg,4,,20,,21,,,1,0,0,0,0,0,0,0,0,0,1,41,2024-09-26,TylerDragon,2,TylerDragon
+4733276,2024,reg,4,,21,,28,,,1,0,1,0,0,0,1,0,0,0,7,49,2024-09-26,RichardMorin,6,RichardMorin
+4733276,2024,reg,4,,20,,23,,,1,0,0,0,0,0,0,0,0,0,3,43,2024-09-26,JordanMendoza,2,JordanMendoza
+4733275,2024,reg,4,,18,,13,,,1,0,1,0,0,0,0,0,0,0,-5,31,2024-09-26,MarcusMosher,4,MarcusMosher
+4733275,2024,reg,4,,13,,17,,,0,0,0,0,0,0,0,0,0,0,4,30,2024-09-26,LorenzoReyes,0,LorenzoReyes
+4733275,2024,reg,4,,17,,20,,,0,0,0,0,0,0,1,0,0,0,3,37,2024-09-26,TylerDragon,2,TylerDragon
+4733275,2024,reg,4,,25,,21,,,1,0,1,0,0,0,1,0,0,0,-4,46,2024-09-26,RichardMorin,6,RichardMorin
+4733275,2024,reg,4,,13,,16,,,0,0,0,0,0,0,0,0,0,0,3,29,2024-09-26,JordanMendoza,0,JordanMendoza
+4733270,2024,reg,4,,27,,23,,,1,0,1,0,0,0,0,0,0,0,-4,50,2024-09-26,MarcusMosher,4,MarcusMosher
+4733270,2024,reg,4,,24,,23,,,1,0,1,0,0,0,0,0,0,0,-1,47,2024-09-26,TylerDragon,4,TylerDragon
+4733270,2024,reg,4,,25,,18,,,1,0,1,0,0,0,0,0,0,0,-7,43,2024-09-26,RichardMorin,4,RichardMorin
+4733270,2024,reg,4,,30,,34,,,0,0,0,0,0,0,1,0,0,0,4,64,2024-09-26,JordanMendoza,2,JordanMendoza
+4733261,2024,reg,4,Dallas Cowboys,22,N.Y. Giants Giants,20,0,0,1,0,1,0,0,0,1,0,0,0,2,42,2024-09-27T00:07:54.255Z,Facebook_10208710241577136,6,PaulCullin
+4733265,2024,reg,4,New Orleans Saints,17,Atlanta Falcons,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2024-09-27T16:49:59.172Z,rosstuckerNFL,2,rosstuckerNFL
+4733263,2024,reg,4,Minnesota Vikings,24,Green Bay Packers,23,0,0,1,0,1,0,0,0,1,0,0,0,1,47,2024-09-27T16:55:13.387Z,rosstuckerNFL,6,rosstuckerNFL
+4733264,2024,reg,4,Jacksonville Jaguars,17,Houston Texans,27,0,0,1,0,0,0,0,0,1,0,0,0,-10,44,2024-09-27T16:55:45.879Z,rosstuckerNFL,5,rosstuckerNFL
+4733262,2024,reg,4,Pittsburgh Steelers,16,Indianapolis Colts,13,0,0,0,0,0,0,0,0,0,0,0,0,3,29,2024-09-27T16:58:00.747Z,rosstuckerNFL,0,rosstuckerNFL
+4733269,2024,reg,4,Denver Broncos,13,N.Y. Jets Jets,20,0,0,0,0,1,0,0,0,1,0,0,0,-7,33,2024-09-27T16:58:48.197Z,rosstuckerNFL,4,rosstuckerNFL
+4733267,2024,reg,4,Philadelphia Eagles,17,Tampa Bay Buccaneers,20,0,0,1,0,1,0,0,0,0,0,0,0,-3,37,2024-09-27T16:59:34.089Z,rosstuckerNFL,4,rosstuckerNFL
+4733273,2024,reg,4,Kansas City Chiefs,23,L.A. Chargers Chargers,16,0,0,1,0,1,0,0,0,1,0,0,0,7,39,2024-09-27T17:20:00.416Z,rosstuckerNFL,7,rosstuckerNFL
+4733272,2024,reg,4,Cleveland Browns,17,Las Vegas Raiders,16,0,0,0,0,0,0,0,0,1,0,0,0,1,33,2024-09-27T17:21:02.114Z,rosstuckerNFL,2,rosstuckerNFL
+4733274,2024,reg,4,Buffalo Bills,23,Baltimore Ravens,24,0,0,1,0,0,0,0,0,0,0,0,0,-1,47,2024-09-27T17:21:32.323Z,rosstuckerNFL,2,rosstuckerNFL
+4733275,2024,reg,4,Tennessee Titans,20,Miami Dolphins,17,0,0,1,0,1,0,0,0,1,0,0,0,3,37,2024-09-27T17:22:23.693Z,rosstuckerNFL,6,rosstuckerNFL
+4733265,2024,reg,4,New Orleans Saints,21,Atlanta Falcons,23,0,0,1,0,1,0,0,0,1,0,0,0,-2,44,2024-09-29T09:50:24.187Z,ausame,7,ausame
+4733268,2024,reg,4,Cincinnati Bengals,24,Carolina Panthers,21,3,0,1,0,0,0,3,-3,0,0,0,0,3,45,2024-09-29T09:57:03.953Z,ausame,2,ausame
+4733266,2024,reg,4,L.A. Rams Rams,23,Chicago Bears,17,3,0,0,0,0,0,3,-3,0,0,0,0,6,40,2024-09-29T09:58:11.633Z,ausame,0,ausame
+4733263,2024,reg,4,Minnesota Vikings,21,Green Bay Packers,20,3,0,1,0,1,0,3,3,0,0,0,0,1,41,2024-09-29T09:59:32.735Z,ausame,4,ausame
+4733264,2024,reg,4,Jacksonville Jaguars,13,Houston Texans,27,0,0,1,0,0,0,0,0,1,0,0,0,-14,40,2024-09-29T10:05:04.710Z,ausame,4,ausame
+4733262,2024,reg,4,Pittsburgh Steelers,17,Indianapolis Colts,14,0,0,0,0,0,0,0,0,0,0,0,0,3,31,2024-09-29T10:05:59.162Z,ausame,0,ausame
+4733269,2024,reg,4,Denver Broncos,17,N.Y. Jets Jets,23,3,3,0,0,1,0,3,3,0,0,3,-3,-6,40,2024-09-29T10:07:26.973Z,ausame,2,ausame
+4733267,2024,reg,4,Philadelphia Eagles,21,Tampa Bay Buccaneers,19,0,0,0,0,0,0,0,0,0,0,0,0,2,40,2024-09-29T10:09:23.895Z,ausame,0,ausame
+4733270,2024,reg,4,Washington Commanders,24,Arizona Cardinals,27,0,0,0,0,1,0,0,0,1,0,0,0,-3,51,2024-09-29T10:10:21.077Z,ausame,4,ausame
+4733271,2024,reg,4,New England Patriots,13,San Francisco 49ers,24,0,0,1,0,1,0,0,0,0,0,0,0,-11,37,2024-09-29T10:10:46.108Z,ausame,5,ausame
+4733273,2024,reg,4,Kansas City Chiefs,24,L.A. Chargers Chargers,21,3,0,1,0,1,0,3,3,0,0,0,0,3,45,2024-09-29T10:11:16.737Z,ausame,4,ausame
+4733272,2024,reg,4,Cleveland Browns,17,Las Vegas Raiders,21,3,0,1,0,1,0,3,3,0,0,0,0,-4,38,2024-09-29T10:12:27.985Z,ausame,5,ausame
+4733274,2024,reg,4,Buffalo Bills,23,Baltimore Ravens,24,3,0,1,0,0,0,3,-3,0,0,0,0,-1,47,2024-09-29T10:13:23.910Z,ausame,2,ausame
+4733275,2024,reg,4,Tennessee Titans,17,Miami Dolphins,14,0,3,1,0,1,0,0,0,0,0,3,-3,3,31,2024-09-29T10:14:40.440Z,ausame,4,ausame
+4733276,2024,reg,4,Seattle Seahawks,20,Detroit Lions,24,3,3,1,0,1,0,3,3,0,0,3,-3,-4,44,2024-09-29T10:31:46.029Z,ausame,4,ausame
+4733267,2024,reg,4,Philadelphia Eagles,23,Tampa Bay Buccaneers,20,0,0,0,0,0,0,0,0,1,0,0,0,3,43,2024-09-29T16:28:57.003Z,Facebook_10208710241577136,2,PaulCullin
+4733262,2024,reg,4,Pittsburgh Steelers,24,Indianapolis Colts,17,0,0,0,0,0,0,0,0,1,0,0,0,7,41,2024-09-29T16:29:52.403Z,Google_113508854981481930771,3,JessieHarris
+4733266,2024,reg,4,L.A. Rams Rams,24,Chicago Bears,17,0,0,0,0,0,0,0,0,1,0,0,0,7,41,2024-09-29T16:30:04.613Z,Facebook_10208710241577136,2,PaulCullin
+4733263,2024,reg,4,Minnesota Vikings,29,Green Bay Packers,25,0,0,1,0,1,0,0,0,1,0,0,0,4,54,2024-09-29T16:30:05.838Z,Google_113508854981481930771,6,JessieHarris
+4733264,2024,reg,4,Jacksonville Jaguars,20,Houston Texans,32,0,0,1,0,0,0,0,0,0,0,0,0,-12,52,2024-09-29T16:30:17.557Z,Google_113508854981481930771,3,JessieHarris
+4733265,2024,reg,4,New Orleans Saints,28,Atlanta Falcons,31,0,0,1,0,0,0,0,0,1,0,0,0,-3,59,2024-09-29T16:30:28.621Z,Google_113508854981481930771,4,JessieHarris
+4733263,2024,reg,4,Minnesota Vikings,20,Green Bay Packers,22,0,0,0,0,1,0,0,0,0,0,0,0,-2,42,2024-09-29T16:30:33.539Z,Facebook_10208710241577136,2,PaulCullin
+4733266,2024,reg,4,L.A. Rams Rams,27,Chicago Bears,22,0,0,0,0,0,0,0,0,1,0,0,0,5,49,2024-09-29T16:30:50.577Z,Google_113508854981481930771,2,JessieHarris
+4733264,2024,reg,4,Jacksonville Jaguars,17,Houston Texans,26,0,0,1,0,0,0,0,0,1,0,0,0,-9,43,2024-09-29T16:30:55.606Z,Facebook_10208710241577136,4,PaulCullin
+4733267,2024,reg,4,Philadelphia Eagles,35,Tampa Bay Buccaneers,30,0,0,0,0,0,0,0,0,1,0,0,0,5,65,2024-09-29T16:31:00.618Z,Google_113508854981481930771,2,JessieHarris
+4733268,2024,reg,4,Cincinnati Bengals,20,Carolina Panthers,17,0,0,1,0,0,0,0,0,0,0,0,0,3,37,2024-09-29T16:31:09.412Z,Google_113508854981481930771,2,JessieHarris
+4733269,2024,reg,4,Denver Broncos,14,N.Y. Jets Jets,35,0,0,0,0,0,0,0,0,0,0,0,0,-21,49,2024-09-29T16:31:17.025Z,Google_113508854981481930771,0,JessieHarris
+4733270,2024,reg,4,Washington Commanders,33,Arizona Cardinals,37,0,0,0,0,0,0,0,0,1,0,0,0,-4,70,2024-09-29T16:31:28.776Z,Google_113508854981481930771,2,JessieHarris
+4733271,2024,reg,4,New England Patriots,20,San Francisco 49ers,20,0,0,0,0,0,0,0,0,0,0,0,0,0,40,2024-09-29T16:31:36.262Z,Google_113508854981481930771,0,JessieHarris
+4733272,2024,reg,4,Cleveland Browns,28,Las Vegas Raiders,24,0,0,0,0,0,0,0,0,0,0,0,0,4,52,2024-09-29T16:31:46.276Z,Google_113508854981481930771,0,JessieHarris
+4733273,2024,reg,4,Kansas City Chiefs,30,L.A. Chargers Chargers,27,0,0,1,0,1,0,0,0,0,0,0,0,3,57,2024-09-29T16:31:54.344Z,Google_113508854981481930771,4,JessieHarris
+4733274,2024,reg,4,Buffalo Bills,35,Baltimore Ravens,42,0,0,1,0,1,0,0,0,0,0,0,0,-7,77,2024-09-29T16:32:00.835Z,Google_113508854981481930771,4,JessieHarris
+4733275,2024,reg,4,Tennessee Titans,20,Miami Dolphins,17,0,0,1,0,1,0,0,0,0,0,0,0,3,37,2024-09-29T16:32:06.395Z,Google_113508854981481930771,4,JessieHarris
+4733276,2024,reg,4,Seattle Seahawks,24,Detroit Lions,35,0,0,1,0,1,0,0,0,1,0,0,0,-11,59,2024-09-29T16:32:13.848Z,Google_113508854981481930771,6,JessieHarris
+4733270,2024,reg,4,Washington Commanders,17,Arizona Cardinals,20,0,0,0,0,1,0,0,0,0,0,0,0,-3,37,2024-09-29T17:13:57.778Z,Facebook_10208710241577136,2,PaulCullin
+4733271,2024,reg,4,New England Patriots,10,San Francisco 49ers,24,0,0,1,0,1,0,0,0,0,0,0,0,-14,34,2024-09-29T17:14:21.279Z,Facebook_10208710241577136,4,PaulCullin
+4733273,2024,reg,4,Kansas City Chiefs,27,L.A. Chargers Chargers,20,0,0,1,0,1,0,0,0,0,0,0,0,7,47,2024-09-29T17:14:53.358Z,Facebook_10208710241577136,5,PaulCullin
+4733272,2024,reg,4,Cleveland Browns,13,Las Vegas Raiders,26,0,0,1,0,1,0,0,0,0,0,0,0,-13,39,2024-09-29T18:07:27.391Z,Facebook_10208710241577136,4,PaulCullin
+4733274,2024,reg,4,Buffalo Bills,27,Baltimore Ravens,22,0,0,0,0,0,0,0,0,0,0,0,0,5,49,2024-09-29T18:08:59.449Z,Facebook_10208710241577136,0,PaulCullin
+4733275,2024,reg,4,Tennessee Titans,19,Miami Dolphins,13,0,0,1,0,1,0,0,0,0,0,0,0,6,32,2024-09-29T18:10:15.877Z,Facebook_10208710241577136,4,PaulCullin
+4733276,2024,reg,4,Seattle Seahawks,29,Detroit Lions,31,0,0,1,0,0,0,0,0,1,0,0,0,-2,60,2024-09-29T23:10:37.613Z,Facebook_10208710241577136,5,PaulCullin
+4733277,2024,reg,5,Tampa Bay Buccaneers,31,Atlanta Falcons,24,0,0,0,0,0,0,0,0,1,0,0,0,7,55,2024-10-01T17:16:19.867Z,cmaronchick,2,cmaronchick
+4733198,2024,reg,5,N.Y. Jets Jets,17,Minnesota Vikings,27,0,0,1,0,1,0,0,0,0,1,0,0,-10,44,2024-10-04T23:14:21.994Z,cmaronchick,5,cmaronchick
+4733279,2024,reg,5,Baltimore Ravens,27,Cincinnati Bengals,23,0,0,1,0,1,0,0,0,0,0,0,0,4,50,2024-10-01T17:18:12.865Z,cmaronchick,4,cmaronchick
+4733281,2024,reg,5,Indianapolis Colts,20,Jacksonville Jaguars,23,0,0,1,0,0,1,0,0,0,0,0,0,-3,43,2024-10-01T17:18:31.002Z,cmaronchick,3,cmaronchick
+4733280,2024,reg,5,Buffalo Bills,31,Houston Texans,28,0,0,0,0,0,0,0,0,0,0,0,0,3,59,2024-10-05T01:43:23.883Z,cmaronchick,0,cmaronchick
+4733283,2024,reg,5,Miami Dolphins,10,New England Patriots,13,0,0,0,0,0,0,0,0,1,0,0,0,-3,23,2024-10-03T00:21:42.597Z,cmaronchick,2,cmaronchick
+4733278,2024,reg,5,Cleveland Browns,17,Washington Commanders,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2024-10-01T17:22:26.565Z,cmaronchick,2,cmaronchick
+4733282,2024,reg,5,Carolina Panthers,24,Chicago Bears,21,0,0,0,0,0,0,0,0,1,0,0,0,3,45,2024-10-01T18:12:59.623Z,cmaronchick,2,cmaronchick
+4733278,2024,reg,5,Cleveland Browns,20,Washington Commanders,23,0,0,1,0,0,0,0,0,0,0,0,0,-3,43,2024-10-04T18:00:09.350Z,rosstuckerNFL,2,rosstuckerNFL
+4733282,2024,reg,5,Carolina Panthers,20,Chicago Bears,23,0,0,1,0,0,0,0,0,1,0,0,0,-3,43,2024-10-04T17:34:33.832Z,rosstuckerNFL,4,rosstuckerNFL
+4733402,2024,reg,5,Las Vegas Raiders,17,Denver Broncos,21,0,0,1,0,1,0,0,0,1,0,0,0,-4,38,2024-10-02T04:23:26.959Z,cmaronchick,6,cmaronchick
+4733401,2024,reg,5,Arizona Cardinals,17,San Francisco 49ers,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2024-10-05T01:44:36.563Z,cmaronchick,2,cmaronchick
+4733404,2024,reg,5,N.Y. Giants Giants,13,Seattle Seahawks,24,0,0,0,0,0,0,0,0,0,0,0,0,-11,37,2024-10-02T15:43:21.458Z,cmaronchick,0,cmaronchick
+4733403,2024,reg,5,Green Bay Packers,34,L.A. Rams Rams,17,0,0,1,0,1,0,0,0,0,0,0,0,17,51,2024-10-02T15:43:38.756Z,cmaronchick,4,cmaronchick
+4733405,2024,reg,5,Dallas Cowboys,17,Pittsburgh Steelers,20,0,0,0,0,0,0,0,0,1,0,0,0,-3,37,2024-10-03T00:23:05.679Z,cmaronchick,3,cmaronchick
+4733406,2024,reg,5,New Orleans Saints,21,Kansas City Chiefs,31,0,0,1,0,1,0,0,0,0,0,0,0,-10,52,2024-10-02T15:44:27.571Z,cmaronchick,4,cmaronchick
+4733401,2024,reg,5,Arizona Cardinals,20,San Francisco 49ers,24,0,0,0,0,1,0,0,0,1,0,0,0,-4,44,2024-10-04T18:02:30.991Z,rosstuckerNFL,4,rosstuckerNFL
+4733402,2024,reg,5,Las Vegas Raiders,15,Denver Broncos,17,0,0,1,0,0,0,0,0,0,0,0,0,-2,32,2024-10-04T18:01:14.010Z,rosstuckerNFL,2,rosstuckerNFL
+4733403,2024,reg,5,Green Bay Packers,27,L.A. Rams Rams,24,0,0,1,0,0,0,0,0,0,0,0,0,3,51,2024-10-04T18:03:20.474Z,rosstuckerNFL,2,rosstuckerNFL
+4733406,2024,reg,5,New Orleans Saints,20,Kansas City Chiefs,23,0,0,1,0,0,0,0,0,1,0,0,0,-3,43,2024-10-04T18:05:35.927Z,rosstuckerNFL,4,rosstuckerNFL
+4733277,2024,reg,5,Tampa Bay Buccaneers,21,Atlanta Falcons,23,0,0,1,0,1,0,0,0,1,0,0,0,-2,44,2024-10-03T04:33:47.248Z,ausame,6,ausame
+4733277,2024,reg,5,Tampa Bay Buccaneers,27,Atlanta Falcons,14,0,0,0,0,0,0,0,0,0,0,0,0,13,41,2024-10-03T16:48:25.418Z,bodysurfoceanside,0,bodysurfoceanside
+4733277,2024,reg,5,Tampa Bay Buccaneers,24,Atlanta Falcons,21,0,0,0,0,0,0,0,0,1,0,0,0,3,45,2024-10-03T18:57:55.714Z,rosstuckerNFL,2,rosstuckerNFL
+4733283,2024,reg,5,,17,,13,,,1,0,1,0,0,0,1,0,0,0,-4,30,2024-10-03,TerrySullivan,6,TerrySullivan
+4733282,2024,reg,5,,20,,27,,,1,0,1,0,0,0,1,0,0,0,7,47,2024-10-03,TerrySullivan,6,TerrySullivan
+4733403,2024,reg,5,,30,,20,,,1,0,1,0,0,0,0,0,0,0,-10,50,2024-10-03,TerrySullivan,4,TerrySullivan
+4733281,2024,reg,5,,27,,27,,,0,0,0,1,0,0,1,0,0,0,0,54,2024-10-03,TerrySullivan,2,TerrySullivan
+4733402,2024,reg,5,,16,,21,,,1,0,1,0,0,0,1,0,0,0,5,37,2024-10-03,TerrySullivan,6,TerrySullivan
+4733277,2024,reg,5,,26,,23,,,0,0,0,0,0,0,1,0,0,0,-3,49,2024-10-03,TerrySullivan,2,TerrySullivan
+4733198,2024,reg,5,,24,,23,,,0,0,0,0,0,0,0,0,0,0,-1,47,2024-10-03,TerrySullivan,1,TerrySullivan
+4733279,2024,reg,5,,30,,26,,,1,0,1,0,0,0,1,0,0,0,-4,56,2024-10-03,TerrySullivan,6,TerrySullivan
+4733280,2024,reg,5,,24,,20,,,0,0,0,0,0,0,1,0,0,0,-4,44,2024-10-03,TerrySullivan,2,TerrySullivan
+4733278,2024,reg,5,,21,,23,,,1,0,0,0,0,0,1,0,0,0,2,44,2024-10-03,TerrySullivan,4,TerrySullivan
+4733401,2024,reg,5,,24,,30,,,0,0,1,0,0,0,0,0,0,0,6,54,2024-10-03,TerrySullivan,3,TerrySullivan
+4733404,2024,reg,5,,17,,27,,,0,0,0,0,0,0,1,0,0,0,10,44,2024-10-03,TerrySullivan,2,TerrySullivan
+4733406,2024,reg,5,,20,,23,,,1,0,0,0,0,0,1,0,0,0,3,43,2024-10-03,TerrySullivan,4,TerrySullivan
+4733405,2024,reg,5,,20,,24,,,0,0,0,0,0,0,1,0,0,0,4,44,2024-10-03,TerrySullivan,3,TerrySullivan
+4733277,2024,reg,5,,24,,20,,,0,0,0,0,0,0,1,0,0,0,-4,44,2024-10-03,PetePrisco,2,PetePrisco
+4733198,2024,reg,5,,19,,16,,,0,0,0,0,0,0,1,0,0,0,-3,35,2024-10-03,PetePrisco,2,PetePrisco
+4733279,2024,reg,5,,31,,34,,,0,0,0,0,0,0,1,0,0,0,3,65,2024-10-03,PetePrisco,2,PetePrisco
+4733282,2024,reg,5,,13,,24,,,1,0,1,0,0,0,0,0,0,0,11,37,2024-10-03,PetePrisco,4,PetePrisco
+4733280,2024,reg,5,,30,,28,,,0,0,0,0,0,0,0,0,0,0,-2,58,2024-10-03,PetePrisco,0,PetePrisco
+4733283,2024,reg,5,,16,,21,,,0,0,0,0,0,0,0,0,0,0,5,37,2024-10-03,PetePrisco,0,PetePrisco
+4733281,2024,reg,5,,24,,24,,,0,0,0,1,0,0,1,0,0,0,0,48,2024-10-03,PetePrisco,2,PetePrisco
+4733278,2024,reg,5,,17,,28,,,1,0,1,0,0,0,1,0,0,0,11,45,2024-10-03,PetePrisco,6,PetePrisco
+4733401,2024,reg,5,,17,,30,,,0,0,0,0,0,0,1,0,0,0,13,47,2024-10-03,PetePrisco,3,PetePrisco
+4733402,2024,reg,5,,14,,20,,,1,0,1,0,0,0,0,0,0,0,6,34,2024-10-03,PetePrisco,4,PetePrisco
+4733403,2024,reg,5,,31,,19,,,1,0,1,0,0,0,0,0,0,0,-12,50,2024-10-03,PetePrisco,5,PetePrisco
+4733404,2024,reg,5,,26,,30,,,0,0,1,0,0,0,1,0,0,0,4,56,2024-10-03,PetePrisco,4,PetePrisco
+4733405,2024,reg,5,,23,,20,,,1,0,1,0,0,0,1,0,0,0,-3,43,2024-10-03,PetePrisco,7,PetePrisco
+4733406,2024,reg,5,,20,,31,,,1,0,1,0,0,0,0,0,0,0,11,51,2024-10-03,PetePrisco,4,PetePrisco
+4733277,2024,reg,5,,23,,20,,,0,0,0,0,0,0,0,0,0,0,-3,43,2024-10-03,BleacherReport,0,BleacherReport
+4733278,2024,reg,5,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-03,BleacherReport,6,BleacherReport
+4733198,2024,reg,5,,17,,21,,,1,0,1,0,0,0,1,0,0,0,4,38,2024-10-03,BleacherReport,7,BleacherReport
+4733282,2024,reg,5,,20,,26,,,1,0,1,0,0,0,1,0,0,0,6,46,2024-10-03,BleacherReport,7,BleacherReport
+4733279,2024,reg,5,,30,,26,,,1,0,1,0,0,0,1,0,0,0,-4,56,2024-10-03,BleacherReport,6,BleacherReport
+4733280,2024,reg,5,,28,,24,,,0,0,0,0,0,0,0,0,0,0,-4,52,2024-10-03,BleacherReport,0,BleacherReport
+4733281,2024,reg,5,,24,,24,,,0,0,0,1,0,0,1,0,0,0,0,48,2024-10-03,BleacherReport,2,BleacherReport
+4733283,2024,reg,5,,12,,17,,,0,0,0,0,0,0,1,0,0,0,5,29,2024-10-03,BleacherReport,2,BleacherReport
+4733401,2024,reg,5,,21,,27,,,0,0,1,0,0,0,1,0,0,0,6,48,2024-10-03,BleacherReport,4,BleacherReport
+4733402,2024,reg,5,,17,,20,,,1,0,1,0,0,0,1,0,0,0,3,37,2024-10-03,BleacherReport,6,BleacherReport
+4733403,2024,reg,5,,34,,17,,,1,0,1,0,0,0,0,0,0,0,-17,51,2024-10-03,BleacherReport,4,BleacherReport
+4733405,2024,reg,5,,21,,24,,,0,0,0,0,0,0,0,0,0,0,3,45,2024-10-03,BleacherReport,0,BleacherReport
+4733404,2024,reg,5,,16,,27,,,0,0,0,0,0,0,0,0,0,0,11,43,2024-10-03,BleacherReport,0,BleacherReport
+4733406,2024,reg,5,,20,,23,,,1,0,0,0,0,0,1,0,0,0,3,43,2024-10-03,BleacherReport,4,BleacherReport
+4733277,2024,reg,5,,26,,21,,,0,0,0,0,0,0,1,0,0,0,-5,47,2024-10-03,BillBender,2,BillBender
+4733198,2024,reg,5,,17,,20,,,1,0,1,0,0,0,1,0,0,0,3,37,2024-10-03,BillBender,7,BillBender
+4733282,2024,reg,5,,24,,27,,,1,0,0,0,0,0,1,0,0,0,3,51,2024-10-03,BillBender,4,BillBender
+4733279,2024,reg,5,,28,,31,,,0,0,0,0,0,0,1,0,0,0,3,59,2024-10-03,BillBender,2,BillBender
+4733278,2024,reg,5,,21,,29,,,1,0,1,0,0,0,1,0,0,0,8,50,2024-10-03,BillBender,6,BillBender
+4733283,2024,reg,5,,20,,15,,,1,0,1,0,0,0,1,0,0,0,-5,35,2024-10-03,BillBender,7,BillBender
+4733281,2024,reg,5,,21,,21,,,0,0,0,1,0,0,0,0,0,0,0,42,2024-10-03,BillBender,0,BillBender
+4733280,2024,reg,5,,33,,27,,,0,0,0,0,0,0,0,0,0,0,-6,60,2024-10-03,BillBender,0,BillBender
+4733402,2024,reg,5,,17,,18,,,1,0,0,0,0,0,0,0,0,0,1,35,2024-10-03,BillBender,2,BillBender
+4733403,2024,reg,5,,28,,18,,,1,0,1,0,0,0,1,0,0,0,-10,46,2024-10-03,BillBender,6,BillBender
+4733401,2024,reg,5,,17,,31,,,0,0,0,0,0,0,1,0,0,0,14,48,2024-10-03,BillBender,2,BillBender
+4733404,2024,reg,5,,20,,28,,,0,0,0,0,0,0,1,0,0,0,8,48,2024-10-03,BillBender,2,BillBender
+4733405,2024,reg,5,,24,,23,,,1,0,1,0,0,0,0,0,0,0,-1,47,2024-10-03,BillBender,4,BillBender
+4733277,2024,reg,5,,21,,22,,,1,0,0,0,0,0,0,0,0,0,1,43,2024-10-03,DataSkrive,2,DataSkrive
+4733406,2024,reg,5,,17,,21,,,1,0,0,0,0,0,1,0,0,0,4,38,2024-10-03,BillBender,4,BillBender
+4733198,2024,reg,5,,17,,22,,,1,0,1,0,0,0,1,0,0,0,5,39,2024-10-03,DataSkrive,7,DataSkrive
+4733280,2024,reg,5,,23,,23,,,0,0,1,0,0,0,1,0,0,0,0,46,2024-10-03,DataSkrive,5,DataSkrive
+4733282,2024,reg,5,,18,,26,,,1,0,1,0,0,0,1,0,0,0,8,44,2024-10-03,DataSkrive,6,DataSkrive
+4733279,2024,reg,5,,26,,24,,,1,0,0,0,0,0,1,0,0,0,-2,50,2024-10-03,DataSkrive,4,DataSkrive
+4733283,2024,reg,5,,16,,20,,,0,0,0,0,0,0,1,0,0,0,4,36,2024-10-03,DataSkrive,2,DataSkrive
+4733278,2024,reg,5,,21,,26,,,1,0,1,0,0,0,1,0,0,0,5,47,2024-10-03,DataSkrive,7,DataSkrive
+4733401,2024,reg,5,,19,,29,,,0,0,0,0,0,0,1,0,0,0,10,48,2024-10-03,DataSkrive,2,DataSkrive
+4733402,2024,reg,5,,15,,22,,,1,0,1,0,0,0,1,0,0,0,7,37,2024-10-03,DataSkrive,6,DataSkrive
+4733403,2024,reg,5,,24,,25,,,0,0,0,0,0,0,0,0,0,0,1,49,2024-10-03,DataSkrive,1,DataSkrive
+4733404,2024,reg,5,,17,,24,,,0,0,0,0,0,0,0,0,0,0,7,41,2024-10-03,DataSkrive,0,DataSkrive
+4733405,2024,reg,5,,18,,24,,,0,0,0,0,0,0,1,0,0,0,6,42,2024-10-03,DataSkrive,2,DataSkrive
+4733198,2024,reg,5,,13,,20,,,1,0,1,0,0,0,1,0,0,0,7,33,2024-10-03,MarcusMosher,6,MarcusMosher
+4733281,2024,reg,5,,27,,27,,,0,0,0,1,0,0,1,0,0,0,0,54,2024-10-03,MarcusMosher,2,MarcusMosher
+4733406,2024,reg,5,,20,,25,,,1,0,0,0,0,0,0,0,0,0,5,45,2024-10-03,DataSkrive,2,DataSkrive
+4733283,2024,reg,5,,13,,17,,,0,0,0,0,0,0,1,0,0,0,4,30,2024-10-03,MarcusMosher,2,MarcusMosher
+4733282,2024,reg,5,,17,,20,,,1,0,0,0,0,0,0,0,0,0,3,37,2024-10-03,MarcusMosher,2,MarcusMosher
+4733278,2024,reg,5,,21,,26,,,1,0,1,0,0,0,1,0,0,0,5,47,2024-10-03,MarcusMosher,7,MarcusMosher
+4733279,2024,reg,5,,27,,23,,,1,0,1,0,0,0,1,0,0,0,-4,50,2024-10-03,MarcusMosher,6,MarcusMosher
+4733277,2024,reg,5,,21,,23,,,1,0,1,0,0,0,1,0,0,0,2,44,2024-10-03,MarcusMosher,6,MarcusMosher
+4733280,2024,reg,5,,28,,24,,,0,0,0,0,0,0,0,0,0,0,-4,52,2024-10-03,MarcusMosher,0,MarcusMosher
+4733401,2024,reg,5,,21,,31,,,0,0,0,0,0,0,0,0,0,0,10,52,2024-10-03,MarcusMosher,0,MarcusMosher
+4733402,2024,reg,5,,16,,13,,,0,0,0,0,0,0,0,0,0,0,-3,29,2024-10-03,MarcusMosher,0,MarcusMosher
+4733403,2024,reg,5,,30,,17,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-10-03,MarcusMosher,6,MarcusMosher
+4733404,2024,reg,5,,20,,23,,,0,0,1,0,0,0,0,0,0,0,3,43,2024-10-03,MarcusMosher,2,MarcusMosher
+4733405,2024,reg,5,,17,,27,,,0,0,0,0,0,0,1,0,0,0,10,44,2024-10-03,MarcusMosher,2,MarcusMosher
+4733406,2024,reg,5,,17,,20,,,1,0,0,0,0,0,1,0,0,0,3,37,2024-10-03,MarcusMosher,4,MarcusMosher
+4733198,2024,reg,5,,16,,23,,,1,0,1,0,0,0,1,0,0,0,7,39,2024-10-03,Sportsnaut,7,Sportsnaut
+4733282,2024,reg,5,,21,,27,,,1,0,1,0,0,0,1,0,0,0,6,48,2024-10-03,Sportsnaut,6,Sportsnaut
+4733277,2024,reg,5,,24,,27,,,1,0,1,0,0,0,1,0,0,0,3,51,2024-10-03,Sportsnaut,6,Sportsnaut
+4733279,2024,reg,5,,31,,21,,,1,0,1,0,0,0,1,0,0,0,-10,52,2024-10-03,Sportsnaut,6,Sportsnaut
+4733283,2024,reg,5,,10,,13,,,0,0,0,0,0,0,1,0,0,0,3,23,2024-10-03,Sportsnaut,2,Sportsnaut
+4733280,2024,reg,5,,31,,34,,,1,0,1,0,0,0,0,0,0,0,3,65,2024-10-03,Sportsnaut,5,Sportsnaut
+4733278,2024,reg,5,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-03,Sportsnaut,6,Sportsnaut
+4733402,2024,reg,5,,13,,20,,,1,0,1,0,0,0,0,0,0,0,7,33,2024-10-03,Sportsnaut,4,Sportsnaut
+4733401,2024,reg,5,,28,,33,,,0,0,1,0,0,0,0,0,0,0,5,61,2024-10-03,Sportsnaut,2,Sportsnaut
+4733403,2024,reg,5,,34,,24,,,1,0,1,0,0,0,0,0,0,0,-10,58,2024-10-03,Sportsnaut,4,Sportsnaut
+4733404,2024,reg,5,,13,,24,,,0,0,0,0,0,0,0,0,0,0,11,37,2024-10-03,Sportsnaut,0,Sportsnaut
+4733405,2024,reg,5,,20,,26,,,0,0,0,0,0,0,0,0,0,0,6,46,2024-10-03,Sportsnaut,1,Sportsnaut
+4733406,2024,reg,5,,13,,17,,,1,0,0,0,0,0,1,0,0,0,4,30,2024-10-03,Sportsnaut,5,Sportsnaut
+4733277,2024,reg,5,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-03,VinnieIyer,6,VinnieIyer
+4733405,2024,reg,5,,16,,20,,,0,0,0,0,0,0,1,0,0,0,4,36,2024-10-03,VinnieIyer,2,VinnieIyer
+4733279,2024,reg,5,,24,,27,,,0,0,0,0,0,0,1,0,0,0,3,51,2024-10-03,VinnieIyer,2,VinnieIyer
+4733401,2024,reg,5,,14,,31,,,0,0,0,0,0,0,1,0,0,0,17,45,2024-10-03,VinnieIyer,2,VinnieIyer
+4733198,2024,reg,5,,20,,17,,,0,0,0,0,0,0,1,0,0,0,-3,37,2024-10-03,VinnieIyer,2,VinnieIyer
+4733282,2024,reg,5,,14,,27,,,1,0,1,0,0,0,0,0,0,0,13,41,2024-10-03,VinnieIyer,4,VinnieIyer
+4733283,2024,reg,5,,24,,13,,,1,0,1,0,0,0,0,0,0,0,-11,37,2024-10-03,VinnieIyer,4,VinnieIyer
+4733278,2024,reg,5,,20,,27,,,1,0,1,0,0,0,1,0,0,0,7,47,2024-10-03,VinnieIyer,7,VinnieIyer
+4733281,2024,reg,5,,23,,23,,,0,0,0,1,0,0,0,0,0,0,0,46,2024-10-03,VinnieIyer,0,VinnieIyer
+4733280,2024,reg,5,,2,,27,,,1,0,1,0,0,0,1,0,0,0,25,29,2024-10-03,VinnieIyer,6,VinnieIyer
+4733402,2024,reg,5,,17,,20,,,1,0,1,0,0,0,1,0,0,0,3,37,2024-10-03,VinnieIyer,6,VinnieIyer
+4733403,2024,reg,5,,34,,24,,,1,0,1,0,0,0,0,0,0,0,-10,58,2024-10-03,VinnieIyer,4,VinnieIyer
+4733404,2024,reg,5,,17,,27,,,0,0,0,0,0,0,1,0,0,0,10,44,2024-10-03,VinnieIyer,2,VinnieIyer
+4733277,2024,reg,5,,21,,23,,,1,0,1,0,0,0,1,0,0,0,2,44,2024-10-03,Dimers,6,Dimers
+4733406,2024,reg,5,,20,,24,,,1,0,0,0,0,0,0,0,0,0,4,44,2024-10-03,VinnieIyer,2,VinnieIyer
+4733198,2024,reg,5,,19,,22,,,1,0,1,0,0,0,0,0,0,0,3,41,2024-10-03,Dimers,4,Dimers
+4733278,2024,reg,5,,20,,24,,,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-03,Dimers,6,Dimers
+4733279,2024,reg,5,,25,,24,,,1,0,0,0,0,0,1,0,0,0,-1,49,2024-10-03,Dimers,4,Dimers
+4733280,2024,reg,5,,24,,23,,,0,0,0,0,0,0,1,0,0,0,-1,47,2024-10-03,Dimers,3,Dimers
+4733281,2024,reg,5,,24,,24,,,0,0,0,1,0,0,1,0,0,0,0,48,2024-10-03,Dimers,2,Dimers
+4733282,2024,reg,5,,19,,22,,,1,0,0,0,0,0,0,0,0,0,3,41,2024-10-03,Dimers,2,Dimers
+4733283,2024,reg,5,,18,,19,,,0,0,0,0,0,0,0,0,0,0,1,37,2024-10-03,Dimers,0,Dimers
+4733401,2024,reg,5,,22,,28,,,0,0,1,0,0,0,0,0,0,0,6,50,2024-10-03,Dimers,2,Dimers
+4733402,2024,reg,5,,17,,19,,,1,0,0,0,0,0,0,0,0,0,2,36,2024-10-03,Dimers,2,Dimers
+4733403,2024,reg,5,,26,,23,,,1,0,0,0,0,0,0,0,0,0,-3,49,2024-10-03,Dimers,2,Dimers
+4733404,2024,reg,5,,19,,25,,,0,0,0,0,0,0,1,0,0,0,6,44,2024-10-03,Dimers,2,Dimers
+4733277,2024,reg,5,,23,,17,,,0,0,0,0,0,0,0,0,0,0,-6,40,2024-10-03,LorenzoReyes,0,LorenzoReyes
+4733405,2024,reg,5,,21,,23,,,0,0,0,0,0,0,1,0,0,0,2,44,2024-10-03,Dimers,2,Dimers
+4733277,2024,reg,5,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-10-03,TylerDragon,6,TylerDragon
+4733277,2024,reg,5,,20,,18,,,0,0,0,0,0,0,0,0,0,0,-2,38,2024-10-03,JordanMendoza,0,JordanMendoza
+4733198,2024,reg,5,,18,,25,,,1,0,1,0,0,0,0,0,0,0,7,43,2024-10-03,LorenzoReyes,4,LorenzoReyes
+4733198,2024,reg,5,,20,,21,,,1,0,0,0,0,0,0,0,0,0,1,41,2024-10-03,TylerDragon,2,TylerDragon
+4733282,2024,reg,5,,16,,23,,,1,0,1,0,0,0,0,0,0,0,7,39,2024-10-03,LorenzoReyes,4,LorenzoReyes
+4733198,2024,reg,5,,13,,17,,,1,0,1,0,0,0,1,0,0,0,4,30,2024-10-03,JordanMendoza,6,JordanMendoza
+4733282,2024,reg,5,,17,,20,,,1,0,0,0,0,0,0,0,0,0,3,37,2024-10-03,TylerDragon,2,TylerDragon
+4733282,2024,reg,5,,17,,24,,,1,0,1,0,0,0,0,0,0,0,7,41,2024-10-03,JordanMendoza,4,JordanMendoza
+4733279,2024,reg,5,,28,,27,,,1,0,0,0,0,0,1,0,0,0,-1,55,2024-10-03,TylerDragon,4,TylerDragon
+4733279,2024,reg,5,,26,,19,,,1,0,1,0,0,0,0,0,0,0,-7,45,2024-10-03,LorenzoReyes,4,LorenzoReyes
+4733279,2024,reg,5,,27,,20,,,1,0,1,0,0,0,0,0,0,0,-7,47,2024-10-03,JordanMendoza,4,JordanMendoza
+4733280,2024,reg,5,,24,,24,,,0,0,1,0,0,0,0,0,0,0,0,48,2024-10-03,LorenzoReyes,2,LorenzoReyes
+4733280,2024,reg,5,,21,,24,,,1,0,1,0,0,0,1,0,0,0,3,45,2024-10-03,TylerDragon,7,TylerDragon
+4733280,2024,reg,5,,30,,34,,,1,0,1,0,0,0,0,0,0,0,4,64,2024-10-03,JordanMendoza,4,JordanMendoza
+4733281,2024,reg,5,,21,,21,,,0,0,0,1,0,0,0,0,0,0,0,42,2024-10-03,TylerDragon,0,TylerDragon
+4733281,2024,reg,5,,23,,23,,,0,0,0,1,0,0,0,0,0,0,0,46,2024-10-03,JordanMendoza,0,JordanMendoza
+4733283,2024,reg,5,,13,,10,,,1,0,1,0,0,0,1,0,0,0,-3,23,2024-10-03,LorenzoReyes,7,LorenzoReyes
+4733283,2024,reg,5,,16,,18,,,0,0,0,0,0,0,1,0,0,0,2,34,2024-10-03,TylerDragon,2,TylerDragon
+4733283,2024,reg,5,,10,,13,,,0,0,0,0,0,0,1,0,0,0,3,23,2024-10-03,JordanMendoza,2,JordanMendoza
+4733278,2024,reg,5,,21,,23,,,1,0,0,0,0,0,1,0,0,0,2,44,2024-10-03,LorenzoReyes,4,LorenzoReyes
+4733278,2024,reg,5,,20,,26,,,1,0,1,0,0,0,1,0,0,0,6,46,2024-10-03,TylerDragon,6,TylerDragon
+4733278,2024,reg,5,,17,,24,,,1,0,1,0,0,0,0,0,0,0,7,41,2024-10-03,JordanMendoza,4,JordanMendoza
+4733402,2024,reg,5,,10,,17,,,1,0,1,0,0,0,0,0,0,0,7,27,2024-10-03,LorenzoReyes,4,LorenzoReyes
+4733402,2024,reg,5,,21,,20,,,0,0,0,0,0,0,1,0,0,0,-1,41,2024-10-03,TylerDragon,2,TylerDragon
+4733402,2024,reg,5,,9,,13,,,1,0,1,0,0,0,0,0,0,0,4,22,2024-10-03,JordanMendoza,4,JordanMendoza
+4733401,2024,reg,5,,10,,30,,,0,0,0,0,0,0,1,0,0,0,20,40,2024-10-03,LorenzoReyes,2,LorenzoReyes
+4733401,2024,reg,5,,20,,26,,,0,0,1,0,0,0,1,0,0,0,6,46,2024-10-03,TylerDragon,4,TylerDragon
+4733401,2024,reg,5,,15,,34,,,0,0,0,0,0,0,0,0,0,0,19,49,2024-10-03,JordanMendoza,0,JordanMendoza
+4733403,2024,reg,5,,26,,13,,,1,0,1,0,0,0,1,0,0,0,-13,39,2024-10-03,LorenzoReyes,6,LorenzoReyes
+4733403,2024,reg,5,,22,,20,,,1,0,0,0,0,0,1,0,0,0,-2,42,2024-10-03,JordanMendoza,4,JordanMendoza
+4733403,2024,reg,5,,25,,20,,,1,0,1,0,0,0,1,0,0,0,-5,45,2024-10-03,TylerDragon,7,TylerDragon
+4733404,2024,reg,5,,18,,27,,,0,0,0,0,0,0,1,0,0,0,9,45,2024-10-03,LorenzoReyes,2,LorenzoReyes
+4733404,2024,reg,5,,20,,24,,,0,0,1,0,0,0,1,0,0,0,4,44,2024-10-03,TylerDragon,4,TylerDragon
+4733405,2024,reg,5,,14,,18,,,0,0,0,0,0,0,1,0,0,0,4,32,2024-10-03,LorenzoReyes,2,LorenzoReyes
+4733404,2024,reg,5,,18,,26,,,0,0,0,0,0,0,1,0,0,0,8,44,2024-10-03,JordanMendoza,2,JordanMendoza
+4733405,2024,reg,5,,23,,24,,,0,0,1,0,0,0,0,0,0,0,1,47,2024-10-03,TylerDragon,2,TylerDragon
+4733406,2024,reg,5,,17,,13,,,0,0,0,0,0,0,1,0,0,0,-4,30,2024-10-03,LorenzoReyes,2,LorenzoReyes
+4733405,2024,reg,5,,17,,20,,,0,0,0,0,0,0,1,0,0,0,3,37,2024-10-03,JordanMendoza,3,JordanMendoza
+4733406,2024,reg,5,,21,,25,,,1,0,0,0,0,0,0,0,0,0,4,46,2024-10-03,TylerDragon,2,TylerDragon
+4733406,2024,reg,5,,19,,23,,,1,0,0,0,0,0,1,0,0,0,4,42,2024-10-03,JordanMendoza,4,JordanMendoza
+4733277,2024,reg,5,Tampa Bay Buccaneers,27,Atlanta Falcons,23,0,0,0,0,0,0,0,0,1,0,0,0,4,50,2024-10-03T23:35:17.612Z,Facebook_10208710241577136,2,PaulCullin
+4733198,2024,reg,5,N.Y. Jets Jets,20,Minnesota Vikings,17,0,0,0,0,0,0,0,0,1,0,0,0,3,37,2024-10-04T17:31:36.100Z,rosstuckerNFL,2,rosstuckerNFL
+4733279,2024,reg,5,Baltimore Ravens,27,Cincinnati Bengals,24,0,0,1,0,1,0,0,0,1,0,0,0,3,51,2024-10-04T17:37:21.570Z,rosstuckerNFL,7,rosstuckerNFL
+4733280,2024,reg,5,Buffalo Bills,28,Houston Texans,26,0,0,0,0,0,0,0,0,0,0,0,0,2,54,2024-10-04T17:38:53.665Z,rosstuckerNFL,0,rosstuckerNFL
+4733281,2024,reg,5,Indianapolis Colts,17,Jacksonville Jaguars,19,0,0,1,0,0,1,0,0,0,0,0,0,-2,36,2024-10-04T17:40:07.134Z,rosstuckerNFL,2,rosstuckerNFL
+4733283,2024,reg,5,Miami Dolphins,17,New England Patriots,16,0,0,1,0,1,0,0,0,1,0,0,0,1,33,2024-10-04T17:58:51.174Z,rosstuckerNFL,6,rosstuckerNFL
+4733404,2024,reg,5,N.Y. Giants Giants,16,Seattle Seahawks,23,0,0,0,0,0,0,0,0,0,0,0,0,-7,39,2024-10-04T18:04:08.344Z,rosstuckerNFL,0,rosstuckerNFL
+4733405,2024,reg,5,Dallas Cowboys,17,Pittsburgh Steelers,23,0,0,0,0,0,0,0,0,1,0,0,0,-6,40,2024-10-04T18:04:52.132Z,rosstuckerNFL,2,rosstuckerNFL
+4733198,2024,reg,5,N.Y. Jets Jets,13,Minnesota Vikings,27,0,0,1,0,1,0,0,0,0,1,0,0,-14,40,2024-10-05T00:05:34.134Z,bodysurfoceanside,5,bodysurfoceanside
+4733278,2024,reg,5,Cleveland Browns,16,Washington Commanders,30,0,0,1,0,1,0,0,0,1,0,0,0,-14,46,2024-10-05T00:05:53.932Z,bodysurfoceanside,6,bodysurfoceanside
+4733282,2024,reg,5,Carolina Panthers,13,Chicago Bears,32,0,0,1,0,1,0,0,0,1,0,0,0,-19,45,2024-10-05T00:06:13.628Z,bodysurfoceanside,6,bodysurfoceanside
+4733281,2024,reg,5,Indianapolis Colts,30,Jacksonville Jaguars,13,0,0,0,0,0,1,0,0,0,0,0,0,17,43,2024-10-05T00:06:28.918Z,bodysurfoceanside,0,bodysurfoceanside
+4733280,2024,reg,5,Buffalo Bills,33,Houston Texans,12,0,0,0,0,0,0,0,0,1,0,0,0,21,45,2024-10-05T00:06:43.193Z,bodysurfoceanside,2,bodysurfoceanside
+4733283,2024,reg,5,Miami Dolphins,13,New England Patriots,23,0,0,0,0,0,0,0,0,0,0,0,0,-10,36,2024-10-05T00:07:03.322Z,bodysurfoceanside,0,bodysurfoceanside
+4733279,2024,reg,5,Baltimore Ravens,28,Cincinnati Bengals,21,0,0,1,0,1,0,0,0,1,0,0,0,7,49,2024-10-05T00:07:18.812Z,bodysurfoceanside,6,bodysurfoceanside
+4733401,2024,reg,5,Arizona Cardinals,20,San Francisco 49ers,28,0,0,0,0,0,0,0,0,1,0,0,0,-8,48,2024-10-05T00:07:37.298Z,bodysurfoceanside,2,bodysurfoceanside
+4733402,2024,reg,5,Las Vegas Raiders,13,Denver Broncos,23,0,0,1,0,1,0,0,0,0,0,0,0,-10,36,2024-10-05T00:07:55.309Z,bodysurfoceanside,4,bodysurfoceanside
+4733404,2024,reg,5,N.Y. Giants Giants,13,Seattle Seahawks,28,0,0,0,0,0,0,0,0,0,0,0,0,-15,41,2024-10-05T00:08:11.740Z,bodysurfoceanside,0,bodysurfoceanside
+4733403,2024,reg,5,Green Bay Packers,34,L.A. Rams Rams,13,0,0,1,0,1,0,0,0,1,0,0,0,21,47,2024-10-05T00:08:24.839Z,bodysurfoceanside,6,bodysurfoceanside
+4733405,2024,reg,5,Dallas Cowboys,16,Pittsburgh Steelers,27,0,0,0,0,0,0,0,0,1,0,0,0,-11,43,2024-10-05T00:08:39.177Z,bodysurfoceanside,2,bodysurfoceanside
+4733406,2024,reg,5,New Orleans Saints,28,Kansas City Chiefs,16,0,0,0,0,0,0,0,0,0,0,0,0,12,44,2024-10-05T00:08:55.821Z,bodysurfoceanside,0,bodysurfoceanside
+4733198,2024,reg,5,N.Y. Jets Jets,16,Minnesota Vikings,21,0,3,1,0,1,0,0,0,1,0,3,3,-5,37,2024-10-06T09:57:06.129Z,ausame,6,ausame
+4733282,2024,reg,5,Carolina Panthers,17,Chicago Bears,20,0,0,1,0,0,0,0,0,0,0,0,0,-3,37,2024-10-06T09:59:06.113Z,ausame,2,ausame
+4733279,2024,reg,5,Baltimore Ravens,24,Cincinnati Bengals,21,0,0,1,0,1,0,0,0,0,0,0,0,3,45,2024-10-06T10:07:51.309Z,ausame,5,ausame
+4733280,2024,reg,5,Buffalo Bills,23,Houston Texans,27,0,0,1,0,1,0,0,0,0,0,0,0,-4,50,2024-10-06T10:08:29.228Z,ausame,4,ausame
+4733281,2024,reg,5,Indianapolis Colts,23,Jacksonville Jaguars,21,3,0,0,0,0,1,3,0,0,0,0,0,2,44,2024-10-06T10:09:21.327Z,ausame,0,ausame
+4733283,2024,reg,5,Miami Dolphins,17,New England Patriots,19,0,0,0,0,0,0,0,0,0,0,0,0,-2,36,2024-10-06T10:10:51.354Z,ausame,0,ausame
+4733278,2024,reg,5,Cleveland Browns,17,Washington Commanders,23,0,0,1,0,1,0,0,0,0,0,0,0,-6,40,2024-10-06T10:11:33.711Z,ausame,4,ausame
+4733402,2024,reg,5,Las Vegas Raiders,13,Denver Broncos,17,0,0,1,0,1,0,0,0,0,0,0,0,-4,30,2024-10-06T10:12:18.877Z,ausame,4,ausame
+4733401,2024,reg,5,Arizona Cardinals,21,San Francisco 49ers,27,3,0,0,0,1,0,3,3,1,0,0,0,-6,48,2024-10-06T10:13:08.697Z,ausame,4,ausame
+4733403,2024,reg,5,Green Bay Packers,23,L.A. Rams Rams,21,3,0,1,0,0,0,3,-3,1,0,0,0,2,44,2024-10-06T10:13:45.988Z,ausame,4,ausame
+4733404,2024,reg,5,N.Y. Giants Giants,17,Seattle Seahawks,23,3,0,0,0,1,0,3,3,0,0,0,0,-6,40,2024-10-06T10:15:09.617Z,ausame,2,ausame
+4733405,2024,reg,5,Dallas Cowboys,20,Pittsburgh Steelers,23,0,0,0,0,0,0,0,0,1,0,0,0,-3,43,2024-10-06T10:15:56.937Z,ausame,3,ausame
+4733406,2024,reg,5,New Orleans Saints,23,Kansas City Chiefs,24,3,0,1,0,0,0,3,-3,0,0,0,0,-1,47,2024-10-06T10:16:55.721Z,ausame,2,ausame
+4733278,2024,reg,5,Cleveland Browns,15,Washington Commanders,20,0,0,1,0,1,0,0,0,0,0,0,0,-5,35,2024-10-06T16:31:05.682Z,Facebook_10208710241577136,4,PaulCullin
+4733282,2024,reg,5,Carolina Panthers,20,Chicago Bears,23,0,0,1,0,0,0,0,0,1,0,0,0,-3,43,2024-10-06T16:31:27.961Z,Facebook_10208710241577136,4,PaulCullin
+4733281,2024,reg,5,Indianapolis Colts,24,Jacksonville Jaguars,19,0,0,0,0,0,1,0,0,0,0,0,0,5,43,2024-10-06T16:31:43.923Z,Facebook_10208710241577136,0,PaulCullin
+4733280,2024,reg,5,Buffalo Bills,23,Houston Texans,29,0,0,1,0,1,0,0,0,0,0,0,0,-6,52,2024-10-06T16:36:21.330Z,Facebook_10208710241577136,4,PaulCullin
+4733283,2024,reg,5,Miami Dolphins,13,New England Patriots,20,0,0,0,0,0,0,0,0,1,0,0,0,-7,33,2024-10-06T16:36:42.971Z,Facebook_10208710241577136,2,PaulCullin
+4733279,2024,reg,5,Baltimore Ravens,24,Cincinnati Bengals,17,0,0,1,0,1,0,0,0,0,0,0,0,7,41,2024-10-06T16:37:41.653Z,Facebook_10208710241577136,4,PaulCullin
+4733401,2024,reg,5,Arizona Cardinals,17,San Francisco 49ers,27,0,0,0,0,0,0,0,0,1,0,0,0,-10,44,2024-10-06T16:38:01.542Z,Facebook_10208710241577136,2,PaulCullin
+4733402,2024,reg,5,Las Vegas Raiders,19,Denver Broncos,22,0,0,1,0,1,0,0,0,1,0,0,0,-3,41,2024-10-06T16:38:19.683Z,Facebook_10208710241577136,6,PaulCullin
+4733403,2024,reg,5,Green Bay Packers,27,L.A. Rams Rams,20,0,0,1,0,1,0,0,0,1,0,0,0,7,47,2024-10-06T16:39:16.617Z,Facebook_10208710241577136,6,PaulCullin
+4733405,2024,reg,5,Dallas Cowboys,14,Pittsburgh Steelers,17,0,0,0,0,0,0,0,0,1,0,0,0,-3,31,2024-10-06T16:39:42.635Z,Facebook_10208710241577136,3,PaulCullin
+4733406,2024,reg,5,New Orleans Saints,24,Kansas City Chiefs,27,0,0,1,0,0,0,0,0,0,0,0,0,-3,51,2024-10-06T16:40:22.522Z,Facebook_10208710241577136,2,PaulCullin
+4733404,2024,reg,5,N.Y. Giants Giants,17,Seattle Seahawks,23,0,0,0,0,1,0,0,0,0,0,0,0,-6,40,2024-10-06T19:30:53.304Z,Facebook_10208710241577136,2,PaulCullin
+4733407,2024,reg,6,San Francisco 49ers,21,Seattle Seahawks,24,0,0,0,0,0,0,0,0,0,0,0,0,-3,45,2024-10-09T15:23:33.407Z,cmaronchick,1,cmaronchick
+4733199,2024,reg,6,Jacksonville Jaguars,24,Chicago Bears,20,0,0,0,0,0,0,0,0,0,0,0,0,4,44,2024-10-11T00:00:51.441Z,cmaronchick,0,cmaronchick
+4733409,2024,reg,6,Arizona Cardinals,20,Green Bay Packers,27,0,0,1,0,1,0,0,0,1,0,0,0,-7,47,2024-10-08T14:49:21.867Z,cmaronchick,7,cmaronchick
+4733411,2024,reg,6,Cleveland Browns,13,Philadelphia Eagles,27,0,0,1,0,0,0,0,0,1,0,0,0,-14,40,2024-10-08T14:50:31.920Z,cmaronchick,4,cmaronchick
+4733410,2024,reg,6,Indianapolis Colts,27,Tennessee Titans,20,0,0,1,0,1,0,0,0,0,0,0,0,7,47,2024-10-11T17:00:05.431Z,cmaronchick,4,cmaronchick
+4733413,2024,reg,6,Washington Commanders,24,Baltimore Ravens,27,0,0,1,0,0,0,0,0,0,0,0,0,-3,51,2024-10-08T14:52:13.149Z,cmaronchick,2,cmaronchick
+4733408,2024,reg,6,Tampa Bay Buccaneers,30,New Orleans Saints,24,0,0,1,0,1,0,0,0,1,0,0,0,6,54,2024-10-09T15:24:43.146Z,cmaronchick,6,cmaronchick
+4733412,2024,reg,6,Houston Texans,27,New England Patriots,13,0,0,1,0,1,0,0,0,1,0,0,0,14,40,2024-10-08T14:54:17.163Z,cmaronchick,6,cmaronchick
+4733415,2024,reg,6,Pittsburgh Steelers,17,Las Vegas Raiders,13,0,0,1,0,1,0,0,0,0,0,0,0,4,30,2024-10-08T14:54:52.547Z,cmaronchick,5,cmaronchick
+4733414,2024,reg,6,L.A. Chargers Chargers,27,Denver Broncos,17,0,0,1,0,1,0,0,0,1,0,0,0,10,44,2024-10-08T14:55:09.623Z,cmaronchick,6,cmaronchick
+4733453,2024,reg,6,Detroit Lions,34,Dallas Cowboys,27,0,0,1,0,1,0,0,0,1,0,0,0,7,61,2024-10-08T14:55:53.055Z,cmaronchick,6,cmaronchick
+4733416,2024,reg,6,Atlanta Falcons,27,Carolina Panthers,14,0,0,1,0,1,0,0,0,0,0,0,0,13,41,2024-10-08T15:06:46.668Z,cmaronchick,4,cmaronchick
+4733454,2024,reg,6,Cincinnati Bengals,28,N.Y. Giants Giants,20,0,0,1,0,1,0,0,0,1,0,0,0,8,48,2024-10-08T15:07:31.101Z,cmaronchick,6,cmaronchick
+4733455,2024,reg,6,Buffalo Bills,27,N.Y. Jets Jets,24,0,0,,,,,,,,,,,3,51,2024-10-08T15:08:44.770Z,cmaronchick,,cmaronchick
+4733407,2024,reg,6,San Francisco 49ers,27,Seattle Seahawks,24,3,0,1,0,0,0,3,-3,1,0,0,0,3,51,2024-10-10T06:52:32.951Z,ausame,5,ausame
+4733412,2024,reg,6,,30,,13,,,1,0,1,0,0,0,1,0,0,0,-17,43,2024-10-10,TerrySullivan,6,TerrySullivan
+4733414,2024,reg,6,,17,,21,,,0,0,0,0,0,0,1,0,0,0,4,38,2024-10-10,TerrySullivan,2,TerrySullivan
+4733199,2024,reg,6,,20,,24,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-10-10,TerrySullivan,4,TerrySullivan
+4733453,2024,reg,6,,30,,24,,,1,0,1,0,0,0,1,0,0,0,-6,54,2024-10-10,TerrySullivan,6,TerrySullivan
+4733408,2024,reg,6,,23,,17,,,1,0,1,0,0,0,0,0,0,0,-6,40,2024-10-10,TerrySullivan,4,TerrySullivan
+4733407,2024,reg,6,,27,,23,,,1,0,1,0,0,0,1,0,0,0,-4,50,2024-10-10,TerrySullivan,6,TerrySullivan
+4733409,2024,reg,6,,21,,30,,,1,0,1,0,0,0,0,0,0,0,9,51,2024-10-10,TerrySullivan,4,TerrySullivan
+4733410,2024,reg,6,,20,,23,,,0,0,0,0,0,0,1,0,0,0,3,43,2024-10-10,TerrySullivan,3,TerrySullivan
+4733411,2024,reg,6,,23,,33,,,1,0,0,0,0,0,0,0,0,0,10,56,2024-10-10,TerrySullivan,2,TerrySullivan
+4733413,2024,reg,6,,27,,30,,,1,0,0,0,0,0,1,0,0,0,3,57,2024-10-10,TerrySullivan,5,TerrySullivan
+4733415,2024,reg,6,,23,,17,,,1,0,1,0,0,0,1,0,0,0,-6,40,2024-10-10,TerrySullivan,6,TerrySullivan
+4733416,2024,reg,6,,27,,17,,,1,0,1,0,0,0,0,0,0,0,-10,44,2024-10-10,TerrySullivan,4,TerrySullivan
+4733454,2024,reg,6,,27,,23,,,1,0,1,0,0,0,0,0,0,0,-4,50,2024-10-10,TerrySullivan,4,TerrySullivan
+4733455,2024,reg,6,,21,,23,,,,,,,,,,,,,2,44,2024-10-10,TerrySullivan,,TerrySullivan
+4733407,2024,reg,6,,30,,20,,,1,0,1,0,0,0,1,0,0,0,-10,50,2024-10-10,PetePrisco,6,PetePrisco
+4733199,2024,reg,6,,30,,27,,,0,0,0,0,0,0,1,0,0,0,-3,57,2024-10-10,PetePrisco,2,PetePrisco
+4733413,2024,reg,6,,29,,31,,,1,0,0,0,0,0,1,0,0,0,2,60,2024-10-10,PetePrisco,4,PetePrisco
+4733409,2024,reg,6,,21,,33,,,1,0,1,0,0,0,0,0,0,0,12,54,2024-10-10,PetePrisco,4,PetePrisco
+4733412,2024,reg,6,,21,,17,,,1,0,0,0,0,0,0,0,0,0,-4,38,2024-10-10,PetePrisco,2,PetePrisco
+4733408,2024,reg,6,,26,,17,,,1,0,1,0,0,0,1,0,0,0,-9,43,2024-10-10,PetePrisco,6,PetePrisco
+4733410,2024,reg,6,,20,,27,,,0,0,0,0,0,0,0,0,0,0,7,47,2024-10-10,PetePrisco,1,PetePrisco
+4733411,2024,reg,6,,17,,28,,,1,0,0,0,0,0,0,0,0,0,11,45,2024-10-10,PetePrisco,2,PetePrisco
+4733414,2024,reg,6,,21,,17,,,1,0,1,0,0,0,1,0,0,0,-4,38,2024-10-10,PetePrisco,6,PetePrisco
+4733415,2024,reg,6,,21,,13,,,1,0,1,0,0,0,0,0,0,0,-8,34,2024-10-10,PetePrisco,5,PetePrisco
+4733416,2024,reg,6,,35,,19,,,1,0,1,0,0,0,1,0,0,0,-16,54,2024-10-10,PetePrisco,6,PetePrisco
+4733453,2024,reg,6,,33,,32,,,1,0,0,0,0,0,1,0,0,0,-1,65,2024-10-10,PetePrisco,4,PetePrisco
+4733454,2024,reg,6,,34,,28,,,1,0,1,0,0,0,0,0,0,0,-6,62,2024-10-10,PetePrisco,4,PetePrisco
+4733455,2024,reg,6,,20,,17,,,,,,,,,,,,,-3,37,2024-10-10,PetePrisco,,PetePrisco
+4733407,2024,reg,6,,27,,23,,,1,0,1,0,0,0,1,0,0,0,-4,50,2024-10-10,BleacherReport,6,BleacherReport
+4733199,2024,reg,6,,19,,24,,,1,0,1,0,0,0,0,0,0,0,5,43,2024-10-10,BleacherReport,4,BleacherReport
+4733412,2024,reg,6,,21,,13,,,1,0,1,0,0,0,0,0,0,0,-8,34,2024-10-10,BleacherReport,4,BleacherReport
+4733413,2024,reg,6,,26,,28,,,1,0,0,0,0,0,1,0,0,0,2,54,2024-10-10,BleacherReport,4,BleacherReport
+4733409,2024,reg,6,,20,,30,,,1,0,1,0,0,0,0,0,0,0,10,50,2024-10-10,BleacherReport,4,BleacherReport
+4733411,2024,reg,6,,16,,27,,,1,0,0,0,0,0,0,0,0,0,11,43,2024-10-10,BleacherReport,3,BleacherReport
+4733410,2024,reg,6,,23,,21,,,1,0,1,0,0,0,0,0,0,0,-2,44,2024-10-10,BleacherReport,4,BleacherReport
+4733408,2024,reg,6,,23,,17,,,1,0,1,0,0,0,0,0,0,0,-6,40,2024-10-10,BleacherReport,4,BleacherReport
+4733414,2024,reg,6,,16,,20,,,0,0,0,0,0,0,0,0,0,0,4,36,2024-10-10,BleacherReport,0,BleacherReport
+4733415,2024,reg,6,,19,,14,,,1,0,1,0,0,0,0,0,0,0,-5,33,2024-10-10,BleacherReport,4,BleacherReport
+4733453,2024,reg,6,,34,,26,,,1,0,1,0,0,0,1,0,0,0,-8,60,2024-10-10,BleacherReport,6,BleacherReport
+4733416,2024,reg,6,,31,,21,,,1,0,1,0,0,0,1,0,0,0,-10,52,2024-10-10,BleacherReport,6,BleacherReport
+4733454,2024,reg,6,,30,,23,,,1,0,1,0,0,0,0,0,0,0,-7,53,2024-10-10,BleacherReport,4,BleacherReport
+4733455,2024,reg,6,,22,,18,,,,,,,,,,,,,-4,40,2024-10-10,BleacherReport,,BleacherReport
+4733407,2024,reg,6,,24,,20,,,1,0,1,0,0,0,0,0,0,0,-4,44,2024-10-10,BillBender,4,BillBender
+4733199,2024,reg,6,,24,,29,,,1,0,1,0,0,0,1,0,0,0,5,53,2024-10-10,BillBender,6,BillBender
+4733409,2024,reg,6,,21,,28,,,1,0,1,0,0,0,0,0,0,0,7,49,2024-10-10,BillBender,4,BillBender
+4733410,2024,reg,6,,30,,27,,,1,0,1,0,0,0,0,0,0,0,-3,57,2024-10-10,BillBender,5,BillBender
+4733408,2024,reg,6,,24,,21,,,1,0,0,0,0,0,1,0,0,0,-3,45,2024-10-10,BillBender,4,BillBender
+4733412,2024,reg,6,,23,,17,,,1,0,0,0,0,0,1,0,0,0,-6,40,2024-10-10,BillBender,4,BillBender
+4733411,2024,reg,6,,19,,27,,,1,0,1,0,0,0,0,0,0,0,8,46,2024-10-10,BillBender,4,BillBender
+4733413,2024,reg,6,,24,,28,,,1,0,0,0,0,0,1,0,0,0,4,52,2024-10-10,BillBender,4,BillBender
+4733453,2024,reg,6,,30,,20,,,1,0,1,0,0,0,0,0,0,0,-10,50,2024-10-10,BillBender,4,BillBender
+4733416,2024,reg,6,,31,,21,,,1,0,1,0,0,0,1,0,0,0,-10,52,2024-10-10,BillBender,6,BillBender
+4733414,2024,reg,6,,16,,19,,,0,0,0,0,0,0,0,0,0,0,3,35,2024-10-10,BillBender,0,BillBender
+4733415,2024,reg,6,,20,,14,,,1,0,1,0,0,0,0,0,0,0,-6,34,2024-10-10,BillBender,4,BillBender
+4733454,2024,reg,6,,27,,21,,,1,0,1,0,0,0,0,0,0,0,-6,48,2024-10-10,BillBender,4,BillBender
+4733455,2024,reg,6,,24,,23,,,,,,,,,,,,,-1,47,2024-10-10,BillBender,,BillBender
+4733407,2024,reg,6,,23,,24,,,0,0,0,0,0,0,0,0,0,0,1,47,2024-10-10,DataSkrive,1,DataSkrive
+4733199,2024,reg,6,,15,,29,,,1,0,1,0,0,0,0,0,0,0,14,44,2024-10-10,DataSkrive,4,DataSkrive
+4733411,2024,reg,6,,11,,31,,,1,0,0,0,0,0,1,0,0,0,20,42,2024-10-10,DataSkrive,4,DataSkrive
+4733412,2024,reg,6,,24,,14,,,1,0,1,0,0,0,0,0,0,0,-10,38,2024-10-10,DataSkrive,4,DataSkrive
+4733410,2024,reg,6,,23,,22,,,1,0,1,0,0,0,0,0,0,0,-1,45,2024-10-10,DataSkrive,4,DataSkrive
+4733408,2024,reg,6,,24,,25,,,0,0,0,0,0,0,1,0,0,0,1,49,2024-10-10,DataSkrive,2,DataSkrive
+4733409,2024,reg,6,,19,,29,,,1,0,1,0,0,0,0,0,0,0,10,48,2024-10-10,DataSkrive,4,DataSkrive
+4733413,2024,reg,6,,28,,27,,,0,0,0,0,0,0,1,0,0,0,-1,55,2024-10-10,DataSkrive,2,DataSkrive
+4733414,2024,reg,6,,13,,19,,,0,0,0,0,0,0,0,0,0,0,6,32,2024-10-10,DataSkrive,0,DataSkrive
+4733415,2024,reg,6,,24,,15,,,1,0,1,0,0,0,1,0,0,0,-9,39,2024-10-10,DataSkrive,6,DataSkrive
+4733416,2024,reg,6,,32,,15,,,1,0,1,0,0,0,1,0,0,0,-17,47,2024-10-10,DataSkrive,6,DataSkrive
+4733453,2024,reg,6,,22,,25,,,0,0,0,0,0,0,0,0,0,0,3,47,2024-10-10,DataSkrive,0,DataSkrive
+4733454,2024,reg,6,,21,,27,,,0,0,0,0,0,0,0,0,0,0,6,48,2024-10-10,DataSkrive,0,DataSkrive
+4733455,2024,reg,6,,20,,23,,,,,,,,,,,,,3,43,2024-10-10,DataSkrive,,DataSkrive
+4733407,2024,reg,6,,31,,24,,,1,0,1,0,0,0,1,0,0,0,-7,55,2024-10-10,MarcusMosher,7,MarcusMosher
+4733199,2024,reg,6,,26,,23,,,0,0,0,0,0,0,1,0,0,0,-3,49,2024-10-10,MarcusMosher,2,MarcusMosher
+4733408,2024,reg,6,,24,,20,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-10-10,MarcusMosher,6,MarcusMosher
+4733410,2024,reg,6,,20,,24,,,0,0,0,0,0,0,0,0,0,0,4,44,2024-10-10,MarcusMosher,1,MarcusMosher
+4733413,2024,reg,6,,28,,31,,,1,0,0,0,0,0,1,0,0,0,3,59,2024-10-10,MarcusMosher,4,MarcusMosher
+4733411,2024,reg,6,,17,,31,,,1,0,0,0,0,0,0,0,0,0,14,48,2024-10-10,MarcusMosher,2,MarcusMosher
+4733409,2024,reg,6,,24,,31,,,1,0,1,0,0,0,0,0,0,0,7,55,2024-10-10,MarcusMosher,4,MarcusMosher
+4733412,2024,reg,6,,21,,13,,,1,0,1,0,0,0,0,0,0,0,-8,34,2024-10-10,MarcusMosher,4,MarcusMosher
+4733414,2024,reg,6,,14,,17,,,0,0,0,0,0,0,0,0,0,0,3,31,2024-10-10,MarcusMosher,0,MarcusMosher
+4733415,2024,reg,6,,23,,16,,,1,0,1,0,0,0,1,0,0,0,-7,39,2024-10-10,MarcusMosher,6,MarcusMosher
+4733416,2024,reg,6,,27,,17,,,1,0,1,0,0,0,0,0,0,0,-10,44,2024-10-10,MarcusMosher,4,MarcusMosher
+4733453,2024,reg,6,,34,,27,,,1,0,1,0,0,0,1,0,0,0,-7,61,2024-10-10,MarcusMosher,6,MarcusMosher
+4733454,2024,reg,6,,23,,24,,,0,0,0,0,0,0,1,0,0,0,1,47,2024-10-10,MarcusMosher,2,MarcusMosher
+4733455,2024,reg,6,,17,,20,,,,,,,,,,,,,3,37,2024-10-10,MarcusMosher,,MarcusMosher
+4733407,2024,reg,6,,27,,21,,,1,0,1,0,0,0,0,0,0,0,-6,48,2024-10-10,Sportsnaut,4,Sportsnaut
+4733199,2024,reg,6,,29,,28,,,0,0,0,0,0,0,1,0,0,0,-1,57,2024-10-10,Sportsnaut,2,Sportsnaut
+4733409,2024,reg,6,,17,,27,,,1,0,1,0,0,0,1,0,0,0,10,44,2024-10-10,Sportsnaut,6,Sportsnaut
+4733412,2024,reg,6,,27,,10,,,1,0,1,0,0,0,0,0,0,0,-17,37,2024-10-10,Sportsnaut,4,Sportsnaut
+4733410,2024,reg,6,,16,,13,,,1,0,1,0,0,0,1,0,0,0,-3,29,2024-10-10,Sportsnaut,7,Sportsnaut
+4733408,2024,reg,6,,24,,21,,,1,0,0,0,0,0,1,0,0,0,-3,45,2024-10-10,Sportsnaut,4,Sportsnaut
+4733411,2024,reg,6,,17,,31,,,1,0,0,0,0,0,0,0,0,0,14,48,2024-10-10,Sportsnaut,2,Sportsnaut
+4733413,2024,reg,6,,31,,38,,,1,0,1,0,0,0,1,0,0,0,7,69,2024-10-10,Sportsnaut,7,Sportsnaut
+4733414,2024,reg,6,,17,,20,,,0,0,0,0,0,0,1,0,0,0,3,37,2024-10-10,Sportsnaut,2,Sportsnaut
+4733415,2024,reg,6,,20,,13,,,1,0,1,0,0,0,0,0,0,0,-7,33,2024-10-10,Sportsnaut,5,Sportsnaut
+4733453,2024,reg,6,,31,,17,,,1,0,1,0,0,0,0,0,0,0,-14,48,2024-10-10,Sportsnaut,4,Sportsnaut
+4733416,2024,reg,6,,34,,24,,,1,0,1,0,0,0,1,0,0,0,-10,58,2024-10-10,Sportsnaut,7,Sportsnaut
+4733454,2024,reg,6,,28,,27,,,1,0,0,0,0,0,0,0,0,0,-1,55,2024-10-10,Sportsnaut,2,Sportsnaut
+4733455,2024,reg,6,,20,,14,,,,,,,,,,,,,-6,34,2024-10-10,Sportsnaut,,Sportsnaut
+4733407,2024,reg,6,,24,,20,,,1,0,1,0,0,0,0,0,0,0,-4,44,2024-10-10,VinnieIyer,4,VinnieIyer
+4733413,2024,reg,6,,27,,31,,,1,0,0,0,0,0,1,0,0,0,4,58,2024-10-10,VinnieIyer,4,VinnieIyer
+4733415,2024,reg,6,,27,,10,,,1,0,1,0,0,0,1,0,0,0,-17,37,2024-10-10,VinnieIyer,6,VinnieIyer
+4733408,2024,reg,6,,27,,24,,,1,0,0,0,0,0,1,0,0,0,-3,51,2024-10-10,VinnieIyer,4,VinnieIyer
+4733199,2024,reg,6,,20,,24,,,1,0,1,0,0,0,0,0,0,0,4,44,2024-10-10,VinnieIyer,4,VinnieIyer
+4733409,2024,reg,6,,20,,27,,,1,0,1,0,0,0,1,0,0,0,7,47,2024-10-10,VinnieIyer,7,VinnieIyer
+4733412,2024,reg,6,,23,,20,,,1,0,0,0,0,0,1,0,0,0,-3,43,2024-10-10,VinnieIyer,4,VinnieIyer
+4733411,2024,reg,6,,17,,27,,,1,0,0,0,0,0,0,0,0,0,10,44,2024-10-10,VinnieIyer,2,VinnieIyer
+4733410,2024,reg,6,,20,,17,,,1,0,1,0,0,0,1,0,0,0,-3,37,2024-10-10,VinnieIyer,10,VinnieIyer
+4733414,2024,reg,6,,23,,10,,,1,0,1,0,0,0,0,0,0,0,-13,33,2024-10-10,VinnieIyer,5,VinnieIyer
+4733416,2024,reg,6,,30,,17,,,1,0,1,0,0,0,1,0,0,0,-13,47,2024-10-10,VinnieIyer,6,VinnieIyer
+4733453,2024,reg,6,,27,,24,,,1,0,0,0,0,0,0,0,0,0,-3,51,2024-10-10,VinnieIyer,2,VinnieIyer
+4733454,2024,reg,6,,30,,27,,,1,0,0,0,0,0,0,0,0,0,-3,57,2024-10-10,VinnieIyer,2,VinnieIyer
+4733455,2024,reg,6,,20,,23,,,,,,,,,,,,,3,43,2024-10-10,VinnieIyer,,VinnieIyer
+4733407,2024,reg,6,,26,,23,,,1,0,0,0,0,0,0,0,0,0,-3,49,2024-10-10,Dimers,2,Dimers
+4733199,2024,reg,6,,21,,23,,,1,0,0,0,0,0,0,0,0,0,2,44,2024-10-10,Dimers,2,Dimers
+4733408,2024,reg,6,,22,,20,,,1,0,0,0,0,0,1,0,0,0,-2,42,2024-10-10,Dimers,4,Dimers
+4733410,2024,reg,6,,20,,22,,,0,0,1,0,0,0,1,0,0,0,2,42,2024-10-10,Dimers,5,Dimers
+4733409,2024,reg,6,,21,,26,,,1,0,0,0,0,0,1,0,0,0,5,47,2024-10-10,Dimers,5,Dimers
+4733414,2024,reg,6,,19,,17,,,1,0,0,0,0,0,0,0,0,0,-2,36,2024-10-10,Dimers,2,Dimers
+4733412,2024,reg,6,,23,,16,,,1,0,0,0,0,0,1,0,0,0,-7,39,2024-10-10,Dimers,4,Dimers
+4733413,2024,reg,6,,23,,29,,,1,0,0,0,0,0,1,0,0,0,6,52,2024-10-10,Dimers,5,Dimers
+4733411,2024,reg,6,,17,,25,,,1,0,1,0,0,0,1,0,0,0,8,42,2024-10-10,Dimers,6,Dimers
+4733415,2024,reg,6,,20,,17,,,1,0,0,0,0,0,1,0,0,0,-3,37,2024-10-10,Dimers,4,Dimers
+4733416,2024,reg,6,,26,,20,,,1,0,0,0,0,0,0,0,0,0,-6,46,2024-10-10,Dimers,3,Dimers
+4733453,2024,reg,6,,27,,24,,,1,0,0,0,0,0,0,0,0,0,-3,51,2024-10-10,Dimers,2,Dimers
+4733454,2024,reg,6,,25,,22,,,1,0,0,0,0,0,1,0,0,0,-3,47,2024-10-10,Dimers,4,Dimers
+4733407,2024,reg,6,,25,,20,,,1,0,1,0,0,0,0,0,0,0,-5,45,2024-10-10,TylerDragon,4,TylerDragon
+4733407,2024,reg,6,,25,,17,,,1,0,1,0,0,0,0,0,0,0,-8,42,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733407,2024,reg,6,,26,,20,,,1,0,1,0,0,0,0,0,0,0,-6,46,2024-10-10,JordanMendoza,4,JordanMendoza
+4733199,2024,reg,6,,20,,26,,,1,0,1,0,0,0,1,0,0,0,6,46,2024-10-10,LorenzoReyes,6,LorenzoReyes
+4733199,2024,reg,6,,20,,21,,,1,0,0,0,0,0,0,0,0,0,1,41,2024-10-10,TylerDragon,2,TylerDragon
+4733199,2024,reg,6,,16,,22,,,1,0,1,0,0,0,0,0,0,0,6,38,2024-10-10,JordanMendoza,5,JordanMendoza
+4733413,2024,reg,6,,30,,33,,,1,0,0,0,0,0,1,0,0,0,3,63,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733413,2024,reg,6,,23,,28,,,1,0,0,0,0,0,0,0,0,0,5,51,2024-10-10,TylerDragon,3,TylerDragon
+4733413,2024,reg,6,,31,,33,,,1,0,0,0,0,0,1,0,0,0,2,64,2024-10-10,JordanMendoza,4,JordanMendoza
+4733409,2024,reg,6,,23,,24,,,1,0,0,0,0,0,1,0,0,0,1,47,2024-10-10,LorenzoReyes,5,LorenzoReyes
+4733409,2024,reg,6,,23,,26,,,1,0,0,0,0,0,0,0,0,0,3,49,2024-10-10,JordanMendoza,2,JordanMendoza
+4733409,2024,reg,6,,20,,26,,,1,0,1,0,0,0,1,0,0,0,6,46,2024-10-10,TylerDragon,6,TylerDragon
+4733412,2024,reg,6,,28,,16,,,1,0,1,0,0,0,1,0,0,0,-12,44,2024-10-10,TylerDragon,6,TylerDragon
+4733412,2024,reg,6,,23,,9,,,1,0,1,0,0,0,0,0,0,0,-14,32,2024-10-10,JordanMendoza,4,JordanMendoza
+4733412,2024,reg,6,,31,,10,,,1,0,1,0,0,0,1,0,0,0,-21,41,2024-10-10,LorenzoReyes,6,LorenzoReyes
+4733408,2024,reg,6,,21,,16,,,1,0,1,0,0,0,0,0,0,0,-5,37,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733408,2024,reg,6,,24,,20,,,1,0,1,0,0,0,1,0,0,0,-4,44,2024-10-10,JordanMendoza,6,JordanMendoza
+4733408,2024,reg,6,,27,,24,,,1,0,0,0,0,0,1,0,0,0,-3,51,2024-10-10,TylerDragon,4,TylerDragon
+4733411,2024,reg,6,,13,,26,,,1,0,0,0,0,0,1,0,0,0,13,39,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733411,2024,reg,6,,20,,30,,,1,0,0,0,0,0,0,0,0,0,10,50,2024-10-10,TylerDragon,2,TylerDragon
+4733411,2024,reg,6,,16,,29,,,1,0,0,0,0,0,0,0,0,0,13,45,2024-10-10,JordanMendoza,3,JordanMendoza
+4733410,2024,reg,6,,23,,17,,,1,0,1,0,0,0,1,0,0,0,-6,40,2024-10-10,LorenzoReyes,7,LorenzoReyes
+4733410,2024,reg,6,,21,,17,,,1,0,1,0,0,0,1,0,0,0,-4,38,2024-10-10,TylerDragon,7,TylerDragon
+4733410,2024,reg,6,,17,,16,,,1,0,1,0,0,0,1,0,0,0,-1,33,2024-10-10,JordanMendoza,6,JordanMendoza
+4733414,2024,reg,6,,20,,16,,,1,0,1,0,0,0,0,0,0,0,-4,36,2024-10-10,TylerDragon,5,TylerDragon
+4733414,2024,reg,6,,13,,14,,,0,0,0,0,0,0,0,0,0,0,1,27,2024-10-10,LorenzoReyes,0,LorenzoReyes
+4733414,2024,reg,6,,17,,19,,,0,0,0,0,0,0,0,0,0,0,2,36,2024-10-10,JordanMendoza,0,JordanMendoza
+4733415,2024,reg,6,,17,,6,,,1,0,1,0,0,0,0,0,0,0,-11,23,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733415,2024,reg,6,,21,,16,,,1,0,1,0,0,0,1,0,0,0,-5,37,2024-10-10,TylerDragon,6,TylerDragon
+4733415,2024,reg,6,,20,,13,,,1,0,1,0,0,0,0,0,0,0,-7,33,2024-10-10,JordanMendoza,5,JordanMendoza
+4733416,2024,reg,6,,24,,13,,,1,0,1,0,0,0,0,0,0,0,-11,37,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733416,2024,reg,6,,28,,17,,,1,0,1,0,0,0,0,0,0,0,-11,45,2024-10-10,TylerDragon,4,TylerDragon
+4733416,2024,reg,6,,30,,16,,,1,0,1,0,0,0,0,0,0,0,-14,46,2024-10-10,JordanMendoza,4,JordanMendoza
+4733453,2024,reg,6,,24,,17,,,1,0,1,0,0,0,0,0,0,0,-7,41,2024-10-10,LorenzoReyes,4,LorenzoReyes
+4733453,2024,reg,6,,26,,23,,,1,0,0,0,0,0,0,0,0,0,-3,49,2024-10-10,JordanMendoza,2,JordanMendoza
+4733453,2024,reg,6,,28,,24,,,1,0,1,0,0,0,0,0,0,0,-4,52,2024-10-10,TylerDragon,4,TylerDragon
+4733454,2024,reg,6,,30,,13,,,1,0,1,0,0,0,1,0,0,0,-17,43,2024-10-10,LorenzoReyes,6,LorenzoReyes
+4733454,2024,reg,6,,27,,20,,,1,0,1,0,0,0,1,0,0,0,-7,47,2024-10-10,TylerDragon,6,TylerDragon
+4733454,2024,reg,6,,27,,25,,,1,0,0,0,0,0,0,0,0,0,-2,52,2024-10-10,JordanMendoza,2,JordanMendoza
+4733455,2024,reg,6,,17,,19,,,,,,,,,,,,,2,36,2024-10-10,LorenzoReyes,,LorenzoReyes
+4733455,2024,reg,6,,28,,24,,,,,,,,,,,,,-4,52,2024-10-10,TylerDragon,,TylerDragon
+4733455,2024,reg,6,,20,,17,,,,,,,,,,,,,-3,37,2024-10-10,JordanMendoza,,JordanMendoza
+4733413,2024,reg,6,Washington Commanders,28,Baltimore Ravens,34,0,0,1,0,0,0,0,0,1,0,0,0,-6,62,2024-10-11T20:21:13.102Z,rosstuckerNFL,4,rosstuckerNFL
+4733408,2024,reg,6,Tampa Bay Buccaneers,24,New Orleans Saints,17,0,0,1,0,1,0,0,0,0,0,0,0,7,41,2024-10-11T20:24:01.541Z,rosstuckerNFL,4,rosstuckerNFL
+4733414,2024,reg,6,L.A. Chargers Chargers,21,Denver Broncos,20,0,0,1,0,0,0,0,0,1,0,0,0,1,41,2024-10-10T17:36:39.279Z,rosstuckerNFL,4,rosstuckerNFL
+4733416,2024,reg,6,Atlanta Falcons,27,Carolina Panthers,20,0,0,1,0,1,0,0,0,1,0,0,0,7,47,2024-10-10T17:37:17.534Z,rosstuckerNFL,7,rosstuckerNFL
+4733454,2024,reg,6,Cincinnati Bengals,24,N.Y. Giants Giants,23,0,0,1,0,0,0,0,0,0,0,0,0,1,47,2024-10-12T17:31:45.476Z,rosstuckerNFL,2,rosstuckerNFL
+4733407,2024,reg,6,San Francisco 49ers,27,Seattle Seahawks,17,0,0,1,0,1,0,0,0,0,0,0,0,10,44,2024-10-10T18:27:54.515Z,rosstuckerNFL,4,rosstuckerNFL
+4733199,2024,reg,6,Jacksonville Jaguars,21,Chicago Bears,23,3,0,1,0,0,0,3,-3,0,0,0,0,-2,44,2024-10-11T09:22:09.490Z,ausame,2,ausame
+4733413,2024,reg,6,Washington Commanders,23,Baltimore Ravens,27,3,0,1,0,0,0,3,-3,0,0,0,0,-4,50,2024-10-11T09:23:40.906Z,ausame,3,ausame
+4733409,2024,reg,6,Arizona Cardinals,21,Green Bay Packers,24,3,3,1,0,0,0,3,-3,1,0,3,3,-3,45,2024-10-11T09:24:59.088Z,ausame,4,ausame
+4733412,2024,reg,6,Houston Texans,23,New England Patriots,17,3,3,1,0,0,0,3,-3,1,0,3,3,6,40,2024-10-11T09:26:24.787Z,ausame,4,ausame
+4733408,2024,reg,6,Tampa Bay Buccaneers,24,New Orleans Saints,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-11T09:28:23.879Z,ausame,6,ausame
+4733411,2024,reg,6,Cleveland Browns,17,Philadelphia Eagles,27,0,3,1,0,0,0,0,0,0,0,3,-3,-10,44,2024-10-11T09:29:56.483Z,ausame,2,ausame
+4733410,2024,reg,6,Indianapolis Colts,21,Tennessee Titans,23,3,0,0,0,1,0,3,3,0,0,0,0,-2,44,2024-10-11T09:32:07.003Z,ausame,2,ausame
+4733414,2024,reg,6,L.A. Chargers Chargers,17,Denver Broncos,19,3,3,0,0,0,0,3,-3,1,0,3,3,-2,36,2024-10-11T09:33:59.645Z,ausame,2,ausame
+4733415,2024,reg,6,Pittsburgh Steelers,21,Las Vegas Raiders,20,3,3,1,0,0,0,3,-3,1,0,3,3,1,41,2024-10-11T09:35:26.968Z,ausame,4,ausame
+4733416,2024,reg,6,Atlanta Falcons,24,Carolina Panthers,19,3,3,1,0,0,0,3,-3,0,0,3,-3,5,43,2024-10-11T09:37:57.658Z,ausame,2,ausame
+4733453,2024,reg,6,Detroit Lions,28,Dallas Cowboys,27,3,0,1,0,0,0,3,-3,1,0,0,0,1,55,2024-10-11T09:43:29.225Z,ausame,4,ausame
+4733454,2024,reg,6,Cincinnati Bengals,24,N.Y. Giants Giants,20,0,0,1,0,1,0,0,0,1,0,0,0,4,44,2024-10-11T09:45:03.605Z,ausame,6,ausame
+4733455,2024,reg,6,Buffalo Bills,27,N.Y. Jets Jets,17,3,3,,,,,,,,,,,10,44,2024-10-11T09:46:28.689Z,ausame,,ausame
+4733199,2024,reg,6,Jacksonville Jaguars,16,Chicago Bears,19,0,0,1,0,1,0,0,0,0,0,0,0,-3,35,2024-10-11T20:20:11.924Z,rosstuckerNFL,5,rosstuckerNFL
+4733409,2024,reg,6,Arizona Cardinals,17,Green Bay Packers,24,0,0,1,0,1,0,0,0,1,0,0,0,-7,41,2024-10-11T20:21:58.902Z,rosstuckerNFL,6,rosstuckerNFL
+4733412,2024,reg,6,Houston Texans,24,New England Patriots,13,0,0,1,0,1,0,0,0,0,0,0,0,11,37,2024-10-11T20:22:57.761Z,rosstuckerNFL,4,rosstuckerNFL
+4733411,2024,reg,6,Cleveland Browns,13,Philadelphia Eagles,24,0,0,1,0,0,0,0,0,1,0,0,0,-11,37,2024-10-11T20:24:47.552Z,rosstuckerNFL,4,rosstuckerNFL
+4733410,2024,reg,6,Indianapolis Colts,16,Tennessee Titans,17,0,0,0,0,1,0,0,0,1,0,0,0,-1,33,2024-10-11T20:25:45.227Z,rosstuckerNFL,5,rosstuckerNFL
+4733415,2024,reg,6,Pittsburgh Steelers,20,Las Vegas Raiders,16,0,0,1,0,1,0,0,0,0,0,0,0,4,36,2024-10-11T20:27:32.804Z,rosstuckerNFL,4,rosstuckerNFL
+4733453,2024,reg,6,Detroit Lions,24,Dallas Cowboys,20,0,0,1,0,1,0,0,0,0,0,0,0,4,44,2024-10-11T20:29:31.108Z,rosstuckerNFL,4,rosstuckerNFL
+4733455,2024,reg,6,Buffalo Bills,23,N.Y. Jets Jets,20,0,0,,,,,,,,,,,3,43,2024-10-12T17:33:27.435Z,rosstuckerNFL,,rosstuckerNFL
+4733292,2024,reg,7,Las Vegas Raiders,20,L.A. Rams Rams,27,0,0,,,,,,,,,,,-7,47,2024-10-14T16:02:45.507Z,cmaronchick,,cmaronchick
+4733286,2024,reg,7,Seattle Seahawks,27,Atlanta Falcons,23,0,0,,,,,,,,,,,4,50,2024-10-14T16:04:31.547Z,cmaronchick,,cmaronchick
+4733284,2024,reg,7,Denver Broncos,16,New Orleans Saints,27,0,0,,,,,,,,,,,-11,43,2024-10-14T16:05:12.048Z,cmaronchick,,cmaronchick

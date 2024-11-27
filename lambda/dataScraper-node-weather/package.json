@@ -4,11 +4,12 @@
   "description": "",
   "main": "dataScraper-node.js",
   "dependencies": {
-    "axios": "^0.21.1",
-    "mongodb": "^4.1.0"
+    "axios": "^1.7.7",
+    "mongodb": "^6.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "aws lambda update-function-code --function-name dataScraper-node-weather --zip-file fileb://Archive.zip --publish"
   },
   "author": "",
   "license": "ISC"

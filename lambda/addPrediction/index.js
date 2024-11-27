@@ -1,15 +1,18 @@
 'use strict';
 
-var mongo = require("mongodb").MongoClient,
+const mongo = require("mongodb").MongoClient,
     assert = require("assert"),
-    validate = require("jsonschema").validate;
-const AWS = require('aws-sdk');    
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+    validate = require("jsonschema").validate,
+    AWSConfig = { region: "us-west-2" };
+
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const lambda = new LambdaClient(AWSConfig);
 
 const {config} = require("./config");
 
 const EMAIL = process.env.email;
-const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const SNS = new SNSClient({region: 'us-west-2'});
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
@@ -172,7 +175,7 @@ function createTopic(topicName, cb) {
     });
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     var result = {
         message: '',
@@ -201,13 +204,13 @@ exports.handler = (event, context) => {
     prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
     prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
     prediction.submitted = new Date();
+    try {
+        const client = await mongo.connect(MONGO_URL);
+        // assert.equal(null, err);
 
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-
-        if (err) {
-            return context.done(err, null);
-        }
+        // if (err) {
+        //     return context.done(err, null);
+        // }
         const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
@@ -225,12 +228,12 @@ exports.handler = (event, context) => {
             gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
         }
         console.log('gamesQuery: ', gamesQuery)
-        db.collection(gamesCollection).findOne(gamesQuery, {_id: false}, function (err, game) {
+        const game = await db.collection(gamesCollection).findOne(gamesQuery, {_id: false})
             
-            assert.equal(err, null);
-            if (err) {
-                context.fail(err, null);
-            }
+            // assert.equal(err, null);
+            // if (err) {
+            //     context.fail(err, null);
+            // }
             
             var now = new Date();
             var kickoff = Date.parse(game.startDateTime);
@@ -250,11 +253,11 @@ exports.handler = (event, context) => {
             
             //get user groups in order to add groups to predictions for scoring
             
-            db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1}).toArray(function(err, groups) {
+            const groups = await db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1}).toArray();
                 console.log("user groups: ", groups)
-                if (err) {
-                    return false;
-                }
+                // if (err) {
+                //     return false;
+                // }
                 if (groups[0]) {
                     prediction.groups = groups[0].groups;
                     if (prediction.groups && prediction.groups.length > 0) {
@@ -273,17 +276,19 @@ exports.handler = (event, context) => {
                 } else if (prediction.sport === 'ncaam') {
                     predictionCollection = 'predictions-ncaam';
                 }
-                db.collection(predictionCollection).update(existingObjQuery, prediction, {upsert: true}, function (err, dbRes) {
-                    var respObj = JSON.parse(dbRes);
+                console.log('existingObjQuery', existingObjQuery, prediction);
+                const dbRes = await db.collection(predictionCollection).updateOne(existingObjQuery, {$set: {...prediction}}, {upsert: true});
+                console.log('dbRes', dbRes);
+                    // var respObj = JSON.parse(dbRes);
     
-                    assert.equal(err, null);
-                    assert.equal(respObj.ok, 1);
+                    // assert.equal(err, null);
+                    // assert.equal(respObj.ok, 1);
     
-                    if (err) {
-                        result.message = err;
-                        result.succeeded = false;
-                        return context.fail(JSON.stringify(result));
-                    }
+                    // if (err) {
+                    //     result.message = err;
+                    //     result.succeeded = false;
+                    //     return context.fail(JSON.stringify(result));
+                    // }
                     
                     
                     
@@ -292,7 +297,7 @@ exports.handler = (event, context) => {
                         result.game.weather.temp = Math.round((game.weather.temp * 1.8) - 459.67);
                     }
                     result.prediction = prediction;
-                    if (respObj.upserted) {
+                    if (dbRes.upsertedCount === 1) {
                         result.updated = false;
                     } else {
                         result.updated = true;
@@ -308,24 +313,29 @@ exports.handler = (event, context) => {
                         LogType: 'Tail',
                         Payload: '{ "username": "' + event.userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
                       };
-                    
-                      lambda.invoke(lambdaParams, function(err, data) {
-                          console.log('err', err);
-                          console.log('data', data);
+
+
+                
+                    const command = new InvokeCommand(lambdaParams, function(err, data) {
+                        console.log('err', err);
+                        console.log('data', data);
                         if (err) {
-                          context.fail('addToGroupError', err);
+                        context.fail('addToGroupError', err);
                         } else {
-                          context.succeed('Lambda_B said '+ data.Payload);
+                        context.succeed('Lambda_B said '+ data.Payload);
                         }
-                      })
+                    })
+                    const lambdaresponse = await lambda.send(command);
+                    console.log('lambdaresponse', lambdaresponse);
+                    
                     var predictionsQuery = {userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
                     if (prediction.sport === 'ncaam') {
                         predictionsQuery = {userId: prediction.userId, year: prediction.year}
                     }
-                    db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray(function(err, predictions) {
-                        if (err) {
-                            return context.done(null, result);
-                        }
+                    const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
+                        // if (err) {
+                        //     return context.done(null, result);
+                        // }
                         
                         result.predictionsSubmitted = predictions.length;
                         let starsSubmitted = 0;
@@ -343,7 +353,6 @@ exports.handler = (event, context) => {
                         
                         // kick off new aggregation calculation
                         
-                        var sns = new AWS.SNS();
                         var params = {
                             Message: "Prediction for game " + prediction.gameId + " submitted by " + event.userId, 
                             Subject: "Prediction Submitted",
@@ -364,23 +373,38 @@ exports.handler = (event, context) => {
                                 sport: {
                                     DataType: "String",
                                     StringValue: game.sport
+                                },
+                                season: {
+                                    DataType: "String",
+                                    StringValue: game.season
                                 }
                             },
                         };
                         console.log("SNS Publishing")
-                        sns.publish(params, function(err, response) {
-                            if (err) {
-                                context.done("SNS error: " + err, null);
-                            }
-                            console.log("SNS Publish complete: ", response);
-                            context.done (null, result)
-                            });
+
+                        const SNSPublishCommand = new PublishCommand(params, function(err, response) {
+                        if (err) {
+                            context.done("SNS error: " + err, null);
+                        }
+                        console.log("SNS Publish complete: ", response);
+                        context.done (null, result)
+                        });
+
+                        const SNSResponse = await SNS.send(SNSPublishCommand)
+                        // sns.publish(params, function(err, response) {
+                        //     if (err) {
+                        //         context.done("SNS error: " + err, null);
+                        //     }
+                        //     console.log("SNS Publish complete: ", response);
+                        //     context.done (null, result)
+                        //     });
+                        return context.done(null, {result});
                           
                         
-                    })
-                    
-                });
-            });
-        });
-    });
-};
+            } catch (err) {
+                console.log('err', err)
+                result.message = err;
+                result.succeeded = false;
+                return context.fail(result);
+            }
+}
