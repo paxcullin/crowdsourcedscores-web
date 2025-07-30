@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r aggregateGroupPredictions.zip ."
+    "test": "aws lambda invoke --function-name aggregatePredictions --cli-binary-format raw-in-base64-out --payload file://aggregatePredictions.json aggregatePredictionsResults.json",
+    "upload": "aws lambda update-function-code --function-name aggregatePredictions --zip-file fileb://aggregatePredictions.zip --publish",
+    "package": "zip -r aggregatePredictions.zip ."
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
-    "mongo-round": "^1.0.0",
     "mongodb": "^3.6.10"
   }
 }

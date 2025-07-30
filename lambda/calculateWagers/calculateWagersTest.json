@@ -1,0 +1,16 @@
+{
+    "Records": [
+      {
+        "Sns": {
+          "MessageAttributes": {
+            "gameId": {
+              "Value": 4733466
+            },
+            "sport": {
+              "Value": "nfl"
+            }
+          }
+        }
+      }
+    ]
+  }

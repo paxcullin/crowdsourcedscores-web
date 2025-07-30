@@ -1,0 +1,15 @@
+{
+  "name": "getGameWeek",
+  "version": "1.0.0",
+  "description": "Gets all Games by sport, year, season, and team",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.7.0"
+  },
+  "scripts": {
+    "test": "aws lambda invoke --function-name getGameWeek --cli-binary-format raw-in-base64-out --payload file://response.json getGameWeek.json",
+    "package": "zip -r getGameWeek.zip .",
+    "upload": "aws lambda update-function-code --function-name getGameWeek --zip-file fileb://getGameWeek.zip --publish"
+  }
+}

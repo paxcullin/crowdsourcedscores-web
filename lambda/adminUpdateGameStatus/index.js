@@ -9,7 +9,7 @@ const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
 const EMAIL = process.env.email;
 const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
 
-const config = require('config')
+const {config} = require('config')
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
@@ -142,7 +142,7 @@ function createTopic(topicName, cb) {
     });
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
 
     var result = {
@@ -170,14 +170,9 @@ exports.handler = (event, context) => {
         game.results.spread = game.results.awayTeam.score - game.results.homeTeam.score;
         game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
     }
-
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-
-        if (err) {
-            return context.done(err, null);
-        }
-
+    try {
+        const client = await mongo.connect(MONGO_URL);
+        
         const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
@@ -189,44 +184,46 @@ exports.handler = (event, context) => {
         var kickoff = new Date(game.startDateTime);
         var cutoff = kickoff - msHour;
         var startDateTime = new Date(game.startDateTime)
-        
-        var gameUpdate = {};
-        if (game.status === "notStarted") {
-            gameUpdate = {
-                $set: {
-                    startDateTime: startDateTime,
-                    status: game.status,
-                    "odds.spread": game.odds.spread,
-                    "odds.total": game.odds.total
-                }
-            }
-        } else if (game.results && game.results.awayTeam.score !== -1) {
-            gameUpdate = {
-                $set : {
-                    startDateTime: startDateTime,
-                    status: game.status,
-                    results: {
-                        awayTeam: {
-                            score: game.results.awayTeam.score
-                        },
-                        homeTeam: {
-                            score: game.results.homeTeam.score
-                        },
-                        total: game.results.total,
-                        spread: game.results.spread
+        if (!game.gameId) {
+            
+
+        } else {
+            var gameUpdate = {};
+            if (game.status === "notStarted") {
+                gameUpdate = {
+                    $set: {
+                        startDateTime: startDateTime,
+                        status: game.status,
+                        "odds.spread": game.odds.spread,
+                        "odds.total": game.odds.total
                     }
                 }
+            } else if (game.results && game.results.awayTeam.score !== -1) {
+                gameUpdate = {
+                    $set : {
+                        startDateTime: startDateTime,
+                        status: game.status,
+                        results: {
+                            awayTeam: {
+                                score: game.results.awayTeam.score
+                            },
+                            homeTeam: {
+                                score: game.results.homeTeam.score
+                            },
+                            total: game.results.total,
+                            spread: game.results.spread
+                        }
+                    }
+                }
+            } else {
+                context.done(null, "No update");
             }
-        } else {
-            context.done(null, "No update");
-        }
-        console.log("gameUpdate: ", gameUpdate)
-        var dbName = 'games';
-        if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
-        if (game.sport === 'ncaam') dbName = 'games-ncaam';
-        //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
-        db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate)
-        .then(function (gameObj) {
+            console.log("gameUpdate: ", gameUpdate)
+            var dbName = 'games';
+            if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
+            if (game.sport === 'ncaam') dbName = 'games-ncaam';
+            //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
+            const gameObj = await db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate);
             if (game.status === "final") {
                 //console.log("gameObj: ", gameObj)
                 var sns = new AWS.SNS();
@@ -276,17 +273,19 @@ exports.handler = (event, context) => {
                         }
                     }
                 }
-                console.log('oddsHistoryUpdate: ', oddsHistoryUpdate);
-                db.collection('games').update({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, oddsHistoryUpdate)
-                .then(function(updateOddsHistoryResponse) {
-                    console.log('update odds response: ', updateOddsHistoryResponse.result);
-                    context.done(null, {"message": "Received update: " + game})
-                })
-                .catch(function(updateOddsHistoryReject) { console.log('updateOddsHistoryReject: ', updateOddsHistoryReject); context.done(null, updateOddsHistoryReject) })
+                try {
+                    console.log('oddsHistoryUpdate: ', oddsHistoryUpdate);
+                    const updateOddsHistoryResponse = await db.collection('games').update({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, oddsHistoryUpdate)
+                        console.log('update odds response: ', updateOddsHistoryResponse.result);
+                        context.done(null, {"message": "Received update: " + game})
+                } catch(updateOddsHistoryReject) {
+                    console.log('updateOddsHistoryReject: ', updateOddsHistoryReject); 
+                    context.done(null, updateOddsHistoryReject) 
+                }
             }
-        })
-        .catch(function (findReject) {
-            context.done(findReject, null);
-        })
-    });
+        }
+    } catch (err) {
+        console.log('Error: ', err);
+        context.done(err, null);
+    }
 };

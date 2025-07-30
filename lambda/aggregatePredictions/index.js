@@ -2,12 +2,14 @@
 
 var assert = require("assert"),
     mongo = require("mongodb").MongoClient,                                                                                              
-    {config} = require("config");
+    {config} = require("config"),
+    AWSConfig = { region: "us-west-2" };
     
-    const AWS = require('aws-sdk');
-    const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+    const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+    const lambda = new LambdaClient(AWSConfig);
+
     
-    const MONGO_URL = `mongodb+srv://${config.config.username}:${config.config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
+    const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
 (function() {
   /**
@@ -57,15 +59,11 @@ var assert = require("assert"),
   }
 })();
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
+    try {
+    const client = await mongo.connect(MONGO_URL);
 
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-
-        if (err) {
-            return context.done(err, null);
-        }
         
         const db = client.db('pcsm');
         
@@ -81,11 +79,14 @@ exports.handler = (event, context) => {
         const gameAttributes = messageRecord.MessageAttributes;
         const year = parseInt(gameAttributes.year.Value);
         const gameId = parseInt(gameAttributes.gameId.Value);
+        const gameIds = gameAttributes.gameIds.Value.split(',');
+        const gameIdsArray = gameIds.map((gId) => parseInt(gId));
         const gameWeek = parseInt(gameAttributes.gameWeek.Value);
+        console.log('gameIds :>> ', gameIds);
         var matchOpts = {
           $match: {
             year: year,
-            gameId: gameId,
+            gameId: gameIds && gameIds.length > 0 ? { $in: gameIdsArray } : gameId,
             gameWeek: gameWeek
           }
         }
@@ -98,7 +99,7 @@ exports.handler = (event, context) => {
                     spreadAvg: {$avg: "$spread"}
                 }
             }
-        if (parseInt(gameAttributes.gameId.Value) === 267) {
+        if (parseInt(gameAttributes.gameId.Value) === 283) {
             groupOpts = {
                 $group: {
                     _id: "$gameId",
@@ -144,14 +145,11 @@ exports.handler = (event, context) => {
         dateMidnight.setMinutes(59);
         dateMidnight.setSeconds(59);
         
-        console.log('aggOpts: ', aggOpts)
-        db.collection(predictionsCollection).aggregate(aggOpts).toArray(function (err, results) {
-            assert.equal(err, null);
-            if (err) {
-                console.log(err)
-                return context.fail(err, null);
-            }
-            console.log('results.length: ', results.length);
+        console.log('aggOpts: ', JSON.stringify(aggOpts))
+        const results = await db.collection(predictionsCollection).aggregate(aggOpts).toArray();
+        console.log('results :>> ', results);
+        // return context.done(null, results);
+            // console.log('results.length: ', results.length);
             if (results.length === 0) {
               context.done(null, `No results found for ${matchOpts}`)
             }
@@ -160,12 +158,12 @@ exports.handler = (event, context) => {
                 console.log('result: ', result)
                 // criteria updated to update crowd predictions only when games are in the future
                 //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
-                var criteria = {gameId: result._id, year: year,results: {$exists: false}};
+                var criteria = {gameId: result._id, year: year}; //,results: {$exists: false}
                 
-                var awayAvg = Math.round10(result.awayAvg, -2)
-                var homeAvg = Math.round10(result.homeAvg, -2)
-                var totalAvg = Math.round10(result.totalAvg, -2)
-                var spreadAvg = Math.round10(result.spreadAvg, -2)
+                var awayAvg = parseFloat(result.awayAvg.toFixed(2))
+                var homeAvg = parseFloat(result.homeAvg.toFixed(2))
+                var totalAvg = parseFloat(result.totalAvg.toFixed(2))
+                var spreadAvg = parseFloat(result.spreadAvg.toFixed(2))
                 var crowdResult = {};
                 var update = {
                     $set: {
@@ -177,7 +175,7 @@ exports.handler = (event, context) => {
                         }
                     }
                 }
-                if (result._id === 267) {
+                if (result._id === 283) {
                   update = {
                     $set: {
                       crowd: {
@@ -206,17 +204,15 @@ exports.handler = (event, context) => {
                   }
                 }
                 //console.log("criteria:", criteria)
-                var queryPromise = db.collection(gamesCollection).updateOne(criteria, update)
-                    .then(function (updateResult) {
-                        var message = `{ gameId: ${result._id}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg} }`
-                        console.log('Updated crowd predictions', message);
-                        return Promise.resolve(updateResult);
-                    });
-                queryPromises.push(queryPromise);
+                    
+                  // var message = `{ gameId: ${result._id}, awayAvg: ${awayAvg}, homeAvg: ${homeAvg}, totalAvg: ${totalAvg}, spreadAvg: ${spreadAvg} }`
+                  // console.log('Updated crowd predictions', message);
+                  console.log('update:', update, 'criteria:', criteria);
+                  queryPromises.push({updateOne: {filter: criteria, update: update}});
             });
             
-            Promise.all(queryPromises).then(function() {
-   
+            const bulkWriteResponse = await db.collection(gamesCollection).bulkWrite(queryPromises);
+            console.log('bulkWriteResponse', bulkWriteResponse)
               console.log("calling aggregate group params")
                   var aggregateGroupParams = {
                       FunctionName: 'aggregateGroupPredictions', // the lambda function we are going to invoke
@@ -225,15 +221,32 @@ exports.handler = (event, context) => {
                       Payload: '{ "sport": "' + gameAttributes.sport.Value + '", "year": 2018}'
                     };
                   // 
-                lambda.invoke(aggregateGroupParams, function(err, data) {
-                  if (err) {
-                    console.log("aggregateGroupPredictions err: ", err);
-                  } else {
-                    console.log('aggregateGroupPredictions response: ', data.Payload);
-                  }
+                
+                  var lambdaParams = {
+                    FunctionName: 'aggregateGroupPredictions', // the lambda function we are going to invoke
+                    InvocationType: 'RequestResponse',
+                    LogType: 'Tail',
+                    Payload: JSON.stringify(event)
+                };
+                
+                const command = new InvokeCommand(lambdaParams, function(err, data) {
+                    console.log('err', err);
+                    console.log('data', data);
+                    if (err) {
+                    context.fail('addToGroupError', err);
+                    } else {
+                    context.succeed('Lambda_B said '+ data.Payload);
+                    }
                 })
-                return context.done(null, "promises completed");
-            });
-        });
-    });
+                const lambdaresponse = lambda.send(command);
+                console.log('lambdaresponse', lambdaresponse);
+                
+                return {
+                  message: queryPromises.length + ' games updated',
+                  statusCode: 200,
+                };
+        } catch (err) {
+            console.log('err', err)
+            return context.fail(err);
+        }
 };

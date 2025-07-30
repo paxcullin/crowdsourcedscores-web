@@ -12,6 +12,7 @@
   "scripts": {
     "package": "zip -r calculateWagers.zip .",
     "update": "zip -f calculateWagers.zip index.js",
-    "upload": "aws lambda update-function-code --function-name calculateWagers --zip-file fileb://calculateWagers.zip --publish"
+    "upload": "aws lambda update-function-code --function-name calculateWagers --zip-file fileb://calculateWagers.zip --publish",
+    "test": "aws lambda invoke --function-name calculateWagers --cli-binary-format raw-in-base64-out --payload file://calculateWagersTest.json calculateWagersTestResult.json"
   }
 }

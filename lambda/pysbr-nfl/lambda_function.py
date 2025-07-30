@@ -15,7 +15,7 @@ collection = db['games']
 today = str(date.today())
 yesterday = str((date.today() - timedelta(days=1)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2025-02-14', '%Y-%m-%d')
+endDate = datetime.strptime('2026-08-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
@@ -23,8 +23,11 @@ sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
 spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+bestSpreads = BestLines(e.ids(), nfl.market_ids('pointspread'))
 totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
+bestTotals = BestLines(e.ids(), nfl.market_ids('totals'))
 moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
+bestMoneylines = BestLines(e.ids(), nfl.market_ids('money-line'))
 bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
 bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
 betonlinespreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('BetOnline')[0])
@@ -86,7 +89,7 @@ def lambda_handler2(ev, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2024,
+                            "year": 2025,
                             "gameWeek": game['event group']['event group id'] -9,
                             "weekName": game['event group']['alias'],
                             "status": game['event status'],
@@ -114,14 +117,14 @@ def lambda_handler2(ev, context):
                             
                     
                     
-                    if gameObject["startDateTime"] < datetime.strptime('2024-09-04T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] < datetime.strptime('2025-09-03T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         # print('pre', gameObject, game)
                         if gameObject["gameWeek"] < 0:
                             gameObject["gameWeek"] = gameObject["gameWeek"] + 9
                         if gameObject["gameWeek"] == 20153:
                             gameObject["gameWeek"] = 1
                         gameObject["season"] = "pre"
-                    elif gameObject["startDateTime"] > datetime.strptime('2025-01-06T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    elif gameObject["startDateTime"] > datetime.strptime('2026-01-06T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                         gameObject["gameWeek"] = gameObject["gameWeek"] - 18
                     else:
@@ -308,6 +311,7 @@ def lambda_handler2(ev, context):
                                     }
                                     
                                 })
+                    # scheduled games
                     else:
                         gameObject["odds"] = {
                                 "spread": '',
@@ -316,10 +320,20 @@ def lambda_handler2(ev, context):
                                 "totalOdds": '',
                                 "history": []
                             }
+                        print('pinnacle:', len(spreads.list()), len(totals.list()), len(moneylines.list()))
+                        print(len(bestSpreads.list()), len(bestTotals.list()), len(bestMoneylines.list()))
                         if len(spreads.list()) > 0:
                             # print(homeId)
                             for spread in spreads.list():
                                 # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
+                                if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
+                                    # print(spread)
+                                    gameOdds['spread'] = spread['spread / total']
+                                    gameOdds['spreadOdds'] = spread['american odds']
+                                    gameObject['odds']['spread'] = spread['spread / total']
+                                    gameObject['odds']['spreadOdds'] = spread['american odds']
+                        elif len(bestSpreads.list()) > 0:
+                            for spread in bestSpreads.list():
                                 if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
                                     # print(spread)
                                     gameOdds['spread'] = spread['spread / total']
@@ -344,6 +358,13 @@ def lambda_handler2(ev, context):
                             # print(homeId)
                             for total in totals.list():
                                 # print(total)
+                                if (total['event id'] == game['event id']):
+                                    gameOdds['total'] = total['spread / total']
+                                    gameOdds['totalOdds'] = total['american odds']
+                                    gameObject['odds']['total'] = total['spread / total']
+                                    gameObject['odds']['totalOdds'] = total['american odds']
+                        elif len(bestTotals.list()) > 0:
+                            for total in bestTotals.list():
                                 if (total['event id'] == game['event id']):
                                     gameOdds['total'] = total['spread / total']
                                     gameOdds['totalOdds'] = total['american odds']
@@ -375,6 +396,27 @@ def lambda_handler2(ev, context):
 
                             # if line['event id'] == event['event id']:
                             #     print(line, event['event id'])
+                        elif len(bestMoneylines.list()) > 0:
+                            for ml in bestMoneylines.list():
+                                if (ml['event id'] == game['event id']):
+                                    if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
+                                        gameOdds['homeML'] = {
+                                            "decimal": ml['decimal odds'],
+                                            "american": ml['american odds']
+                                        }
+                                        gameObject['odds']['homeML'] = {
+                                            "decimal": ml['decimal odds'],
+                                            "american": ml['american odds']
+                                        }
+                                    else:
+                                        gameOdds['awayML'] = {
+                                            "decimal": ml['decimal odds'],
+                                            "american": ml['american odds']
+                                        }
+                                        gameObject['odds']['awayML'] = {
+                                            "decimal": ml['decimal odds'],
+                                            "american": ml['american odds']
+                                        }
                         if (gameResult):
                             # print('has gameResult', gameResult['gameId'])
                             # print('odds attribute', list(gameResult))

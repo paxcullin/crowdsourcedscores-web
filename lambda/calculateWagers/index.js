@@ -14,14 +14,47 @@ function evaluateMoneyline(awayTeam, homeTeam, odds) {
     }
 }
 
-function evaluateSpread(awayTeam, homeTeam, odds) {
-    // console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
-    if (awayTeam.score + odds.spread > homeTeam.score) {
-        return "away";
-    } else if (awayTeam.score + odds.spread < homeTeam.score) {
-        return "home";
-    } else {
-        return "push";
+function evaluateSpread(awayTeam, homeTeam, wager) {
+    console.log('wager :>> ', wager);
+    const {participantId, spreadTotal } = wager
+    if (!participantId || !spreadTotal) {
+        if (wager.spread > 0) {
+            if (awayTeam.score + wager.spread > homeTeam.score) {
+                return "away";
+            } else if (awayTeam.score + wager.spread < homeTeam.score) {
+                return "home";
+            } else {
+                return "push";
+            }
+        } else if (wager.spread < 0) {
+            if (awayTeam.score + wager.spread > homeTeam.score) {
+                return "away";
+            } else if (awayTeam.score + wager.spread < homeTeam.score) {
+                return "home";
+            } else {
+                return "push";
+            }
+        }
+    }
+    // user wagered on the Away Team
+    if (participantId === awayTeam.participantId) {
+        console.log('30 awayTeam.score, spreadTotal, homeTeam.score :>> ', awayTeam.score, spreadTotal, homeTeam.score);
+        if (awayTeam.score + spreadTotal > homeTeam.score) {
+            return "away";
+        } else if (awayTeam.score + spreadTotal < homeTeam.score) {
+            return "home";
+        } else {
+            return "push";
+        }
+    } else if (participantId === homeTeam.participantId) {
+        console.log('39 awayTeam.score, spreadTotal, homeTeam.score :>> ', awayTeam.score, spreadTotal, homeTeam.score);
+        if (awayTeam.score > homeTeam.score + spreadTotal) {
+            return "away";
+        } else if (awayTeam.score < homeTeam.score + spreadTotal) {
+            return "home";
+        } else {
+            return "push";
+        }
     }
 }
 
@@ -126,9 +159,9 @@ exports.handler = async function (event, context, callback) {
                 }
             }
             if (wager.wagerType === "spread") {
-                predictionSpread = evaluateSpread(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualSpread = evaluateSpread(game.results.awayTeam, game.results.homeTeam, prediction.odds);
-                // console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
+                predictionSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...prediction.awayTeam}, {participantId: game.homeTeam.participantId, ...prediction.homeTeam}, wager.spreadTotal ? wager : prediction.odds);
+                actualSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...game.results.awayTeam}, {participantId: game.homeTeam.participantId, ...game.results.homeTeam}, wager.spreadTotal ? wager : prediction.odds);
+                console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
                 if (actualSpread === "push") {
                     result = 0
                     net = wager.currency;
