@@ -79,7 +79,7 @@ exports.handler = async (event, context) => {
         const gameAttributes = messageRecord.MessageAttributes;
         const year = parseInt(gameAttributes.year.Value);
         const gameId = parseInt(gameAttributes.gameId.Value);
-        const gameIds = gameAttributes.gameIds.Value.split(',');
+        const gameIds = gameAttributes.gameIds ? gameAttributes.gameIds.Value.split(',') : [];
         const gameIdsArray = gameIds.map((gId) => parseInt(gId));
         const gameWeek = parseInt(gameAttributes.gameWeek.Value);
         console.log('gameIds :>> ', gameIds);
