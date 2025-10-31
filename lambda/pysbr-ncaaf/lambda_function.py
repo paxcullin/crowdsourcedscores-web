@@ -14,22 +14,23 @@ collection = db['games-ncaaf']
 
 yesterday = str((date.today() - timedelta(days=5)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2025-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2026-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
 sb = Sportsbook()
 e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
-spreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-totals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
-moneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
-# bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
-# bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
-# bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
+pinnaclespreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+pinnacletotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
+pinnaclemoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
+bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
+bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
+bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
 # fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
 # fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
 # fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
+
 
 
 lambda_client = boto3.client('lambda')
@@ -86,7 +87,7 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2024,
+                            "year": 2025,
                             "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
@@ -111,10 +112,10 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] > datetime.strptime('2024-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2025-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
-                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2024-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
+                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2025-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"
                     # find the game in Mongo
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
@@ -301,6 +302,21 @@ def lambda_handler(event, context):
                                 "totalOdds": '',
                                 "history": []
                             }
+                        spreads = []
+                        if len(pinnaclespreads.list()) > 0:
+                            spreads = pinnaclespreads
+                        elif len(bookmakerspreads.list()) > 0:
+                            spreads = bookmakerspreads
+                        totals = []
+                        if len(pinnacletotals.list()) > 0:
+                            totals = pinnacletotals
+                        elif len(bookmakertotals.list()) > 0:
+                            totals = bookmakertotals
+                        moneylines = []
+                        if len(pinnaclemoneylines.list()) > 0:
+                            moneylines = pinnaclemoneylines
+                        elif len(bookmakermoneylines.list()) > 0:
+                            moneylines = bookmakermoneylines
                         if len(spreads.list()) > 0:
                             # print(homeId)
                             for spread in spreads.list():

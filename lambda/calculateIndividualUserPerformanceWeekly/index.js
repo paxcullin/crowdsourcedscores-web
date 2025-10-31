@@ -223,6 +223,7 @@ exports.handler = async (event, context, callback) => {
     });
     console.log('results.length', results.length)
     // results.forEach(async (result) => {
+    let bulkWriteOperations = [];
     for (const resultNumber in results) {
         console.log('resultNumber:', resultNumber)
         const result = results[resultNumber];
@@ -300,7 +301,13 @@ exports.handler = async (event, context, callback) => {
                             username: event.username
                         }
                     }
-                    var pushUpdate = {
+                    // {updateOne: {filter: criteria, update: update}}
+                    var pullUpdate = {updateOne: {filter: pushCriteria, update: {
+                        $pull: {
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly`]: { gameWeek: result._id.gameWeek }
+                        }
+                    }}}
+                    var pushUpdate = {updateOne: {filter: pushCriteria, update: {
                         $push: {
                             [`results.${event.sport}.${year}.${result._id.season}.weekly`]: {
                                 gameWeek: result._id.gameWeek,
@@ -340,10 +347,12 @@ exports.handler = async (event, context, callback) => {
                                 totalWagers: result.totalWagers
                             }
                         }
-                    }
+                    }}}
+
                     //console.log(`pushUpdate: ${JSON.stringify(pushUpdate)}`)
                     console.log('pushCriteria, pushUpdate: ', pushCriteria, pushUpdate)
-                    const pushUpdateResult = await extendedProfile.updateOne(pushCriteria, pushUpdate)
+                    const pushUpdateResult = await extendedProfile.bulkWrite([pullUpdate, pushUpdate])
+                    // const pushUpdateResult = await extendedProfile.updateOne(pushCriteria, pushUpdate)
                     console.log("pushUpdateResult.result: ", pushUpdateResult)
                     
                     if (pushUpdateResult.modifiedCount === 1) {

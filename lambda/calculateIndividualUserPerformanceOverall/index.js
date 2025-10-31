@@ -174,7 +174,7 @@ exports.handler = async (event, context, callback) => {
                                 totalWagers: result.totalWagers
                             }
                     //console.log('result._id.userId: ', result._id.userId)
-                    queryPromises.push(extendedProfile.update({username: result._id.userId}, { $set: resultsObj }))
+                    queryPromises.push(extendedProfile.updateOne({username: result._id.userId}, { $set: resultsObj }))
                     resultsLength--;
                 })
                 if (resultsLength === 0) {
