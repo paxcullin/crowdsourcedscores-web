@@ -106,8 +106,15 @@ def lambda_handler2(ev, context):
                             }
                         if team["source"]["abbreviation"] == "LA":
                             teamObject["code"] = "LAR"
+                            teamObject["fullName"] = "L.A. Rams"
                         else:
                             teamObject["code"] = team["source"]["abbreviation"]
+                        if team["source"]["abbreviation"] == "LAC":
+                            teamObject["fullName"] = "L.A. Chargers"
+                        if team["source"]["abbreviation"] == "NYG":
+                            teamObject["fullName"] = "N.Y. Giants"
+                        if team["source"]["abbreviation"] == "NYJ":
+                            teamObject["fullName"] = "N.Y. Jets"
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
