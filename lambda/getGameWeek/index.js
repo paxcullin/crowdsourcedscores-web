@@ -23,7 +23,7 @@ exports.handler = (event, context, callback) => {
             },
             {
                 season: 'post',
-                startDate: new Date('2026-01-07')
+                startDate: new Date('2025-12-15')
             }
         ]
     }
@@ -521,8 +521,8 @@ exports.handler = (event, context, callback) => {
         console.log({season})
     if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
-                    Date.UTC(2023, 11, 14),  // 2019 Postseason Week 1
-                    Date.UTC(2023, 7, 24),  // 2019 Postseason Week 3
+                    Date.UTC(2025, 11, 14),  // 2019 Postseason Week 1
+                    Date.UTC(2026, 7, 24),  // 2019 Postseason Week 3
                     
                     ]
             : [
