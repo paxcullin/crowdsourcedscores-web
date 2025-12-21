@@ -115,6 +115,8 @@ def lambda_handler2(ev, context):
                             teamObject["fullName"] = "N.Y. Giants"
                         if team["source"]["abbreviation"] == "NYJ":
                             teamObject["fullName"] = "N.Y. Jets"
+                        if team["source"]["abbreviation"] == "JAX":
+                            teamObject["code"] = "JAC"
                         if team['is home'] == True:
                             gameObject["homeTeam"] = teamObject
                             homeId = team['participant id']
