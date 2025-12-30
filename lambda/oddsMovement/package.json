@@ -1,0 +1,17 @@
+{
+  "name": "oddsMovement",
+  "version": "1.0.0",
+  "description": "Aggregates the odds movement for each game and appends it to the game",
+  "main": "index.js",
+  "author": "Chris Aronchick",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^7.0.0"
+  },
+  "scripts": {
+    "test": "node index.js",
+    "package": "zip -r oddsMovement.zip .",
+    "upload": "aws lambda update-function-code --function-name oddsMovement --zip-file fileb://oddsMovement.zip --publish"
+
+  }
+}

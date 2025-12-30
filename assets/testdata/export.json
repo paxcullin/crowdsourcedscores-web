@@ -1,0 +1,85 @@
+{
+  "$project": {
+    "_id": 0,
+
+    "gameId": "gameId",
+    "season": 1,
+    "week": 1,
+    "gameDate": 1,
+    "dayOfWeek": 1,
+    "homeTeam": 1,
+    "awayTeam": 1,
+    "finalHomeScore": "$results.homeTeam.score",
+    "finalAwayScore": "$results.awayTeam.score",
+    "actualMargin": {
+      "$subtract": ["$results.homeTeam.score", "$results.awayTeam.score"]
+    },
+    "actualTotal": {
+      "$add": ["$results.homeTeam.score", "$results.awayTeam.score"]
+    },
+
+    "openSpread": "$odds.openSpread",
+    "closeSpread": "$odds.closeSpread",
+    "spreadMove": "$odds.spreadMove",
+    "spreadVolatility": "$odds.spreadVolatility",
+    "minSpread": "$odds.minSpread",
+    "maxSpread": "$odds.maxSpread",
+
+    "openTotal": "$odds.openTotal",
+    "closeTotal": "$odds.closeTotal",
+    "totalMove": "$odds.totalMove",
+    "totalVolatility": "$odds.totalVolatility",
+    "minTotal": "$odds.minTotal",
+    "maxTotal": "$odds.maxTotal",
+
+    "expertCount": "$experts.count",
+    "avgExpertSpreadError": "$experts.spread.avgError",
+    "medianExpertSpreadError": "$experts.spread.medianError",
+    "stdExpertSpreadError": "$experts.spread.stdDev",
+    "pctExpertsHome": "$experts.spread.pctHome",
+    "pctExpertsAway": "$experts.spread.pctAway",
+    "pctExpertsExtremeHome": "$experts.spread.pctExtremeHome",
+    "pctExpertsExtremeAway": "$experts.spread.pctExtremeAway",
+
+    "avgExpertTotalError": "$experts.total.avgError",
+    "medianExpertTotalError": "$experts.total.medianError",
+    "stdExpertTotalError": "$experts.total.stdDev",
+    "pctExpertsOver": "$experts.total.pctOver",
+    "pctExpertsUnder": "$experts.total.pctUnder",
+
+    "spreadMoveAgainstExperts": {
+      "$cond": [
+        {
+          "$and": [
+            { "$ne": ["$market.spread.move", 0] },
+            {
+              "$ne": [
+                { "$sign": "$market.spread.move" },
+                { "$sign": "$experts.spread.avgError" }
+              ]
+            }
+          ]
+        },
+        true,
+        false
+      ]
+    },
+    "totalMoveAgainstExperts": {
+      "$cond": [
+        {
+          "$and": [
+            { "$ne": ["$market.total.move", 0] },
+            {
+              "$ne": [
+                { "$sign": "$market.total.move" },
+                { "$sign": "$experts.total.avgError" }
+              ]
+            }
+          ]
+        },
+        true,
+        false
+      ]
+    }
+  }
+}
