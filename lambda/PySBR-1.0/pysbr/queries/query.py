@@ -1,6 +1,8 @@
 from string import Template
 import copy
+import sys
 import typing
+import types
 from typing import Callable, Any, Dict, Optional, List, Union
 from functools import wraps
 
@@ -72,15 +74,25 @@ class Query:
                 if not isinstance(a, t):
                     return False
 
+            elif (
+                (sys.version_info >= (3, 10) and isinstance(t, types.UnionType))
+                or t_origin is Union
+                or t_origin is typing.Union
+                or t_origin is types.UnionType
+            ):
+                for arg in t_args:
+                    if recurse(a, arg):
+                        return True
+                return False
+
             elif isinstance(t_origin, type(list)):
                 if not isinstance(a, list):
                     return False
                 if len(t_args) > 0:
                     try:
                         for x in a:
-                            for arg in t_args:
-                                if not recurse(x, arg):
-                                    return False
+                            if not any(recurse(x, arg) for arg in t_args):
+                                return False
                     except TypeError:
                         return False
                 else:

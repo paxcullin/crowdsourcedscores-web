@@ -1,3 +1,66 @@
+import sys
+import types
+import http.client
+import urllib.parse
+import urllib.request
+import json as cgi_json  # Mock for removed cgi module
+
+# Ensure layer is in path
+if "/opt/python" not in sys.path:
+    sys.path.insert(0, "/opt/python")
+
+# Clear urllib3 from cache to force fresh import from layer
+for module_name in list(sys.modules):
+    if module_name == "urllib3" or module_name.startswith("urllib3."):
+        del sys.modules[module_name]
+
+# Pre-populate six and six.moves modules before any boto3 import
+try:
+    import six
+    
+    # Register six
+    sys.modules.setdefault("urllib3.packages.six", six)
+    sys.modules.setdefault("urllib3.packages.six.moves", six.moves)
+    
+    # Register all six.moves submodules
+    try:
+        from six.moves import http_client as six_http_client, urllib, urllib_parse, urllib_request, configparser
+        sys.modules.setdefault("urllib3.packages.six.moves.http_client", six_http_client)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib_parse)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib_request)
+        sys.modules.setdefault("urllib3.packages.six.moves.configparser", configparser)
+    except ImportError:
+        pass
+        
+except ImportError:
+    # Fallback: create synthetic modules for all six.moves that boto3 might need
+    six_module = types.ModuleType("urllib3.packages.six")
+    moves_module = types.ModuleType("urllib3.packages.six.moves")
+    
+    # Create http_client
+    moves_module.http_client = http.client
+    sys.modules.setdefault("urllib3.packages.six.moves.http_client", http.client)
+    
+    # Create urllib submodule structure
+    urllib_module = types.ModuleType("urllib3.packages.six.moves.urllib")
+    urllib_module.parse = urllib.parse
+    urllib_module.request = urllib.request
+    moves_module.urllib = urllib_module
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib_module)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib.parse)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib.request)
+    
+    six_module.moves = moves_module
+    sys.modules.setdefault("urllib3.packages.six", six_module)
+    sys.modules.setdefault("urllib3.packages.six.moves", moves_module)
+
+# Handle missing cgi module (removed in Python 3.13)
+if "cgi" not in sys.modules:
+    cgi_module = types.ModuleType("cgi")
+    cgi_module.escape = lambda x: x  # Basic escape function stub
+    sys.modules["cgi"] = cgi_module
+
 from pysbr import *
 from pysbr.config.config import Config
 from datetime import datetime, timedelta

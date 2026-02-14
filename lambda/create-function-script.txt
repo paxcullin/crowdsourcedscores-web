@@ -1,1 +1,79 @@
   create-function --function-name datascraper-node-nfl-livescore --runtime nodejs12.x  --role arn:aws:iam::198282214908:role/APIGatewayLambdaExecRole --handler index.handler --zip-file Archive.zip
+
+  # pysbr layer (CURRENT VERSION: 6)
+  # Layer includes: gql, graphql-core, fake-useragent, PyYAML, requests, pytz, urllib3==1.26.18, six
+  # CodeSize: 4,553,742 bytes
+  # ARN: arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+  publish-layer-version --layer-name pysbr-common --description "Shared pysbr dependencies and helpers" --zip-file fileb://pysbr_common.zip --compatible-runtimes python3.14 python3.13 python3.12 python3.11 python3.10 python3.9
+
+  # attach layer to functions
+  update-function-configuration --function-name pysbr-ncaab --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+  update-function-configuration --function-name pysbr-nfl --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+  update-function-configuration --function-name pysbr-ncaaf --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+
+  # IMPORTANT: Environment Variable Configuration
+  # All pysbr functions MUST have the following environment variable set:
+  # PYTHONPATH=/opt/python:/var/task
+  # This ensures layer dependencies are prioritized in the import path.
+  #
+  # Set with:
+  update-function-configuration --function-name pysbr-ncaab --environment Variables={PYTHONPATH=/opt/python:/var/task}
+  update-function-configuration --function-name pysbr-nfl --environment Variables={PYTHONPATH=/opt/python:/var/task}
+  update-function-configuration --function-name pysbr-ncaaf --environment Variables={PYTHONPATH=/opt/python:/var/task}
+
+  # CRITICAL FIX FOR PYTHON 3.13+ COMPATIBILITY:
+  # All pysbr function lambda_function.py files must include shim code at the top to handle:
+  # 1. urllib3.packages.six.moves module resolution (boto3 dependency)
+  # 2. Missing cgi module (deprecated in Python 3.13+)
+  #
+  # Include this at the top of lambda_function.py (before any other imports except sys/types):
+  # 
+  # import sys
+  # import types
+  # import http.client
+  # import urllib.parse
+  # import urllib.request
+  #
+  # if "/opt/python" not in sys.path:
+  #     sys.path.insert(0, "/opt/python")
+  #
+  # for module_name in list(sys.modules):
+  #     if module_name == "urllib3" or module_name.startswith("urllib3."):
+  #         del sys.modules[module_name]
+  #
+  # try:
+  #     import six
+  #     sys.modules.setdefault("urllib3.packages.six", six)
+  #     sys.modules.setdefault("urllib3.packages.six.moves", six.moves)
+  #     try:
+  #         from six.moves import http_client, urllib, urllib_parse, urllib_request, configparser
+  #         sys.modules.setdefault("urllib3.packages.six.moves.http_client", http_client)
+  #         sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib)
+  #         sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib_parse)
+  #         sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib_request)
+  #         sys.modules.setdefault("urllib3.packages.six.moves.configparser", configparser)
+  #     except ImportError:
+  #         pass
+  # except ImportError:
+  #     six_module = types.ModuleType("urllib3.packages.six")
+  #     moves_module = types.ModuleType("urllib3.packages.six.moves")
+  #     moves_module.http_client = http.client
+  #     sys.modules.setdefault("urllib3.packages.six.moves.http_client", http.client)
+  #     urllib_module = types.ModuleType("urllib3.packages.six.moves.urllib")
+  #     urllib_module.parse = urllib.parse
+  #     urllib_module.request = urllib.request
+  #     moves_module.urllib = urllib_module
+  #     sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib_module)
+  #     sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib.parse)
+  #     sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib.request)
+  #     six_module.moves = moves_module
+  #     sys.modules.setdefault("urllib3.packages.six", six_module)
+  #     sys.modules.setdefault("urllib3.packages.six.moves", moves_module)
+  #
+  # if "cgi" not in sys.modules:
+  #     cgi_module = types.ModuleType("cgi")
+  #     cgi_module.escape = lambda x: x
+  #     sys.modules["cgi"] = cgi_module
+  #
+  # This shim resolves import chain conflicts where boto3 tries to load urllib3.packages.six
+  # modules that may not be properly discoverable given Python 3.13+ deprecated cgi module.
