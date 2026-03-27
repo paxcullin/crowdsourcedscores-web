@@ -22,23 +22,23 @@
             },
             "gameIds": {
               "Type": "String",
-              "Value": "4733230, 4733229, 4733228, 4733227, 4733226, 4733225, 4733224, 4733223, 4733222, 4733221, 4733220, 4733219, 4733153, 4733152, 4733141, 4730734"
+              "Value": "4794337, 4794334"
             },
             "year": {
               "Type": "String",
-              "Value": "2024"
+              "Value": "2025"
             },
             "gameWeek": {
               "Type": "String",
-              "Value": "1"
+              "Value": "0"
             },
             "sport": {
               "Type": "String",
-              "Value": "nfl"
+              "Value": "ncaam"
             },
             "season": {
               "Type": "String",
-              "Value": "reg"
+              "Value": "post"
             }
           }
         }

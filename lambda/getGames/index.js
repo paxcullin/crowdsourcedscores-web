@@ -3,6 +3,9 @@
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
     {username, password} = require('./config');
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const AWSConfig = { region: "us-west-2" };
+const lambda = new LambdaClient(AWSConfig);
 
 
 const MONGO_URL = `mongodb+srv://${username}:${password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
@@ -33,54 +36,115 @@ exports.handler = async (event, context) => {
     }
     var predictionsCollectionName = 'predictions';
     
-    if (event.sport === 'ncaaf') {
+    if (sport === 'ncaaf') {
         gamesCollectionName = 'games-ncaaf';
         predictionsCollectionName = 'predictions-ncaaf';
-    } else if (event.sport === 'ncaam') {
-        gamesCollectionName = 'games-ncaam';
+    } else if (sport === 'ncaam' || sport === 'ncaab') {
+        gamesCollectionName = 'games-ncaab';
         predictionsCollectionName = 'predictions-ncaam';
     } else {
-        event.sport = 'nfl';
+        sport = 'nfl';
     }
     const collection = db.collection(gamesCollectionName);
     const predictionsCollection = db.collection(predictionsCollectionName);
     var comparePredictions = false;
     
     var gamesQuery = {
-            "year": parseInt(event.year),
-            "gameWeek": parseInt(event.gameWeek),
+            "year": parseInt(year),
+            "gameWeek": parseInt(gameWeek),
             "season": season,
-            "sport": event.sport
+            "sport": sport
     }
     if (sport === "ncaaf") {
         gamesQuery = {
-            "year": parseInt(event.year),
-            "gameWeek": parseInt(event.gameWeek),
+            "year": parseInt(year),
+            "gameWeek": parseInt(gameWeek),
             "season": season,
-            "sport": event.sport
+            "sport": sport
         }
     }
     // "$or": [
     //     {'homeTeam.rank': {$gt: 0}},
     //     {'awayTeam.rank': {$gt: 0}}
     // ]
-    // need to come back and clean this up
-    event.season ? gamesQuery.season = event.season : null;
-    if (event.sport === 'ncaam') {
-        gamesQuery = {
-            "year": parseInt(event.year),
-            "sport": event.sport,
-            "gameWeek": { $gt: 12 },
-            "status": { $ne: "n/a" }
+    if (sport === 'ncaam' || sport === 'ncaab') {
+        var lambdaParams = {
+            FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+            InvocationType: 'RequestResponse',
+            LogType: 'Tail',
+            Payload: '{ "sport": "ncaam" }'
+            };
+        try {
+            const command = new InvokeCommand(lambdaParams, function(err, data) {
+                console.log('err', err);
+                console.log('data', data);
+                if (err) {
+                context.fail('addToGroupError', err);
+                } else {
+                return data.Payload
+                }
+            })
+            const { Payload, LogResult } = await lambda.send(command);
+            const decoded = new TextDecoder("utf-8").decode(Payload);
+            let parsed;
+            try {
+                parsed = JSON.parse(decoded);
+            } catch {
+                parsed = decoded; // If not JSON, return raw string
+            }
+            const weekIndex = gameWeek ? gameWeek : (typeof parsed.week === 'number'
+                ? parsed.week
+                : parseInt(parsed.week, 10));
+            console.log('weekIndex, JSON.stringify(parsed.weeks) :>> ', weekIndex, JSON.stringify(parsed.weeks));
+            let weekInfo = parsed.weeks && parsed.weeks[weekIndex-1];
+            if (!weekInfo && parsed.weeks) {
+                weekInfo = parsed.weeks.find((week) => {
+                    const weekName = week && week.weekName;
+                    return String(weekName) === String(weekIndex)
+                        || String(weekName) === String(weekIndex + 1)
+                        || String(weekName) === String(event.gameWeek);
+                });
+            }
+
+            if (weekInfo && weekInfo.start && weekInfo.end) {
+                const startDate = new Date(weekInfo.start);
+                const endDate = new Date(weekInfo.end);
+                gamesQuery = {
+                    "year": parseInt(event.year),
+                    "season": season,
+                    "sport": "ncaab",
+                    "startDateTime": { 
+                        "$gte": startDate,
+                        "$lte": endDate
+                    }
+                }
+            } else {
+                console.log('Missing NCAAM week range for query', {
+                    parsedWeek: parsed.week,
+                    eventWeek: event.gameWeek,
+                    weeks: parsed.weeks && parsed.weeks.length
+                });
+            }
+        } catch (err) {
+            console.log('getGameWeek err: ', err)
         }
     }
     if (event.compareUsername) {
         comparePredictions = true;
         gamesQuery.results= { $exists: true };
     }
-    //console.log('gamesQuery: ', gamesQuery)
+    console.log('gamesQuery: ', gamesCollectionName, gamesQuery)
     const gamesArray = await collection.find(gamesQuery, {sort: {"startDateTime": 1 }, projection: {"odds.history": 0, _id: 0}}).toArray()
         console.log('gamesArray.length: ', gamesArray.length)
+        if (gamesArray.length > 0) {
+            console.log('gamesArray.first: ', {
+                gameId: gamesArray[0].gameId,
+                startDateTime: gamesArray[0].startDateTime,
+                sport: gamesArray[0].sport,
+                season: gamesArray[0].season,
+                year: gamesArray[0].year
+            });
+        }
         
         //check for games that have results
         function checkResultsExist(game) {
@@ -98,12 +162,18 @@ exports.handler = async (event, context) => {
         
         var games = [];
         games = gamesToPlay.concat(gamesPlayed);
-        var preferred_usernames = [preferred_username];
+        var preferred_usernames = []
+        if (preferred_username) {
+            preferred_usernames.push(preferred_username);
+        }
         var predictionsQuery = { 
             "year": parseInt(event.year),
             "season": season,
             "gameWeek": parseInt(event.gameWeek),
             "preferred_username": { $in: preferred_usernames}
+        }
+        if (sport === "ncaam" || sport === "ncaab") {
+            predictionsQuery.gameWeek = { $gt: -1 };
         }
         games.map((game) => {
                 if (game.weather) {
@@ -115,13 +185,13 @@ exports.handler = async (event, context) => {
                 game.matchup = `${game.awayTeam.code}-${game.homeTeam.code}`
         })
         
-        if (event.sport === 'ncaam') {
-            predictionsQuery = {
-                "year": parseInt(event.year),
-                "gameWeek": { $gt: 12 },
-                "preferred_username": { $in: preferred_username}
-            }
-        }
+        // if (sport === 'ncaam' || sport === 'ncaab') {
+        //     predictionsQuery = {
+        //         "year": parseInt(year),
+        //         "gameWeek": { $gt: 12 },
+        //         "preferred_username": { $in: preferred_usernames}
+        //     }
+        // }
         if (event.compareUsername) {
             preferred_usernames.push(event.compareUsername);
             comparePredictions = true;

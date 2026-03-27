@@ -1,4 +1,4 @@
-from pysbr import NFL, Sportsbook, CurrentLines
+from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF
 from pysbr.config.config import Config
 from datetime import datetime, timedelta, date
 from pymongo import MongoClient, InsertOne, UpdateOne
@@ -17,6 +17,8 @@ endDate = datetime.strptime('2024-02-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
+ncaab = NCAAB()
+ncaaf = NCAAF()
 sblib = Sportsbook()
 
 def get_sportsbook_ids():
@@ -37,15 +39,20 @@ def get_sportsbook_ids():
 #bookmaker sbid: 93, paid: 10
 #betcris sbid: 118, paid: 10
 #heritage sbid: 169, paid: 44
-def get_lines(gameid):
+def get_lines(gameid, sport):
+    market = nfl
+    if (sport == 'ncaab'):
+        market = ncaab
+    elif (sport == 'ncaaf'):
+        market = ncaaf
     try:
         books = get_sportsbook_ids()
         sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
         sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
 
-        clspread = CurrentLines([gameid], nfl.market_ids('pointspread'), sbids)
-        cltotal = CurrentLines([gameid], nfl.market_ids('totals'), sbids)
-        clmoneyline = CurrentLines([gameid], nfl.market_ids('money-line'), sbids)
+        clspread = CurrentLines([gameid], market.market_ids('pointspread'), sbids)
+        cltotal = CurrentLines([gameid], market.market_ids('totals'), sbids)
+        clmoneyline = CurrentLines([gameid], market.market_ids('money-line'), sbids)
 
         lines = {
             'spread': [],
@@ -80,6 +87,8 @@ def lambda_handler(e, context):
     collection = db['games']
     if (sport == 'ncaaf'):
         collection = db['games-ncaaf']
+    elif (sport == 'ncaam' or sport == 'ncaab'):
+        collection = db['games-ncaab']
     if gameids is None or len(gameids) == 0:
         print('no game id')
         return {
@@ -88,7 +97,7 @@ def lambda_handler(e, context):
     writeOperations = []
     for gameid in gameids:
         lines = [] 
-        lines = get_lines(gameid)
+        lines = get_lines(gameid, sport)
         if (lines is not None):
             print('lines: ', gameid)
             # writeOperations.append(UpdateOne(

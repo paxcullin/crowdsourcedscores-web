@@ -125,7 +125,7 @@ exports.handler = async (event, context) => {
           gamesCollection = 'games-ncaaf';
         } else if (gameAttributes.sport.Value === 'ncaam') {
           predictionsCollection = 'predictions-ncaam'
-          gamesCollection = 'games-ncaam'
+          gamesCollection = 'games-ncaab'
         }
         
         var aggOpts = [

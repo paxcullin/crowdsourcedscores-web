@@ -1,15 +1,25 @@
 'use strict';
+const { Validator } = require('jsonschema');
 
-var mongo = require("mongodb").MongoClient,
-    assert = require("assert"),
-    validate = require("jsonschema").validate;
-const AWS = require('aws-sdk');    
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+const v = new Validator();
 
 const {config} = require("./config");
 
 const EMAIL = process.env.email;
-const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const { request } = require("http");
+const AWSConfig = { region: "us-west-2" };
+var mongo = require("mongodb").MongoClient,
+    assert = require("assert"),
+    validate = require("jsonschema").validate;
+// const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+const lambda = new LambdaClient(AWSConfig);
+
+
+// const { SNSClient, SubscribeCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+const SNS = new SNSClient(AWSConfig);
+
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
@@ -46,28 +56,42 @@ const requestSchemaNCAAM = {
     "properties": {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
-        "awayTeam": {
+        "prediction": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 150}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
-        },
-        "homeTeam": {
-            "type": "object",
-            "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 150}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+                "awayTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 150}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "homeTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 150}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "odds": {
+                    "type": "object",
+                    "properties": {
+                        "spread": {"type": "number"},
+                        "total": {"type": "number"}
+                    },
+                    "required": ["spread", "total"]
+                },
+                "required": ["awayTeam", "homeTeam", "odds"]
+            }
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 
 // console.log('Loading function');
@@ -172,20 +196,23 @@ function createTopic(topicName, cb) {
     });
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
+    try {
     var result = {
         message: '',
         succeeded: true
     };
 
-    var prediction = event;
+    const {prediction, userId, sport, year, gameId, gameWeek, season} = event;
     
-    if (!prediction.userId || prediction.userId === "") {
-        context.done(null, { succeeded: false})
+    if (!userId || userId === "") {
+        return { message: 'no userId', succeeded: false}
     }
     var validateRequest;
-    (event.sport !== 'ncaam') ? validateRequest = validate(prediction, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
+    (event.sport !== 'ncaam' && event.sport !== 'ncaab') ? validateRequest = validate(event, requestSchema) : validateRequest =  validate(event, requestSchemaNCAAM) // validate(prediction, requestSchemaNCAAM)
+    console.log('validateRequest :>> ', validateRequest);
+    console.log('event.sport :>> ', event.sport);
     if (validateRequest.errors && validateRequest.errors.length > 0) {
         result.message = 'Invalid request error(s)';
         result.errors = [];
@@ -193,7 +220,7 @@ exports.handler = (event, context) => {
         for (var i = 0; i < validateRequest.errors.length; i++) {
             result.errors.push(validateRequest.errors[i]);
         }
-        return context.fail(JSON.stringify(result));
+        return { message: 'Invalid request error(s)', sport: event.sport, errors: result.errors, succeeded: false };
     }
 
     var diff = prediction.awayTeam.score - prediction.homeTeam.score;
@@ -201,20 +228,19 @@ exports.handler = (event, context) => {
     prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
     prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
     prediction.submitted = new Date();
+    if (event.isAnonymous === true) {
+        prediction.isAnonymous = event.isAnonymous;
+    }
 
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
+    const client = await mongo.connect(MONGO_URL);
+        // assert.equal(null, err);
 
-        if (err) {
-            return context.done(err, null);
-        }
-        const db = client.db('pcsm');
+    const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
         // deadline is 5 min prior to kickoff
         const msHour = 300000;
         
-        const { gameId, year, sport, gameWeek, season } = prediction
         
         var gamesCollection = 'games';
         var gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year), "gameWeek": parseInt(gameWeek)};
@@ -223,14 +249,17 @@ exports.handler = (event, context) => {
         } else if (sport === 'ncaam') {
             gamesCollection = 'games-ncaam';
             gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
+        } else if (sport === 'ncaab') {
+            gamesCollection = 'games-ncaab';
+            gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
         }
         console.log('gamesQuery: ', gamesQuery)
-        db.collection(gamesCollection).findOne(gamesQuery, {_id: false}, function (err, game) {
+        const game = await db.collection(gamesCollection).findOne(gamesQuery, {_id: false});
             
-            assert.equal(err, null);
-            if (err) {
-                context.fail(err, null);
-            }
+        // assert.equal(game, null);
+        if (!game) {
+            return { message: 'Game not found', succeeded: false };
+        }
             
             var now = new Date();
             var kickoff = Date.parse(game.startDateTime);
@@ -243,18 +272,19 @@ exports.handler = (event, context) => {
             if (now > cutoff) {
                 result.message = "The cutoff for predicting this game has passed.";
                 result.succeeded = false;
-                return context.done(JSON.stringify(result));
+                return { message: result.message, succeeded: result.succeeded };
             }
 
-            var existingObjQuery = {userId: prediction.userId, gameId: parseInt(prediction.gameId), year: parseInt(prediction.year)};
+            var existingObjQuery = {userId: userId, gameId: parseInt(gameId), year: parseInt(year)};
             
             //get user groups in order to add groups to predictions for scoring
             
-            db.collection('profileExtended').find({username: prediction.userId},{_id:false, groups: 1}).toArray(function(err, groups) {
+            // db.collection('profileExtended').find({username: userId},{_id:false, groups: 1}).toArray(function(err, groups) {
+            const groups = await db.collection('profileExtended').find({username: userId},{_id:false, groups: 1}).toArray();
                 console.log("user groups: ", groups)
-                if (err) {
-                    return false;
-                }
+                // if (err) {
+                //     return false;
+                // }
                 if (groups[0]) {
                     prediction.groups = groups[0].groups;
                     if (prediction.groups && prediction.groups.length > 0) {
@@ -268,22 +298,22 @@ exports.handler = (event, context) => {
                 // else treat as new prediction and add to collection
                 
                 var predictionCollection = 'predictions';
-                if (prediction.sport === 'ncaaf') {
+                if (event.sport === 'ncaaf') {
                     predictionCollection = 'predictions-ncaaf';
-                } else if (prediction.sport === 'ncaam') {
+                } else if (event.sport === 'ncaam' || event.sport === 'ncaab') {
                     predictionCollection = 'predictions-ncaam';
                 }
-                db.collection(predictionCollection).update(existingObjQuery, prediction, {upsert: true}, function (err, dbRes) {
-                    var respObj = JSON.parse(dbRes);
+                const respObj = await db.collection(predictionCollection).updateOne(existingObjQuery, {$set: prediction}, {upsert: true});
+                // var respObj = JSON.parse(dbRes);
     
-                    assert.equal(err, null);
-                    assert.equal(respObj.ok, 1);
+                    // assert.equal(err, null);
+                    // assert.equal(respObj.ok, 1);
     
-                    if (err) {
-                        result.message = err;
-                        result.succeeded = false;
-                        return context.fail(JSON.stringify(result));
-                    }
+                    // if (err) {
+                    //     result.message = err;
+                    //     result.succeeded = false;
+                    //     return { message: result.message, succeeded: result.succeeded };
+                    // }
                     
                     
                     
@@ -302,32 +332,48 @@ exports.handler = (event, context) => {
                     console.log('result: ', result);
                     console.log('prediction: ', prediction);
     
+                    // var lambdaParams = {
+                    //     FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
+                    //     InvocationType: 'RequestResponse',
+                    //     LogType: 'Tail',
+                    //     Payload: '{ "username": "' + userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
+                    //   };
+                    
+                    //   lambda.invoke(lambdaParams, function(err, data) {
+                    //       console.log('err', err);
+                    //       console.log('data', data);
+                    //     if (err) {
+                    //       context.fail('addToGroupError', err);
+                    //     } else {
+                    //       context.succeed('Lambda_B said '+ data.Payload);
+                    //     }
+                    //   })
+
                     var lambdaParams = {
                         FunctionName: 'addPredictionsToGroups', // the lambda function we are going to invoke
                         InvocationType: 'RequestResponse',
                         LogType: 'Tail',
-                        Payload: '{ "username": "' + event.userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
-                      };
+                        Payload: '{ "username": "' + userId + '", "prediction": ' + JSON.stringify(prediction) + '}'
+                    };
                     
-                      lambda.invoke(lambdaParams, function(err, data) {
-                          console.log('err', err);
-                          console.log('data', data);
+                    const command = new InvokeCommand(lambdaParams, function(err, data) {
+                        console.log('err', err);
+                        console.log('data', data);
                         if (err) {
-                          context.fail('addToGroupError', err);
+                            return { message: 'addToGroupError', error: err, succeeded: false };
                         } else {
-                          context.succeed('Lambda_B said '+ data.Payload);
+                            return { message: 'addToGroupSuccess', data: data.Payload, succeeded: true };
                         }
-                      })
-                    var predictionsQuery = {userId: prediction.userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
-                    if (prediction.sport === 'ncaam') {
-                        predictionsQuery = {userId: prediction.userId, year: prediction.year}
+                    })
+                    const lambdaresponse = await lambda.send(command)
+                    console.log('lambdaresponse :>> ', lambdaresponse);
+
+                    var predictionsQuery = {userId: userId, year: year, gameWeek: gameWeek, season: season}
+                    if (sport === 'ncaam' || sport === 'ncaab') {
+                        predictionsQuery = {userId: userId, year: year}
                     }
-                    db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray(function(err, predictions) {
-                        if (err) {
-                            return context.done(null, result);
-                        }
-                        
-                        result.predictionsSubmitted = predictions.length;
+                    const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
+                    result.predictionsSubmitted = predictions.length;
                         let starsSubmitted = 0;
                         predictions.forEach((prediction, index) => {
                             if (prediction.stars && ((prediction.stars.spread > 0) || (prediction.stars.total > 0))) {
@@ -336,16 +382,49 @@ exports.handler = (event, context) => {
                             }
                         })
                         result.predictionsSubmittedStars = starsSubmitted;
-                        if (prediction.collegeBowlPremium !== '1' && prediction.sport === 'ncaaf') {
+                        if (event.collegeBowlPremium !== '1' && event.sport === 'ncaaf') {
                             result.crowd = null;
                         }
                         
                         
                         // kick off new aggregation calculation
                         
-                        var sns = new AWS.SNS();
+                        // var sns = new AWS.SNS();
+                        // var params = {
+                        //     Message: "Prediction for game " + prediction.gameId + " submitted by " + userId, 
+                        //     Subject: "Prediction Submitted",
+                        //     TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
+                        //     MessageAttributes: { 
+                        //         gameId: {
+                        //             DataType: "Number",
+                        //             StringValue: game.gameId.toString()
+                        //         },
+                        //         gameWeek: {
+                        //             DataType: "Number",
+                        //             StringValue: game.gameWeek.toString()
+                        //         },
+                        //         year: {
+                        //             DataType: "Number",
+                        //             StringValue: game.year.toString()
+                        //         },
+                        //         sport: {
+                        //             DataType: "String",
+                        //             StringValue: game.sport
+                        //         }
+                        //     },
+                        // };
+                        // console.log("SNS Publishing")
+                        // sns.publish(params, function(err, response) {
+                        //     if (err) {
+                        //         context.done("SNS error: " + err, null);
+                        //     }
+                        //     console.log("SNS Publish complete: ", response);
+                        //     context.done (null, result)
+                        // });
+                    
+                            
                         var params = {
-                            Message: "Prediction for game " + prediction.gameId + " submitted by " + event.userId, 
+                            Message: "Prediction for game " + gameId + " submitted by " + userId, 
                             Subject: "Prediction Submitted",
                             TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
                             MessageAttributes: { 
@@ -368,19 +447,22 @@ exports.handler = (event, context) => {
                             },
                         };
                         console.log("SNS Publishing")
-                        sns.publish(params, function(err, response) {
+                        const SNSPublishCommand = new PublishCommand(params, function(err, response) {
                             if (err) {
-                                context.done("SNS error: " + err, null);
+                                return { message: "SNS error: " + err, succeeded: false };
                             }
-                            console.log("SNS Publish complete: ", response);
-                            context.done (null, result)
+                                console.log("SNS Publish complete: ", response);
+                                return { result, message: "SNS Publish complete", succeeded: true };
                             });
+
+                        const SNSResponse = await SNS.send(SNSPublishCommand)
                           
-                        
-                    })
+                        return {
+                            result
+                        };
+                    } catch (err) {
+                        console.log('Error processing prediction submission.', err);
+                        throw Error(err);
+                    }
                     
-                });
-            });
-        });
-    });
 };
