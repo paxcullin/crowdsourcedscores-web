@@ -94,6 +94,31 @@ const requestSchemaNCAAM = {
     "required": ["gameId", "prediction"]
 };
 
+function normalizeGameDate(value) {
+    if (!value && value !== 0) {
+        return null;
+    }
+    const raw = String(value).trim();
+    if (!raw) {
+        return null;
+    }
+    if (/^\d{8}$/.test(raw)) {
+        return raw;
+    }
+    const digits = raw.replace(/-/g, '');
+    if (/^\d{8}$/.test(digits)) {
+        return digits;
+    }
+    const parsed = new Date(raw);
+    if (Number.isNaN(parsed.getTime())) {
+        return null;
+    }
+    const yyyy = parsed.getUTCFullYear();
+    const mm = String(parsed.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(parsed.getUTCDate()).padStart(2, '0');
+    return `${yyyy}${mm}${dd}`;
+}
+
 // console.log('Loading function');
 
 /* Sample prediction request
@@ -210,7 +235,7 @@ exports.handler = async (event, context) => {
         return { message: 'no userId', succeeded: false}
     }
     var validateRequest;
-    (event.sport !== 'ncaam' && event.sport !== 'ncaab') ? validateRequest = validate(event, requestSchema) : validateRequest =  validate(event, requestSchemaNCAAM) // validate(prediction, requestSchemaNCAAM)
+    (event.sport !== 'ncaam' && event.sport !== 'ncaab' && event.sport !== 'nba') ? validateRequest = validate(event, requestSchema) : validateRequest =  validate(event, requestSchemaNCAAM) // validate(prediction, requestSchemaNCAAM)
     console.log('validateRequest :>> ', validateRequest);
     console.log('event.sport :>> ', event.sport);
     if (validateRequest.errors && validateRequest.errors.length > 0) {
@@ -252,6 +277,9 @@ exports.handler = async (event, context) => {
         } else if (sport === 'ncaab') {
             gamesCollection = 'games-ncaab';
             gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
+        } else if (sport === 'nba') {
+            gamesCollection = 'games-nba';
+            gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
         }
         console.log('gamesQuery: ', gamesQuery)
         const game = await db.collection(gamesCollection).findOne(gamesQuery, {_id: false});
@@ -275,7 +303,25 @@ exports.handler = async (event, context) => {
                 return { message: result.message, succeeded: result.succeeded };
             }
 
-            var existingObjQuery = {userId: userId, gameId: parseInt(gameId), year: parseInt(year)};
+            const gameDate = normalizeGameDate(event.gameDate || game.startDateTime);
+            if (gameDate) {
+                prediction.gameDate = gameDate;
+            }
+            if (Number.isInteger(parseInt(gameWeek, 10))) {
+                prediction.gameWeek = parseInt(gameWeek, 10);
+            }
+            prediction.userId = userId;
+            prediction.gameId = parseInt(gameId);
+            prediction.year = parseInt(year);
+            prediction.sport = sport;
+            prediction.season = season || game.season;
+
+            var existingObjQuery = {userId: userId, gameId: parseInt(gameId), year: parseInt(year), sport: sport};
+            if (sport === 'nba' && gameDate) {
+                existingObjQuery.gameDate = gameDate;
+            } else if (Number.isInteger(parseInt(gameWeek, 10))) {
+                existingObjQuery.gameWeek = parseInt(gameWeek, 10);
+            }
             
             //get user groups in order to add groups to predictions for scoring
             
@@ -302,6 +348,8 @@ exports.handler = async (event, context) => {
                     predictionCollection = 'predictions-ncaaf';
                 } else if (event.sport === 'ncaam' || event.sport === 'ncaab') {
                     predictionCollection = 'predictions-ncaam';
+                } else if (event.sport === 'nba') {
+                    predictionCollection = 'predictions-nba';
                 }
                 const respObj = await db.collection(predictionCollection).updateOne(existingObjQuery, {$set: prediction}, {upsert: true});
                 // var respObj = JSON.parse(dbRes);
@@ -371,6 +419,11 @@ exports.handler = async (event, context) => {
                     var predictionsQuery = {userId: userId, year: year, gameWeek: gameWeek, season: season}
                     if (sport === 'ncaam' || sport === 'ncaab') {
                         predictionsQuery = {userId: userId, year: year}
+                    } else if (sport === 'nba') {
+                        predictionsQuery = {userId: userId, year: year, season: season || game.season}
+                        if (gameDate) {
+                            predictionsQuery.gameDate = gameDate;
+                        }
                     }
                     const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
                     result.predictionsSubmitted = predictions.length;
@@ -423,28 +476,42 @@ exports.handler = async (event, context) => {
                         // });
                     
                             
+                        const messageAttributes = {
+                            gameId: {
+                                DataType: "Number",
+                                StringValue: game.gameId.toString()
+                            },
+                            year: {
+                                DataType: "Number",
+                                StringValue: game.year.toString()
+                            },
+                            sport: {
+                                DataType: "String",
+                                StringValue: game.sport
+                            },
+                            season: {
+                                DataType: "String",
+                                StringValue: game.season
+                            }
+                        };
+                        if (Number.isFinite(game.gameWeek)) {
+                            messageAttributes.gameWeek = {
+                                DataType: "Number",
+                                StringValue: game.gameWeek.toString()
+                            };
+                        }
+                        if (gameDate) {
+                            messageAttributes.gameDate = {
+                                DataType: "String",
+                                StringValue: gameDate
+                            };
+                        }
+
                         var params = {
                             Message: "Prediction for game " + gameId + " submitted by " + userId, 
                             Subject: "Prediction Submitted",
                             TopicArn: "arn:aws:sns:us-west-2:198282214908:predictionSubmitted",
-                            MessageAttributes: { 
-                                gameId: {
-                                    DataType: "Number",
-                                    StringValue: game.gameId.toString()
-                                },
-                                gameWeek: {
-                                    DataType: "Number",
-                                    StringValue: game.gameWeek.toString()
-                                },
-                                year: {
-                                    DataType: "Number",
-                                    StringValue: game.year.toString()
-                                },
-                                sport: {
-                                    DataType: "String",
-                                    StringValue: game.sport
-                                }
-                            },
+                            MessageAttributes: messageAttributes,
                         };
                         console.log("SNS Publishing")
                         const SNSPublishCommand = new PublishCommand(params, function(err, response) {
