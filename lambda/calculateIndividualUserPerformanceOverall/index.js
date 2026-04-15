@@ -11,7 +11,7 @@ function calculatePercentage(totalCorrect, totalPushes, totalGames) {
     return percentage;
 }
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     try {
         const client = await mongo.connect(MONGO_URL);
@@ -22,7 +22,9 @@ exports.handler = async (event, context, callback) => {
         
         // set defaults
         let { sport, year, season } = event;
-        var gameWeekMatch = { $gt: 0, $lte: event.gameWeek };
+        const periodField = sport === 'nba' ? 'gameDate' : 'gameWeek';
+        const periodValue = event[periodField];
+        var periodMatch = periodField === 'gameWeek' ? { $gt: 0, $lte: event.gameWeek } : { $lte: String(periodValue || '') };
         var predictionsCollection = 'predictions';
         var query = {}
             
@@ -35,7 +37,13 @@ exports.handler = async (event, context, callback) => {
                 sport = 'ncaam'
                 predictionsCollection = 'predictions-ncaam'
                 year = 2019;
-                gameWeekMatch = { $gt: 12 };
+                periodMatch = { $gt: 12 };
+            } else if (sport === 'nba') {
+                sport = 'nba'
+                predictionsCollection = 'predictions-nba'
+                if (!periodValue) {
+                    periodMatch = { $exists: true };
+                }
             }
 
         var matchOpts = {
@@ -53,13 +61,13 @@ exports.handler = async (event, context, callback) => {
                         $match: {
                             ...matchOpts,
                             results: { $exists: true },
-                            gameWeek: gameWeekMatch
+                            [periodField]: periodMatch
                         }
                     },
                     {
                         $group: {
                             //_id: {userId: "$userId", year: "$year", season: "$season"},
-                            _id: {userId: "$userId", sport: "$sport", gameWeek: "$gameWeek", season: "$season", preferred_username: "$preferred_username"},
+                            _id: {userId: "$userId", sport: "$sport", [periodField]: `$${periodField}`, season: "$season", preferred_username: "$preferred_username"},
                             suCorrect: {$sum: "$results.winner.correct"},
                             suPush: {$sum: "$results.winner.push"},
                             suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -84,12 +92,12 @@ exports.handler = async (event, context, callback) => {
                         $match: {
                             ...matchOpts,
                             result: { $exists: true },
-                            gameWeek: gameWeekMatch
+                            [periodField]: periodMatch
                         }
                     },
                     {
                         $group: {
-                            _id: {userId: "$userId", sport: "$sport", gameWeek: "$gameWeek", season: "$season", preferred_username: "$preferred_username"},
+                            _id: {userId: "$userId", sport: "$sport", [periodField]: `$${periodField}`, season: "$season", preferred_username: "$preferred_username"},
                             currencyWagered: {$sum: "$wager.currency"},
                             currencyNet: {$sum: "$net"},
                             wagersCorrect: {$sum: "$result"},
@@ -106,7 +114,7 @@ exports.handler = async (event, context, callback) => {
                     currencyResults.forEach((currencyResult) => {
                         // console.log('currencyResult', currencyResult)
                         // console.log('currencyResult._id.userId, result._id.userId, currencyResult._id.gameWeek, result._id.gameWeek, currencyResult._id.season, result._id.season, currencyResult._id.sport, result._id.sport', currencyResult._id.userId, result._id.userId, currencyResult._id.gameWeek, result._id.gameWeek, currencyResult._id.season, result._id.season, currencyResult._id.sport, result._id.sport);
-                        if (currencyResult._id.userId === result._id.userId && currencyResult._id.gameWeek === result._id.gameWeek && currencyResult._id.season === result._id.season && currencyResult._id.sport === result._id.sport) {
+                        if (currencyResult._id.userId === result._id.userId && currencyResult._id[periodField] === result._id[periodField] && currencyResult._id.season === result._id.season && currencyResult._id.sport === result._id.sport) {
                             result.currencyWagered = currencyResult.currencyWagered;
                             result.currencyNet = currencyResult.currencyNet;
                             result.totalWagers = currencyResult.totalWagers;
@@ -223,9 +231,11 @@ exports.handler = async (event, context, callback) => {
                     console.log({ overallUserArray: JSON.stringify(overallUserArray)})
                     let leaderboardCriteria = {
                     year: event.year,
-                    gameWeek: event.gameWeek,
                     season: season,
                     sport: sport
+                    }
+                    if (periodValue !== undefined && periodValue !== null) {
+                        leaderboardCriteria[periodField] = periodValue;
                     }
                     let leaderboardUpdate = {
                         $set: {
@@ -242,144 +252,9 @@ exports.handler = async (event, context, callback) => {
                     }
                     
                 }
-            // extendedProfile.find(query).toArray(function (err, users) {
-                
-            //     var usersArrayLength = users.length;
-            //     assert.equal(err, null);
-            //     if (err) {
-            //         console.log(err);
-            //         return context.fail(err, null);
-            //     }
-                
-            //     _.each(users, function (user) {
-                    
-            //         var update = {};
-            //         var overallWeeklyWinnersCorrect = 0;
-            //         var overallWeeklyWinnersPush = 0;
-            //         var overallWeeklySpreadCorrect = 0;
-            //         var overallWeeklySpreadPush = 0;
-            //         var overallWeeklyTotalCorrect = 0;
-            //         var overallWeeklyTotalPush = 0;
-            //         var overallPredictionScore = 0;
-            //         var overallTotalPredictions = 0;
-            //         if (event.sport !== 'ncaaf') {
-            //             if (user.results && user.results.weekly && user.results.weekly.length > 0) {
-            //                 user.results.weekly.forEach(function(item, index) {
-            //                     if (item.gameWeek > 0) {
-            //                         overallWeeklyWinnersCorrect += item.winner.correct;
-            //                         overallWeeklyWinnersPush += item.winner.push;
-            //                         overallWeeklySpreadCorrect += item.spread.correct;
-            //                         overallWeeklySpreadPush += item.spread.push;
-            //                         overallWeeklyTotalCorrect += item.total.correct;
-            //                         overallWeeklyTotalPush += item.total.push;
-            //                         overallPredictionScore += item.predictionScore;
-            //                         overallTotalPredictions += item.totalPredictions;
-            //                     }
-            //                 });
-            //             }
-                        
-        
-        
-            //                 var overallSUPercentage = calculatePercentage(overallWeeklyWinnersCorrect, 0, overallTotalPredictions);
-            //                 var overallATSPercentage = calculatePercentage(overallWeeklySpreadCorrect, overallWeeklySpreadPush, overallTotalPredictions);
-            //                 var overallOUPercentage = calculatePercentage(overallWeeklyTotalCorrect, overallWeeklyTotalPush, overallTotalPredictions);
-                            
-                        
-            //             update = {
-            //                 $set: {
-            //                     "results.overall": {
-            //                         winner: {
-            //                             correct: overallWeeklyWinnersCorrect,
-            //                             push: overallWeeklyWinnersPush,
-            //                             percentage: overallSUPercentage
-            //                         },
-            //                         spread: {
-            //                             correct: overallWeeklySpreadCorrect,
-            //                             push: overallWeeklySpreadPush,
-            //                             percentage: overallATSPercentage
-            //                         },
-            //                         total: {
-            //                             correct: overallWeeklyTotalCorrect,
-            //                             push: overallWeeklyTotalPush,
-            //                             percentage: overallOUPercentage
-            //                         },
-            //                         predictionScore: overallPredictionScore,
-            //                         totalPredictions: overallTotalPredictions
-            //                     }
-            //                 }
-            //             }
-            //         } else {
-            //             if (user.results && user.results.ncaaf && user.results.ncaaf[2018].weekly && user.results.ncaaf[2018].weekly.length > 0) {
-            //                 user.results.ncaaf[2018].weekly.forEach(function(item, index) {
-            //                     if (item.gameWeek > 0) {
-            //                         overallWeeklyWinnersCorrect += item.winner.correct;
-            //                         overallWeeklyWinnersPush += item.winner.push;
-            //                         overallWeeklySpreadCorrect += item.spread.correct;
-            //                         overallWeeklySpreadPush += item.spread.push;
-            //                         overallWeeklyTotalCorrect += item.total.correct;
-            //                         overallWeeklyTotalPush += item.total.push;
-            //                         overallPredictionScore += item.predictionScore;
-            //                         overallTotalPredictions += item.totalPredictions;
-            //                     }
-            //                 });
-            //             }
-                        
-        
-        
-            //                 var overallSUPercentage = calculatePercentage(overallWeeklyWinnersCorrect, 0, overallTotalPredictions);
-            //                 var overallATSPercentage = calculatePercentage(overallWeeklySpreadCorrect, overallWeeklySpreadPush, overallTotalPredictions);
-            //                 var overallOUPercentage = calculatePercentage(overallWeeklyTotalCorrect, overallWeeklyTotalPush, overallTotalPredictions);
-                            
-                        
-            //             update = {
-            //                 $set: {
-            //                     "results.ncaaf.2018.overall": {
-            //                         winner: {
-            //                             correct: overallWeeklyWinnersCorrect,
-            //                             push: overallWeeklyWinnersPush,
-            //                             percentage: overallSUPercentage
-            //                         },
-            //                         spread: {
-            //                             correct: overallWeeklySpreadCorrect,
-            //                             push: overallWeeklySpreadPush,
-            //                             percentage: overallATSPercentage
-            //                         },
-            //                         total: {
-            //                             correct: overallWeeklyTotalCorrect,
-            //                             push: overallWeeklyTotalPush,
-            //                             percentage: overallOUPercentage
-            //                         },
-            //                         predictionScore: overallPredictionScore,
-            //                         totalPredictions: overallTotalPredictions
-            //                     }
-            //                 }
-            //             }
-            //         }
-                        
-            //         //console.log("aggOpts: ", aggOpts);
-            //         queryPromises.push(extendedProfile.updateOne({username: user.username}, update));
-            //         usersArrayLength--;
-            //         if (usersArrayLength === 0) {
-            //             Promise.all(queryPromises)
-            //             .then((response) => {
-            //                 if (err) {
-            //                     context.done("agg err: ", err);
-            //                 }
-            //                     console.log("results: ", JSON.stringify(response));
-            //                     context.done(null, users.length + " users updated")
-            //             }) // end update .then
-            //             .catch((reject) => {
-            //                 console.log("updateReject: ", reject)
-            //                 context.done(reject, null);
-            //             }); // end update .catch
-            //         }
-            //     }); // end _.each loop
-                    
-                    
-            // }); // end extendProfile.find function
                 
     } catch (error) {
         console.log(error);
-        return context.fail(error, null);
+        return { status: 500, message: 'Error calculating individual user performance overall', error: error };
     }
 };
