@@ -13,11 +13,14 @@ exports.handler = async (event, context, callback) => {
     try {
         var updateOverall = {};
         var queryPromises = [];
-        async function callCalculateIndividualCrowdPerformanceOverall(results, sport, year, season, gameWeek) {
+        const periodField = event.sport === 'nba' ? 'gameDate' : 'gameWeek';
+        const eventPeriodValue = event[periodField];
+
+        async function callCalculateIndividualCrowdPerformanceOverall(results, sport, year, season) {
 
             // end results.forEach aggregate result
             let filteredResults = results.filter((result) => {
-                return (result._id.gameWeek === event.gameWeek && result._id.season === event.season)
+                return (result._id[periodField] === eventPeriodValue && result._id.season === event.season)
             })
             
             filteredResults = filteredResults.sort((a, b) => {
@@ -67,7 +70,7 @@ exports.handler = async (event, context, callback) => {
                 year: year,
                 sport: event.sport,
                 season: event.season,
-                gameWeek: event.gameWeek
+                [periodField]: eventPeriodValue
                 }
                 let leaderboardUpdate = {
                     $set: {
@@ -82,11 +85,21 @@ exports.handler = async (event, context, callback) => {
             //console.log({queryPromises})
             let queryPromisesResult = await Promise.all(queryPromises);
                 console.log('callCalculateIndividualCrowdPerformanceOverall called')
+                const downstreamPayload = {
+                    message: 'calculateIndividualUserPerformanceOverall completed',
+                    sport,
+                    year,
+                    season
+                };
+                if (eventPeriodValue !== undefined && eventPeriodValue !== null) {
+                    downstreamPayload[periodField] = eventPeriodValue;
+                }
+
                 var calculateIndividualUserPerformanceOverallParams = {
                     FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
                     InvocationType: 'Event',
                     LogType: 'None',
-                    Payload: `{ "message": "calculateIndividualUserPerformanceOverall completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
+                    Payload: JSON.stringify(downstreamPayload)
                 };
 
                 const lambdaParams = {
@@ -100,16 +113,16 @@ exports.handler = async (event, context, callback) => {
                     console.log('err', err);
                     console.log('data', data);
                     if (err) {
-                        return context.fail('addToGroupError', err);
+                        return { status: 500, message: 'addToGroupError', error: err };
                     } else {
-                        return context.done(null, results.length + "Users updated");
+                        return { status: 200, message: results.length + "Users updated" };
                     }
                 })
                 
                 const { Payload, LogResult } = await lambda.send(command);
                 console.log('Payload', Payload);
                 console.log('LogResult', LogResult);
-                context.done(null, results.length + "Users updated");
+                return { status: 200, message: results.length + "Users updated" };
         }
         
         function calculatePercentage(totalCorrect, totalPushes, totalGames) {
@@ -125,6 +138,8 @@ exports.handler = async (event, context, callback) => {
         } else if (event.sport === 'ncaam') {
             predictionsCollection = 'predictions-ncaam';
             year = 2019;
+        } else if (event.sport === 'nba') {
+            predictionsCollection = 'predictions-nba';
         }
         const client = await mongo.connect(MONGO_URL);
         const db = client.db('pcsm');
@@ -133,8 +148,8 @@ exports.handler = async (event, context, callback) => {
         var matchOpts = {
                 year: year
         }
-        if (event.gameWeek) {
-            matchOpts.gameWeek = event.gameWeek
+        if (eventPeriodValue) {
+            matchOpts[periodField] = eventPeriodValue
         }
         if (event.sport) {
             matchOpts.sport = event.sport
@@ -160,7 +175,7 @@ exports.handler = async (event, context, callback) => {
             },
             {
                 $group: {
-                    _id: {userId: "$userId", sport: "$sport", gameWeek: "$gameWeek", season: "$season", preferred_username: "$preferred_username"},
+                    _id: {userId: "$userId", sport: "$sport", [periodField]: `$${periodField}`, season: "$season", preferred_username: "$preferred_username"},
                     suCorrect: {$sum: "$results.winner.correct"},
                     suPush: {$sum: "$results.winner.push"},
                     suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -190,7 +205,7 @@ exports.handler = async (event, context, callback) => {
             },
             {
                 $group: {
-                    _id: {userId: "$userId", sport: "$sport", gameWeek: "$gameWeek", season: "$season", preferred_username: "$preferred_username"},
+                    _id: {userId: "$userId", sport: "$sport", [periodField]: `$${periodField}`, season: "$season", preferred_username: "$preferred_username"},
                     currencyWagered: {$sum: "$wager.currency"},
                     currencyNet: {$sum: "$net"},
                     wagersCorrect: {$sum: "$result"},
@@ -212,7 +227,7 @@ exports.handler = async (event, context, callback) => {
         currencyResults.forEach((currencyResult) => {
             // console.log('currencyResult', currencyResult)
             // console.log('currencyResult._id.userId, result._id.userId, currencyResult._id.gameWeek, result._id.gameWeek, currencyResult._id.season, result._id.season, currencyResult._id.sport, result._id.sport', currencyResult._id.userId, result._id.userId, currencyResult._id.gameWeek, result._id.gameWeek, currencyResult._id.season, result._id.season, currencyResult._id.sport, result._id.sport);
-            if (currencyResult._id.userId === result._id.userId && currencyResult._id.gameWeek === result._id.gameWeek && currencyResult._id.season === result._id.season && currencyResult._id.sport === result._id.sport) {
+            if (currencyResult._id.userId === result._id.userId && currencyResult._id[periodField] === result._id[periodField] && currencyResult._id.season === result._id.season && currencyResult._id.sport === result._id.sport) {
                 result.currencyWagered = currencyResult.currencyWagered;
                 result.currencyNet = currencyResult.currencyNet;
                 result.totalWagers = currencyResult.totalWagers;
@@ -231,14 +246,14 @@ exports.handler = async (event, context, callback) => {
         var criteria = {
             username: result._id.userId,
             [`results.${event.sport}.${year}.${result._id.season}.weekly`]: {
-                $elemMatch: { gameWeek: result._id.gameWeek } 
+                $elemMatch: { [periodField]: result._id[periodField] } 
             }
             
         }
         let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
         let starsNet = result.atsStarsNet + result.totalStarsNet;
         var update = {
-                [`results.${event.sport}.${year}.${result._id.season}.weekly.$.gameWeek`]: result._id.gameWeek,
+                [`results.${event.sport}.${year}.${result._id.season}.weekly.$.${periodField}`]: result._id[periodField],
                 [`results.${event.sport}.${year}.${result._id.season}.weekly.$.winner`]: {
                     correct: result.suCorrect,
                     push: result.suPush,
@@ -287,7 +302,7 @@ exports.handler = async (event, context, callback) => {
                     // signifies that the user's weekly results were updated
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.gameWeek)
+                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                     }
                 } else if (updateResponse.acknowledged === true && updateResponse.modifiedCount === 0) {
                     // signifies that the user's weekly results were not updated
@@ -304,13 +319,13 @@ exports.handler = async (event, context, callback) => {
                     // {updateOne: {filter: criteria, update: update}}
                     var pullUpdate = {updateOne: {filter: pushCriteria, update: {
                         $pull: {
-                            [`results.${event.sport}.${year}.${result._id.season}.weekly`]: { gameWeek: result._id.gameWeek }
+                            [`results.${event.sport}.${year}.${result._id.season}.weekly`]: { [periodField]: result._id[periodField] }
                         }
                     }}}
                     var pushUpdate = {updateOne: {filter: pushCriteria, update: {
                         $push: {
                             [`results.${event.sport}.${year}.${result._id.season}.weekly`]: {
-                                gameWeek: result._id.gameWeek,
+                                [periodField]: result._id[periodField],
                                 winner: {
                                     correct: result.suCorrect,
                                     push: result.suPush,
@@ -360,14 +375,14 @@ exports.handler = async (event, context, callback) => {
                         console.log(318, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                         }
                     } else {
                         //console.log("no push update for ", result._id.userId)
                         console.log(324, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                         }
                     }
                 } else {
@@ -375,19 +390,12 @@ exports.handler = async (event, context, callback) => {
                     console.log(331, { resultsArrayLength });
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season, event.gameWeek)
+                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                     }
                 }
             }
-    //end aggregate predictions function
-        // if (resultsArrayLength === 0) {
-        //     console.log('queryPromises', JSON.stringify(queryPromises))
-        //     let leaderboardUpdate = await Promise.all(queryPromises);
-        //     console.log('leaderboardUpdate', leaderboardUpdate)
-        //     context.done(null, results.length + " Users updated");
-        // }
     } catch (err) {
         console.log('err', err, err.errorMessage);
-        return context.fail({err: JSON.stringify(err)}, null);
+        return { status: 500, message: 'Error calculating individual user performance weekly', error: err };
     }
 };
