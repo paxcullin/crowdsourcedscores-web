@@ -18,8 +18,8 @@ exports.handler = (event, context, callback) => {
                 startDate: new Date('2025-03-01')
             },
             {
-            season: 'reg',
-            startDate: new Date('2025-08-27')
+                season: 'reg',
+                startDate: new Date('2025-08-27')
             },
             {
                 season: 'post',
@@ -570,11 +570,11 @@ exports.handler = (event, context, callback) => {
                 post: {
                     start: new Date('2026-03-09T18:00:00Z'),
                     weeks: [
-                        {weekName: 'Conference Tourneys',
+                        {weekName: 'Conf Tourneys',
                             start: new Date('2026-03-09T18:00:00Z'),
                             end: new Date('2026-03-16T17:59:59Z')
                         },
-                        {weekName: 'First Four',
+                        {weekName: '1st 4',
                             start: new Date('2026-03-16T18:00:00Z'),
                             end: new Date('2026-03-19T07:59:59Z')
                         },
@@ -787,7 +787,7 @@ exports.handler = (event, context, callback) => {
                     Date.UTC(2026, 0, 13),  // 2020 Postseason Week 2
                     Date.UTC(2026, 0, 20),  // 2020 Postseason Week 3
                     Date.UTC(2026, 0, 27),  // 2020 Postseason Week 4
-                    Date.UTC(2026, 5, 1),  // 2022-2023 Season
+                    Date.UTC(2026, 7, 1),  // 2022-2023 Season
                     ];
                     break;
             default:
