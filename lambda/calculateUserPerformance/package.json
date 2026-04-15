@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.388.0",
-    "mongodb": "^3.6.10"
+    "mongodb": "^7.1.1"
   }
 }
