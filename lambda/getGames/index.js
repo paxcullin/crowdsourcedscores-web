@@ -20,10 +20,44 @@ const MONGO_URL = `mongodb+srv://${username}:${password}@pcsm.lwx4u.mongodb.net/
 
 console.log('Loading function');
 
+function normalizeGameDate(value) {
+    if (!value && value !== 0) {
+        return null;
+    }
+    const raw = String(value).trim();
+    if (!raw) {
+        return null;
+    }
+    if (/^\d{8}$/.test(raw)) {
+        return raw;
+    }
+    const digits = raw.replace(/-/g, '');
+    if (/^\d{8}$/.test(digits)) {
+        return digits;
+    }
+    const parsed = new Date(raw);
+    if (Number.isNaN(parsed.getTime())) {
+        return null;
+    }
+    const yyyy = parsed.getUTCFullYear();
+    const mm = String(parsed.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(parsed.getUTCDate()).padStart(2, '0');
+    return `${yyyy}${mm}${dd}`;
+}
+
+function getDateRangeFromGameDate(gameDate) {
+    const year = parseInt(gameDate.slice(0, 4), 10);
+    const month = parseInt(gameDate.slice(4, 6), 10) - 1;
+    const day = parseInt(gameDate.slice(6, 8), 10);
+    const start = new Date(Date.UTC(year, month, day));
+    const end = new Date(Date.UTC(year, month, day + 1));
+    return { start, end };
+}
+
 exports.handler = async (event, context) => {
     try {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { userId, preferred_username, sport, gameWeek, year, compareUsername } = event; 
+    let { userId, preferred_username, sport, gameWeek, year, compareUsername, gameDate } = event; 
     const client = await mongo.connect(MONGO_URL);
     const db = client.db('pcsm');
 
@@ -42,14 +76,19 @@ exports.handler = async (event, context) => {
     } else if (sport === 'ncaam' || sport === 'ncaab') {
         gamesCollectionName = 'games-ncaab';
         predictionsCollectionName = 'predictions-ncaam';
+    } else if (sport === 'nba') {
+        gamesCollectionName = 'games-nba';
+        predictionsCollectionName = 'predictions-nba';
     } else {
         sport = 'nfl';
     }
     const collection = db.collection(gamesCollectionName);
     const predictionsCollection = db.collection(predictionsCollectionName);
     var comparePredictions = false;
+    const isDateBasedSport = sport === 'nba';
+    const normalizedGameDate = normalizeGameDate(gameDate || event.date);
     
-    var gamesQuery = {
+        var gamesQuery = {
             "year": parseInt(year),
             "gameWeek": parseInt(gameWeek),
             "season": season,
@@ -129,6 +168,22 @@ exports.handler = async (event, context) => {
             console.log('getGameWeek err: ', err)
         }
     }
+    if (isDateBasedSport) {
+        if (!normalizedGameDate) {
+            context.done(null, { success: false, message: 'gameDate is required for nba queries (YYYYMMDD)' });
+            return;
+        }
+        const { start, end } = getDateRangeFromGameDate(normalizedGameDate);
+        gamesQuery = {
+            "year": parseInt(year),
+            "season": season,
+            "sport": sport,
+            "startDateTime": {
+                "$gte": start,
+                "$lt": end
+            }
+        };
+    }
     if (event.compareUsername) {
         comparePredictions = true;
         gamesQuery.results= { $exists: true };
@@ -174,6 +229,20 @@ exports.handler = async (event, context) => {
         }
         if (sport === "ncaam" || sport === "ncaab") {
             predictionsQuery.gameWeek = { $gt: -1 };
+        }
+        if (isDateBasedSport) {
+            predictionsQuery = {
+                "year": parseInt(event.year),
+                "season": season,
+                "preferred_username": { $in: preferred_usernames}
+            };
+            if (normalizedGameDate) {
+                predictionsQuery.gameDate = normalizedGameDate;
+            }
+            const gameIds = games.map((game) => game.gameId);
+            if (gameIds.length > 0) {
+                predictionsQuery.gameId = { $in: gameIds };
+            }
         }
         games.map((game) => {
                 if (game.weather) {
