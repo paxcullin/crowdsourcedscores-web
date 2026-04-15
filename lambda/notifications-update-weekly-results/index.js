@@ -55,6 +55,9 @@ function ordinal_suffix_of(i) {
 exports.handler = async (event, context, callback) => {
     console.log('processing event: %j', event);
         try {
+        const minimumPredictions = Number.isFinite(parseInt(event.minimumPredictions, 10))
+            ? parseInt(event.minimumPredictions, 10)
+            : 0;
         let getGameWeekResponse = await lambda.invoke(getGameWeekParams).promise()
         let getGameWeekData = JSON.parse(getGameWeekResponse.Payload)
             console.log({getGameWeekData});
@@ -63,7 +66,8 @@ exports.handler = async (event, context, callback) => {
         getWeeklyResultsParams.Payload = JSON.stringify({ message: "getting weekly results for notifications", sport,
             season,
             year,
-            week
+            week,
+            minimumPredictions
         })
         console.log(getWeeklyResultsParams)
         let getWeeklyResults = await lambda.invoke(getWeeklyResultsParams).promise();
