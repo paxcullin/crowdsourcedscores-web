@@ -16,15 +16,19 @@ var mongo = require("mongodb").MongoClient,
 
 exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { year, week, season, sport } = event;
+    const { year, week, season, sport, gameDate } = event;
     const limit = event.limit ? parseInt(event.limit) : 100;
+    const minimumPredictions = Number.isFinite(parseInt(event.minimumPredictions, 10))
+        ? parseInt(event.minimumPredictions, 10)
+        : 0;
     try {
         const client = await mongo.connect(MONGO_URL);
         const db = client.db('pcsm');
     
         
-        if (!event.week) {
-            context.done(null, { success: false, message: "No week submitted"})
+        if (!event.week && !event.gameDate) {
+            context.done(null, { success: false, message: "No week or gameDate submitted"})
+            return;
         }
         
         const leaderboardsCollection = db.collection('leaderboards');
@@ -32,7 +36,13 @@ exports.handler = async (event, context) => {
         
         
         
-        const leaderboard = await leaderboardsCollection.findOne({ sport: sport, year: year, gameWeek: week, season: season })
+        const leaderboardQuery = { sport: sport, year: year, season: season };
+        if (gameDate) {
+            leaderboardQuery.gameDate = String(gameDate);
+        } else {
+            leaderboardQuery.gameWeek = week;
+        }
+        const leaderboard = await leaderboardsCollection.findOne(leaderboardQuery)
         // console.log({ leaderboard })
         if (leaderboard && leaderboard.weekly && leaderboard.weekly.users && leaderboard.overall && leaderboard.overall.users) {
             var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
@@ -69,11 +79,18 @@ exports.handler = async (event, context) => {
             //console.log({leaderboardArrayLength, leaderboardUsers})
             
             if (leaderboardWeeklyArrayLength === 0 && leaderboardOverallArrayLength === 0) {
-                let leaderboardWeeklyStars = leaderboardWeeklyUsersMapped.filter(user => {
+                const qualifiedWeeklyUsers = minimumPredictions > 0
+                    ? leaderboardWeeklyUsersMapped.filter((user) => (user.totalPredictions || 0) >= minimumPredictions)
+                    : leaderboardWeeklyUsersMapped;
+                const qualifiedOverallUsers = minimumPredictions > 0
+                    ? leaderboardOverallUsersMapped.filter((user) => (user.totalPredictions || 0) >= minimumPredictions)
+                    : leaderboardOverallUsersMapped;
+
+                let leaderboardWeeklyStars = qualifiedWeeklyUsers.filter(user => {
                     if (user.stars && user.stars.roi !== null && user.stars.wagered > 0) return user;
                 })
-                let leaderboardOverallStars = leaderboardOverallUsersMapped.filter(user => {
-                    if (user.stars && user.stars.roi!==null && user.stars.wagered >= (leaderboard.gameWeek * 5)) return user;
+                let leaderboardOverallStars = qualifiedOverallUsers.filter(user => {
+                    if (user.stars && user.stars.roi !== null && user.stars.wagered > 0) return user;
                 })
                 //console.log({ leaderboardOverallStars: JSON.stringify(leaderboardOverallStars), leaderboardWeeklyStars: JSON.stringify(leaderboardWeeklyStars) })
                 leaderboardWeeklyStars.sort((a,b) => {
@@ -85,10 +102,11 @@ exports.handler = async (event, context) => {
                 leaderboardOverallStars.sort((a,b) => {
                     return (a.stars.roi - b.stars.roi) * -1 || (a.stars.net - b.stars.net) * -1
                 })
-                leaderboard.weekly.users = leaderboardWeeklyUsersMapped
-                leaderboard.overall.users = leaderboardOverallUsersMapped
+                leaderboard.weekly.users = qualifiedWeeklyUsers
+                leaderboard.overall.users = qualifiedOverallUsers
                 leaderboard.weekly.usersStars = leaderboardWeeklyStars
                 leaderboard.overall.usersStars = leaderboardOverallStars
+                leaderboard.minimumPredictions = minimumPredictions
                 // console.log({ Leaderboard: JSON.stringify(leaderboard)})
                 context.done(null, leaderboard)
             }
