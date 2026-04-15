@@ -159,7 +159,7 @@ exports.handler = async (event, context) => {
         // return context.done(null, results);
             // console.log('results.length: ', results.length);
             if (results.length === 0) {
-              context.done(null, `No results found for ${matchOpts}`)
+              return { status: 200, message: `No results found for ${JSON.stringify(matchOpts)}`}
             }
             var queryPromises = [];
             results.forEach((result) => {
@@ -241,9 +241,9 @@ exports.handler = async (event, context) => {
                     console.log('err', err);
                     console.log('data', data);
                     if (err) {
-                    context.fail('addToGroupError', err);
+                    return { status: 500, message: 'addToGroupError', error: err };
                     } else {
-                    context.succeed('Lambda_B said '+ data.Payload);
+                    return { status: 200, message: 'Lambda_B said '+ data.Payload };
                     }
                 })
                 const lambdaresponse = lambda.send(command);
@@ -255,6 +255,6 @@ exports.handler = async (event, context) => {
                 };
         } catch (err) {
             console.log('err', err)
-            return context.fail(err);
+            return { status: 500, message: 'Error aggregating predictions', error: err };
         }
 };
