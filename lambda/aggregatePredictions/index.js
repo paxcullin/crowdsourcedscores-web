@@ -81,14 +81,19 @@ exports.handler = async (event, context) => {
         const gameId = parseInt(gameAttributes.gameId.Value);
         const gameIds = gameAttributes.gameIds ? gameAttributes.gameIds.Value.split(',') : [];
         const gameIdsArray = gameIds.map((gId) => parseInt(gId));
-        const gameWeek = parseInt(gameAttributes.gameWeek.Value);
+        const gameWeek = gameAttributes.gameWeek ? parseInt(gameAttributes.gameWeek.Value) : null;
+        const gameDate = gameAttributes.gameDate ? String(gameAttributes.gameDate.Value) : null;
         console.log('gameIds :>> ', gameIds);
         var matchOpts = {
           $match: {
             year: year,
-            gameId: gameIds && gameIds.length > 0 ? { $in: gameIdsArray } : gameId,
-            gameWeek: gameWeek
+            gameId: gameIds && gameIds.length > 0 ? { $in: gameIdsArray } : gameId
           }
+        }
+        if (gameDate) {
+          matchOpts.$match.gameDate = gameDate;
+        } else if (gameWeek !== null) {
+          matchOpts.$match.gameWeek = gameWeek;
         }
         var groupOpts = {
                 $group: {
@@ -126,6 +131,9 @@ exports.handler = async (event, context) => {
         } else if (gameAttributes.sport.Value === 'ncaam') {
           predictionsCollection = 'predictions-ncaam'
           gamesCollection = 'games-ncaab'
+        } else if (gameAttributes.sport.Value === 'nba') {
+          predictionsCollection = 'predictions-nba'
+          gamesCollection = 'games-nba'
         }
         
         var aggOpts = [
