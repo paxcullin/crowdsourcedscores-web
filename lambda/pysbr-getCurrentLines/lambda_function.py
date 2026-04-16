@@ -1,4 +1,4 @@
-from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF
+from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF, NBA
 from pysbr.config.config import Config
 from datetime import datetime, timedelta, date
 from pymongo import MongoClient, InsertOne, UpdateOne
@@ -19,6 +19,7 @@ cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'a
 nfl = NFL()
 ncaab = NCAAB()
 ncaaf = NCAAF()
+nba = NBA()
 sblib = Sportsbook()
 
 def get_sportsbook_ids():
@@ -45,6 +46,8 @@ def get_lines(gameid, sport):
         market = ncaab
     elif (sport == 'ncaaf'):
         market = ncaaf
+    elif (sport == 'nba'):
+        market = nba
     try:
         books = get_sportsbook_ids()
         sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
@@ -89,6 +92,8 @@ def lambda_handler(e, context):
         collection = db['games-ncaaf']
     elif (sport == 'ncaam' or sport == 'ncaab'):
         collection = db['games-ncaab']
+    elif (sport == 'nba'):
+        collection = db['games-nba']
     if gameids is None or len(gameids) == 0:
         print('no game id')
         return {
@@ -113,7 +118,10 @@ def lambda_handler(e, context):
             if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
                 collection.update_one(
                     {
-                        'gameId': gameid
+                        '$or': [
+                            {'gameId': gameid},
+                            {'sbrGameId': gameid}
+                        ]
                     },
                     {
                         '$set': {

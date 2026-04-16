@@ -10,6 +10,10 @@
   update-function-configuration --function-name pysbr-ncaab --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
   update-function-configuration --function-name pysbr-nfl --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
   update-function-configuration --function-name pysbr-ncaaf --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+  update-function-configuration --function-name pysbr-nba --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6
+
+  # create pysbr-nba (if it does not exist yet)
+  create-function --function-name pysbr-nba --runtime python3.13 --role arn:aws:iam::198282214908:role/APIGatewayLambdaExecRole --handler lambda_function.lambda_handler --zip-file fileb://pysbr-nba.zip --timeout 900 --memory-size 1024
 
   # IMPORTANT: Environment Variable Configuration
   # All pysbr functions MUST have the following environment variable set:
@@ -20,6 +24,7 @@
   update-function-configuration --function-name pysbr-ncaab --environment Variables={PYTHONPATH=/opt/python:/var/task}
   update-function-configuration --function-name pysbr-nfl --environment Variables={PYTHONPATH=/opt/python:/var/task}
   update-function-configuration --function-name pysbr-ncaaf --environment Variables={PYTHONPATH=/opt/python:/var/task}
+  update-function-configuration --function-name pysbr-nba --environment Variables={PYTHONPATH=/opt/python:/var/task}
 
   # CRITICAL FIX FOR PYTHON 3.13+ COMPATIBILITY:
   # All pysbr function lambda_function.py files must include shim code at the top to handle:

@@ -1,0 +1,11 @@
+rm -rf package pysbr-nba.zip
+# No-Docker fallback: fetch Linux wheels directly for Lambda Python 3.14.
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install -r requirements.txt -t package \
+  --platform manylinux_2_28_x86_64 \
+  --implementation cp \
+  --python-version 314 \
+  --only-binary=:all:
+cd package && zip -r ../pysbr-nba.zip . && cd ..
+cd ../PySBR-1.0 && zip -r ../pysbr-nba/pysbr-nba.zip pysbr && cd ../pysbr-nba
+zip pysbr-nba.zip lambda_function.py
