@@ -57,7 +57,7 @@ function getDateRangeFromGameDate(gameDate) {
 exports.handler = async (event, context) => {
     try {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    let { userId, preferred_username, sport, gameWeek, year, compareUsername, gameDate } = event; 
+    let { userId, preferred_username, sport, gameWeek, year, compareUsername } = event; 
     const client = await mongo.connect(MONGO_URL);
     const db = client.db('pcsm');
 
@@ -86,7 +86,7 @@ exports.handler = async (event, context) => {
     const predictionsCollection = db.collection(predictionsCollectionName);
     var comparePredictions = false;
     const isDateBasedSport = sport === 'nba';
-    const normalizedGameDate = normalizeGameDate(gameDate || event.date);
+    const normalizedGameDate = normalizeGameDate(gameWeek);
     
         var gamesQuery = {
             "year": parseInt(year),
@@ -118,9 +118,9 @@ exports.handler = async (event, context) => {
                 console.log('err', err);
                 console.log('data', data);
                 if (err) {
-                context.fail('addToGroupError', err);
+                    return { status: 500, message: 'addToGroupError', error: err };
                 } else {
-                return data.Payload
+                    return { status: 200, message: 'success', data: data.Payload };
                 }
             })
             const { Payload, LogResult } = await lambda.send(command);
@@ -170,8 +170,7 @@ exports.handler = async (event, context) => {
     }
     if (isDateBasedSport) {
         if (!normalizedGameDate) {
-            context.done(null, { success: false, message: 'gameDate is required for nba queries (YYYYMMDD)' });
-            return;
+            return { status: 400, success: false, message: 'gameDate is required for nba queries (YYYYMMDD)' };
         }
         const { start, end } = getDateRangeFromGameDate(normalizedGameDate);
         gamesQuery = {
@@ -269,7 +268,7 @@ exports.handler = async (event, context) => {
         if (!preferred_username) {
             console.log('No username');
             console.log('games', games);
-            context.done(null, {games})
+            return { status: 200, games: games }
         }
         console.log("predictionsCollectionName: ", predictionsCollectionName)
         console.log("predictionsQuery: ", predictionsQuery)
@@ -424,9 +423,9 @@ exports.handler = async (event, context) => {
             // games.sort(compareObject);
             console.log('games: ', games)
 
-            context.done(null, {games, predictionsSubmitted, predictionsSubmittedStars, gameResults, comparePredictions});
+            return { status: 200, games, predictionsSubmitted, predictionsSubmittedStars, gameResults, comparePredictions };
     } catch (err) {
         console.log('getGames err: ', err)
-        context.fail({ status: 500, message: err})
+        return { status: 500, message: err }
     }
 };

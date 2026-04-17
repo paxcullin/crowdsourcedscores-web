@@ -11,6 +11,7 @@
     "test": "aws lambda invoke --function-name getGames --cli-binary-format raw-in-base64-out --payload file://test-games.json games.json",
     "test-ncaaf": "aws lambda invoke --function-name getGames --cli-binary-format raw-in-base64-out --payload file://test-games-ncaaf.json games-ncaaf.json",
     "test-ncaam": "aws lambda invoke --function-name getGames --cli-binary-format raw-in-base64-out --payload file://test-games-ncaam.json games-ncaam.json",
+    "test-nba": "aws lambda invoke --function-name getGames --cli-binary-format raw-in-base64-out --payload file://test-games-nba.json games-nba.json",
     "package": "zip -r getGames.zip .",
     "upload": "aws lambda update-function-code --function-name getGames --zip-file fileb://getGames.zip --publish"
   },
