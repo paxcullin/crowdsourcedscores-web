@@ -8,7 +8,7 @@
     "mongodb": "^6.7.0"
   },
   "scripts": {
-    "test": "aws lambda invoke --function-name getGameWeek --cli-binary-format raw-in-base64-out --payload file://response.json getGameWeek.json",
+    "test": "aws lambda invoke --function-name getGameWeek --cli-binary-format raw-in-base64-out --payload file://nba.json response-nba.json",
     "package": "zip -r getGameWeek.zip .",
     "upload": "aws lambda update-function-code --function-name getGameWeek --zip-file fileb://getGameWeek.zip --publish"
   }

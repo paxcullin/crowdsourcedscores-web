@@ -622,6 +622,24 @@ exports.handler = (event, context, callback) => {
                         ]
                 }
             }
+        },
+        nba: {
+            2026: {
+                reg: {
+                    start: new Date('2026-11-04T01:00:00Z'),
+                    weeks: []
+                },
+                post: {
+                    start: new Date('2027-04-13T17:00:00Z'),
+                    weeks: [
+                        {weekName: 'Play-in'},
+                        {weekName: '1st Round'},
+                        {weekName: '2nd Round'},
+                        {weekName: 'Conf Finals'},
+                        {weekName: 'Champ'}
+                        ]
+                }
+            }
         }
     }
     
@@ -629,9 +647,14 @@ exports.handler = (event, context, callback) => {
     var sport = (event.sport) ? event.sport : (event.params && event.params.path && event.params.path.sport) ? event.params.path.sport : 'nfl'
     
     const now = Date.now();
-    let nowYear = (new Date(now).getFullYear());
-    var year = new Date(now).getFullYear();
+    const nowDate = new Date(now);
+    let nowYear = nowDate.getFullYear();
+    const nowMonth = nowDate.getMonth();
+    var year = nowDate.getFullYear();
     if ((sport === 'nfl' || sport === 'ncaaf' || sport === 'ncaam') && nowYear === 2026) {
+        nowYear--;
+    }
+    if (sport === 'nba' && nowMonth < 9) {
         nowYear--;
     }
     console.log({nowYear, year})
@@ -673,7 +696,173 @@ exports.handler = (event, context, callback) => {
         });
     };
 
-    if (sport === 'ncaaf') {
+    const getNthWeekdayOfMonth = (yearValue, monthValue, weekday, nth) => {
+        const firstOfMonth = new Date(Date.UTC(yearValue, monthValue, 1));
+        const dayOffset = (7 + weekday - firstOfMonth.getUTCDay()) % 7;
+        return 1 + dayOffset + ((nth - 1) * 7);
+    };
+
+    const isPacificDstAtNoon = (yearValue, monthValue, dayValue) => {
+        const secondSundayInMarch = getNthWeekdayOfMonth(yearValue, 2, 0, 2);
+        const firstSundayInNovember = getNthWeekdayOfMonth(yearValue, 10, 0, 1);
+
+        if (monthValue < 2 || monthValue > 10) {
+            return false;
+        }
+        if (monthValue > 2 && monthValue < 10) {
+            return true;
+        }
+        if (monthValue === 2) {
+            return dayValue >= secondSundayInMarch;
+        }
+        return dayValue < firstSundayInNovember;
+    };
+
+    const pacificMondayNoonUtcMs = (yearValue, monthValue, dayValue) => {
+        const utcHour = isPacificDstAtNoon(yearValue, monthValue, dayValue) ? 19 : 20;
+        return Date.UTC(yearValue, monthValue, dayValue, utcHour, 0, 0, 0);
+    };
+
+    const firstMondayOnOrAfter = (yearValue, monthValue, dayValue) => {
+        const date = new Date(Date.UTC(yearValue, monthValue, dayValue));
+        while (date.getUTCDay() !== 1) {
+            date.setUTCDate(date.getUTCDate() + 1);
+        }
+        return date;
+    };
+
+    const buildNbaRegularSeason = (seasonYear) => {
+        const seasonStartMonday = firstMondayOnOrAfter(seasonYear, 9, 15);
+        const seasonEndBoundaryMonday = firstMondayOnOrAfter(seasonYear + 1, 3, 13);
+
+        const weeks = [];
+        const weekBoundaries = [];
+        let weekNumber = 1;
+        let cursor = new Date(seasonStartMonday.getTime());
+
+        while (cursor < seasonEndBoundaryMonday) {
+            const startYear = cursor.getUTCFullYear();
+            const startMonth = cursor.getUTCMonth();
+            const startDay = cursor.getUTCDate();
+
+            const nextCursor = new Date(cursor.getTime());
+            nextCursor.setUTCDate(nextCursor.getUTCDate() + 7);
+
+            const endYear = nextCursor.getUTCFullYear();
+            const endMonth = nextCursor.getUTCMonth();
+            const endDay = nextCursor.getUTCDate();
+
+            const startUtcMs = pacificMondayNoonUtcMs(startYear, startMonth, startDay);
+            const nextStartUtcMs = pacificMondayNoonUtcMs(endYear, endMonth, endDay);
+
+            weekBoundaries.push(startUtcMs);
+            weeks.push({
+                weekName: weekNumber,
+                start: new Date(startUtcMs),
+                end: new Date(nextStartUtcMs - (60 * 1000))
+            });
+
+            weekNumber++;
+            cursor = nextCursor;
+        }
+
+        const boundaryYear = seasonEndBoundaryMonday.getUTCFullYear();
+        const boundaryMonth = seasonEndBoundaryMonday.getUTCMonth();
+        const boundaryDay = seasonEndBoundaryMonday.getUTCDate();
+        weekBoundaries.push(pacificMondayNoonUtcMs(boundaryYear, boundaryMonth, boundaryDay));
+
+        return {
+            start: weeks[0] ? weeks[0].start : seasonStartMonday,
+            weeks,
+            weekBoundaries
+        };
+    };
+
+    const buildWeekObjectsFromBoundaries = (boundariesUtcMs, labels) => {
+        const weeks = [];
+        for (let i = 0; i < labels.length; i++) {
+            weeks.push({
+                weekName: labels[i],
+                start: new Date(boundariesUtcMs[i]),
+                end: new Date(boundariesUtcMs[i + 1] - (60 * 1000))
+            });
+        }
+        return weeks;
+    };
+
+    const nbaPostseasonConfig = {
+        // Keep these boundaries current as rounds complete for each season.
+        2025: {
+            labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
+            boundaries: [
+                [2026, 3, 13],
+                [2026, 3, 17],
+                [2026, 3, 30],
+                [2026, 4, 18],
+                [2026, 5, 1],
+                [2026, 5, 22]
+            ]
+        },
+        2026: {
+            labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
+            boundaries: [
+                [2027, 3, 16],
+                [2027, 3, 30],
+                [2027, 4, 10],
+                [2027, 4, 24],
+                [2027, 5, 7],
+                [2027, 5, 28]
+            ]
+        }
+    };
+
+    const buildNbaPostseason = (seasonYear, defaultStartUtcMs) => {
+        const configured = nbaPostseasonConfig[seasonYear];
+        if (!configured) {
+            return {
+                start: new Date(defaultStartUtcMs),
+                weeks: [],
+                weekBoundaries: [defaultStartUtcMs]
+            };
+        }
+
+        const boundariesUtcMs = configured.boundaries.map(function(boundaryParts) {
+            return pacificMondayNoonUtcMs(boundaryParts[0], boundaryParts[1], boundaryParts[2]);
+        });
+
+        return {
+            start: new Date(boundariesUtcMs[0]),
+            weeks: buildWeekObjectsFromBoundaries(boundariesUtcMs, configured.labels),
+            weekBoundaries: boundariesUtcMs
+        };
+    };
+
+    if (sport === 'nba') {
+        const nbaRegularSeason = buildNbaRegularSeason(nowYear);
+        const regularSeasonEndBoundary = nbaRegularSeason.weekBoundaries[nbaRegularSeason.weekBoundaries.length - 1];
+        const nbaPostseason = buildNbaPostseason(nowYear, regularSeasonEndBoundary);
+
+        seasonDates.nba[nowYear] = {
+            reg: {
+                start: nbaRegularSeason.start,
+                weeks: nbaRegularSeason.weeks,
+                weekBoundaries: nbaRegularSeason.weekBoundaries
+            },
+            post: {
+                start: nbaPostseason.start,
+                weeks: nbaPostseason.weeks,
+                weekBoundaries: nbaPostseason.weekBoundaries
+            }
+        };
+
+        if (now >= seasonDates.nba[nowYear].post.start) {
+            season = 'post';
+        }
+    }
+
+    if (sport === 'nba') {
+        weekStartDates = seasonDates.nba[nowYear][season].weekBoundaries;
+    } else if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
                     Date.UTC(2025, 11, 14),  // 2019 Postseason Week 1
                     Date.UTC(2026, 7, 24),  // 2019 Postseason Week 3
@@ -892,6 +1081,9 @@ exports.handler = (event, context, callback) => {
         return startDate > now;
     });
     var week = weekStartDates.indexOf(remainingWeeks[0]);
+    if (sport === 'nba' && season === 'reg' && week === -1 && seasonDates.nba[nowYear].reg.weeks.length) {
+        week = seasonDates.nba[nowYear].reg.weeks.length - 1;
+    }
     var result = {
         sport: sport,
         week: week,
