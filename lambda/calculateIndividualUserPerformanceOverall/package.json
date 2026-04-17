@@ -11,6 +11,6 @@
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.6.10"
+    "mongodb": "^7.1.1"
   }
 }
