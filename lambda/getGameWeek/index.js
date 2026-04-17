@@ -654,7 +654,7 @@ exports.handler = (event, context, callback) => {
     if ((sport === 'nfl' || sport === 'ncaaf' || sport === 'ncaam') && nowYear === 2026) {
         nowYear--;
     }
-    if (sport === 'nba' && nowMonth < 9) {
+    if (sport === 'nba' && nowMonth > 9) {
         nowYear--;
     }
     console.log({nowYear, year})
@@ -792,18 +792,18 @@ exports.handler = (event, context, callback) => {
 
     const nbaPostseasonConfig = {
         // Keep these boundaries current as rounds complete for each season.
-        2025: {
+        2026: {
             labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
             boundaries: [
                 [2026, 3, 13],
-                [2026, 3, 17],
+                [2026, 3, 16],
                 [2026, 3, 30],
                 [2026, 4, 18],
                 [2026, 5, 1],
                 [2026, 5, 22]
             ]
         },
-        2026: {
+        2027: {
             labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
             boundaries: [
                 [2027, 3, 16],
@@ -1084,10 +1084,11 @@ exports.handler = (event, context, callback) => {
     if (sport === 'nba' && season === 'reg' && week === -1 && seasonDates.nba[nowYear].reg.weeks.length) {
         week = seasonDates.nba[nowYear].reg.weeks.length - 1;
     }
+    const displayYear = (sport === 'nba' || sport === 'ncaab') ? nowYear + 1 : nowYear;
     var result = {
         sport: sport,
         week: week,
-        year: nowYear,
+        year: displayYear,
         season: season,
         nfl: { week: week }
     }
