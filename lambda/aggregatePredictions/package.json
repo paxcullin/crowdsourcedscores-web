@@ -11,6 +11,6 @@
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.6.10"
+    "mongodb": "^7.1.1"
   }
 }
