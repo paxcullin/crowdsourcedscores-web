@@ -1,0 +1,16 @@
+{
+  "name": "addWager",
+  "version": "1.0.0",
+  "description": "Submits wagers for the given game",
+  "main": "index.js",
+  "author": "Chris Aronchick",
+  "license": "MIT",
+  "scripts": {
+    "test": "aws lambda invoke --function-name submitWager --cli-binary-format raw-in-base64-out --payload file://test-prediction.json prediction.json",
+    "package": "zip -r submitWager.zip .",
+    "upload": "aws lambda update-function-code --function-name submitWager --zip-file fileb://submitWager.zip --publish"
+  },
+  "dependencies": {
+    "mongodb": "^6.0.0"
+  }
+}

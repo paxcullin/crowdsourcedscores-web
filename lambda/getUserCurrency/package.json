@@ -1,0 +1,14 @@
+{
+  "name": "getUserCurrency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "aws lambda invoke --function-name getUserCurrency --cli-binary-format raw-in-base64-out --payload file://get-currency.json getUserCurrency.json",
+    "package": "zip -r getUserCurrency.zip .",
+    "upload": "aws lambda update-function-code --function-name getUserCurrency --zip-file fileb://getUserCurrency.zip --publish"
+  },
+  "dependencies": {
+    "mongodb": "^5.7.0"
+  }
+}

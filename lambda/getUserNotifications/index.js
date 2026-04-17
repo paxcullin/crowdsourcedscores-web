@@ -59,6 +59,9 @@ exports.handler = async (event, context, callback) => {
     console.log('processing event: %j', event);
     const { username } = event
         try {
+        const minimumPredictions = Number.isFinite(parseInt(event.minimumPredictions, 10))
+            ? parseInt(event.minimumPredictions, 10)
+            : 0;
         let getGameWeekResponse = await lambda.invoke(getGameWeekParams).promise()
         let getGameWeekData = JSON.parse(getGameWeekResponse.Payload)
             console.log({getGameWeekData});
@@ -66,7 +69,8 @@ exports.handler = async (event, context, callback) => {
         getWeeklyResultsParams.Payload = JSON.stringify({ message: "getting weekly results for notifications", sport: getGameWeekData.sport,
             season: "post", //getGameWeekData.season,
             year: 2020, //getGameWeekData.year,
-            week: 4 // getGameWeekData.week})
+            week: 4, // getGameWeekData.week
+            minimumPredictions
         })
         const client = await mongo.connect(MONGO_URL)
         const db = client.db('pcsm');

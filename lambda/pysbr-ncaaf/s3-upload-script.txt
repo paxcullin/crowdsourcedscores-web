@@ -1,1 +1,4 @@
 aws s3 cp pysbr-ncaaf.zip s3://shs-lambda-functions/pysbr/
+
+aws lambda update-function-code --function-name pysbr-ncaaf --s3-bucket shs-lambda-functions --s3-key pysbr/pysbr-ncaaf.zip --publish
+aws lambda update-function-configuration --function-name pysbr-ncaaf --layers arn:aws:lambda:us-west-2:198282214908:layer:pysbr-common:6 --environment Variables={PYTHONPATH=/opt/python:/var/task}

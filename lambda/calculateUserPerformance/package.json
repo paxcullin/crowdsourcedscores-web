@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r calculateIndividualUserPerformance.zip ."
+    "test": "aws lambda invoke --function-name calculateUserPerformance --cli-binary-format raw-in-base64-out --payload '{}' calculateUserPerformance-response.json",
+    "package": "zip -r calculateUserPerformance.zip .",
+    "upload": "aws lambda update-function-code --function-name calculateUserPerformance --zip-file fileb://calculateUserPerformance.zip --publish"
   },
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.0.5"
+    "@aws-sdk/client-lambda": "^3.388.0",
+    "mongodb": "^7.1.1"
   }
 }

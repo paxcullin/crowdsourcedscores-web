@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r adminUpdateGameStatus.zip ."
+    "package": "zip -r adminUpdateGameStatus.zip .",
+    "upload": "aws lambda update-function-code --function-name adminUpdateGameStatus --zip-file fileb://adminUpdateGameStatus.zip --publish"
   },
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
     "jsonschema": "^1.1.0",
-    "mongodb": "^3.0.5"
+    "mongodb": "^3.6.10"
   }
 }

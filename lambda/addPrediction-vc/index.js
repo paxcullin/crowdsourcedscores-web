@@ -78,10 +78,11 @@ const requestSchemaNCAAM = {
                     },
                 "required": ["code", "fullName", "shortName", "score"]
                 }
-            }
+            },
+            "required": ["awayTeam", "homeTeam"]
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 
 // console.log('Loading function');
@@ -202,13 +203,13 @@ exports.handler = async (event, context) => {
             succeeded: true
         };
 
-        var {prediction, wager, userId, gameId, year, sport, gameWeek, season } = event;
+        var {prediction, wager, userId, preferred_username, gameId, year, sport, gameWeek, season } = event;
         
         if (!userId || userId === "") {
-            context.done(null, { userId, succeeded: false})
+            return { status: 400, message: 'Invalid userId', succeeded: false };
         }
-        var validateRequest;
-        (event.sport !== 'ncaam') ? validateRequest = validate(event, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
+        var validateRequest = (event.sport !== 'ncaam' && event.sport !== 'ncaab') ? validate(event, requestSchema) : validate(event, requestSchemaNCAAM);
+        console.log('validateRequest :>> ', validateRequest);
         if (validateRequest.errors && validateRequest.errors.length > 0) {
             result.message = 'Invalid request error(s)';
             result.errors = [];
@@ -216,9 +217,10 @@ exports.handler = async (event, context) => {
             for (var i = 0; i < validateRequest.errors.length; i++) {
                 result.errors.push(validateRequest.errors[i]);
             }
-            return context.fail(JSON.stringify(result));
+            return { status: 500, message: JSON.stringify(result) };
         }
-
+        prediction.gameWeek = gameWeek;
+        prediction.preferred_username = preferred_username;
         prediction.spread = prediction.awayTeam.score - prediction.homeTeam.score;
         prediction.total = prediction.awayTeam.score + prediction.homeTeam.score;
         prediction.submitted = new Date();
@@ -245,8 +247,8 @@ exports.handler = async (event, context) => {
                 var gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year), "gameWeek": parseInt(gameWeek)};
                 if (sport === 'ncaaf') {
                     gamesCollection = 'games-ncaaf';
-                } else if (sport === 'ncaam') {
-                    gamesCollection = 'games-ncaam';
+                } else if (sport === 'ncaam' || sport === 'ncaab') {
+                    gamesCollection = 'games-ncaab';
                     gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
                 }
                 console.log('gamesQuery: ', gamesQuery)
@@ -288,9 +290,9 @@ exports.handler = async (event, context) => {
                         // else treat as new prediction and add to collection
                         
                         var predictionCollection = 'predictions';
-                        if (prediction.sport === 'ncaaf') {
+                        if (event.sport === 'ncaaf') {
                             predictionCollection = 'predictions-ncaaf';
-                        } else if (prediction.sport === 'ncaam') {
+                        } else if (event.sport === 'ncaam' || event.sport === 'ncaab') {
                             predictionCollection = 'predictions-ncaam';
                         }
                         
@@ -405,7 +407,7 @@ exports.handler = async (event, context) => {
                                 }
                             }
                             // get total currency bet for a given week
-                            var predictionsQuery = {userId: userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
+                            var predictionsQuery = {userId: userId, year: year, gameWeek: gameWeek, season: season}
                             const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
                             
                                 // if (err) {
@@ -430,7 +432,7 @@ exports.handler = async (event, context) => {
                                     }
                                 })
                                 result.currencyWagered = currencyWagered;
-                                if (prediction.collegeBowlPremium !== '1' && prediction.sport === 'ncaaf') {
+                                if (event.collegeBowlPremium !== '1' && event.sport === 'ncaaf') {
                                     result.crowd = null;
                                 }
                                 

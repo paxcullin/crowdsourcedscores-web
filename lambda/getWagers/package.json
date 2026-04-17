@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  },
+  "scripts": {
+    "test": "aws lambda invoke --function-name getWagers --cli-binary-format raw-in-base64-out --payload file://test-prediction.json getWagers.json",
+    "package": "zip -r getWagers.zip .",
+    "upload": "aws lambda update-function-code --function-name getWagers --zip-file fileb://getWagers.zip --publish"
+  }
+}

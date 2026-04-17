@@ -204,14 +204,14 @@ exports.handler = async (event, context, callback) => {
                 year: watchListen.lg.season.year,
                 type: watchListen.lg.season.type.type
             } : {
-                year: 2022,
+                year: 2023,
                 type: 3
             }
             let gameObj = {
                 espnID: id,
                 startDateTime: date,
                 sport: "ncaaf",
-                year: season.year ? season.year : 2022,
+                year: season.year ? season.year : 2023,
                 season: season.type === 1 ? 'pre' : (season.type === 3 ? 'post' : 'reg'),
                 homeTeam: { code: homeTeamCode},
                 awayTeam: { code: awayTeamCode}
@@ -253,7 +253,7 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://www.espn.com/college-football/scoreboard/_/week/1/year/2022/seasontype/3?_xhr=pageContent`
+    const URL = `https://www.espn.com/college-football/scoreboard/_/week/1/year/${year}/seasontype/${season}?_xhr=pageContent`
     const options = {
         Method: 'GET'
     };

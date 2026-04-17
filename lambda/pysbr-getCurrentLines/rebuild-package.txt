@@ -1,0 +1,9 @@
+virtualenv venv
+source venv/bin/activate 
+pip install 
+deactivate
+cd venv/lib/python3.9/site-packages/
+zip -r ../../../../pysbr-nfl.zip .
+cd ../../../..
+zip -r pysbr-nfl.zip pysbr/
+zip pysbr-nfl.zip lambda_function.py

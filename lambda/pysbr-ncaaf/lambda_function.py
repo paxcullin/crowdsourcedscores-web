@@ -1,39 +1,114 @@
+import sys
+import types
+import http.client
+import urllib.parse
+import urllib.request
+import json as cgi_json  # Mock for removed cgi module
+
+# Ensure layer is in path
+if "/opt/python" not in sys.path:
+    sys.path.insert(0, "/opt/python")
+
+# Clear urllib3 from cache to force fresh import from layer
+for module_name in list(sys.modules):
+    if module_name == "urllib3" or module_name.startswith("urllib3."):
+        del sys.modules[module_name]
+
+# Pre-populate six and six.moves modules before any boto3 import
+try:
+    import six
+    
+    # Register six
+    sys.modules.setdefault("urllib3.packages.six", six)
+    sys.modules.setdefault("urllib3.packages.six.moves", six.moves)
+    
+    # Register all six.moves submodules
+    try:
+        from six.moves import http_client as six_http_client, urllib, urllib_parse, urllib_request, configparser
+        sys.modules.setdefault("urllib3.packages.six.moves.http_client", six_http_client)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib_parse)
+        sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib_request)
+        sys.modules.setdefault("urllib3.packages.six.moves.configparser", configparser)
+    except ImportError:
+        pass
+        
+except ImportError:
+    # Fallback: create synthetic modules for all six.moves that boto3 might need
+    six_module = types.ModuleType("urllib3.packages.six")
+    moves_module = types.ModuleType("urllib3.packages.six.moves")
+    
+    # Create http_client
+    moves_module.http_client = http.client
+    sys.modules.setdefault("urllib3.packages.six.moves.http_client", http.client)
+    
+    # Create urllib submodule structure
+    urllib_module = types.ModuleType("urllib3.packages.six.moves.urllib")
+    urllib_module.parse = urllib.parse
+    urllib_module.request = urllib.request
+    moves_module.urllib = urllib_module
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib", urllib_module)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.parse", urllib.parse)
+    sys.modules.setdefault("urllib3.packages.six.moves.urllib.request", urllib.request)
+    
+    six_module.moves = moves_module
+    sys.modules.setdefault("urllib3.packages.six", six_module)
+    sys.modules.setdefault("urllib3.packages.six.moves", moves_module)
+
+# Handle missing cgi module (removed in Python 3.13)
+if "cgi" not in sys.modules:
+    cgi_module = types.ModuleType("cgi")
+    cgi_module.escape = lambda x: x  # Basic escape function stub
+    sys.modules["cgi"] = cgi_module
+
 from pysbr import *
 from pysbr.config.config import Config
 from datetime import datetime, date, timedelta
-from pymongo import MongoClient
-import boto3
+from pymongo import MongoClient, UpdateOne
+import boto3, json
 
 sns = boto3.client('sns')
+
 
 
 client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
 db = client['pcsm']
 collection = db['games-ncaaf']
 
-yesterday = str((date.today() - timedelta(days=13)))
+yesterday = str((date.today() - timedelta(days=5)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2024-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2026-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
 sb = Sportsbook()
 e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
-spreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-totals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
-moneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
+pinnaclespreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Pinnacle')[0])
+pinnacletotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Pinnacle')[0])
+pinnaclemoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Pinnacle')[0])
 bookmakerspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('Bookmaker')[0])
 bookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('Bookmaker')[0])
 bookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('Bookmaker')[0])
-fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
-fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
-fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
+# fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+# fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+# fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
 
 
+
+lambda_client = boto3.client('lambda')
+gameWeekResponse = lambda_client.invoke(
+    FunctionName="getGameWeek",
+    Payload=json.dumps({'sport': 'ncaaf'})
+)
+gameWeek = json.load(gameWeekResponse.get('Payload'))
+
 def lambda_handler(event, context):
     print('event: ', event, 'context: ', context)
-    print('totals', len(totals.list()))
+    print('length', len(e.list()))
+
+    writeOperations = []
+    gameids = []
     if len(e.list()) > 0:
         try:
             for event in e.list():
@@ -75,7 +150,7 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2023,
+                            "year": 2025,
                             "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
@@ -100,10 +175,10 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] > datetime.strptime('2023-11-11T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2025-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
-                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2022-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
+                        # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2025-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
                         gameObject["season"] = "reg"
                     # find the game in Mongo
                     gameResult = collection.find_one({"homeTeam.code": gameObject["homeTeam"]["code"], "awayTeam.code": gameObject["awayTeam"]["code"], "season": gameObject["season"], "year": gameObject["year"]})
@@ -118,6 +193,8 @@ def lambda_handler(event, context):
                     
                     if gameObject["weekName"] == "Bowls":
                         gameObject["gameWeek"] = 1
+                    if (gameWeek.get('week') == gameObject["gameWeek"]):
+                        gameids.append(event['event id'])
                     for team in event['participants']:
                         teamObject = {
                                 "participantId": team["participant id"],
@@ -240,17 +317,18 @@ def lambda_handler(event, context):
                         else:
                             gameObject["status"] = "inProgress"
                             # print('updating game: ', gameObject)
-                        collection.update_one({
-                            "gameId": event['event id']
-                            },
-                            {
-                                "$set": gameObject
-                            },
-                            upsert=True)
 
                         
                         # print(hasattr(gameObject, "results"))
                         if (gameObject is not None and gameObject["status"] == "final") and (gameResult is None or gameResult["status"] != "final"):
+
+                            writeOperations.append(UpdateOne({
+                                "gameId": gameObject["gameId"]
+                                },
+                                {
+                                    "$set": gameObject
+                                },
+                                upsert=True))
                             print("SNS Publishing", str(gameObject["gameId"]))
                             sns.publish(
                                 TopicArn="arn:aws:sns:us-west-2:198282214908:gameUpdated",
@@ -287,6 +365,21 @@ def lambda_handler(event, context):
                                 "totalOdds": '',
                                 "history": []
                             }
+                        spreads = []
+                        if len(pinnaclespreads.list()) > 0:
+                            spreads = pinnaclespreads
+                        elif len(bookmakerspreads.list()) > 0:
+                            spreads = bookmakerspreads
+                        totals = []
+                        if len(pinnacletotals.list()) > 0:
+                            totals = pinnacletotals
+                        elif len(bookmakertotals.list()) > 0:
+                            totals = bookmakertotals
+                        moneylines = []
+                        if len(pinnaclemoneylines.list()) > 0:
+                            moneylines = pinnaclemoneylines
+                        elif len(bookmakermoneylines.list()) > 0:
+                            moneylines = bookmakermoneylines
                         if len(spreads.list()) > 0:
                             # print(homeId)
                             for spread in spreads.list():
@@ -369,13 +462,25 @@ def lambda_handler(event, context):
                             gameObject['odds']['history'].append(gameOdds)
                         if (gameObject["status"] == "scheduled"):
                             # print(gameObject)
-                            collection.update_one({
+                            writeOperations.append(UpdateOne({
                                 "gameId": gameObject['gameId']
                                 },
                                 {
                                     "$set": gameObject
                                 },
-                                upsert=True)
+                                upsert=True))
+            print('writeOperations: ', len(writeOperations))
+            print('gameIds:', gameids)
+            if len(writeOperations) > 0:
+                writeResult = collection.bulk_write(writeOperations)
+                print('writeResult: ', writeResult)
+                payload="{ \"sport\": \"ncaaf\", \"gameIds\": [" + ",".join(str(x) for x in gameids) + "]}"
+
+                getCurrentLinesResponse = lambda_client.invoke(
+                    FunctionName="pysbr-getCurrentLines",
+                    Payload=payload
+                )
+                print('getCurrentLinesResponse: ', getCurrentLinesResponse)
         except TypeError as error:
             print(TypeError, event) 
             print(repr(error))

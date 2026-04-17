@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r calculateIndividualUserPerformance.zip ."
+    "package": "zip -r calculateIndividualUserPerformanceOverall.zip .",
+    "upload": "aws lambda update-function-code --function-name calculateIndividualUserPerformanceOverall --zip-file fileb://calculateIndividualUserPerformanceOverall.zip --publish"
   },
   "author": "Chris Aronchick",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.0.5"
+    "mongodb": "^7.1.1"
   }
 }

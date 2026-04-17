@@ -1,0 +1,5 @@
+cd package && zip -r ../pysbr-nfl.zip . && cd .. && zip -r pysbr-nfl.zip pysbr/ && zip pysbr-nfl.zip lambda_function.py
+
+aws s3 cp pysbr-getBestLines.zip s3://shs-lambda-functions/pysbr/
+
+aws lambda update-function-code --function-name pysbr-getBestLines --s3-bucket shs-lambda-functions --s3-key pysbr/pysbr-getBestLines.zip --publish
