@@ -106,12 +106,12 @@ exports.handler = async (event, context) => {
     //     {'homeTeam.rank': {$gt: 0}},
     //     {'awayTeam.rank': {$gt: 0}}
     // ]
-    if (sport === 'ncaam' || sport === 'ncaab') {
+    if (sport === 'ncaam' || sport === 'ncaab' || sport === 'nba') {
         var lambdaParams = {
             FunctionName: 'getGameWeek', // the lambda function we are going to invoke
             InvocationType: 'RequestResponse',
             LogType: 'Tail',
-            Payload: '{ "sport": "ncaam" }'
+            Payload: `{ "sport": "${sport === 'nba' ? 'nba' : 'ncaam'}" }`
             };
         try {
             const command = new InvokeCommand(lambdaParams, function(err, data) {
@@ -146,12 +146,13 @@ exports.handler = async (event, context) => {
             }
 
             if (weekInfo && weekInfo.start && weekInfo.end) {
+                console.log('weekInfo.start, weekInfo.end :>> ', weekInfo.start, weekInfo.end);
                 const startDate = new Date(weekInfo.start);
                 const endDate = new Date(weekInfo.end);
                 gamesQuery = {
                     "year": parseInt(event.year),
                     "season": season,
-                    "sport": "ncaab",
+                    "sport": sport === "nba" ? "nba" : "ncaab",
                     "startDateTime": { 
                         "$gte": startDate,
                         "$lte": endDate
