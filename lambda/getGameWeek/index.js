@@ -611,7 +611,7 @@ exports.handler = (event, context, callback) => {
                     weeks: []
                 },
                 post: {
-                    start: new Date('2027-03-09T17:00:00Z'),
+                    start: new Date('2026-03-09T17:00:00Z'),
                     weeks: [
                         {weekName: '64'},
                         {weekName: '32'},
@@ -630,13 +630,28 @@ exports.handler = (event, context, callback) => {
                     weeks: []
                 },
                 post: {
-                    start: new Date('2027-04-13T17:00:00Z'),
+                    start: new Date('2026-04-13T17:00:00Z'),
                     weeks: [
-                        {weekName: 'Play-in'},
-                        {weekName: '1st Round'},
-                        {weekName: '2nd Round'},
-                        {weekName: 'Conf Finals'},
-                        {weekName: 'Champ'}
+                        {weekName: 'Play-in',
+                            start: new Date('2026-04-13T17:00:00Z'),
+                            end: new Date('2026-04-16T16:59:59Z')
+                        },
+                        {weekName: '1st Round',
+                            start: new Date('2026-04-16T17:00:00Z'),
+                            end: new Date('2026-04-30T16:59:59Z')
+                        },
+                        {weekName: '2nd Round',
+                            start: new Date('2026-04-30T17:00:00Z'),
+                            end: new Date('2026-05-14T16:59:59Z')
+                        },
+                        {weekName: 'Conf Finals',
+                            start: new Date('2026-05-14T17:00:00Z'),
+                            end: new Date('2026-06-04T16:59:59Z')
+                        },
+                        {weekName: 'NBA Finals',
+                            start: new Date('2026-06-04T17:00:00Z'),
+                            end: new Date('2026-10-01T16:59:59Z')
+                        }
                         ]
                 }
             }
@@ -1084,11 +1099,11 @@ exports.handler = (event, context, callback) => {
     if (sport === 'nba' && season === 'reg' && week === -1 && seasonDates.nba[nowYear].reg.weeks.length) {
         week = seasonDates.nba[nowYear].reg.weeks.length - 1;
     }
-    const displayYear = (sport === 'nba' || sport === 'ncaab') ? nowYear + 1 : nowYear;
+    
     var result = {
         sport: sport,
         week: week,
-        year: displayYear,
+        year: nowYear,
         season: season,
         nfl: { week: week }
     }
