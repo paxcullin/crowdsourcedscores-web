@@ -661,7 +661,7 @@ exports.handler = (event, context, callback) => {
     var weekStartDates = [];
     var sport = (event.sport) ? event.sport : (event.params && event.params.path && event.params.path.sport) ? event.params.path.sport : 'nfl'
     
-    const now = Date.now();
+    const now = event.eventDate ? new Date(event.eventDate).getTime() : Date.now();
     const nowDate = new Date(now);
     let nowYear = nowDate.getFullYear();
     const nowMonth = nowDate.getMonth();
