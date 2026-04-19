@@ -3,6 +3,7 @@ import types
 import http.client
 import urllib.parse
 import urllib.request
+import json
 
 if "/opt/python" not in sys.path:
     sys.path.insert(0, "/opt/python")
@@ -75,7 +76,16 @@ collection = db["games-nba"]
 nba = NBA()
 sportsbook = Sportsbook()
 
-
+def fetch_nba_week(event_datetime):
+    response = lambda_client.invoke(
+        FunctionName="getGameWeek",
+        InvocationType="RequestResponse",
+        Payload=json.dumps({
+            "sport": "nba",
+            "eventDate": event_datetime.astimezone(timezone.utc).isoformat()
+        }).encode("utf-8"),
+    )
+    return json.load(response["Payload"])
 def get_postseason_end(target_date):
     if target_date.month >= 7:
         return datetime(target_date.year + 1, 6, 30)
@@ -294,6 +304,10 @@ def publish_final_update(game_object):
             "DataType": "String",
             "StringValue": game_object["gameDate"],
         },
+        "gameWeek": {
+            "DataType": "Number",
+            "StringValue": str(game_object["gameWeek"]) if game_object.get("gameWeek") is not None else "0",
+        },
     }
 
     sns.publish(
@@ -317,6 +331,7 @@ def lambda_handler(event, context):
     write_operations = []
     sbr_event_ids = []
 
+    week_cache = {}
     for game in event_list:
         participants = game.get("participants") or []
         home_team = next((team for team in participants if team.get("is home") is True), None)
@@ -324,9 +339,13 @@ def lambda_handler(event, context):
 
         if not home_team or not away_team:
             continue
-
         event_datetime = parse_event_datetime(game["datetime"])
         game_date = format_game_date(event_datetime)
+        if game_date not in week_cache:
+            week_cache[game_date] = fetch_nba_week(event_datetime)
+
+        week_info = week_cache[game_date]
+        game_week = week_info.get("week")
         season = infer_season(game, event_datetime)
         year = event_datetime.year
 
@@ -349,11 +368,12 @@ def lambda_handler(event, context):
             "status": game.get("event status"),
             "sport": "nba",
             "season": season,
-            "weekName": (game.get("event group") or {}).get("alias", ""),
             "location": ((game.get("location") or "") + ", " + (game.get("country") or "")).strip(", "),
             "startDateTime": event_datetime,
             "homeTeam": home_team_object,
             "awayTeam": away_team_object,
+            "gameWeek": game_week,
+            "weekName": week_info.get("weeks", [{}])[game_week].get("weekName", "") if game_week is not None and game_week >= 0 else (game.get("event group") or {}).get("alias", ""),
         }
 
         if game.get("event status") != "scheduled":
