@@ -208,7 +208,7 @@ exports.handler = async (event, context) => {
         if (!userId || userId === "") {
             return { status: 400, message: 'Invalid userId', succeeded: false };
         }
-        var validateRequest = (event.sport !== 'ncaam' && event.sport !== 'ncaab') ? validate(event, requestSchema) : validate(event, requestSchemaNCAAM);
+        var validateRequest = (event.sport === 'nfl' || event.sport === 'ncaaf') ? validate(event, requestSchema) : validate(event, requestSchemaNCAAM);
         console.log('validateRequest :>> ', validateRequest);
         if (validateRequest.errors && validateRequest.errors.length > 0) {
             result.message = 'Invalid request error(s)';
