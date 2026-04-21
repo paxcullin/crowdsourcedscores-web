@@ -1,17 +1,17 @@
 'use strict';
-const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
-const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
 const AWSConfig = { region: "us-west-2" };
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
     validate = require("jsonschema").validate;
 // const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
 const lambda = new LambdaClient(AWSConfig);
 
 
 const {config} = require("./config");
 
 // const { SNSClient, SubscribeCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
 const SNS = new SNSClient(AWSConfig);
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
