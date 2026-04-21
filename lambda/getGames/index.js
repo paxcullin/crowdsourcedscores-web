@@ -85,14 +85,18 @@ exports.handler = async (event, context) => {
     const collection = db.collection(gamesCollectionName);
     const predictionsCollection = db.collection(predictionsCollectionName);
     var comparePredictions = false;
-    const isDateBasedSport = sport === 'nba';
-    const normalizedGameDate = normalizeGameDate(gameWeek);
+    const requestedGameDate = normalizeGameDate(event.gameDate || null);
+    // Legacy compat: if gameWeek is an 8-digit string and sport is nba, treat as date
+    const legacyDateMode = sport === 'nba' && /^\d{8}$/.test(String(gameWeek));
+    const periodType = event.periodType || (requestedGameDate || legacyDateMode ? 'date' : 'week');
+    const isDateMode = sport === 'nba' && periodType === 'date';
+    const normalizedGameDate = requestedGameDate || (legacyDateMode ? normalizeGameDate(gameWeek) : null);
     
-        var gamesQuery = {
-            "year": parseInt(year),
-            "gameWeek": parseInt(gameWeek),
-            "season": season,
-            "sport": sport
+    var gamesQuery = {
+        "year": parseInt(year),
+        "gameWeek": parseInt(gameWeek),
+        "season": season,
+        "sport": sport
     }
     if (sport === "ncaaf") {
         gamesQuery = {
@@ -106,7 +110,7 @@ exports.handler = async (event, context) => {
     //     {'homeTeam.rank': {$gt: 0}},
     //     {'awayTeam.rank': {$gt: 0}}
     // ]
-    if (sport === 'ncaam' || sport === 'ncaab' || sport === 'nba') {
+    if ((sport === 'ncaam' || sport === 'ncaab') || (sport === 'nba' && !isDateMode)) {
         var lambdaParams = {
             FunctionName: 'getGameWeek', // the lambda function we are going to invoke
             InvocationType: 'RequestResponse',
@@ -165,23 +169,30 @@ exports.handler = async (event, context) => {
                     weeks: parsed.weeks && parsed.weeks.length
                 });
             }
+            // for NBA week mode, query by gameWeek integer instead of startDateTime range:
+            const resolvedWeek = Number.isFinite(parseInt(gameWeek, 10)) ? parseInt(gameWeek, 10) : parseInt(parsed.week, 10);
+            if (sport === 'nba') {
+                gamesQuery = {
+                    "year": parseInt(year),
+                    "season": season,
+                    "sport": "nba",
+                    "gameWeek": resolvedWeek
+                }
+            }
         } catch (err) {
             console.log('getGameWeek err: ', err)
         }
     }
-    if (isDateBasedSport) {
+    if (isDateMode) {
         if (!normalizedGameDate) {
-            return { status: 400, success: false, message: 'gameDate is required for nba queries (YYYYMMDD)' };
+            return { status: 400, success: false, message: 'gameDate is required for NBA date queries (YYYYMMDD)' };
         }
         const { start, end } = getDateRangeFromGameDate(normalizedGameDate);
         gamesQuery = {
             "year": parseInt(year),
             "season": season,
-            "sport": sport,
-            "startDateTime": {
-                "$gte": start,
-                "$lt": end
-            }
+            "sport": "nba",
+            "startDateTime": { "$gte": start, "$lt": end }
         };
     }
     if (event.compareUsername) {
@@ -230,19 +241,23 @@ exports.handler = async (event, context) => {
         if (sport === "ncaam" || sport === "ncaab") {
             predictionsQuery.gameWeek = { $gt: -1 };
         }
-        if (isDateBasedSport) {
+        if (isDateMode) {
             predictionsQuery = {
                 "year": parseInt(event.year),
                 "season": season,
-                "preferred_username": { $in: preferred_usernames}
+                "preferred_username": { $in: preferred_usernames }
             };
-            if (normalizedGameDate) {
-                predictionsQuery.gameDate = normalizedGameDate;
-            }
+            if (normalizedGameDate) predictionsQuery.gameDate = normalizedGameDate;
             const gameIds = games.map((game) => game.gameId);
-            if (gameIds.length > 0) {
-                predictionsQuery.gameId = { $in: gameIds };
-            }
+            if (gameIds.length > 0) predictionsQuery.gameId = { $in: gameIds };
+        } else if (sport === 'nba') {
+            // week mode — query predictions by gameWeek
+            predictionsQuery = {
+                "year": parseInt(event.year),
+                "season": season,
+                "gameWeek": parseInt(gameWeek),
+                "preferred_username": { $in: preferred_usernames }
+            };
         }
         games.map((game) => {
                 if (game.weather) {
