@@ -60,7 +60,7 @@ const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     const { sport, year, season, gameWeek } = event;
-    if (!sport || !year || !season || !gameWeek) {
+    if (!sport || !year || !season || gameWeek === null) {
         context.fail({succeeded: false, message: "Event incomplete", event})
     }
     try {
@@ -72,7 +72,7 @@ exports.handler = async (event, context, callback) => {
               {
                   $match: {
                       year: year,
-                      gameWeek: {$gt: 0},
+                      gameWeek: {$gt: -1},
                       season: season,
                       sport: sport,
                       result: { $exists: true }
@@ -92,8 +92,8 @@ exports.handler = async (event, context, callback) => {
                   }
               }
           ]
-          if (!collectionObject[sport]) {
-              context.done(null, {succeeded: false, message: "No collection found"})
+          if (!collection) {
+              return {status: 200, succeeded: false, message: "No collection found"}
           };
           
           const results = await collection.aggregate(aggOpts).toArray();
