@@ -18,7 +18,7 @@ function calculatePercentage(totalCorrect, totalPushes, totalGames) {
 exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     const { sport, year, season, gameWeek } = event;
-    if (!sport || !year || !season || isNullOrUndefined(gameWeek)) {
+    if (!sport || !year || !season || gameWeek === null) {
         context.fail({succeeded: false, message: "Event incomplete", event})
     }
     mongo.connect(MONGO_URL, function (err, db) {
