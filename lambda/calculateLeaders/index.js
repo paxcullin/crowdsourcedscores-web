@@ -59,14 +59,16 @@ const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4
 
 exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { sport, year, season, gameWeek } = event;
+    const { sport, year, season } = event;
+    const periodField = sport === 'nba' ? 'gameDate' : 'gameWeek';
+    const periodValue = event[periodField];
     const collectionObject = {
         nfl: 'games',
         ncaaf: 'games-ncaaf',
         ncaam: 'games-ncaam',
         nba: 'games-nba'
     }
-    if (!sport || !year || !season || gameWeek == null) {
+    if (!sport || !year || !season || !collectionObject[sport]) {
         return {status: 200, succeeded: false, message: "Event incomplete", event}
     }
     try {
@@ -79,7 +81,6 @@ exports.handler = async (event, context, callback) => {
                 {
                     $match: {
                         year: year,
-                        gameWeek: {$gte: 0},
                         season: season,
                         sport: sport,
                         results: { $exists: true }
@@ -87,7 +88,7 @@ exports.handler = async (event, context, callback) => {
                 },
                 {
                     $group: {
-                        _id: { gameWeek: "$gameWeek", sport: "$sport", year: "$year", season: "$season" },
+                        _id: { [periodField]: `$${periodField}`, sport: "$sport", year: "$year", season: "$season" },
                         suCorrect: {$sum: "$crowd.results.winner.correct"},
                         suPush: {$sum: "$crowd.results.winner.push"},
                         atsCorrect: {$sum: "$crowd.results.spread.correct"},
@@ -99,9 +100,11 @@ exports.handler = async (event, context, callback) => {
                     }
                 }
             ]
-            if (!collectionObject[sport]) {
-                return {succeeded: false, message: "No collection found"};
-            };
+            if (periodValue !== undefined && periodValue !== null) {
+                aggOpts[0].$match[periodField] = periodField === 'gameWeek' ? { $gte: 0, $lte: periodValue } : { $lte: String(periodValue) };
+            } else {
+                aggOpts[0].$match[periodField] = periodField === 'gameWeek' ? { $gte: 0 } : { $exists: true };
+            }
             
             const results = await db.collection(collectionObject[sport]).aggregate(aggOpts).toArray();
                 
@@ -111,12 +114,13 @@ exports.handler = async (event, context, callback) => {
                     console.log("result: ", result);
                     // criteria updated to update crowd predictions only when games are in the future
                     //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
-                    const { gameWeek, year, season, sport }  = result._id;
+                    const { year, season, sport }  = result._id;
+                    const resultPeriod = result._id[periodField];
                     var suPercentage = result.suCorrect / (result.totalGames - result.suPush);
                     var atsPercentage = result.atsCorrect / (result.totalGames - result.atsPush);
                     var totalPercentage = result.totalCorrect / (result.totalGames - result.totalPush);
                     
-                    var criteria = {year: year,gameWeek: gameWeek, season: season, sport: sport};
+                    var criteria = {year: year, season: season, sport: sport, [periodField]: resultPeriod};
                     
                     var update = {
                         $set: {
@@ -152,12 +156,21 @@ exports.handler = async (event, context, callback) => {
                 });
 
                 const promiseResults = await Promise.all(queryPromises);
-                    
+                const downstreamPayload = {
+                    message: "calculateLeaders completed",
+                    sport,
+                    year,
+                    season
+                };
+                if (periodValue !== undefined && periodValue !== null) {
+                    downstreamPayload[periodField] = periodValue;
+                }
+
                 var lambdaParams = {
                     FunctionName: 'calculateCrowdOverallPerformance', // the lambda function we are going to invoke
                     InvocationType: 'Event',
                     LogType: 'None',
-                    Payload: `{ "message": "calculateLeaders completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek} }`
+                    Payload: JSON.stringify(downstreamPayload)
                 };
 
                     const command = new InvokeCommand(lambdaParams, function(err, data) {
