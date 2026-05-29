@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:unit": "node --test test/*.test.js",
     "package": "zip -r calculateCrowdOverallPerformance.zip .",
     "upload": "aws lambda update-function-code --function-name calculateCrowdOverallPerformance --zip-file fileb://calculateCrowdOverallPerformance.zip --publish"
   },

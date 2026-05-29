@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "aws lambda invoke --function-name calculateUserPerformance --cli-binary-format raw-in-base64-out --payload '{}' calculateUserPerformance-response.json",
+    "test": "aws lambda invoke --function-name calculateUserPerformance --cli-binary-format raw-in-base64-out --payload file://test-event-nba-sns.json calculateUserPerformance-response.json",
+    "test:unit": "node --test test/*.test.js",
     "package": "zip -r calculateUserPerformance.zip .",
     "upload": "aws lambda update-function-code --function-name calculateUserPerformance --zip-file fileb://calculateUserPerformance.zip --publish"
   },

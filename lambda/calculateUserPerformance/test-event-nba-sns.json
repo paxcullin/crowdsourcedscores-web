@@ -1,0 +1,16 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "MessageAttributes": {
+          "gameId": { "Type": "Number", "Value": "4795220" },
+          "gameDate": { "Type": "String", "Value": "2026-04-19" },
+          "sport": { "Type": "String", "Value": "nba" },
+          "season": { "Type": "String", "Value": "post" },
+          "gameWeek": { "Type": "Number", "Value": "2" },
+          "year": { "Type": "Number", "Value": "2026" }
+        }
+      }
+    }
+  ]
+}
