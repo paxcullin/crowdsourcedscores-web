@@ -121,6 +121,8 @@ exports.handler = async function (event, context, callback) {
         let gamesCollection = db.collection("games");
         if (sportValue === "ncaaf") {
             gamesCollection = db.collection("games-ncaaf");
+        } else if (sportValue === "nba") {
+            gamesCollection = db.collection("games-nba");
         }
 
         const game = await gamesCollection.findOne({ gameId:gameIdValue, results: { $exists: true } });
