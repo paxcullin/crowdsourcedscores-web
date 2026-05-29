@@ -260,7 +260,9 @@ exports.handler = async (event) => {
                 predictionsCollection = 'predictions-nba'
             }
             gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, results: {$exists: true}}
-            if (eventGameWeek !== null) {
+            if (eventSport === 'nba' && eventGameDate) {
+                gameQuery.gameDate = eventGameDate;
+            } else if (eventGameWeek !== null) {
                 gameQuery.gameWeek = eventGameWeek;
             }
         }
@@ -376,7 +378,7 @@ exports.handler = async (event) => {
                     gamePrediction, {upsert: true}));
             });
             console.log("gameIndex: ", gameIndex)
-            if (games.length !== 1 && (gameIndex+1) === games.length) {
+            if ((gameIndex+1) === games.length) {
                 const downstreamPayload = {
                     message: 'calculateUserPerformance completed',
                     sport: eventSport,
