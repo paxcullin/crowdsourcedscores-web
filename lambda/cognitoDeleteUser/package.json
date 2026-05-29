@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "upload": "aws lambda update-function-code --function-name cognitoDeleteUser --zip-file fileb://cognitoDeleteUser.zip --publish"
+  },
   "dependencies": {
-    "mongodb": "^3.3.2"
+    "mongodb": "^7.2.0"
   }
 }
