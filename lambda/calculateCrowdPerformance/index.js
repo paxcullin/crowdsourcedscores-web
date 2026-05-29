@@ -147,7 +147,8 @@ exports.handler = async (event, context) => {
         let gamesCollection = 'games',
             predictionsCollection = 'predictions',
             gameId = parseInt(event.Records[0].Sns.MessageAttributes.gameId.Value),
-            gameWeek = parseInt(event.Records[0].Sns.MessageAttributes.gameWeek.Value),
+            gameWeek = event.Records[0].Sns.MessageAttributes.gameWeek ? parseInt(event.Records[0].Sns.MessageAttributes.gameWeek.Value) : null,
+            gameDate = event.Records[0].Sns.MessageAttributes.gameDate ? event.Records[0].Sns.MessageAttributes.gameDate.Value : null,
             year = parseInt(event.Records[0].Sns.MessageAttributes.year.Value),
             sport = event.Records[0].Sns.MessageAttributes.sport.Value,
             season = event.Records[0].Sns.MessageAttributes.season.Value
@@ -158,21 +159,32 @@ exports.handler = async (event, context) => {
         } else if (sport === 'ncaam') {
             gamesCollection = 'games-ncaam';
             predictionsCollection = 'predictions-ncaam'
+        } else if (sport === 'nba') {
+            gamesCollection = 'games-nba';
+            predictionsCollection = 'predictions-nba'
         }
         
         var gamesQuery = {
             "year": year,
-            "gameWeek": { $gt: 0 },
             "season": season,
             "sport": sport,
             results: {$exists: true}
         }
+        if (sport === 'nba') {
+            gamesQuery.gameDate = gameDate ? gameDate : { $exists: true };
+        } else {
+            gamesQuery.gameWeek = { $gt: 0 };
+        }
         if (gameId > 0) {
             gamesQuery = {
                 "year": year,
-                "gameWeek": gameWeek,
                 "gameId": gameId,
                 results: {$exists: true}
+            }
+            if (sport === 'nba' && gameDate) {
+                gamesQuery.gameDate = gameDate;
+            } else if (gameWeek !== null) {
+                gamesQuery.gameWeek = gameWeek;
             }
         }
             
@@ -193,7 +205,12 @@ exports.handler = async (event, context) => {
                     var straightUpResults = getWinnerLoser(game, gamePrediction);
                     var spreadResult = getSpread(game, game.odds,gamePrediction);
                     var totalResult = getTotalResult(game, game.odds,gamePrediction);
-                    var criteria = {gameId: game.gameId, year: game.year};
+                    var criteria = {gameId: game.gameId, year: game.year, sport: game.sport};
+                    if (game.sport === 'nba' && game.gameDate) {
+                        criteria.gameDate = game.gameDate;
+                    } else if (game.gameWeek !== undefined) {
+                        criteria.gameWeek = game.gameWeek;
+                    }
                         var queryPromise = db.collection(gamesCollection).update(criteria, game, {upsert: true})
                             .then(function (updateResult) {
                                 var message = `{ gameId: ${game.gameId}, year: ${game.year}, crowd.result.winner: ${game.crowd.results.winner}, crowd.result.winner: ${game.crowd.results.spread}, crowd.result.winner: ${game.crowd.results.total}) }`
@@ -212,11 +229,23 @@ exports.handler = async (event, context) => {
         console.log('updateCrowd', updateCrowd);
         
                 
+        const downstreamPayload = {
+            message: "calculateCrowdPerformance completed",
+            sport,
+            year,
+            season
+        };
+        if (sport === 'nba' && gameDate) {
+            downstreamPayload.gameDate = gameDate;
+        } else if (gameWeek !== null) {
+            downstreamPayload.gameWeek = gameWeek;
+        }
+
         var calculateCrowdOverallPerformanceParams = new InvokeCommand({
             FunctionName: 'calculateLeaders', // the lambda function we are going to invoke
             InvocationType: 'Event',
             LogType: 'None',
-            Payload: `{ "message": "calculateCrowdPerformance completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek}}`
+            Payload: JSON.stringify(downstreamPayload)
         }, function(err, data) {
             if (err) {
             console.log("calculateLeaders err: ", err);

@@ -17,8 +17,10 @@ function calculatePercentage(totalCorrect, totalPushes, totalGames) {
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { sport, year, season, gameWeek } = event;
-    if (!sport || !year || !season || gameWeek === null) {
+    const { sport, year, season } = event;
+    const periodField = sport === 'nba' ? 'gameDate' : 'gameWeek';
+    const periodValue = event[periodField];
+    if (!sport || !year || !season) {
         context.fail({succeeded: false, message: "Event incomplete", event})
     }
     mongo.connect(MONGO_URL, function (err, db) {
@@ -28,8 +30,15 @@ exports.handler = (event, context, callback) => {
         }
         var updateOverall = {};
         let collection = db.collection('leaderboards')
-        collection.findOne({"sport": sport, "year":year, "season": season, "gameWeek": gameWeek})
+        const weekCriteria = {"sport": sport, "year":year, "season": season};
+        if (periodValue !== undefined && periodValue !== null) {
+            weekCriteria[periodField] = periodValue;
+        }
+        collection.findOne(weekCriteria)
         .then((week) => {
+            if (!week) {
+                return context.done(null, "No matching leaderboard period found");
+            }
             console.log({week: JSON.stringify(week)})
             
             var queryPromises = [];
@@ -37,7 +46,6 @@ exports.handler = (event, context, callback) => {
                 {
                     $match: {
                         year: year,
-                        gameWeek: { $lte: gameWeek },
                         season: season,
                         sport: sport
                     }
@@ -56,6 +64,11 @@ exports.handler = (event, context, callback) => {
                     }
                 }
             ];
+            if (periodValue !== undefined && periodValue !== null) {
+                aggOptsOverall[0].$match[periodField] = periodField === 'gameWeek' ? { $lte: periodValue } : { $lte: String(periodValue) };
+            } else {
+                aggOptsOverall[0].$match[periodField] = { $exists: true };
+            }
             var queryPromises = [];
             db.collection('leaderboards').aggregate(aggOptsOverall).toArray(function(err, overallWeeks) {
                 if (err) {
@@ -91,7 +104,7 @@ exports.handler = (event, context, callback) => {
                         }
                     };
                     
-                    var criteria = {"year": week.year, "gameWeek": week.gameWeek, "season": week.season, "sport": week.sport}
+                    var criteria = {"year": week.year, "season": week.season, "sport": week.sport, [periodField]: week[periodField]}
                     
                     var queryPromise = db.collection('leaderboards').updateAsync(criteria, updateOverall)
                         .then(function (updateResult) {
