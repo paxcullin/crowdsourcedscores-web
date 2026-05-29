@@ -250,7 +250,11 @@ exports.handler = async (event, context) => {
                 } else if (sport === 'ncaam' || sport === 'ncaab') {
                     gamesCollection = 'games-ncaab';
                     gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
+                } else if (sport === 'nba') {
+                    gamesCollection = 'games-nba';
+                    gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
                 }
+
                 console.log('gamesQuery: ', gamesQuery)
 
                 // check for game start time to ensure the prediction is 5 minutes before kickoff
@@ -263,9 +267,9 @@ exports.handler = async (event, context) => {
                     var kickoff = Date.parse(game.startDateTime);
                     var cutoff = kickoff - msHour;
 
-                    // console.log("now: " + now);
+                    console.log("now: " + now);
                     // console.log("kickoff: " + new Date(game.startDateTime));
-                    // console.log("cutoff: " + new Date(cutoff));
+                    console.log("cutoff: " + new Date(cutoff));
 
                     if (now > cutoff) {
                         result.message = "The cutoff for predicting this game has passed.";
@@ -294,6 +298,8 @@ exports.handler = async (event, context) => {
                             predictionCollection = 'predictions-ncaaf';
                         } else if (event.sport === 'ncaam' || event.sport === 'ncaab') {
                             predictionCollection = 'predictions-ncaam';
+                        } else if (event.sport === 'nba') {
+                            predictionCollection = 'predictions-nba';
                         }
                         
                         // Insert or Update the user's prediction to the prediction collection
