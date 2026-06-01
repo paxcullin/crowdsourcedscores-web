@@ -40,7 +40,7 @@ test('calculateCrowdOverallPerformance uses gameDate for nba', async () => {
                 aggregate: (pipeline) => {
                     calls.aggPipeline = pipeline;
                     return {
-                        toArray: (cb) => cb(null, [{
+                        toArray: async () => ([{
                             suOverallCorrect: 5,
                             suOverallPushes: 0,
                             atsOverallCorrect: 4,
@@ -52,7 +52,7 @@ test('calculateCrowdOverallPerformance uses gameDate for nba', async () => {
                         }])
                     };
                 },
-                updateAsync: (criteria) => {
+                updateOne: (criteria) => {
                     calls.updateCriteria = criteria;
                     return Promise.resolve({ ok: 1 });
                 }
@@ -61,19 +61,15 @@ test('calculateCrowdOverallPerformance uses gameDate for nba', async () => {
     };
 
     const mongodbMock = {
-        connect: (url, cb) => cb(null, db)
+        MongoClient: {
+            connect: async () => db
+        }
     };
 
     const lambdaPath = path.join(__dirname, '..', 'index.js');
     const { handler } = loadWithMocks(lambdaPath, {
         mongodb: mongodbMock,
-        './config': { config: { username: 'u', password: 'p' } },
-        lodash: { each: (arr, fn) => arr.forEach(fn) },
-        bluebird: {
-            promisifyAll: (x) => x,
-            resolve: Promise.resolve.bind(Promise),
-            all: Promise.all.bind(Promise)
-        }
+        './config': { config: { username: 'u', password: 'p' } }
     });
 
     const doneMessages = [];
@@ -82,8 +78,7 @@ test('calculateCrowdOverallPerformance uses gameDate for nba', async () => {
         fail: (err) => { throw err; }
     };
 
-    handler({ sport: 'nba', year: 2026, season: 'reg', gameDate: '2026-03-06' }, context, () => {});
-    await new Promise((resolve) => setImmediate(resolve));
+    await handler({ sport: 'nba', year: 2026, season: 'reg', gameDate: '2026-03-06' }, context, () => {});
 
     assert.equal(calls.findOneCriteria.gameDate, '2026-03-06');
     assert.deepEqual(calls.aggPipeline[0].$match.gameDate, { $lte: '2026-03-06' });
