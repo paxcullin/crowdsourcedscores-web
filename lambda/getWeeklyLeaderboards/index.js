@@ -42,8 +42,8 @@ exports.handler = async (event, context) => {
         } else {
             leaderboardQuery.gameWeek = week;
         }
+        console.log({ leaderboardQuery })
         const leaderboard = await leaderboardsCollection.findOne(leaderboardQuery)
-        // console.log({ leaderboard })
         if (leaderboard && leaderboard.weekly && leaderboard.weekly.users && leaderboard.overall && leaderboard.overall.users) {
             var leaderboardWeeklyArrayLength = leaderboard.weekly.users.length;
             var leaderboardWeeklyUsers = leaderboard.weekly.users;
@@ -108,7 +108,11 @@ exports.handler = async (event, context) => {
                 leaderboard.overall.usersStars = leaderboardOverallStars
                 leaderboard.minimumPredictions = minimumPredictions
                 // console.log({ Leaderboard: JSON.stringify(leaderboard)})
-                context.done(null, leaderboard)
+                return {
+                    status: 200,
+                    message: "Leaderboard retrieved successfully",
+                    ...leaderboard
+                }
             }
         } else {
             console.log({
@@ -117,17 +121,18 @@ exports.handler = async (event, context) => {
                     sport,
                     week
                 })
-            context.done(null, {
-                    weekly: {},
-                    overall: {}
-            })
-            
+            return {
+                status: 404, message: "No leaderboard found for the specified parameters",
+                weekly: {},
+                overall: {}
+            }
         }
     } catch (err) {
         console.log('getWeeklyLeaderboard err:', err)
-        context.fail({ status: 500, message: `Error: ${JSON.stringify(err)}`,
+        return { status: 500, 
+            message: `Error: ${JSON.stringify(err)}`,
             weekly: {},
             overall: {}
-        })
+        }
     }
 }
