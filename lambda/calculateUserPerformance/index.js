@@ -242,7 +242,7 @@ exports.handler = async (event) => {
             predictionQuery.userId = record.Sns.MessageAttributes.userId;
         }
         
-        if (record != "") {
+        if (record !== "") {
             eventGameId = parseInt(record.Sns.MessageAttributes.gameId.Value);
             eventGameWeek = record.Sns.MessageAttributes.gameWeek ? parseInt(record.Sns.MessageAttributes.gameWeek.Value) : null;
             eventGameDate = record.Sns.MessageAttributes.gameDate ? record.Sns.MessageAttributes.gameDate.Value : null;
@@ -260,11 +260,14 @@ exports.handler = async (event) => {
                 predictionsCollection = 'predictions-nba'
             }
             gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, results: {$exists: true}}
-            if (eventSport === 'nba' && eventGameDate) {
+            if (eventSport === 'nba' && eventSeason !== 'post' && eventGameDate) {
                 gameQuery.gameDate = eventGameDate;
             } else if (eventGameWeek !== null) {
                 gameQuery.gameWeek = eventGameWeek;
             }
+            console.log('eventGameId, eventGameWeek, eventGameDate, eventSport, eventSeason, eventYear :>> ', eventGameId, eventGameWeek, eventGameDate, eventSport, eventSeason, eventYear);
+        } else {
+            return {status: 200, succeeded: false, message: "Event incomplete", event}
         }
         //console.log("gameQuery: ", gameQuery)
 
@@ -306,6 +309,7 @@ exports.handler = async (event) => {
         var collection = db.collection(gamesCollection);
         var queryPromises = [];
         const games = await collection.find(gameQuery, {_id: false}).toArray();
+        console.log('games.length :>> ', games.length);
         for (const [gameIndex, game] of games.entries()) {
             //console.log("game: ", game)
             const gamePredictionQuery = {
@@ -313,7 +317,7 @@ exports.handler = async (event) => {
                 sport: game.sport,
                 gameId: game.gameId
             }
-            if (game.sport === 'nba' && game.gameDate) {
+            if (game.sport === 'nba' && game.season !== 'post' && game.gameDate) {
                 gamePredictionQuery.gameDate = game.gameDate;
             } else if (game.gameWeek !== undefined) {
                 gamePredictionQuery.gameWeek = game.gameWeek;
@@ -322,7 +326,7 @@ exports.handler = async (event) => {
             //console.log("predictionQuery: ", predictionQuery)
             //console.log('predictionsCollection: ', predictionsCollection)
             const predictions = await db.collection(predictionsCollection).find(gamePredictionQuery, {_id: false}).toArray()
-            console.log("predictions.length: ", predictions.length);
+            // console.log("predictions.length: ", predictions.length);
             if (predictions.length === 0) {
                 console.log("No predictions found for this predictionQuery: " + JSON.stringify(gamePredictionQuery))
                 continue;
@@ -365,7 +369,7 @@ exports.handler = async (event) => {
                 var spreadResult = getSpread(game, odds,gamePrediction);
                 var totalResult = getTotalResult(game, odds,gamePrediction);
                 var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, sport: gamePrediction.sport};
-                if (gamePrediction.sport === 'nba' && gamePrediction.gameDate) {
+                if (gamePrediction.sport === 'nba' && gamePrediction.season !== 'post' && gamePrediction.gameDate) {
                     existingObjQuery.gameDate = gamePrediction.gameDate;
                 } else {
                     existingObjQuery.gameWeek = gamePrediction.gameWeek;
@@ -378,8 +382,8 @@ exports.handler = async (event) => {
             console.log("gameIndex: ", gameIndex)
         }
 
-        await Promise.all(queryPromises);
-
+        const promiseResults = await Promise.all(queryPromises);
+        console.log('promiseResults :>> ', promiseResults);
         if (games.length > 0) {
             const downstreamPayload = {
                 message: 'calculateUserPerformance completed',
@@ -387,7 +391,7 @@ exports.handler = async (event) => {
                 season: eventSeason,
                 year: eventYear
             };
-            if (eventGameDate) {
+            if (eventGameDate && eventSport === 'nba' && eventSeason !== 'post') {
                 downstreamPayload.gameDate = eventGameDate;
             }
             if (eventGameWeek !== null) {
@@ -400,6 +404,14 @@ exports.handler = async (event) => {
                 Payload: JSON.stringify(downstreamPayload)
             });
             const lambdainvoke = await lambda.send(calculateIndividualUserPerformanceWeeklyParams)
+            return {
+                status: 200,
+                message: "calculateUserPerformance completed",
+                sport: eventSport,
+                season: eventSeason,
+                year: eventYear,
+                predictionsUpdated: promiseResults.length
+            }
         }
     } catch (err) {
         console.log('error: ', err);

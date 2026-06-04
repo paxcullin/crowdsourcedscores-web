@@ -110,7 +110,7 @@ exports.handler = async (event, context, callback) => {
                 
 
                 var queryPromises = [];
-                results.forEach((result) => {
+                for (const result of results) {
                     console.log("result: ", result);
                     // criteria updated to update crowd predictions only when games are in the future
                     //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
@@ -150,10 +150,10 @@ exports.handler = async (event, context, callback) => {
                         .then(function (updateResult) {
                             var message = `{ gameWeek: ${result._id}, crowd.winner: ${result.suCorrect}, crowd.spread: ${result.atsCorrect}, crowd.total: ${result.totalCorrect}, crowd.totalGames: ${result.totalGames} }`;
                             console.log('Updated crowd predictions', message);
-                            return Promise.resolve(updateResult);
+                            return updateResult;
                         });
-                    queryPromises.push(Promise.resolve(queryPromise));
-                });
+                    queryPromises.push(queryPromise);
+                }
 
                 const promiseResults = await Promise.all(queryPromises);
                 const downstreamPayload = {

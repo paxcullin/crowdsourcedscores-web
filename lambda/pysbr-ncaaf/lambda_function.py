@@ -77,7 +77,7 @@ collection = db['games-ncaaf']
 
 yesterday = str((date.today() - timedelta(days=5)))
 startDate = datetime.strptime(yesterday, '%Y-%m-%d')
-endDate = datetime.strptime('2026-02-28', '%Y-%m-%d')
+endDate = datetime.strptime('2027-02-28', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 ncaaf = NCAAF()
@@ -150,7 +150,7 @@ def lambda_handler(event, context):
                         # print(event)
 
                     gameObject = {
-                            "year": 2025,
+                            "year": 2026,
                             "gameWeek": event['event group']['event group id'] - 32,
                             "weekName": event['event group']['alias'],
                             "status": event['event status'],
@@ -175,7 +175,7 @@ def lambda_handler(event, context):
                             
                     
                     
-                    if gameObject["startDateTime"] > datetime.strptime('2025-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
+                    if gameObject["startDateTime"] > datetime.strptime('2026-12-10T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'):
                         gameObject["season"] = "post"
                     else:
                         # print('date: ', gameObject["startDateTime"], ', ', datetime.strptime('2025-09-08T09:00:00Z', '%Y-%m-%dT%H:%M:%S%z'))
@@ -380,7 +380,8 @@ def lambda_handler(event, context):
                             moneylines = pinnaclemoneylines
                         elif len(bookmakermoneylines.list()) > 0:
                             moneylines = bookmakermoneylines
-                        if len(spreads.list()) > 0:
+                        # print ('spreads:', spreads)
+                        if spreads and len(spreads.list()) > 0:
                             # print(homeId)
                             for spread in spreads.list():
                                 # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
@@ -404,7 +405,7 @@ def lambda_handler(event, context):
                         #             gameObject['odds']['spreadOdds'] = spread['american odds']
 
 
-                        if len(totals.list()) > 0:
+                        if totals and len(totals.list()) > 0:
                             # print(homeId)
                             for total in totals.list():
                                 # print(total)
@@ -413,7 +414,7 @@ def lambda_handler(event, context):
                                     gameOdds['totalOdds'] = total['american odds']
                                     gameObject['odds']['total'] = total['spread / total']
                                     gameObject['odds']['totalOdds'] = total['american odds']
-                        if len(moneylines.list()) > 0:
+                        if moneylines and len(moneylines.list()) > 0:
                             # print(homeId)
                             for ml in moneylines.list():
                                 # print(total)

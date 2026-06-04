@@ -1,3 +1,5 @@
+# pysbr-getCurrentLines lambda function
+
 from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF, NBA
 from pysbr.config.config import Config
 from datetime import datetime, timedelta, date
@@ -116,7 +118,7 @@ def lambda_handler(e, context):
             #     }
             # ))
             if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
-                collection.update_one(
+                updateResponse = collection.update_one(
                     {
                         '$or': [
                             {'gameId': gameid},
@@ -129,6 +131,7 @@ def lambda_handler(e, context):
                         }
                     }
                 )
+                print('updateResponse: ', updateResponse)
     # collection.bulk_write(writeOperations)
     return {
         "lines": lines

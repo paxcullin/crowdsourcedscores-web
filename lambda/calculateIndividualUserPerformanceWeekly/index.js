@@ -13,7 +13,7 @@ exports.handler = async (event, context, callback) => {
     try {
         var updateOverall = {};
         var queryPromises = [];
-        const periodField = event.sport === 'nba' ? 'gameDate' : 'gameWeek';
+        const periodField = 'gameWeek';
         const eventPeriodValue = event[periodField];
 
         async function callCalculateIndividualCrowdPerformanceOverall(results, sport, year, season) {

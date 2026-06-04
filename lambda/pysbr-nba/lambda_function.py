@@ -360,6 +360,7 @@ def lambda_handler(event, context):
             game_date,
         )
 
+        print('game_week:', game_week)
         game_object = {
             "sbrGameId": game["event id"],
             "gameId": existing_game["gameId"] if existing_game and existing_game.get("gameId") else game["event id"],
@@ -373,13 +374,13 @@ def lambda_handler(event, context):
             "homeTeam": home_team_object,
             "awayTeam": away_team_object,
             "gameWeek": game_week,
-            "weekName": week_info.get("weeks", [{}])[game_week].get("weekName", "") if game_week is not None and game_week >= 0 else (game.get("event group") or {}).get("alias", ""),
+            "weekName": week_info.get("weeks", [{}])[game_week].get("weekName", "") if game_week is not None and game_week >= 0 and game_week < len(week_info.get("weeks", [])) else (game.get("event group") or {}).get("alias", ""),
         }
 
         if game.get("event status") != "scheduled":
             game_object["results"] = build_results(game, home_team_object["participantId"], away_team_object["participantId"])
             game_object["status"] = "final" if game.get("event status") == "complete" else "inProgress"
-            if existing_game and game_object["status"] == "final" and existing_game.get("status") != "final":
+            if existing_game and game_object["status"] == "final" and (existing_game.get("status") != "final" or existing_game.get("results") is None):
                 publish_final_update(game_object)
         else:
             game_object["status"] = "scheduled"

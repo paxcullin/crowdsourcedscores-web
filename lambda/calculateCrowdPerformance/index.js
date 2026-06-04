@@ -196,7 +196,7 @@ exports.handler = async (event, context) => {
             
 
         var queryPromises = [];
-        games.forEach((game) => {
+        for (const game of games) {
             var gamePrediction = game.crowd;
 
             if(game.results && gamePrediction && Date.parse(game.startDateTime) < Date.now()) {
@@ -215,16 +215,16 @@ exports.handler = async (event, context) => {
                             .then(function (updateResult) {
                                 var message = `{ gameId: ${game.gameId}, year: ${game.year}, crowd.result.winner: ${game.crowd.results.winner}, crowd.result.winner: ${game.crowd.results.spread}, crowd.result.winner: ${game.crowd.results.total}) }`
                                 //console.log('Updated crowd predictions', message);
-                                return Promise.resolve(updateResult);
+                                return updateResult;
                             });
-                        queryPromises.push(Promise.resolve(queryPromise));
+                        queryPromises.push(queryPromise);
         
                     
             } else {
                 console.log("No matched prediction");
             }
 
-        });
+        }
         const updateCrowd = await Promise.all(queryPromises)
         console.log('updateCrowd', updateCrowd);
         

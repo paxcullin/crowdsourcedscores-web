@@ -104,8 +104,8 @@ exports.handler = async (event, context, callback) => {
           
           const results = await collection.aggregate(aggOpts).toArray();
               
-          var queryPromises = [];
-          results.forEach((result) => {
+            var queryPromises = [];
+            for (const result of results) {
               console.log("result: ", result);
               // criteria updated to update crowd predictions only when games are in the future
               //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
@@ -145,38 +145,42 @@ exports.handler = async (event, context, callback) => {
                   .then(function (updateResult) {
                       var message = `{ gameWeek: ${result._id}, crowd.winner: ${result.suCorrect}, crowd.spread: ${result.atsCorrect}, crowd.total: ${result.totalCorrect}, crowd.totalGames: ${result.totalGames} }`;
                       console.log('Updated crowd predictions', message);
-                      return Promise.resolve(updateResult);
+                      return updateResult;
                   });
-              queryPromises.push(Promise.resolve(queryPromise));
-          });
+              queryPromises.push(queryPromise);
+          }
 
-          Promise.all(queryPromises).then(function() {
-                    const downstreamPayload = {
-                      message: "calculateLeaders completed",
-                      sport,
-                      year,
-                      season
-                    };
-                    if (periodValue !== undefined && periodValue !== null) {
-                      downstreamPayload[periodField] = periodValue;
-                    }
-              
-                          var lambdaParams = {
-                              FunctionName: 'calculateCrowdOverallPerformance', // the lambda function we are going to invoke
-                              InvocationType: 'Event',
-                              LogType: 'None',
-                      Payload: JSON.stringify(downstreamPayload)
-                            };
-                          
-                            lambda.invoke(lambdaParams, function(err, data) {
-                              if (err) {
-                                console.log("group-joinGroup call err: ", err);
-                              } else {
-                                console.log("group-joinGroup call data: ", data);
-                                return context.done(null, "Promises fulfilled");
-                              }
-                            })
+          await Promise.all(queryPromises);
+
+          const downstreamPayload = {
+            message: "calculateLeaders completed",
+            sport,
+            year,
+            season
+          };
+          if (periodValue !== undefined && periodValue !== null) {
+            downstreamPayload[periodField] = periodValue;
+          }
+    
+          var lambdaParams = {
+              FunctionName: 'calculateCrowdOverallPerformance', // the lambda function we are going to invoke
+              InvocationType: 'Event',
+              LogType: 'None',
+              Payload: JSON.stringify(downstreamPayload)
+            };
+          
+          await new Promise((resolve, reject) => {
+            lambda.invoke(lambdaParams, function(err, data) {
+              if (err) {
+                console.log("group-joinGroup call err: ", err);
+                reject(err);
+              } else {
+                console.log("group-joinGroup call data: ", data);
+                resolve(data);
+              }
+            })
           });
+          return context.done(null, "Promises fulfilled");
     }catch (err) {
         console.log(err);
         context.fail(err);

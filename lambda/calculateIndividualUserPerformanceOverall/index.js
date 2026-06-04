@@ -22,9 +22,9 @@ exports.handler = async (event) => {
         
         // set defaults
         let { sport, year, season } = event;
-        const periodField = sport === 'nba' ? 'gameDate' : 'gameWeek';
-        const periodValue = event[periodField];
-        var periodMatch = periodField === 'gameWeek' ? { $gt: 0, $lte: event.gameWeek } : { $lte: String(periodValue || '') };
+        const periodField = 'gameWeek';
+        // const periodValue = event[periodField];
+        var periodMatch = { $gt: 0, $lte: event.gameWeek } // periodField === 'gameWeek' ? { $gt: 0, $lte: event.gameWeek } : { $lte: String(periodValue || '') };
         var predictionsCollection = 'predictions';
         var query = {}
             
@@ -41,9 +41,9 @@ exports.handler = async (event) => {
             } else if (sport === 'nba') {
                 sport = 'nba'
                 predictionsCollection = 'predictions-nba'
-                if (!periodValue) {
-                    periodMatch = { $exists: true };
-                }
+                // if (!periodValue) {
+                //     periodMatch = { $exists: true };
+                // }
             }
 
         var matchOpts = {
@@ -55,7 +55,7 @@ exports.handler = async (event) => {
         if (event.season) {
             matchOpts.season = season
         }
-            
+            console.log({ matchOpts, periodMatch })
                 var aggOpts = [
                     {
                         $match: {
@@ -66,8 +66,8 @@ exports.handler = async (event) => {
                     },
                     {
                         $group: {
-                            //_id: {userId: "$userId", year: "$year", season: "$season"},
-                            _id: {userId: "$userId", sport: "$sport", [periodField]: `$${periodField}`, season: "$season", preferred_username: "$preferred_username"},
+                            //_id: {userId: "$userId", year: "$year", season: "$season"},, [periodField]: `$${event.gameWeek}`
+                            _id: {userId: "$userId", sport: "$sport", season: "$season", preferred_username: "$preferred_username"},
                             suCorrect: {$sum: "$results.winner.correct"},
                             suPush: {$sum: "$results.winner.push"},
                             suBullseyes: {$sum: "$results.winner.bullseyes"},
@@ -232,11 +232,12 @@ exports.handler = async (event) => {
                     let leaderboardCriteria = {
                     year: event.year,
                     season: season,
-                    sport: sport
+                    sport: sport,
+                    gameWeek: event.gameWeek
                     }
-                    if (periodValue !== undefined && periodValue !== null) {
-                        leaderboardCriteria[periodField] = periodValue;
-                    }
+                    // if (periodValue !== undefined && periodValue !== null) {
+                    //     leaderboardCriteria[periodField] = periodValue;
+                    // }
                     let leaderboardUpdate = {
                         $set: {
                             "overall.users": overallUserArray
@@ -255,6 +256,6 @@ exports.handler = async (event) => {
                 
     } catch (error) {
         console.log(error);
-        return { status: 500, message: 'Error calculating individual user performance overall', error: error };
+        throw new Error('Error calculating individual user performance overall', { cause: error });
     }
 };
