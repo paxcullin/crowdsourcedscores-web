@@ -1,0 +1,7 @@
+gql==2.0.0
+graphql-core==2.3.2
+fake-useragent==0.1.11
+PyYAML==5.4.1
+requests==2.31.0
+pytz==2024.2
+urllib3==1.26.18

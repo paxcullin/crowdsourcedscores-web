@@ -1,0 +1,15 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "MessageAttributes": {
+          "gameId": { "Type": "Number", "Value": "1099" },
+          "gameWeek": { "Type": "Number", "Value": "10" },
+          "sport": { "Type": "String", "Value": "nfl" },
+          "season": { "Type": "String", "Value": "reg" },
+          "year": { "Type": "Number", "Value": "2026" }
+        }
+      }
+    }
+  ]
+}

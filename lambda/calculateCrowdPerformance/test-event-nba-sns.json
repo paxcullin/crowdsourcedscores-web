@@ -1,0 +1,15 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "MessageAttributes": {
+          "gameId": { "Type": "Number", "Value": "4001" },
+          "gameDate": { "Type": "String", "Value": "2026-03-07" },
+          "sport": { "Type": "String", "Value": "nba" },
+          "season": { "Type": "String", "Value": "reg" },
+          "year": { "Type": "Number", "Value": "2026" }
+        }
+      }
+    }
+  ]
+}

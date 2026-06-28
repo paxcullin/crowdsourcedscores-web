@@ -37,9 +37,9 @@ exports.handler = async (event, context) => {
             // console.log("extendedProfile: ", JSON.stringify(extendedProfile))
             if (event.sport && event.year && event.season && event.week && extendedProfile.results && extendedProfile.results[event.sport] && extendedProfile.results[event.sport][event.year] && extendedProfile.results[event.sport][event.year][event.season]) {
                 let overallResults = extendedProfile.results[event.sport][event.year][event.season].overall
-                let weeklyResultFilteredArray = extendedProfile.results[event.sport][event.year][event.season].weekly.filter((weeklyResult) => {
+                let weeklyResultFilteredArray = extendedProfile.results[event.sport][event.year][event.season].weekly ? extendedProfile.results[event.sport][event.year][event.season].weekly.filter((weeklyResult) => {
                     return weeklyResult && (weeklyResult.gameWeek === event.week)
-                })
+                }) : [];
                 console.log('weeklyResultFilteredArray: ', weeklyResultFilteredArray)
                 extendedProfile.results = {
                     overall: overallResults,

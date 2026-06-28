@@ -3,13 +3,16 @@
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
     validate = require("jsonschema").validate;
-const AWS = require('aws-sdk');    
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const AWSConfig = { region: "us-west-2" };
+const lambda = new LambdaClient({region: 'us-west-2'});
 
 const EMAIL = process.env.email;
-const SNS = new AWS.SNS({ apiVersion: '2010-03-31' });
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
+const sns = new SNSClient(AWSConfig);
 
-const config = require('config')
+
+const {config} = require('config')
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 const requestSchema = {
@@ -63,27 +66,66 @@ const requestSchema = {
  */
 
 
-function findExistingSubscription(topicArn, nextToken, cb) {
+async function findExistingSubscription(topicArn, nextToken, cb) {
     const params = {
         TopicArn: topicArn,
         NextToken: nextToken || null,
     };
-    SNS.listSubscriptionsByTopic(params, (err, data) => {
-        if (err) {
-            console.log('Error listing subscriptions.', err);
-            return cb(err);
-        }
-        const subscription = data.Subscriptions.filter((sub) => sub.Protocol === 'email' && sub.Endpoint === EMAIL)[0];
-        if (!subscription) {
-            if (!data.NextToken) {
-                cb(null, null); // indicate that no subscription was found
-            } else {
-                findExistingSubscription(topicArn, data.NextToken, cb); // iterate over next token
+    // SNS.listSubscriptionsByTopic(params, (err, data) => {
+    //     if (err) {
+    //         console.log('Error listing subscriptions.', err);
+    //         return cb(err);
+    //     }
+    //     const subscription = data.Subscriptions.filter((sub) => sub.Protocol === 'email' && sub.Endpoint === EMAIL)[0];
+    //     if (!subscription) {
+    //         if (!data.NextToken) {
+    //             cb(null, null); // indicate that no subscription was found
+    //         } else {
+    //             findExistingSubscription(topicArn, data.NextToken, cb); // iterate over next token
+    //         }
+    //     } else {
+    //         cb(null, subscription); // a subscription was found
+    //     }
+    // });
+    console.log("SNS Publishing")
+    params = {
+        Message: "Game " + gameId + " updated", 
+        Subject: "Game Updated",
+        TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated",
+        MessageAttributes: { 
+            gameId: {
+                DataType: "Number",
+                StringValue: gameId.toString()
+            },
+            gameWeek: {
+                DataType: "Number",
+                StringValue: mongoGameWeek.toString()
+            },
+            year: {
+                DataType: "Number",
+                StringValue: year.toString()
+            },
+            sport: {
+                DataType: "String",
+                StringValue: sport
+            },
+            season: {
+                DataType: "String",
+                StringValue: season
             }
-        } else {
-            cb(null, subscription); // a subscription was found
         }
-    });
+    }
+    console.log("SNS Publishing")
+    const SNSPublishCommand = new PublishCommand(params, function(err, response) {
+        if (err) {
+            context.done("SNS error: " + err, null);
+        }
+        console.log("SNS Publish complete: ", response);
+        });
+
+    const SNSResponse = await sns.send(SNSPublishCommand)
+    console.log('SNSResponse :>> ', SNSResponse);
+    context.done(null, {"message": "Received update: " + game})
 }
 
 /**
@@ -142,7 +184,7 @@ function createTopic(topicName, cb) {
     });
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
 
     var result = {
@@ -170,14 +212,9 @@ exports.handler = (event, context) => {
         game.results.spread = game.results.awayTeam.score - game.results.homeTeam.score;
         game.results.total = game.results.awayTeam.score + game.results.homeTeam.score;
     }
-
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-
-        if (err) {
-            return context.done(err, null);
-        }
-
+    try {
+        const client = await mongo.connect(MONGO_URL);
+        
         const db = client.db('pcsm');
 
         // first make sure the prediction is not too late
@@ -189,47 +226,51 @@ exports.handler = (event, context) => {
         var kickoff = new Date(game.startDateTime);
         var cutoff = kickoff - msHour;
         var startDateTime = new Date(game.startDateTime)
-        
-        var gameUpdate = {};
-        if (game.status === "notStarted") {
-            gameUpdate = {
-                $set: {
-                    startDateTime: startDateTime,
-                    status: game.status,
-                    "odds.spread": game.odds.spread,
-                    "odds.total": game.odds.total
-                }
-            }
-        } else if (game.results && game.results.awayTeam.score !== -1) {
-            gameUpdate = {
-                $set : {
-                    startDateTime: startDateTime,
-                    status: game.status,
-                    results: {
-                        awayTeam: {
-                            score: game.results.awayTeam.score
-                        },
-                        homeTeam: {
-                            score: game.results.homeTeam.score
-                        },
-                        total: game.results.total,
-                        spread: game.results.spread
+        if (!game.gameId) {
+            
+
+        } else {
+            var gameUpdate = {};
+            if (game.status === "notStarted") {
+                gameUpdate = {
+                    $set: {
+                        startDateTime: startDateTime,
+                        status: game.status,
+                        "odds.spread": game.odds.spread,
+                        "odds.total": game.odds.total
                     }
                 }
+            } else if (game.results && game.results.awayTeam.score !== -1) {
+                gameUpdate = {
+                    $set : {
+                        startDateTime: startDateTime,
+                        status: game.status,
+                        results: {
+                            awayTeam: {
+                                score: game.results.awayTeam.score
+                            },
+                            homeTeam: {
+                                score: game.results.homeTeam.score
+                            },
+                            total: game.results.total,
+                            spread: game.results.spread
+                        }
+                    }
+                }
+            } else {
+                console.log("No update");
             }
-        } else {
-            context.done(null, "No update");
-        }
-        console.log("gameUpdate: ", gameUpdate)
-        var dbName = 'games';
-        if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
-        if (game.sport === 'ncaam') dbName = 'games-ncaam';
-        //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
-        db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate)
-        .then(function (gameObj) {
+            console.log("gameUpdate: ", gameUpdate)
+            var dbName = 'games';
+            if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
+            if (game.sport === 'ncaam') dbName = 'games-ncaam';
+            //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
+            if (Object.keys(gameUpdate).length > 0) {
+                const gameObj = await db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate);
+            }
             if (game.status === "final") {
                 //console.log("gameObj: ", gameObj)
-                var sns = new AWS.SNS();
+                
                 var params = {
                     Message: "Game " + game.gameId + " updated by " + event.userId,
                     MessageAttributes: { 
@@ -259,13 +300,24 @@ exports.handler = (event, context) => {
                     TopicArn: "arn:aws:sns:us-west-2:198282214908:gameUpdated"
                 };
                 console.log("SNS Publishing")
-                sns.publish(params, function(err, response) {
-                if (err) {
-                    context.done("SNS error: " + err, null);
-                }
-                console.log("SNS Publish complete: ", response);
-                context.done (null, result)
-                })
+                // sns.publish(params, function(err, response) {
+                // if (err) {
+                //     context.done("SNS error: " + err, null);
+                // }
+                // console.log("SNS Publish complete: ", response);
+                // context.done (null, result)
+                // })
+                console.log('params :>> ', params);
+                const SNSPublishCommand = new PublishCommand(params, function(err, response) {
+                    if (err) {
+                        context.done("SNS error: " + err, null);
+                    }
+                    console.log("SNS Publish complete: ", response);
+                    });
+
+                const SNSResponse = await sns.send(SNSPublishCommand)
+                console.log('SNSResponse :>> ', SNSResponse);
+                context.done(null, {"message": "Received update: " + game})
             } else {
                 var oddsHistoryUpdate = { 
                     $push: {
@@ -276,17 +328,19 @@ exports.handler = (event, context) => {
                         }
                     }
                 }
-                console.log('oddsHistoryUpdate: ', oddsHistoryUpdate);
-                db.collection('games').update({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, oddsHistoryUpdate)
-                .then(function(updateOddsHistoryResponse) {
-                    console.log('update odds response: ', updateOddsHistoryResponse.result);
-                    context.done(null, {"message": "Received update: " + game})
-                })
-                .catch(function(updateOddsHistoryReject) { console.log('updateOddsHistoryReject: ', updateOddsHistoryReject); context.done(null, updateOddsHistoryReject) })
+                try {
+                    console.log('oddsHistoryUpdate: ', oddsHistoryUpdate);
+                    const updateOddsHistoryResponse = await db.collection('games').update({"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)}, oddsHistoryUpdate)
+                        console.log('update odds response: ', updateOddsHistoryResponse.result);
+                        context.done(null, {"message": "Received update: " + game})
+                } catch(updateOddsHistoryReject) {
+                    console.log('updateOddsHistoryReject: ', updateOddsHistoryReject); 
+                    context.done(null, updateOddsHistoryReject) 
+                }
             }
-        })
-        .catch(function (findReject) {
-            context.done(findReject, null);
-        })
-    });
+        }
+    } catch (err) {
+        console.log('Error: ', err);
+        context.done(err, null);
+    }
 };
