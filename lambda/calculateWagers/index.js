@@ -144,6 +144,7 @@ exports.handler = async function (event, context, callback) {
         wagers.forEach(wagerObj => {
 
             const { prediction, wager, _id } = wagerObj;
+            console.log('Processing wager:', wagerObj);
             let result = 0, net = 0;
             if (wager.wagerType === "moneyline") {
                 predictionML = evaluateMoneyline(prediction.awayTeam, prediction.homeTeam, prediction.odds);

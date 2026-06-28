@@ -517,6 +517,33 @@ exports.handler = (event, context, callback) => {
                     start: new Date('2025-12-16'),
                     weeks: [{weekName: 'Bowls'}]
                 }
+            },
+            2026: {
+                reg: {
+                    start: new Date('2026-06-01'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16}
+                        ]
+                },
+                post: {
+                    start: new Date('2026-12-16'),
+                    weeks: [{weekName: 'Bowls'}]
+                }
             }
         },
         ncaam: {
@@ -923,8 +950,8 @@ exports.handler = (event, context, callback) => {
         weekStartDates = seasonDates.nba[nowYear][season].weekBoundaries;
     } else if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
-                    Date.UTC(2025, 11, 14),  // 2019 Postseason Week 1
-                    Date.UTC(2026, 7, 24),  // 2019 Postseason Week 3
+                    Date.UTC(2026, 11, 14),  // 2019 Postseason Week 1
+                    Date.UTC(2027, 7, 24),  // 2019 Postseason Week 3
                     
                     ]
             : [
@@ -945,22 +972,22 @@ exports.handler = (event, context, callback) => {
                 // Date.UTC(2018, 11, 5), // week 14
                 // Date.UTC(2018, 11, 12), // Bowls
                 // Date.UTC(2019, 8, 1), // Bowls
-                Date.UTC(2025, 6, 19),  // 2019 Week 1
-                Date.UTC(2025, 8, 9),  // 2023 Week 2
-                Date.UTC(2025, 8, 16),  // 2025 Week 3
-                Date.UTC(2025, 8, 23),  // 2025 Week 4
-                Date.UTC(2025, 8, 30),  // 2025 Week 5
-                Date.UTC(2025, 9, 7),  // 2025 Week 6
-                Date.UTC(2025, 9, 14),  // 2025 Week 7
-                Date.UTC(2025, 9, 21),  // 2025 Week 8
-                Date.UTC(2025, 9, 28),  // 2025 Week 9
-                Date.UTC(2025, 10, 4),  // 2025 Week 10
-                Date.UTC(2025, 10, 11),  // 2025 Week 11
-                Date.UTC(2025, 10, 18),  // 2025 Week 12
-                Date.UTC(2025, 10, 25),  // 2025 Week 13
-                Date.UTC(2025, 11, 2),  // 2025 Week 14
-                Date.UTC(2025, 11, 9),  // 2025 Week 15
-                Date.UTC(2025, 11, 16),  // 2025 Week 16
+                Date.UTC(2026, 5, 1),  // 2019 Week 1
+                Date.UTC(2026, 8, 9),  // 2023 Week 2
+                Date.UTC(2026, 8, 16),  // 2026 Week 3
+                Date.UTC(2026, 8, 23),  // 2026 Week 4
+                Date.UTC(2026, 8, 30),  // 2026 Week 5
+                Date.UTC(2026, 9, 7),  // 2026 Week 6
+                Date.UTC(2026, 9, 14),  // 2026 Week 7
+                Date.UTC(2026, 9, 21),  // 2026 Week 8
+                Date.UTC(2026, 9, 28),  // 2026 Week 9
+                Date.UTC(2026, 10, 4),  // 2026 Week 10
+                Date.UTC(2026, 10, 11),  // 2026 Week 11
+                Date.UTC(2026, 10, 18),  // 2026 Week 12
+                Date.UTC(2026, 10, 25),  // 2026 Week 13
+                Date.UTC(2026, 11, 2),  // 2026 Week 14
+                Date.UTC(2026, 11, 9),  // 2026 Week 15
+                Date.UTC(2026, 11, 16),  // 2026 Week 16
                 Date.UTC(2026, 7, 25),  // 2024 Week 17
             ]
     } else if (sport === 'ncaam') {
@@ -975,24 +1002,24 @@ exports.handler = (event, context, callback) => {
                     Date.UTC(2026, 3, 6),  // 2020 Postseason Week 6
                     Date.UTC(2026, 8, 15),  // 2020 Postseason Week 9
         ] : [
-            Date.UTC(2025, 10, 3),  // 2025 Week 1
-            Date.UTC(2025, 10, 10),  // 2025 Week 2
-            Date.UTC(2025, 10, 17),  // 2025 Week 3
-            Date.UTC(2025, 10, 24),  // 2025 Week 4
-            Date.UTC(2025, 10, 31),  // 2025 Week 5
-            Date.UTC(2025, 11, 7),  // 2025 Week 6
-            Date.UTC(2025, 11, 14),  // 2025 Week 7
-            Date.UTC(2025, 11, 21),  // 2025 Week 8
-            Date.UTC(2026, 0, 4),   // 2025 Week 9 
-            Date.UTC(2026, 0, 11),  // 2025 Week 10
-            Date.UTC(2026, 0, 18),  // 2025 Week 11
-            Date.UTC(2026, 0, 25),  // 2025 Week 12
-            Date.UTC(2026, 1, 1),   // 2025 Week 13
-            Date.UTC(2026, 1, 8),   // 2025 Week 14
-            Date.UTC(2026, 1, 15),   // 2025 Week 15
-            Date.UTC(2026, 1, 22),   // 2025 Week 16
-            Date.UTC(2026, 2, 1),   // 2025 Week 17
-            Date.UTC(2026, 2, 8),   // 2025 Week 18
+            Date.UTC(2026, 10, 3),  // 2026 Week 1
+            Date.UTC(2026, 10, 10),  // 2026 Week 2
+            Date.UTC(2026, 10, 17),  // 2026 Week 3
+            Date.UTC(2026, 10, 24),  // 2026 Week 4
+            Date.UTC(2026, 10, 31),  // 2026 Week 5
+            Date.UTC(2026, 11, 7),  // 2026 Week 6
+            Date.UTC(2026, 11, 14),  // 2026 Week 7
+            Date.UTC(2026, 11, 21),  // 2026 Week 8
+            Date.UTC(2027, 0, 4),   // 2027 Week 9 
+            Date.UTC(2027, 0, 11),  // 2027 Week 10
+            Date.UTC(2027, 0, 18),  // 2027 Week 11
+            Date.UTC(2027, 0, 25),  // 2027 Week 12
+            Date.UTC(2027, 1, 1),   // 2027 Week 13
+            Date.UTC(2027, 1, 8),   // 2027 Week 14
+            Date.UTC(2027, 1, 15),   // 2027 Week 15
+            Date.UTC(2027, 1, 22),   // 2027 Week 16
+            Date.UTC(2027, 2, 1),   // 2027 Week 17
+            Date.UTC(2027, 2, 8),   // 2027 Week 18
         ]
     } else {
         console.log({season})
