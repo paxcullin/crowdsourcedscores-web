@@ -169,8 +169,6 @@ def get_line_queries(event_ids):
         "best_totals": BestLines(event_ids, nba.market_ids([401])),
         "moneylines": CurrentLines(event_ids, nba.market_ids("money-line"), sportsbook.ids("Pinnacle")[0]),
         "best_moneylines": BestLines(event_ids, nba.market_ids([403])),
-        "bookmaker_spreads": CurrentLines(event_ids, nba.market_ids("pointspread"), sportsbook.ids("Bookmaker")[0]),
-        "bookmaker_totals": CurrentLines(event_ids, nba.market_ids("totals"), sportsbook.ids("Bookmaker")[0]),
     }
 
 
@@ -202,14 +200,10 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     best_totals = line_queries.get("best_totals").list() if line_queries.get("best_totals") else []
     moneylines = line_queries.get("moneylines").list() if line_queries.get("moneylines") else []
     best_moneylines = line_queries.get("best_moneylines").list() if line_queries.get("best_moneylines") else []
-    bookmaker_spreads = line_queries.get("bookmaker_spreads").list() if line_queries.get("bookmaker_spreads") else []
-    bookmaker_totals = line_queries.get("bookmaker_totals").list() if line_queries.get("bookmaker_totals") else []
 
     spread = find_first_matching_line(spreads, event_id, home_participant_id)
     if spread is None:
         spread = find_first_matching_line(best_spreads, event_id, home_participant_id)
-    if spread is None:
-        spread = find_first_matching_line(bookmaker_spreads, event_id, home_participant_id)
     if spread is not None:
         odds["spread"] = spread.get("spread / total", "")
         odds["spreadOdds"] = spread.get("american odds", "")
@@ -217,8 +211,6 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     total = find_first_matching_line(totals, event_id)
     if total is None:
         total = find_first_matching_line(best_totals, event_id)
-    if total is None:
-        total = find_first_matching_line(bookmaker_totals, event_id)
     if total is not None:
         odds["total"] = total.get("spread / total", "")
         odds["totalOdds"] = total.get("american odds", "")

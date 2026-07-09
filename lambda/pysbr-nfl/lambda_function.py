@@ -3,11 +3,16 @@ import types
 import http.client
 import urllib.parse
 import urllib.request
+import os
 import json as cgi_json  # Mock for removed cgi module
 
-# Ensure layer is in path
+# Ensure layer is in path without overriding bundled /var/task modules.
 if "/opt/python" not in sys.path:
-    sys.path.insert(0, "/opt/python")
+    sys.path.append("/opt/python")
+
+# Keep function package modules first so local hotfixes override layer copies.
+if "/var/task" in sys.path:
+    sys.path.insert(0, sys.path.pop(sys.path.index("/var/task")))
 
 # Clear urllib3 from cache to force fresh import from layer
 for module_name in list(sys.modules):
@@ -86,13 +91,17 @@ sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
 spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-bestSpreads = BestLines(e.ids(), nfl.market_ids([83]))
+
+try:
+    BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
+except ValueError:
+    BESTLINES_CATID = None
+
+bestSpreads = BestLines(e.ids(), nfl.market_ids([83]), BESTLINES_CATID)
 totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-bestTotals = BestLines(e.ids(), nfl.market_ids([401]))
+bestTotals = BestLines(e.ids(), nfl.market_ids([401]), BESTLINES_CATID)
 moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]))
-bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
-bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
+bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]), BESTLINES_CATID)
 betonlinespreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('BetOnline')[0])
 betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOnline')[0])
 
@@ -416,16 +425,6 @@ def lambda_handler2(ev, context):
                                     gameObject['odds']['spreadOdds'] = spread['american odds']
                             # if line['event id'] == event['event id']:
                             #     print(line, event['event id'])
-                        # print(len(totals.list()))
-                        elif len(bookmakerspreads.list()) > 0:
-                            for bmspread in bookmakerspreads.list():
-                                # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
-                                if (bmspread['event id'] == gameObject['gameId'] and bmspread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = bmspread['spread / total']
-                                    gameOdds['spreadOdds'] = bmspread['american odds']
-                                    gameObject['odds']['spread'] = bmspread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = bmspread['american odds']
 
 
                         if len(totals.list()) > 0:
@@ -444,14 +443,6 @@ def lambda_handler2(ev, context):
                                     gameOdds['totalOdds'] = total['american odds']
                                     gameObject['odds']['total'] = total['spread / total']
                                     gameObject['odds']['totalOdds'] = total['american odds']
-                        elif len(bookmakertotals.list()) > 0:
-                            for bmtotal in bookmakertotals.list():
-                                # print(total)
-                                if (bmtotal['event id'] == game['event id']):
-                                    gameOdds['total'] = bmtotal['spread / total']
-                                    gameOdds['totalOdds'] = bmtotal['american odds']
-                                    gameObject['odds']['total'] = bmtotal['spread / total']
-                                    gameObject['odds']['totalOdds'] = bmtotal['american odds']
                         if len(moneylines.list()) > 0:
                             # print(homeId)
                             for ml in moneylines.list():
