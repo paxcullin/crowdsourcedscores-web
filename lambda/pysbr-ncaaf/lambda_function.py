@@ -484,6 +484,7 @@ def lambda_handler(event, context):
                             gameOdds['spreadOdds'] = spread.get('american odds', '')
                             gameObject['odds']['spread'] = spread.get('spread / total', '')
                             gameObject['odds']['spreadOdds'] = spread.get('american odds', '')
+                            gameObject['odds']['spreadBook'] = spread.get('sportsbook id', '')
                             gameOdds['spreadBook'] = spread.get('sportsbook id', '')
 
                         total = totalByEvent.get(event['event id'])
@@ -492,6 +493,7 @@ def lambda_handler(event, context):
                             gameOdds['totalOdds'] = total.get('american odds', '')
                             gameObject['odds']['total'] = total.get('spread / total', '')
                             gameObject['odds']['totalOdds'] = total.get('american odds', '')
+                            gameObject['odds']['totalBook'] = total.get('sportsbook id', '')
                             gameOdds['totalBook'] = total.get('sportsbook id', '')
 
                         homeML = moneylineByEventAndParticipant.get((event['event id'], gameObject["homeTeam"]["participantId"]))
@@ -639,13 +641,12 @@ def lambda_handler(event, context):
             if len(writeOperations) > 0:
                 writeResult = collection.bulk_write(writeOperations)
                 print('writeResult: ', writeResult)
-                payload="{ \"sport\": \"ncaaf\", \"gameIds\": [" + ",".join(str(x) for x in gameids) + "]}"
-
                 getCurrentLinesResponse = lambda_client.invoke(
                     FunctionName="pysbr-getCurrentLines",
-                    Payload=payload
+                    InvocationType="Event",
+                    Payload=json.dumps({"sport": "ncaaf", "gameIds": gameids})
                 )
-                # print('getCurrentLinesResponse: ', getCurrentLinesResponse)
+                print('queued getCurrentLinesResponse: ', getCurrentLinesResponse)
                 # return {
                 #     'message': 'Schedule updated'
                 # }

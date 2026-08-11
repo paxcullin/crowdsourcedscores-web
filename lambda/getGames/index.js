@@ -399,16 +399,16 @@ exports.handler = async (event, context) => {
                     if (event.sport === 'ncaaf') {
                         //adding premium college user detail to game
                         //in order to present crowd data to the crowd
-                        if (event.collegeBowlPremium === '1') {
-                            game.collegeBowlPremium = true;
-                        } else {
-                            game.collegeBowlPremium = false;
-                        }
+                        // if (event.collegeBowlPremium === '1') {
+                        //     game.collegeBowlPremium = true;
+                        // } else {
+                        //     game.collegeBowlPremium = false;
+                        // }
                     }
                 }
-                if (event.sport === 'ncaaf' && parseInt(event.collegeBowlPremium) !== 1 && !game.results) {
-                    game.crowd = false
-                }
+                // if (event.sport === 'ncaaf' && parseInt(event.collegeBowlPremium) !== 1 && !game.results) {
+                //     game.crowd = false
+                // }
             });
             
             // sorting to bring games without prediction above predicted

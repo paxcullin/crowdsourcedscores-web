@@ -131,8 +131,10 @@ def lambda_handler2(ev, context):
                         "date": datetime.now(),
                         "spread": '',
                         "spreadOdds": '',
+                        "spreadBook": '',
                         "total": '',
                         "totalOdds": '',
+                        "totalBook": '',
                         "awayML": '',
                         "homeML": ''
                     }
@@ -399,97 +401,70 @@ def lambda_handler2(ev, context):
                         gameObject["odds"] = {
                                 "spread": '',
                                 "spreadOdds": '',
+                                "spreadBook": '',
                                 "total": '',
                                 "totalOdds": '',
+                                "totalBook": '',
                                 "history": []
                             }
                         print('pinnacle:', len(spreads.list()), len(totals.list()), len(moneylines.list()))
                         print(len(bestSpreads.list()), len(bestTotals.list()), len(bestMoneylines.list()))
-                        if len(spreads.list()) > 0:
-                            # print(homeId)
-                            for spread in spreads.list():
-                                # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
-                                if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = spread['spread / total']
-                                    gameOdds['spreadOdds'] = spread['american odds']
-                                    gameObject['odds']['spread'] = spread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = spread['american odds']
-                        elif len(bestSpreads.list()) > 0:
-                            for spread in bestSpreads.list():
-                                if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = spread['spread / total']
-                                    gameOdds['spreadOdds'] = spread['american odds']
-                                    gameObject['odds']['spread'] = spread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = spread['american odds']
-                            # if line['event id'] == event['event id']:
-                            #     print(line, event['event id'])
+                        spread = None
+                        for line in spreads.list():
+                            if line['event id'] == game['event id'] and line['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                spread = line
+                                break
+                        if spread is None:
+                            for line in bestSpreads.list():
+                                if line['event id'] == game['event id'] and line['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                    spread = line
+                                    break
+                        if spread is not None:
+                            gameOdds['spread'] = spread['spread / total']
+                            gameOdds['spreadOdds'] = spread['american odds']
+                            gameOdds['spreadBook'] = spread.get('sportsbook id', '')
+                            gameObject['odds']['spread'] = spread['spread / total']
+                            gameObject['odds']['spreadOdds'] = spread['american odds']
+                            gameObject['odds']['spreadBook'] = spread.get('sportsbook id', '')
 
+                        total = None
+                        for line in totals.list():
+                            if line['event id'] == game['event id']:
+                                total = line
+                                break
+                        if total is None:
+                            for line in bestTotals.list():
+                                if line['event id'] == game['event id']:
+                                    total = line
+                                    break
+                        if total is not None:
+                            gameOdds['total'] = total['spread / total']
+                            gameOdds['totalOdds'] = total['american odds']
+                            gameOdds['totalBook'] = total.get('sportsbook id', '')
+                            gameObject['odds']['total'] = total['spread / total']
+                            gameObject['odds']['totalOdds'] = total['american odds']
+                            gameObject['odds']['totalBook'] = total.get('sportsbook id', '')
 
-                        if len(totals.list()) > 0:
-                            # print(homeId)
-                            for total in totals.list():
-                                # print(total)
-                                if (total['event id'] == game['event id']):
-                                    gameOdds['total'] = total['spread / total']
-                                    gameOdds['totalOdds'] = total['american odds']
-                                    gameObject['odds']['total'] = total['spread / total']
-                                    gameObject['odds']['totalOdds'] = total['american odds']
-                        elif len(bestTotals.list()) > 0:
-                            for total in bestTotals.list():
-                                if (total['event id'] == game['event id']):
-                                    gameOdds['total'] = total['spread / total']
-                                    gameOdds['totalOdds'] = total['american odds']
-                                    gameObject['odds']['total'] = total['spread / total']
-                                    gameObject['odds']['totalOdds'] = total['american odds']
-                        if len(moneylines.list()) > 0:
-                            # print(homeId)
-                            for ml in moneylines.list():
-                                # print(total)
-                                if (ml['event id'] == game['event id']):
-                                    if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                        gameOdds['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                    else:
-                                        gameOdds['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-
-                            # if line['event id'] == event['event id']:
-                            #     print(line, event['event id'])
-                        elif len(bestMoneylines.list()) > 0:
-                            for ml in bestMoneylines.list():
-                                if (ml['event id'] == game['event id']):
-                                    if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                        gameOdds['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                    else:
-                                        gameOdds['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
+                        moneylineLines = []
+                        for line in moneylines.list():
+                            if line['event id'] == game['event id']:
+                                moneylineLines.append(line)
+                        if not moneylineLines:
+                            for line in bestMoneylines.list():
+                                if line['event id'] == game['event id']:
+                                    moneylineLines.append(line)
+                        for ml in moneylineLines:
+                            mlValue = {
+                                "decimal": ml['decimal odds'],
+                                "american": ml['american odds'],
+                                "sportsbook": ml.get('sportsbook id', '')
+                            }
+                            if ml['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                gameOdds['homeML'] = mlValue
+                                gameObject['odds']['homeML'] = mlValue
+                            else:
+                                gameOdds['awayML'] = mlValue
+                                gameObject['odds']['awayML'] = mlValue
                         if (gameResult):
                             # print('has gameResult', gameResult['gameId'])
                             # print('odds attribute', list(gameResult))

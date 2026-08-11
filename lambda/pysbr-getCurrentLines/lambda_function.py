@@ -117,6 +117,36 @@ def lambda_handler(e, context):
             #         }
             #     }
             # ))
+            gameObject = collection.find_one(
+                    {'gameId': gameid}
+            )
+            if (gameObject is not None and gameObject.get('odds') is not None):
+                odds = gameObject['odds']
+                if (odds.get('spread') == ""):
+                    odds["spread"] = lines["spread"][0]["spread / total"] if len(lines["spread"]) > 0 else ""
+                    odds["spreadOdds"] = lines["spread"][0]["american odds"] if len(lines["spread"]) > 0 else ""
+                    odds["spreadBook"] = lines["spread"][0]["sportsbook id"] if len(lines["spread"]) > 0 else ""
+                if (odds.get('total') == ""):
+                    odds["total"] = lines["total"][0]["spread / total"] if len(lines["total"]) > 0 else ""
+                    odds["totalOdds"] = lines["total"][0]["american odds"] if len(lines["total"]) > 0 else ""
+                    odds["totalBook"] = lines["total"][0]["sportsbook id"] if len(lines["total"]) > 0 else ""
+                collection.update_one(
+                    {
+                        'gameId': gameid
+                    },
+                    {
+                        '$set': {
+                            'odds': odds
+                        }
+                    }
+                )
+                # if (gameObject['currentLines'] != lines):
+                #     print('lines changed for gameId: ', gameid)
+                #     sns.publish(
+                #         TopicArn=Config.snsTopic,
+                #         Message=f'Lines changed for gameId: {gameid}',
+                #         Subject='Lines Changed'
+                #     )
             if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
                 updateResponse = collection.update_one(
                     {

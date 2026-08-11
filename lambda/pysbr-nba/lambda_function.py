@@ -186,8 +186,10 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     odds = {
         "spread": "",
         "spreadOdds": "",
+        "spreadBook": "",
         "total": "",
         "totalOdds": "",
+        "totalBook": "",
         "history": [],
     }
 
@@ -207,6 +209,7 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     if spread is not None:
         odds["spread"] = spread.get("spread / total", "")
         odds["spreadOdds"] = spread.get("american odds", "")
+        odds["spreadBook"] = spread.get("sportsbook id", "")
 
     total = find_first_matching_line(totals, event_id)
     if total is None:
@@ -214,6 +217,7 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     if total is not None:
         odds["total"] = total.get("spread / total", "")
         odds["totalOdds"] = total.get("american odds", "")
+        odds["totalBook"] = total.get("sportsbook id", "")
 
     moneyline_entries = [line for line in moneylines if line.get("event id") == event_id]
     if not moneyline_entries:
@@ -222,6 +226,7 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
         line_value = {
             "decimal": line.get("decimal odds", ""),
             "american": line.get("american odds", ""),
+            "sportsbook": line.get("sportsbook id", ""),
         }
         if line.get("participant id") == home_participant_id:
             odds["homeML"] = line_value
@@ -232,8 +237,10 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
         "date": datetime.now(timezone.utc),
         "spread": odds.get("spread", ""),
         "spreadOdds": odds.get("spreadOdds", ""),
+        "spreadBook": odds.get("spreadBook", ""),
         "total": odds.get("total", ""),
         "totalOdds": odds.get("totalOdds", ""),
+        "totalBook": odds.get("totalBook", ""),
         "awayML": odds.get("awayML", ""),
         "homeML": odds.get("homeML", ""),
     }
