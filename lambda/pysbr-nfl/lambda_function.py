@@ -92,16 +92,11 @@ e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
 spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
 
-try:
-    BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
-except ValueError:
-    BESTLINES_CATID = None
-
-bestSpreads = BestLines(e.ids(), nfl.market_ids([83]), BESTLINES_CATID)
+bestSpreads = BestLines(e.ids(), nfl.market_ids([83]))
 totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-bestTotals = BestLines(e.ids(), nfl.market_ids([401]), BESTLINES_CATID)
+bestTotals = BestLines(e.ids(), nfl.market_ids([401]))
 moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]), BESTLINES_CATID)
+bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]))
 betonlinespreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('BetOnline')[0])
 betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOnline')[0])
 
