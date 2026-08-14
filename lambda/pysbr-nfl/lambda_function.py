@@ -4,6 +4,7 @@ import http.client
 import urllib.parse
 import urllib.request
 import os
+import inspect
 import json as cgi_json  # Mock for removed cgi module
 
 # Ensure layer is in path without overriding bundled /var/task modules.
@@ -90,35 +91,151 @@ nfl = NFL()
 sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
 
-bestSpreads = BestLines(e.ids(), nfl.market_ids([83]))
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-bestTotals = BestLines(e.ids(), nfl.market_ids([401]))
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]))
-betonlinespreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('BetOnline')[0])
-betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOnline')[0])
+try:
+    BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
+except ValueError:
+    BESTLINES_CATID = None
+print ('e.ids:', e.ids(), nfl.market_ids('pointspread'), BESTLINES_CATID)
 
+bestspreads = BestLines(e.ids(), nfl.market_ids('pointspread'), BESTLINES_CATID)
+besttotals = BestLines(e.ids(), nfl.market_ids('totals'), BESTLINES_CATID)
+bestmoneylines = BestLines(e.ids(), nfl.market_ids('money-line'), BESTLINES_CATID)
+
+# Keep compatibility with older variable names used throughout this handler.
+pinnaclespreads = bestspreads
+pinnacletotals = besttotals
+pinnaclemoneylines = bestmoneylines
+spreads = bestspreads
+totals = besttotals
+moneylines = bestmoneylines
+bestSpreads = bestspreads
+bestTotals = besttotals
+bestMoneylines = bestmoneylines
+# fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+# fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+# fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
+
+
 
 lambda_client = boto3.client('lambda')
 gameWeekResponse = lambda_client.invoke(
-    FunctionName="getGameWeek"
+    FunctionName="getGameWeek",
+    Payload=json.dumps({'sport': 'nfl'})
 )
 gameWeek = json.load(gameWeekResponse.get('Payload'))
-print('gameWeek: ', gameWeek)
+DEBUG_PYSBR = os.getenv('DEBUG_PYSBR', 'false').lower() in ('1', 'true', 'yes', 'y', 'on')
+
+
+def _debug_log(*args):
+    if DEBUG_PYSBR:
+        print(*args)
+
+
+def _debug_sample(label, rows):
+    if not DEBUG_PYSBR or not rows:
+        return
+    sample = rows[0]
+    if not isinstance(sample, dict):
+        _debug_log(label, 'sample:', sample)
+        return
+
+    line_data = sample.get('line') if isinstance(sample.get('line'), dict) else sample
+    view = {
+        'event id': sample.get('event id', sample.get('eid', line_data.get('event id'))),
+        'market id': sample.get('market id', sample.get('mtid', line_data.get('market id'))),
+        'participant id': sample.get('participant id', sample.get('partid', line_data.get('participant id'))),
+        'spread / total': line_data.get('spread / total', line_data.get('adj', '')),
+        'american odds': line_data.get('american odds', line_data.get('ap', '')),
+        'decimal odds': line_data.get('decimal odds', line_data.get('pri', '')),
+    }
+    _debug_log(label, 'sample:', view)
+
+
+def _safe_int(value):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _extract_consensus_line(consensus_row):
+    line_data = consensus_row.get('line') if isinstance(consensus_row, dict) else None
+    if not isinstance(line_data, dict):
+        line_data = consensus_row if isinstance(consensus_row, dict) else {}
+
+    return {
+        'marketId': _safe_int(consensus_row.get('market id', line_data.get('market id'))),
+        'participantId': _safe_int(consensus_row.get('participant id', line_data.get('participant id'))),
+        'spreadOrTotal': line_data.get('spread / total', ''),
+        'americanOdds': line_data.get('american odds', ''),
+        'decimalOdds': line_data.get('decimal odds', ''),
+    }
 
 
 def lambda_handler2(ev, context):
     print('event: ', ev, 'context: ', context, 'len(e.list()): ', len(e.list()))
+    eventsList = e.list()
+    print('length', len(eventsList))
     # print(*e.list(), sep = ",")
     writeOperations = []
     gameids = []
-    if len(e.list()) > 0:
+    consensusByEvent = {}
+    if len(eventsList) > 0:
         try:
-            for game in e.list():
-                # print('game: ', game['event id'], datetime.strptime(game["datetime"], '%Y-%m-%dT%H:%M:%S%z'))
+            spreadLines = pinnaclespreads.list()
+            _debug_log('DEBUG_PYSBR current lines count spread:', len(spreadLines))
+            _debug_sample('DEBUG_PYSBR current spread', spreadLines)
+            if len(spreadLines) == 0:
+                spreadLines = bestspreads.list()
+                _debug_log('DEBUG_PYSBR best lines fallback spread count:', len(spreadLines))
+                _debug_sample('DEBUG_PYSBR best spread', spreadLines)
+
+            totalLines = pinnacletotals.list()
+            _debug_log('DEBUG_PYSBR current lines count total:', len(totalLines))
+            _debug_sample('DEBUG_PYSBR current total', totalLines)
+            if len(totalLines) == 0:
+                totalLines = besttotals.list()
+                _debug_log('DEBUG_PYSBR best lines fallback total count:', len(totalLines))
+                _debug_sample('DEBUG_PYSBR best total', totalLines)
+
+            moneylineLines = pinnaclemoneylines.list()
+            _debug_log('DEBUG_PYSBR current lines count moneyline:', len(moneylineLines))
+            _debug_sample('DEBUG_PYSBR current moneyline', moneylineLines)
+            if len(moneylineLines) == 0:
+                moneylineLines = bestmoneylines.list()
+                _debug_log('DEBUG_PYSBR best lines fallback moneyline count:', len(moneylineLines))
+                _debug_sample('DEBUG_PYSBR best moneyline', moneylineLines)
+
+            if DEBUG_PYSBR:
+                try:
+                    _debug_log('DEBUG_PYSBR raw events keys:', list(e.raw().keys()))
+                    _debug_log('DEBUG_PYSBR raw current spread keys:', list(pinnaclespreads.raw().keys()))
+                    _debug_log('DEBUG_PYSBR raw best spread keys:', list(bestspreads.raw().keys()))
+                except Exception as rawError:
+                    _debug_log('DEBUG_PYSBR unable to inspect raw query payloads:', rawError)
+
+            spreadByEventAndParticipant = {}
+            for spreadLine in spreadLines:
+                key = (spreadLine.get('event id'), spreadLine.get('participant id'))
+                if key not in spreadByEventAndParticipant:
+                    spreadByEventAndParticipant[key] = spreadLine
+
+            totalByEvent = {}
+            for totalLine in totalLines:
+                eventIdKey = totalLine.get('event id')
+                if eventIdKey not in totalByEvent:
+                    totalByEvent[eventIdKey] = totalLine
+
+            moneylineByEventAndParticipant = {}
+            for mlLine in moneylineLines:
+                key = (mlLine.get('event id'), mlLine.get('participant id'))
+                if key not in moneylineByEventAndParticipant:
+                    moneylineByEventAndParticipant[key] = mlLine
+
+            for game in eventsList:
+                # print('game: ', game)
                 if game["event group"] != None:
                     homeId = ''
                     awayId = ''
@@ -126,10 +243,8 @@ def lambda_handler2(ev, context):
                         "date": datetime.now(),
                         "spread": '',
                         "spreadOdds": '',
-                        "spreadBook": '',
                         "total": '',
                         "totalOdds": '',
-                        "totalBook": '',
                         "awayML": '',
                         "homeML": ''
                     }
@@ -147,7 +262,7 @@ def lambda_handler2(ev, context):
                         "total": '',
                         "totalOdds": ''
                     }
-                    betonlineodds = {
+                    fivedimesodds = {
                         "date": datetime.now(),
                         "spread": '',
                         "spreadOdds": '',
@@ -155,7 +270,7 @@ def lambda_handler2(ev, context):
                         "totalOdds": ''
                     }
                     # try:
-                        # print(event)
+                        # print(game)
 
                     gameObject = {
                             "year": 2026,
