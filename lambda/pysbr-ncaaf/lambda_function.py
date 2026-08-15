@@ -90,9 +90,6 @@ sb = Sportsbook()
 preferredBooks = ['Pinnacle', 'Bookmaker', 'BetOnline']
 preferredBookIds = sb.ids(preferredBooks)
 e = EventsByDateRange(ncaaf.league_id, startDate,endDate)
-pinnaclespreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), preferredBookIds)
-pinnacletotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), preferredBookIds)
-pinnaclemoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), preferredBookIds)
 
 try:
     BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
@@ -173,34 +170,21 @@ def lambda_handler(event, context):
     consensusByEvent = {}
     if len(eventsList) > 0:
         try:
-            spreadLines = pinnaclespreads.list()
-            _debug_log('DEBUG_PYSBR current lines count spread:', len(spreadLines))
-            _debug_sample('DEBUG_PYSBR current spread', spreadLines)
-            if len(spreadLines) == 0:
-                spreadLines = bestspreads.list()
-                _debug_log('DEBUG_PYSBR best lines fallback spread count:', len(spreadLines))
-                _debug_sample('DEBUG_PYSBR best spread', spreadLines)
+            spreadLines = bestspreads.list()
+            _debug_log('DEBUG_PYSBR best lines spread count:', len(spreadLines))
+            _debug_sample('DEBUG_PYSBR best spread', spreadLines)
 
-            totalLines = pinnacletotals.list()
-            _debug_log('DEBUG_PYSBR current lines count total:', len(totalLines))
-            _debug_sample('DEBUG_PYSBR current total', totalLines)
-            if len(totalLines) == 0:
-                totalLines = besttotals.list()
-                _debug_log('DEBUG_PYSBR best lines fallback total count:', len(totalLines))
-                _debug_sample('DEBUG_PYSBR best total', totalLines)
+            totalLines = besttotals.list()
+            _debug_log('DEBUG_PYSBR best lines total count:', len(totalLines))
+            _debug_sample('DEBUG_PYSBR best total', totalLines)
 
-            moneylineLines = pinnaclemoneylines.list()
-            _debug_log('DEBUG_PYSBR current lines count moneyline:', len(moneylineLines))
-            _debug_sample('DEBUG_PYSBR current moneyline', moneylineLines)
-            if len(moneylineLines) == 0:
-                moneylineLines = bestmoneylines.list()
-                _debug_log('DEBUG_PYSBR best lines fallback moneyline count:', len(moneylineLines))
-                _debug_sample('DEBUG_PYSBR best moneyline', moneylineLines)
+            moneylineLines = bestmoneylines.list()
+            _debug_log('DEBUG_PYSBR best lines moneyline count:', len(moneylineLines))
+            _debug_sample('DEBUG_PYSBR best moneyline', moneylineLines)
 
             if DEBUG_PYSBR:
                 try:
                     _debug_log('DEBUG_PYSBR raw events keys:', list(e.raw().keys()))
-                    _debug_log('DEBUG_PYSBR raw current spread keys:', list(pinnaclespreads.raw().keys()))
                     _debug_log('DEBUG_PYSBR raw best spread keys:', list(bestspreads.raw().keys()))
                 except Exception as rawError:
                     _debug_log('DEBUG_PYSBR unable to inspect raw query payloads:', rawError)

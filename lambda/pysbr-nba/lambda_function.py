@@ -163,11 +163,11 @@ def get_line_queries(event_ids):
         return {}
 
     return {
-        "spreads": CurrentLines(event_ids, nba.market_ids("pointspread"), sportsbook.ids("Pinnacle")[0]),
+        "spreads": BestLines(event_ids, nba.market_ids("pointspread")),
         "best_spreads": BestLines(event_ids, nba.market_ids([83])),
-        "totals": CurrentLines(event_ids, nba.market_ids("totals"), sportsbook.ids("Pinnacle")[0]),
+        "totals": BestLines(event_ids, nba.market_ids("totals")),
         "best_totals": BestLines(event_ids, nba.market_ids([401])),
-        "moneylines": CurrentLines(event_ids, nba.market_ids("money-line"), sportsbook.ids("Pinnacle")[0]),
+        "moneylines": BestLines(event_ids, nba.market_ids("money-line")),
         "best_moneylines": BestLines(event_ids, nba.market_ids([403])),
     }
 

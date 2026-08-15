@@ -1,10 +1,11 @@
 # pysbr-getCurrentLines lambda function
 
-from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF, NBA
+from pysbr import NFL, Sportsbook, BestLines, NCAAB, NCAAF, NBA
 from pysbr.config.config import Config
 from datetime import datetime, timedelta, date
 from pymongo import MongoClient, InsertOne, UpdateOne
 import boto3
+import os
 
 sns = boto3.client('sns')
 
@@ -52,12 +53,14 @@ def get_lines(gameid, sport):
         market = nba
     try:
         books = get_sportsbook_ids()
-        sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
-        sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+        try:
+            BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
+        except ValueError:
+            BESTLINES_CATID = None
 
-        clspread = CurrentLines([gameid], market.market_ids('pointspread'), sbids)
-        cltotal = CurrentLines([gameid], market.market_ids('totals'), sbids)
-        clmoneyline = CurrentLines([gameid], market.market_ids('money-line'), sbids)
+        clspread = BestLines([gameid], market.market_ids('pointspread'), BESTLINES_CATID)
+        cltotal = BestLines([gameid], market.market_ids('totals'), BESTLINES_CATID)
+        clmoneyline = BestLines([gameid], market.market_ids('money-line'), BESTLINES_CATID)
 
         lines = {
             'spread': [],
