@@ -1160,8 +1160,8 @@ exports.handler = (event, context, callback) => {
                 weekStartDates = [
                     Date.UTC(2026, 5, 1),  // super bowl week
                     Date.UTC(2026, 7, 3),  // 2026 Preseason Week 1
-                    Date.UTC(2026, 7, 13),  // 2026 Preseason Week 2
-                    Date.UTC(2026, 7, 20),  // 2026 Preseason Week 3
+                    Date.UTC(2026, 7, 16),  // 2026 Preseason Week 2
+                    Date.UTC(2026, 7, 23),  // 2026 Preseason Week 3
                     ];
                     break;
             case 'reg':
