@@ -17,112 +17,126 @@ exports.handler = async (event, context, callback) => {
         const eventPeriodValue = event[periodField];
 
         async function callCalculateIndividualCrowdPerformanceOverall(results, sport, year, season) {
-
-            // end results.forEach aggregate result
-            let filteredResults = results.filter((result) => {
-                return (result._id[periodField] === eventPeriodValue && result._id.season === event.season)
-            })
-            
-            filteredResults = filteredResults.sort((a, b) => {
-                let returnValue = (a.predictionScore > b.predictionScore) ? -1 : 1;
-                return returnValue
-            })
-            // console.log({ filteredResults })
-            filteredResults.forEach(result => {
-                let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
-                let starsNet = result.atsStarsNet + result.totalStarsNet;
-                let user = { 
-                    username: result._id.userId,
-                    preferred_username: result._id.preferred_username ? result._id.preferred_username : '',
-                    winner: {
-                        correct: result.suCorrect,
-                        push: result.suPush,
-                        bullseyes: result.suBullseyes
-                    },
-                    spread: {
-                        correct: result.atsCorrect,
-                        push: result.atsPush,
-                        bullseyes: result.atsBullseyes
-                    },
-                    total: {
-                        correct: result.totalCorrect,
-                        push: result.totalPush,
-                        bullseyes: result.totalBullseyes
-                    },
-                    stars: {
-                        wagered: starsWagered,
-                        net: starsNet,
-                        roi: starsNet/starsWagered
-                    },
-                    wagers: {
-                        wagered: result.currencyWagered,
-                        net: result.currencyNet,
-                        roi: parseFloat((((result.currencyNet-result.currencyWagered) / result.currencyWagered)*100).toFixed(2))
-                    },
-                    predictionScore: result.predictionScore,
-                    totalPredictions: result.totalPredictions
-                }
-                weeklyUserArray.push(user)
-            })
-            console.log({ weeklyUserArray: weeklyUserArray.length })
-            if (weeklyUserArray.length > 0) {
-                let leaderboardCriteria = {
-                year: year,
-                sport: event.sport,
-                season: event.season,
-                [periodField]: eventPeriodValue
-                }
-                let leaderboardUpdate = {
-                    $set: {
-                        "weekly.users": weeklyUserArray
-                    }
-                }
-                console.log({ leaderboardCriteria, leaderboardUpdate })
-                // console.log({filteredResults: JSON.stringify(filteredResults)});
-                // console.log('weeklyUserArray', leaderboardCriteria, weeklyUserArray)
-                queryPromises.push(db.collection('leaderboards').updateOne(leaderboardCriteria, leaderboardUpdate, { upsert: true }))
-            }
-            //console.log({queryPromises})
-            let queryPromisesResult = await Promise.all(queryPromises);
-                console.log('callCalculateIndividualCrowdPerformanceOverall called')
-                const downstreamPayload = {
-                    message: 'calculateIndividualUserPerformanceOverall completed',
-                    sport,
-                    year,
-                    season
-                };
-                if (eventPeriodValue !== undefined && eventPeriodValue !== null) {
-                    downstreamPayload[periodField] = eventPeriodValue;
-                }
-
-                var calculateIndividualUserPerformanceOverallParams = {
-                    FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
-                    InvocationType: 'Event',
-                    LogType: 'None',
-                    Payload: JSON.stringify(downstreamPayload)
-                };
-
-                const lambdaParams = {
-                    FunctionName: 'getGameWeek', // the lambda function we are going to invoke
-                    InvocationType: 'RequestResponse',
-                    LogType: 'None',
-                    Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
-                }
-
-                const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams, function(err, data) {
-                    console.log('err', err);
-                    console.log('data', data);
-                    if (err) {
-                        return { status: 500, message: 'addToGroupError', error: err };
-                    } else {
-                        return { status: 200, message: results.length + "Users updated" };
-                    }
+            try {   
+                // end results.forEach aggregate result
+                let filteredResults = results.filter((result) => {
+                    return (result._id[periodField] === eventPeriodValue && result._id.season === event.season)
                 })
                 
-                const { Payload, LogResult } = await lambda.send(command);
-                console.log('Payload', Payload);
-                console.log('LogResult', LogResult);
-                return { status: 200, message: results.length + "Users updated" };
+                filteredResults = filteredResults.sort((a, b) => {
+                    let returnValue = (a.predictionScore > b.predictionScore) ? -1 : 1;
+                    return returnValue
+                })
+                // console.log({ filteredResults })
+                filteredResults.forEach(result => {
+                    let starsWagered = result.atsStarsWagered + result.totalStarsWagered;
+                    let starsNet = result.atsStarsNet + result.totalStarsNet;
+                    let user = { 
+                        username: result._id.userId,
+                        preferred_username: result._id.preferred_username ? result._id.preferred_username : '',
+                        winner: {
+                            correct: result.suCorrect,
+                            push: result.suPush,
+                            bullseyes: result.suBullseyes
+                        },
+                        spread: {
+                            correct: result.atsCorrect,
+                            push: result.atsPush,
+                            bullseyes: result.atsBullseyes
+                        },
+                        total: {
+                            correct: result.totalCorrect,
+                            push: result.totalPush,
+                            bullseyes: result.totalBullseyes
+                        },
+                        stars: {
+                            wagered: starsWagered,
+                            net: starsNet,
+                            roi: starsNet/starsWagered
+                        },
+                        wagers: {
+                            wagered: result.currencyWagered,
+                            net: result.currencyNet,
+                            roi: parseFloat((((result.currencyNet-result.currencyWagered) / result.currencyWagered)*100).toFixed(2))
+                        },
+                        predictionScore: result.predictionScore,
+                        totalPredictions: result.totalPredictions
+                    }
+                    weeklyUserArray.push(user)
+                })
+                console.log({ weeklyUserArray: weeklyUserArray.length })
+                if (weeklyUserArray.length > 0) {
+                    let leaderboardCriteria = {
+                    year: year,
+                    sport: event.sport,
+                    season: event.season,
+                    [periodField]: eventPeriodValue
+                    }
+                    let leaderboardUpdate = {
+                        $set: {
+                            "weekly.users": weeklyUserArray
+                        }
+                    }
+                    console.log({ leaderboardCriteria, leaderboardUpdate })
+                    // console.log({filteredResults: JSON.stringify(filteredResults)});
+                    // console.log('weeklyUserArray', leaderboardCriteria, weeklyUserArray)
+                    queryPromises.push({updateOne: {filter: leaderboardCriteria, update: leaderboardUpdate, upsert: true}})
+                }
+                console.log({queryPromises: queryPromises.length})
+                if (queryPromises.length === 0) {
+                    console.log('No leaderboard bulk write operations to run');
+                    return { status: 200, message: 'No leaderboard users to update', bulkWriteResult: null };
+                }
+                const queryPromisesResult = await db.collection('leaderboards').bulkWrite(queryPromises);
+                console.log({queryPromisesResult}) 
+
+                    console.log('callCalculateIndividualCrowdPerformanceOverall called')
+                    const downstreamPayload = {
+                        message: 'calculateIndividualUserPerformanceOverall completed',
+                        sport,
+                        year,
+                        season
+                    };
+                    if (eventPeriodValue !== undefined && eventPeriodValue !== null) {
+                        downstreamPayload[periodField] = eventPeriodValue;
+                    }
+
+                    var calculateIndividualUserPerformanceOverallParams = {
+                        FunctionName: 'calculateIndividualUserPerformanceOverall', // the lambda function we are going to invoke
+                        InvocationType: 'Event',
+                        LogType: 'None',
+                        Payload: JSON.stringify(downstreamPayload)
+                    };
+
+                    const lambdaParams = {
+                        FunctionName: 'getGameWeek', // the lambda function we are going to invoke
+                        InvocationType: 'RequestResponse',
+                        LogType: 'None',
+                        Payload: `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
+                    }
+
+                    const command = new InvokeCommand(calculateIndividualUserPerformanceOverallParams, function(err, data) {
+                        console.log('err', err);
+                        console.log('data', data);
+                        if (err) {
+                            return { status: 500, message: 'addToGroupError', error: err };
+                        } else {
+                            return { status: 200, message: results.length + "Users updated" };
+                        }
+                    })
+                    
+                    const { Payload, LogResult } = await lambda.send(command);
+                    console.log('Payload', Payload);
+                    console.log('LogResult', LogResult);
+                    return {
+                        status: 200,
+                        message: results.length + "Users updated",
+                        bulkWriteResult: queryPromisesResult
+                    };
+                } catch (err) {
+                    console.log('err', err, err.errorMessage);
+                    return { status: 500, message: 'Error calculating individual user performance overall', error: err };
+                }
         }
         
         function calculatePercentage(totalCorrect, totalPushes, totalGames) {
@@ -302,7 +316,7 @@ exports.handler = async (event, context, callback) => {
                     // signifies that the user's weekly results were updated
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
+                        return await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                     }
                 } else if (updateResponse.acknowledged === true && updateResponse.modifiedCount === 0) {
                     // signifies that the user's weekly results were not updated
@@ -375,14 +389,14 @@ exports.handler = async (event, context, callback) => {
                         console.log(318, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
+                            return await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                         }
                     } else {
                         //console.log("no push update for ", result._id.userId)
                         console.log(324, { resultsArrayLength });
                         resultsArrayLength--;
                         if (resultsArrayLength === 0) {
-                            callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
+                            return await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                         }
                     }
                 } else {
@@ -390,7 +404,7 @@ exports.handler = async (event, context, callback) => {
                     console.log(331, { resultsArrayLength });
                     resultsArrayLength--;
                     if (resultsArrayLength === 0) {
-                        callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
+                        return await callCalculateIndividualCrowdPerformanceOverall(results, event.sport, year, event.season)
                     }
                 }
             }
