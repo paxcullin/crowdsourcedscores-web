@@ -346,7 +346,7 @@ def lambda_handler(event, context):
         week_info = week_cache[game_date]
         game_week = week_info.get("week")
         season = infer_season(game, event_datetime)
-        year = event_datetime.year
+        year = event_datetime.year if event_datetime.month < 8 else event_datetime.year + 1
 
         home_team_object = build_team_object(home_team)
         away_team_object = build_team_object(away_team)
