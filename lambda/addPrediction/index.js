@@ -28,28 +28,34 @@ const requestSchema = {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
         "gameWeek": {"type":"integer"},
-        "awayTeam": {
+        "prediction": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                "awayTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "homeTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                }
             },
-            "required": ["code", "fullName", "shortName", "score"]
-        },
-        "homeTeam": {
-            "type": "object",
-            "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+            "required": ["awayTeam", "homeTeam"]
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 const requestSchemaNCAAM = {
     "type": "object",
@@ -77,18 +83,10 @@ const requestSchemaNCAAM = {
                         "shortName": {"type": "string"},
                         "score": {"type": "integer", "minimum": 0, "maximum": 150}
                     },
-                    "required": ["code", "fullName", "shortName", "score"]
-                },
-                "odds": {
-                    "type": "object",
-                    "properties": {
-                        "spread": {"type": "number"},
-                        "total": {"type": "number"}
-                    },
-                    "required": ["spread", "total"]
-                },
-                "required": ["awayTeam", "homeTeam", "odds"]
-            }
+                "required": ["code", "fullName", "shortName", "score"]
+                }
+            },
+            "required": ["awayTeam", "homeTeam"]
         }
     },
     "required": ["gameId", "prediction"]
