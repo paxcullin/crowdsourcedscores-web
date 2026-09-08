@@ -32,7 +32,7 @@ exports.handler = (event, context, callback) => {
 
             2026: {
                 pre: {
-                    start: new Date('2026-06-01'),
+                    start: new Date('2026-07-01'),
                     weeks: [
                         {week: 1,
                         weekName: 'HOF'},
@@ -49,7 +49,7 @@ exports.handler = (event, context, callback) => {
                         ]
                 },
                 reg: {
-                    start: new Date('2026-08-27'),
+                    start: new Date('2026-08-31'),
                     weeks: [
                         {week: 1,
                             weekName: 1},
@@ -1162,11 +1162,12 @@ exports.handler = (event, context, callback) => {
                     Date.UTC(2026, 7, 3),  // 2026 Preseason Week 1
                     Date.UTC(2026, 7, 18),  // 2026 Preseason Week 2
                     Date.UTC(2026, 7, 25),  // 2026 Preseason Week 3
+                    Date.UTC(2026, 8, 1),  // 2026 Preseason Week 4
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2026, 7, 25),  // 2026 Week 1
+                    Date.UTC(2026, 8, 1),  // 2026 Week 1
                     Date.UTC(2026, 8, 10),  // 2026 Week 2
                     Date.UTC(2026, 8, 17),  // 2026 Week 3
                     Date.UTC(2026, 8, 24),  // 2026 Week 4
