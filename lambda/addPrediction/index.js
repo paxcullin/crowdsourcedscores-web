@@ -227,7 +227,7 @@ exports.handler = async (event, context) => {
         succeeded: true
     };
 
-    const {prediction, userId, sport, year, gameId, gameWeek, season} = event;
+    const {prediction, userId, sport, year, gameId, gameWeek, season, preferred_username} = event;
     
     if (!userId || userId === "") {
         return { message: 'no userId', succeeded: false}
@@ -309,6 +309,7 @@ exports.handler = async (event, context) => {
                 prediction.gameWeek = parseInt(gameWeek, 10);
             }
             prediction.userId = userId;
+            prediction.preferred_username = preferred_username;
             prediction.gameId = parseInt(gameId);
             prediction.year = parseInt(year);
             prediction.sport = sport;
@@ -349,6 +350,7 @@ exports.handler = async (event, context) => {
                 } else if (event.sport === 'nba') {
                     predictionCollection = 'predictions-nba';
                 }
+                console.log('prediction :>> ', prediction);
                 const respObj = await db.collection(predictionCollection).updateOne(existingObjQuery, {$set: prediction}, {upsert: true});
                 // var respObj = JSON.parse(dbRes);
     
