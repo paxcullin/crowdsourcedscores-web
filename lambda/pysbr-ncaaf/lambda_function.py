@@ -6,13 +6,15 @@ import urllib.request
 import os
 import json as cgi_json  # Mock for removed cgi module
 
-# Ensure layer is in path without overriding bundled /var/task modules.
-if "/opt/python" not in sys.path:
-    sys.path.append("/opt/python")
+# Ensure the shared layer is used before any bundled /var/task copy.
+if "/opt/python" in sys.path:
+    sys.path.remove("/opt/python")
+sys.path.insert(0, "/opt/python")
 
-# Keep function package modules first so local hotfixes override layer copies.
 if "/var/task" in sys.path:
-    sys.path.insert(0, sys.path.pop(sys.path.index("/var/task")))
+    sys.path.remove("/var/task")
+
+from pysbr import BestLines, ConsensusHistory, EventsByDateRange, NCAAF, Sportsbook
 
 # Clear urllib3 from cache to force fresh import from layer
 for module_name in list(sys.modules):
@@ -66,17 +68,21 @@ if "cgi" not in sys.modules:
     cgi_module.escape = lambda x: x  # Basic escape function stub
     sys.modules["cgi"] = cgi_module
 
-from pysbr import *
-from pysbr.config.config import Config
 from datetime import datetime, date, timedelta
 from pymongo import MongoClient, UpdateOne
 import boto3, json
 
 sns = boto3.client('sns')
 
+def get_mongo_credentials():
+    client = boto3.client('secretsmanager')
+    response = client.get_secret_value(SecretId='Mongo_Atlas_Secret')
+    secret = response['SecretString']
+    return json.loads(secret)
 
 
-client = MongoClient("mongodb+srv://" +  str(Config.username) + ":" + str(Config.password) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
+mongo_credentials = get_mongo_credentials()
+client = MongoClient("mongodb+srv://" +  str(mongo_credentials['username']) + ":" + str(mongo_credentials['password']) + "@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority")
 db = client['pcsm']
 collection = db['games-ncaaf']
 
