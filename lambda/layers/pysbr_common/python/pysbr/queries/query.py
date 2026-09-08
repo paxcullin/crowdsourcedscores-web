@@ -9,10 +9,15 @@ from functools import wraps
 from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
 # import pandas as pd
-from fake_useragent import UserAgent
 
 import pysbr.utils as utils
 from pysbr.config.config import Config
+
+DEFAULT_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/126.0.0.0 Safari/537.36"
+)
 
 
 class Query:
@@ -35,9 +40,8 @@ class Query:
         self._arguments = utils.load_yaml((utils.build_yaml_path("arguments")))
         self._fields = utils.load_yaml((utils.build_yaml_path("fields")))
 
-        ua = UserAgent()
         headers = {
-            "User-Agent": ua.random,
+            "User-Agent": DEFAULT_USER_AGENT,
             "Content-Type": "application/json",
             "Accept": "application/json, text/plain, */*",
             "Accept-Encoding": "gzip, deflate, br",
