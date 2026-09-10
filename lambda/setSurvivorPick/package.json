@@ -1,0 +1,13 @@
+{
+  "name": "setSurvivorPick",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^7.6.0"
+  },
+  "scripts": {
+    "package": "zip -r setSurvivorPick.zip .",
+    "upload": "aws lambda update-function-code --function-name setSurvivorPick --zip-file fileb://setSurvivorPick.zip --publish"
+  }
+}

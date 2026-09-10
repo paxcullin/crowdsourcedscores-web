@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^3.0.5"
+    "mongodb": "^7.2.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r Archive.zip .",
-    "upload": "aws lambda update-function-code --function-name user-updateExtendedProfile --zip-file fileb://Archive.zip --publish"
+    "package": "zip -r user-updateExtendedProfile.zip .",
+    "upload": "aws lambda update-function-code --function-name user-updateExtendedProfile --zip-file fileb://user-updateExtendedProfile.zip --publish"
   },
   "author": "",
   "license": "ISC"

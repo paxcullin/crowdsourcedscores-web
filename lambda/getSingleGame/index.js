@@ -19,37 +19,31 @@ const sportsCollections = {
     },
 }
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { year, season, gameWeek, gameId, userId } = event;
-    const sport = event.sport ? event.sport : 'nfl';
-    
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-        if (err) {
-            context.done(err, null);
-        }
+    try {
+        const { year, season, gameWeek, gameId, userId } = event;
+        const sport = event.sport ? event.sport : 'nfl';
+        
+        const client = await mongo.connect(MONGO_URL);
         const db = client.db('pcsm');
         let collectionsObj = sportsCollections[sport];
         if (!collectionsObj) {
-            context.done({succeeded: false, message: "Something went wrong. Please try again later."}, null)
+            return {status: 500, succeeded: false, message: "Something went wrong. Please try again later."}
         }
         var gameObj = {};
         var collection = db.collection(collectionsObj.games);
-        collection.findOne({"year": year, "gameWeek": gameWeek, "gameId": gameId}, {_id: false})
-        .then((game) => {
-            assert.equal(err, null);
-            if (err) {
-                context.fail(err, null);
-            }
+        const game = await collection.findOne({"year": year, "gameWeek": gameWeek, "gameId": gameId}, {_id: false});
+        
+        if (!game) {
+            return { status: 200, succeeded: false, message: "Game not found." }
+        }
 
-            console.log("game: ", game);
-            if (!game) {
-                context.done(null, null)
-            }
-            if (game.weather) {
-                game.weather.temp = Math.round((game.weather.temp * 1.8) - 459.67);
-            }
+        console.log("game: ", game);
+            
+        if (game.weather) {
+            game.weather.temp = Math.round((game.weather.temp * 1.8) - 459.67);
+        }
             //context.done(null, games);
             var predictionCollection = db.collection(collectionsObj.predictions);
             // define the fields to be returned 
@@ -63,27 +57,24 @@ exports.handler = (event, context) => {
                 submitted: 1,
                 predictionScore: 1,
                 results: 1};
-            predictionCollection.find({
+            const predictions = await predictionCollection.find({
                 "year": game.year,
                 "gameId": game.gameId,
                 "sport": game.sport
-            }, predictionsResponseFields).sort({submitted: 1}).toArray(function (err, predictions) {
-                assert.equal(err, null);
-                if (err) {
-                    context.fail(err, null);
-                }
-                let anonymousGamePredictions = []
-                predictions.forEach(prediction => {
-                    anonymousGamePredictions.push(prediction._id)
-                })
-                game.predictions = (!game.results) ? anonymousGamePredictions : predictions;
+            }, predictionsResponseFields).sort({submitted: 1}).toArray();
+            let anonymousGamePredictions = []
+            predictions.forEach(prediction => {
+                anonymousGamePredictions.push(prediction._id)
+            })
+            game.predictions = (!game.results) ? anonymousGamePredictions : predictions;
+            if (userId) {
                 let userPrediction = predictions.filter(prediction => prediction.userId === event.userId)
-                
+            
                 game.prediction = (event.userId && userPrediction && userPrediction.length > 0) ? userPrediction[0] : null;
-                
-                context.done(null, game);
-            });
-        })
-        .catch((error) => context.done(error, null));
-    });
+            }
+            
+            return { status: 200, succeeded: true, game: game };
+    } catch(error) {
+        return { status: 500, succeeded: false, message: error.message };
+    }
 };

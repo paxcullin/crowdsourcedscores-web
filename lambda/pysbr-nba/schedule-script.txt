@@ -1,0 +1,11 @@
+# Create or update the EventBridge rule.
+aws events put-rule --name pysbr-nba-schedule --schedule-expression "cron(0 */4 * * ? *)" --state ENABLED --description "Run the NBA PySBR scraper every 4 hours UTC"
+
+# Attach the Lambda as the target. Empty input keeps the handler's default now-through-postseason date window.
+aws events put-targets --rule pysbr-nba-schedule --targets '[{"Id":"pysbr-nba","Arn":"arn:aws:lambda:us-west-2:198282214908:function:pysbr-nba","Input":"{}"}]'
+
+# Allow EventBridge to invoke the Lambda. Ignore ResourceConflictException if this statement already exists.
+aws lambda add-permission --function-name pysbr-nba --statement-id pysbr-nba-schedule --action lambda:InvokeFunction --principal events.amazonaws.com --source-arn arn:aws:events:us-west-2:198282214908:rule/pysbr-nba-schedule
+
+# Disable or remove the schedule after the postseason if you no longer want automatic runs.
+aws events disable-rule --name pysbr-nba-schedule
