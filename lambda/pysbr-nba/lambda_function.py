@@ -163,14 +163,12 @@ def get_line_queries(event_ids):
         return {}
 
     return {
-        "spreads": CurrentLines(event_ids, nba.market_ids("pointspread"), sportsbook.ids("Pinnacle")[0]),
+        "spreads": BestLines(event_ids, nba.market_ids("pointspread")),
         "best_spreads": BestLines(event_ids, nba.market_ids([83])),
-        "totals": CurrentLines(event_ids, nba.market_ids("totals"), sportsbook.ids("Pinnacle")[0]),
+        "totals": BestLines(event_ids, nba.market_ids("totals")),
         "best_totals": BestLines(event_ids, nba.market_ids([401])),
-        "moneylines": CurrentLines(event_ids, nba.market_ids("money-line"), sportsbook.ids("Pinnacle")[0]),
+        "moneylines": BestLines(event_ids, nba.market_ids("money-line")),
         "best_moneylines": BestLines(event_ids, nba.market_ids([403])),
-        "bookmaker_spreads": CurrentLines(event_ids, nba.market_ids("pointspread"), sportsbook.ids("Bookmaker")[0]),
-        "bookmaker_totals": CurrentLines(event_ids, nba.market_ids("totals"), sportsbook.ids("Bookmaker")[0]),
     }
 
 
@@ -188,8 +186,10 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     odds = {
         "spread": "",
         "spreadOdds": "",
+        "spreadBook": "",
         "total": "",
         "totalOdds": "",
+        "totalBook": "",
         "history": [],
     }
 
@@ -202,26 +202,22 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
     best_totals = line_queries.get("best_totals").list() if line_queries.get("best_totals") else []
     moneylines = line_queries.get("moneylines").list() if line_queries.get("moneylines") else []
     best_moneylines = line_queries.get("best_moneylines").list() if line_queries.get("best_moneylines") else []
-    bookmaker_spreads = line_queries.get("bookmaker_spreads").list() if line_queries.get("bookmaker_spreads") else []
-    bookmaker_totals = line_queries.get("bookmaker_totals").list() if line_queries.get("bookmaker_totals") else []
 
     spread = find_first_matching_line(spreads, event_id, home_participant_id)
     if spread is None:
         spread = find_first_matching_line(best_spreads, event_id, home_participant_id)
-    if spread is None:
-        spread = find_first_matching_line(bookmaker_spreads, event_id, home_participant_id)
     if spread is not None:
         odds["spread"] = spread.get("spread / total", "")
         odds["spreadOdds"] = spread.get("american odds", "")
+        odds["spreadBook"] = spread.get("sportsbook id", "")
 
     total = find_first_matching_line(totals, event_id)
     if total is None:
         total = find_first_matching_line(best_totals, event_id)
-    if total is None:
-        total = find_first_matching_line(bookmaker_totals, event_id)
     if total is not None:
         odds["total"] = total.get("spread / total", "")
         odds["totalOdds"] = total.get("american odds", "")
+        odds["totalBook"] = total.get("sportsbook id", "")
 
     moneyline_entries = [line for line in moneylines if line.get("event id") == event_id]
     if not moneyline_entries:
@@ -230,6 +226,7 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
         line_value = {
             "decimal": line.get("decimal odds", ""),
             "american": line.get("american odds", ""),
+            "sportsbook": line.get("sportsbook id", ""),
         }
         if line.get("participant id") == home_participant_id:
             odds["homeML"] = line_value
@@ -240,8 +237,10 @@ def append_odds(game_object, existing_game, line_queries, event_id, home_partici
         "date": datetime.now(timezone.utc),
         "spread": odds.get("spread", ""),
         "spreadOdds": odds.get("spreadOdds", ""),
+        "spreadBook": odds.get("spreadBook", ""),
         "total": odds.get("total", ""),
         "totalOdds": odds.get("totalOdds", ""),
+        "totalBook": odds.get("totalBook", ""),
         "awayML": odds.get("awayML", ""),
         "homeML": odds.get("homeML", ""),
     }
@@ -347,7 +346,7 @@ def lambda_handler(event, context):
         week_info = week_cache[game_date]
         game_week = week_info.get("week")
         season = infer_season(game, event_datetime)
-        year = event_datetime.year
+        year = event_datetime.year if event_datetime.month < 8 else event_datetime.year + 1
 
         home_team_object = build_team_object(home_team)
         away_team_object = build_team_object(away_team)

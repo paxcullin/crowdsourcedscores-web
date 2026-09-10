@@ -28,28 +28,34 @@ const requestSchema = {
         "gameId": {"type": "integer"},
         "year": {"type": "integer"},
         "gameWeek": {"type":"integer"},
-        "awayTeam": {
+        "prediction": {
             "type": "object",
             "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                "awayTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                },
+                "homeTeam": {
+                    "type": "object",
+                    "properties": {
+                        "code": {"type": "string"},
+                        "fullName": {"type": "string"},
+                        "shortName": {"type": "string"},
+                        "score": {"type": "integer", "minimum": 0, "maximum": 99}
+                    },
+                    "required": ["code", "fullName", "shortName", "score"]
+                }
             },
-            "required": ["code", "fullName", "shortName", "score"]
-        },
-        "homeTeam": {
-            "type": "object",
-            "properties": {
-                "code": {"type": "string"},
-                "fullName": {"type": "string"},
-                "shortName": {"type": "string"},
-                "score": {"type": "integer", "minimum": 0, "maximum": 99}
-            },
-            "required": ["code", "fullName", "shortName", "score"]
+            "required": ["awayTeam", "homeTeam"]
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 const requestSchemaNCAAM = {
     "type": "object",
@@ -77,18 +83,10 @@ const requestSchemaNCAAM = {
                         "shortName": {"type": "string"},
                         "score": {"type": "integer", "minimum": 0, "maximum": 150}
                     },
-                    "required": ["code", "fullName", "shortName", "score"]
-                },
-                "odds": {
-                    "type": "object",
-                    "properties": {
-                        "spread": {"type": "number"},
-                        "total": {"type": "number"}
-                    },
-                    "required": ["spread", "total"]
-                },
-                "required": ["awayTeam", "homeTeam", "odds"]
-            }
+                "required": ["code", "fullName", "shortName", "score"]
+                }
+            },
+            "required": ["awayTeam", "homeTeam"]
         }
     },
     "required": ["gameId", "prediction"]
@@ -229,7 +227,7 @@ exports.handler = async (event, context) => {
         succeeded: true
     };
 
-    const {prediction, userId, sport, year, gameId, gameWeek, season} = event;
+    const {prediction, userId, sport, year, gameId, gameWeek, season, preferred_username} = event;
     
     if (!userId || userId === "") {
         return { message: 'no userId', succeeded: false}
@@ -311,6 +309,7 @@ exports.handler = async (event, context) => {
                 prediction.gameWeek = parseInt(gameWeek, 10);
             }
             prediction.userId = userId;
+            prediction.preferred_username = preferred_username;
             prediction.gameId = parseInt(gameId);
             prediction.year = parseInt(year);
             prediction.sport = sport;
@@ -351,6 +350,7 @@ exports.handler = async (event, context) => {
                 } else if (event.sport === 'nba') {
                     predictionCollection = 'predictions-nba';
                 }
+                console.log('prediction :>> ', prediction);
                 const respObj = await db.collection(predictionCollection).updateOne(existingObjQuery, {$set: prediction}, {upsert: true});
                 // var respObj = JSON.parse(dbRes);
     

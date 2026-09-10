@@ -289,7 +289,7 @@ exports.handler = async (event, context) => {
         console.log("predictionsCollectionName: ", predictionsCollectionName)
         console.log("predictionsQuery: ", predictionsQuery)
         console.log('games: ', games)
-        const predictions = await predictionsCollection.find(predictionsQuery, {_id: false}).toArray();
+        const predictions = await predictionsCollection.find(predictionsQuery).toArray();
             console.log('predictions: ', predictions.length);
             
             var predictionsSubmitted = 0;
@@ -316,17 +316,7 @@ exports.handler = async (event, context) => {
                     //if (gamePrediction) {
                     var gamePredictionCompare = {};
                     var prediction = {
-                        awayTeam: {
-                            score: gamePrediction.awayTeam.score
-                        },
-                        homeTeam: {
-                            score: gamePrediction.homeTeam.score
-                        },
-                        total: gamePrediction.total,
-                        spread: gamePrediction.spread,
-                        results: gamePrediction.results,
-                        odds: gamePrediction.odds,
-                        predictionScore: gamePrediction.predictionScore
+                        ...gamePrediction
                     };
                     if (gamePrediction.stars) {
                         prediction.stars = {
@@ -399,16 +389,16 @@ exports.handler = async (event, context) => {
                     if (event.sport === 'ncaaf') {
                         //adding premium college user detail to game
                         //in order to present crowd data to the crowd
-                        if (event.collegeBowlPremium === '1') {
-                            game.collegeBowlPremium = true;
-                        } else {
-                            game.collegeBowlPremium = false;
-                        }
+                        // if (event.collegeBowlPremium === '1') {
+                        //     game.collegeBowlPremium = true;
+                        // } else {
+                        //     game.collegeBowlPremium = false;
+                        // }
                     }
                 }
-                if (event.sport === 'ncaaf' && parseInt(event.collegeBowlPremium) !== 1 && !game.results) {
-                    game.crowd = false
-                }
+                // if (event.sport === 'ncaaf' && parseInt(event.collegeBowlPremium) !== 1 && !game.results) {
+                //     game.crowd = false
+                // }
             });
             
             // sorting to bring games without prediction above predicted

@@ -32,45 +32,74 @@ exports.handler = (event, context, callback) => {
 
             2026: {
                 pre: {
-                    start: new Date('2026-06-01'),
+                    start: new Date('2026-07-01'),
                     weeks: [
-                        {weekName: 'HOF'},
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3}
+                        {week: 1,
+                        weekName: 'HOF'},
+                        {week: 2,
+                            weekName: 1,
+                        },
+                        {week: 3,
+                            weekName: 2,
+                        },
+                        {week: 4,
+                            weekName: 3,
+                        }
                         
                         ]
                 },
                 reg: {
-                    start: new Date('2026-08-27'),
+                    start: new Date('2026-08-31'),
                     weeks: [
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3},
-                        {weekName: 4},
-                        {weekName: 5},
-                        {weekName: 6},
-                        {weekName: 7},
-                        {weekName: 8},
-                        {weekName: 9},
-                        {weekName: 10},
-                        {weekName: 11},
-                        {weekName: 12},
-                        {weekName: 13},
-                        {weekName: 14},
-                        {weekName: 15},
-                        {weekName: 16},
-                        {weekName: 17},
-                        {weekName: 18}
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                        {week: 17,
+                            weekName: 17},
+                        {week: 18,
+                            weekName: 18}
                         ]
                 },
                 post: {
                     start: new Date('2027-01-07'),
                     weeks: [
-                        {weekName: 'WC'},
-                        {weekName: 'DIV'},
-                        {weekName: 'CONF'},
-                        {weekName: 'SB'}
+                        {week: 1,
+                            weekName: 'WC'},
+                        {week: 2,
+                            weekName: 'DIV'},
+                        {week: 3,
+                            weekName: 'CONF'},
+                        {week: 4,
+                            weekName: 'SB'}
                         ]
                 }
             },
@@ -78,43 +107,69 @@ exports.handler = (event, context, callback) => {
                 pre: {
                     start: new Date('2025-06-01'),
                     weeks: [
-                        {weekName: 'HOF'},
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3}
+                        {week: 1,
+                            weekName: 'HOF'},
+                        {week: 2,
+                            weekName: 1},
+                        {week: 3,
+                            weekName: 2},
+                        {week: 4,
+                            weekName: 3}
                         
                         ]
                 },
                 reg: {
                     start: new Date('2025-08-27'),
                     weeks: [
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3},
-                        {weekName: 4},
-                        {weekName: 5},
-                        {weekName: 6},
-                        {weekName: 7},
-                        {weekName: 8},
-                        {weekName: 9},
-                        {weekName: 10},
-                        {weekName: 11},
-                        {weekName: 12},
-                        {weekName: 13},
-                        {weekName: 14},
-                        {weekName: 15},
-                        {weekName: 16},
-                        {weekName: 17},
-                        {weekName: 18}
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                        {week: 17,
+                            weekName: 17},
+                        {week: 18,
+                            weekName: 18}
                         ]
                 },
                 post: {
                     start: new Date('2026-01-07'),
                     weeks: [
-                        {weekName: 'WC'},
-                        {weekName: 'DIV'},
-                        {weekName: 'CONF'},
-                        {weekName: 'SB'}
+                        {week: 1,
+                            weekName: 'WC'},
+                        {week: 2,
+                            weekName: 'DIV'},
+                        {week: 3,
+                            weekName: 'CONF'},
+                        {week: 4,
+                            weekName: 'SB'}
                         ]
                 }
             },
@@ -387,27 +442,43 @@ exports.handler = (event, context, callback) => {
                 reg: {
                     start: new Date('2019-08-26'),
                     weeks: [
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3},
-                        {weekName: 4},
-                        {weekName: 5},
-                        {weekName: 6},
-                        {weekName: 7},
-                        {weekName: 8},
-                        {weekName: 9},
-                        {weekName: 10},
-                        {weekName: 11},
-                        {weekName: 12},
-                        {weekName: 13},
-                        {weekName: 14},
-                        {weekName: 15},
-                        {weekName: 16},
-                        ]
-                },
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                ]},
                 post: {
                     start: new Date('2019-11-14'),
-                    weeks: [{weekName: 'Bowls'}]
+                    weeks: [{week: 1,
+                        weekName: 'Bowls'}]
                 }
             },
             2022: {
@@ -522,27 +593,44 @@ exports.handler = (event, context, callback) => {
                 reg: {
                     start: new Date('2026-06-01'),
                     weeks: [
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3},
-                        {weekName: 4},
-                        {weekName: 5},
-                        {weekName: 6},
-                        {weekName: 7},
-                        {weekName: 8},
-                        {weekName: 9},
-                        {weekName: 10},
-                        {weekName: 11},
-                        {weekName: 12},
-                        {weekName: 13},
-                        {weekName: 14},
-                        {weekName: 15},
-                        {weekName: 16}
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16}
                         ]
                 },
                 post: {
                     start: new Date('2026-12-16'),
-                    weeks: [{weekName: 'Bowls'}]
+                    weeks: [{week: 1,
+                        weekName: 'Bowls'}]
                 }
             }
         },
@@ -564,75 +652,93 @@ exports.handler = (event, context, callback) => {
                 reg: {
                     start: new Date('2025-11-03'),
                     weeks: [
-                        {weekName: 1,
+                        {week: 1,
+                            weekName: 1,
                             start: new Date('2025-11-03T18:00:00Z'),
                             end: new Date('2025-11-10T17:59:59Z')
                         },
-                        {weekName: 2,
+                        {week: 2,
+                            weekName: 2,
                             start: new Date('2025-11-10T18:00:00Z'),
                             end: new Date('2025-11-17T17:59:59Z')
                         },
-                        {weekName: 3,
+                        {week: 3,
+                            weekName: 3,
                             start: new Date('2025-11-18T18:00:00Z'),
                             end: new Date('2025-11-25T17:59:59Z')
                         },
-                        {weekName: 4,
+                        {week: 4,
+                            weekName: 4,
                             start: new Date('2025-11-25T18:00:00Z'),
                             end: new Date('2025-12-02T17:59:59Z')
                         },
-                        {weekName: 5,
+                        {week: 5,
+                            weekName: 5,
                             start: new Date('2025-12-02T18:00:00Z'),
                             end: new Date('2025-12-09T17:59:59Z')
                         },
-                        {weekName: 6,
+                        {week: 6,
+                            weekName: 6,
                             start: new Date('2025-12-09T18:00:00Z'),
                             end: new Date('2025-12-16T17:59:59Z')
                         },
-                        {weekName: 7,
+                        {week: 7,
+                            weekName: 7,
                             start: new Date('2025-12-16T18:00:00Z'),
                             end: new Date('2025-12-23T17:59:59Z')
                         },
-                        {weekName: 8,
+                        {week: 8,
+                            weekName: 8,
                             start: new Date('2025-12-23T18:00:00Z'),
                             end: new Date('2025-12-30T17:59:59Z')
                         },
-                        {weekName: 9,
+                        {week: 9,
+                            weekName: 9,
                             start: new Date('2025-12-30T18:00:00Z'),
                             end: new Date('2026-01-06T17:59:59Z')
                         },
-                        {weekName: 10,
+                        {week: 10,
+                            weekName: 10,
                             start: new Date('2026-01-06T18:00:00Z'),
                             end: new Date('2026-01-13T17:59:59Z')
                         },
-                        {weekName: 11,
+                        {week: 11,
+                            weekName: 11,
                             start: new Date('2026-01-13T18:00:00Z'),
                             end: new Date('2026-01-20T17:59:59Z')
                         },
-                        {weekName: 12,
+                        {week: 12,
+                            weekName: 12,
                             start: new Date('2026-01-20T18:00:00Z'),
                             end: new Date('2026-01-27T17:59:59Z')
                         },
-                        {weekName: 13,
+                        {week: 13,
+                            weekName: 13,
                             start: new Date('2026-01-27T18:00:00Z'),
                             end: new Date('2026-02-03T17:59:59Z')
                         },
-                        {weekName: 14,
+                        {week: 14,
+                            weekName: 14,
                             start: new Date('2026-02-03T18:00:00Z'),
                             end: new Date('2026-02-10T17:59:59Z')
                         },
-                        {weekName: 15,
+                        {week: 15,
+                            weekName: 15,
                             start: new Date('2026-02-10T18:00:00Z'),
                             end: new Date('2026-02-17T17:59:59Z')
                         },
-                        {weekName: 16,
+                        {week: 16,
+                            weekName: 16,
                             start: new Date('2026-02-17T18:00:00Z'),
                             end: new Date('2026-02-24T17:59:59Z')
                         },
-                        {weekName: 17,
+                        {week: 17,
+                            weekName: 17,
                             start: new Date('2026-02-24T18:00:00Z'),
                             end: new Date('2026-03-02T17:59:59Z')
                         },
-                        {weekName: 18,
+                        {week: 18,
+                            weekName: 18,
                             start: new Date('2026-03-02T18:00:00Z'),
                             end: new Date('2026-03-09T17:59:59Z')
                         }
@@ -641,35 +747,43 @@ exports.handler = (event, context, callback) => {
                 post: {
                     start: new Date('2026-03-09T18:00:00Z'),
                     weeks: [
-                        {weekName: 'Conf Tourneys',
+                        {week: 1,
+                            weekName: 'Conf Tourneys',
                             start: new Date('2026-03-09T18:00:00Z'),
                             end: new Date('2026-03-16T17:59:59Z')
                         },
-                        {weekName: '1st 4',
+                        {week: 2,
+                            weekName: '1st 4',
                             start: new Date('2026-03-16T18:00:00Z'),
                             end: new Date('2026-03-19T07:59:59Z')
                         },
-                        {weekName: '64',
+                        {week: 3,
+                            weekName: '64',
                             start: new Date('2026-03-19T08:00:00Z'),
                             end: new Date('2026-03-21T07:59:59Z')
                         },
-                        {weekName: '32',
+                        {week: 4,
+                            weekName: '32',
                             start: new Date('2026-03-21T08:00:00Z'),
                             end: new Date('2026-03-23T07:59:59Z')
                         },
-                        {weekName: 'S16',
+                        {week: 5,
+                            weekName: 'S16',
                             start: new Date('2026-03-23T08:00:00Z'),
                             end: new Date('2026-03-28T07:59:59Z')
                         },
-                        {weekName: 'E8',
+                        {week: 6,
+                            weekName: 'E8',
                             start: new Date('2026-03-28T08:00:00Z'),
                             end: new Date('2026-03-30T07:59:59Z')
                         },
-                        {weekName: 'F4',
+                        {week: 7,
+                            weekName: 'F4',
                             start: new Date('2026-03-30T08:00:00Z'),
                             end: new Date('2026-04-05T07:59:59Z')
                         },
-                        {weekName: 'Champ',
+                        {week: 8,
+                            weekName: 'Champ',
                             start: new Date('2026-04-05T08:00:00Z'),
                             end: new Date('2026-09-05T07:59:59Z')
                         }
@@ -684,12 +798,24 @@ exports.handler = (event, context, callback) => {
                 post: {
                     start: new Date('2026-03-09T17:00:00Z'),
                     weeks: [
-                        {weekName: '64'},
-                        {weekName: '32'},
-                        {weekName: 'S16'},
-                        {weekName: 'E8'},
-                        {weekName: 'F4'},
-                        {weekName: 'Champ'}
+                        {week: 1,
+                            weekName: '64'
+                        },
+                        {week: 2,
+                            weekName: '32'
+                        },
+                        {week: 3,
+                            weekName: 'S16'
+                        },
+                        {week: 4,
+                            weekName: 'E8'
+                        },
+                        {week: 5,
+                            weekName: 'F4'
+                        },
+                        {week: 6,
+                            weekName: 'Champ'
+                        }
                         ]
                 }
             }
@@ -703,23 +829,28 @@ exports.handler = (event, context, callback) => {
                 post: {
                     start: new Date('2026-04-13T17:00:00Z'),
                     weeks: [
-                        {weekName: 'Play-in',
+                        {week: 1,
+                            weekName: 'Play-in',
                             start: new Date('2026-04-13T17:00:00Z'),
                             end: new Date('2026-04-16T16:59:59Z')
                         },
-                        {weekName: '1st Round',
+                        {week: 2,
+                            weekName: '1st Round',
                             start: new Date('2026-04-16T17:00:00Z'),
                             end: new Date('2026-05-04T16:59:59Z')
                         },
-                        {weekName: '2nd Round',
+                        {week: 3,
+                            weekName: '2nd Round',
                             start: new Date('2026-05-04T17:00:00Z'),
                             end: new Date('2026-05-18T16:59:59Z')
                         },
-                        {weekName: 'Conf Finals',
+                        {week: 4,
+                            weekName: 'Conf Finals',
                             start: new Date('2026-05-17T17:00:00Z'),
                             end: new Date('2026-06-01T16:59:59Z')
                         },
-                        {weekName: 'NBA Finals',
+                        {week: 5,
+                            weekName: 'NBA Finals',
                             start: new Date('2026-06-01T17:00:00Z'),
                             end: new Date('2026-10-01T16:59:59Z')
                         }
@@ -1029,13 +1160,14 @@ exports.handler = (event, context, callback) => {
                 weekStartDates = [
                     Date.UTC(2026, 5, 1),  // super bowl week
                     Date.UTC(2026, 7, 3),  // 2026 Preseason Week 1
-                    Date.UTC(2026, 7, 13),  // 2026 Preseason Week 2
-                    Date.UTC(2026, 7, 20),  // 2026 Preseason Week 3
+                    Date.UTC(2026, 7, 18),  // 2026 Preseason Week 2
+                    Date.UTC(2026, 7, 25),  // 2026 Preseason Week 3
+                    Date.UTC(2026, 8, 1),  // 2026 Preseason Week 4
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2026, 7, 25),  // 2026 Week 1
+                    Date.UTC(2026, 8, 1),  // 2026 Week 1
                     Date.UTC(2026, 8, 10),  // 2026 Week 2
                     Date.UTC(2026, 8, 17),  // 2026 Week 3
                     Date.UTC(2026, 8, 24),  // 2026 Week 4

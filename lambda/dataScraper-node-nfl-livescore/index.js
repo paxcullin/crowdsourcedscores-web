@@ -43,7 +43,7 @@ let gameWeek = 1;
 //             });
 // })();
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
     console.log('Received event :', JSON.stringify(event, null, 2));
     const client = await mongo.connect(MONGO_URL)
     const db = client.db('pcsm');
@@ -60,9 +60,9 @@ exports.handler = async (event, context, callback) => {
         console.log('err', err);
         console.log('data', data);
         if (err) {
-        context.fail('addToGroupError', err);
+            return Promise.reject('addToGroupError', err);
         } else {
-        context.succeed('Lambda_B said '+ data.Payload);
+            return Promise.resolve('Lambda_B said '+ data.Payload);
         }
     })
     const payload = `{ "message": "notification reminder", "sport": "nfl", "year": 2023, "season": "reg"}`
@@ -76,11 +76,11 @@ exports.handler = async (event, context, callback) => {
         const { Payload, LogResult } = await lambda.send(command);
         const result = Buffer.from(Payload).toString();
         const logs = Buffer.from(LogResult, "base64").toString();
-        return { logs, result };
+        return { status: 200, logs, result };
     };
     const gameWeekResponse = await getGameWeek("getGameWeek", payload);
     const gameWeekResponseJSON = JSON.parse(gameWeekResponse.result);
-    // console.log('gameWeekResponse: ', gameWeekResponseJSON);
+    console.log('gameWeekResponse: ', gameWeekResponseJSON);
     gameWeek = gameWeekResponseJSON.week;
     const { year, season } = gameWeekResponseJSON;
     
@@ -151,7 +151,7 @@ exports.handler = async (event, context, callback) => {
                 espnID: id,
                 startDateTime: date,
                 sport: "nfl",
-                year: parseInt(season.year) ? parseInt(season.year) : 2020,
+                year: parseInt(season.year) ? parseInt(season.year) : 2026,
                 season: season.type === 1 ? 'pre' : (season.type === 3 ? 'post' : 'reg'),
                 status: status,
                 homeTeam: { code: homeTeamCode},
@@ -195,7 +195,7 @@ exports.handler = async (event, context, callback) => {
 
     const today = Date.now()
     //
-    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=${year ? year : 2023}&seasontype=${season === "post" ? 3 : 2}&week=${gameWeek ? gameWeek : 11}`
+    const URL = `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?lang=en&region=us&calendartype=blacklist&limit=100&showAirings=true&dates=${year ? year : 2026}&seasontype=${season === "post" ? 3 : season === "pre" ? 1 : 2}&week=${gameWeek ? gameWeek : 11}`
     console.log('URL', URL);
     const options = {
         Method: 'GET'
@@ -203,7 +203,7 @@ exports.handler = async (event, context, callback) => {
     try {
         const response = await axios.get(URL, {})
             if (!response) {
-                context.done(null, { status: 200, message: 'No URL response'});
+                return { status: 200, message: 'No URL response'};
             }
             // console.log('response', response.data)
             const scoresJSON = response.data;
@@ -289,11 +289,11 @@ exports.handler = async (event, context, callback) => {
                                         console.log("SNS Publishing")
                                         const SNSPublishCommand = new PublishCommand(params, function(err, response) {
                                             if (err) {
-                                                context.done("SNS error: " + err, null);
+                                                return Promise.reject("SNS error: " + err);
                                             }
                                             console.log("SNS Publish complete: ", response);
-                                            context.done (null, result)
-                                            });
+                                                return Promise.resolve(result);
+                                        });
         
                                         const SNSResponse = await sns.send(SNSPublishCommand)
                                     }
@@ -316,23 +316,23 @@ exports.handler = async (event, context, callback) => {
                                 if (queryPromises.length > 0) {
                                     const bulkWriteResponse = await collection.bulkWrite(queryPromises);
                                     console.log('bulkWriteResponse', bulkWriteResponse);
-                                    context.done(null, { message: `Response: ${queryPromises.length} updated; ${games.length} total games`});
+                                    return { status: 200, message: `Response: ${queryPromises.length} updated; ${games.length} total games`};
                                 } else {
-                                    context.done(null, { message: `Response: No update - ${queryPromises.length}; ${games.length} total games`});
+                                    return { status: 200, message: `Response: No update - ${queryPromises.length}; ${games.length} total games`};
                                 }
 
                             }
                         
                         }
                 } else {
-                    context.done(null, { status: 200, message: 'No games returned'});
+                    return { status: 200, message: 'No games returned'};
                 }
             } else {
-                context.done(null, { status: 200, message: 'No games returned'});
+                return { status: 200, message: 'No games returned'};
             }
     } catch(rpError) {
             console.log('rpError', rpError)
-            context.fail({ message: `Reject: ${queryPromises.length} updated; ${games.length} total games`}, null)
+            return { status: 500, message: `Reject: ${queryPromises.length} updated; ${games.length} total games`};
     }
 
 }

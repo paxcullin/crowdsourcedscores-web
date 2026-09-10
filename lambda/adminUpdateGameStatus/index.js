@@ -264,6 +264,7 @@ exports.handler = async (event, context) => {
             var dbName = 'games';
             if (game.sport === 'ncaaf') dbName = 'games-ncaaf';
             if (game.sport === 'ncaam') dbName = 'games-ncaam';
+            if (game.sport === 'nba') dbName = 'games-nba'
             //"gameId": parseInt(game.gameId), "year": parseInt(game.year), "gameWeek": parseInt(game.gameWeek)
             if (Object.keys(gameUpdate).length > 0) {
                 const gameObj = await db.collection(dbName).updateOne({"gameId": parseInt(game.gameId), "year": parseInt(game.year)}, gameUpdate);
@@ -293,6 +294,10 @@ exports.handler = async (event, context) => {
                         season: {
                             DataType: "String",
                             StringValue: game.season
+                        },
+                        gameDate: {
+                            DataType: "String",
+                            StringValue: game.startDateTime ? game.startDateTime.toString() : game.gameDate ? game.gameDate.toString() : ""
                         }
                         
                     },

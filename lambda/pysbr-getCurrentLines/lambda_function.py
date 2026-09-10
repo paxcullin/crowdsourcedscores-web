@@ -1,10 +1,11 @@
 # pysbr-getCurrentLines lambda function
 
-from pysbr import NFL, Sportsbook, CurrentLines, NCAAB, NCAAF, NBA
+from pysbr import NFL, Sportsbook, BestLines, NCAAB, NCAAF, NBA
 from pysbr.config.config import Config
 from datetime import datetime, timedelta, date
 from pymongo import MongoClient, InsertOne, UpdateOne
 import boto3
+import os
 
 sns = boto3.client('sns')
 
@@ -52,12 +53,14 @@ def get_lines(gameid, sport):
         market = nba
     try:
         books = get_sportsbook_ids()
-        sbids = sblib.ids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
-        sbsysids = sblib.sysids(['Pinnacle', '5Dimes', 'Bookmaker', 'BetOnline', 'Bovada'])
+        try:
+            BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
+        except ValueError:
+            BESTLINES_CATID = None
 
-        clspread = CurrentLines([gameid], market.market_ids('pointspread'), sbids)
-        cltotal = CurrentLines([gameid], market.market_ids('totals'), sbids)
-        clmoneyline = CurrentLines([gameid], market.market_ids('money-line'), sbids)
+        clspread = BestLines([gameid], market.market_ids('pointspread'), BESTLINES_CATID)
+        cltotal = BestLines([gameid], market.market_ids('totals'), BESTLINES_CATID)
+        clmoneyline = BestLines([gameid], market.market_ids('money-line'), BESTLINES_CATID)
 
         lines = {
             'spread': [],
@@ -117,6 +120,36 @@ def lambda_handler(e, context):
             #         }
             #     }
             # ))
+            gameObject = collection.find_one(
+                    {'gameId': gameid}
+            )
+            if (gameObject is not None and gameObject.get('odds') is not None):
+                odds = gameObject['odds']
+                if (odds.get('spread') == ""):
+                    odds["spread"] = lines["spread"][0]["spread / total"] if len(lines["spread"]) > 0 else ""
+                    odds["spreadOdds"] = lines["spread"][0]["american odds"] if len(lines["spread"]) > 0 else ""
+                    odds["spreadBook"] = lines["spread"][0]["sportsbook id"] if len(lines["spread"]) > 0 else ""
+                if (odds.get('total') == ""):
+                    odds["total"] = lines["total"][0]["spread / total"] if len(lines["total"]) > 0 else ""
+                    odds["totalOdds"] = lines["total"][0]["american odds"] if len(lines["total"]) > 0 else ""
+                    odds["totalBook"] = lines["total"][0]["sportsbook id"] if len(lines["total"]) > 0 else ""
+                collection.update_one(
+                    {
+                        'gameId': gameid
+                    },
+                    {
+                        '$set': {
+                            'odds': odds
+                        }
+                    }
+                )
+                # if (gameObject['currentLines'] != lines):
+                #     print('lines changed for gameId: ', gameid)
+                #     sns.publish(
+                #         TopicArn=Config.snsTopic,
+                #         Message=f'Lines changed for gameId: {gameid}',
+                #         Subject='Lines Changed'
+                #     )
             if (lines is not None and (lines["spread"] is not None or lines["total"] is not None or lines["moneyline"] is not None)):
                 updateResponse = collection.update_one(
                     {

@@ -3,11 +3,17 @@ import types
 import http.client
 import urllib.parse
 import urllib.request
+import os
+import inspect
 import json as cgi_json  # Mock for removed cgi module
 
-# Ensure layer is in path
+# Ensure layer is in path without overriding bundled /var/task modules.
 if "/opt/python" not in sys.path:
-    sys.path.insert(0, "/opt/python")
+    sys.path.append("/opt/python")
+
+# Keep function package modules first so local hotfixes override layer copies.
+if "/var/task" in sys.path:
+    sys.path.insert(0, sys.path.pop(sys.path.index("/var/task")))
 
 # Clear urllib3 from cache to force fresh import from layer
 for module_name in list(sys.modules):
@@ -85,36 +91,151 @@ nfl = NFL()
 sb = Sportsbook()
 e = EventsByDateRange(nfl.league_id, startDate,endDate)
 # print('games length: ', len(e.ids()))
-spreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Pinnacle')[0])
-bestSpreads = BestLines(e.ids(), nfl.market_ids([83]))
-totals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Pinnacle')[0])
-bestTotals = BestLines(e.ids(), nfl.market_ids([401]))
-moneylines = CurrentLines(e.ids(), nfl.market_ids('money-line'), sb.ids('Pinnacle')[0])
-bestMoneylines = BestLines(e.ids(), nfl.market_ids([403]))
-bookmakerspreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('Bookmaker')[0])
-bookmakertotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('Bookmaker')[0])
-betonlinespreads = CurrentLines(e.ids(), nfl.market_ids('pointspread'), sb.ids('BetOnline')[0])
-betonlinestotals = CurrentLines(e.ids(), nfl.market_ids('totals'), sb.ids('BetOnline')[0])
 
+try:
+    BESTLINES_CATID = int(os.getenv('PYSBR_BESTLINES_CATID', '338'))
+except ValueError:
+    BESTLINES_CATID = None
+print ('e.ids:', e.ids(), nfl.market_ids('pointspread'), BESTLINES_CATID)
+
+bestspreads = BestLines(e.ids(), nfl.market_ids('pointspread'), BESTLINES_CATID)
+besttotals = BestLines(e.ids(), nfl.market_ids('totals'), BESTLINES_CATID)
+bestmoneylines = BestLines(e.ids(), nfl.market_ids('money-line'), BESTLINES_CATID)
+
+# Keep compatibility with older variable names used throughout this handler.
+pinnaclespreads = bestspreads
+pinnacletotals = besttotals
+pinnaclemoneylines = bestmoneylines
+spreads = bestspreads
+totals = besttotals
+moneylines = bestmoneylines
+bestSpreads = bestspreads
+bestTotals = besttotals
+bestMoneylines = bestmoneylines
+# fivedimesspreads = CurrentLines(e.ids(), ncaaf.market_ids('pointspread'), sb.ids('5Dimes')[0])
+# fivedimesbookmakertotals = CurrentLines(e.ids(), ncaaf.market_ids('totals'), sb.ids('5Dimes')[0])
+# fivedimesbookmakermoneylines = CurrentLines(e.ids(), ncaaf.market_ids('money-line'), sb.ids('5Dimes')[0])
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
+
+
 
 lambda_client = boto3.client('lambda')
 gameWeekResponse = lambda_client.invoke(
-    FunctionName="getGameWeek"
+    FunctionName="getGameWeek",
+    Payload=json.dumps({'sport': 'nfl'})
 )
 gameWeek = json.load(gameWeekResponse.get('Payload'))
-print('gameWeek: ', gameWeek)
+DEBUG_PYSBR = os.getenv('DEBUG_PYSBR', 'false').lower() in ('1', 'true', 'yes', 'y', 'on')
+
+
+def _debug_log(*args):
+    if DEBUG_PYSBR:
+        print(*args)
+
+
+def _debug_sample(label, rows):
+    if not DEBUG_PYSBR or not rows:
+        return
+    sample = rows[0]
+    if not isinstance(sample, dict):
+        _debug_log(label, 'sample:', sample)
+        return
+
+    line_data = sample.get('line') if isinstance(sample.get('line'), dict) else sample
+    view = {
+        'event id': sample.get('event id', sample.get('eid', line_data.get('event id'))),
+        'market id': sample.get('market id', sample.get('mtid', line_data.get('market id'))),
+        'participant id': sample.get('participant id', sample.get('partid', line_data.get('participant id'))),
+        'spread / total': line_data.get('spread / total', line_data.get('adj', '')),
+        'american odds': line_data.get('american odds', line_data.get('ap', '')),
+        'decimal odds': line_data.get('decimal odds', line_data.get('pri', '')),
+    }
+    _debug_log(label, 'sample:', view)
+
+
+def _safe_int(value):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _extract_consensus_line(consensus_row):
+    line_data = consensus_row.get('line') if isinstance(consensus_row, dict) else None
+    if not isinstance(line_data, dict):
+        line_data = consensus_row if isinstance(consensus_row, dict) else {}
+
+    return {
+        'marketId': _safe_int(consensus_row.get('market id', line_data.get('market id'))),
+        'participantId': _safe_int(consensus_row.get('participant id', line_data.get('participant id'))),
+        'spreadOrTotal': line_data.get('spread / total', ''),
+        'americanOdds': line_data.get('american odds', ''),
+        'decimalOdds': line_data.get('decimal odds', ''),
+    }
 
 
 def lambda_handler2(ev, context):
     print('event: ', ev, 'context: ', context, 'len(e.list()): ', len(e.list()))
+    eventsList = e.list()
+    print('length', len(eventsList))
     # print(*e.list(), sep = ",")
     writeOperations = []
     gameids = []
-    if len(e.list()) > 0:
+    consensusByEvent = {}
+    if len(eventsList) > 0:
         try:
-            for game in e.list():
-                # print('game: ', game['event id'], datetime.strptime(game["datetime"], '%Y-%m-%dT%H:%M:%S%z'))
+            spreadLines = pinnaclespreads.list()
+            _debug_log('DEBUG_PYSBR current lines count spread:', len(spreadLines))
+            _debug_sample('DEBUG_PYSBR current spread', spreadLines)
+            if len(spreadLines) == 0:
+                spreadLines = bestspreads.list()
+                _debug_log('DEBUG_PYSBR best lines fallback spread count:', len(spreadLines))
+                _debug_sample('DEBUG_PYSBR best spread', spreadLines)
+
+            totalLines = pinnacletotals.list()
+            _debug_log('DEBUG_PYSBR current lines count total:', len(totalLines))
+            _debug_sample('DEBUG_PYSBR current total', totalLines)
+            if len(totalLines) == 0:
+                totalLines = besttotals.list()
+                _debug_log('DEBUG_PYSBR best lines fallback total count:', len(totalLines))
+                _debug_sample('DEBUG_PYSBR best total', totalLines)
+
+            moneylineLines = pinnaclemoneylines.list()
+            _debug_log('DEBUG_PYSBR current lines count moneyline:', len(moneylineLines))
+            _debug_sample('DEBUG_PYSBR current moneyline', moneylineLines)
+            if len(moneylineLines) == 0:
+                moneylineLines = bestmoneylines.list()
+                _debug_log('DEBUG_PYSBR best lines fallback moneyline count:', len(moneylineLines))
+                _debug_sample('DEBUG_PYSBR best moneyline', moneylineLines)
+
+            if DEBUG_PYSBR:
+                try:
+                    _debug_log('DEBUG_PYSBR raw events keys:', list(e.raw().keys()))
+                    _debug_log('DEBUG_PYSBR raw current spread keys:', list(pinnaclespreads.raw().keys()))
+                    _debug_log('DEBUG_PYSBR raw best spread keys:', list(bestspreads.raw().keys()))
+                except Exception as rawError:
+                    _debug_log('DEBUG_PYSBR unable to inspect raw query payloads:', rawError)
+
+            spreadByEventAndParticipant = {}
+            for spreadLine in spreadLines:
+                key = (spreadLine.get('event id'), spreadLine.get('participant id'))
+                if key not in spreadByEventAndParticipant:
+                    spreadByEventAndParticipant[key] = spreadLine
+
+            totalByEvent = {}
+            for totalLine in totalLines:
+                eventIdKey = totalLine.get('event id')
+                if eventIdKey not in totalByEvent:
+                    totalByEvent[eventIdKey] = totalLine
+
+            moneylineByEventAndParticipant = {}
+            for mlLine in moneylineLines:
+                key = (mlLine.get('event id'), mlLine.get('participant id'))
+                if key not in moneylineByEventAndParticipant:
+                    moneylineByEventAndParticipant[key] = mlLine
+
+            for game in eventsList:
+                # print('game: ', game)
                 if game["event group"] != None:
                     homeId = ''
                     awayId = ''
@@ -141,7 +262,7 @@ def lambda_handler2(ev, context):
                         "total": '',
                         "totalOdds": ''
                     }
-                    betonlineodds = {
+                    fivedimesodds = {
                         "date": datetime.now(),
                         "spread": '',
                         "spreadOdds": '',
@@ -149,7 +270,7 @@ def lambda_handler2(ev, context):
                         "totalOdds": ''
                     }
                     # try:
-                        # print(event)
+                        # print(game)
 
                     gameObject = {
                             "year": 2026,
@@ -390,115 +511,70 @@ def lambda_handler2(ev, context):
                         gameObject["odds"] = {
                                 "spread": '',
                                 "spreadOdds": '',
+                                "spreadBook": '',
                                 "total": '',
                                 "totalOdds": '',
+                                "totalBook": '',
                                 "history": []
                             }
                         print('pinnacle:', len(spreads.list()), len(totals.list()), len(moneylines.list()))
                         print(len(bestSpreads.list()), len(bestTotals.list()), len(bestMoneylines.list()))
-                        if len(spreads.list()) > 0:
-                            # print(homeId)
-                            for spread in spreads.list():
-                                # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
-                                if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = spread['spread / total']
-                                    gameOdds['spreadOdds'] = spread['american odds']
-                                    gameObject['odds']['spread'] = spread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = spread['american odds']
-                        elif len(bestSpreads.list()) > 0:
-                            for spread in bestSpreads.list():
-                                if (spread['event id'] == game['event id'] and spread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = spread['spread / total']
-                                    gameOdds['spreadOdds'] = spread['american odds']
-                                    gameObject['odds']['spread'] = spread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = spread['american odds']
-                            # if line['event id'] == event['event id']:
-                            #     print(line, event['event id'])
-                        # print(len(totals.list()))
-                        elif len(bookmakerspreads.list()) > 0:
-                            for bmspread in bookmakerspreads.list():
-                                # print(spread['event id'] == gameObject['gameId'], spread['participant id'] == gameObject["homeTeam"]["participantId"])
-                                if (bmspread['event id'] == gameObject['gameId'] and bmspread['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                    # print(spread)
-                                    gameOdds['spread'] = bmspread['spread / total']
-                                    gameOdds['spreadOdds'] = bmspread['american odds']
-                                    gameObject['odds']['spread'] = bmspread['spread / total']
-                                    gameObject['odds']['spreadOdds'] = bmspread['american odds']
+                        spread = None
+                        for line in spreads.list():
+                            if line['event id'] == game['event id'] and line['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                spread = line
+                                break
+                        if spread is None:
+                            for line in bestSpreads.list():
+                                if line['event id'] == game['event id'] and line['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                    spread = line
+                                    break
+                        if spread is not None:
+                            gameOdds['spread'] = spread['spread / total']
+                            gameOdds['spreadOdds'] = spread['american odds']
+                            gameOdds['spreadBook'] = spread.get('sportsbook id', '')
+                            gameObject['odds']['spread'] = spread['spread / total']
+                            gameObject['odds']['spreadOdds'] = spread['american odds']
+                            gameObject['odds']['spreadBook'] = spread.get('sportsbook id', '')
 
+                        total = None
+                        for line in totals.list():
+                            if line['event id'] == game['event id']:
+                                total = line
+                                break
+                        if total is None:
+                            for line in bestTotals.list():
+                                if line['event id'] == game['event id']:
+                                    total = line
+                                    break
+                        if total is not None:
+                            gameOdds['total'] = total['spread / total']
+                            gameOdds['totalOdds'] = total['american odds']
+                            gameOdds['totalBook'] = total.get('sportsbook id', '')
+                            gameObject['odds']['total'] = total['spread / total']
+                            gameObject['odds']['totalOdds'] = total['american odds']
+                            gameObject['odds']['totalBook'] = total.get('sportsbook id', '')
 
-                        if len(totals.list()) > 0:
-                            # print(homeId)
-                            for total in totals.list():
-                                # print(total)
-                                if (total['event id'] == game['event id']):
-                                    gameOdds['total'] = total['spread / total']
-                                    gameOdds['totalOdds'] = total['american odds']
-                                    gameObject['odds']['total'] = total['spread / total']
-                                    gameObject['odds']['totalOdds'] = total['american odds']
-                        elif len(bestTotals.list()) > 0:
-                            for total in bestTotals.list():
-                                if (total['event id'] == game['event id']):
-                                    gameOdds['total'] = total['spread / total']
-                                    gameOdds['totalOdds'] = total['american odds']
-                                    gameObject['odds']['total'] = total['spread / total']
-                                    gameObject['odds']['totalOdds'] = total['american odds']
-                        elif len(bookmakertotals.list()) > 0:
-                            for bmtotal in bookmakertotals.list():
-                                # print(total)
-                                if (bmtotal['event id'] == game['event id']):
-                                    gameOdds['total'] = bmtotal['spread / total']
-                                    gameOdds['totalOdds'] = bmtotal['american odds']
-                                    gameObject['odds']['total'] = bmtotal['spread / total']
-                                    gameObject['odds']['totalOdds'] = bmtotal['american odds']
-                        if len(moneylines.list()) > 0:
-                            # print(homeId)
-                            for ml in moneylines.list():
-                                # print(total)
-                                if (ml['event id'] == game['event id']):
-                                    if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                        gameOdds['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                    else:
-                                        gameOdds['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-
-                            # if line['event id'] == event['event id']:
-                            #     print(line, event['event id'])
-                        elif len(bestMoneylines.list()) > 0:
-                            for ml in bestMoneylines.list():
-                                if (ml['event id'] == game['event id']):
-                                    if (ml['participant id'] == gameObject["homeTeam"]["participantId"]):
-                                        gameOdds['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['homeML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                    else:
-                                        gameOdds['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
-                                        gameObject['odds']['awayML'] = {
-                                            "decimal": ml['decimal odds'],
-                                            "american": ml['american odds']
-                                        }
+                        moneylineLines = []
+                        for line in moneylines.list():
+                            if line['event id'] == game['event id']:
+                                moneylineLines.append(line)
+                        if not moneylineLines:
+                            for line in bestMoneylines.list():
+                                if line['event id'] == game['event id']:
+                                    moneylineLines.append(line)
+                        for ml in moneylineLines:
+                            mlValue = {
+                                "decimal": ml['decimal odds'],
+                                "american": ml['american odds'],
+                                "sportsbook": ml.get('sportsbook id', '')
+                            }
+                            if ml['participant id'] == gameObject["homeTeam"]["participantId"]:
+                                gameOdds['homeML'] = mlValue
+                                gameObject['odds']['homeML'] = mlValue
+                            else:
+                                gameOdds['awayML'] = mlValue
+                                gameObject['odds']['awayML'] = mlValue
                         if (gameResult):
                             # print('has gameResult', gameResult['gameId'])
                             # print('odds attribute', list(gameResult))
