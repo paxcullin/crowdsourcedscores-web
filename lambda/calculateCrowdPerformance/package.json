@@ -6,7 +6,8 @@
   "scripts": {
     "package": "zip -r calculateCrowdPerformance.zip .",
     "upload": "aws lambda update-function-code --function-name calculateCrowdPerformance --zip-file fileb://calculateCrowdPerformance.zip --publish",
-    "test": "aws lambda invoke --function-name calculateCrowdPerformance response.json"
+    "test": "aws lambda invoke --function-name calculateCrowdPerformance response.json",
+    "test:unit": "node --test test/*.test.js"
   },
   "author": "Paul Cullin",
   "license": "ISC",

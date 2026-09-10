@@ -19,6 +19,8 @@ endDate = datetime.strptime('2024-02-14', '%Y-%m-%d')
 cols = ['event', 'event id', 'participant', 'spread / total', 'decimal odds', 'american odds', 'result', 'profit']
 
 nfl = NFL()
+NCAAB = NCAAB()
+NCAAF = NCAAF()
 
 
 # lines = pd.merge(spreads.dataframe(), totals.dataframe(), how="outer", on="event id")
@@ -35,9 +37,14 @@ def lambda_handler(e, context):
                 'statusCode': 400,
                 'body': 'no game id'
             }
-        blspread = CurrentLines([gameid],nfl.market_ids('pointspread'))
-        bltotal = CurrentLines([gameid],nfl.market_ids('totals'))
-        blmoneyline = CurrentLines([gameid],nfl.market_ids('money-line'))
+        market = nfl
+        if (e.sport == 'ncaab'):
+            market = NCAAB()
+        elif (e.sport == 'ncaaf'):
+            market = NCAAF()
+        blspread = CurrentLines([gameid],market.market_ids('pointspread'))
+        bltotal = CurrentLines([gameid],market.market_ids('totals'))
+        blmoneyline = CurrentLines([gameid],market.market_ids('money-line'))
 
         lines = {
             "spread": None,

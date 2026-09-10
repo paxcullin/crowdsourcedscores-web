@@ -1,15 +1,16 @@
 {
-  "name": "get-games-lambda",
+  "name": "get-single-game-lambda",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^3.6.10"
+    "mongodb": "^7.2.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r getGames.zip ."
+    "package": "zip -r getSingleGame.zip .",
+    "upload": "aws lambda update-function-code --function-name getSingleGame --zip-file fileb://getSingleGame.zip"
   },
   "author": "",
   "license": "ISC"

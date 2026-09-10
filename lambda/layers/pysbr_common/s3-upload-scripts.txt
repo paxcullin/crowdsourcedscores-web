@@ -1,0 +1,10 @@
+cd /Users/chrisaronchick/GitHub/crowdsourcedscores-web/lambda/layers/pysbr_common
+
+rm -f pysbr_common.zip
+zip -r pysbr_common.zip python
+aws lambda publish-layer-version \
+  --layer-name pysbr-common \
+  --description "Common PySBR layer" \
+  --zip-file fileb://pysbr_common.zip \
+  --compatible-runtimes python3.14 \
+  --compatible-architectures x86_64

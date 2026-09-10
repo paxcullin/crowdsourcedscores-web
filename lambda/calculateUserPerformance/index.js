@@ -226,36 +226,48 @@ function getTotalResult(game, gameOdds, gamePrediction) {
 }
 
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     try {
         var record = ""
         if (event.Records) {
             record = event.Records[0];
         }
-        var eventGameId, eventGameWeek, eventSport, eventSeason, eventYear;
+        var eventGameId, eventGameWeek, eventGameDate, eventSport, eventSeason, eventYear;
         var gamesCollection = 'games';
         var predictionsCollection = 'predictions';
         var gameQuery = {year:2018, results: {$exists: true}}
         var predictionQuery = { year: 2018, predictionScore: { $exists: false } };
-        if (record.Sns.MessageAttributes.userId) {
+        if (record && record.Sns && record.Sns.MessageAttributes && record.Sns.MessageAttributes.userId) {
             predictionQuery.userId = record.Sns.MessageAttributes.userId;
         }
         
-        if (record != "") {
+        if (record !== "") {
             eventGameId = parseInt(record.Sns.MessageAttributes.gameId.Value);
-            eventGameWeek = parseInt(record.Sns.MessageAttributes.gameWeek.Value);
+            eventGameWeek = record.Sns.MessageAttributes.gameWeek ? parseInt(record.Sns.MessageAttributes.gameWeek.Value) : null;
+            eventGameDate = record.Sns.MessageAttributes.gameDate ? record.Sns.MessageAttributes.gameDate.Value : null;
             eventSport = record.Sns.MessageAttributes.sport.Value;
-            eventSeason = record.Sns.MessageAttributes.season.Value;
+            eventSeason = record.Sns.MessageAttributes.season ? record.Sns.MessageAttributes.season.Value : null;
             eventYear = parseInt(record.Sns.MessageAttributes.year.Value);
             if (eventSport === 'ncaaf') {
                 gamesCollection = 'games-ncaaf';
                 predictionsCollection = 'predictions-ncaaf';
-            } else if (eventSport === 'ncaam') {
-                gamesCollection = 'games-ncaam'
+            } else if (eventSport === 'ncaam' || eventSport === 'ncaab') {
+                gamesCollection = 'games-ncaab'
                 predictionsCollection = 'predictions-ncaam'
+            } else if (eventSport === 'nba') {
+                gamesCollection = 'games-nba'
+                predictionsCollection = 'predictions-nba'
             }
-            gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, gameWeek: eventGameWeek, results: {$exists: true}}
+            gameQuery = {year:eventYear, sport: eventSport, gameId: eventGameId, results: {$exists: true}}
+            if (eventSport === 'nba' && eventSeason !== 'post' && eventGameDate) {
+                gameQuery.gameDate = eventGameDate;
+            } else if (eventGameWeek !== null) {
+                gameQuery.gameWeek = eventGameWeek;
+            }
+            console.log('eventGameId, eventGameWeek, eventGameDate, eventSport, eventSeason, eventYear :>> ', eventGameId, eventGameWeek, eventGameDate, eventSport, eventSeason, eventYear);
+        } else {
+            return {status: 200, succeeded: false, message: "Event incomplete", event}
         }
         //console.log("gameQuery: ", gameQuery)
 
@@ -280,13 +292,13 @@ exports.handler = async (event, context) => {
                     if (err) {
                         result.message = err;
                         result.succeeded = false;
-                        return context.fail(JSON.stringify(result));
+                        throw new Error(JSON.stringify(result));
                     }
     
                     result.data = gamePrediction;
                     result.message = 'Results saved';
                     console.log("result: ", result);
-                    //return context.done(null, result);
+                    return { status: 200, message: result};
                 });
         }
 
@@ -297,27 +309,30 @@ exports.handler = async (event, context) => {
         var collection = db.collection(gamesCollection);
         var queryPromises = [];
         const games = await collection.find(gameQuery, {_id: false}).toArray();
-        
-        games.forEach(async function(game, gameIndex) {
+        console.log('games.length :>> ', games.length);
+        for (const [gameIndex, game] of games.entries()) {
             //console.log("game: ", game)
-            predictionQuery = {
+            const gamePredictionQuery = {
                 year:game.year,
                 sport: game.sport,
-                gameId: game.gameId,
-                gameWeek: game.gameWeek
+                gameId: game.gameId
+            }
+            if (game.sport === 'nba' && game.season !== 'post' && game.gameDate) {
+                gamePredictionQuery.gameDate = game.gameDate;
+            } else if (game.gameWeek !== undefined) {
+                gamePredictionQuery.gameWeek = game.gameWeek;
             }
             //, predictionScore: {$exists: false}
             //console.log("predictionQuery: ", predictionQuery)
             //console.log('predictionsCollection: ', predictionsCollection)
-            const predictions = await db.collection(predictionsCollection).find(predictionQuery, {_id: false}).toArray()
-            var predictionsArray = predictions.length;
+            const predictions = await db.collection(predictionsCollection).find(gamePredictionQuery, {_id: false}).toArray()
+            // console.log("predictions.length: ", predictions.length);
             if (predictions.length === 0) {
-                console.log("No predictions found for this predictionQuery: " + JSON.stringify(predictionQuery))
-                context.done(null, {message: "No predictions found for this predictionQuery"})
+                console.log("No predictions found for this predictionQuery: " + JSON.stringify(gamePredictionQuery))
+                continue;
             }
-            //console.log("predictions.length: ", predictions);
             
-            predictions.forEach(function(gamePrediction, predictionIndex) {
+            for (const [predictionIndex, gamePrediction] of predictions.entries()) {
                 console.log("predictionIndex: ", predictionIndex)
 
                 // var gamePredictionFilter = predictions.filter(function(prediction) {
@@ -353,34 +368,53 @@ exports.handler = async (event, context) => {
                 var straightUpResults = getWinnerLoser(game, gamePrediction);
                 var spreadResult = getSpread(game, odds,gamePrediction);
                 var totalResult = getTotalResult(game, odds,gamePrediction);
-                var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, gameWeek: gamePrediction.gameWeek};
+                var existingObjQuery = {userId: gamePrediction.userId, gameId: gamePrediction.gameId, year: gamePrediction.year, sport: gamePrediction.sport};
+                if (gamePrediction.sport === 'nba' && gamePrediction.season !== 'post' && gamePrediction.gameDate) {
+                    existingObjQuery.gameDate = gamePrediction.gameDate;
+                } else {
+                    existingObjQuery.gameWeek = gamePrediction.gameWeek;
+                }
                 console.log("existingObjQuery: " + JSON.stringify(existingObjQuery));
                 //update prediction with results for userId and gameId combo
-                queryPromises.push(db.collection(predictionsCollection).update(existingObjQuery,
-                    gamePrediction, {upsert: true}));
-            });
-            console.log("gameIndex: ", gameIndex)
-            if (games.length !== 1 && (gameIndex+1) === games.length) {
-                var calculateIndividualUserPerformanceWeeklyParams = new InvokeCommand({
-                    FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
-                    InvocationType: 'Event',
-                    LogType: 'None',
-                    Payload: `{ "message": "calculateUserPerformance completed", "sport": "${eventSport}", "gameWeek": ${eventGameWeek}, "season": ${eventSeason}, "year": ${eventYear} }`
-                }, function(err, data) {
-                    if (err) {
-                        console.log("calculateIndividualUserPerformanceWeekly err: ", err);
-                    } else {
-                        console.log('calculateIndividualUserPerformanceWeekly2 response: ', data.Payload);
-                        
-                        
-                        context.done(null, games);
-                    }
-                    });
-                const lambdainvoke = await lambda.send(calculateIndividualUserPerformanceWeeklyParams)
+                queryPromises.push(db.collection(predictionsCollection).updateOne(existingObjQuery,
+                    { $set: gamePrediction }, { upsert: true }));
             }
-        });
+            console.log("gameIndex: ", gameIndex)
+        }
+
+        const promiseResults = await Promise.all(queryPromises);
+        console.log('promiseResults :>> ', promiseResults);
+        if (games.length > 0) {
+            const downstreamPayload = {
+                message: 'calculateUserPerformance completed',
+                sport: eventSport,
+                season: eventSeason,
+                year: eventYear
+            };
+            if (eventGameDate && eventSport === 'nba' && eventSeason !== 'post') {
+                downstreamPayload.gameDate = eventGameDate;
+            }
+            if (eventGameWeek !== null) {
+                downstreamPayload.gameWeek = eventGameWeek;
+            }
+            var calculateIndividualUserPerformanceWeeklyParams = new InvokeCommand({
+                FunctionName: 'calculateIndividualUserPerformanceWeekly', // the lambda function we are going to invoke
+                InvocationType: 'Event',
+                LogType: 'None',
+                Payload: JSON.stringify(downstreamPayload)
+            });
+            const lambdainvoke = await lambda.send(calculateIndividualUserPerformanceWeeklyParams)
+            return {
+                status: 200,
+                message: "calculateUserPerformance completed",
+                sport: eventSport,
+                season: eventSeason,
+                year: eventYear,
+                predictionsUpdated: promiseResults.length
+            }
+        }
     } catch (err) {
         console.log('error: ', err);
-        context.fail({message: err}, null);
+        throw new Error(JSON.stringify({ status: 500, message: err.message }));
     }
 };

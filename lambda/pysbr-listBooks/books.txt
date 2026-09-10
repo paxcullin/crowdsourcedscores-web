@@ -1,0 +1,25 @@
+3 -> 5Dimes
+5 -> Bet365
+8 -> BetOnline
+8 -> SportsBetting
+9 -> Bodog Sportsbook
+9 -> Bovada
+10 -> betcris
+10 -> Bookmaker
+15 -> JazzSports
+16 -> JustBet
+18 -> Matchbook
+20 -> Pinnacle
+28 -> BetPhoenix
+29 -> Intertops
+35 -> Sports Interaction
+38 -> YouWager
+44 -> Heritage Sports
+54 -> WagerWeb
+65 -> GTbets
+82 -> MyBookie
+83 -> BetMania
+84 -> Skybook
+93 -> Cloudbet
+108 -> BetRegal
+3 -> Sportbet
