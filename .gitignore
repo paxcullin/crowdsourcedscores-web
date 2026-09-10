@@ -5,7 +5,9 @@ assets/testdata/ncaa-bowls-2018.code-workspace
 assets/.DS_Store
 node_modules/
 */node_modules/
+*node_modules/*
 *package/
+*package_clean/
 *config.js
 *config.py
 */node_modules/*

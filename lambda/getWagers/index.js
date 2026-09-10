@@ -21,7 +21,13 @@ exports.handler = async (event, context, callback) => {
         const dbClient = await mongo.connect(MONGO_URL);
         const db = dbClient.db('pcsm');
         const collection = db.collection('wagers');
-        const gamesCollection = sport === 'ncaaf' ? db.collection('games-ncaaf') : db.collection('games');
+        const gamesCollection = {
+            'ncaaf': db.collection('games-ncaaf'),
+            'nfl': db.collection('games'),
+            'nba': db.collection('games-nba'),
+            'ncaam': db.collection('games-ncaam'),
+            'ncaab': db.collection('games-ncaam'),
+        };
         if (sport) {
             query.sport = sport
         }
@@ -43,8 +49,12 @@ exports.handler = async (event, context, callback) => {
         let updateWagerIds = [];
         let updateWagers = [];
         let queryPromises = [];
+        let sportsWagers = [];
         if (wagers && wagers.length > 0) {
             wagers.forEach(wager => {
+                if (sportsWagers.indexOf(wager.sport) === -1) {
+                    sportsWagers.push(wager.sport);
+                }
                 if ((!wager.awayTeam || !wager.homeTeam) && wager.gameId) {
                     wagerGameIds.push(wager.gameId)
                     updateWagerIds.push(wager._id)
@@ -53,13 +63,22 @@ exports.handler = async (event, context, callback) => {
             })
             if (wagerGameIds.length > 0) {
                 console.log('wagerGameIds', wagerGameIds)
-                const games = await gamesCollection.find({ gameId: { $in: wagerGameIds } }).toArray();
-                console.log('games.length', games.length)
-                if (games && games.length > 0) {
+                const allGames = [];
+                
+                // Query each sport's collection
+                for (const sport of sportsWagers) {
+                    const collectionName = gamesCollection[sport];
+                    console.log('collectionName', collectionName, wagerGameIds)
+                    const games = await collectionName.find({ gameId: { $in: wagerGameIds } }).toArray();
+                    console.log('games.length', games)
+                    allGames.push(...games);
+                }
+                
+                console.log('games.length', allGames.length)
+                if (allGames && allGames.length > 0) {
                     updateWagers.map(wager => {
-                        let wagerGame = games.filter(game => game.gameId === wager.gameId);
+                        let wagerGame = allGames.filter(game => game.gameId === wager.gameId);
                         if (wagerGame && wagerGame.length > 0) {
-
                             wager.awayTeam = wagerGame[0].awayTeam;
                             wager.homeTeam = wagerGame[0].homeTeam;
                             queryPromises.push(collection.updateOne({ _id: wager._id }, { $set: { awayTeam: wager.awayTeam, homeTeam: wager.homeTeam } }))
@@ -77,11 +96,11 @@ exports.handler = async (event, context, callback) => {
 
         }
         console.log('wagers', wagers.length)
-        context.done(null, { status: 200, wagers })
+        return { status: 200, wagers }
     } catch (err) {
         console.log('err', err)
-        assert.equal(err);
-        context.fail(err)
+        assert.equal(err, null);
+        return { status: 500, error: err }
 
     }
         

@@ -2,9 +2,7 @@ gameId
 year
 season
 gameWeek
-awayTeam.code
 awayTeam.fullName
-homeTeam.code
 homeTeam.fullName
 odds.spread
 odds.total

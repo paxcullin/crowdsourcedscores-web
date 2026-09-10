@@ -4,8 +4,8 @@ var assert = require("assert"),
     mongo = require("mongodb"),
     {config} = require('./config');
     
-const AWS = require('aws-sdk');    
-const lambda = new AWS.Lambda({ apiVersion: '2015-03-31' });
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
+const lambda = new LambdaClient(AWSConfig);
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
 
@@ -57,128 +57,137 @@ const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4
   }
 })();
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-    const { sport, year, season, gameWeek } = event;
+    const { sport, year, season } = event;
+    const periodField = sport === 'nba' ? 'gameDate' : 'gameWeek';
+    const periodValue = event[periodField];
     const collectionObject = {
         nfl: 'games',
         ncaaf: 'games-ncaaf',
-        ncaam: 'games-ncaam'
+        ncaam: 'games-ncaam',
+        nba: 'games-nba'
     }
-    if (!sport || !year || !season || !gameWeek) {
-        context.fail({succeeded: false, message: "Event incomplete", event})
+    if (!sport || !year || !season || !collectionObject[sport]) {
+        return {status: 200, succeeded: false, message: "Event incomplete", event}
     }
+    try {
     
-    mongo.connect(MONGO_URL, function (err, client) {
-
-        assert.equal(null, err);
-
-        if (err) {
-            return context.done(err, null);
-        }
+        const client = await mongo.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
         const db = client.db('pcsm')
 
-        var aggOpts = [
-            {
-                $match: {
-                    year: year,
-                    gameWeek: {$gt: 0},
-                    season: season,
-                    sport: sport,
-                    results: { $exists: true }
-                }
-            },
-            {
-                $group: {
-                    _id: { gameWeek: "$gameWeek", sport: "$sport", year: "$year", season: "$season" },
-                    suCorrect: {$sum: "$crowd.results.winner.correct"},
-                    suPush: {$sum: "$crowd.results.winner.push"},
-                    atsCorrect: {$sum: "$crowd.results.spread.correct"},
-                    atsPush: {$sum: "$crowd.results.spread.push"},
-                    totalCorrect: {$sum: "$crowd.results.total.correct"},
-                    totalPush: {$sum: "$crowd.results.total.push"},
-                    predictionScore: {$sum: "$crowd.results.predictionScore"},
-                    totalGames: {$sum: 1}
-                }
-            }
-        ]
-        if (!collectionObject[sport]) {
-            context.done(null, {succeeded: false, message: "No collection found"})
-        };
-        
-        db.collection(collectionObject[sport]).aggregate(aggOpts).toArray(function (err, results) {
-            
-            assert.equal(err, null);
-            if (err) {
-                console.log(err)
-                return context.fail(err, null);
-            }
-
-            var queryPromises = [];
-            results.forEach((result) => {
-                console.log("result: ", result);
-                // criteria updated to update crowd predictions only when games are in the future
-                //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
-                const { gameWeek, year, season, sport }  = result._id;
-                var suPercentage = result.suCorrect / (result.totalGames - result.suPush);
-                var atsPercentage = result.atsCorrect / (result.totalGames - result.atsPush);
-                var totalPercentage = result.totalCorrect / (result.totalGames - result.totalPush);
-                
-                var criteria = {year: year,gameWeek: gameWeek, season: season, sport: sport};
-                
-                var update = {
-                    $set: {
-                        [`weekly.crowd`]: {
-                            winner: {
-                                correct: result.suCorrect,
-                                push: result.suPush,
-                                percentage: suPercentage
-                            },
-                            spread: {
-                                correct: result.atsCorrect,
-                                push: result.atsPush,
-                                percentage: atsPercentage
-                            },
-                            total: { 
-                                correct: result.totalCorrect,
-                                push: result.totalPush,
-                                percentage: totalPercentage
-                            },
-                            predictionScore: result.predictionScore,
-                            totalGames: result.totalGames
-                        }
+            var aggOpts = [
+                {
+                    $match: {
+                        year: year,
+                        season: season,
+                        sport: sport,
+                        results: { $exists: true }
                     }
-                };
-                console.log("criteria: ", criteria,"; update: ", JSON.stringify(update, null, 2));
-                var queryPromise = db.collection('leaderboards').updateOne(criteria, update, {upsert: true})
-                    .then(function (updateResult) {
-                        var message = `{ gameWeek: ${result._id}, crowd.winner: ${result.suCorrect}, crowd.spread: ${result.atsCorrect}, crowd.total: ${result.totalCorrect}, crowd.totalGames: ${result.totalGames} }`;
-                        console.log('Updated crowd predictions', message);
-                        return Promise.resolve(updateResult);
-                    });
-                queryPromises.push(Promise.resolve(queryPromise));
-            });
-
-            Promise.all(queryPromises).then(function() {
+                },
+                {
+                    $group: {
+                        _id: { [periodField]: `$${periodField}`, sport: "$sport", year: "$year", season: "$season" },
+                        suCorrect: {$sum: "$crowd.results.winner.correct"},
+                        suPush: {$sum: "$crowd.results.winner.push"},
+                        atsCorrect: {$sum: "$crowd.results.spread.correct"},
+                        atsPush: {$sum: "$crowd.results.spread.push"},
+                        totalCorrect: {$sum: "$crowd.results.total.correct"},
+                        totalPush: {$sum: "$crowd.results.total.push"},
+                        predictionScore: {$sum: "$crowd.results.predictionScore"},
+                        totalGames: {$sum: 1}
+                    }
+                }
+            ]
+            if (periodValue !== undefined && periodValue !== null) {
+                aggOpts[0].$match[periodField] = periodField === 'gameWeek' ? { $gte: 0, $lte: periodValue } : { $lte: String(periodValue) };
+            } else {
+                aggOpts[0].$match[periodField] = periodField === 'gameWeek' ? { $gte: 0 } : { $exists: true };
+            }
+            
+            const results = await db.collection(collectionObject[sport]).aggregate(aggOpts).toArray();
                 
-                            var lambdaParams = {
-                                FunctionName: 'calculateCrowdOverallPerformance', // the lambda function we are going to invoke
-                                InvocationType: 'Event',
-                                LogType: 'None',
-                                Payload: `{ "message": "calculateLeaders completed", "sport": "${sport}", "year": ${year}, "season": "${season}", "gameWeek": ${gameWeek} }`
-                              };
-                            
-                              lambda.invoke(lambdaParams, function(err, data) {
-                                if (err) {
-                                  console.log("group-joinGroup call err: ", err);
-                                } else {
-                                  console.log("group-joinGroup call data: ", data);
-                                  return context.done(null, "Promises fulfilled");
-                                }
-                              })
-            });
-        });
-    
-    });
+
+                var queryPromises = [];
+                for (const result of results) {
+                    console.log("result: ", result);
+                    // criteria updated to update crowd predictions only when games are in the future
+                    //console.log("dateMidnight.toISOString():",dateMidnight.toISOString());
+                    const { year, season, sport }  = result._id;
+                    const resultPeriod = result._id[periodField];
+                    var suPercentage = result.suCorrect / (result.totalGames - result.suPush);
+                    var atsPercentage = result.atsCorrect / (result.totalGames - result.atsPush);
+                    var totalPercentage = result.totalCorrect / (result.totalGames - result.totalPush);
+                    
+                    var criteria = {year: year, season: season, sport: sport, [periodField]: resultPeriod};
+                    
+                    var update = {
+                        $set: {
+                            [`weekly.crowd`]: {
+                                winner: {
+                                    correct: result.suCorrect,
+                                    push: result.suPush,
+                                    percentage: suPercentage
+                                },
+                                spread: {
+                                    correct: result.atsCorrect,
+                                    push: result.atsPush,
+                                    percentage: atsPercentage
+                                },
+                                total: { 
+                                    correct: result.totalCorrect,
+                                    push: result.totalPush,
+                                    percentage: totalPercentage
+                                },
+                                predictionScore: result.predictionScore,
+                                totalGames: result.totalGames
+                            }
+                        }
+                    };
+                    console.log("criteria: ", criteria,"; update: ", JSON.stringify(update, null, 2));
+                    var queryPromise = db.collection('leaderboards').updateOne(criteria, update, {upsert: true})
+                        .then(function (updateResult) {
+                            var message = `{ gameWeek: ${result._id}, crowd.winner: ${result.suCorrect}, crowd.spread: ${result.atsCorrect}, crowd.total: ${result.totalCorrect}, crowd.totalGames: ${result.totalGames} }`;
+                            console.log('Updated crowd predictions', message);
+                            return updateResult;
+                        });
+                    queryPromises.push(queryPromise);
+                }
+
+                const promiseResults = await Promise.all(queryPromises);
+                const downstreamPayload = {
+                    message: "calculateLeaders completed",
+                    sport,
+                    year,
+                    season
+                };
+                if (periodValue !== undefined && periodValue !== null) {
+                    downstreamPayload[periodField] = periodValue;
+                }
+
+                var lambdaParams = {
+                    FunctionName: 'calculateCrowdOverallPerformance', // the lambda function we are going to invoke
+                    InvocationType: 'Event',
+                    LogType: 'None',
+                    Payload: JSON.stringify(downstreamPayload)
+                };
+
+                    const command = new InvokeCommand(lambdaParams, function(err, data) {
+                        console.log('err', err);
+                        console.log('data', data);
+                        if (err) {
+                        context.fail('addToGroupError', err);
+                        } else {
+                        context.succeed('Lambda_B said '+ data.Payload);
+                        }
+                    })
+                
+                    const lambdaresponse = await lambda.send(command)
+                    return {status: 200, succeeded: true, message: "Promises fulfilled"};
+                
+        } catch (err) {
+            console.log(err)
+            return {status: 500, succeeded: false, message: "Error occurred", error: err};
+        }
 };
