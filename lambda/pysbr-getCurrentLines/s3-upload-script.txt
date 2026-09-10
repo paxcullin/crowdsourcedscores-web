@@ -1,4 +1,4 @@
-cd package && zip -r ../pysbr-getCurrentLines.zip . && cd .. && zip -r pysbr-getCurrentLines.zip pysbr/ && zip pysbr-getCurrentLines.zip lambda_function.py
+rm -f pysbr-getCurrentLines.zip && cd package_clean && zip -r ../pysbr-getCurrentLines.zip . && cd .. && zip -r pysbr-getCurrentLines.zip pysbr/ && zip pysbr-getCurrentLines.zip lambda_function.py
 
 aws s3 cp pysbr-getCurrentLines.zip s3://shs-lambda-functions/pysbr/
 

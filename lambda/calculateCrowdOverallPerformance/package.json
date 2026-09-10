@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "zip -r calculateCrowdOverallPerformance.zip ."
+    "test:unit": "node --test test/*.test.js",
+    "package": "zip -r calculateCrowdOverallPerformance.zip .",
+    "upload": "aws lambda update-function-code --function-name calculateCrowdOverallPerformance --zip-file fileb://calculateCrowdOverallPerformance.zip --publish"
   },
   "author": "Paul Cullin",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.4.6",
     "lodash": "^4.16.6",
     "mongo-round": "^1.0.0",
-    "mongodb": "^3.6.2"
+    "mongodb": "^7.2.0"
   }
 }

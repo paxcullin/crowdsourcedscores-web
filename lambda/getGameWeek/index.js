@@ -15,20 +15,164 @@ exports.handler = (event, context, callback) => {
         }],
         nfl: [{
                 season: 'pre',
-                startDate: new Date('2024-03-01')
+                startDate: new Date('2025-03-01')
             },
             {
-            season: 'reg',
-            startDate: new Date('2024-08-27')
+                season: 'reg',
+                startDate: new Date('2025-08-27')
             },
             {
                 season: 'post',
-                startDate: new Date('2025-01-07')
+                startDate: new Date('2025-12-15')
             }
         ]
     }
     const seasonDates = {
         nfl: {
+
+            2026: {
+                pre: {
+                    start: new Date('2026-07-01'),
+                    weeks: [
+                        {week: 1,
+                        weekName: 'HOF'},
+                        {week: 2,
+                            weekName: 1,
+                        },
+                        {week: 3,
+                            weekName: 2,
+                        },
+                        {week: 4,
+                            weekName: 3,
+                        }
+                        
+                        ]
+                },
+                reg: {
+                    start: new Date('2026-08-31'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                        {week: 17,
+                            weekName: 17},
+                        {week: 18,
+                            weekName: 18}
+                        ]
+                },
+                post: {
+                    start: new Date('2027-01-07'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 'WC'},
+                        {week: 2,
+                            weekName: 'DIV'},
+                        {week: 3,
+                            weekName: 'CONF'},
+                        {week: 4,
+                            weekName: 'SB'}
+                        ]
+                }
+            },
+            2025: {
+                pre: {
+                    start: new Date('2025-06-01'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 'HOF'},
+                        {week: 2,
+                            weekName: 1},
+                        {week: 3,
+                            weekName: 2},
+                        {week: 4,
+                            weekName: 3}
+                        
+                        ]
+                },
+                reg: {
+                    start: new Date('2025-08-27'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                        {week: 17,
+                            weekName: 17},
+                        {week: 18,
+                            weekName: 18}
+                        ]
+                },
+                post: {
+                    start: new Date('2026-01-07'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 'WC'},
+                        {week: 2,
+                            weekName: 'DIV'},
+                        {week: 3,
+                            weekName: 'CONF'},
+                        {week: 4,
+                            weekName: 'SB'}
+                        ]
+                }
+            },
             2024: {
                 pre: {
                     start: new Date('2024-06-01'),
@@ -298,27 +442,43 @@ exports.handler = (event, context, callback) => {
                 reg: {
                     start: new Date('2019-08-26'),
                     weeks: [
-                        {weekName: 1},
-                        {weekName: 2},
-                        {weekName: 3},
-                        {weekName: 4},
-                        {weekName: 5},
-                        {weekName: 6},
-                        {weekName: 7},
-                        {weekName: 8},
-                        {weekName: 9},
-                        {weekName: 10},
-                        {weekName: 11},
-                        {weekName: 12},
-                        {weekName: 13},
-                        {weekName: 14},
-                        {weekName: 15},
-                        {weekName: 16},
-                        ]
-                },
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16},
+                ]},
                 post: {
                     start: new Date('2019-11-14'),
-                    weeks: [{weekName: 'Bowls'}]
+                    weeks: [{week: 1,
+                        weekName: 'Bowls'}]
                 }
             },
             2022: {
@@ -401,6 +561,77 @@ exports.handler = (event, context, callback) => {
                     start: new Date('2024-12-16'),
                     weeks: [{weekName: 'Bowls'}]
                 }
+            },
+            2025: {
+                reg: {
+                    start: new Date('2025-08-03'),
+                    weeks: [
+                        {weekName: 1},
+                        {weekName: 2},
+                        {weekName: 3},
+                        {weekName: 4},
+                        {weekName: 5},
+                        {weekName: 6},
+                        {weekName: 7},
+                        {weekName: 8},
+                        {weekName: 9},
+                        {weekName: 10},
+                        {weekName: 11},
+                        {weekName: 12},
+                        {weekName: 13},
+                        {weekName: 14},
+                        {weekName: 15},
+                        {weekName: 16}
+                        ]
+                },
+                post: {
+                    start: new Date('2025-12-16'),
+                    weeks: [{weekName: 'Bowls'}]
+                }
+            },
+            2026: {
+                reg: {
+                    start: new Date('2026-06-01'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 1},
+                        {week: 2,
+                            weekName: 2},
+                        {week: 3,
+                            weekName: 3},
+                        {week: 4,
+                            weekName: 4},
+                        {week: 5,
+                            weekName: 5},
+                        {week: 6,
+                            weekName: 6},
+                        {week: 7,
+                            weekName: 7},
+                        {week: 8,
+                            weekName: 8},
+                        {week: 9,
+                            weekName: 9},
+                        {week: 10,
+                            weekName: 10},
+                        {week: 11,
+                            weekName: 11},
+                        {week: 12,
+                            weekName: 12},
+                        {week: 13,
+                            weekName: 13},
+                        {week: 14,
+                            weekName: 14},
+                        {week: 15,
+                            weekName: 15},
+                        {week: 16,
+                            weekName: 16}
+                        ]
+                },
+                post: {
+                    start: new Date('2026-12-16'),
+                    weeks: [{week: 1,
+                        weekName: 'Bowls'}]
+                }
             }
         },
         ncaam: {
@@ -416,6 +647,215 @@ exports.handler = (event, context, callback) => {
                         {weekName: 'Champ'}
                         ]
                 }
+            },
+            2025: {
+                reg: {
+                    start: new Date('2025-11-03'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 1,
+                            start: new Date('2025-11-03T18:00:00Z'),
+                            end: new Date('2025-11-10T17:59:59Z')
+                        },
+                        {week: 2,
+                            weekName: 2,
+                            start: new Date('2025-11-10T18:00:00Z'),
+                            end: new Date('2025-11-17T17:59:59Z')
+                        },
+                        {week: 3,
+                            weekName: 3,
+                            start: new Date('2025-11-18T18:00:00Z'),
+                            end: new Date('2025-11-25T17:59:59Z')
+                        },
+                        {week: 4,
+                            weekName: 4,
+                            start: new Date('2025-11-25T18:00:00Z'),
+                            end: new Date('2025-12-02T17:59:59Z')
+                        },
+                        {week: 5,
+                            weekName: 5,
+                            start: new Date('2025-12-02T18:00:00Z'),
+                            end: new Date('2025-12-09T17:59:59Z')
+                        },
+                        {week: 6,
+                            weekName: 6,
+                            start: new Date('2025-12-09T18:00:00Z'),
+                            end: new Date('2025-12-16T17:59:59Z')
+                        },
+                        {week: 7,
+                            weekName: 7,
+                            start: new Date('2025-12-16T18:00:00Z'),
+                            end: new Date('2025-12-23T17:59:59Z')
+                        },
+                        {week: 8,
+                            weekName: 8,
+                            start: new Date('2025-12-23T18:00:00Z'),
+                            end: new Date('2025-12-30T17:59:59Z')
+                        },
+                        {week: 9,
+                            weekName: 9,
+                            start: new Date('2025-12-30T18:00:00Z'),
+                            end: new Date('2026-01-06T17:59:59Z')
+                        },
+                        {week: 10,
+                            weekName: 10,
+                            start: new Date('2026-01-06T18:00:00Z'),
+                            end: new Date('2026-01-13T17:59:59Z')
+                        },
+                        {week: 11,
+                            weekName: 11,
+                            start: new Date('2026-01-13T18:00:00Z'),
+                            end: new Date('2026-01-20T17:59:59Z')
+                        },
+                        {week: 12,
+                            weekName: 12,
+                            start: new Date('2026-01-20T18:00:00Z'),
+                            end: new Date('2026-01-27T17:59:59Z')
+                        },
+                        {week: 13,
+                            weekName: 13,
+                            start: new Date('2026-01-27T18:00:00Z'),
+                            end: new Date('2026-02-03T17:59:59Z')
+                        },
+                        {week: 14,
+                            weekName: 14,
+                            start: new Date('2026-02-03T18:00:00Z'),
+                            end: new Date('2026-02-10T17:59:59Z')
+                        },
+                        {week: 15,
+                            weekName: 15,
+                            start: new Date('2026-02-10T18:00:00Z'),
+                            end: new Date('2026-02-17T17:59:59Z')
+                        },
+                        {week: 16,
+                            weekName: 16,
+                            start: new Date('2026-02-17T18:00:00Z'),
+                            end: new Date('2026-02-24T17:59:59Z')
+                        },
+                        {week: 17,
+                            weekName: 17,
+                            start: new Date('2026-02-24T18:00:00Z'),
+                            end: new Date('2026-03-02T17:59:59Z')
+                        },
+                        {week: 18,
+                            weekName: 18,
+                            start: new Date('2026-03-02T18:00:00Z'),
+                            end: new Date('2026-03-09T17:59:59Z')
+                        }
+                        ]
+                },
+                post: {
+                    start: new Date('2026-03-09T18:00:00Z'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 'Conf Tourneys',
+                            start: new Date('2026-03-09T18:00:00Z'),
+                            end: new Date('2026-03-16T17:59:59Z')
+                        },
+                        {week: 2,
+                            weekName: '1st 4',
+                            start: new Date('2026-03-16T18:00:00Z'),
+                            end: new Date('2026-03-19T07:59:59Z')
+                        },
+                        {week: 3,
+                            weekName: '64',
+                            start: new Date('2026-03-19T08:00:00Z'),
+                            end: new Date('2026-03-21T07:59:59Z')
+                        },
+                        {week: 4,
+                            weekName: '32',
+                            start: new Date('2026-03-21T08:00:00Z'),
+                            end: new Date('2026-03-23T07:59:59Z')
+                        },
+                        {week: 5,
+                            weekName: 'S16',
+                            start: new Date('2026-03-23T08:00:00Z'),
+                            end: new Date('2026-03-28T07:59:59Z')
+                        },
+                        {week: 6,
+                            weekName: 'E8',
+                            start: new Date('2026-03-28T08:00:00Z'),
+                            end: new Date('2026-03-30T07:59:59Z')
+                        },
+                        {week: 7,
+                            weekName: 'F4',
+                            start: new Date('2026-03-30T08:00:00Z'),
+                            end: new Date('2026-04-05T07:59:59Z')
+                        },
+                        {week: 8,
+                            weekName: 'Champ',
+                            start: new Date('2026-04-05T08:00:00Z'),
+                            end: new Date('2026-09-05T07:59:59Z')
+                        }
+                        ]
+                }
+            },
+            2026: {
+                reg: {
+                    start: new Date('2026-11-04T01:00:00Z'),
+                    weeks: []
+                },
+                post: {
+                    start: new Date('2026-03-09T17:00:00Z'),
+                    weeks: [
+                        {week: 1,
+                            weekName: '64'
+                        },
+                        {week: 2,
+                            weekName: '32'
+                        },
+                        {week: 3,
+                            weekName: 'S16'
+                        },
+                        {week: 4,
+                            weekName: 'E8'
+                        },
+                        {week: 5,
+                            weekName: 'F4'
+                        },
+                        {week: 6,
+                            weekName: 'Champ'
+                        }
+                        ]
+                }
+            }
+        },
+        nba: {
+            2026: {
+                reg: {
+                    start: new Date('2026-11-04T01:00:00Z'),
+                    weeks: []
+                },
+                post: {
+                    start: new Date('2026-04-13T17:00:00Z'),
+                    weeks: [
+                        {week: 1,
+                            weekName: 'Play-in',
+                            start: new Date('2026-04-13T17:00:00Z'),
+                            end: new Date('2026-04-16T16:59:59Z')
+                        },
+                        {week: 2,
+                            weekName: '1st Round',
+                            start: new Date('2026-04-16T17:00:00Z'),
+                            end: new Date('2026-05-04T16:59:59Z')
+                        },
+                        {week: 3,
+                            weekName: '2nd Round',
+                            start: new Date('2026-05-04T17:00:00Z'),
+                            end: new Date('2026-05-18T16:59:59Z')
+                        },
+                        {week: 4,
+                            weekName: 'Conf Finals',
+                            start: new Date('2026-05-17T17:00:00Z'),
+                            end: new Date('2026-06-01T16:59:59Z')
+                        },
+                        {week: 5,
+                            weekName: 'NBA Finals',
+                            start: new Date('2026-06-01T17:00:00Z'),
+                            end: new Date('2026-10-01T16:59:59Z')
+                        }
+                        ]
+                }
             }
         }
     }
@@ -423,10 +863,15 @@ exports.handler = (event, context, callback) => {
     var weekStartDates = [];
     var sport = (event.sport) ? event.sport : (event.params && event.params.path && event.params.path.sport) ? event.params.path.sport : 'nfl'
     
-    const now = Date.now();
-    let nowYear = (new Date(now).getFullYear());
-    var year = new Date(now).getFullYear();
-    if (nowYear === 2025) {
+    const now = event.eventDate ? new Date(event.eventDate).getTime() : Date.now();
+    const nowDate = new Date(now);
+    let nowYear = nowDate.getFullYear();
+    const nowMonth = nowDate.getMonth();
+    var year = nowDate.getFullYear();
+    if ((sport === 'nfl' || sport === 'ncaaf' || sport === 'ncaam') && nowYear === 2027 && nowMonth < 6) {
+        nowYear--;
+    }
+    if (sport === 'nba' && nowMonth > 9) {
         nowYear--;
     }
     console.log({nowYear, year})
@@ -447,10 +892,197 @@ exports.handler = (event, context, callback) => {
     }
     
         console.log({season})
-    if (sport === 'ncaaf') {
+    const buildWeeklyStartDates = (startUtcMs, endUtcMs) => {
+        const weekMs = 7 * 24 * 60 * 60 * 1000;
+        const dates = [];
+        for (let t = startUtcMs; t < endUtcMs; t += weekMs) {
+            dates.push(t);
+        }
+        return dates;
+    };
+
+    const buildWeekObjectsFromStartDates = (startDatesUtc, labels) => {
+        const weekMs = 7 * 24 * 60 * 60 * 1000;
+        return startDatesUtc.map((startUtcMs, index) => {
+            const endUtcMs = startUtcMs + weekMs - (60 * 1000);
+            return {
+                weekName: labels[index],
+                start: new Date(startUtcMs),
+                end: new Date(endUtcMs)
+            };
+        });
+    };
+
+    const getNthWeekdayOfMonth = (yearValue, monthValue, weekday, nth) => {
+        const firstOfMonth = new Date(Date.UTC(yearValue, monthValue, 1));
+        const dayOffset = (7 + weekday - firstOfMonth.getUTCDay()) % 7;
+        return 1 + dayOffset + ((nth - 1) * 7);
+    };
+
+    const isPacificDstAtNoon = (yearValue, monthValue, dayValue) => {
+        const secondSundayInMarch = getNthWeekdayOfMonth(yearValue, 2, 0, 2);
+        const firstSundayInNovember = getNthWeekdayOfMonth(yearValue, 10, 0, 1);
+
+        if (monthValue < 2 || monthValue > 10) {
+            return false;
+        }
+        if (monthValue > 2 && monthValue < 10) {
+            return true;
+        }
+        if (monthValue === 2) {
+            return dayValue >= secondSundayInMarch;
+        }
+        return dayValue < firstSundayInNovember;
+    };
+
+    const pacificMondayNoonUtcMs = (yearValue, monthValue, dayValue) => {
+        const utcHour = isPacificDstAtNoon(yearValue, monthValue, dayValue) ? 19 : 20;
+        return Date.UTC(yearValue, monthValue, dayValue, utcHour, 0, 0, 0);
+    };
+
+    const firstMondayOnOrAfter = (yearValue, monthValue, dayValue) => {
+        const date = new Date(Date.UTC(yearValue, monthValue, dayValue));
+        while (date.getUTCDay() !== 1) {
+            date.setUTCDate(date.getUTCDate() + 1);
+        }
+        return date;
+    };
+
+    const buildNbaRegularSeason = (seasonYear) => {
+        const seasonStartMonday = firstMondayOnOrAfter(seasonYear, 9, 15);
+        const seasonEndBoundaryMonday = firstMondayOnOrAfter(seasonYear + 1, 3, 13);
+
+        const weeks = [];
+        const weekBoundaries = [];
+        let weekNumber = 1;
+        let cursor = new Date(seasonStartMonday.getTime());
+
+        while (cursor < seasonEndBoundaryMonday) {
+            const startYear = cursor.getUTCFullYear();
+            const startMonth = cursor.getUTCMonth();
+            const startDay = cursor.getUTCDate();
+
+            const nextCursor = new Date(cursor.getTime());
+            nextCursor.setUTCDate(nextCursor.getUTCDate() + 7);
+
+            const endYear = nextCursor.getUTCFullYear();
+            const endMonth = nextCursor.getUTCMonth();
+            const endDay = nextCursor.getUTCDate();
+
+            const startUtcMs = pacificMondayNoonUtcMs(startYear, startMonth, startDay);
+            const nextStartUtcMs = pacificMondayNoonUtcMs(endYear, endMonth, endDay);
+
+            weekBoundaries.push(startUtcMs);
+            weeks.push({
+                weekName: weekNumber,
+                start: new Date(startUtcMs),
+                end: new Date(nextStartUtcMs - (60 * 1000))
+            });
+
+            weekNumber++;
+            cursor = nextCursor;
+        }
+
+        const boundaryYear = seasonEndBoundaryMonday.getUTCFullYear();
+        const boundaryMonth = seasonEndBoundaryMonday.getUTCMonth();
+        const boundaryDay = seasonEndBoundaryMonday.getUTCDate();
+        weekBoundaries.push(pacificMondayNoonUtcMs(boundaryYear, boundaryMonth, boundaryDay));
+
+        return {
+            start: weeks[0] ? weeks[0].start : seasonStartMonday,
+            weeks,
+            weekBoundaries
+        };
+    };
+
+    const buildWeekObjectsFromBoundaries = (boundariesUtcMs, labels) => {
+        const weeks = [];
+        for (let i = 0; i < labels.length; i++) {
+            weeks.push({
+                weekName: labels[i],
+                start: new Date(boundariesUtcMs[i]),
+                end: new Date(boundariesUtcMs[i + 1] - (60 * 1000))
+            });
+        }
+        return weeks;
+    };
+
+    const nbaPostseasonConfig = {
+        // Keep these boundaries current as rounds complete for each season.
+        2026: {
+            labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
+            boundaries: [
+                [2026, 3, 13],
+                [2026, 3, 16],
+                [2026, 4, 4],
+                [2026, 4, 18],
+                [2026, 5, 1],
+                [2026, 5, 22]
+            ]
+        },
+        2027: {
+            labels: ['Play-In', 'R1', 'Conf Semis', 'Conf Finals', 'Finals'],
+            boundaries: [
+                [2027, 3, 16],
+                [2027, 3, 30],
+                [2027, 4, 10],
+                [2027, 4, 24],
+                [2027, 5, 7],
+                [2027, 5, 28]
+            ]
+        }
+    };
+
+    const buildNbaPostseason = (seasonYear, defaultStartUtcMs) => {
+        const configured = nbaPostseasonConfig[seasonYear];
+        if (!configured) {
+            return {
+                start: new Date(defaultStartUtcMs),
+                weeks: [],
+                weekBoundaries: [defaultStartUtcMs]
+            };
+        }
+
+        const boundariesUtcMs = configured.boundaries.map(function(boundaryParts) {
+            return pacificMondayNoonUtcMs(boundaryParts[0], boundaryParts[1], boundaryParts[2]);
+        });
+
+        return {
+            start: new Date(boundariesUtcMs[0]),
+            weeks: buildWeekObjectsFromBoundaries(boundariesUtcMs, configured.labels),
+            weekBoundaries: boundariesUtcMs
+        };
+    };
+
+    if (sport === 'nba') {
+        const nbaRegularSeason = buildNbaRegularSeason(nowYear);
+        const regularSeasonEndBoundary = nbaRegularSeason.weekBoundaries[nbaRegularSeason.weekBoundaries.length - 1];
+        const nbaPostseason = buildNbaPostseason(nowYear, regularSeasonEndBoundary);
+
+        seasonDates.nba[nowYear] = {
+            reg: {
+                start: nbaRegularSeason.start,
+                weeks: nbaRegularSeason.weeks,
+                weekBoundaries: nbaRegularSeason.weekBoundaries
+            },
+            post: {
+                start: nbaPostseason.start,
+                weeks: nbaPostseason.weeks,
+                weekBoundaries: nbaPostseason.weekBoundaries
+            }
+        };
+
+        if (now >= seasonDates.nba[nowYear].post.start) {
+            season = 'post';
+        }
+    }
+
+    if (sport === 'nba') {
+        weekStartDates = seasonDates.nba[nowYear][season].weekBoundaries;
+    } else if (sport === 'ncaaf') {
         weekStartDates = season === 'post' ? [
-                    Date.UTC(2023, 11, 14),  // 2019 Postseason Week 1
-                    Date.UTC(2023, 7, 24),  // 2019 Postseason Week 3
+                    Date.UTC(2026, 11, 14),  // 2019 Postseason Week 1
+                    Date.UTC(2027, 7, 24),  // 2019 Postseason Week 3
                     
                     ]
             : [
@@ -471,83 +1103,98 @@ exports.handler = (event, context, callback) => {
                 // Date.UTC(2018, 11, 5), // week 14
                 // Date.UTC(2018, 11, 12), // Bowls
                 // Date.UTC(2019, 8, 1), // Bowls
-                Date.UTC(2024, 6, 19),  // 2019 Week 1
-                Date.UTC(2024, 8, 9),  // 2023 Week 2
-                Date.UTC(2024, 8, 16),  // 2024 Week 3
-                Date.UTC(2024, 8, 23),  // 2024 Week 4
-                Date.UTC(2024, 8, 30),  // 2024 Week 5
-                Date.UTC(2024, 9, 7),  // 2024 Week 6
-                Date.UTC(2024, 9, 14),  // 2024 Week 7
-                Date.UTC(2024, 9, 21),  // 2024 Week 8
-                Date.UTC(2024, 9, 28),  // 2024 Week 9
-                Date.UTC(2024, 10, 4),  // 2024 Week 10
-                Date.UTC(2024, 10, 11),  // 2024 Week 11
-                Date.UTC(2024, 10, 18),  // 2024 Week 12
-                Date.UTC(2024, 10, 25),  // 2024 Week 13
-                Date.UTC(2024, 11, 2),  // 2024 Week 14
-                Date.UTC(2024, 11, 9),  // 2024 Week 15
-                Date.UTC(2024, 11, 16),  // 2024 Week 16
-                Date.UTC(2025, 7, 25),  // 2024 Week 17
+                Date.UTC(2026, 5, 1),  // 2019 Week 1
+                Date.UTC(2026, 8, 9),  // 2023 Week 2
+                Date.UTC(2026, 8, 16),  // 2026 Week 3
+                Date.UTC(2026, 8, 23),  // 2026 Week 4
+                Date.UTC(2026, 8, 30),  // 2026 Week 5
+                Date.UTC(2026, 9, 7),  // 2026 Week 6
+                Date.UTC(2026, 9, 14),  // 2026 Week 7
+                Date.UTC(2026, 9, 21),  // 2026 Week 8
+                Date.UTC(2026, 9, 28),  // 2026 Week 9
+                Date.UTC(2026, 10, 4),  // 2026 Week 10
+                Date.UTC(2026, 10, 11),  // 2026 Week 11
+                Date.UTC(2026, 10, 18),  // 2026 Week 12
+                Date.UTC(2026, 10, 25),  // 2026 Week 13
+                Date.UTC(2026, 11, 2),  // 2026 Week 14
+                Date.UTC(2026, 11, 9),  // 2026 Week 15
+                Date.UTC(2026, 11, 16),  // 2026 Week 16
+                Date.UTC(2026, 7, 25),  // 2024 Week 17
             ]
     } else if (sport === 'ncaam') {
-        weekStartDates = [
-            Date.UTC(2019, 0, 1),
-            Date.UTC(2019, 0, 7),
-            Date.UTC(2019, 0, 14),
-            Date.UTC(2019, 0, 21),
-            Date.UTC(2019, 0, 28),
-            Date.UTC(2019, 1, 4),
-            Date.UTC(2019, 1, 11),
-            Date.UTC(2019, 1, 18),
-            Date.UTC(2019, 1, 25),
-            Date.UTC(2019, 2, 4),
-            Date.UTC(2019, 2, 11),
-            Date.UTC(2019, 2, 18),
-            Date.UTC(2019, 2, 25),
-            Date.UTC(2019, 9, 1), // Bowls
-            ]
+        weekStartDates = season === 'post' ? [
+                    Date.UTC(2026, 2, 9),  // 2020 Postseason Week Conf Tourneys
+                    Date.UTC(2026, 2, 16),  // 2020 Postseason Week First Four
+                    Date.UTC(2026, 2, 19),  // 2020 Postseason Week 64
+                    Date.UTC(2026, 2, 21),  // 2020 Postseason Week 32
+                    Date.UTC(2026, 2, 23),  // 2020 Postseason Week S16
+                    Date.UTC(2026, 2, 28),  // 2020 Postseason Week E8
+                    Date.UTC(2026, 2, 30),  // 2020 Postseason Week F4
+                    Date.UTC(2026, 3, 6),  // 2020 Postseason Week 6
+                    Date.UTC(2026, 8, 15),  // 2020 Postseason Week 9
+        ] : [
+            Date.UTC(2026, 10, 3),  // 2026 Week 1
+            Date.UTC(2026, 10, 10),  // 2026 Week 2
+            Date.UTC(2026, 10, 17),  // 2026 Week 3
+            Date.UTC(2026, 10, 24),  // 2026 Week 4
+            Date.UTC(2026, 10, 31),  // 2026 Week 5
+            Date.UTC(2026, 11, 7),  // 2026 Week 6
+            Date.UTC(2026, 11, 14),  // 2026 Week 7
+            Date.UTC(2026, 11, 21),  // 2026 Week 8
+            Date.UTC(2027, 0, 4),   // 2027 Week 9 
+            Date.UTC(2027, 0, 11),  // 2027 Week 10
+            Date.UTC(2027, 0, 18),  // 2027 Week 11
+            Date.UTC(2027, 0, 25),  // 2027 Week 12
+            Date.UTC(2027, 1, 1),   // 2027 Week 13
+            Date.UTC(2027, 1, 8),   // 2027 Week 14
+            Date.UTC(2027, 1, 15),   // 2027 Week 15
+            Date.UTC(2027, 1, 22),   // 2027 Week 16
+            Date.UTC(2027, 2, 1),   // 2027 Week 17
+            Date.UTC(2027, 2, 8),   // 2027 Week 18
+        ]
     } else {
         console.log({season})
         switch (season) {
             case 'pre':
                 // code
                 weekStartDates = [
-                    Date.UTC(2024, 5, 1),  // super bowl week
-                    Date.UTC(2024, 7, 3),  // 2019 Preseason Week 1
-                    Date.UTC(2024, 7, 13),  // 2019 Preseason Week 2
-                    Date.UTC(2024, 7, 20),  // 2019 Preseason Week 3
-                    Date.UTC(2024, 7, 26)  // 2019 Preseason Week 3
+                    Date.UTC(2026, 5, 1),  // super bowl week
+                    Date.UTC(2026, 7, 3),  // 2026 Preseason Week 1
+                    Date.UTC(2026, 7, 18),  // 2026 Preseason Week 2
+                    Date.UTC(2026, 7, 25),  // 2026 Preseason Week 3
+                    Date.UTC(2026, 8, 1),  // 2026 Preseason Week 4
                     ];
                     break;
             case 'reg':
                 weekStartDates = [
-                    Date.UTC(2024, 7, 27),  // 2020 Week 1
-                    Date.UTC(2024, 8, 11),  // 2020 Week 2
-                    Date.UTC(2024, 8, 18),  // 2020 Week 3
-                    Date.UTC(2024, 8, 25),  // 2020 Week 4
-                    Date.UTC(2024, 9, 2),  // 2020 Week 5
-                    Date.UTC(2024, 9, 9),  // 2020 Week 6
-                    Date.UTC(2024, 9, 16),  // 2020 Week 7
-                    Date.UTC(2024, 9, 23),  // 2020 Week 8
-                    Date.UTC(2024, 9, 30),  // 2020 Week 9
-                    Date.UTC(2024, 10, 6),  // 2020 Week 10
-                    Date.UTC(2024, 10, 13),  // 2020 Week 11
-                    Date.UTC(2024, 10, 20),  // 2020 Week 12
-                    Date.UTC(2024, 10, 27),  // 2020 Week 13
-                    Date.UTC(2024, 11, 4),  // 2020 Week 14
-                    Date.UTC(2024, 11, 11),  // 2020 Week 15
-                    Date.UTC(2024, 11, 18),  // 2020 Week 16
-                    Date.UTC(2024, 11, 25),  // 2020 Week 17
-                    Date.UTC(2025, 0, 1),  // 2020 Week 18
+                    Date.UTC(2026, 8, 1),  // 2026 Week 1
+                    Date.UTC(2026, 8, 10),  // 2026 Week 2
+                    Date.UTC(2026, 8, 17),  // 2026 Week 3
+                    Date.UTC(2026, 8, 24),  // 2026 Week 4
+                    Date.UTC(2026, 9, 1),  // 2026 Week 5
+                    Date.UTC(2026, 9, 8),  // 2026 Week 6
+                    Date.UTC(2026, 9, 15),  // 2026 Week 7
+                    Date.UTC(2026, 9, 22),  // 2026 Week 8
+                    Date.UTC(2026, 9, 29),  // 2026 Week 9
+                    Date.UTC(2026, 10, 5),  // 2026 Week 10
+                    Date.UTC(2026, 10, 12),  // 2026 Week 11
+                    Date.UTC(2026, 10, 19),  // 2026 Week 12
+                    Date.UTC(2026, 10, 26),  // 2026 Week 13
+                    Date.UTC(2026, 11, 3),  // 2026 Week 14
+                    Date.UTC(2026, 11, 10),  // 2026 Week 15
+                    Date.UTC(2026, 11, 17),  // 2026 Week 16
+                    Date.UTC(2026, 11, 24),  // 2026 Week 17
+                    Date.UTC(2026, 11, 31),  // 2026 Week 18
+                    Date.UTC(2027, 0, 5),  // 2027 Week 18
                     ];
                     break;
             case 'post':
                 weekStartDates = [
-                    Date.UTC(2025, 0, 7),  // 2020 Postseason Week 1
-                    Date.UTC(2025, 0, 14),  // 2020 Postseason Week 2
-                    Date.UTC(2025, 0, 21),  // 2020 Postseason Week 3
-                    Date.UTC(2025, 0, 28),  // 2020 Postseason Week 4
-                    Date.UTC(2025, 5, 1),  // 2022-2023 Season
+                    Date.UTC(2027, 0, 6),  // 2027 Postseason Week 1
+                    Date.UTC(2027, 0, 13),  // 2027 Postseason Week 2
+                    Date.UTC(2027, 0, 20),  // 2027 Postseason Week 3
+                    Date.UTC(2027, 0, 27),  // 2027 Postseason Week 4
+                    Date.UTC(2027, 7, 1),  // 2027-2028 Season
                     ];
                     break;
             default:
@@ -643,13 +1290,19 @@ exports.handler = (event, context, callback) => {
     }
     
     // all games have the same year value
+    console.log('year,  :>> ', year, new Date(weekStartDates[0]).getFullYear());
     if (year > new Date(weekStartDates[0]).getFullYear()) {
         year = new Date(weekStartDates[0]).getFullYear();
     }
+    console.log('year 2 :>> ', year);
     var remainingWeeks = weekStartDates.filter(function(startDate) {
         return startDate > now;
     });
     var week = weekStartDates.indexOf(remainingWeeks[0]);
+    if (sport === 'nba' && season === 'reg' && week === -1 && seasonDates.nba[nowYear].reg.weeks.length) {
+        week = seasonDates.nba[nowYear].reg.weeks.length - 1;
+    }
+    
     var result = {
         sport: sport,
         week: week,
@@ -657,6 +1310,7 @@ exports.handler = (event, context, callback) => {
         season: season,
         nfl: { week: week }
     }
+    console.log('sport, nowYear, season :>> ', sport, nowYear, season);
     result.weeks = seasonDates[sport][nowYear][season].weeks
     result.season = season;
     

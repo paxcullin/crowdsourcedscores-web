@@ -8,13 +8,16 @@ var mongo = require("mongodb").MongoClient,
 
 // console.log('Loading function');
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
-
-    mongo.connect(MONGO_URL, function (err, client) {
-        assert.equal(null, err);
-        if(err) {
-            context.done(err, null);
+    try {
+        const client = await mongo.connect(MONGO_URL);
+        assert.notEqual(client, null);
+        if(!client) {
+            return {
+                status: 500,
+                message: JSON.stringify({ error: "Failed to connect to MongoDB" })
+            };
         }
 
         const db = client.db('pcsm');
@@ -23,19 +26,26 @@ exports.handler = (event, context) => {
         var collection = db.collection('profileExtended');
         const { userDetails, username }  = event
         let projectObj = { "username": username }
-        collection.findOneAndUpdate({"username":username}, { $set: { ...userDetails }})
+        const result = await collection.findOneAndUpdate({"username":username}, { $set: { ...userDetails }})
         //, [`results['${projectObj.sport}'][${projectObj.year}]['${projectObj.season}'].overall`]: 1, [`results['${projectObj.sport}'][${projectObj.year}]['${projectObj.season}'].weekly`]: { $elemMatch: { gameWeek: event.week }}
-        .then((err, result) => {
-            assert.equal(err, null);
-            if(err) {
-                context.done(err, null);
-            }
-            console.log(`result`, result)
-            context.done(null, extendedProfile);
-        })
-        .catch(function(reject) {
-            console.log("reject: ", reject);
-            context.fail(reject, null)
-        });
-    });
+        assert.notEqual(result, null);
+        if(!result) {
+            return {
+                status: 500,
+                message: JSON.stringify({ error: "Failed to find user profile" })
+            };
+        }   
+        console.log(`result`, result)
+        return {
+            status: 200,
+            message: JSON.stringify({ success: "User profile updated successfully", result }),
+            extendedProfile: result.value
+        };
+    } catch(updatedExtendedProfileError) {
+            console.log("reject: ", updatedExtendedProfileError);
+            return {
+                status: 500,
+                message: JSON.stringify({ error: "Failed to update user profile", details: updatedExtendedProfileError })
+            };
+    }
 };
