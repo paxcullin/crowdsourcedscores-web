@@ -4,4 +4,4 @@ fake-useragent==0.1.11
 PyYAML==5.4.1
 requests==2.31.0
 pytz==2024.2
-urllib3==1.26.18
+urllib3==2.7.0
