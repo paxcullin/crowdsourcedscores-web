@@ -1,0 +1,1 @@
+{"errorType":"TypeError","errorMessage":"Cannot read properties of undefined (reading '0')","trace":["TypeError: Cannot read properties of undefined (reading '0')","    at exports.handler (/var/task/index.js:149:44)","    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"]}

@@ -1,0 +1,12 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "MessageAttributes": {
+          "gameId": { "Type": "Number", "Value": "3001" },
+          "sport": { "Type": "String", "Value": "nba" }
+        }
+      }
+    }
+  ]
+}

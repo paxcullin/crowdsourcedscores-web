@@ -1,0 +1,432 @@
+gameId,year,season,gameWeek,awayTeam.fullName,awayTeam.score,homeTeam.fullName,homeTeam.score,stars.spread,stars.total,results.winner.correct,results.winner.push,results.spread.correct,results.spread.push,results.spread.stars.wagered,results.spread.stars.net,results.total.correct,results.total.push,results.total.stars.wagered,results.total.stars.net,spread,total,submitted,userId,predictionScore,preferred_username
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,17,0,0,1,0,1,0,0,0,1,0,0,0,10,44,2025-10-28T03:18:05.884Z,cmaronchick,6,cmaronchick
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,34,0,0,,,,,,,,,,,-14,54,2025-10-28T03:18:15.974Z,cmaronchick,,cmaronchick
+4765796,2025,reg,9,Carolina Panthers,13,Green Bay Packers,28,0,0,,,,,,,,,,,-15,41,2025-10-28T05:21:48.652Z,cmaronchick,,cmaronchick
+4765798,2025,reg,9,L.A. Chargers Chargers,34,Tennessee Titans,13,0,0,,,,,,,,,,,21,47,2025-10-29T19:52:40.203Z,cmaronchick,,cmaronchick
+4765794,2025,reg,9,San Francisco 49ers,13,N.Y. Giants Giants,17,0,0,,,,,,,,,,,-4,30,2025-10-28T05:22:19.784Z,cmaronchick,,cmaronchick
+4765793,2025,reg,9,Denver Broncos,27,Houston Texans,20,0,0,,,,,,,,,,,7,47,2025-10-30T19:26:53.938Z,cmaronchick,,cmaronchick
+4765799,2025,reg,9,Atlanta Falcons,16,New England Patriots,27,0,0,,,,,,,,,,,-11,43,2025-10-28T05:24:55.351Z,cmaronchick,,cmaronchick
+4765795,2025,reg,9,Indianapolis Colts,21,Pittsburgh Steelers,24,0,0,,,,,,,,,,,-3,45,2025-10-28T05:26:13.692Z,cmaronchick,,cmaronchick
+4765800,2025,reg,9,Chicago Bears,31,Cincinnati Bengals,27,0,0,,,,,,,,,,,4,58,2025-10-28T05:26:31.350Z,cmaronchick,,cmaronchick
+4765802,2025,reg,9,New Orleans Saints,14,L.A. Rams Rams,27,0,0,,,,,,,,,,,-13,41,2025-10-30T19:27:52.595Z,cmaronchick,,cmaronchick
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,16,0,0,,,,,,,,,,,8,40,2025-10-28T05:27:10.742Z,cmaronchick,,cmaronchick
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,31,0,0,,,,,,,,,,,-4,58,2025-10-29T20:03:45.294Z,cmaronchick,,cmaronchick
+4765804,2025,reg,9,Seattle Seahawks,34,Washington Commanders,24,0,0,,,,,,,,,,,10,58,2025-10-29T20:03:57.893Z,cmaronchick,,cmaronchick
+4765805,2025,reg,9,Arizona Cardinals,23,Dallas Cowboys,34,0,0,,,,,,,,,,,-11,57,2025-10-28T05:28:53.993Z,cmaronchick,,cmaronchick
+4765795,2025,reg,9,Indianapolis Colts,27,Pittsburgh Steelers,23,0,0,,,,,,,,,,,4,50,2025-10-30T20:35:07.476Z,rosstuckerNFL,,rosstuckerNFL
+4765796,2025,reg,9,Carolina Panthers,17,Green Bay Packers,27,0,0,,,,,,,,,,,-10,44,2025-10-30T20:35:09.015Z,rosstuckerNFL,,rosstuckerNFL
+4765793,2025,reg,9,Denver Broncos,17,Houston Texans,16,0,0,,,,,,,,,,,1,33,2025-10-30T20:35:04.385Z,rosstuckerNFL,,rosstuckerNFL
+4765794,2025,reg,9,San Francisco 49ers,23,N.Y. Giants Giants,17,0,0,,,,,,,,,,,6,40,2025-10-30T20:35:05.910Z,rosstuckerNFL,,rosstuckerNFL
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,20,3,3,1,0,0,0,3,-3,1,0,3,3,7,47,2025-10-29T11:01:31.850Z,ausame,4,ausame
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,17,,,1,0,1,0,0,0,1,0,0,0,10,44,2025-11-02T10:45:02.000Z,PetePrisco,6,PetePrisco
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,23,,,,,,,,,,,,,-2,44,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765796,2025,reg,9,Carolina Panthers,17,Green Bay Packers,34,,,,,,,,,,,,,-17,51,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765800,2025,reg,9,Chicago Bears,29,Cincinnati Bengals,34,,,,,,,,,,,,,-5,63,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,23,,,,,,,,,,,,,-3,43,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765795,2025,reg,9,Indianapolis Colts,37,Pittsburgh Steelers,30,,,,,,,,,,,,,7,67,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765798,2025,reg,9,Los Angeles Chargers,33,Tennessee Titans,14,,,,,,,,,,,,,19,47,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,31,,,,,,,,,,,,,-11,51,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765794,2025,reg,9,San Francisco 49ers,21,New York Giants,24,,,,,,,,,,,,,-3,45,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,19,,,,,,,,,,,,,5,43,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765802,2025,reg,9,New Orleans Saints,13,Los Angeles Rams,30,,,,,,,,,,,,,-17,43,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765803,2025,reg,9,Kansas City Chiefs,34,Buffalo Bills,35,,,,,,,,,,,,,-1,69,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765804,2025,reg,9,Seattle Seahawks,20,Washington Commanders,24,,,,,,,,,,,,,-4,44,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765805,2025,reg,9,Arizona Cardinals,30,Dallas Cowboys,35,,,,,,,,,,,,,-5,65,2025-11-02T10:45:02.000Z,PetePrisco,,PetePrisco
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,21,,,1,0,1,0,0,0,0,0,0,0,10,52,2025-11-02T10:45:02.000Z,BillBender,4,BillBender
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,28,,,,,,,,,,,,,-1,55,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765797,2025,reg,9,Minnesota Vikings,22,Detroit Lions,36,,,,,,,,,,,,,-14,58,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,28,,,,,,,,,,,,,-12,44,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765798,2025,reg,9,Los Angeles Chargers,31,Tennessee Titans,17,,,,,,,,,,,,,14,48,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,26,,,,,,,,,,,,,-5,47,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765794,2025,reg,9,San Francisco 49ers,26,New York Giants,19,,,,,,,,,,,,,7,45,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765795,2025,reg,9,Indianapolis Colts,28,Pittsburgh Steelers,22,,,,,,,,,,,,,6,50,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765793,2025,reg,9,Denver Broncos,32,Houston Texans,29,,,,,,,,,,,,,3,61,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765801,2025,reg,9,Jacksonville Jaguars,21,Las Vegas Raiders,15,,,,,,,,,,,,,6,36,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765802,2025,reg,9,New Orleans Saints,13,Los Angeles Rams,30,,,,,,,,,,,,,-17,43,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765803,2025,reg,9,Kansas City Chiefs,28,Buffalo Bills,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765804,2025,reg,9,Seattle Seahawks,23,Washington Commanders,21,,,,,,,,,,,,,2,44,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,30,,,,,,,,,,,,,-6,54,2025-11-02T10:45:02.000Z,BillBender,,BillBender
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,26,,,1,0,0,0,0,0,0,0,0,0,1,53,2025-11-02T10:45:02.000Z,DataSkrive,2,DataSkrive
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,25,,,,,,,,,,,,,2,52,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,30,,,,,,,,,,,,,-14,46,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765797,2025,reg,9,Minnesota Vikings,16,Detroit Lions,33,,,,,,,,,,,,,-17,49,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765799,2025,reg,9,Atlanta Falcons,14,New England Patriots,28,,,,,,,,,,,,,-14,42,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,21,,,,,,,,,,,,,3,45,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765795,2025,reg,9,Indianapolis Colts,32,Pittsburgh Steelers,19,,,,,,,,,,,,,13,51,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765798,2025,reg,9,Los Angeles Chargers,26,Tennessee Titans,18,,,,,,,,,,,,,8,44,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765793,2025,reg,9,Denver Broncos,18,Houston Texans,22,,,,,,,,,,,,,-4,40,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765801,2025,reg,9,Jacksonville Jaguars,25,Las Vegas Raiders,17,,,,,,,,,,,,,8,42,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765802,2025,reg,9,New Orleans Saints,8,Los Angeles Rams,34,,,,,,,,,,,,,-26,42,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,22,,,,,,,,,,,,,2,46,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765804,2025,reg,9,Seattle Seahawks,28,Washington Commanders,19,,,,,,,,,,,,,9,47,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765805,2025,reg,9,Arizona Cardinals,25,Dallas Cowboys,28,,,,,,,,,,,,,-3,53,2025-11-02T10:45:02.000Z,DataSkrive,,DataSkrive
+4765792,2025,reg,9,Baltimore Ravens,30,Miami Dolphins,23,,,1,0,0,0,0,0,0,0,0,0,7,53,2025-11-02T10:45:02.000Z,Jeremy Cluff,2,Jeremy Cluff
+4765800,2025,reg,9,Chicago Bears,23,Cincinnati Bengals,27,,,,,,,,,,,,,-4,50,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,31,,,,,,,,,,,,,-14,48,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,28,,,,,,,,,,,,,-14,42,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,23,,,,,,,,,,,,,-3,43,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,24,,,,,,,,,,,,,-3,45,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765794,2025,reg,9,San Francisco 49ers,27,New York Giants,20,,,,,,,,,,,,,7,47,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765795,2025,reg,9,Indianapolis Colts,30,Pittsburgh Steelers,20,,,,,,,,,,,,,10,50,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765798,2025,reg,9,Los Angeles Chargers,33,Tennessee Titans,13,,,,,,,,,,,,,20,46,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765802,2025,reg,9,New Orleans Saints,10,Los Angeles Rams,31,,,,,,,,,,,,,-21,41,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,16,,,,,,,,,,,,,8,40,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,37,,,,,,,,,,,,,-13,61,2025-11-02T10:45:02.000Z,Jeremy Cluff,,Jeremy Cluff
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,17,,,1,0,1,0,0,0,1,0,0,0,10,44,2025-11-02T10:45:02.000Z,VinnieIyer,6,VinnieIyer
+4765803,2025,reg,9,Kansas City Chiefs,34,Buffalo Bills,31,,,,,,,,,,,,,3,65,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765799,2025,reg,9,Atlanta Falcons,17,New England Patriots,30,,,,,,,,,,,,,-13,47,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765793,2025,reg,9,Denver Broncos,17,Houston Texans,20,,,,,,,,,,,,,-3,37,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,24,,,,,,,,,,,,,3,51,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,34,,,,,,,,,,,,,-17,51,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,31,,,,,,,,,,,,,-17,45,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765798,2025,reg,9,Los Angeles Chargers,34,Tennessee Titans,14,,,,,,,,,,,,,20,48,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,14,,,,,,,,,,,,,9,37,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765795,2025,reg,9,Indianapolis Colts,27,Pittsburgh Steelers,20,,,,,,,,,,,,,7,47,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765802,2025,reg,9,New Orleans Saints,14,Los Angeles Rams,38,,,,,,,,,,,,,-24,52,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765805,2025,reg,9,Arizona Cardinals,20,Dallas Cowboys,34,,,,,,,,,,,,,-14,54,2025-11-02T10:45:02.000Z,VinnieIyer,,VinnieIyer
+4765792,2025,reg,9,Baltimore Ravens,28,Miami Dolphins,21,,,1,0,0,0,0,0,1,0,0,0,7,49,2025-11-02T10:45:02.000Z,Dimers,5,Dimers
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,21,,,,,,,,,,,,,-1,41,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765794,2025,reg,9,San Francisco 49ers,25,New York Giants,23,,,,,,,,,,,,,2,48,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765795,2025,reg,9,Indianapolis Colts,27,Pittsburgh Steelers,24,,,,,,,,,,,,,3,51,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,29,,,,,,,,,,,,,-13,45,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,29,,,,,,,,,,,,,-9,49,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765798,2025,reg,9,Los Angeles Chargers,25,Tennessee Titans,17,,,,,,,,,,,,,8,42,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,26,,,,,,,,,,,,,-6,46,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765800,2025,reg,9,Chicago Bears,26,Cincinnati Bengals,24,,,,,,,,,,,,,2,50,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765802,2025,reg,9,New Orleans Saints,15,Los Angeles Rams,29,,,,,,,,,,,,,-14,44,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,25,,,,,,,,,,,,,2,52,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765804,2025,reg,9,Seattle Seahawks,25,Washington Commanders,23,,,,,,,,,,,,,2,48,2025-11-02T10:45:02.000Z,Dimers,,Dimers
+4765792,2025,reg,9,Baltimore Ravens,28,Miami Dolphins,20,,,1,0,1,0,0,0,1,0,0,0,8,48,2025-11-02T10:45:02.000Z,oddsshark,7,oddsshark
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,33,,,,,,,,,,,,,-19,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,24,,,,,,,,,,,,,-1,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765800,2025,reg,9,Chicago Bears,23,Cincinnati Bengals,26,,,,,,,,,,,,,-3,49,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765797,2025,reg,9,Minnesota Vikings,19,Detroit Lions,29,,,,,,,,,,,,,-10,48,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765799,2025,reg,9,Atlanta Falcons,15,New England Patriots,32,,,,,,,,,,,,,-17,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765794,2025,reg,9,San Francisco 49ers,26,New York Giants,21,,,,,,,,,,,,,5,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765795,2025,reg,9,Indianapolis Colts,22,Pittsburgh Steelers,25,,,,,,,,,,,,,-3,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765798,2025,reg,9,Los Angeles Chargers,27,Tennessee Titans,19,,,,,,,,,,,,,8,46,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765802,2025,reg,9,New Orleans Saints,14,Los Angeles Rams,33,,,,,,,,,,,,,-19,47,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765801,2025,reg,9,Jacksonville Jaguars,22,Las Vegas Raiders,26,,,,,,,,,,,,,-4,48,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765803,2025,reg,9,Kansas City Chiefs,20,Buffalo Bills,28,,,,,,,,,,,,,-8,48,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765804,2025,reg,9,Seattle Seahawks,21,Washington Commanders,28,,,,,,,,,,,,,-7,49,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,24,,,,,,,,,,,,,0,48,2025-11-02T10:45:02.000Z,oddsshark,,oddsshark
+4765792,2025,reg,9,Baltimore Ravens,28,Miami Dolphins,20,,,1,0,1,0,0,0,1,0,0,0,8,48,2025-11-02T10:45:02.000Z,DRatings,7,DRatings
+4765800,2025,reg,9,Chicago Bears,25,Cincinnati Bengals,24,,,,,,,,,,,,,1,49,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,21,,,,,,,,,,,,,2,44,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765799,2025,reg,9,Atlanta Falcons,19,New England Patriots,26,,,,,,,,,,,,,-7,45,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765795,2025,reg,9,Indianapolis Colts,24,Pittsburgh Steelers,22,,,,,,,,,,,,,2,46,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765796,2025,reg,9,Carolina Panthers,13,Green Bay Packers,29,,,,,,,,,,,,,-16,42,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765797,2025,reg,9,Minnesota Vikings,15,Detroit Lions,30,,,,,,,,,,,,,-15,45,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,20,,,,,,,,,,,,,1,41,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765798,2025,reg,9,Los Angeles Chargers,30,Tennessee Titans,13,,,,,,,,,,,,,17,43,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765801,2025,reg,9,Jacksonville Jaguars,25,Las Vegas Raiders,21,,,,,,,,,,,,,4,46,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765802,2025,reg,9,New Orleans Saints,13,Los Angeles Rams,30,,,,,,,,,,,,,-17,43,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,24,,,,,,,,,,,,,0,48,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,DRatings,,DRatings
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,11,51,2025-11-02T10:45:02.000Z,oddstrader,4,oddstrader
+4765793,2025,reg,9,Denver Broncos,19,Houston Texans,20,,,,,,,,,,,,,-1,39,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765794,2025,reg,9,San Francisco 49ers,27,New York Giants,22,,,,,,,,,,,,,5,49,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765795,2025,reg,9,Indianapolis Colts,27,Pittsburgh Steelers,22,,,,,,,,,,,,,5,49,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,28,,,,,,,,,,,,,-12,44,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765797,2025,reg,9,Minnesota Vikings,21,Detroit Lions,26,,,,,,,,,,,,,-5,47,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,24,,,,,,,,,,,,,-3,45,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765800,2025,reg,9,Chicago Bears,28,Cincinnati Bengals,23,,,,,,,,,,,,,5,51,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765801,2025,reg,9,Jacksonville Jaguars,23,Las Vegas Raiders,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765802,2025,reg,9,New Orleans Saints,17,Los Angeles Rams,29,,,,,,,,,,,,,-12,46,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765803,2025,reg,9,Kansas City Chiefs,26,Buffalo Bills,23,,,,,,,,,,,,,3,49,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765804,2025,reg,9,Seattle Seahawks,26,Washington Commanders,21,,,,,,,,,,,,,5,47,2025-11-02T10:45:02.000Z,oddstrader,,oddstrader
+4765794,2025,reg,9,San Francisco 49ers,34,New York Giants,10,,,,,,,,,,,,,24,44,2025-11-02T10:45:02.000Z,SBR,,SBR
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,31,,,,,,,,,,,,,-11,51,2025-11-02T10:45:02.000Z,SBR,,SBR
+4765796,2025,reg,9,Carolina Panthers,9,Green Bay Packers,27,,,,,,,,,,,,,-18,36,2025-11-02T10:45:02.000Z,SBR,,SBR
+4765804,2025,reg,9,Seattle Seahawks,27,Washington Commanders,13,,,,,,,,,,,,,14,40,2025-11-02T10:45:02.000Z,SBR,,SBR
+4765805,2025,reg,9,Arizona Cardinals,14,Dallas Cowboys,31,,,,,,,,,,,,,-17,45,2025-11-02T10:45:02.000Z,SBR,,SBR
+4765792,2025,reg,9,Baltimore Ravens,24,Miami Dolphins,17,0,0,1,0,0,0,0,0,1,0,0,0,7,41,2025-10-30T20:35:02.786Z,rosstuckerNFL,4,rosstuckerNFL
+4765800,2025,reg,9,Chicago Bears,30,Cincinnati Bengals,27,0,0,,,,,,,,,,,3,57,2025-10-30T20:35:14.594Z,rosstuckerNFL,,rosstuckerNFL
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,31,0,0,,,,,,,,,,,-14,48,2025-10-30T20:35:09.855Z,rosstuckerNFL,,rosstuckerNFL
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,24,0,0,,,,,,,,,,,-4,44,2025-10-30T20:35:12.915Z,rosstuckerNFL,,rosstuckerNFL
+4765798,2025,reg,9,L.A. Chargers Chargers,30,Tennessee Titans,17,0,0,,,,,,,,,,,13,47,2025-10-30T20:35:11.350Z,rosstuckerNFL,,rosstuckerNFL
+4765802,2025,reg,9,New Orleans Saints,17,L.A. Rams Rams,27,0,0,,,,,,,,,,,-10,44,2025-10-30T20:35:17.753Z,rosstuckerNFL,,rosstuckerNFL
+4765801,2025,reg,9,Jacksonville Jaguars,23,Las Vegas Raiders,17,0,0,,,,,,,,,,,6,40,2025-10-30T20:35:15.886Z,rosstuckerNFL,,rosstuckerNFL
+4765803,2025,reg,9,Kansas City Chiefs,31,Buffalo Bills,30,0,0,,,,,,,,,,,1,61,2025-10-30T20:35:18.615Z,rosstuckerNFL,,rosstuckerNFL
+4765804,2025,reg,9,Seattle Seahawks,20,Washington Commanders,17,0,0,,,,,,,,,,,3,37,2025-10-30T20:35:19.857Z,rosstuckerNFL,,rosstuckerNFL
+4765805,2025,reg,9,Arizona Cardinals,23,Dallas Cowboys,27,0,0,,,,,,,,,,,-4,50,2025-10-30T20:35:25.929Z,rosstuckerNFL,,rosstuckerNFL
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,26,,,1,0,0,0,0,0,0,0,0,0,5,57,2025-11-02T10:45:02.000Z,NFLSpinzone,2,NFLSpinzone
+4765800,2025,reg,9,Chicago Bears,24,Cincinnati Bengals,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,34,,,,,,,,,,,,,-14,54,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765796,2025,reg,9,Carolina Panthers,18,Green Bay Packers,33,,,,,,,,,,,,,-15,51,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765798,2025,reg,9,Los Angeles Chargers,34,Tennessee Titans,17,,,,,,,,,,,,,17,51,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,28,,,,,,,,,,,,,-7,49,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,19,,,,,,,,,,,,,4,42,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765795,2025,reg,9,Indianapolis Colts,30,Pittsburgh Steelers,28,,,,,,,,,,,,,2,58,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765801,2025,reg,9,Jacksonville Jaguars,23,Las Vegas Raiders,16,,,,,,,,,,,,,7,39,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765802,2025,reg,9,New Orleans Saints,16,Los Angeles Rams,41,,,,,,,,,,,,,-25,57,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765803,2025,reg,9,Kansas City Chiefs,32,Buffalo Bills,31,,,,,,,,,,,,,1,63,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,23,,,,,,,,,,,,,1,47,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765805,2025,reg,9,Arizona Cardinals,27,Dallas Cowboys,41,,,,,,,,,,,,,-14,68,2025-11-02T10:45:02.000Z,NFLSpinzone,,NFLSpinzone
+4765805,2025,reg,9,Arizona Cardinals,30,Dallas Cowboys,27,,,,,,,,,,,,,3,57,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765797,2025,reg,9,Minnesota Vikings,21,Detroit Lions,33,,,,,,,,,,,,,-12,54,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765801,2025,reg,9,Jacksonville Jaguars,20,Las Vegas Raiders,23,,,,,,,,,,,,,-3,43,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765804,2025,reg,9,Seattle Seahawks,30,Washington Commanders,24,,,,,,,,,,,,,6,54,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765793,2025,reg,9,Denver Broncos,24,Houston Texans,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765792,2025,reg,9,Baltimore Ravens,33,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,13,53,2025-11-02T10:45:02.000Z,TylerSullivan,4,TylerSullivan
+4765800,2025,reg,9,Chicago Bears,24,Cincinnati Bengals,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765796,2025,reg,9,Carolina Panthers,17,Green Bay Packers,30,,,,,,,,,,,,,-13,47,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765798,2025,reg,9,Los Angeles Chargers,28,Tennessee Titans,14,,,,,,,,,,,,,14,42,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,27,,,,,,,,,,,,,-7,47,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,17,,,,,,,,,,,,,7,41,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765795,2025,reg,9,Indianapolis Colts,30,Pittsburgh Steelers,21,,,,,,,,,,,,,9,51,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765802,2025,reg,9,New Orleans Saints,17,Los Angeles Rams,27,,,,,,,,,,,,,-10,44,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,28,,,,,,,,,,,,,-4,52,2025-11-02T10:45:02.000Z,TylerSullivan,,TylerSullivan
+4765792,2025,reg,9,Baltimore Ravens,33,Miami Dolphins,17,,,1,0,1,0,0,0,1,0,0,0,16,50,2025-11-02T10:45:02.000Z,AliNFL,6,AliNFL
+4765792,2025,reg,9,Baltimore Ravens,32,Miami Dolphins,23,,,1,0,1,0,0,0,0,0,0,0,9,55,2025-11-02T10:45:02.000Z,BrookeNFL,4,BrookeNFL
+4765792,2025,reg,9,Baltimore Ravens,28,Miami Dolphins,21,,,1,0,0,0,0,0,1,0,0,0,7,49,2025-11-02T10:45:02.000Z,DanNFL,5,DanNFL
+4765792,2025,reg,9,Baltimore Ravens,29,Miami Dolphins,20,,,1,0,1,0,0,0,1,0,0,0,9,49,2025-11-02T10:45:02.000Z,GennaroNFL,6,GennaroNFL
+4765792,2025,reg,9,Baltimore Ravens,30,Miami Dolphins,20,,,1,0,1,0,0,0,1,0,0,0,10,50,2025-11-02T10:45:02.000Z,TomNFL,6,TomNFL
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,21,,,,,,,,,,,,,6,48,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,22,,,,,,,,,,,,,5,49,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765800,2025,reg,9,Chicago Bears,28,Cincinnati Bengals,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,17,,,,,,,,,,,,,10,44,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765797,2025,reg,9,Minnesota Vikings,18,Detroit Lions,30,,,,,,,,,,,,,-12,48,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765797,2025,reg,9,Minnesota Vikings,24,Detroit Lions,34,,,,,,,,,,,,,-10,58,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,31,,,,,,,,,,,,,-14,48,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765797,2025,reg,9,Minnesota Vikings,16,Detroit Lions,33,,,,,,,,,,,,,-17,49,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765797,2025,reg,9,Minnesota Vikings,13,Detroit Lions,27,,,,,,,,,,,,,-14,40,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765796,2025,reg,9,Carolina Panthers,15,Green Bay Packers,28,,,,,,,,,,,,,-13,43,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765796,2025,reg,9,Carolina Panthers,21,Green Bay Packers,33,,,,,,,,,,,,,-12,54,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,28,,,,,,,,,,,,,-14,42,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,29,,,,,,,,,,,,,-13,45,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765796,2025,reg,9,Carolina Panthers,13,Green Bay Packers,27,,,,,,,,,,,,,-14,40,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,20,,,,,,,,,,,,,1,41,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765793,2025,reg,9,Denver Broncos,22,Houston Texans,24,,,,,,,,,,,,,-2,46,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,23,,,,,,,,,,,,,-3,43,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,19,,,,,,,,,,,,,2,40,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,18,,,,,,,,,,,,,3,39,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,27,,,,,,,,,,,,,-6,48,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765799,2025,reg,9,Atlanta Falcons,23,New England Patriots,30,,,,,,,,,,,,,-7,53,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765799,2025,reg,9,Atlanta Falcons,19,New England Patriots,27,,,,,,,,,,,,,-8,46,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,24,,,,,,,,,,,,,-4,44,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765799,2025,reg,9,Atlanta Falcons,18,New England Patriots,25,,,,,,,,,,,,,-7,43,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,19,,,,,,,,,,,,,5,43,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,19,,,,,,,,,,,,,5,43,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765794,2025,reg,9,San Francisco 49ers,25,New York Giants,22,,,,,,,,,,,,,3,47,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765795,2025,reg,9,Indianapolis Colts,29,Pittsburgh Steelers,24,,,,,,,,,,,,,5,53,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765795,2025,reg,9,Indianapolis Colts,34,Pittsburgh Steelers,27,,,,,,,,,,,,,7,61,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765795,2025,reg,9,Indianapolis Colts,33,Pittsburgh Steelers,25,,,,,,,,,,,,,8,58,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765795,2025,reg,9,Indianapolis Colts,35,Pittsburgh Steelers,23,,,,,,,,,,,,,12,58,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765795,2025,reg,9,Indianapolis Colts,28,Pittsburgh Steelers,23,,,,,,,,,,,,,5,51,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765798,2025,reg,9,Los Angeles Chargers,27,Tennessee Titans,17,,,,,,,,,,,,,10,44,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765798,2025,reg,9,Los Angeles Chargers,28,Tennessee Titans,18,,,,,,,,,,,,,10,46,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765798,2025,reg,9,Los Angeles Chargers,26,Tennessee Titans,16,,,,,,,,,,,,,10,42,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765798,2025,reg,9,Los Angeles Chargers,31,Tennessee Titans,17,,,,,,,,,,,,,14,48,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765798,2025,reg,9,Los Angeles Chargers,28,Tennessee Titans,14,,,,,,,,,,,,,14,42,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765802,2025,reg,9,New Orleans Saints,10,Los Angeles Rams,27,,,,,,,,,,,,,-17,37,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765802,2025,reg,9,New Orleans Saints,16,Los Angeles Rams,31,,,,,,,,,,,,,-15,47,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765802,2025,reg,9,New Orleans Saints,10,Los Angeles Rams,34,,,,,,,,,,,,,-24,44,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765802,2025,reg,9,New Orleans Saints,10,Los Angeles Rams,23,,,,,,,,,,,,,-13,33,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765802,2025,reg,9,New Orleans Saints,14,Los Angeles Rams,29,,,,,,,,,,,,,-15,43,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765801,2025,reg,9,Jacksonville Jaguars,25,Las Vegas Raiders,21,,,,,,,,,,,,,4,46,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765801,2025,reg,9,Jacksonville Jaguars,21,Las Vegas Raiders,23,,,,,,,,,,,,,-2,44,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,24,,,,,,,,,,,,,3,51,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,26,,,,,,,,,,,,,-2,50,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765803,2025,reg,9,Kansas City Chiefs,31,Buffalo Bills,27,,,,,,,,,,,,,4,58,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765803,2025,reg,9,Kansas City Chiefs,30,Buffalo Bills,27,,,,,,,,,,,,,3,57,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,24,,,,,,,,,,,,,3,51,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765804,2025,reg,9,Seattle Seahawks,27,Washington Commanders,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765804,2025,reg,9,Seattle Seahawks,23,Washington Commanders,24,,,,,,,,,,,,,-1,47,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765804,2025,reg,9,Seattle Seahawks,26,Washington Commanders,21,,,,,,,,,,,,,5,47,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765804,2025,reg,9,Seattle Seahawks,26,Washington Commanders,21,,,,,,,,,,,,,5,47,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765804,2025,reg,9,Seattle Seahawks,25,Washington Commanders,21,,,,,,,,,,,,,4,46,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765805,2025,reg,9,Arizona Cardinals,28,Dallas Cowboys,27,,,,,,,,,,,,,1,55,2025-11-02T10:45:02.000Z,AliNFL,,AliNFL
+4765805,2025,reg,9,Arizona Cardinals,27,Dallas Cowboys,31,,,,,,,,,,,,,-4,58,2025-11-02T10:45:02.000Z,BrookeNFL,,BrookeNFL
+4765805,2025,reg,9,Arizona Cardinals,28,Dallas Cowboys,34,,,,,,,,,,,,,-6,62,2025-11-02T10:45:02.000Z,DanNFL,,DanNFL
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,31,,,,,,,,,,,,,-7,55,2025-11-02T10:45:02.000Z,GennaroNFL,,GennaroNFL
+4765805,2025,reg,9,Arizona Cardinals,25,Dallas Cowboys,28,,,,,,,,,,,,,-3,53,2025-11-02T10:45:02.000Z,TomNFL,,TomNFL
+4765792,2025,reg,9,Baltimore Ravens,28,Miami Dolphins,12,,,1,0,1,0,0,0,1,0,0,0,16,40,2025-11-02T10:45:02.000Z,clutchpoints,7,clutchpoints
+4765799,2025,reg,9,Atlanta Falcons,13,New England Patriots,31,,,,,,,,,,,,,-18,44,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765796,2025,reg,9,Carolina Panthers,9,Green Bay Packers,33,,,,,,,,,,,,,-24,42,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,20,,,,,,,,,,,,,1,41,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765798,2025,reg,9,Los Angeles Chargers,27,Tennessee Titans,10,,,,,,,,,,,,,17,37,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765800,2025,reg,9,Chicago Bears,30,Cincinnati Bengals,31,,,,,,,,,,,,,-1,61,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765795,2025,reg,9,Indianapolis Colts,27,Pittsburgh Steelers,17,,,,,,,,,,,,,10,44,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765794,2025,reg,9,San Francisco 49ers,16,New York Giants,17,,,,,,,,,,,,,-1,33,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,32,,,,,,,,,,,,,-12,52,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765802,2025,reg,9,New Orleans Saints,6,Los Angeles Rams,26,,,,,,,,,,,,,-20,32,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765803,2025,reg,9,Kansas City Chiefs,34,Buffalo Bills,35,,,,,,,,,,,,,-1,69,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765804,2025,reg,9,Seattle Seahawks,26,Washington Commanders,16,,,,,,,,,,,,,10,42,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,28,,,,,,,,,,,,,-4,52,2025-11-02T10:45:02.000Z,clutchpoints,,clutchpoints
+4765799,2025,reg,9,Atlanta Falcons,17,New England Patriots,27,,,,,,,,,,,,,-10,44,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765795,2025,reg,9,Indianapolis Colts,41,Pittsburgh Steelers,24,,,,,,,,,,,,,17,65,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765800,2025,reg,9,Chicago Bears,31,Cincinnati Bengals,34,,,,,,,,,,,,,-3,65,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765803,2025,reg,9,Kansas City Chiefs,34,Buffalo Bills,27,,,,,,,,,,,,,7,61,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765792,2025,reg,9,Baltimore Ravens,34,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,14,54,2025-11-02T10:45:02.000Z,JohnBreech,4,JohnBreech
+4765797,2025,reg,9,Minnesota Vikings,16,Detroit Lions,31,,,,,,,,,,,,,-15,47,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765796,2025,reg,9,Carolina Panthers,20,Green Bay Packers,27,,,,,,,,,,,,,-7,47,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765798,2025,reg,9,Los Angeles Chargers,24,Tennessee Titans,17,,,,,,,,,,,,,7,41,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765794,2025,reg,9,San Francisco 49ers,20,New York Giants,17,,,,,,,,,,,,,3,37,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,16,,,,,,,,,,,,,8,40,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765802,2025,reg,9,New Orleans Saints,17,Los Angeles Rams,34,,,,,,,,,,,,,-17,51,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765804,2025,reg,9,Seattle Seahawks,27,Washington Commanders,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765805,2025,reg,9,Arizona Cardinals,27,Dallas Cowboys,38,,,,,,,,,,,,,-11,65,2025-11-02T10:45:02.000Z,JohnBreech,,JohnBreech
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,20,,,1,0,0,0,0,0,1,0,0,0,7,47,2025-11-02T10:45:02.000Z,JarrettBell,4,JarrettBell
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,11,51,2025-11-02T10:45:02.000Z,NickBrinkerhoff,4,NickBrinkerhoff
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,17,,,1,0,1,0,0,0,1,0,0,0,10,44,2025-11-02T10:45:02.000Z,ChrisBumbaca,6,ChrisBumbaca
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,20,,,1,0,0,0,0,0,1,0,0,0,7,47,2025-11-02T10:45:02.000Z,NateDavis,4,NateDavis
+4765792,2025,reg,9,Baltimore Ravens,27,Miami Dolphins,17,,,1,0,1,0,0,0,1,0,0,0,10,44,2025-11-02T10:45:02.000Z,TylerDragon,6,TylerDragon
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,11,51,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,4,MikeMiddlehurst-Schwartz
+4765800,2025,reg,9,Chicago Bears,24,Cincinnati Bengals,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765800,2025,reg,9,Chicago Bears,17,Cincinnati Bengals,23,,,,,,,,,,,,,-6,40,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765800,2025,reg,9,Chicago Bears,28,Cincinnati Bengals,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765800,2025,reg,9,Chicago Bears,27,Cincinnati Bengals,17,,,,,,,,,,,,,10,44,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765800,2025,reg,9,Chicago Bears,25,Cincinnati Bengals,24,,,,,,,,,,,,,1,49,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765800,2025,reg,9,Chicago Bears,34,Cincinnati Bengals,27,,,,,,,,,,,,,7,61,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,33,,,,,,,,,,,,,-13,53,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765797,2025,reg,9,Minnesota Vikings,21,Detroit Lions,34,,,,,,,,,,,,,-13,55,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765797,2025,reg,9,Minnesota Vikings,19,Detroit Lions,30,,,,,,,,,,,,,-11,49,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765797,2025,reg,9,Minnesota Vikings,23,Detroit Lions,30,,,,,,,,,,,,,-7,53,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765797,2025,reg,9,Minnesota Vikings,20,Detroit Lions,30,,,,,,,,,,,,,-10,50,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,30,,,,,,,,,,,,,-13,47,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,31,,,,,,,,,,,,,-17,45,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,26,,,,,,,,,,,,,-10,42,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765796,2025,reg,9,Carolina Panthers,14,Green Bay Packers,24,,,,,,,,,,,,,-10,38,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765796,2025,reg,9,Carolina Panthers,13,Green Bay Packers,30,,,,,,,,,,,,,-17,43,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765796,2025,reg,9,Carolina Panthers,17,Green Bay Packers,28,,,,,,,,,,,,,-11,45,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765796,2025,reg,9,Carolina Panthers,21,Green Bay Packers,35,,,,,,,,,,,,,-14,56,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,17,,,,,,,,,,,,,6,40,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,28,,,,,,,,,,,,,-5,51,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765793,2025,reg,9,Denver Broncos,17,Houston Texans,20,,,,,,,,,,,,,-3,37,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765793,2025,reg,9,Denver Broncos,24,Houston Texans,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765793,2025,reg,9,Denver Broncos,27,Houston Texans,19,,,,,,,,,,,,,8,46,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765799,2025,reg,9,Atlanta Falcons,17,New England Patriots,23,,,,,,,,,,,,,-6,40,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765799,2025,reg,9,Atlanta Falcons,24,New England Patriots,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,28,,,,,,,,,,,,,-7,49,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765799,2025,reg,9,Atlanta Falcons,16,New England Patriots,25,,,,,,,,,,,,,-9,41,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,24,,,,,,,,,,,,,-4,44,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765799,2025,reg,9,Atlanta Falcons,13,New England Patriots,28,,,,,,,,,,,,,-15,41,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765794,2025,reg,9,San Francisco 49ers,27,New York Giants,21,,,,,,,,,,,,,6,48,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765794,2025,reg,9,San Francisco 49ers,27,New York Giants,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765795,2025,reg,9,Indianapolis Colts,24,Pittsburgh Steelers,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765795,2025,reg,9,Indianapolis Colts,35,Pittsburgh Steelers,20,,,,,,,,,,,,,15,55,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765795,2025,reg,9,Indianapolis Colts,30,Pittsburgh Steelers,26,,,,,,,,,,,,,4,56,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765795,2025,reg,9,Indianapolis Colts,33,Pittsburgh Steelers,23,,,,,,,,,,,,,10,56,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765795,2025,reg,9,Indianapolis Colts,28,Pittsburgh Steelers,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765795,2025,reg,9,Indianapolis Colts,34,Pittsburgh Steelers,23,,,,,,,,,,,,,11,57,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765798,2025,reg,9,Los Angeles Chargers,33,Tennessee Titans,17,,,,,,,,,,,,,16,50,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765798,2025,reg,9,Los Angeles Chargers,38,Tennessee Titans,10,,,,,,,,,,,,,28,48,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765798,2025,reg,9,Los Angeles Chargers,27,Tennessee Titans,13,,,,,,,,,,,,,14,40,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765798,2025,reg,9,Los Angeles Chargers,30,Tennessee Titans,17,,,,,,,,,,,,,13,47,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765798,2025,reg,9,Los Angeles Chargers,24,Tennessee Titans,16,,,,,,,,,,,,,8,40,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765798,2025,reg,9,Los Angeles Chargers,30,Tennessee Titans,14,,,,,,,,,,,,,16,44,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765802,2025,reg,9,New Orleans Saints,17,Los Angeles Rams,34,,,,,,,,,,,,,-17,51,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765802,2025,reg,9,New Orleans Saints,13,Los Angeles Rams,30,,,,,,,,,,,,,-17,43,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765802,2025,reg,9,New Orleans Saints,16,Los Angeles Rams,26,,,,,,,,,,,,,-10,42,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765802,2025,reg,9,New Orleans Saints,16,Los Angeles Rams,27,,,,,,,,,,,,,-11,43,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765802,2025,reg,9,New Orleans Saints,17,Los Angeles Rams,28,,,,,,,,,,,,,-11,45,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765802,2025,reg,9,New Orleans Saints,12,Los Angeles Rams,28,,,,,,,,,,,,,-16,40,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765801,2025,reg,9,Jacksonville Jaguars,17,Las Vegas Raiders,20,,,,,,,,,,,,,-3,37,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765801,2025,reg,9,Jacksonville Jaguars,27,Las Vegas Raiders,14,,,,,,,,,,,,,13,41,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,25,,,,,,,,,,,,,-1,49,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,17,,,,,,,,,,,,,7,41,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765801,2025,reg,9,Jacksonville Jaguars,27,Las Vegas Raiders,21,,,,,,,,,,,,,6,48,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765801,2025,reg,9,Jacksonville Jaguars,30,Las Vegas Raiders,20,,,,,,,,,,,,,10,50,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765803,2025,reg,9,Kansas City Chiefs,31,Buffalo Bills,27,,,,,,,,,,,,,4,58,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765803,2025,reg,9,Kansas City Chiefs,28,Buffalo Bills,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,23,,,,,,,,,,,,,4,50,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765803,2025,reg,9,Kansas City Chiefs,28,Buffalo Bills,24,,,,,,,,,,,,,4,52,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,28,,,,,,,,,,,,,-1,55,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765804,2025,reg,9,Seattle Seahawks,23,Washington Commanders,26,,,,,,,,,,,,,-3,49,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765804,2025,reg,9,Seattle Seahawks,27,Washington Commanders,20,,,,,,,,,,,,,7,47,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765804,2025,reg,9,Seattle Seahawks,30,Washington Commanders,20,,,,,,,,,,,,,10,50,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765804,2025,reg,9,Seattle Seahawks,21,Washington Commanders,26,,,,,,,,,,,,,-5,47,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765804,2025,reg,9,Seattle Seahawks,31,Washington Commanders,17,,,,,,,,,,,,,14,48,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765805,2025,reg,9,Arizona Cardinals,31,Dallas Cowboys,34,,,,,,,,,,,,,-3,65,2025-11-02T10:45:02.000Z,JarrettBell,,JarrettBell
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,31,,,,,,,,,,,,,-7,55,2025-11-02T10:45:02.000Z,NickBrinkerhoff,,NickBrinkerhoff
+4765805,2025,reg,9,Arizona Cardinals,28,Dallas Cowboys,34,,,,,,,,,,,,,-6,62,2025-11-02T10:45:02.000Z,ChrisBumbaca,,ChrisBumbaca
+4765805,2025,reg,9,Arizona Cardinals,23,Dallas Cowboys,30,,,,,,,,,,,,,-7,53,2025-11-02T10:45:02.000Z,NateDavis,,NateDavis
+4765805,2025,reg,9,Arizona Cardinals,20,Dallas Cowboys,28,,,,,,,,,,,,,-8,48,2025-11-02T10:45:02.000Z,TylerDragon,,TylerDragon
+4765805,2025,reg,9,Arizona Cardinals,23,Dallas Cowboys,28,,,,,,,,,,,,,-5,51,2025-11-02T10:45:02.000Z,MikeMiddlehurst-Schwartz,,MikeMiddlehurst-Schwartz
+4765793,2025,reg,9,Denver Broncos,24,Houston Texans,20,0,0,,,,,,,,,,,4,44,2025-10-31T07:42:23.354Z,ausame,,ausame
+4765794,2025,reg,9,San Francisco 49ers,23,N.Y. Giants Giants,20,0,0,,,,,,,,,,,3,43,2025-10-31T07:42:31.084Z,ausame,,ausame
+4765795,2025,reg,9,Indianapolis Colts,31,Pittsburgh Steelers,23,0,0,,,,,,,,,,,8,54,2025-10-31T07:42:40.350Z,ausame,,ausame
+4765796,2025,reg,9,Carolina Panthers,16,Green Bay Packers,27,0,0,,,,,,,,,,,-11,43,2025-10-31T07:43:05.209Z,ausame,,ausame
+4765797,2025,reg,9,Minnesota Vikings,23,Detroit Lions,31,0,0,,,,,,,,,,,-8,54,2025-10-31T07:43:22.107Z,ausame,,ausame
+4765798,2025,reg,9,L.A. Chargers Chargers,24,Tennessee Titans,16,0,0,,,,,,,,,,,8,40,2025-10-31T07:45:31.671Z,ausame,,ausame
+4765799,2025,reg,9,Atlanta Falcons,13,New England Patriots,24,0,0,,,,,,,,,,,-11,37,2025-10-31T07:45:48.231Z,ausame,,ausame
+4765800,2025,reg,9,Chicago Bears,23,Cincinnati Bengals,21,0,0,,,,,,,,,,,2,44,2025-10-31T07:45:59.007Z,ausame,,ausame
+4765801,2025,reg,9,Jacksonville Jaguars,23,Las Vegas Raiders,21,0,0,,,,,,,,,,,2,44,2025-10-31T07:46:15.837Z,ausame,,ausame
+4765802,2025,reg,9,New Orleans Saints,16,L.A. Rams Rams,24,0,0,,,,,,,,,,,-8,40,2025-10-31T07:46:32.532Z,ausame,,ausame
+4765803,2025,reg,9,Kansas City Chiefs,27,Buffalo Bills,28,3,0,,,,,,,,,,,-1,55,2025-10-31T07:47:09.800Z,ausame,,ausame
+4765804,2025,reg,9,Seattle Seahawks,24,Washington Commanders,23,3,0,,,,,,,,,,,1,47,2025-10-31T07:47:03.934Z,ausame,,ausame
+4765805,2025,reg,9,Arizona Cardinals,17,Dallas Cowboys,23,0,0,,,,,,,,,,,-6,40,2025-10-31T07:47:32.510Z,ausame,,ausame
+4765792,2025,reg,9,Baltimore Ravens,31,Miami Dolphins,20,,,1,0,1,0,0,0,0,0,0,0,11,51,2025-11-02T10:45:02.000Z,JimNicely,4,JimNicely
+4765793,2025,reg,9,Denver Broncos,21,Houston Texans,2,,,,,,,,,,,,,19,23,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765794,2025,reg,9,San Francisco 49ers,24,New York Giants,2,,,,,,,,,,,,,22,26,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765795,2025,reg,9,Indianapolis Colts,28,Pittsburgh Steelers,2,,,,,,,,,,,,,26,30,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765796,2025,reg,9,Carolina Panthers,1,Green Bay Packers,28,,,,,,,,,,,,,-27,29,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765797,2025,reg,9,Minnesota Vikings,1,Detroit Lions,31,,,,,,,,,,,,,-30,32,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765798,2025,reg,9,Los Angeles Chargers,27,Los Angeles Rams,1,,,,,,,,,,,,,26,28,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765799,2025,reg,9,Atlanta Falcons,2,New England Patriots,23,,,,,,,,,,,,,-21,25,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765800,2025,reg,9,Chicago Bears,2,Cincinnati Bengals,31,,,,,,,,,,,,,-29,33,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,1,,,,,,,,,,,,,23,25,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765803,2025,reg,9,Kansas City Chiefs,28,Buffalo Bills,2,,,,,,,,,,,,,26,30,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765804,2025,reg,9,Seattle Seahawks,26,Washington Commanders,17,,,,,,,,,,,,,9,43,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765805,2025,reg,9,Arizona Cardinals,31,Dallas Cowboys,35,,,,,,,,,,,,,-4,66,2025-11-02T10:45:02.000Z,JimNicely,,JimNicely
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,23,,,,,,,,,,,,,-3,43,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765793,2025,reg,9,Denver Broncos,20,Houston Texans,17,,,,,,,,,,,,,3,37,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765793,2025,reg,9,Denver Broncos,23,Houston Texans,17,,,,,,,,,,,,,6,40,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765795,2025,reg,9,Indianapolis Colts,30,Pittsburgh Steelers,27,,,,,,,,,,,,,3,57,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765795,2025,reg,9,Indianapolis Colts,35,Pittsburgh Steelers,28,,,,,,,,,,,,,7,63,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765795,2025,reg,9,Indianapolis Colts,24,Pittsburgh Steelers,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,30,,,,,,,,,,,,,-13,47,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765797,2025,reg,9,Minnesota Vikings,17,Detroit Lions,34,,,,,,,,,,,,,-17,51,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765797,2025,reg,9,Minnesota Vikings,23,Detroit Lions,21,,,,,,,,,,,,,2,44,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765796,2025,reg,9,Carolina Panthers,19,Green Bay Packers,27,,,,,,,,,,,,,-8,46,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765796,2025,reg,9,Carolina Panthers,17,Green Bay Packers,28,,,,,,,,,,,,,-11,45,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765796,2025,reg,9,Carolina Panthers,9,Green Bay Packers,30,,,,,,,,,,,,,-21,39,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765794,2025,reg,9,San Francisco 49ers,34,New York Giants,29,,,,,,,,,,,,,5,63,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765794,2025,reg,9,San Francisco 49ers,23,New York Giants,21,,,,,,,,,,,,,2,44,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765794,2025,reg,9,San Francisco 49ers,27,New York Giants,31,,,,,,,,,,,,,-4,58,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765800,2025,reg,9,Chicago Bears,20,Cincinnati Bengals,13,,,,,,,,,,,,,7,33,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765800,2025,reg,9,Chicago Bears,31,Cincinnati Bengals,35,,,,,,,,,,,,,-4,66,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765800,2025,reg,9,Chicago Bears,30,Cincinnati Bengals,16,,,,,,,,,,,,,14,46,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765799,2025,reg,9,Atlanta Falcons,10,New England Patriots,30,,,,,,,,,,,,,-20,40,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765799,2025,reg,9,Atlanta Falcons,21,New England Patriots,24,,,,,,,,,,,,,-3,45,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765799,2025,reg,9,Atlanta Falcons,20,New England Patriots,31,,,,,,,,,,,,,-11,51,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765798,2025,reg,9,Los Angeles Chargers,28,Tennessee Titans,14,,,,,,,,,,,,,14,42,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765798,2025,reg,9,Los Angeles Chargers,33,Tennessee Titans,17,,,,,,,,,,,,,16,50,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765798,2025,reg,9,Los Angeles Chargers,31,Tennessee Titans,12,,,,,,,,,,,,,19,43,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765802,2025,reg,9,New Orleans Saints,18,Los Angeles Rams,27,,,,,,,,,,,,,-9,45,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765802,2025,reg,9,New Orleans Saints,16,Los Angeles Rams,31,,,,,,,,,,,,,-15,47,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765802,2025,reg,9,New Orleans Saints,10,Los Angeles Rams,29,,,,,,,,,,,,,-19,39,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765801,2025,reg,9,Jacksonville Jaguars,27,Las Vegas Raiders,21,,,,,,,,,,,,,6,48,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765801,2025,reg,9,Jacksonville Jaguars,27,Las Vegas Raiders,19,,,,,,,,,,,,,8,46,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765801,2025,reg,9,Jacksonville Jaguars,24,Las Vegas Raiders,20,,,,,,,,,,,,,4,44,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765803,2025,reg,9,Kansas City Chiefs,23,Buffalo Bills,20,,,,,,,,,,,,,3,43,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765803,2025,reg,9,Kansas City Chiefs,32,Buffalo Bills,24,,,,,,,,,,,,,8,56,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765803,2025,reg,9,Kansas City Chiefs,24,Buffalo Bills,27,,,,,,,,,,,,,-3,51,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765804,2025,reg,9,Seattle Seahawks,30,Washington Commanders,19,,,,,,,,,,,,,11,49,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765804,2025,reg,9,Seattle Seahawks,28,Washington Commanders,21,,,,,,,,,,,,,7,49,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765804,2025,reg,9,Seattle Seahawks,27,Washington Commanders,21,,,,,,,,,,,,,6,48,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN
+4765805,2025,reg,9,Arizona Cardinals,20,Dallas Cowboys,48,,,,,,,,,,,,,-28,68,2025-11-02T10:45:02.000Z,MaldonadoESPN,,MaldonadoESPN
+4765805,2025,reg,9,Arizona Cardinals,31,Dallas Cowboys,41,,,,,,,,,,,,,-10,72,2025-11-02T10:45:02.000Z,MoodyESPN,,MoodyESPN
+4765805,2025,reg,9,Arizona Cardinals,24,Dallas Cowboys,33,,,,,,,,,,,,,-9,57,2025-11-02T10:45:02.000Z,WalderESPN,,WalderESPN

@@ -9,7 +9,7 @@ const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4
 
 exports.handler = async (event, context, callback) => {
     try {
-        console.log(JSON.stringify(`Event: ${JSON.stringify(event)}`))
+        console.log(JSON.stringify(`Event: ${event}`))
         const client = await mongo.connect(MONGO_URL);
         const { 
             userId,
@@ -26,7 +26,7 @@ exports.handler = async (event, context, callback) => {
         session.startTransaction()
         const userProfile = await db.collection('profileExtended').findOne({ username: userId }, { session });
         let currencyBalance = userProfile.currency;
-        console.log('currencyBalance', currencyBalance)
+        console.log('currencyBalance', currencyBalance, wager)
         if (wager.currency <= currencyBalance) {
             let submitWager = await db.collection('wagers').insertOne({
                 userId,
@@ -73,18 +73,18 @@ exports.handler = async (event, context, callback) => {
             if (profileUpdate.modifiedCount === 0) {
                 session.abortTransaction()
                 console.error("the user's profile was not updated. Aborting session.");
-                context.fail({status: 500, message: "the user's profile was not updated. Aborting session."});
+                throw new Error(JSON.stringify({status: 500, message: "the user's profile was not updated. Aborting session."}));
             } else {
                 session.commitTransaction();
-                context.done(null, {status: 200, message: "Wager was successfully placed.", currencyBalance});
+                return {status: 200, message: "Wager was successfully placed.", currencyBalance};
             }
         } else {
             session.abortTransaction()
             console.error("insufficient balance");
-            context.done(null, {status: 200, message: "The user does not have enough currency to place this wager."});
+            return {status: 200, message: "The user does not have enough currency to place this wager."};
         }
     } catch (err) {
         console.error(err);
-        context.fail({status: 500, message: err});
+        throw new Error(JSON.stringify({status: 500, message: err.message}));
     }
 }

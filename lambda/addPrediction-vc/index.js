@@ -1,17 +1,17 @@
 'use strict';
-const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
-const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
 const AWSConfig = { region: "us-west-2" };
 var mongo = require("mongodb").MongoClient,
     assert = require("assert"),
     validate = require("jsonschema").validate;
 // const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+const { LambdaClient, InvokeCommand } = require("@aws-sdk/client-lambda"); // ES Modules import
 const lambda = new LambdaClient(AWSConfig);
 
 
 const {config} = require("./config");
 
 // const { SNSClient, SubscribeCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns"); // ES Modules import
 const SNS = new SNSClient(AWSConfig);
 
 const MONGO_URL = `mongodb+srv://${config.username}:${config.password}@pcsm.lwx4u.mongodb.net/pcsm?retryWrites=true&w=majority`;
@@ -78,10 +78,11 @@ const requestSchemaNCAAM = {
                     },
                 "required": ["code", "fullName", "shortName", "score"]
                 }
-            }
+            },
+            "required": ["awayTeam", "homeTeam"]
         }
     },
-    "required": ["gameId", "awayTeam", "homeTeam"]
+    "required": ["gameId", "prediction"]
 };
 
 // console.log('Loading function');
@@ -205,10 +206,10 @@ exports.handler = async (event, context) => {
         var {prediction, wager, userId, preferred_username, gameId, year, sport, gameWeek, season } = event;
         
         if (!userId || userId === "") {
-            context.done(null, { userId, succeeded: false})
+            return { status: 400, message: 'Invalid userId', succeeded: false };
         }
-        var validateRequest;
-        (event.sport !== 'ncaam') ? validateRequest = validate(event, requestSchema) : validateRequest = validate(prediction, requestSchemaNCAAM)
+        var validateRequest = (event.sport === 'nfl' || event.sport === 'ncaaf') ? validate(event, requestSchema) : validate(event, requestSchemaNCAAM);
+        console.log('validateRequest :>> ', validateRequest);
         if (validateRequest.errors && validateRequest.errors.length > 0) {
             result.message = 'Invalid request error(s)';
             result.errors = [];
@@ -216,7 +217,7 @@ exports.handler = async (event, context) => {
             for (var i = 0; i < validateRequest.errors.length; i++) {
                 result.errors.push(validateRequest.errors[i]);
             }
-            return context.fail(JSON.stringify(result));
+            return { status: 500, message: JSON.stringify(result) };
         }
         prediction.gameWeek = gameWeek;
         prediction.preferred_username = preferred_username;
@@ -246,10 +247,14 @@ exports.handler = async (event, context) => {
                 var gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year), "gameWeek": parseInt(gameWeek)};
                 if (sport === 'ncaaf') {
                     gamesCollection = 'games-ncaaf';
-                } else if (sport === 'ncaam') {
-                    gamesCollection = 'games-ncaam';
+                } else if (sport === 'ncaam' || sport === 'ncaab') {
+                    gamesCollection = 'games-ncaab';
+                    gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
+                } else if (sport === 'nba') {
+                    gamesCollection = 'games-nba';
                     gamesQuery = {"gameId": parseInt(gameId), "year": parseInt(year)};
                 }
+
                 console.log('gamesQuery: ', gamesQuery)
 
                 // check for game start time to ensure the prediction is 5 minutes before kickoff
@@ -262,9 +267,9 @@ exports.handler = async (event, context) => {
                     var kickoff = Date.parse(game.startDateTime);
                     var cutoff = kickoff - msHour;
 
-                    // console.log("now: " + now);
+                    console.log("now: " + now);
                     // console.log("kickoff: " + new Date(game.startDateTime));
-                    // console.log("cutoff: " + new Date(cutoff));
+                    console.log("cutoff: " + new Date(cutoff));
 
                     if (now > cutoff) {
                         result.message = "The cutoff for predicting this game has passed.";
@@ -289,10 +294,12 @@ exports.handler = async (event, context) => {
                         // else treat as new prediction and add to collection
                         
                         var predictionCollection = 'predictions';
-                        if (prediction.sport === 'ncaaf') {
+                        if (event.sport === 'ncaaf') {
                             predictionCollection = 'predictions-ncaaf';
-                        } else if (prediction.sport === 'ncaam') {
+                        } else if (event.sport === 'ncaam' || event.sport === 'ncaab') {
                             predictionCollection = 'predictions-ncaam';
+                        } else if (event.sport === 'nba') {
+                            predictionCollection = 'predictions-nba';
                         }
                         
                         // Insert or Update the user's prediction to the prediction collection
@@ -406,7 +413,7 @@ exports.handler = async (event, context) => {
                                 }
                             }
                             // get total currency bet for a given week
-                            var predictionsQuery = {userId: userId, year: prediction.year, gameWeek: prediction.gameWeek, season: season}
+                            var predictionsQuery = {userId: userId, year: year, gameWeek: gameWeek, season: season}
                             const predictions = await db.collection(predictionCollection).find(predictionsQuery, {_id:false}).toArray();
                             
                                 // if (err) {
@@ -431,7 +438,7 @@ exports.handler = async (event, context) => {
                                     }
                                 })
                                 result.currencyWagered = currencyWagered;
-                                if (prediction.collegeBowlPremium !== '1' && prediction.sport === 'ncaaf') {
+                                if (event.collegeBowlPremium !== '1' && event.sport === 'ncaaf') {
                                     result.crowd = null;
                                 }
                                 

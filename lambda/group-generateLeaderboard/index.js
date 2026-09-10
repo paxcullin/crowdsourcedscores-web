@@ -34,6 +34,9 @@ exports.handler = (event, context, callback) => {
         } else if (eventSport === 'ncaam') {
             gamesCollection = 'games-ncaam'
             predictionsCollection = 'predictions-ncaam'
+        } else if (eventSport === 'nba') {
+            gamesCollection = 'games-nba';
+            predictionsCollection = 'predictions-nba';
         }
         gameQuery = {year:eventYear, sport: eventSport, gameWeek: eventGameWeek, results: {$exists: true}}
     }
@@ -48,12 +51,6 @@ exports.handler = (event, context, callback) => {
         var gamesCollection = 'games';
         var predictionsCollection = 'predictions';
         var year = event.year ? event.year : 2018;
-        if (event.sport === 'ncaaf') {
-            predictionsCollection = 'predictions-ncaaf';
-        } else if (event.sport === 'ncaam') {
-            predictionsCollection = 'predictions-ncaam';
-            year = 2019;
-        }
         const { season, sport } = event 
         mongo.connect(MONGO_URL, function (err, client) {
             if (err) {
