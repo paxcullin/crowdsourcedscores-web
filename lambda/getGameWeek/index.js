@@ -1168,24 +1168,23 @@ exports.handler = (event, context, callback) => {
             case 'reg':
                 weekStartDates = [
                     Date.UTC(2026, 8, 1),  // 2026 Week 1
-                    Date.UTC(2026, 8, 10),  // 2026 Week 2
-                    Date.UTC(2026, 8, 17),  // 2026 Week 3
-                    Date.UTC(2026, 8, 24),  // 2026 Week 4
-                    Date.UTC(2026, 9, 1),  // 2026 Week 5
-                    Date.UTC(2026, 9, 8),  // 2026 Week 6
-                    Date.UTC(2026, 9, 15),  // 2026 Week 7
-                    Date.UTC(2026, 9, 22),  // 2026 Week 8
-                    Date.UTC(2026, 9, 29),  // 2026 Week 9
-                    Date.UTC(2026, 10, 5),  // 2026 Week 10
-                    Date.UTC(2026, 10, 12),  // 2026 Week 11
-                    Date.UTC(2026, 10, 19),  // 2026 Week 12
-                    Date.UTC(2026, 10, 26),  // 2026 Week 13
-                    Date.UTC(2026, 11, 3),  // 2026 Week 14
-                    Date.UTC(2026, 11, 10),  // 2026 Week 15
-                    Date.UTC(2026, 11, 17),  // 2026 Week 16
-                    Date.UTC(2026, 11, 24),  // 2026 Week 17
-                    Date.UTC(2026, 11, 31),  // 2026 Week 18
-                    Date.UTC(2027, 0, 5),  // 2027 Week 18
+                    Date.UTC(2026, 8, 16),  // 2026 Week 2
+                    Date.UTC(2026, 8, 23),  // 2026 Week 3
+                    Date.UTC(2026, 8, 30),  // 2026 Week 4
+                    Date.UTC(2026, 9, 6),  // 2026 Week 5
+                    Date.UTC(2026, 9, 13),  // 2026 Week 6
+                    Date.UTC(2026, 9, 20),  // 2026 Week 7
+                    Date.UTC(2026, 9, 27),  // 2026 Week 8
+                    Date.UTC(2026, 10, 4),  // 2026 Week 9
+                    Date.UTC(2026, 10, 11),  // 2026 Week 10
+                    Date.UTC(2026, 10, 18),  // 2026 Week 11
+                    Date.UTC(2026, 10, 25),  // 2026 Week 12
+                    Date.UTC(2026, 11, 1),  // 2026 Week 13
+                    Date.UTC(2026, 11, 8),  // 2026 Week 14
+                    Date.UTC(2026, 11, 15),  // 2026 Week 15
+                    Date.UTC(2026, 11, 22),  // 2026 Week 16
+                    Date.UTC(2026, 11, 29),  // 2026 Week 17
+                    Date.UTC(2027, 0, 5),  // 2026 Week 18
                     ];
                     break;
             case 'post':
