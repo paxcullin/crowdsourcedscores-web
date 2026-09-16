@@ -16,27 +16,38 @@ function evaluateMoneyline(awayTeam, homeTeam, odds) {
 
 function evaluateSpread(awayTeam, homeTeam, wager) {
     console.log('wager :>> ', wager);
-    const {participantId, spreadTotal } = wager
-    if (!participantId || !spreadTotal) {
-        if (wager.spread > 0) {
-            if (awayTeam.score + wager.spread > homeTeam.score) {
+    const hasExplicitSpreadTotal = wager && wager.spreadTotal !== null && wager.spreadTotal !== undefined;
+    const spread = hasExplicitSpreadTotal ? Number(wager.spreadTotal) : Number(wager.spread);
+    if (!Number.isFinite(spread)) {
+        console.error('Error parsing spread:', wager);
+        return null;
+    }
+
+    const {participantId} = wager;
+    const spreadTotal = hasExplicitSpreadTotal ? Number(wager.spreadTotal) : null;
+
+    if (!participantId || spreadTotal === null) {
+        if (spread > 0) {
+            if (awayTeam.score + spread > homeTeam.score) {
                 return "away";
-            } else if (awayTeam.score + wager.spread < homeTeam.score) {
+            } else if (awayTeam.score + spread < homeTeam.score) {
                 return "home";
             } else {
                 return "push";
             }
-        } else if (wager.spread < 0) {
-            if (awayTeam.score + wager.spread > homeTeam.score) {
+        } else if (spread < 0) {
+            if (awayTeam.score + spread > homeTeam.score) {
                 return "away";
-            } else if (awayTeam.score + wager.spread < homeTeam.score) {
+            } else if (awayTeam.score + spread < homeTeam.score) {
                 return "home";
             } else {
                 return "push";
             }
+        } else {
+            return "push";
         }
     }
-    // user wagered on the Away Team
+
     if (participantId === awayTeam.participantId) {
         console.log('30 awayTeam.score, spreadTotal, homeTeam.score :>> ', awayTeam.score, spreadTotal, homeTeam.score);
         if (awayTeam.score + spreadTotal > homeTeam.score) {
@@ -56,13 +67,25 @@ function evaluateSpread(awayTeam, homeTeam, wager) {
             return "push";
         }
     }
+
+    return null;
 }
 
-function evaluateTotal(awayTeam, homeTeam, odds) {
+function evaluateTotal(awayTeam, homeTeam, wager) {
     // console.log('awayTeam, homeTeam, odds', awayTeam, homeTeam, odds)
-    if (awayTeam.score + homeTeam.score > odds.total) {
+    let total = wager.spreadTotal;
+    if (typeof total !== 'number') {
+        try {
+            total = parseFloat(wager.spreadTotal);
+            console.log('total converted to number:', total)
+        } catch (e) {
+            console.error('Error parsing total:', e);
+            return null
+        }
+    }
+    if (awayTeam.score + homeTeam.score > total) {
         return "over";
-    } else if (awayTeam.score + homeTeam.score < odds.total) {
+    } else if (awayTeam.score + homeTeam.score < total) {
         return "under";
     } else {
         return "push";
@@ -162,8 +185,9 @@ exports.handler = async function (event, context, callback) {
                 }
             }
             if (wager.wagerType === "spread") {
-                predictionSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...prediction.awayTeam}, {participantId: game.homeTeam.participantId, ...prediction.homeTeam}, wager.spreadTotal ? wager : prediction.odds);
-                actualSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...game.results.awayTeam}, {participantId: game.homeTeam.participantId, ...game.results.homeTeam}, wager.spreadTotal ? wager : prediction.odds);
+                const spreadWager = wager.spreadTotal !== undefined && wager.spreadTotal !== null ? wager : prediction.odds;
+                predictionSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...prediction.awayTeam}, {participantId: game.homeTeam.participantId, ...prediction.homeTeam}, spreadWager);
+                actualSpread = evaluateSpread({participantId: game.awayTeam.participantId, ...game.results.awayTeam}, {participantId: game.homeTeam.participantId, ...game.results.homeTeam}, spreadWager);
                 console.log('predictionSpread, actualSpread: ', predictionSpread, actualSpread)
                 if (actualSpread === "push") {
                     result = 0
@@ -177,8 +201,8 @@ exports.handler = async function (event, context, callback) {
                 }
             }
             if (wager.wagerType === "total") {
-                predictionTotal = evaluateTotal(prediction.awayTeam, prediction.homeTeam, prediction.odds);
-                actualTotal = evaluateTotal(game.results.awayTeam, game.results.homeTeam, prediction.odds);
+                predictionTotal = evaluateTotal(prediction.awayTeam, prediction.homeTeam, wager);
+                actualTotal = evaluateTotal(game.results.awayTeam, game.results.homeTeam, wager);
                 console.log('predictionTotal, actualTotal: ', predictionTotal, actualTotal)
                 if (actualTotal === "push") {
                     result = 0
