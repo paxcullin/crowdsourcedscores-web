@@ -120,7 +120,8 @@ exports.handler = async (event) => {
                         return;
                     }
                     if (competitor.homeAway === 'home') {
-                        homeTeamCode = competitor.team.abbreviation !== 'WSH' && competitor.team.abbreviation !== "JAX" ? competitor.team.abbreviation : competitor.team.abbreviation === 'WSH' ? 'WAS' : competitor.team.abbreviation === 'JAX' ? 'JAC' : null
+                        // homeTeamCode = competitor.team.abbreviation !== 'WSH' && competitor.team.abbreviation !== "JAX" ? competitor.team.abbreviation : competitor.team.abbreviation === 'WSH' ? 'WAS' : competitor.team.abbreviation === 'JAX' ? 'JAC' : null
+                        homeTeamCode = competitor.team.abbreviation !== 'WSH' ? competitor.team.abbreviation : 'WAS'
                         if (!homeTeamCode) {
                             return;
                         }
@@ -133,7 +134,7 @@ exports.handler = async (event) => {
                             })
                         }
                     } else {
-                        awayTeamCode = competitor.team.abbreviation !== 'WSH' && competitor.team.abbreviation !== "JAX" ? competitor.team.abbreviation : competitor.team.abbreviation === 'WSH' ? 'WAS' : competitor.team.abbreviation === 'JAX' ? 'JAC' : null
+                        awayTeamCode = competitor.team.abbreviation !== 'WSH' ? competitor.team.abbreviation : 'WAS'
                         if (!awayTeamCode) {
                             return;
                         }
