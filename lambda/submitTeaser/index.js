@@ -73,7 +73,7 @@ exports.handler = async (event) => {
   }
 
   const document = {
-    usedId: payload.userId,
+    userId: payload.content.userId,
     gameIdsArray: JSON.parse(teaser.gameIdsArray) || [],
     predictionsArray: JSON.parse(teaser.predictionsArray) || [],
     sport: teaser.sport || 'unknown',
@@ -105,19 +105,20 @@ exports.handler = async (event) => {
 
     const db = client.db('pcsm');
     const collection = db.collection('wagers');
+    document.submitted = new Date()
 
     const result = await collection.insertOne(document);
     console.log('result: ', JSON.stringify(result));
-    return sendResponse(200, {
+    return {status: 200, 
       message: 'Teaser submitted successfully.',
       id: result.insertedId.toString(),
       teaser: document
-    });
+    };
   } catch (error) {
-    return sendResponse(500, {
+    return {status: 500, 
       error: 'Failed to submit teaser.',
       details: error.message
-    });
+    }
   } finally {
     await client.close();
   }
