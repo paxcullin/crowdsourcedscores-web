@@ -1,0 +1,13 @@
+{
+  "name": "calculateTeaser",
+  "version": "1.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^7.6.0"
+  },
+  "scripts": {
+    "package": "zip -f calculateTeaser.zip index.js",
+    "upload": "aws lambda update-function-code --function-name calculateTeaser --zip-file fileb://calculateTeaser.zip --publish"
+  }
+}

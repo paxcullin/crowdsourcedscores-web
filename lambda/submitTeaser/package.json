@@ -1,0 +1,14 @@
+{
+  "name": "submitTeaser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "aws lambda invoke --function-name submitTeaser --cli-binary-format raw-in-base64-out --payload file://test-prediction.json prediction.json",
+    "package": "zip -r submitTeaser.zip .",
+    "upload": "aws lambda update-function-code --function-name submitTeaser --zip-file fileb://submitTeaser.zip --publish"
+  },
+  "dependencies": {
+    "mongodb": "^7.6.0"
+  }
+}
