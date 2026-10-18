@@ -1,0 +1,22 @@
+{
+  "heading": "New for 5.2.10", 
+  "list": [{ "heading": "My Predictions List",
+            "text": "Click on the > by 'My Score' or 'Picks' to see all your Predictions in one place.",
+            "link": "Predictions"
+          },
+          {
+            "heading": "Teasers",
+            "text": "You can now make Teaser wagers from your Predictions list. Select two or more teams from your Predictions List to create a teaser wager. You will see these along with your other wagers in your Wager List.",
+            "link": "Predictions"
+          },
+          {
+            "heading": "Survivor Picks",
+            "text": "Choose the team from your Predictions list that you feel most confident will win outright, and see your results in the weekly leaderboard.",
+            "link": "Predictions"
+          }
+          ,
+            {
+              "text": "Other bug fixes."
+            }
+          ]
+}

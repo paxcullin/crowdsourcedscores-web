@@ -78,8 +78,8 @@ exports.handler = async (event, context) => {
         const messageRecord = event.Records[0].Sns;
         const gameAttributes = messageRecord.MessageAttributes;
         const year = parseInt(gameAttributes.year.Value);
-        const gameId = parseInt(gameAttributes.gameId.Value);
-        const gameIds = gameAttributes.gameIds ? gameAttributes.gameIds.Value.split(',') : [];
+        const gameId = gameAttributes.gameId?.Value ? parseInt(gameAttributes.gameId.Value) : null;
+        const gameIds = gameAttributes.gameIds ? gameAttributes.gameIds?.Value.split(',') : [];
         const gameIdsArray = gameIds.map((gId) => parseInt(gId));
         const gameWeek = gameAttributes.gameWeek ? parseInt(gameAttributes.gameWeek.Value) : null;
         const gameDate = gameAttributes.gameDate ? String(gameAttributes.gameDate.Value) : null;
@@ -90,21 +90,22 @@ exports.handler = async (event, context) => {
             gameId: gameIds && gameIds.length > 0 ? { $in: gameIdsArray } : gameId
           }
         }
-        if (gameDate) {
-          matchOpts.$match.gameDate = gameDate;
-        } else if (gameWeek !== null) {
-          matchOpts.$match.gameWeek = gameWeek;
-        }
+        // if (gameDate) {
+        //   matchOpts.$match.gameDate = gameDate;
+        // } else if (gameWeek !== null) {
+        matchOpts.$match.gameWeek = gameWeek;
+        // }
         var groupOpts = {
                 $group: {
                     _id: "$gameId",
+                    totalPredictions: {$count: {}},
                     awayAvg: {$avg: "$awayTeam.score"},
                     homeAvg: {$avg: "$homeTeam.score"},
                     totalAvg: {$avg: "$total"},
                     spreadAvg: {$avg: "$spread"}
                 }
             }
-        if (parseInt(gameAttributes.gameId.Value) === 283) {
+        if (gameId === 283) {
             groupOpts = {
                 $group: {
                     _id: "$gameId",
@@ -175,18 +176,19 @@ exports.handler = async (event, context) => {
                 var crowdResult = {};
                 var update = {
                     $set: {
-                        crowd: {
-                            awayTeam: { score: awayAvg},
-                            homeTeam: { score: homeAvg},
-                            total: totalAvg,
-                            spread: spreadAvg
-                        }
+                        "crowd.totalPredictions": result.totalPredictions,
+                        "crowd.awayTeam": { score: awayAvg},
+                        "crowd.homeTeam": { score: homeAvg},
+                        "crowd.total": totalAvg,
+                        "crowd.spread": spreadAvg,
+                        "crowd.updated": Date.now()
                     }
                 }
                 if (result._id === 283) {
                   update = {
                     $set: {
                       crowd: {
+                          totalPredictions: result.totalPredictions,
                           awayTeam: { 
                             score: awayAvg,
                             periods: {
