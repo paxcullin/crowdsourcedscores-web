@@ -1,0 +1,14 @@
+{
+  "name": "get-weekly-leaderboards-survivor",
+  "version": "1.0.0",
+  "description": "Retrieve survivor leaderboard data from MongoDB for weekly and overall standings.",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^6.1.0"
+  },
+  "scripts": {
+    "test": "aws lambda invoke --function-name getWeeklyLeaderboardsSurvivor output.json --cli-binary-format raw-in-base64-out --payload '{\"sport\":\"nfl\", \"gameWeek\":9, \"year\":2026, \"season\": \"reg\"}'",
+    "upload": "aws lambda update-function-code --function-name getWeeklyLeaderboardsSurvivor --zip-file fileb://getWeeklyLeaderboardsSurvivor.zip"
+  }
+}

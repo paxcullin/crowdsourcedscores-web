@@ -309,7 +309,7 @@ exports.handler = async (event) => {
         var collection = db.collection(gamesCollection);
         var queryPromises = [];
         const games = await collection.find(gameQuery, {_id: false}).toArray();
-        console.log('games.length :>> ', games.length);
+        console.log('games.length :>> ', gamesCollection, games.length);
         for (const [gameIndex, game] of games.entries()) {
             //console.log("game: ", game)
             const gamePredictionQuery = {
